@@ -1,0 +1,23 @@
+{
+  "name": "TraceHub Inventory (full stack)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+
+  "forwardPorts": [5000, 5173],
+  "portsAttributes": {
+    "5000": { "label": "TraceHub API", "onAutoForward": "notify" },
+    "5173": { "label": "TraceHub Web App", "onAutoForward": "openPreview" }
+  },
+
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/start.sh",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}

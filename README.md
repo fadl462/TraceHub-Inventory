@@ -9,6 +9,33 @@ QR-code/scan-based location tracking, and an AI-driven depreciation engine.
 
 ---
 
+## Test it right now, no local setup required
+
+This repo has a `.devcontainer` config, so you can run the **entire stack live in
+your browser** via GitHub Codespaces:
+
+1. On the repo page, click **Code → Codespaces → Create codespace on main**
+2. Wait ~1-2 minutes while it installs dependencies, seeds the database
+   (subscription plans, asset categories, a Super Admin account), and starts
+   both servers automatically
+3. When the **Ports** tab shows port `5173` running, click it (or the popup
+   preview) to open the app
+4. Go to `/register` to create a company workspace (auto-starts the 10-asset /
+   30-day free trial), or `/login` with the Super Admin credentials printed in
+   the setup log (`backend/.env` → `SUPER_ADMIN_EMAIL` / `SUPER_ADMIN_PASSWORD`)
+
+No payment gateway or SMTP keys are needed to test — Codespaces runs with
+SQLite and a stub email transport that logs emails to the console instead of
+sending them, so every feature (assets, QR scanning, assignments,
+depreciation, reports) works immediately.
+
+Every push also runs through **GitHub Actions CI** (`.github/workflows/ci.yml`),
+which installs both apps, seeds the backend, confirms the API boots and
+responds on `/health`, and confirms the frontend builds cleanly — so you can
+see at a glance on the repo's **Actions** tab whether a given commit is healthy.
+
+---
+
 ## Project structure
 
 ```
