@@ -11,7 +11,15 @@ import { useEffect, useRef, useState } from 'react';
  * moment is an actual computed collision, not a coincidence.
  */
 const SWEEP_SECONDS = 7;
-const HALF_BEAM_DEG = 16; // how wide the "lit" zone is on either side of the beam center
+// The SVG wedge path itself points from the top toward up-right before any
+// rotation is applied - its true center angle (in the same 0=east,
+// clockwise-positive convention used for asset angles below) is ~ -71.8deg,
+// not 0. The rotation transform is added ON TOP of that base angle, so
+// collision detection has to use (baseAngle + currentRotation), not the
+// rotation amount alone - using the rotation alone was the bug that made
+// assets light up at the wrong moment.
+const SWEEP_BASE_ANGLE = -71.8;
+const HALF_BEAM_DEG = 15; // matches the wedge's real half-width (~18.2deg), slightly tighter so the glow reads as precise
 const FADE_SECONDS = 1.3; // how long a label lingers after being scanned
 
 const ASSETS = [
@@ -47,6 +55,7 @@ export default function RadarLocateVisual() {
       const t = (now - s.startTime) / 1000; // seconds elapsed
 
       s.sweepDeg = norm360((t / SWEEP_SECONDS) * 360);
+      const sweepPointingAngle = norm360(SWEEP_BASE_ANGLE + s.sweepDeg);
 
       s.assets.forEach((asset) => {
         const angle = norm360(asset.angle0 + asset.degPerSec * t);
@@ -54,7 +63,7 @@ export default function RadarLocateVisual() {
         asset.x = 50 + asset.radius * Math.cos(rad);
         asset.y = 50 + asset.radius * Math.sin(rad);
 
-        const dist = angularDistance(angle, s.sweepDeg);
+        const dist = angularDistance(angle, sweepPointingAngle);
         const wasLit = asset.lit;
         asset.lit = dist < HALF_BEAM_DEG;
         if (asset.lit && !wasLit) asset.lastHitAt = t;

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import TraceHubMark from '../components/TraceHubMark';
 
 export default function AuthLayout({ children, title, subtitle }) {
@@ -8,7 +10,9 @@ export default function AuthLayout({ children, title, subtitle }) {
           backgroundImage: 'radial-gradient(circle at 20% 20%, white 1px, transparent 1px)',
           backgroundSize: '28px 28px',
         }} />
-        <TraceHubMark size={56} withWordmark tone="white" className="relative z-10" />
+        <Link to="/" className="relative z-10 w-fit">
+          <TraceHubMark size={56} withWordmark tone="white" />
+        </Link>
         <div className="relative z-10 max-w-md">
           <h2 className="text-3xl font-bold leading-tight">Know where every asset is, always.</h2>
           <p className="mt-4 text-primary-100/90 text-sm leading-relaxed">
@@ -20,7 +24,17 @@ export default function AuthLayout({ children, title, subtitle }) {
       </div>
       <div className="flex flex-col items-center justify-center p-6 sm:p-10">
         <div className="w-full max-w-sm">
-          <TraceHubMark size={40} withWordmark className="mb-8 lg:hidden" />
+          <div className="flex items-center justify-between mb-8">
+            <Link to="/" className="lg:hidden">
+              <TraceHubMark size={40} withWordmark />
+            </Link>
+            <Link
+              to="/"
+              className="hidden lg:inline-flex items-center gap-1.5 text-sm font-medium text-ink/50 hover:text-ink transition-colors"
+            >
+              <ArrowLeft size={15} /> Back to home
+            </Link>
+          </div>
           <h1 className="text-2xl font-bold text-ink">{title}</h1>
           {subtitle && <p className="mt-1.5 text-sm text-ink/60">{subtitle}</p>}
           <div className="mt-8">{children}</div>
