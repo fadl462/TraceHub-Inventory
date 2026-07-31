@@ -1,23 +1,31 @@
 /**
- * TraceHub Inventory brand mark, rebuilt as SVG instead of the raster PNGs in
- * /public/branding. Renders perfectly crisp at any size (the PNGs were
- * 6000px+ originals that blurred badly when scaled down to navbar/login
- * sizes) and the "radar" rings actually sweep, like the icon is continuously
- * scanning/locating - which a static image could never do.
+ * TraceHub Inventory brand mark: animated SVG radar icon (crisp at any size,
+ * genuinely rotating/scanning) paired with the ORIGINAL wordmark artwork
+ * (cropped from the source logo files, preserving the exact two-tone
+ * "Trace"/"Hub" styling and swoosh detail - this is real brand typography,
+ * not a re-typed approximation).
  *
  * Usage:
- *   <TraceHubMark size={40} />                 icon only
- *   <TraceHubMark size={36} withWordmark />    icon + "TraceHub Inventory" text
- *   <TraceHubMark size={36} withWordmark tone="white" />  for dark backgrounds
+ *   <TraceHubMark size={44} />                 icon only
+ *   <TraceHubMark size={44} withWordmark />    icon + wordmark, brand colors
+ *   <TraceHubMark size={44} withWordmark tone="white" />  for dark backgrounds
  */
-export default function TraceHubMark({ size = 40, withWordmark = false, tone = 'color', animate = true, className = '' }) {
+export default function TraceHubMark({ size = 44, withWordmark = false, tone = 'color', animate = true, className = '' }) {
   const isWhite = tone === 'white';
   const ringColor = isWhite ? '#FFFFFF' : '#1A4D8F';
   const sweepColor = isWhite ? '#8CC2FF' : '#4DA3FF';
-  const dotColor = isWhite ? '#7ED957' : '#7ED957';
+  const dotColor = '#7ED957';
+
+  const wordmarkSrc = isWhite
+    ? '/branding/tracehub-wordmark-white.png'
+    : '/branding/tracehub-wordmark-color.png';
+
+  // Source wordmark crop is 4369x977px (aspect ratio ~4.47:1)
+  const wordmarkHeight = size * 0.62;
+  const wordmarkWidth = wordmarkHeight * 4.4718;
 
   return (
-    <div className={`inline-flex items-center gap-2.5 ${className}`}>
+    <div className={`inline-flex items-center gap-3 ${className}`}>
       <svg
         width={size}
         height={size}
@@ -25,13 +33,12 @@ export default function TraceHubMark({ size = 40, withWordmark = false, tone = '
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
+        style={{ flexShrink: 0 }}
       >
-        {/* Static concentric radar rings - crisp vector, never blurs */}
         <circle cx="50" cy="50" r="46" stroke={ringColor} strokeWidth="3" opacity="0.25" />
         <circle cx="50" cy="50" r="33" stroke={ringColor} strokeWidth="3" opacity="0.45" />
         <circle cx="50" cy="50" r="20" stroke={ringColor} strokeWidth="3" opacity="0.7" />
 
-        {/* Rotating sweep wedge - the "tracing/locating" motion */}
         <g style={{
           transformOrigin: '50px 50px',
           animation: animate ? 'th-radar-spin 4.5s linear infinite' : 'none',
@@ -50,7 +57,6 @@ export default function TraceHubMark({ size = 40, withWordmark = false, tone = '
           </linearGradient>
         </defs>
 
-        {/* Center locator dot */}
         <circle cx="50" cy="50" r="6" fill={dotColor} />
 
         <style>{`
@@ -62,20 +68,11 @@ export default function TraceHubMark({ size = 40, withWordmark = false, tone = '
       </svg>
 
       {withWordmark && (
-        <span className="flex flex-col leading-none">
-          <span
-            className={`font-bold tracking-tight ${isWhite ? 'text-white' : 'text-ink'}`}
-            style={{ fontSize: size * 0.44 }}
-          >
-            TraceHub
-          </span>
-          <span
-            className={`font-semibold tracking-[0.25em] uppercase ${isWhite ? 'text-white/60' : 'text-ink/45'}`}
-            style={{ fontSize: Math.max(size * 0.16, 8) }}
-          >
-            Inventory
-          </span>
-        </span>
+        <img
+          src={wordmarkSrc}
+          alt="TraceHub Inventory"
+          style={{ height: wordmarkHeight, width: wordmarkWidth }}
+        />
       )}
     </div>
   );

@@ -49,7 +49,7 @@ export default function DashboardLayout() {
       {/* Sidebar */}
       <aside className={`fixed lg:static z-30 inset-y-0 left-0 w-64 bg-primary-800 text-white flex flex-col transition-transform ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
         <div className="h-16 flex items-center px-5 border-b border-white/10">
-          <TraceHubMark size={28} withWordmark tone="white" />
+          <TraceHubMark size={36} withWordmark tone="white" />
           <button className="ml-auto lg:hidden text-white/70" onClick={() => setMobileOpen(false)}><X size={20} /></button>
         </div>
         <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
