@@ -1,0 +1,68 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+import ForgotPassword from './pages/auth/ForgotPassword';
+import ResetPassword from './pages/auth/ResetPassword';
+
+import DashboardLayout from './layouts/DashboardLayout';
+import Dashboard from './pages/Dashboard';
+import AssetsList from './pages/assets/AssetsList';
+import AssetCreate from './pages/assets/AssetCreate';
+import AssetDetail from './pages/assets/AssetDetail';
+import ScanPage from './pages/assets/ScanPage';
+import AssignmentsList from './pages/assignments/AssignmentsList';
+import AssignmentCreate from './pages/assignments/AssignmentCreate';
+import LocationsPage from './pages/locations/LocationsPage';
+import ReportsPage from './pages/reports/ReportsPage';
+import TeamPage from './pages/TeamPage';
+import BillingPage from './pages/settings/BillingPage';
+import SettingsPage from './pages/settings/SettingsPage';
+
+import SuperAdminLayout from './layouts/SuperAdminLayout';
+import AdminOverview from './pages/superadmin/AdminOverview';
+import AdminCompanies from './pages/superadmin/AdminCompanies';
+
+const COMPANY_ROLES = ['company_admin', 'manager', 'staff'];
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <Toaster position="top-right" toastOptions={{ style: { fontSize: '14px' } }} />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+
+          <Route path="/" element={<ProtectedRoute roles={COMPANY_ROLES}><DashboardLayout /></ProtectedRoute>}>
+            <Route index element={<Navigate to="/dashboard" replace />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="assets" element={<AssetsList />} />
+            <Route path="assets/new" element={<AssetCreate />} />
+            <Route path="assets/:id" element={<AssetDetail />} />
+            <Route path="scan" element={<ScanPage />} />
+            <Route path="assignments" element={<AssignmentsList />} />
+            <Route path="assignments/new" element={<AssignmentCreate />} />
+            <Route path="locations" element={<LocationsPage />} />
+            <Route path="reports" element={<ReportsPage />} />
+            <Route path="team" element={<TeamPage />} />
+            <Route path="billing" element={<BillingPage />} />
+            <Route path="settings" element={<SettingsPage />} />
+          </Route>
+
+          <Route path="/admin" element={<ProtectedRoute roles={['super_admin']}><SuperAdminLayout /></ProtectedRoute>}>
+            <Route index element={<AdminOverview />} />
+            <Route path="companies" element={<AdminCompanies />} />
+          </Route>
+
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
+  );
+}
