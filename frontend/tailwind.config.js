@@ -31,6 +31,8 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Space Grotesk"', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
         card: '0 1px 2px rgba(16,46,86,0.06), 0 4px 12px rgba(16,46,86,0.06)',

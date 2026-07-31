@@ -7,6 +7,7 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
+import Landing from './pages/Landing';
 
 import DashboardLayout from './layouts/DashboardLayout';
 import Dashboard from './pages/Dashboard';
@@ -34,13 +35,13 @@ export default function App() {
       <AuthProvider>
         <Toaster position="top-right" toastOptions={{ style: { fontSize: '14px' } }} />
         <Routes>
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
 
-          <Route path="/" element={<ProtectedRoute roles={COMPANY_ROLES}><DashboardLayout /></ProtectedRoute>}>
-            <Route index element={<Navigate to="/dashboard" replace />} />
+          <Route element={<ProtectedRoute roles={COMPANY_ROLES}><DashboardLayout /></ProtectedRoute>}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="assets" element={<AssetsList />} />
             <Route path="assets/new" element={<AssetCreate />} />
@@ -60,7 +61,7 @@ export default function App() {
             <Route path="companies" element={<AdminCompanies />} />
           </Route>
 
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
