@@ -16,7 +16,7 @@ export default function AdminOverview() {
     { icon: Building2, label: 'Total companies', value: stats.totalCompanies, sub: `${stats.activeCompanies} active · ${stats.trialCompanies} trialing` },
     { icon: Boxes, label: 'Total assets tracked', value: stats.totalAssets },
     { icon: Users, label: 'Total users', value: stats.totalUsers },
-    { icon: DollarSign, label: 'Total revenue', value: `GHS ${Number(stats.revenueTotal).toLocaleString()}`, sub: `${stats.activeSubs} active subs · ${stats.pastDueSubs} past due` },
+    { icon: DollarSign, label: 'Total revenue', value: `USD ${Number(stats.revenueTotal).toLocaleString()}`, sub: `${stats.activeSubs} active subs · ${stats.pastDueSubs} past due` },
   ];
 
   return (

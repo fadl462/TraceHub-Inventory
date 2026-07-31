@@ -81,11 +81,11 @@ export default function Dashboard() {
           <div className="space-y-4">
             <div>
               <p className="text-xs text-ink/50">Total purchase value</p>
-              <p className="text-xl font-bold text-ink">{company?.currency || 'GHS'} {Number(overview?.totalPurchaseValue || 0).toLocaleString()}</p>
+              <p className="text-xl font-bold text-ink">{company?.currency || 'USD'} {Number(overview?.totalPurchaseValue || 0).toLocaleString()}</p>
             </div>
             <div>
               <p className="text-xs text-ink/50">Current estimated value (AI)</p>
-              <p className="text-xl font-bold text-primary">{company?.currency || 'GHS'} {Number(overview?.totalCurrentValue || 0).toLocaleString()}</p>
+              <p className="text-xl font-bold text-primary">{company?.currency || 'USD'} {Number(overview?.totalCurrentValue || 0).toLocaleString()}</p>
             </div>
           </div>
         </Card>

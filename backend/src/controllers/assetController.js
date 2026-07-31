@@ -58,7 +58,7 @@ async function createAsset(req, res, next) {
       manufactureYear,
       purchaseDate,
       purchasePrice,
-      currency: currency || req.company?.currency || 'GHS',
+      currency: currency || req.company?.currency || 'USD',
       lifeExpectancyYearsOverride,
       freeTextLocation,
       currentLocationId: currentLocationId || null,

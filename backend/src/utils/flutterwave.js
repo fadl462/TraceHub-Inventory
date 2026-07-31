@@ -25,7 +25,7 @@ async function initiateCheckout({ txRef, amount, currency, customerEmail, custom
     body: JSON.stringify({
       tx_ref: txRef,
       amount,
-      currency: currency || 'GHS',
+      currency: currency || 'USD',
       redirect_url: redirectUrl,
       customer: { email: customerEmail, name: customerName },
       customizations: {

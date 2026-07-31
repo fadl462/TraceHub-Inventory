@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     txRef: { type: DataTypes.STRING, allowNull: false, unique: true },
     flwTransactionId: { type: DataTypes.STRING, allowNull: true },
     amount: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
-    currency: { type: DataTypes.STRING, defaultValue: 'GHS' },
+    currency: { type: DataTypes.STRING, defaultValue: 'USD' },
     status: {
       type: DataTypes.ENUM('pending', 'successful', 'failed', 'refunded'),
       defaultValue: 'pending',

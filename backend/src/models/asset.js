@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     manufactureYear: { type: DataTypes.INTEGER, allowNull: true },
     purchaseDate: { type: DataTypes.DATEONLY, allowNull: true },
     purchasePrice: { type: DataTypes.DECIMAL(12, 2), allowNull: true },
-    currency: { type: DataTypes.STRING, defaultValue: 'GHS' },
+    currency: { type: DataTypes.STRING, defaultValue: 'USD' },
 
     // Life expectancy as provided by the user (can override the category/AI default)
     lifeExpectancyYearsOverride: { type: DataTypes.FLOAT, allowNull: true },

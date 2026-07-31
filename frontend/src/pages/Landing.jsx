@@ -5,6 +5,8 @@ import {
 } from 'lucide-react';
 import TraceHubMark from '../components/TraceHubMark';
 import RadarLocateVisual from '../components/landing/RadarLocateVisual';
+import ScanIllustration from '../components/landing/ScanIllustration';
+import TrackedAssetsIllustration from '../components/landing/TrackedAssetsIllustration';
 import { useAuth } from '../context/AuthContext';
 
 const STEPS = [
@@ -40,10 +42,10 @@ const FEATURES = [
 ];
 
 const PLANS = [
-  { name: 'Trial', price: 'Free', period: 'for 30 days', assets: '10 assets', users: '3 users', highlight: false },
-  { name: 'Basic', price: 'GHS 150', period: '/ month', assets: '100 assets', users: '5 users', highlight: false },
-  { name: 'Pro', price: 'GHS 450', period: '/ month', assets: '1,000 assets', users: '25 users', highlight: true },
-  { name: 'Enterprise', price: 'GHS 1,200', period: '/ month', assets: 'Unlimited assets', users: 'Unlimited users', highlight: false },
+  { name: 'Trial', price: '$0', period: 'for 30 days', assets: '10 assets', users: '3 users', highlight: false },
+  { name: 'Basic', price: '$19', period: '/ month', assets: '100 assets', users: '5 users', highlight: false },
+  { name: 'Pro', price: '$49', period: '/ month', assets: '1,000 assets', users: '25 users', highlight: true },
+  { name: 'Enterprise', price: '$149', period: '/ month', assets: 'Unlimited assets', users: 'Unlimited users', highlight: false },
 ];
 
 function NavBar() {
@@ -115,6 +117,11 @@ function Hero() {
               See how it works
             </a>
           </div>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-primary-100/60 font-medium">
+            <span className="flex items-center gap-1.5"><Check size={14} className="text-accent" /> No card required</span>
+            <span className="flex items-center gap-1.5"><Check size={14} className="text-accent" /> Live in minutes</span>
+            <span className="flex items-center gap-1.5"><Check size={14} className="text-accent" /> No RFID or GPS hardware</span>
+          </div>
         </div>
         <RadarLocateVisual />
       </div>
@@ -132,16 +139,21 @@ function HowItWorks() {
           industrial equipment across multiple sites.
         </p>
       </div>
-      <div className="mt-14 grid md:grid-cols-2 gap-x-10 gap-y-12">
-        {STEPS.map((s) => (
-          <div key={s.n} className="flex gap-5">
-            <span className="font-mono text-sm font-medium text-secondary shrink-0 pt-1">{s.n}</span>
-            <div>
-              <h3 className="font-display font-semibold text-lg text-ink">{s.title}</h3>
-              <p className="mt-2 text-ink/60 leading-relaxed">{s.body}</p>
+      <div className="mt-14 grid lg:grid-cols-[1.1fr_0.9fr] gap-x-14 gap-y-16 items-center">
+        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-12">
+          {STEPS.map((s) => (
+            <div key={s.n} className="flex gap-5">
+              <span className="font-mono text-sm font-medium text-secondary shrink-0 pt-1">{s.n}</span>
+              <div>
+                <h3 className="font-display font-semibold text-lg text-ink">{s.title}</h3>
+                <p className="mt-2 text-ink/60 leading-relaxed">{s.body}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className="bg-primary-50 rounded-3xl p-8">
+          <ScanIllustration />
+        </div>
       </div>
     </section>
   );
@@ -200,9 +212,12 @@ function Features() {
       </div>
       <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {FEATURES.map(({ icon: Icon, title, body }) => (
-          <div key={title} className="p-6 rounded-2xl border border-ink/5 bg-white hover:shadow-card transition-shadow">
-            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-              <Icon size={20} />
+          <div
+            key={title}
+            className="p-6 rounded-2xl border border-ink/5 bg-white hover:shadow-card hover:-translate-y-1 transition-all duration-200"
+          >
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/15 to-secondary/15 flex items-center justify-center text-primary">
+              <Icon size={21} />
             </div>
             <h3 className="mt-4 font-display font-semibold text-ink">{title}</h3>
             <p className="mt-2 text-sm text-ink/60 leading-relaxed">{body}</p>
@@ -213,10 +228,48 @@ function Features() {
   );
 }
 
+function TrackedOperations() {
+  return (
+    <section className="max-w-6xl mx-auto px-6 py-24">
+      <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div className="order-2 lg:order-1 bg-white rounded-3xl border border-ink/5 shadow-card p-10">
+          <TrackedAssetsIllustration />
+        </div>
+        <div className="order-1 lg:order-2">
+          <h2 className="font-display text-3xl font-bold text-ink tracking-tight">
+            Built for how operations teams actually work
+          </h2>
+          <p className="mt-4 text-ink/60 leading-relaxed max-w-md">
+            No RFID readers to install, no GPS units to budget for. A checkpoint is just a name
+            &mdash; a warehouse, a branch, a job site &mdash; and a scan is just a phone camera.
+          </p>
+          <ul className="mt-7 space-y-3">
+            {[
+              'Any asset category, with fields your business actually uses',
+              'Works the moment a phone can open a browser \u2014 no app install',
+              'Every scan, assignment, and edit lands in one audit trail',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3 text-sm text-ink/70">
+                <Check size={16} className="text-accent-dark mt-0.5 shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Pricing() {
   return (
-    <section id="pricing" className="bg-primary-800 py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="pricing" className="relative bg-primary-800 py-24 overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.06]" style={{
+        backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 1px)',
+        backgroundSize: '32px 32px',
+      }}
+      />
+      <div className="relative max-w-6xl mx-auto px-6">
         <div className="max-w-xl">
           <h2 className="font-display text-3xl font-bold text-white tracking-tight">Pricing that scales with your asset count</h2>
           <p className="mt-3 text-primary-100/70 leading-relaxed">
@@ -227,7 +280,9 @@ function Pricing() {
           {PLANS.map((p) => (
             <div
               key={p.name}
-              className={`rounded-2xl p-6 flex flex-col ${p.highlight ? 'bg-white ring-2 ring-accent' : 'bg-white/[0.06] ring-1 ring-white/10'}`}
+              className={`rounded-2xl p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1.5 ${
+                p.highlight ? 'bg-white ring-2 ring-accent shadow-xl shadow-black/20' : 'bg-white/[0.06] ring-1 ring-white/10'
+              }`}
             >
               {p.highlight && (
                 <span className="self-start text-[11px] font-mono font-semibold tracking-wide uppercase text-accent-dark bg-accent/20 px-2 py-0.5 rounded-full mb-3">
@@ -261,7 +316,11 @@ function Pricing() {
 
 function FinalCTA() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-24 text-center">
+    <section className="relative max-w-6xl mx-auto px-6 py-24 text-center overflow-hidden">
+      <div
+        className="absolute inset-0 -z-10 rounded-[2.5rem] mx-6"
+        style={{ background: 'radial-gradient(60% 100% at 50% 100%, rgba(77,163,255,0.10), transparent)' }}
+      />
       <QrCode className="mx-auto text-primary" size={32} />
       <h2 className="mt-5 font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">
         Ready to know where everything is?
@@ -299,6 +358,7 @@ export default function Landing() {
       <HowItWorks />
       <DepreciationProof />
       <Features />
+      <TrackedOperations />
       <Pricing />
       <FinalCTA />
       <Footer />

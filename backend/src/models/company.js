@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     industry: { type: DataTypes.STRING, allowNull: true },
     logoUrl: { type: DataTypes.STRING, allowNull: true },
-    currency: { type: DataTypes.STRING, defaultValue: 'GHS' },
+    currency: { type: DataTypes.STRING, defaultValue: 'USD' },
     timezone: { type: DataTypes.STRING, defaultValue: 'Africa/Accra' },
     customDomain: { type: DataTypes.STRING, allowNull: true },
     // General settings blob (payment API preferences, branding overrides, etc.)

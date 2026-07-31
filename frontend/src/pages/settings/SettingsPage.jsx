@@ -7,13 +7,13 @@ import { useAuth } from '../../context/AuthContext';
 
 export default function SettingsPage() {
   const { company, refresh, user } = useAuth();
-  const [companyForm, setCompanyForm] = useState({ name: '', industry: '', currency: 'GHS' });
+  const [companyForm, setCompanyForm] = useState({ name: '', industry: '', currency: 'USD' });
   const [passwordForm, setPasswordForm] = useState({ currentPassword: '', newPassword: '' });
   const [fields, setFields] = useState([]);
   const [newField, setNewField] = useState({ label: '', fieldType: 'text' });
 
   useEffect(() => {
-    if (company) setCompanyForm({ name: company.name || '', industry: company.industry || '', currency: company.currency || 'GHS' });
+    if (company) setCompanyForm({ name: company.name || '', industry: company.industry || '', currency: company.currency || 'USD' });
     client.get('/custom-fields').then(({ data }) => setFields(data.fields)).catch(() => {});
   }, [company]);
 

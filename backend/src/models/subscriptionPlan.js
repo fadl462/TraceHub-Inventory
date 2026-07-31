@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     userLimit: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 3 },
     priceMonthly: { type: DataTypes.DECIMAL(10, 2), allowNull: false, defaultValue: 0 },
     priceAnnual: { type: DataTypes.DECIMAL(10, 2), allowNull: false, defaultValue: 0 },
-    currency: { type: DataTypes.STRING, defaultValue: 'GHS' },
+    currency: { type: DataTypes.STRING, defaultValue: 'USD' },
     features: {
       // JSON list of feature flags e.g. ["gps_events","reporting","api_access","custom_domain"]
       type: DataTypes.TEXT,
