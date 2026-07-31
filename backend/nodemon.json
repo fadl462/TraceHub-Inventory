@@ -1,0 +1,12 @@
+{
+  "watch": ["src"],
+  "ext": "js,json",
+  "ignore": [
+    "data/*",
+    "*.sqlite",
+    "*.sqlite-journal",
+    ".env",
+    "uploads/*",
+    "node_modules/*"
+  ]
+}
