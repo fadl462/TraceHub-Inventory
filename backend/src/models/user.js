@@ -36,6 +36,9 @@ module.exports = (sequelize, DataTypes) => {
     isEmailVerified: { type: DataTypes.BOOLEAN, defaultValue: false },
     lastLoginAt: { type: DataTypes.DATE, allowNull: true },
     avatarUrl: { type: DataTypes.STRING, allowNull: true },
+    // Two-factor authentication (TOTP, e.g. Google/Microsoft Authenticator)
+    twoFactorEnabled: { type: DataTypes.BOOLEAN, defaultValue: false },
+    twoFactorSecret: { type: DataTypes.STRING, allowNull: true },
   }, {
     tableName: 'users',
     timestamps: true,

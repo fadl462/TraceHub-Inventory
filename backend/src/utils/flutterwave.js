@@ -2,12 +2,30 @@ const crypto = require('crypto');
 
 const FLW_BASE = 'https://api.flutterwave.com/v3';
 
-function assertConfigured() {
-  if (!process.env.FLW_SECRET_KEY) {
-    const err = new Error('Flutterwave is not configured. Set FLW_SECRET_KEY, FLW_PUBLIC_KEY and FLW_ENCRYPTION_KEY in your environment.');
+/** Prefers Super Admin-configured DB settings, falling back to .env */
+async function getConfig() {
+  let dbSettings = null;
+  try {
+    const { PlatformSettings } = require('../models');
+    dbSettings = await PlatformSettings.findByPk('default');
+  } catch {
+    dbSettings = null;
+  }
+  return {
+    secretKey: dbSettings?.getFlwSecretKey() || process.env.FLW_SECRET_KEY,
+    publicKey: dbSettings?.flwPublicKey || process.env.FLW_PUBLIC_KEY,
+    mode: dbSettings?.flwMode || (process.env.NODE_ENV === 'production' ? 'live' : 'sandbox'),
+  };
+}
+
+async function assertConfigured() {
+  const cfg = await getConfig();
+  if (!cfg.secretKey) {
+    const err = new Error('Flutterwave is not configured. Set it up in Super Admin > Payments, or via FLW_SECRET_KEY/FLW_PUBLIC_KEY in your environment.');
     err.statusCode = 501;
     throw err;
   }
+  return cfg;
 }
 
 /**
@@ -15,11 +33,11 @@ function assertConfigured() {
  * Docs: https://developer.flutterwave.com/docs/collecting-payments/standard
  */
 async function initiateCheckout({ txRef, amount, currency, customerEmail, customerName, redirectUrl, meta }) {
-  assertConfigured();
+  const cfg = await assertConfigured();
   const resp = await fetch(`${FLW_BASE}/payments`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${process.env.FLW_SECRET_KEY}`,
+      Authorization: `Bearer ${cfg.secretKey}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -47,9 +65,9 @@ async function initiateCheckout({ txRef, amount, currency, customerEmail, custom
 
 /** Verifies a transaction by id after redirect/webhook, per Flutterwave best practice (always re-verify server-side) */
 async function verifyTransaction(transactionId) {
-  assertConfigured();
+  const cfg = await assertConfigured();
   const resp = await fetch(`${FLW_BASE}/transactions/${transactionId}/verify`, {
-    headers: { Authorization: `Bearer ${process.env.FLW_SECRET_KEY}` },
+    headers: { Authorization: `Bearer ${cfg.secretKey}` },
   });
   const data = await resp.json();
   if (!resp.ok) {
@@ -70,4 +88,4 @@ function verifyWebhookSignature(headerHash) {
   return crypto.timingSafeEqual(a, b);
 }
 
-module.exports = { initiateCheckout, verifyTransaction, verifyWebhookSignature };
+module.exports = { initiateCheckout, verifyTransaction, verifyWebhookSignature, getConfig };

@@ -1,13 +1,15 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ScanLine, Sparkles, ShieldCheck, BarChart3, CalendarClock, CreditCard,
-  ArrowRight, Check, QrCode,
+  ArrowRight, Check, QrCode, ChevronDown,
 } from 'lucide-react';
 import TraceHubMark from '../components/TraceHubMark';
 import RadarLocateVisual from '../components/landing/RadarLocateVisual';
 import ScanIllustration from '../components/landing/ScanIllustration';
 import TrackedAssetsIllustration from '../components/landing/TrackedAssetsIllustration';
 import { useAuth } from '../context/AuthContext';
+import client from '../api/client';
 
 const STEPS = [
   {
@@ -41,12 +43,34 @@ const FEATURES = [
   { icon: CreditCard, title: 'Local billing, built in', body: 'Subscriptions billed through Flutterwave, so payment works the way your business already pays for things.' },
 ];
 
-const PLANS = [
+const DEFAULT_CONTENT = {
+  heroEyebrow: 'Asset & inventory management',
+  heroHeadline: 'Know where every asset is, always.',
+  heroSubheadline: 'Register equipment in seconds, let AI propose disposal timelines, assign gear to your team, and track it all with a simple scan \u2014 no hardware required.',
+  heroCtaText: 'Start free \u2014 10 assets, 30 days',
+  heroCtaLink: '/register',
+  heroSecondaryCtaText: 'See how it works',
+  footerDescription: 'Precision asset tracking, built for real operations.',
+  footerCopyright: 'TraceHub Inventory. All rights reserved.',
+};
+
+const DEFAULT_PLANS = [
   { name: 'Trial', price: '$0', period: 'for 30 days', assets: '10 assets', users: '3 users', highlight: false },
   { name: 'Basic', price: '$19', period: '/ month', assets: '100 assets', users: '5 users', highlight: false },
   { name: 'Pro', price: '$49', period: '/ month', assets: '1,000 assets', users: '25 users', highlight: true },
   { name: 'Enterprise', price: '$149', period: '/ month', assets: 'Unlimited assets', users: 'Unlimited users', highlight: false },
 ];
+
+function formatPlan(p) {
+  return {
+    name: p.name,
+    price: Number(p.priceMonthly) === 0 ? '$0' : `$${p.priceMonthly}`,
+    period: p.code === 'trial' ? 'for 30 days' : '/ month',
+    assets: p.assetLimit === -1 ? 'Unlimited assets' : `${p.assetLimit.toLocaleString()} assets`,
+    users: p.userLimit === -1 ? 'Unlimited users' : `${p.userLimit} users`,
+    highlight: p.code === 'pro',
+  };
+}
 
 function NavBar() {
   const { user } = useAuth();
@@ -82,7 +106,7 @@ function NavBar() {
   );
 }
 
-function Hero() {
+function Hero({ content }) {
   return (
     <section className="relative overflow-hidden bg-primary-800">
       <div className="absolute inset-0 opacity-[0.07]" style={{
@@ -93,28 +117,27 @@ function Hero() {
       <div className="relative max-w-6xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <span className="inline-block text-xs font-mono font-medium tracking-widest uppercase text-secondary-light bg-white/10 px-3 py-1.5 rounded-full mb-6">
-            Asset &amp; inventory management
+            {content.heroEyebrow}
           </span>
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-white leading-[1.08] tracking-tight">
-            Know where every asset is, always.
+            {content.heroHeadline}
           </h1>
           <p className="mt-5 text-lg text-primary-100/80 leading-relaxed max-w-lg">
-            Register equipment in seconds, let AI propose disposal timelines, assign gear to your
-            team, and track it all with a simple scan &mdash; no hardware required.
+            {content.heroSubheadline}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <Link
-              to="/register"
+              to={content.heroCtaLink || '/register'}
               className="inline-flex items-center gap-2 bg-accent text-primary-900 font-semibold px-6 py-3.5 rounded-lg hover:bg-accent-dark hover:text-white transition-colors"
             >
-              Start free &mdash; 10 assets, 30 days
+              {content.heroCtaText}
               <ArrowRight size={18} />
             </Link>
             <a
               href="#how-it-works"
               className="inline-flex items-center gap-2 text-white/85 font-medium px-2 py-3.5 hover:text-white transition-colors"
             >
-              See how it works
+              {content.heroSecondaryCtaText}
             </a>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-primary-100/60 font-medium">
@@ -123,7 +146,11 @@ function Hero() {
             <span className="flex items-center gap-1.5"><Check size={14} className="text-accent" /> No RFID or GPS hardware</span>
           </div>
         </div>
-        <RadarLocateVisual />
+        {content.heroImageUrl ? (
+          <img src={content.heroImageUrl} alt="" className="w-full h-auto max-w-[460px] mx-auto rounded-2xl" />
+        ) : (
+          <RadarLocateVisual />
+        )}
       </div>
     </section>
   );
@@ -261,7 +288,7 @@ function TrackedOperations() {
   );
 }
 
-function Pricing() {
+function Pricing({ plans }) {
   return (
     <section id="pricing" className="relative bg-primary-800 py-24 overflow-hidden">
       <div className="absolute inset-0 opacity-[0.06]" style={{
@@ -277,7 +304,7 @@ function Pricing() {
           </p>
         </div>
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {PLANS.map((p) => (
+          {plans.map((p) => (
             <div
               key={p.name}
               className={`rounded-2xl p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1.5 ${
@@ -314,7 +341,56 @@ function Pricing() {
   );
 }
 
-function FinalCTA() {
+function Testimonials({ items }) {
+  if (!items || items.length === 0) return null;
+  return (
+    <section className="max-w-6xl mx-auto px-6 py-24">
+      <div className="max-w-xl">
+        <h2 className="font-display text-3xl font-bold text-ink tracking-tight">What teams say after switching</h2>
+      </div>
+      <div className="mt-12 grid md:grid-cols-3 gap-6">
+        {items.map((t) => (
+          <div key={t.id} className="p-6 rounded-2xl border border-ink/5 bg-white">
+            <p className="text-sm text-ink/70 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
+            <p className="mt-4 text-sm font-semibold text-ink">{t.authorName}</p>
+            <p className="text-xs text-ink/50">
+              {t.authorRole}{t.authorRole && t.companyName ? ' \u2014 ' : ''}{t.companyName}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FaqItem({ q, a }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-ink/5 py-5">
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between text-left gap-4">
+        <span className="font-medium text-ink">{q}</span>
+        <ChevronDown size={18} className={`text-ink/40 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && <p className="mt-3 text-sm text-ink/60 leading-relaxed pr-8">{a}</p>}
+    </div>
+  );
+}
+
+function Faq({ items }) {
+  if (!items || items.length === 0) return null;
+  return (
+    <section className="bg-primary-50 py-24">
+      <div className="max-w-3xl mx-auto px-6">
+        <h2 className="font-display text-3xl font-bold text-ink tracking-tight text-center">Frequently asked questions</h2>
+        <div className="mt-10">
+          {items.map((f) => <FaqItem key={f.id} q={f.question} a={f.answer} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalCTA({ content }) {
   return (
     <section className="relative max-w-6xl mx-auto px-6 py-24 text-center overflow-hidden">
       <div
@@ -329,7 +405,7 @@ function FinalCTA() {
         Set up your workspace in a couple of minutes. No card required to start.
       </p>
       <Link
-        to="/register"
+        to={content.heroCtaLink || '/register'}
         className="mt-8 inline-flex items-center gap-2 bg-primary text-white font-semibold px-7 py-3.5 rounded-lg hover:bg-primary-600 transition-colors"
       >
         Create your workspace
@@ -339,29 +415,64 @@ function FinalCTA() {
   );
 }
 
-function Footer() {
+function Footer({ content, links }) {
+  const legal = (links || []).filter((l) => l.group === 'legal');
+  const social = (links || []).filter((l) => l.group === 'social');
   return (
     <footer className="border-t border-ink/5 py-10">
-      <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <TraceHubMark size={22} withWordmark animate={false} />
-        <p className="text-xs text-ink/45">&copy; {new Date().getFullYear()} TraceHub Inventory. All rights reserved.</p>
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <TraceHubMark size={22} withWordmark animate={false} />
+            {content.footerDescription && <p className="mt-2 text-xs text-ink/50">{content.footerDescription}</p>}
+          </div>
+          {(legal.length > 0 || social.length > 0) && (
+            <div className="flex flex-wrap items-center gap-5 text-xs text-ink/60">
+              {legal.map((l) => (
+                <a key={l.id} href={l.url} className="hover:text-ink transition-colors">{l.label}</a>
+              ))}
+              {social.map((l) => (
+                <a key={l.id} href={l.url} target="_blank" rel="noreferrer" className="hover:text-ink transition-colors">{l.label}</a>
+              ))}
+            </div>
+          )}
+        </div>
+        <p className="mt-6 text-xs text-ink/45">&copy; {new Date().getFullYear()} {content.footerCopyright}</p>
       </div>
     </footer>
   );
 }
 
 export default function Landing() {
+  const [content, setContent] = useState(DEFAULT_CONTENT);
+  const [plans, setPlans] = useState(DEFAULT_PLANS);
+  const [testimonials, setTestimonials] = useState([]);
+  const [faqs, setFaqs] = useState([]);
+  const [footerLinks, setFooterLinks] = useState([]);
+
+  useEffect(() => {
+    client.get('/site-content').then(({ data }) => setContent(data.content)).catch(() => {});
+    client.get('/plans').then(({ data }) => {
+      if (data.plans?.length) setPlans(data.plans.map(formatPlan));
+    }).catch(() => {});
+    client.get('/testimonials').then(({ data }) => setTestimonials(data.testimonials || [])).catch(() => {});
+    client.get('/faqs').then(({ data }) => setFaqs(data.faqs || [])).catch(() => {});
+    client.get('/footer-links').then(({ data }) => setFooterLinks(data.links || [])).catch(() => {});
+  }, []);
+
   return (
     <div className="bg-surface">
       <NavBar />
-      <Hero />
+      <Hero content={content} />
       <HowItWorks />
       <DepreciationProof />
       <Features />
       <TrackedOperations />
-      <Pricing />
-      <FinalCTA />
-      <Footer />
+      <Pricing plans={plans} />
+      <Testimonials items={testimonials} />
+      <Faq items={faqs} />
+      <FinalCTA content={content} />
+      <Footer content={content} links={footerLinks} />
     </div>
   );
 }

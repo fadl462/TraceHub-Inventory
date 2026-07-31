@@ -22,6 +22,11 @@ router.post('/login', authLimiter, [
   body('password').notEmpty(),
 ], validate, ctrl.login);
 
+router.post('/login/verify-2fa', authLimiter, [
+  body('userId').notEmpty(),
+  body('token').notEmpty(),
+], validate, ctrl.verifyLoginTwoFactor);
+
 router.post('/refresh', ctrl.refresh);
 
 router.post('/forgot-password', authLimiter, [body('email').isEmail()], validate, ctrl.forgotPassword);

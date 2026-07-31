@@ -17,6 +17,13 @@ const Notification = require('./notification')(sequelize, DataTypes);
 const AuditLog = require('./auditLog')(sequelize, DataTypes);
 const PasswordReset = require('./passwordReset')(sequelize, DataTypes);
 const DepreciationProfile = require('./depreciationProfile')(sequelize, DataTypes);
+const SiteContent = require('./siteContent')(sequelize, DataTypes);
+const Testimonial = require('./testimonial')(sequelize, DataTypes);
+const Faq = require('./faq')(sequelize, DataTypes);
+const FooterLink = require('./footerLink')(sequelize, DataTypes);
+const CmsPage = require('./cmsPage')(sequelize, DataTypes);
+const Coupon = require('./coupon')(sequelize, DataTypes);
+const PlatformSettings = require('./platformSettings')(sequelize, DataTypes);
 
 // ---------------------------------------------------------------------------
 // Associations
@@ -120,4 +127,11 @@ module.exports = {
   AuditLog,
   PasswordReset,
   DepreciationProfile,
+  SiteContent,
+  Testimonial,
+  Faq,
+  FooterLink,
+  CmsPage,
+  Coupon,
+  PlatformSettings,
 };

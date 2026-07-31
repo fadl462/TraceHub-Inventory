@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const { Op } = require('sequelize');
+const { authenticator } = require('otplib');
 const {
   User, Company, Subscription, SubscriptionPlan, PasswordReset,
 } = require('../models');
@@ -117,12 +118,38 @@ async function login(req, res, next) {
       }
     }
 
+    if (user.twoFactorEnabled) {
+      // Don't issue tokens yet - the client must call /auth/login/verify-2fa
+      // with a valid code from the user's authenticator app first.
+      return res.json({ requiresTwoFactor: true, userId: user.id });
+    }
+
     user.lastLoginAt = new Date();
     await user.save();
 
     const accessToken = signAccessToken(user);
     const refreshToken = signRefreshToken(user);
 
+    res.json({ accessToken, refreshToken, user: sanitizeUser(user) });
+  } catch (err) { next(err); }
+}
+
+/** Second step of login when the account has 2FA enabled */
+async function verifyLoginTwoFactor(req, res, next) {
+  try {
+    const { userId, token } = req.body;
+    const user = await User.findByPk(userId);
+    if (!user || !user.twoFactorEnabled || !user.twoFactorSecret) {
+      return res.status(400).json({ error: 'Two-factor authentication is not active for this account' });
+    }
+    const isValid = authenticator.verify({ token, secret: user.twoFactorSecret });
+    if (!isValid) return res.status(401).json({ error: 'Invalid or expired code' });
+
+    user.lastLoginAt = new Date();
+    await user.save();
+
+    const accessToken = signAccessToken(user);
+    const refreshToken = signRefreshToken(user);
     res.json({ accessToken, refreshToken, user: sanitizeUser(user) });
   } catch (err) { next(err); }
 }
@@ -201,4 +228,4 @@ function sanitizeUser(user) {
   return rest;
 }
 
-module.exports = { registerCompany, login, refresh, forgotPassword, resetPassword, me };
+module.exports = { registerCompany, login, verifyLoginTwoFactor, refresh, forgotPassword, resetPassword, me };

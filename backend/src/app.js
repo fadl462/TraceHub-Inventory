@@ -18,6 +18,13 @@ const superAdminRoutes = require('./routes/superAdminRoutes');
 const reportRoutes = require('./routes/reportRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 const companyRoutes = require('./routes/companyRoutes');
+const siteContentRoutes = require('./routes/siteContentRoutes');
+const testimonialRoutes = require('./routes/testimonialRoutes');
+const faqRoutes = require('./routes/faqRoutes');
+const footerLinkRoutes = require('./routes/footerLinkRoutes');
+const cmsPageRoutes = require('./routes/cmsPageRoutes');
+const couponRoutes = require('./routes/couponRoutes');
+const platformSettingsRoutes = require('./routes/platformSettingsRoutes');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
@@ -53,6 +60,13 @@ app.use('/api/super-admin', superAdminRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/company', companyRoutes);
+app.use('/api/site-content', siteContentRoutes);
+app.use('/api/testimonials', testimonialRoutes);
+app.use('/api/faqs', faqRoutes);
+app.use('/api/footer-links', footerLinkRoutes);
+app.use('/api/cms-pages', cmsPageRoutes);
+app.use('/api/coupons', couponRoutes);
+app.use('/api/platform-settings', platformSettingsRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

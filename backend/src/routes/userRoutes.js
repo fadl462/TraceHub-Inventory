@@ -27,4 +27,9 @@ router.post('/me/change-password', [
   body('newPassword').isLength({ min: 8 }),
 ], validate, ctrl.changePassword);
 
+router.patch('/me/profile', ctrl.updateMyProfile);
+router.post('/me/2fa/setup', ctrl.setup2FA);
+router.post('/me/2fa/verify', [body('token').notEmpty()], validate, ctrl.verify2FA);
+router.post('/me/2fa/disable', [body('password').notEmpty()], validate, ctrl.disable2FA);
+
 module.exports = router;

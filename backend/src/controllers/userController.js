@@ -1,5 +1,7 @@
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+const { authenticator } = require('otplib');
+const QRCode = require('qrcode');
 const { User } = require('../models');
 const { sendMail } = require('../utils/mailer');
 const { logAction } = require('../middleware/audit');
@@ -109,4 +111,62 @@ async function changePassword(req, res, next) {
   } catch (err) { next(err); }
 }
 
-module.exports = { createStaff, listStaff, getStaff, updateStaff, deleteStaff, changePassword };
+/** Update the current user's own profile (name, phone, avatar) */
+async function updateMyProfile(req, res, next) {
+  try {
+    const { firstName, lastName, phone, avatarUrl } = req.body;
+    const before = sanitize(req.user);
+    if (firstName !== undefined) req.user.firstName = firstName;
+    if (lastName !== undefined) req.user.lastName = lastName;
+    if (phone !== undefined) req.user.phone = phone;
+    if (avatarUrl !== undefined) req.user.avatarUrl = avatarUrl;
+    await req.user.save();
+    await logAction(req, { action: 'user.update_profile', entityType: 'User', entityId: req.user.id, before, after: sanitize(req.user) });
+    res.json({ user: sanitize(req.user) });
+  } catch (err) { next(err); }
+}
+
+/** Step 1 of enabling 2FA: generate a secret + QR code for the user to scan in an authenticator app */
+async function setup2FA(req, res, next) {
+  try {
+    const secret = authenticator.generateSecret();
+    const otpauthUrl = authenticator.keyuri(req.user.email, 'TraceHub Inventory', secret);
+    const qrDataUrl = await QRCode.toDataURL(otpauthUrl);
+    // Stored but not yet "enabled" until the user proves they scanned it correctly
+    req.user.twoFactorSecret = secret;
+    await req.user.save();
+    res.json({ qrDataUrl, secret });
+  } catch (err) { next(err); }
+}
+
+/** Step 2: user submits a code from their authenticator app to confirm setup */
+async function verify2FA(req, res, next) {
+  try {
+    const { token } = req.body;
+    if (!req.user.twoFactorSecret) return res.status(400).json({ error: 'Run 2FA setup first' });
+    const isValid = authenticator.verify({ token, secret: req.user.twoFactorSecret });
+    if (!isValid) return res.status(400).json({ error: 'Invalid code. Check your authenticator app and try again.' });
+    req.user.twoFactorEnabled = true;
+    await req.user.save();
+    await logAction(req, { action: 'user.2fa_enabled', entityType: 'User', entityId: req.user.id });
+    res.json({ message: 'Two-factor authentication enabled' });
+  } catch (err) { next(err); }
+}
+
+async function disable2FA(req, res, next) {
+  try {
+    const { password } = req.body;
+    const valid = await bcrypt.compare(password, req.user.passwordHash);
+    if (!valid) return res.status(400).json({ error: 'Password is incorrect' });
+    req.user.twoFactorEnabled = false;
+    req.user.twoFactorSecret = null;
+    await req.user.save();
+    await logAction(req, { action: 'user.2fa_disabled', entityType: 'User', entityId: req.user.id });
+    res.json({ message: 'Two-factor authentication disabled' });
+  } catch (err) { next(err); }
+}
+
+module.exports = {
+  createStaff, listStaff, getStaff, updateStaff, deleteStaff, changePassword,
+  updateMyProfile, setup2FA, verify2FA, disable2FA,
+};

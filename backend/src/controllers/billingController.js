@@ -6,6 +6,7 @@ const { getActiveSubscription } = require('../middleware/planLimits');
 const flw = require('../utils/flutterwave');
 const { sendMail } = require('../utils/mailer');
 const { logAction } = require('../middleware/audit');
+const { computeDiscount } = require('./couponController');
 
 async function getMySubscription(req, res, next) {
   try {
@@ -17,11 +18,20 @@ async function getMySubscription(req, res, next) {
 /** Step 1: initiate a Flutterwave checkout for a plan/billing-cycle choice */
 async function startCheckout(req, res, next) {
   try {
-    const { planId, billingCycle } = req.body; // billingCycle: 'monthly' | 'annual'
+    const { planId, billingCycle, couponCode } = req.body; // billingCycle: 'monthly' | 'annual'
     const plan = await SubscriptionPlan.findByPk(planId);
     if (!plan) return res.status(404).json({ error: 'Plan not found' });
 
-    const amount = billingCycle === 'annual' ? plan.priceAnnual : plan.priceMonthly;
+    let amount = billingCycle === 'annual' ? plan.priceAnnual : plan.priceMonthly;
+    let appliedCoupon = null;
+
+    if (couponCode) {
+      const discount = await computeDiscount(couponCode, Number(amount));
+      if (!discount.valid) return res.status(400).json({ error: discount.reason });
+      appliedCoupon = discount.coupon.code;
+      amount = discount.finalAmount;
+    }
+
     const txRef = `TH-${uuidv4()}`;
 
     const payment = await Payment.create({
@@ -31,7 +41,7 @@ async function startCheckout(req, res, next) {
       amount,
       currency: plan.currency,
       status: 'pending',
-      meta: { planId, billingCycle },
+      meta: { planId, billingCycle, couponCode: appliedCoupon },
     });
 
     const checkout = await flw.initiateCheckout({
@@ -74,6 +84,11 @@ async function applySuccessfulPayment(payment, flwTransaction) {
   payment.paidAt = new Date();
   payment.invoiceNumber = `INV-${Date.now()}`;
   await payment.save();
+
+  if (payment.meta?.couponCode) {
+    const { Coupon } = require('../models');
+    await Coupon.increment('timesUsed', { where: { code: payment.meta.couponCode } });
+  }
 
   const { planId, billingCycle } = payment.meta;
   const plan = await SubscriptionPlan.findByPk(planId);

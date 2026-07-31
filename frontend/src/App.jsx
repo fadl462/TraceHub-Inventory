@@ -8,6 +8,7 @@ import Register from './pages/auth/Register';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
 import Landing from './pages/Landing';
+import CmsPageView from './pages/CmsPageView';
 
 import DashboardLayout from './layouts/DashboardLayout';
 import Dashboard from './pages/Dashboard';
@@ -26,6 +27,17 @@ import SettingsPage from './pages/settings/SettingsPage';
 import SuperAdminLayout from './layouts/SuperAdminLayout';
 import AdminOverview from './pages/superadmin/AdminOverview';
 import AdminCompanies from './pages/superadmin/AdminCompanies';
+import ContentEditor from './pages/superadmin/ContentEditor';
+import Testimonials from './pages/superadmin/Testimonials';
+import Faqs from './pages/superadmin/Faqs';
+import FooterLinks from './pages/superadmin/FooterLinks';
+import CmsPages from './pages/superadmin/CmsPages';
+import Plans from './pages/superadmin/Plans';
+import Coupons from './pages/superadmin/Coupons';
+import Branding from './pages/superadmin/Branding';
+import Security from './pages/superadmin/Security';
+import EmailSettings from './pages/superadmin/EmailSettings';
+import PaymentSettings from './pages/superadmin/PaymentSettings';
 
 const COMPANY_ROLES = ['company_admin', 'manager', 'staff'];
 
@@ -36,6 +48,7 @@ export default function App() {
         <Toaster position="top-right" toastOptions={{ style: { fontSize: '14px' } }} />
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/pages/:slug" element={<CmsPageView />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -59,6 +72,17 @@ export default function App() {
           <Route path="/admin" element={<ProtectedRoute roles={['super_admin']}><SuperAdminLayout /></ProtectedRoute>}>
             <Route index element={<AdminOverview />} />
             <Route path="companies" element={<AdminCompanies />} />
+            <Route path="content" element={<ContentEditor />} />
+            <Route path="testimonials" element={<Testimonials />} />
+            <Route path="faqs" element={<Faqs />} />
+            <Route path="footer-links" element={<FooterLinks />} />
+            <Route path="pages" element={<CmsPages />} />
+            <Route path="plans" element={<Plans />} />
+            <Route path="coupons" element={<Coupons />} />
+            <Route path="branding" element={<Branding />} />
+            <Route path="security" element={<Security />} />
+            <Route path="email" element={<EmailSettings />} />
+            <Route path="payments" element={<PaymentSettings />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />
