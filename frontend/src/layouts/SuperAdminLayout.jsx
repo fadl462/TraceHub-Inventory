@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Link, Outlet } from 'react-router-dom';
 import { LayoutDashboard, Building2, LogOut } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import TraceHubMark from '../components/TraceHubMark';
@@ -9,7 +9,9 @@ export default function SuperAdminLayout() {
     <div className="min-h-screen bg-surface flex">
       <aside className="w-64 bg-primary-900 text-white flex flex-col">
         <div className="h-16 flex items-center px-5 border-b border-white/10">
-          <TraceHubMark size={36} withWordmark tone="white" />
+          <Link to="/" title="Back to homepage">
+            <TraceHubMark size={36} withWordmark tone="white" />
+          </Link>
         </div>
         <nav className="flex-1 py-4 px-3 space-y-1">
           <NavLink to="/admin" end className={({ isActive }) => `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium ${isActive ? 'bg-white/10 text-white' : 'text-primary-100/80 hover:bg-white/5'}`}>
