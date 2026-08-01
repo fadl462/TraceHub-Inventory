@@ -51,7 +51,7 @@ export default function DashboardLayout() {
   const items = NAV_ITEMS.filter((i) => !user || i.roles.includes(user.role));
 
   return (
-    <div className="th-app-shell min-h-screen flex" data-theme={theme}>
+    <div className="th-app-shell h-screen flex" data-theme={theme}>
       {/* Sidebar */}
       <aside className={`fixed lg:static z-30 inset-y-0 left-0 w-64 bg-primary-800 text-white flex flex-col transition-transform ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
         <div className="h-16 flex items-center px-5 border-b border-white/10">
@@ -65,7 +65,7 @@ export default function DashboardLayout() {
             <NavLink
               key={to} to={to} onClick={() => setMobileOpen(false)}
               className={({ isActive }) => `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
-                isActive ? 'bg-white/10 text-white' : 'text-primary-100/80 hover:bg-white/5 hover:text-white'
+                isActive ? 'bg-white/10 text-white' : 'text-[#D1E1F3]/80 hover:bg-white/5 hover:text-white'
               }`}
             >
               <Icon size={18} />

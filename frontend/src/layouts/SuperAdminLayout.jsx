@@ -53,7 +53,7 @@ export default function SuperAdminLayout() {
   const { theme } = useTheme();
   const mainRef = useScrollToTop();
   return (
-    <div className="th-app-shell min-h-screen flex" data-theme={theme}>
+    <div className="th-app-shell h-screen flex" data-theme={theme}>
       <aside className="w-64 bg-primary-900 text-white flex flex-col">
         <div className="h-16 flex items-center px-5 border-b border-white/10 shrink-0">
           <Link to="/" title="Back to homepage">
@@ -70,7 +70,7 @@ export default function SuperAdminLayout() {
                     key={to}
                     to={to}
                     end={end}
-                    className={({ isActive }) => `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium ${isActive ? 'bg-white/10 text-white' : 'text-primary-100/80 hover:bg-white/5'}`}
+                    className={({ isActive }) => `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium ${isActive ? 'bg-white/10 text-white' : 'text-[#D1E1F3]/80 hover:bg-white/5'}`}
                   >
                     <Icon size={17} /> {label}
                   </NavLink>
