@@ -57,7 +57,7 @@ export function Select({ label, className = '', children, ...props }) {
 
 export function Badge({ children, tone = 'default' }) {
   const tones = {
-    default: 'bg-primary-50 text-primary-600',
+    default: 'bg-primary-50 text-ink',
     success: 'bg-green-100 text-green-700',
     warning: 'bg-amber-100 text-amber-700',
     danger: 'bg-red-100 text-red-700',

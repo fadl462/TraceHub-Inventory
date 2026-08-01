@@ -5,7 +5,7 @@ const STORAGE_KEY = 'th_theme';
 export const THEMES = [
   { id: 'light', label: 'Light', swatch: '#F4F7FA' },
   { id: 'dark', label: 'Dark', swatch: '#1B2129' },
-  { id: 'midnight', label: 'Midnight', swatch: '#1E1B3C' },
+  { id: 'ocean', label: 'Ocean', swatch: '#0A1F3A' },
 ];
 
 export function ThemeProvider({ children }) {

@@ -18,7 +18,7 @@ html, body, #root { height: 100%; }
   --th-page-bg: 244 247 250;
   --th-surface: 255 255 255;
   --th-surface-alt: 234 241 250;
-  --th-border: 228 236 245;
+  --th-border: 209 225 243;
   --th-text: 44 44 44;
   --th-text-muted: 107 114 128;
   --th-sidebar-bg: 10 31 58;
@@ -29,22 +29,26 @@ html, body, #root { height: 100%; }
   --th-page-bg: 18 22 28;
   --th-surface: 27 33 41;
   --th-surface-alt: 35 42 51;
-  --th-border: 44 53 65;
+  --th-border: 51 61 74;
   --th-text: 237 239 242;
   --th-text-muted: 156 166 179;
   --th-sidebar-bg: 11 14 19;
   --th-sidebar-text: 220 226 234;
 }
 
-[data-theme="midnight"] {
-  --th-page-bg: 21 19 43;
-  --th-surface: 30 27 60;
-  --th-surface-alt: 39 35 72;
-  --th-border: 53 48 100;
-  --th-text: 236 235 247;
-  --th-text-muted: 167 159 214;
-  --th-sidebar-bg: 15 13 34;
-  --th-sidebar-text: 228 225 245;
+/* Built from TraceHub's own navy brand tones (primary-800/900: #0A1F3A /
+   #050F1D - the same colors used for the Hero and Pricing sections) rather
+   than an unrelated hue, per the request that at least one theme reflect
+   the actual brand palette. */
+[data-theme="ocean"] {
+  --th-page-bg: 5 15 29;
+  --th-surface: 10 31 58;
+  --th-surface-alt: 16 44 79;
+  --th-border: 30 66 110;
+  --th-text: 232 238 246;
+  --th-text-muted: 163 195 231;
+  --th-sidebar-bg: 5 15 29;
+  --th-sidebar-text: 232 238 246;
 }
 
 body {

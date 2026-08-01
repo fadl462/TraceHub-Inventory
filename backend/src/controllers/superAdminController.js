@@ -48,7 +48,12 @@ async function getCompany(req, res, next) {
     const assetCount = await Asset.count({ where: { companyId: company.id } });
     const userCount = await User.count({ where: { companyId: company.id } });
     const revenueTotal = await Payment.sum('amount', { where: { companyId: company.id, status: 'successful' } });
-    res.json({ company, assetCount, userCount, revenueTotal: revenueTotal || 0 });
+    const payments = await Payment.findAll({
+      where: { companyId: company.id },
+      order: [['createdAt', 'DESC']],
+      limit: 50,
+    });
+    res.json({ company, assetCount, userCount, revenueTotal: revenueTotal || 0, payments });
   } catch (err) { next(err); }
 }
 
@@ -272,6 +277,33 @@ async function globalSearch(req, res, next) {
     res.json({ companies, users, assets });
   } catch (err) { next(err); }
 }
+
+/** Full paginated audit log, for the "View all" page (the dashboard card only shows the latest 8) */
+async function listAuditLog(req, res, next) {
+  try {
+    const page = Math.max(Number(req.query.page) || 1, 1);
+    const pageSize = Math.min(Number(req.query.pageSize) || 30, 100);
+    const { rows, count } = await AuditLog.findAndCountAll({
+      order: [['createdAt', 'DESC']],
+      limit: pageSize,
+      offset: (page - 1) * pageSize,
+      include: [
+        { model: Company, attributes: ['id', 'name'] },
+        { model: User, attributes: ['id', 'firstName', 'lastName'] },
+      ],
+    });
+    res.json({
+      logs: rows.map((l) => ({
+        id: l.id, action: l.action, entityType: l.entityType, entityId: l.entityId,
+        companyName: l.Company?.name || null,
+        userName: l.User ? `${l.User.firstName} ${l.User.lastName}` : null,
+        createdAt: l.createdAt,
+      })),
+      total: count, page, pageSize, totalPages: Math.ceil(count / pageSize),
+    });
+  } catch (err) { next(err); }
+}
+
 async function aiInsights(req, res, next) {
   try {
     const [totalCompanies, totalAssets, totalUsers, activeSubs, pastDueSubs, disposalAlerts] = await Promise.all([
@@ -303,4 +335,4 @@ async function aiInsights(req, res, next) {
   } catch (err) { next(err); }
 }
 
-module.exports = { listCompanies, getCompany, updateCompanyStatus, deleteCompany, dashboardStats, aiInsights, globalSearch };
+module.exports = { listCompanies, getCompany, updateCompanyStatus, deleteCompany, dashboardStats, aiInsights, globalSearch, listAuditLog };

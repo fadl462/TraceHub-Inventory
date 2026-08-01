@@ -6,8 +6,8 @@ export default {
       colors: {
         primary: {
           DEFAULT: '#1A4D8F',
-          50: '#EAF1FA',
-          100: '#D1E1F3',
+          50: 'rgb(var(--th-surface-alt) / <alpha-value>)',
+          100: 'rgb(var(--th-border) / <alpha-value>)',
           200: '#A3C3E7',
           300: '#75A5DB',
           400: '#4787CF',

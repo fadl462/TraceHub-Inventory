@@ -31,6 +31,7 @@ import SuperAdminLayout from './layouts/SuperAdminLayout';
 import AdminOverview from './pages/superadmin/AdminOverview';
 import AdminCompanies from './pages/superadmin/AdminCompanies';
 import CompanyDetail from './pages/superadmin/CompanyDetail';
+import AuditLogPage from './pages/superadmin/AuditLogPage';
 import ContentEditor from './pages/superadmin/ContentEditor';
 import Testimonials from './pages/superadmin/Testimonials';
 import Faqs from './pages/superadmin/Faqs';
@@ -81,6 +82,7 @@ export default function App() {
             <Route index element={<AdminOverview />} />
             <Route path="companies" element={<AdminCompanies />} />
             <Route path="companies/:id" element={<CompanyDetail />} />
+            <Route path="audit-log" element={<AuditLogPage />} />
             <Route path="content" element={<ContentEditor />} />
             <Route path="testimonials" element={<Testimonials />} />
             <Route path="faqs" element={<Faqs />} />

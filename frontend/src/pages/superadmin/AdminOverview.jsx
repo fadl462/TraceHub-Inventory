@@ -244,11 +244,14 @@ export default function AdminOverview() {
         <Card className="p-5">
           <div className="flex items-center justify-between mb-4">
             <p className="text-sm font-semibold text-ink flex items-center gap-1.5"><Activity size={15} /> Audit log</p>
-            {stats.recentAuditLog.length > 0 && (
-              <button onClick={exportAuditLog} aria-label="Export audit log as CSV" className="text-ink/40 hover:text-primary p-1 rounded-md hover:bg-primary-50 transition-colors">
-                <Download size={14} />
-              </button>
-            )}
+            <div className="flex items-center gap-1">
+              <Link to="/admin/audit-log" className="text-xs font-medium text-primary hover:underline px-1">View all</Link>
+              {stats.recentAuditLog.length > 0 && (
+                <button onClick={exportAuditLog} aria-label="Export audit log as CSV" className="text-ink/40 hover:text-primary p-1 rounded-md hover:bg-primary-50 transition-colors">
+                  <Download size={14} />
+                </button>
+              )}
+            </div>
           </div>
           {stats.recentAuditLog.length === 0 ? (
             <EmptyState icon={Activity} title="No activity yet" description="Actions taken across the platform will show up here." />

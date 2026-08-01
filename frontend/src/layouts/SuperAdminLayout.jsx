@@ -79,9 +79,6 @@ export default function SuperAdminLayout() {
             </div>
           ))}
         </nav>
-        <div className="px-4 pb-1 shrink-0">
-          <ThemeSwitcher />
-        </div>
         <div className="p-3 border-t border-white/10 shrink-0">
           <div className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm">
             <div className="min-w-0 flex-1">
@@ -93,8 +90,12 @@ export default function SuperAdminLayout() {
         </div>
       </aside>
       <main ref={mainRef} className="flex-1 flex flex-col overflow-y-auto">
-        <div className="sticky top-0 z-30 bg-surface/90 backdrop-blur border-b border-primary-100/50 px-6 py-3">
+        <div
+          className="sticky top-0 z-30 backdrop-blur border-b px-6 py-3 flex items-center gap-4"
+          style={{ background: 'rgb(var(--th-page-bg) / 0.9)', borderColor: 'rgb(var(--th-border) / 0.5)' }}
+        >
           <GlobalSearchBar />
+          <div className="ml-auto"><ThemeSwitcher compact /></div>
         </div>
         <div className="flex-1 p-6 max-w-[1400px] mx-auto w-full">
           <Outlet />

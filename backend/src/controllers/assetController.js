@@ -115,7 +115,12 @@ async function listAssets(req, res, next) {
       status, categoryId, search, locationId, page = 1, pageSize = 25, sortBy = 'createdAt', sortDir = 'DESC',
     } = req.query;
 
-    const where = { companyId: req.companyId, isArchived: false };
+    const where = { isArchived: false };
+    if (req.user.role === 'super_admin') {
+      if (req.query.companyId) where.companyId = req.query.companyId;
+    } else {
+      where.companyId = req.companyId;
+    }
     if (status) where.status = status;
     if (categoryId) where.categoryId = categoryId;
     if (locationId) where.currentLocationId = locationId;

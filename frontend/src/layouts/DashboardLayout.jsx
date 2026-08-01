@@ -73,9 +73,6 @@ export default function DashboardLayout() {
             </NavLink>
           ))}
         </nav>
-        <div className="px-4 pb-1">
-          <ThemeSwitcher />
-        </div>
         <div className="p-3 border-t border-white/10">
           <div className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm">
             <div className="h-8 w-8 rounded-full bg-secondary flex items-center justify-center font-semibold text-primary-800 text-xs shrink-0">
@@ -96,19 +93,23 @@ export default function DashboardLayout() {
 
       {/* Main column */}
       <div className="flex-1 flex flex-col min-w-0">
-        <header className="h-16 bg-white border-b border-primary-100 flex items-center gap-4 px-4 sm:px-6 sticky top-0 z-10">
+        <header
+          className="h-16 border-b flex items-center gap-4 px-4 sm:px-6 sticky top-0 z-10"
+          style={{ background: 'rgb(var(--th-surface))', borderColor: 'rgb(var(--th-border))' }}
+        >
           <button className="lg:hidden text-ink/70" onClick={() => setMobileOpen(true)}><Menu size={22} /></button>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-ink truncate">{company?.name}</p>
             {company?.status === 'trial' && <p className="text-xs text-secondary-dark">Free trial active</p>}
           </div>
+          <ThemeSwitcher compact />
           <div className="relative">
             <button onClick={() => setNotifOpen((o) => !o)} className="relative text-ink/60 hover:text-ink p-2 rounded-full hover:bg-primary-50">
               <Bell size={20} />
               {unreadCount > 0 && <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500" />}
             </button>
             {notifOpen && (
-              <div className="absolute right-0 mt-2 w-80 max-h-96 overflow-y-auto bg-white rounded-xl shadow-lg border border-primary-100 z-20">
+              <div className="absolute right-0 mt-2 w-80 max-h-96 overflow-y-auto rounded-xl shadow-lg border z-20" style={{ background: 'rgb(var(--th-surface))', borderColor: 'rgb(var(--th-border))' }}>
                 <div className="flex items-center justify-between px-4 py-3 border-b border-primary-50">
                   <span className="text-sm font-semibold">Notifications</span>
                   <button onClick={markAllRead} className="text-xs text-secondary hover:underline">Mark all read</button>
