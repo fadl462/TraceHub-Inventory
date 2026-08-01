@@ -95,6 +95,7 @@ function NavBar() {
           <a href="#how-it-works" className="hover:text-ink transition-colors">How it works</a>
           <a href="#features" className="hover:text-ink transition-colors">Features</a>
           <a href="#pricing" className="hover:text-ink transition-colors">Pricing</a>
+          <Link to="/blog" className="hover:text-ink transition-colors">Blog</Link>
         </nav>
         {user ? (
           <Link

@@ -2,7 +2,7 @@ require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const {
   sequelize, User, SubscriptionPlan, AssetCategory, DepreciationProfile,
-  SiteContent, Testimonial, Faq, FooterLink, PlatformSettings, CmsPage,
+  SiteContent, Testimonial, Faq, FooterLink, PlatformSettings, CmsPage, BlogPost,
 } = require('../models');
 const depreciationProfiles = require('./depreciationProfiles');
 const plans = require('./plans');
@@ -10,6 +10,7 @@ const testimonials = require('./testimonials');
 const faqs = require('./faqs');
 const footerLinks = require('./footerLinks');
 const cmsPages = require('./cmsPages');
+const blogPosts = require('./blogPosts');
 const { seedDemoCompany, DEMO_PASSWORD } = require('./demoData');
 
 async function seed() {
@@ -68,6 +69,12 @@ async function seed() {
   for (const p of cmsPages) {
     const [, created] = await CmsPage.findOrCreate({ where: { slug: p.slug }, defaults: p });
     console.log(`  ${created ? 'created' : 'exists'}: /${p.slug}`);
+  }
+
+  console.log('Seeding blog posts...');
+  for (const p of blogPosts) {
+    const [, created] = await BlogPost.findOrCreate({ where: { slug: p.slug }, defaults: p });
+    console.log(`  ${created ? 'created' : 'exists'}: ${p.title}`);
   }
 
   console.log('Ensuring Super Admin account exists...');

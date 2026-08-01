@@ -1,7 +1,7 @@
 import { NavLink, Link, Outlet } from 'react-router-dom';
 import {
   LayoutDashboard, Building2, LogOut, FileText, MessageSquareQuote, HelpCircle,
-  Link2, Files, CreditCard, Tag, Palette, ShieldCheck, Mail, Wallet,
+  Link2, Files, CreditCard, Tag, Palette, ShieldCheck, Mail, Wallet, Newspaper,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import TraceHubMark from '../components/TraceHubMark';
@@ -24,6 +24,7 @@ const NAV_GROUPS = [
       { to: '/admin/faqs', icon: HelpCircle, label: 'FAQ' },
       { to: '/admin/footer-links', icon: Link2, label: 'Footer links' },
       { to: '/admin/pages', icon: Files, label: 'Custom pages' },
+      { to: '/admin/blog', icon: Newspaper, label: 'Blog / updates' },
     ],
   },
   {

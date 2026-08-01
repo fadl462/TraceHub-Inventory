@@ -1,9 +1,14 @@
 const { FooterLink } = require('../models');
 const { logAction } = require('../middleware/audit');
+const defaultFooterLinks = require('../seed/footerLinks');
 
 async function listPublic(req, res, next) {
   try {
-    const links = await FooterLink.findAll({ where: { isPublished: true }, order: [['group', 'ASC'], ['sortOrder', 'ASC']] });
+    let links = await FooterLink.findAll({ where: { isPublished: true }, order: [['group', 'ASC'], ['sortOrder', 'ASC']] });
+    if (links.length === 0) {
+      await FooterLink.bulkCreate(defaultFooterLinks);
+      links = await FooterLink.findAll({ where: { isPublished: true }, order: [['group', 'ASC'], ['sortOrder', 'ASC']] });
+    }
     res.json({ links });
   } catch (err) { next(err); }
 }

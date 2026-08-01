@@ -1,9 +1,14 @@
 const { Faq } = require('../models');
 const { logAction } = require('../middleware/audit');
+const defaultFaqs = require('../seed/faqs');
 
 async function listPublic(req, res, next) {
   try {
-    const faqs = await Faq.findAll({ where: { isPublished: true }, order: [['sortOrder', 'ASC'], ['createdAt', 'ASC']] });
+    let faqs = await Faq.findAll({ where: { isPublished: true }, order: [['sortOrder', 'ASC'], ['createdAt', 'ASC']] });
+    if (faqs.length === 0) {
+      await Faq.bulkCreate(defaultFaqs);
+      faqs = await Faq.findAll({ where: { isPublished: true }, order: [['sortOrder', 'ASC'], ['createdAt', 'ASC']] });
+    }
     res.json({ faqs });
   } catch (err) { next(err); }
 }

@@ -9,6 +9,8 @@ import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
 import Landing from './pages/Landing';
 import CmsPageView from './pages/CmsPageView';
+import Blog from './pages/Blog';
+import BlogPostView from './pages/BlogPostView';
 
 import DashboardLayout from './layouts/DashboardLayout';
 import Dashboard from './pages/Dashboard';
@@ -32,6 +34,7 @@ import Testimonials from './pages/superadmin/Testimonials';
 import Faqs from './pages/superadmin/Faqs';
 import FooterLinks from './pages/superadmin/FooterLinks';
 import CmsPages from './pages/superadmin/CmsPages';
+import BlogPosts from './pages/superadmin/BlogPosts';
 import Plans from './pages/superadmin/Plans';
 import Coupons from './pages/superadmin/Coupons';
 import Branding from './pages/superadmin/Branding';
@@ -49,6 +52,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/pages/:slug" element={<CmsPageView />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPostView />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -77,6 +82,7 @@ export default function App() {
             <Route path="faqs" element={<Faqs />} />
             <Route path="footer-links" element={<FooterLinks />} />
             <Route path="pages" element={<CmsPages />} />
+            <Route path="blog" element={<BlogPosts />} />
             <Route path="plans" element={<Plans />} />
             <Route path="coupons" element={<Coupons />} />
             <Route path="branding" element={<Branding />} />

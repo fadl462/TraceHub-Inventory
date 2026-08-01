@@ -1,12 +1,19 @@
 const { CmsPage } = require('../models');
 const { logAction } = require('../middleware/audit');
+const defaultCmsPages = require('../seed/cmsPages');
 
 function slugify(str) {
   return String(str).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
+async function ensureSeeded() {
+  const count = await CmsPage.count();
+  if (count === 0) await CmsPage.bulkCreate(defaultCmsPages);
+}
+
 async function listPublic(req, res, next) {
   try {
+    await ensureSeeded();
     const pages = await CmsPage.findAll({
       where: { isPublished: true },
       order: [['sortOrder', 'ASC']],
@@ -18,6 +25,7 @@ async function listPublic(req, res, next) {
 
 async function getBySlug(req, res, next) {
   try {
+    await ensureSeeded();
     const page = await CmsPage.findOne({ where: { slug: req.params.slug, isPublished: true } });
     if (!page) return res.status(404).json({ error: 'Page not found' });
     res.json({ page });

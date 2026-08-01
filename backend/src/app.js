@@ -70,6 +70,7 @@ app.use('/api/coupons', couponRoutes);
 app.use('/api/platform-settings', platformSettingsRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/newsletter', require('./routes/newsletterRoutes'));
+app.use('/api/blog-posts', require('./routes/blogPostRoutes'));
 
 app.use(notFound);
 app.use(errorHandler);

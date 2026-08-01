@@ -1,12 +1,21 @@
 const { Testimonial } = require('../models');
 const { logAction } = require('../middleware/audit');
+const defaultTestimonials = require('../seed/testimonials');
 
 async function listPublic(req, res, next) {
   try {
-    const testimonials = await Testimonial.findAll({
+    let testimonials = await Testimonial.findAll({
       where: { isPublished: true },
       order: [['sortOrder', 'ASC'], ['createdAt', 'ASC']],
     });
+    // Self-healing: if nothing's been seeded yet (or the table was cleared),
+    // populate the built-in defaults on first read instead of showing an
+    // empty homepage section - avoids depending on someone remembering to
+    // run `npm run seed`.
+    if (testimonials.length === 0) {
+      await Testimonial.bulkCreate(defaultTestimonials);
+      testimonials = await Testimonial.findAll({ where: { isPublished: true }, order: [['sortOrder', 'ASC'], ['createdAt', 'ASC']] });
+    }
     res.json({ testimonials });
   } catch (err) { next(err); }
 }
