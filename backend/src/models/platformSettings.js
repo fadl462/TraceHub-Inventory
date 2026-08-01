@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     smtpSenderName: { type: DataTypes.STRING, defaultValue: 'TraceHub Inventory' },
 
+    // System health
+    lastCronRunAt: { type: DataTypes.DATE, allowNull: true },
+
     // Flutterwave
     flwMode: { type: DataTypes.ENUM('sandbox', 'live'), defaultValue: 'sandbox' },
     flwPublicKey: { type: DataTypes.STRING, allowNull: true },

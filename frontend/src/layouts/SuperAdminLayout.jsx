@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import TraceHubMark from '../components/TraceHubMark';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 import AiChatWidget from '../components/AiChatWidget';
+import GlobalSearchBar from '../components/superadmin/GlobalSearchBar';
 
 const NAV_GROUPS = [
   {
@@ -85,8 +86,13 @@ export default function SuperAdminLayout() {
           </div>
         </div>
       </aside>
-      <main ref={mainRef} className="flex-1 p-6 max-w-[1400px] mx-auto w-full overflow-y-auto">
-        <Outlet />
+      <main ref={mainRef} className="flex-1 flex flex-col overflow-y-auto">
+        <div className="sticky top-0 z-30 bg-surface/90 backdrop-blur border-b border-primary-100/50 px-6 py-3">
+          <GlobalSearchBar />
+        </div>
+        <div className="flex-1 p-6 max-w-[1400px] mx-auto w-full">
+          <Outlet />
+        </div>
       </main>
       <AiChatWidget />
     </div>

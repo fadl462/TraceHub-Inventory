@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import client from '../../api/client';
 import { Card, Badge, statusTone, Spinner, Select } from '../../components/ui';
@@ -54,7 +55,7 @@ export default function AdminCompanies() {
                 {companies.map((c) => (
                   <tr key={c.id} className="border-b border-primary-50 last:border-0">
                     <td className="px-5 py-3">
-                      <p className="font-medium text-ink">{c.name}</p>
+                      <Link to={`/admin/companies/${c.id}`} className="font-medium text-ink hover:text-primary transition-colors">{c.name}</Link>
                       <p className="text-xs text-ink/50">{c.slug}</p>
                     </td>
                     <td className="px-5 py-3 text-ink/70">{c.Subscriptions?.[0]?.SubscriptionPlan?.name || '—'}</td>

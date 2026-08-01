@@ -29,6 +29,7 @@ import SettingsPage from './pages/settings/SettingsPage';
 import SuperAdminLayout from './layouts/SuperAdminLayout';
 import AdminOverview from './pages/superadmin/AdminOverview';
 import AdminCompanies from './pages/superadmin/AdminCompanies';
+import CompanyDetail from './pages/superadmin/CompanyDetail';
 import ContentEditor from './pages/superadmin/ContentEditor';
 import Testimonials from './pages/superadmin/Testimonials';
 import Faqs from './pages/superadmin/Faqs';
@@ -77,6 +78,7 @@ export default function App() {
           <Route path="/admin" element={<ProtectedRoute roles={['super_admin']}><SuperAdminLayout /></ProtectedRoute>}>
             <Route index element={<AdminOverview />} />
             <Route path="companies" element={<AdminCompanies />} />
+            <Route path="companies/:id" element={<CompanyDetail />} />
             <Route path="content" element={<ContentEditor />} />
             <Route path="testimonials" element={<Testimonials />} />
             <Route path="faqs" element={<Faqs />} />

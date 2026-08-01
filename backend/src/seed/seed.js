@@ -84,8 +84,8 @@ async function seed() {
     const passwordHash = await bcrypt.hash(process.env.SUPER_ADMIN_PASSWORD || 'ChangeMe123!', 12);
     await User.create({
       companyId: null,
-      firstName: 'TraceHub',
-      lastName: 'Admin',
+      firstName: 'Kwabena',
+      lastName: 'Owusu-Ansah',
       email: superAdminEmail,
       passwordHash,
       role: 'super_admin',
@@ -93,7 +93,16 @@ async function seed() {
     });
     console.log(`  Super Admin created: ${superAdminEmail} (password from .env - change it after first login!)`);
   } else {
-    console.log('  Super Admin already exists.');
+    // Fix the old placeholder name ("TraceHub Admin") on databases seeded
+    // before this was noticed - reads like the system greeting itself.
+    if (existing.firstName === 'TraceHub' && existing.lastName === 'Admin') {
+      existing.firstName = 'Kwabena';
+      existing.lastName = 'Owusu-Ansah';
+      await existing.save();
+      console.log('  Super Admin name updated (was using the placeholder "TraceHub Admin").');
+    } else {
+      console.log('  Super Admin already exists.');
+    }
   }
 
   console.log('Seeding demo company with sample assets, users, and assignments...');

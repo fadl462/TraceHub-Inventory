@@ -1,7 +1,7 @@
 const cron = require('node-cron');
 const { Op } = require('sequelize');
 const {
-  Assignment, Asset, User, Notification, Company, Subscription,
+  Assignment, Asset, User, Notification, Company, Subscription, PlatformSettings,
 } = require('../models');
 const { sendMail } = require('../utils/mailer');
 
@@ -119,10 +119,21 @@ async function processSubscriptionWarnings() {
 function startCronJobs() {
   // Runs once daily at 07:00 server time
   cron.schedule('0 7 * * *', () => {
-    processReturnReminders().catch((e) => console.error('[cron] return reminders failed:', e));
-    processSubscriptionWarnings().catch((e) => console.error('[cron] subscription warnings failed:', e));
+    Promise.all([processReturnReminders(), processSubscriptionWarnings()])
+      .then(() => recordCronRun())
+      .catch((e) => console.error('[cron] jobs failed:', e));
   });
   console.log('[cron] Reminder jobs scheduled (daily 07:00).');
+}
+
+async function recordCronRun() {
+  try {
+    const [settings] = await PlatformSettings.findOrCreate({ where: { id: 'default' } });
+    settings.lastCronRunAt = new Date();
+    await settings.save();
+  } catch (e) {
+    console.error('[cron] failed to record last run time:', e.message);
+  }
 }
 
 module.exports = { startCronJobs, processReturnReminders, processSubscriptionWarnings };

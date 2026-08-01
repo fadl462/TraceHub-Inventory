@@ -46,7 +46,8 @@ async function createStaff(req, res, next) {
 
 async function listStaff(req, res, next) {
   try {
-    const where = req.user.role === 'super_admin' ? {} : { companyId: req.companyId };
+    let where = req.user.role === 'super_admin' ? {} : { companyId: req.companyId };
+    if (req.user.role === 'super_admin' && req.query.companyId) where = { companyId: req.query.companyId };
     const users = await User.findAll({ where, order: [['createdAt', 'DESC']] });
     res.json({ users: users.map(sanitize) });
   } catch (err) { next(err); }
