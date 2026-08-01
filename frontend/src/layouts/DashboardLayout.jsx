@@ -102,7 +102,7 @@ export default function DashboardLayout() {
             <p className="text-sm font-semibold text-ink truncate">{company?.name}</p>
             {company?.status === 'trial' && <p className="text-xs text-secondary-dark">Free trial active</p>}
           </div>
-          <ThemeSwitcher compact />
+          <ThemeSwitcher />
           <div className="relative">
             <button onClick={() => setNotifOpen((o) => !o)} className="relative text-ink/60 hover:text-ink p-2 rounded-full hover:bg-primary-50">
               <Bell size={20} />

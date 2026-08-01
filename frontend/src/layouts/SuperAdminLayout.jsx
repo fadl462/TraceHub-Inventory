@@ -95,7 +95,7 @@ export default function SuperAdminLayout() {
           style={{ background: 'rgb(var(--th-page-bg) / 0.9)', borderColor: 'rgb(var(--th-border) / 0.5)' }}
         >
           <GlobalSearchBar />
-          <div className="ml-auto"><ThemeSwitcher compact /></div>
+          <div className="ml-auto"><ThemeSwitcher /></div>
         </div>
         <div className="flex-1 p-6 max-w-[1400px] mx-auto w-full">
           <Outlet />

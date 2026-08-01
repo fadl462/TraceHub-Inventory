@@ -15,11 +15,11 @@ export function Button({ children, variant = 'primary', className = '', ...props
   );
 }
 
-export function Card({ children, className = '' }) {
+export function Card({ children, className = '', noThemeBg = false }) {
   return (
     <div
       className={`rounded-xl2 shadow-card border ${className}`}
-      style={{ background: 'rgb(var(--th-surface))', borderColor: 'rgb(var(--th-border))', color: 'rgb(var(--th-text))' }}
+      style={noThemeBg ? { borderColor: 'rgb(var(--th-border))' } : { background: 'rgb(var(--th-surface))', borderColor: 'rgb(var(--th-border))', color: 'rgb(var(--th-text))' }}
     >
       {children}
     </div>

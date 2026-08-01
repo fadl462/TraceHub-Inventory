@@ -36,19 +36,19 @@ html, body, #root { height: 100%; }
   --th-sidebar-text: 220 226 234;
 }
 
-/* Built from TraceHub's own navy brand tones (primary-800/900: #0A1F3A /
-   #050F1D - the same colors used for the Hero and Pricing sections) rather
-   than an unrelated hue, per the request that at least one theme reflect
-   the actual brand palette. */
-[data-theme="ocean"] {
-  --th-page-bg: 5 15 29;
-  --th-surface: 10 31 58;
-  --th-surface-alt: 16 44 79;
-  --th-border: 30 66 110;
-  --th-text: 232 238 246;
-  --th-text-muted: 163 195 231;
-  --th-sidebar-bg: 5 15 29;
-  --th-sidebar-text: 232 238 246;
+/* Built around TraceHub's own accent green (#7ED957 - the "located/found"
+   color used throughout the radar mark and status indicators), giving a
+   genuinely distinct hue from the neutral "Dark" theme rather than a
+   near-identical near-black variant. */
+[data-theme="emerald"] {
+  --th-page-bg: 10 22 16;
+  --th-surface: 16 32 24;
+  --th-surface-alt: 22 42 32;
+  --th-border: 34 58 46;
+  --th-text: 230 242 232;
+  --th-text-muted: 150 182 160;
+  --th-sidebar-bg: 10 22 16;
+  --th-sidebar-text: 230 242 232;
 }
 
 body {

@@ -38,7 +38,7 @@ function WelcomeInsightBanner({ overview }) {
   const hasUrgent = (overview?.overdueAssignments || 0) > 0 || (overview?.upcomingDisposals || 0) > 0;
 
   return (
-    <Card className="p-6 bg-gradient-to-br from-primary-800 via-primary-800 to-primary-900 text-white relative overflow-hidden">
+    <Card noThemeBg className="p-6 bg-gradient-to-br from-primary-800 via-primary-800 to-primary-900 text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.06]" style={{
         backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 1px)', backgroundSize: '28px 28px',
       }}
