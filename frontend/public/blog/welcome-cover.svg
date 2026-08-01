@@ -1,0 +1,85 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sweep" x1="600" y1="315" x2="600" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="315" r="260" fill="url(#glow)"/>
+
+  <!-- radar rings, center of composition -->
+  <circle cx="600" cy="315" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.10" fill="none"/>
+  <circle cx="600" cy="315" r="170" stroke="#FFFFFF" stroke-width="1" opacity="0.14" fill="none"/>
+  <circle cx="600" cy="315" r="110" stroke="#FFFFFF" stroke-width="1" opacity="0.18" fill="none"/>
+  <circle cx="600" cy="315" r="50" stroke="#FFFFFF" stroke-width="1" opacity="0.24" fill="none"/>
+
+  <path d="M 600 315 L 600 85 A 230 230 0 0 1 780 165 Z" fill="url(#sweep)"/>
+  <circle cx="600" cy="315" r="7" fill="#7ED957"/>
+
+  <!-- connecting lines out to scattered asset nodes -->
+  <g stroke="#8CC2FF" stroke-width="1.4" stroke-dasharray="3 5" opacity="0.55">
+    <line x1="600" y1="315" x2="300" y2="180"/>
+    <line x1="600" y1="315" x2="230" y2="420"/>
+    <line x1="600" y1="315" x2="420" y2="530"/>
+    <line x1="600" y1="315" x2="900" y2="470"/>
+    <line x1="600" y1="315" x2="960" y2="220"/>
+    <line x1="600" y1="315" x2="760" y2="120"/>
+  </g>
+
+  <!-- asset nodes: laptop -->
+  <g transform="translate(270, 150)">
+    <rect x="0" y="0" width="60" height="40" rx="6" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <rect x="8" y="8" width="44" height="24" rx="2" fill="#0A1F3A"/>
+    <circle x="30" cy="46" r="3" fill="#7ED957" transform="translate(0,0)"/>
+  </g>
+  <circle cx="300" cy="180" r="5" fill="#7ED957"/>
+
+  <!-- asset node: crate/box -->
+  <g transform="translate(195, 395)">
+    <rect x="0" y="0" width="70" height="50" rx="6" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <path d="M 0 18 L 70 18" stroke="#4DA3FF" stroke-width="1.5" opacity="0.6"/>
+  </g>
+  <circle cx="230" cy="420" r="5" fill="#7ED957"/>
+
+  <!-- asset node: vehicle -->
+  <g transform="translate(370, 505)">
+    <rect x="0" y="6" width="100" height="30" rx="10" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <rect x="18" y="-6" width="50" height="20" rx="6" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <circle cx="22" cy="38" r="7" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="2"/>
+    <circle cx="78" cy="38" r="7" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="2"/>
+  </g>
+  <circle cx="420" cy="530" r="5" fill="#7ED957"/>
+
+  <!-- asset node: generator -->
+  <g transform="translate(865, 445)">
+    <rect x="0" y="0" width="70" height="46" rx="8" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <circle cx="35" cy="23" r="14" fill="none" stroke="#8CC2FF" stroke-width="2"/>
+  </g>
+  <circle cx="900" cy="470" r="5" fill="#7ED957"/>
+
+  <!-- asset node: server rack -->
+  <g transform="translate(930, 175)">
+    <rect x="0" y="0" width="60" height="70" rx="6" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <line x1="10" y1="16" x2="50" y2="16" stroke="#8CC2FF" stroke-width="2"/>
+    <line x1="10" y1="34" x2="50" y2="34" stroke="#8CC2FF" stroke-width="2"/>
+    <line x1="10" y1="52" x2="50" y2="52" stroke="#8CC2FF" stroke-width="2"/>
+  </g>
+  <circle cx="960" cy="220" r="5" fill="#7ED957"/>
+
+  <!-- asset node: tool -->
+  <g transform="translate(730, 90)">
+    <rect x="0" y="0" width="56" height="56" rx="10" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <rect x="14" y="14" width="28" height="28" rx="4" fill="#0A1F3A"/>
+  </g>
+  <circle cx="760" cy="120" r="5" fill="#7ED957"/>
+</svg>

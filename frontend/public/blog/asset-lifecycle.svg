@@ -1,0 +1,47 @@
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg">
+  <line x1="90" y1="70" x2="810" y2="70" stroke="#D1E1F3" stroke-width="3"/>
+
+  <!-- Stage 1: Register -->
+  <g transform="translate(40, 20)">
+    <circle cx="50" cy="50" r="34" fill="#EAF1FA" stroke="#1A4D8F" stroke-width="2.5"/>
+    <rect x="35" y="36" width="30" height="24" rx="3" fill="none" stroke="#1A4D8F" stroke-width="2.5"/>
+    <line x1="40" y1="44" x2="60" y2="44" stroke="#1A4D8F" stroke-width="2"/>
+    <line x1="40" y1="50" x2="60" y2="50" stroke="#1A4D8F" stroke-width="2"/>
+    <text x="50" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#2C2C2C">Register</text>
+    <text x="50" y="138" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2C2C2C" opacity="0.55">Name, price, category</text>
+  </g>
+
+  <!-- Stage 2: Track -->
+  <g transform="translate(280, 20)">
+    <circle cx="50" cy="50" r="34" fill="#EAF1FA" stroke="#4DA3FF" stroke-width="2.5"/>
+    <rect x="34" y="34" width="32" height="32" rx="5" fill="none" stroke="#4DA3FF" stroke-width="2.5"/>
+    <rect x="42" y="42" width="6" height="6" fill="#4DA3FF"/>
+    <rect x="52" y="42" width="6" height="6" fill="#4DA3FF"/>
+    <rect x="42" y="52" width="6" height="6" fill="#4DA3FF"/>
+    <text x="50" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#2C2C2C">Track</text>
+    <text x="50" y="138" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2C2C2C" opacity="0.55">QR scan at checkpoints</text>
+  </g>
+
+  <!-- Stage 3: Depreciate -->
+  <g transform="translate(520, 20)">
+    <circle cx="50" cy="50" r="34" fill="#EAF1FA" stroke="#7ED957" stroke-width="2.5"/>
+    <path d="M 32 60 L 42 46 L 52 52 L 68 32" fill="none" stroke="#5CB93A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="50" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#2C2C2C">Depreciate</text>
+    <text x="50" y="138" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2C2C2C" opacity="0.55">Book value, auto-calculated</text>
+  </g>
+
+  <!-- Stage 4: Dispose -->
+  <g transform="translate(760, 20)">
+    <circle cx="50" cy="50" r="34" fill="#EAF1FA" stroke="#1A4D8F" stroke-width="2.5"/>
+    <path d="M 36 40 L 64 40 L 60 66 L 40 66 Z" fill="none" stroke="#1A4D8F" stroke-width="2.5"/>
+    <line x1="42" y1="40" x2="42" y2="34" stroke="#1A4D8F" stroke-width="2.5"/>
+    <line x1="58" y1="40" x2="58" y2="34" stroke="#1A4D8F" stroke-width="2.5"/>
+    <text x="50" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#2C2C2C">Dispose</text>
+    <text x="50" y="138" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2C2C2C" opacity="0.55">Suggested disposal date</text>
+  </g>
+
+  <circle cx="90" cy="70" r="6" fill="#1A4D8F"/>
+  <circle cx="330" cy="70" r="6" fill="#4DA3FF"/>
+  <circle cx="570" cy="70" r="6" fill="#5CB93A"/>
+  <circle cx="810" cy="70" r="6" fill="#1A4D8F"/>
+</svg>

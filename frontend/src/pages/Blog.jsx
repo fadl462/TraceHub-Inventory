@@ -34,10 +34,15 @@ export default function Blog() {
         ) : (
           <div className="space-y-8">
             {posts.map((p) => (
-              <Link key={p.id} to={`/blog/${p.slug}`} className="block p-6 rounded-2xl border border-ink/5 bg-white hover:shadow-card transition-shadow">
-                <p className="flex items-center gap-1.5 text-xs text-ink/45 mb-2"><Calendar size={13} /> {formatDate(p.publishedAt)}</p>
-                <h2 className="font-display font-semibold text-lg text-ink">{p.title}</h2>
-                {p.excerpt && <p className="mt-2 text-sm text-ink/60 leading-relaxed">{p.excerpt}</p>}
+              <Link key={p.id} to={`/blog/${p.slug}`} className="block rounded-2xl border border-ink/5 bg-white hover:shadow-card transition-shadow overflow-hidden">
+                {p.coverImageUrl && (
+                  <img src={p.coverImageUrl} alt="" className="w-full h-48 object-cover" />
+                )}
+                <div className="p-6">
+                  <p className="flex items-center gap-1.5 text-xs text-ink/45 mb-2"><Calendar size={13} /> {formatDate(p.publishedAt)}</p>
+                  <h2 className="font-display font-semibold text-lg text-ink">{p.title}</h2>
+                  {p.excerpt && <p className="mt-2 text-sm text-ink/60 leading-relaxed">{p.excerpt}</p>}
+                </div>
               </Link>
             ))}
           </div>
