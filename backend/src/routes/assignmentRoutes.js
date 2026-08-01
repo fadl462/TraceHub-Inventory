@@ -12,5 +12,6 @@ router.use(authenticate, requireCompanyContext);
 router.get('/', ctrl.listAssignments);
 router.post('/', requireRole('company_admin', 'manager', 'staff', 'super_admin'), ctrl.createAssignment);
 router.post('/:id/return', requireRole('company_admin', 'manager', 'staff', 'super_admin'), ctrl.returnAsset);
+router.patch('/:id/hire-payment', requireRole('company_admin', 'manager', 'super_admin'), ctrl.updateHirePayment);
 
 module.exports = router;

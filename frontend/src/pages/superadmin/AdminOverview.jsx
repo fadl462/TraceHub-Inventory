@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Building2, Boxes, Users, DollarSign, Sparkles, AlertTriangle,
-  Plus, UserPlus, FileBarChart, Activity,
+  Plus, UserPlus, FileBarChart, Activity, ArrowRight,
 } from 'lucide-react';
 import {
   ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -10,10 +10,12 @@ import {
 } from 'recharts';
 import client from '../../api/client';
 import { Card, Spinner, Button } from '../../components/ui';
+import { useAuth } from '../../context/AuthContext';
 
 const PLAN_COLORS = ['#1A4D8F', '#4DA3FF', '#7ED957', '#8CC2FF', '#5CB93A'];
 
-function AiInsightCard() {
+function WelcomeInsightBanner() {
+  const { user } = useAuth();
   const [insight, setInsight] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -21,20 +23,31 @@ function AiInsightCard() {
     client.get('/super-admin/ai-insights').then(({ data }) => setInsight(data)).finally(() => setLoading(false));
   }, []);
 
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+
   return (
-    <Card className="p-5 bg-gradient-to-br from-primary-800 to-primary-900 text-white">
-      <div className="flex items-center gap-2 mb-2">
-        <Sparkles size={16} className="text-accent" />
-        <p className="text-xs font-semibold uppercase tracking-wide text-primary-200/70">AI insight</p>
+    <Card className="p-6 bg-gradient-to-br from-primary-800 via-primary-800 to-primary-900 text-white relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.06]" style={{
+        backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 1px)', backgroundSize: '28px 28px',
+      }}
+      />
+      <div className="relative flex items-start gap-4">
+        <div className="w-11 h-11 rounded-xl bg-accent/20 text-accent flex items-center justify-center shrink-0">
+          <Sparkles size={20} />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-semibold text-primary-100/80">{greeting}, {user?.firstName}</p>
+          {loading ? (
+            <div className="h-6 w-3/4 bg-white/10 rounded animate-pulse mt-2" />
+          ) : (
+            <p className="mt-1.5 text-lg text-white leading-relaxed">{insight?.insight}</p>
+          )}
+          {insight && !insight.configured && (
+            <p className="mt-2 text-xs text-primary-200/50">Add an ANTHROPIC_API_KEY for AI-generated analysis \u2014 showing a computed summary for now.</p>
+          )}
+        </div>
       </div>
-      {loading ? (
-        <div className="h-5 w-2/3 bg-white/10 rounded animate-pulse" />
-      ) : (
-        <p className="text-sm text-primary-50 leading-relaxed">{insight?.insight}</p>
-      )}
-      {insight && !insight.configured && (
-        <p className="mt-2 text-[11px] text-primary-200/50">Add an ANTHROPIC_API_KEY for AI-generated analysis \u2014 showing a computed summary for now.</p>
-      )}
     </Card>
   );
 }
@@ -49,54 +62,56 @@ export default function AdminOverview() {
   if (!stats) return <div className="flex justify-center py-20"><Spinner size={28} /></div>;
 
   const cards = [
-    { icon: Building2, label: 'Total companies', value: stats.totalCompanies, sub: `${stats.activeCompanies} active \u00b7 ${stats.trialCompanies} trialing` },
-    { icon: Boxes, label: 'Total assets tracked', value: stats.totalAssets, sub: `${stats.assignedCount} assigned \u00b7 ${stats.availableCount} available` },
-    { icon: Users, label: 'Total users', value: stats.totalUsers },
-    { icon: DollarSign, label: 'Total revenue', value: `USD ${Number(stats.revenueTotal).toLocaleString()}`, sub: `${stats.activeSubs} active subs \u00b7 ${stats.pastDueSubs} past due` },
+    { icon: Building2, label: 'Total companies', value: stats.totalCompanies, sub: `${stats.activeCompanies} active \u00b7 ${stats.trialCompanies} trialing`, to: '/admin/companies' },
+    { icon: Boxes, label: 'Total assets tracked', value: stats.totalAssets, sub: `${stats.assignedCount} assigned \u00b7 ${stats.availableCount} available`, to: '/admin/companies' },
+    { icon: Users, label: 'Total users', value: stats.totalUsers, to: '/admin/companies' },
+    { icon: DollarSign, label: 'Total revenue', value: `USD ${Number(stats.revenueTotal).toLocaleString()}`, sub: `${stats.activeSubs} active subs \u00b7 ${stats.pastDueSubs} past due`, to: '/admin/plans' },
   ];
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-xl font-bold text-ink">Platform overview</h1>
-          <p className="text-sm text-ink/60 mt-0.5">TraceHub Inventory across all tenant companies.</p>
-        </div>
-        {stats.disposalAlerts > 0 && (
-          <div className="flex items-center gap-2 text-xs font-medium text-amber-700 bg-amber-50 px-3 py-1.5 rounded-full">
-            <AlertTriangle size={14} /> {stats.disposalAlerts} assets nearing disposal
-          </div>
-        )}
+      <div>
+        <h1 className="text-xl font-bold text-ink">Platform overview</h1>
+        <p className="text-sm text-ink/60 mt-0.5">TraceHub Inventory across all tenant companies.</p>
       </div>
 
+      <WelcomeInsightBanner />
+
+      {stats.disposalAlerts > 0 && (
+        <Link to="/admin/companies" className="flex items-center justify-between gap-3 bg-amber-50 hover:bg-amber-100 transition-colors rounded-xl px-4 py-3 text-sm">
+          <span className="flex items-center gap-2 font-medium text-amber-800">
+            <AlertTriangle size={16} /> {stats.disposalAlerts} asset{stats.disposalAlerts === 1 ? '' : 's'} nearing suggested disposal date across the platform
+          </span>
+          <ArrowRight size={15} className="text-amber-700" />
+        </Link>
+      )}
+
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {cards.map(({ icon: Icon, label, value, sub }) => (
-          <Card key={label} className="p-5">
-            <div className="h-10 w-10 rounded-xl bg-primary-50 text-primary flex items-center justify-center mb-3"><Icon size={18} /></div>
-            <p className="text-2xl font-bold text-ink">{value}</p>
-            <p className="text-xs text-ink/60 mt-1">{label}</p>
-            {sub && <p className="text-xs text-ink/40 mt-1">{sub}</p>}
-          </Card>
+        {cards.map(({ icon: Icon, label, value, sub, to }) => (
+          <Link key={label} to={to}>
+            <Card className="p-5 hover:shadow-card hover:-translate-y-0.5 transition-all duration-150 cursor-pointer h-full">
+              <div className="h-10 w-10 rounded-xl bg-primary-50 text-primary flex items-center justify-center mb-3"><Icon size={18} /></div>
+              <p className="text-2xl font-bold text-ink">{value}</p>
+              <p className="text-xs text-ink/60 mt-1">{label}</p>
+              {sub && <p className="text-xs text-ink/40 mt-1">{sub}</p>}
+            </Card>
+          </Link>
         ))}
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-4">
-        <Card className="p-5 lg:col-span-2">
-          <p className="text-sm font-semibold text-ink mb-4">Asset growth &amp; disposal, last 6 months</p>
-          <ResponsiveContainer width="100%" height={220}>
-            <LineChart data={stats.assetGrowthSeries}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#EAF1FA" />
-              <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#2C2C2C99' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 12, fill: '#2C2C2C99' }} axisLine={false} tickLine={false} allowDecimals={false} />
-              <Tooltip contentStyle={{ borderRadius: 10, border: '1px solid #EAF1FA', fontSize: 13 }} />
-              <Line type="monotone" dataKey="registered" name="Registered" stroke="#1A4D8F" strokeWidth={2.5} dot={{ r: 3 }} />
-              <Line type="monotone" dataKey="disposed" name="Disposed" stroke="#7ED957" strokeWidth={2.5} dot={{ r: 3 }} strokeDasharray="4 3" />
-            </LineChart>
-          </ResponsiveContainer>
-        </Card>
-
-        <AiInsightCard />
-      </div>
+      <Card className="p-5">
+        <p className="text-sm font-semibold text-ink mb-4">Asset growth &amp; disposal, last 6 months</p>
+        <ResponsiveContainer width="100%" height={220}>
+          <LineChart data={stats.assetGrowthSeries}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#EAF1FA" />
+            <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#2C2C2C99' }} axisLine={false} tickLine={false} />
+            <YAxis tick={{ fontSize: 12, fill: '#2C2C2C99' }} axisLine={false} tickLine={false} allowDecimals={false} />
+            <Tooltip contentStyle={{ borderRadius: 10, border: '1px solid #EAF1FA', fontSize: 13 }} />
+            <Line type="monotone" dataKey="registered" name="Registered" stroke="#1A4D8F" strokeWidth={2.5} dot={{ r: 3 }} />
+            <Line type="monotone" dataKey="disposed" name="Disposed" stroke="#7ED957" strokeWidth={2.5} dot={{ r: 3 }} strokeDasharray="4 3" />
+          </LineChart>
+        </ResponsiveContainer>
+      </Card>
 
       <div className="grid lg:grid-cols-3 gap-4">
         <Card className="p-5">

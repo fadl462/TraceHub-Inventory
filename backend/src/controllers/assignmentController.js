@@ -8,6 +8,7 @@ async function createAssignment(req, res, next) {
     const {
       assetId, assignedToUserId, externalAssigneeName, externalAssigneeEmail,
       externalAssigneePhone, expectedReturnDate, purpose, notes,
+      hireFeeAmount, hireFeeCurrency,
     } = req.body;
 
     if (!assetId) return res.status(400).json({ error: 'assetId is required' });
@@ -31,6 +32,8 @@ async function createAssignment(req, res, next) {
       expectedReturnDate: expectedReturnDate || null,
       purpose,
       notes,
+      hireFeeAmount: hireFeeAmount || null,
+      hireFeeCurrency: hireFeeAmount ? (hireFeeCurrency || asset.currency || 'USD') : null,
       returnConfirmationToken: crypto.randomBytes(16).toString('hex'),
     });
 
@@ -45,10 +48,13 @@ async function createAssignment(req, res, next) {
     }
 
     if (recipientEmail) {
+      const feeLine = hireFeeAmount
+        ? `<p>Hire fee: <strong>${assignment.hireFeeCurrency} ${Number(hireFeeAmount).toFixed(2)}</strong> \u2014 please arrange payment before the return date.</p>`
+        : '';
       await sendMail({
         to: recipientEmail,
         subject: `Asset assigned to you: ${asset.name}`,
-        html: `<p>Hi ${recipientName || ''},</p><p>You have been assigned <strong>${asset.name}</strong> (${asset.assetTag}).</p>${expectedReturnDate ? `<p>Expected return date: <strong>${expectedReturnDate}</strong></p>` : ''}<p>${purpose ? `Purpose: ${purpose}` : ''}</p>`,
+        html: `<p>Hi ${recipientName || ''},</p><p>You have been assigned <strong>${asset.name}</strong> (${asset.assetTag}).</p>${expectedReturnDate ? `<p>Expected return date: <strong>${expectedReturnDate}</strong></p>` : ''}${feeLine}<p>${purpose ? `Purpose: ${purpose}` : ''}</p>`,
       });
     }
 
@@ -119,4 +125,33 @@ async function confirmReturnPublic(req, res, next) {
   } catch (err) { next(err); }
 }
 
-module.exports = { createAssignment, listAssignments, returnAsset, confirmReturnPublic };
+/** Mark a hire fee as paid/unpaid - sends a confirmation email to the hirer when marked paid */
+async function updateHirePayment(req, res, next) {
+  try {
+    const assignment = await Assignment.findByPk(req.params.id, { include: [Asset] });
+    if (!assignment || assignment.companyId !== req.companyId) return res.status(404).json({ error: 'Assignment not found' });
+    if (!assignment.hireFeeAmount) return res.status(400).json({ error: 'This assignment has no hire fee recorded.' });
+
+    const { paid } = req.body;
+    assignment.hireFeePaid = !!paid;
+    assignment.hireFeePaidAt = paid ? new Date() : null;
+    await assignment.save();
+
+    const recipientEmail = assignment.externalAssigneeEmail
+      || (assignment.assignedToUserId ? (await User.findByPk(assignment.assignedToUserId))?.email : null);
+
+    if (paid && recipientEmail) {
+      await sendMail({
+        to: recipientEmail,
+        subject: `Payment confirmed: ${assignment.Asset?.name}`,
+        html: `<p>Thanks \u2014 we've recorded your hire fee payment of <strong>${assignment.hireFeeCurrency} ${Number(assignment.hireFeeAmount).toFixed(2)}</strong> for <strong>${assignment.Asset?.name}</strong>.</p>`,
+      }).catch(() => {});
+    }
+
+    await logAction(req, { action: 'assignment.hire_payment_update', entityType: 'Assignment', entityId: assignment.id, after: { hireFeePaid: assignment.hireFeePaid } });
+
+    res.json({ assignment, message: paid ? 'Marked as paid' : 'Marked as unpaid' });
+  } catch (err) { next(err); }
+}
+
+module.exports = { createAssignment, listAssignments, returnAsset, confirmReturnPublic, updateHirePayment };

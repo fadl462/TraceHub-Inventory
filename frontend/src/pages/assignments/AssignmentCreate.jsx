@@ -10,10 +10,12 @@ export default function AssignmentCreate() {
   const [assets, setAssets] = useState([]);
   const [staff, setStaff] = useState([]);
   const [assigneeType, setAssigneeType] = useState('staff');
+  const [isHire, setIsHire] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     assetId: params.get('assetId') || '', assignedToUserId: '', externalAssigneeName: '',
     externalAssigneeEmail: '', externalAssigneePhone: '', expectedReturnDate: '', purpose: '', notes: '',
+    hireFeeAmount: '', hireFeeCurrency: 'USD',
   });
 
   useEffect(() => {
@@ -31,6 +33,7 @@ export default function AssignmentCreate() {
       } else {
         delete payload.assignedToUserId;
       }
+      if (!isHire) { delete payload.hireFeeAmount; delete payload.hireFeeCurrency; }
       await client.post('/assignments', payload);
       toast.success('Asset assigned successfully');
       navigate('/assignments');
@@ -76,9 +79,34 @@ export default function AssignmentCreate() {
           )}
 
           <Input label="Expected return date" type="date" value={form.expectedReturnDate} onChange={(e) => setForm({ ...form, expectedReturnDate: e.target.value })} />
-          <Input label="Purpose" placeholder="e.g. Field survey work" value={form.purpose} onChange={(e) => setForm({ ...form, purpose: e.target.value })} />
+          <Input label="Purpose" placeholder="e.g. Field survey work, equipment hire" value={form.purpose} onChange={(e) => setForm({ ...form, purpose: e.target.value })} />
 
-          <p className="text-xs text-ink/50">Reminders will be sent automatically 3 days before and on the day of the expected return date.</p>
+          <div className="rounded-lg border border-primary-100 p-4">
+            <label className="flex items-center gap-2 text-sm font-medium text-ink">
+              <input type="checkbox" checked={isHire} onChange={(e) => setIsHire(e.target.checked)} />
+              This is a paid hire \u2014 track a fee and payment status
+            </label>
+            {isHire && (
+              <div className="grid sm:grid-cols-2 gap-4 mt-4">
+                <Input
+                  label="Hire fee amount"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value={form.hireFeeAmount}
+                  onChange={(e) => setForm({ ...form, hireFeeAmount: e.target.value })}
+                />
+                <Select label="Currency" value={form.hireFeeCurrency} onChange={(e) => setForm({ ...form, hireFeeCurrency: e.target.value })}>
+                  <option value="USD">USD</option>
+                  <option value="GHS">GHS</option>
+                  <option value="EUR">EUR</option>
+                  <option value="NGN">NGN</option>
+                </Select>
+              </div>
+            )}
+          </div>
+
+          <p className="text-xs text-ink/50">Reminders will be sent automatically 3 days before and on the day of the expected return date, to the borrower and to company admins.</p>
 
           <div className="flex justify-end gap-3 pt-2">
             <Button type="button" variant="outline" onClick={() => navigate(-1)}>Cancel</Button>

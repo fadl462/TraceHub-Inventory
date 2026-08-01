@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Plus, Search, Boxes, QrCode } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Input, Select, Badge, statusTone, EmptyState, Spinner } from '../../components/ui';
 
 export default function AssetsList() {
+  const [searchParams] = useSearchParams();
   const [assets, setAssets] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState(searchParams.get('status') || '');
   const [page, setPage] = useState(1);
 
   const load = async () => {

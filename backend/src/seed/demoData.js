@@ -1,5 +1,4 @@
 const bcrypt = require('bcryptjs');
-const { v4: uuidv4 } = require('uuid');
 const {
   Company, User, Subscription, SubscriptionPlan, AssetCategory, DepreciationProfile,
   Asset, Location, AssetLocationEvent, Assignment,
@@ -9,37 +8,109 @@ const { generateAssetTag, generateQrToken } = require('../utils/qrTag');
 
 const DEMO_PASSWORD = 'Demo1234!';
 
-const DEMO_ASSETS = [
-  { name: 'Dell Latitude 5420', category: 'Laptops & Computers', brand: 'Dell', model: 'Latitude 5420', color: 'Silver', price: 950, year: 2023 },
-  { name: 'MacBook Pro 14"', category: 'Laptops & Computers', brand: 'Apple', model: 'MacBook Pro 14', color: 'Space Grey', price: 2200, year: 2024 },
-  { name: 'HP LaserJet Pro', category: 'Office Equipment (Printers, Scanners)', brand: 'HP', model: 'LaserJet Pro M404', color: 'White', price: 320, year: 2022 },
-  { name: 'Toyota Hilux \u2014 GR-4471-24', category: 'Vehicles', brand: 'Toyota', model: 'Hilux', color: 'White', price: 38000, year: 2024 },
-  { name: 'Generator Unit 04', category: 'Generators', brand: 'Mikano', model: 'M55', color: 'Yellow', price: 4200, year: 2021 },
-  { name: 'Forklift 02', category: 'Forklifts & Material Handling', brand: 'Toyota', model: '8FGU25', color: 'Orange', price: 26500, year: 2020 },
-  { name: 'Cisco Switch 24-port', category: 'Networking & IT Infrastructure', brand: 'Cisco', model: 'Catalyst 2960', color: 'Black', price: 680, year: 2022 },
-  { name: 'Office Desk (Executive)', category: 'Office Furniture', brand: 'IKEA', model: 'Bekant', color: 'Oak', price: 240, year: 2021 },
-  { name: 'Samsung Tablet', category: 'Mobile Phones & Tablets', brand: 'Samsung', model: 'Galaxy Tab S8', color: 'Graphite', price: 480, year: 2023 },
-  { name: 'Power Drill Set', category: 'Tools & Hand Equipment', brand: 'DeWalt', model: 'DCD778', color: 'Yellow', price: 145, year: 2022 },
+const COMPANIES = [
+  {
+    slug: 'demo-logistics',
+    name: 'Demo Logistics Ltd',
+    industry: 'Logistics & Distribution',
+    plan: 'pro',
+    users: [
+      { role: 'company_admin', firstName: 'Ama', lastName: 'Boateng', email: 'admin@demo-logistics.test' },
+      { role: 'manager', firstName: 'Kwesi', lastName: 'Owusu', email: 'manager@demo-logistics.test' },
+      { role: 'staff', firstName: 'Efua', lastName: 'Mensah', email: 'staff@demo-logistics.test' },
+    ],
+    locations: ['Accra HQ Warehouse', 'Kumasi Branch', 'Takoradi Depot'],
+    assets: [
+      { name: 'Dell Latitude 5420', category: 'Laptops & Computers', brand: 'Dell', model: 'Latitude 5420', color: 'Silver', price: 950, year: 2023 },
+      { name: 'MacBook Pro 14"', category: 'Laptops & Computers', brand: 'Apple', model: 'MacBook Pro 14', color: 'Space Grey', price: 2200, year: 2024 },
+      { name: 'HP LaserJet Pro', category: 'Office Equipment (Printers, Scanners)', brand: 'HP', model: 'LaserJet Pro M404', color: 'White', price: 320, year: 2022 },
+      { name: 'Toyota Hilux \u2014 GR-4471-24', category: 'Vehicles', brand: 'Toyota', model: 'Hilux', color: 'White', price: 38000, year: 2024 },
+      { name: 'Generator Unit 04', category: 'Generators', brand: 'Mikano', model: 'M55', color: 'Yellow', price: 4200, year: 2021 },
+      { name: 'Forklift 02', category: 'Forklifts & Material Handling', brand: 'Toyota', model: '8FGU25', color: 'Orange', price: 26500, year: 2020 },
+      { name: 'Cisco Switch 24-port', category: 'Networking & IT Infrastructure', brand: 'Cisco', model: 'Catalyst 2960', color: 'Black', price: 680, year: 2022 },
+      { name: 'Office Desk (Executive)', category: 'Office Furniture', brand: 'IKEA', model: 'Bekant', color: 'Oak', price: 240, year: 2021 },
+      { name: 'Samsung Tablet', category: 'Mobile Phones & Tablets', brand: 'Samsung', model: 'Galaxy Tab S8', color: 'Graphite', price: 480, year: 2023 },
+      { name: 'Power Drill Set', category: 'Tools & Hand Equipment', brand: 'DeWalt', model: 'DCD778', color: 'Yellow', price: 145, year: 2022 },
+    ],
+    assignments: [
+      { assetIdx: 0, assignedTo: 'staff', status: 'active', daysFromNow: 10 },
+      { assetIdx: 3, assignedTo: 'manager', status: 'overdue', daysFromNow: -4 },
+      { assetIdx: 8, assignedTo: 'staff', status: 'returned', daysFromNow: -20 },
+    ],
+  },
+  {
+    slug: 'northline-it',
+    name: 'Northline IT Solutions',
+    industry: 'Information Technology',
+    plan: 'basic',
+    users: [
+      { role: 'company_admin', firstName: 'Yaw', lastName: 'Asante', email: 'admin@northline-it.test' },
+      { role: 'manager', firstName: 'Abena', lastName: 'Darko', email: 'manager@northline-it.test' },
+      { role: 'staff', firstName: 'Kojo', lastName: 'Appiah', email: 'staff@northline-it.test' },
+    ],
+    locations: ['Head Office \u2014 Airport City', 'Client Site \u2014 East Legon'],
+    assets: [
+      { name: 'Dell PowerEdge R740 Server', category: 'Networking & IT Infrastructure', brand: 'Dell', model: 'PowerEdge R740', color: 'Black', price: 6800, year: 2022 },
+      { name: 'Lenovo ThinkPad X1', category: 'Laptops & Computers', brand: 'Lenovo', model: 'ThinkPad X1 Carbon', color: 'Black', price: 1750, year: 2024 },
+      { name: 'Lenovo ThinkPad X1 (2)', category: 'Laptops & Computers', brand: 'Lenovo', model: 'ThinkPad X1 Carbon', color: 'Black', price: 1750, year: 2023 },
+      { name: 'Ubiquiti UniFi Switch Pro', category: 'Networking & IT Infrastructure', brand: 'Ubiquiti', model: 'USW-Pro-48', color: 'White', price: 999, year: 2023 },
+      { name: 'APC Smart-UPS 3000VA', category: 'Networking & IT Infrastructure', brand: 'APC', model: 'SRT3000XLI', color: 'Black', price: 2100, year: 2021 },
+      { name: 'iPad Pro 12.9"', category: 'Mobile Phones & Tablets', brand: 'Apple', model: 'iPad Pro', color: 'Space Grey', price: 1400, year: 2024 },
+      { name: 'Epson Projector EB-2250U', category: 'Office Equipment (Printers, Scanners)', brand: 'Epson', model: 'EB-2250U', color: 'White', price: 1350, year: 2022 },
+      { name: 'Conference Room Table', category: 'Office Furniture', brand: 'Herman Miller', model: 'Layout Studio', color: 'Walnut', price: 2200, year: 2020 },
+    ],
+    assignments: [
+      { assetIdx: 1, assignedTo: 'staff', status: 'active', daysFromNow: 14 },
+      { assetIdx: 5, assignedTo: 'manager', status: 'active', daysFromNow: 5 },
+    ],
+  },
+  {
+    slug: 'accra-field-services',
+    name: 'Accra Field Services Co.',
+    industry: 'Field Services & Equipment Hire',
+    plan: 'enterprise',
+    users: [
+      { role: 'company_admin', firstName: 'Nana', lastName: 'Adjei', email: 'admin@accra-field.test' },
+      { role: 'manager', firstName: 'Akosua', lastName: 'Frimpong', email: 'manager@accra-field.test' },
+      { role: 'staff', firstName: 'Kwame', lastName: 'Nkrumah-Boateng', email: 'staff@accra-field.test' },
+    ],
+    locations: ['Tema Equipment Yard', 'Spintex Workshop'],
+    assets: [
+      { name: 'Caterpillar Mini Excavator', category: 'Industrial Machinery', brand: 'Caterpillar', model: '301.7 CR', price: 42000, year: 2021 },
+      { name: 'Generator Unit \u2014 60kVA', category: 'Generators', brand: 'Cummins', model: 'C60D5', color: 'Red', price: 15500, year: 2022 },
+      { name: 'Generator Unit \u2014 20kVA', category: 'Generators', brand: 'Mikano', model: 'M22', color: 'Yellow', price: 5200, year: 2023 },
+      { name: 'Concrete Mixer', category: 'Industrial Machinery', brand: 'Altrad Belle', model: 'Minimix 150', color: 'Orange', price: 1100, year: 2022 },
+      { name: 'Angle Grinder Set', category: 'Tools & Hand Equipment', brand: 'Makita', model: 'GA9020', color: 'Teal', price: 220, year: 2023 },
+      { name: 'Toyota Land Cruiser \u2014 GT-2201-23', category: 'Vehicles', brand: 'Toyota', model: 'Land Cruiser', color: 'White', price: 52000, year: 2023 },
+      { name: 'Scaffolding Set (10m)', category: 'Tools & Hand Equipment', brand: 'Generic', model: 'Standard Frame', price: 1800, year: 2021 },
+    ],
+    assignments: [
+      // The showcase "hire" example: an external customer renting a generator,
+      // fee tracked, not yet paid - demonstrates the hire-fee feature end to end.
+      {
+        assetIdx: 1, external: { name: 'Kofi Mensah (Mensah Events)', email: 'kofi@mensahevents.test', phone: '+233 24 555 0199' },
+        status: 'active', daysFromNow: 6, purpose: 'Event power supply hire',
+        hireFeeAmount: 450, hireFeeCurrency: 'USD', hireFeePaid: false,
+      },
+      {
+        assetIdx: 4, assignedTo: 'staff', status: 'active', daysFromNow: 3, purpose: 'On-site repair job',
+      },
+    ],
+  },
 ];
 
-async function seedDemoCompany() {
+async function seedOneCompany(spec) {
   const [company] = await Company.findOrCreate({
-    where: { slug: 'demo-logistics' },
+    where: { slug: spec.slug },
     defaults: {
-      name: 'Demo Logistics Ltd', slug: 'demo-logistics', type: 'company',
-      industry: 'Logistics & Distribution', currency: 'USD', status: 'active',
+      name: spec.name, slug: spec.slug, type: 'company',
+      industry: spec.industry, currency: 'USD', status: 'active',
     },
   });
 
-  const roles = [
-    { role: 'company_admin', firstName: 'Ama', lastName: 'Boateng', email: 'admin@demo-logistics.test' },
-    { role: 'manager', firstName: 'Kwesi', lastName: 'Owusu', email: 'manager@demo-logistics.test' },
-    { role: 'staff', firstName: 'Efua', lastName: 'Mensah', email: 'staff@demo-logistics.test' },
-  ];
-
   const passwordHash = await bcrypt.hash(DEMO_PASSWORD, 12);
   const users = {};
-  for (const r of roles) {
+  for (const r of spec.users) {
     const [user] = await User.findOrCreate({
       where: { email: r.email },
       defaults: { companyId: company.id, firstName: r.firstName, lastName: r.lastName, role: r.role, passwordHash, isEmailVerified: true },
@@ -48,35 +119,31 @@ async function seedDemoCompany() {
     console.log(`  ${r.role}: ${r.email} / ${DEMO_PASSWORD}`);
   }
 
-  // Give the demo company an active Pro subscription so billing/reports look real
-  const proPlan = await SubscriptionPlan.findOne({ where: { code: 'pro' } });
-  if (proPlan) {
+  const plan = await SubscriptionPlan.findOne({ where: { code: spec.plan } });
+  if (plan) {
     await Subscription.findOrCreate({
       where: { companyId: company.id },
       defaults: {
-        companyId: company.id, planId: proPlan.id, billingCycle: 'monthly',
+        companyId: company.id, planId: plan.id, billingCycle: 'monthly',
         status: 'active', currentPeriodEnd: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       },
     });
   }
 
-  // Locations
-  const locationNames = ['Accra HQ Warehouse', 'Kumasi Branch', 'Takoradi Depot'];
   const locations = {};
-  for (const name of locationNames) {
+  for (const name of spec.locations) {
     const [loc] = await Location.findOrCreate({ where: { companyId: company.id, name }, defaults: { companyId: company.id, name } });
     locations[name] = loc;
   }
-
-  // Assets, each with a real depreciation calc, spread across locations
   const locKeys = Object.keys(locations);
+
   const createdAssets = [];
-  for (let i = 0; i < DEMO_ASSETS.length; i += 1) {
-    const spec = DEMO_ASSETS[i];
-    const existing = await Asset.findOne({ where: { companyId: company.id, name: spec.name } });
+  for (let i = 0; i < spec.assets.length; i += 1) {
+    const a = spec.assets[i];
+    const existing = await Asset.findOne({ where: { companyId: company.id, name: a.name } });
     if (existing) { createdAssets.push(existing); continue; }
 
-    const category = await AssetCategory.findOne({ where: { name: spec.category, isGlobal: true } });
+    const category = await AssetCategory.findOne({ where: { name: a.category, isGlobal: true } });
     const profile = category ? await DepreciationProfile.findOne({ where: { categoryId: category.id } }) : null;
 
     const asset = await Asset.create({
@@ -84,12 +151,12 @@ async function seedDemoCompany() {
       categoryId: category?.id || null,
       assetTag: generateAssetTag(),
       qrToken: generateQrToken(),
-      name: spec.name,
-      brand: spec.brand,
-      model: spec.model,
-      color: spec.color,
-      manufactureYear: spec.year,
-      purchasePrice: spec.price,
+      name: a.name,
+      brand: a.brand,
+      model: a.model,
+      color: a.color || null,
+      manufactureYear: a.year,
+      purchasePrice: a.price,
       currency: 'USD',
       currentLocationId: locations[locKeys[i % locKeys.length]].id,
       status: 'available',
@@ -98,7 +165,7 @@ async function seedDemoCompany() {
 
     if (profile) {
       const result = estimateDepreciation({
-        purchasePrice: spec.price, manufactureYear: spec.year,
+        purchasePrice: a.price, manufactureYear: a.year,
         profile: { usefulLifeYears: profile.usefulLifeYears, scrapValuePercent: profile.scrapValuePercent },
       });
       asset.aiUsefulLifeYears = result.usefulLifeYears;
@@ -117,38 +184,49 @@ async function seedDemoCompany() {
     createdAssets.push(asset);
   }
 
-  // A handful of assignments: one active (on time), one overdue, one returned
-  const assignmentSpecs = [
-    { assetIdx: 0, assignedTo: 'staff', status: 'active', daysFromNow: 10 },
-    { assetIdx: 3, assignedTo: 'manager', status: 'overdue', daysFromNow: -4 },
-    { assetIdx: 8, assignedTo: 'staff', status: 'returned', daysFromNow: -20 },
-  ];
-
-  for (const spec of assignmentSpecs) {
-    const asset = createdAssets[spec.assetIdx];
+  for (const s of spec.assignments) {
+    const asset = createdAssets[s.assetIdx];
     if (!asset) continue;
     const existing = await Assignment.findOne({ where: { companyId: company.id, assetId: asset.id } });
     if (existing) continue;
 
-    const expectedReturnDate = new Date(Date.now() + spec.daysFromNow * 24 * 60 * 60 * 1000);
-    const assignment = await Assignment.create({
+    const expectedReturnDate = new Date(Date.now() + s.daysFromNow * 24 * 60 * 60 * 1000);
+    await Assignment.create({
       companyId: company.id,
       assetId: asset.id,
-      assignedToUserId: users[spec.assignedTo].id,
+      assignedToUserId: s.assignedTo ? users[s.assignedTo].id : null,
+      externalAssigneeName: s.external?.name || null,
+      externalAssigneeEmail: s.external?.email || null,
+      externalAssigneePhone: s.external?.phone || null,
       assignedByUserId: users.company_admin.id,
       expectedReturnDate,
-      purpose: 'Field operations',
-      status: spec.status,
-      returnedAt: spec.status === 'returned' ? new Date() : null,
+      purpose: s.purpose || 'Field operations',
+      status: s.status,
+      returnedAt: s.status === 'returned' ? new Date() : null,
+      hireFeeAmount: s.hireFeeAmount || null,
+      hireFeeCurrency: s.hireFeeAmount ? (s.hireFeeCurrency || 'USD') : null,
+      hireFeePaid: !!s.hireFeePaid,
+      hireFeePaidAt: s.hireFeePaid ? new Date() : null,
     });
 
-    if (spec.status !== 'returned') {
+    if (s.status !== 'returned') {
       asset.status = 'assigned';
       await asset.save();
     }
   }
 
   return { company, users };
+}
+
+async function seedDemoCompany() {
+  const results = [];
+  for (const spec of COMPANIES) {
+    console.log(`  Company: ${spec.name}`);
+    // eslint-disable-next-line no-await-in-loop
+    const result = await seedOneCompany(spec);
+    results.push(result);
+  }
+  return results;
 }
 
 module.exports = { seedDemoCompany, DEMO_PASSWORD };

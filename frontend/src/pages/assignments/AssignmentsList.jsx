@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Plus, ClipboardList, RotateCcw } from 'lucide-react';
+import { Plus, ClipboardList, RotateCcw, CheckCircle2, Circle } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Badge, statusTone, EmptyState, Spinner } from '../../components/ui';
 
@@ -29,12 +29,22 @@ export default function AssignmentsList() {
     }
   };
 
+  const togglePaid = async (a) => {
+    try {
+      await client.patch(`/assignments/${a.id}/hire-payment`, { paid: !a.hireFeePaid });
+      toast.success(a.hireFeePaid ? 'Marked as unpaid' : 'Marked as paid \u2014 confirmation email sent');
+      load();
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Failed to update payment status');
+    }
+  };
+
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold text-ink">Assignments</h1>
-          <p className="text-sm text-ink/60 mt-0.5">Track who has which asset, and when it's due back.</p>
+          <p className="text-sm text-ink/60 mt-0.5">Track who has which asset, when it's due back, and whether hire fees are paid.</p>
         </div>
         <Link to="/assignments/new"><Button><Plus size={16} /> New assignment</Button></Link>
       </div>
@@ -53,6 +63,7 @@ export default function AssignmentsList() {
                   <th className="px-5 py-3 font-medium">Assigned to</th>
                   <th className="px-5 py-3 font-medium">Return date</th>
                   <th className="px-5 py-3 font-medium">Status</th>
+                  <th className="px-5 py-3 font-medium">Hire fee</th>
                   <th className="px-5 py-3" />
                 </tr>
               </thead>
@@ -66,8 +77,23 @@ export default function AssignmentsList() {
                     <td className="px-5 py-3 text-ink/80">
                       {a.assignee ? `${a.assignee.firstName} ${a.assignee.lastName}` : a.externalAssigneeName}
                     </td>
-                    <td className="px-5 py-3 text-ink/70">{a.expectedReturnDate || '—'}</td>
+                    <td className="px-5 py-3 text-ink/70">{a.expectedReturnDate || '\u2014'}</td>
                     <td className="px-5 py-3"><Badge tone={statusTone(a.status)}>{a.status}</Badge></td>
+                    <td className="px-5 py-3">
+                      {a.hireFeeAmount ? (
+                        <button
+                          onClick={() => togglePaid(a)}
+                          className={`inline-flex items-center gap-1.5 text-xs font-medium rounded-full px-2.5 py-1 transition-colors ${
+                            a.hireFeePaid ? 'bg-green-50 text-accent-dark hover:bg-green-100' : 'bg-amber-50 text-amber-700 hover:bg-amber-100'
+                          }`}
+                        >
+                          {a.hireFeePaid ? <CheckCircle2 size={13} /> : <Circle size={13} />}
+                          {a.hireFeeCurrency} {Number(a.hireFeeAmount).toFixed(2)} \u00b7 {a.hireFeePaid ? 'Paid' : 'Unpaid'}
+                        </button>
+                      ) : (
+                        <span className="text-ink/30 text-xs">\u2014</span>
+                      )}
+                    </td>
                     <td className="px-5 py-3 text-right">
                       {a.status === 'active' || a.status === 'overdue' ? (
                         <button onClick={() => markReturned(a.id)} className="text-secondary hover:underline text-xs font-medium inline-flex items-center gap-1">

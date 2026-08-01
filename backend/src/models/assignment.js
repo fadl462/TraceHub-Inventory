@@ -30,9 +30,17 @@ module.exports = (sequelize, DataTypes) => {
     reminder3DaySentAt: { type: DataTypes.DATE, allowNull: true },
     reminderDueDaySentAt: { type: DataTypes.DATE, allowNull: true },
 
-    // Optional confirmation link for the borrower to acknowledge return (per handover notes)
+    // Return confirmation link for the borrower to acknowledge return (per handover notes)
     returnConfirmationToken: { type: DataTypes.STRING, allowNull: true, unique: true },
     returnConfirmedAt: { type: DataTypes.DATE, allowNull: true },
+
+    // Hire/rental fee tracking - for assets given out on hire (typically to
+    // external contacts), so admins can see at a glance whether the hire has
+    // actually been paid for, not just whether it's been returned.
+    hireFeeAmount: { type: DataTypes.DECIMAL(10, 2), allowNull: true },
+    hireFeeCurrency: { type: DataTypes.STRING, allowNull: true },
+    hireFeePaid: { type: DataTypes.BOOLEAN, defaultValue: false },
+    hireFeePaidAt: { type: DataTypes.DATE, allowNull: true },
   }, {
     tableName: 'assignments',
     timestamps: true,
