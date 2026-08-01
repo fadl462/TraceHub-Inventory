@@ -4,6 +4,7 @@ const {
   Asset, Location, AssetLocationEvent, Assignment, Payment, AuditLog,
 } = require('../models');
 const { estimateDepreciation } = require('../utils/depreciationEngine');
+const { runFullIntelligenceAnalysis } = require('../utils/assetIntelligence');
 const { generateAssetTag, generateQrToken } = require('../utils/qrTag');
 
 const DEMO_PASSWORD = 'Demo1234!';
@@ -147,6 +148,20 @@ async function seedOneCompany(spec) {
     const category = await AssetCategory.findOne({ where: { name: a.category, isGlobal: true } });
     const profile = category ? await DepreciationProfile.findOne({ where: { categoryId: category.id } }) : null;
 
+    // Vary the operational/financial/environmental profile deterministically
+    // by position so the demo shows a real spread - not every asset healthy,
+    // not every asset critical.
+    const wearTier = i % 4; // 0=excellent, 1=healthy, 2=needs attention, 3=at risk
+    const wearProfiles = [
+      { usageIntensity: 'light', repairCount: 0, failureCount: 0, maintenanceCount: 3, maintenanceCompliance: 96, assetReliability: 94, inspectionScore: 92, corrosionRisk: 'low', dustExposure: 'low', criticalityScore: 55, resaleDemand: 'high' },
+      { usageIntensity: 'normal', repairCount: 1, failureCount: 0, maintenanceCount: 2, maintenanceCompliance: 80, assetReliability: 82, inspectionScore: 78, corrosionRisk: 'low', dustExposure: 'moderate', criticalityScore: 60, resaleDemand: 'moderate' },
+      { usageIntensity: 'heavy', repairCount: 3, failureCount: 1, maintenanceCount: 1, maintenanceCompliance: 55, assetReliability: 62, inspectionScore: 58, corrosionRisk: 'moderate', dustExposure: 'moderate', criticalityScore: 65, resaleDemand: 'moderate' },
+      { usageIntensity: 'extreme', repairCount: 5, failureCount: 2, maintenanceCount: 1, maintenanceCompliance: 35, assetReliability: 45, inspectionScore: 40, corrosionRisk: 'high', dustExposure: 'high', criticalityScore: 70, resaleDemand: 'low' },
+    ];
+    const wear = wearProfiles[wearTier];
+    const maintenanceCostTotal = Math.round(a.price * (0.02 + wearTier * 0.04));
+    const repairCostTotal = Math.round(a.price * (wearTier * 0.06));
+
     const asset = await Asset.create({
       companyId: company.id,
       categoryId: category?.id || null,
@@ -162,6 +177,12 @@ async function seedOneCompany(spec) {
       currentLocationId: locations[locKeys[i % locKeys.length]].id,
       status: 'available',
       condition: 'good',
+      hoursUsed: wearTier * 2000 + 300,
+      maintenanceCostTotal,
+      repairCostTotal,
+      currentReplacementCost: Math.round(a.price * 1.08),
+      currentMarketValue: Math.round(a.price * (0.75 - wearTier * 0.15)),
+      ...wear,
     });
 
     if (profile) {
@@ -174,8 +195,24 @@ async function seedOneCompany(spec) {
       asset.aiSuggestedDisposalDate = result.suggestedDisposalDate;
       asset.aiEstimatedCurrentValue = result.currentValue;
       asset.aiLastCalculatedAt = new Date();
-      await asset.save();
     }
+
+    // Run the full Asset Intelligence Engine so seeded assets show real,
+    // varied health/failure/disposal/executive scores - not nulls.
+    const intelligence = runFullIntelligenceAnalysis(asset, profile ? { usefulLifeYears: profile.usefulLifeYears, scrapValuePercent: profile.scrapValuePercent } : null);
+    asset.healthScore = intelligence.health.score;
+    asset.healthBreakdown = intelligence.health.breakdown;
+    asset.failureProbability30d = intelligence.failure.probability30d;
+    asset.failureProbability90d = intelligence.failure.probability90d;
+    asset.failureProbability180d = intelligence.failure.probability180d;
+    asset.failureReasons = intelligence.failure.reasons;
+    asset.disposalReadinessScore = intelligence.disposal.score;
+    asset.disposalRecommendation = intelligence.disposal.recommendation;
+    asset.disposalBreakdown = intelligence.disposal.breakdown;
+    asset.executiveRecommendation = intelligence.executive.headline;
+    asset.executiveConfidence = intelligence.executive.confidence;
+    asset.intelligenceLastCalculatedAt = new Date();
+    await asset.save();
 
     await AssetLocationEvent.create({
       assetId: asset.id, locationId: asset.currentLocationId,

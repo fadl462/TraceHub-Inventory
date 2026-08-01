@@ -4,8 +4,31 @@ const {
   CustomFieldDefinition, Location, AssetLocationEvent, Assignment,
 } = require('../models');
 const { estimateDepreciation } = require('../utils/depreciationEngine');
+const { runFullIntelligenceAnalysis } = require('../utils/assetIntelligence');
 const { generateAssetTag, generateQrToken, generateQrDataUrl } = require('../utils/qrTag');
 const { logAction } = require('../middleware/audit');
+
+// The full Asset Intelligence Engine field set - whitelisted here once so
+// createAsset/updateAsset can both accept any subset of them without
+// repeating ~40 field names in two places.
+const INTELLIGENCE_FIELDS = [
+  'barcode', 'rfidTag', 'supplier', 'warrantyExpiry', 'expectedResidualValue', 'department',
+  'country', 'building', 'room', 'gpsLat', 'gpsLng',
+  'hoursUsed', 'operatingCycles', 'mileage', 'distanceTravelled', 'fuelUsage', 'energyConsumption',
+  'maintenanceCount', 'repairCount', 'downtimeHours', 'idleTimeHours', 'failureCount', 'accidentCount',
+  'inspectionScore', 'calibrationStatus',
+  'installationCost', 'transportCost', 'insuranceCost', 'taxesCost', 'importDutiesCost',
+  'maintenanceCostTotal', 'repairCostTotal', 'operationalCostTotal', 'currentMarketValue', 'currentReplacementCost',
+  'humidity', 'temperature', 'dustExposure', 'outdoorExposure', 'chemicalExposure', 'corrosionRisk', 'weatherConditions',
+  'userRating', 'technicianRating', 'assetReliability', 'usageIntensity', 'abuseScore', 'criticalityScore',
+  'maintenanceCompliance', 'resaleDemand', 'depreciationMethod', 'unitsProductionCapacity',
+];
+
+function pickIntelligenceFields(body) {
+  const picked = {};
+  INTELLIGENCE_FIELDS.forEach((f) => { if (body[f] !== undefined) picked[f] = body[f] === '' ? null : body[f]; });
+  return picked;
+}
 
 async function getProfileForCategory(categoryId) {
   if (!categoryId) return null;
@@ -27,7 +50,31 @@ async function computeAndApplyDepreciation(asset) {
   asset.aiSuggestedDisposalDate = result.suggestedDisposalDate;
   asset.aiEstimatedCurrentValue = result.currentValue;
   asset.aiLastCalculatedAt = new Date();
-  return result;
+
+  // Full Asset Intelligence Engine (health, failure risk, disposal readiness,
+  // executive recommendation) - a superset computed alongside the simpler
+  // depreciation-only result above, which many existing views still read.
+  const intelligence = runFullIntelligenceAnalysis(asset, profile);
+  asset.healthScore = intelligence.health.score;
+  asset.healthBreakdown = intelligence.health.breakdown;
+  asset.failureProbability30d = intelligence.failure.probability30d;
+  asset.failureProbability90d = intelligence.failure.probability90d;
+  asset.failureProbability180d = intelligence.failure.probability180d;
+  asset.failureReasons = intelligence.failure.reasons;
+  asset.disposalReadinessScore = intelligence.disposal.score;
+  asset.disposalRecommendation = intelligence.disposal.recommendation;
+  asset.disposalBreakdown = intelligence.disposal.breakdown;
+  asset.executiveRecommendation = intelligence.executive.headline;
+  asset.executiveConfidence = intelligence.executive.confidence;
+  asset.intelligenceLastCalculatedAt = new Date();
+
+  // If the ai_adaptive depreciation method is selected, its (potentially
+  // richer, condition-aware) current value supersedes the simple estimate
+  if (asset.depreciationMethod && asset.depreciationMethod !== 'straight_line') {
+    asset.aiEstimatedCurrentValue = intelligence.depreciation.currentValue;
+  }
+
+  return { ...result, intelligence };
 }
 
 async function createAsset(req, res, next) {
@@ -64,12 +111,11 @@ async function createAsset(req, res, next) {
       currentLocationId: currentLocationId || null,
       condition: condition || 'good',
       photoUrl,
+      ...pickIntelligenceFields(req.body),
     });
 
-    if (purchasePrice) {
-      await computeAndApplyDepreciation(asset);
-      await asset.save();
-    }
+    await computeAndApplyDepreciation(asset);
+    await asset.save();
 
     if (Array.isArray(customFields)) {
       for (const cf of customFields) {
@@ -173,18 +219,19 @@ async function updateAsset(req, res, next) {
       'name', 'description', 'categoryId', 'serialNumber', 'brand', 'model', 'color',
       'manufactureYear', 'purchaseDate', 'purchasePrice', 'currency',
       'lifeExpectancyYearsOverride', 'freeTextLocation', 'condition', 'photoUrl', 'status',
+      ...INTELLIGENCE_FIELDS,
     ];
     let depreciationInputsChanged = false;
     for (const f of fields) {
       if (req.body[f] !== undefined) {
-        if (['purchasePrice', 'manufactureYear', 'purchaseDate', 'categoryId', 'lifeExpectancyYearsOverride'].includes(f)) {
+        if (['purchasePrice', 'manufactureYear', 'purchaseDate', 'categoryId', 'lifeExpectancyYearsOverride', ...INTELLIGENCE_FIELDS].includes(f)) {
           depreciationInputsChanged = true;
         }
-        asset[f] = req.body[f];
+        asset[f] = req.body[f] === '' ? null : req.body[f];
       }
     }
 
-    if (depreciationInputsChanged && asset.purchasePrice) {
+    if (depreciationInputsChanged) {
       await computeAndApplyDepreciation(asset);
     }
 

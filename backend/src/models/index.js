@@ -26,6 +26,7 @@ const Coupon = require('./coupon')(sequelize, DataTypes);
 const PlatformSettings = require('./platformSettings')(sequelize, DataTypes);
 const NewsletterSubscriber = require('./newsletterSubscriber')(sequelize, DataTypes);
 const BlogPost = require('./blogPost')(sequelize, DataTypes);
+const DisposalCase = require('./disposalCase')(sequelize, DataTypes);
 
 // ---------------------------------------------------------------------------
 // Associations
@@ -85,6 +86,14 @@ AssetLocationEvent.belongsTo(Location, { foreignKey: 'locationId' });
 User.hasMany(AssetLocationEvent, { foreignKey: 'scannedByUserId' });
 AssetLocationEvent.belongsTo(User, { foreignKey: 'scannedByUserId', as: 'scannedBy' });
 
+Asset.hasMany(DisposalCase, { foreignKey: 'assetId', onDelete: 'CASCADE' });
+DisposalCase.belongsTo(Asset, { foreignKey: 'assetId' });
+DisposalCase.belongsTo(Company, { foreignKey: 'companyId' });
+DisposalCase.belongsTo(User, { foreignKey: 'initiatedByUserId', as: 'initiatedBy' });
+DisposalCase.belongsTo(User, { foreignKey: 'managerReviewedByUserId', as: 'managerReviewer' });
+DisposalCase.belongsTo(User, { foreignKey: 'financeReviewedByUserId', as: 'financeReviewer' });
+DisposalCase.belongsTo(User, { foreignKey: 'approvedByUserId', as: 'approver' });
+
 // Asset <-> Assignments
 Asset.hasMany(Assignment, { foreignKey: 'assetId', onDelete: 'CASCADE' });
 Assignment.belongsTo(Asset, { foreignKey: 'assetId' });
@@ -138,4 +147,5 @@ module.exports = {
   PlatformSettings,
   NewsletterSubscriber,
   BlogPost,
+  DisposalCase,
 };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Download, Archive, UserPlus, MapPin, Sparkles, Clock } from 'lucide-react';
+import { Download, Archive, UserPlus, MapPin, Sparkles, Clock, Activity, AlertTriangle, TrendingDown, Flag } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Badge, statusTone, Spinner } from '../../components/ui';
 
@@ -39,6 +39,15 @@ export default function AssetDetail() {
       navigate('/assets');
     } catch (err) {
       toast.error(err.response?.data?.error || 'Failed to archive');
+    }
+  };
+
+  const flagForDisposal = async () => {
+    try {
+      await client.post('/disposal-cases', { assetId: id, notes: `Flagged from engine recommendation: ${asset.disposalRecommendation}` });
+      toast.success('Disposal case opened - visible under Disposal cases');
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Failed to open disposal case');
     }
   };
 
@@ -96,6 +105,67 @@ export default function AssetDetail() {
             </div>
           )}
 
+          {asset.healthScore != null && (
+            <div className="rounded-lg border border-primary-100 p-4 space-y-5">
+              <div className="flex items-center justify-between">
+                <p className="font-medium text-ink text-sm flex items-center gap-2"><Activity size={16} className="text-primary" /> Asset Intelligence Engine</p>
+                {asset.executiveConfidence != null && (
+                  <span className="text-xs text-ink/50">{asset.executiveConfidence}% confidence</span>
+                )}
+              </div>
+
+              {asset.executiveRecommendation && (
+                <div className="bg-primary-800 text-white rounded-lg p-3.5">
+                  <p className="text-sm leading-relaxed">{asset.executiveRecommendation}</p>
+                </div>
+              )}
+
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-ink/50">Health score</p>
+                    <span className="text-lg font-bold text-ink">{asset.healthScore}%</span>
+                  </div>
+                  {asset.healthBreakdown && (
+                    <div className="space-y-1.5">
+                      {Object.entries(asset.healthBreakdown).map(([k, v]) => <ScoreBar key={k} label={k} value={v} />)}
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-ink/50 flex items-center gap-1"><AlertTriangle size={12} /> Failure risk</p>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 text-center mb-2">
+                    <FailureStat label="30 days" value={asset.failureProbability30d} />
+                    <FailureStat label="90 days" value={asset.failureProbability90d} />
+                    <FailureStat label="180 days" value={asset.failureProbability180d} />
+                  </div>
+                  {Array.isArray(asset.failureReasons) && asset.failureReasons.length > 0 && (
+                    <ul className="text-xs text-ink/60 space-y-0.5 list-disc list-inside">
+                      {asset.failureReasons.slice(0, 3).map((r) => <li key={r}>{r}</li>)}
+                    </ul>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between border-t border-primary-50 pt-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-ink/50 flex items-center gap-1 mb-1"><TrendingDown size={12} /> Disposal readiness</p>
+                  <p className="text-sm text-ink">
+                    <span className="font-bold">{asset.disposalReadinessScore}%</span>
+                    {' '}&mdash;{' '}
+                    <span className="font-medium">{asset.disposalRecommendation}</span>
+                  </p>
+                </div>
+                {['SELL', 'SCRAP', 'REPLACE', 'REPAIR'].includes(asset.disposalRecommendation) && (
+                  <Button variant="outline" onClick={flagForDisposal}><Flag size={15} /> Flag for disposal</Button>
+                )}
+              </div>
+            </div>
+          )}
+
           <div>
             <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><Clock size={15} /> Recent assignments</h4>
             {asset.Assignments?.length ? (
@@ -143,6 +213,31 @@ function Detail({ label, value }) {
     <div>
       <p className="text-xs text-ink/40">{label}</p>
       <p className="text-ink font-medium capitalize">{value}</p>
+    </div>
+  );
+}
+
+function ScoreBar({ label, value }) {
+  const color = value >= 75 ? 'bg-accent' : value >= 50 ? 'bg-amber-400' : 'bg-red-400';
+  return (
+    <div>
+      <div className="flex justify-between text-xs mb-0.5">
+        <span className="capitalize text-ink/60">{label}</span>
+        <span className="text-ink/70 font-medium">{value}</span>
+      </div>
+      <div className="h-1.5 rounded-full bg-primary-50 overflow-hidden">
+        <div className={`h-full rounded-full ${color}`} style={{ width: `${value}%` }} />
+      </div>
+    </div>
+  );
+}
+
+function FailureStat({ label, value }) {
+  const tone = value >= 60 ? 'text-red-600' : value >= 30 ? 'text-amber-600' : 'text-accent-dark';
+  return (
+    <div className="rounded-lg bg-primary-50 py-2">
+      <p className={`text-base font-bold ${tone}`}>{value}%</p>
+      <p className="text-[10px] text-ink/50">{label}</p>
     </div>
   );
 }
