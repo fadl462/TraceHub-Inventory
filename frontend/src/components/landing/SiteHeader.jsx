@@ -1,17 +1,41 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import TraceHubMark from '../TraceHubMark';
 import { useAuth } from '../../context/AuthContext';
 
+const SECTIONS = [
+  { id: 'how-it-works', label: 'How it works' },
+  { id: 'features', label: 'Features' },
+  { id: 'pricing', label: 'Pricing' },
+];
+
 export default function SiteHeader() {
   const { user } = useAuth();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const onLanding = pathname === '/';
+
+  // From another page, go home first, then scroll to the section once the
+  // landing page has actually mounted (avoids relying on URL hash fragments,
+  // which triggered an HTTP 404 through this environment's proxy).
+  const goToSection = (id) => (e) => {
+    if (onLanding) return; // let the plain <a href="#id"> handle it natively
+    e.preventDefault();
+    navigate('/');
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
     <header className="sticky top-0 z-40 bg-surface/80 backdrop-blur border-b border-ink/5">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/"><TraceHubMark size={30} withWordmark /></Link>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/70">
-          <Link to="/#how-it-works" className="hover:text-ink transition-colors">How it works</Link>
-          <Link to="/#features" className="hover:text-ink transition-colors">Features</Link>
-          <Link to="/#pricing" className="hover:text-ink transition-colors">Pricing</Link>
+          {SECTIONS.map((s) => (
+            <a key={s.id} href={`#${s.id}`} onClick={goToSection(s.id)} className="hover:text-ink transition-colors">
+              {s.label}
+            </a>
+          ))}
           <Link to="/blog" className="hover:text-ink transition-colors">Blog</Link>
         </nav>
         {user ? (
