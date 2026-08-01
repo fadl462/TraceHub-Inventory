@@ -20,6 +20,7 @@ import AssetCreate from './pages/assets/AssetCreate';
 import AssetDetail from './pages/assets/AssetDetail';
 import ScanPage from './pages/assets/ScanPage';
 import AssignmentsList from './pages/assignments/AssignmentsList';
+import DisposalCases from './pages/disposal/DisposalCases';
 import AssignmentCreate from './pages/assignments/AssignmentCreate';
 import LocationsPage from './pages/locations/LocationsPage';
 import ReportsPage from './pages/reports/ReportsPage';
@@ -71,6 +72,7 @@ export default function App() {
             <Route path="scan" element={<ScanPage />} />
             <Route path="assignments" element={<AssignmentsList />} />
             <Route path="assignments/new" element={<AssignmentCreate />} />
+            <Route path="disposal-cases" element={<DisposalCases />} />
             <Route path="locations" element={<LocationsPage />} />
             <Route path="reports" element={<ReportsPage />} />
             <Route path="team" element={<TeamPage />} />

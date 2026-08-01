@@ -142,6 +142,99 @@ export default function Dashboard() {
           </div>
         </div>
       </Card>
+
+      <IntelligenceKpiSection currency={company?.currency || 'USD'} />
     </div>
+  );
+}
+
+function IntelligenceKpiSection({ currency }) {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    client.get('/reports/intelligence-overview').then(({ data }) => setData(data)).catch(() => {});
+  }, []);
+
+  if (!data) return null;
+
+  const chips = [
+    { label: 'Healthy assets', value: data.healthyCount, tone: 'accent' },
+    { label: 'Critical assets', value: data.criticalCount, tone: data.criticalCount > 0 ? 'danger' : 'primary' },
+    { label: 'Near disposal', value: data.nearDisposalCount, tone: data.nearDisposalCount > 0 ? 'warning' : 'primary' },
+    { label: 'Due maintenance', value: data.dueMaintenanceCount, tone: 'primary' },
+    { label: 'Warranty expiring (60d)', value: data.warrantyExpiringCount, tone: 'primary' },
+    { label: 'Idle assets', value: data.idleCount, tone: 'primary' },
+  ];
+  const chipTones = {
+    accent: 'bg-green-50 text-accent-dark', danger: 'bg-red-50 text-red-600',
+    warning: 'bg-amber-50 text-amber-600', primary: 'bg-primary-50 text-primary',
+  };
+
+  return (
+    <>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        {chips.map((c) => (
+          <div key={c.label} className={`rounded-xl p-4 ${chipTones[c.tone]}`}>
+            <p className="text-2xl font-bold">{c.value}</p>
+            <p className="text-xs mt-0.5 opacity-80">{c.label}</p>
+          </div>
+        ))}
+      </div>
+
+      <Card className="p-5">
+        <h3 className="font-semibold text-ink mb-4">Depreciation &amp; replacement projections</h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div>
+            <p className="text-xs text-ink/50">Depreciation today</p>
+            <p className="text-lg font-bold text-ink">{currency} {Number(data.depreciationToday).toLocaleString()}</p>
+          </div>
+          <div>
+            <p className="text-xs text-ink/50">Monthly asset loss</p>
+            <p className="text-lg font-bold text-ink">{currency} {Number(data.monthlyAssetLoss).toLocaleString()}</p>
+          </div>
+          <div>
+            <p className="text-xs text-ink/50">Replacement budget needed</p>
+            <p className="text-lg font-bold text-primary">{currency} {Number(data.replacementBudget).toLocaleString()}</p>
+          </div>
+          <div>
+            <p className="text-xs text-ink/50">Projected disposal cost</p>
+            <p className="text-lg font-bold text-ink">{currency} {Number(data.projectedDisposalCost).toLocaleString()}</p>
+          </div>
+        </div>
+      </Card>
+
+      <div className="grid lg:grid-cols-3 gap-4">
+        <RankedList title="Most valuable assets" items={data.mostValuable} currency={currency} valueKey="aiEstimatedCurrentValue" />
+        <RankedList title="Most repaired assets" items={data.mostRepaired} currency={currency} valueKey="repairCount" suffix=" repairs" />
+        <RankedList title="Most expensive to maintain" items={data.mostExpensiveToMaintain} currency={currency} valueKey={(a) => Number(a.maintenanceCostTotal || 0) + Number(a.repairCostTotal || 0)} />
+      </div>
+    </>
+  );
+}
+
+function RankedList({ title, items, currency, valueKey, suffix = '' }) {
+  return (
+    <Card className="p-5">
+      <h3 className="font-semibold text-ink mb-3 text-sm">{title}</h3>
+      {!items || items.length === 0 ? (
+        <p className="text-sm text-ink/50 py-6 text-center">No data yet.</p>
+      ) : (
+        <ul className="space-y-2.5">
+          {items.map((a) => {
+            const value = typeof valueKey === 'function' ? valueKey(a) : a[valueKey];
+            return (
+              <li key={a.id}>
+                <Link to={`/assets/${a.id}`} className="flex items-center justify-between text-sm group">
+                  <span className="text-ink/80 group-hover:text-primary transition-colors truncate pr-2">{a.name}</span>
+                  <span className="font-medium text-ink shrink-0">
+                    {suffix ? `${value}${suffix}` : `${currency} ${Number(value).toLocaleString()}`}
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </Card>
   );
 }

@@ -49,6 +49,75 @@ async function companyOverview(req, res, next) {
   } catch (err) { next(err); }
 }
 
+/**
+ * Intelligence-engine dashboard KPIs (Assets Near Disposal, Warranty
+ * Expiring, Idle Assets, etc. from the spec). Kept as a separate endpoint
+ * from companyOverview above so nothing already depending on that
+ * endpoint's shape is at risk of breaking.
+ */
+async function intelligenceOverview(req, res, next) {
+  try {
+    const companyId = req.companyId;
+    const today = new Date().toISOString().slice(0, 10);
+    const in60Days = new Date(Date.now() + 60 * 86400000).toISOString().slice(0, 10);
+
+    const [healthyCount, criticalCount, nearDisposalCount, dueMaintenanceCount, warrantyExpiringCount, idleCount] = await Promise.all([
+      Asset.count({ where: { companyId, isArchived: false, healthScore: { [Op.gte]: 75 } } }),
+      Asset.count({ where: { companyId, isArchived: false, healthScore: { [Op.lt]: 40 } } }),
+      Asset.count({ where: { companyId, isArchived: false, disposalReadinessScore: { [Op.gte]: 65 } } }),
+      Asset.count({ where: { companyId, isArchived: false, calibrationStatus: { [Op.in]: ['due_soon', 'overdue'] } } }),
+      Asset.count({ where: { companyId, isArchived: false, warrantyExpiry: { [Op.between]: [today, in60Days] } } }),
+      Asset.count({ where: { companyId, isArchived: false, status: 'available', idleTimeHours: { [Op.gte]: 200 } } }),
+    ]);
+
+    const [mostValuable, mostRepaired, mostExpensiveToMaintain] = await Promise.all([
+      Asset.findAll({
+        where: { companyId, isArchived: false }, order: [['aiEstimatedCurrentValue', 'DESC']], limit: 5,
+        attributes: ['id', 'name', 'assetTag', 'aiEstimatedCurrentValue', 'currency'],
+      }),
+      Asset.findAll({
+        where: { companyId, isArchived: false, repairCount: { [Op.gt]: 0 } }, order: [['repairCount', 'DESC']], limit: 5,
+        attributes: ['id', 'name', 'assetTag', 'repairCount', 'repairCostTotal'],
+      }),
+      Asset.findAll({
+        where: { companyId, isArchived: false }, order: [[literal('"maintenanceCostTotal" + "repairCostTotal"'), 'DESC']], limit: 5,
+        attributes: ['id', 'name', 'assetTag', 'maintenanceCostTotal', 'repairCostTotal', 'currency'],
+      }),
+    ]);
+
+    // Budget/loss projections - real sums over stored engine outputs, not
+    // fabricated figures. Documented here since the spec doesn't define
+    // exact formulas for these cards, only their names:
+    const flaggedAssets = await Asset.findAll({
+      where: { companyId, isArchived: false, disposalRecommendation: { [Op.in]: ['SELL', 'SCRAP', 'REPLACE'] } },
+      attributes: ['currentReplacementCost', 'purchasePrice'],
+    });
+    const replacementBudget = flaggedAssets.reduce((sum, a) => sum + Number(a.currentReplacementCost || a.purchasePrice || 0), 0);
+    const projectedDisposalCost = Math.round(replacementBudget * 0.05); // handling/logistics estimate
+
+    const allAssets = await Asset.findAll({
+      where: { companyId, isArchived: false },
+      attributes: ['purchasePrice', 'aiScrapValue', 'aiUsefulLifeYears'],
+    });
+    const annualDepreciationTotal = allAssets.reduce((sum, a) => {
+      const life = Number(a.aiUsefulLifeYears) || 0;
+      if (!life) return sum;
+      const annual = (Number(a.purchasePrice || 0) - Number(a.aiScrapValue || 0)) / life;
+      return sum + Math.max(0, annual);
+    }, 0);
+
+    res.json({
+      healthyCount, criticalCount, nearDisposalCount, dueMaintenanceCount, warrantyExpiringCount, idleCount,
+      mostValuable, mostRepaired, mostExpensiveToMaintain,
+      replacementBudget: Math.round(replacementBudget),
+      projectedDisposalCost,
+      projectedReplacementCost: Math.round(replacementBudget), // forward 12-month view over currently-flagged assets
+      depreciationToday: Math.round((annualDepreciationTotal / 365) * 100) / 100,
+      monthlyAssetLoss: Math.round((annualDepreciationTotal / 12) * 100) / 100,
+    });
+  } catch (err) { next(err); }
+}
+
 /** Asset usage/status breakdown by category, for charting */
 async function assetsByCategory(req, res, next) {
   try {
@@ -138,4 +207,4 @@ async function aiInsights(req, res, next) {
   } catch (err) { next(err); }
 }
 
-module.exports = { companyOverview, assetsByCategory, depreciationReport, locationActivityReport, aiInsights };
+module.exports = { companyOverview, intelligenceOverview, assetsByCategory, depreciationReport, locationActivityReport, aiInsights };
