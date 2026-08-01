@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Input, Select } from '../../components/ui';
 
@@ -10,10 +10,17 @@ export default function AssetCreate() {
   const [categories, setCategories] = useState([]);
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const [form, setForm] = useState({
     name: '', categoryId: '', brand: '', model: '', color: '', serialNumber: '',
     manufactureYear: '', purchaseDate: '', purchasePrice: '', condition: 'good',
     currentLocationId: '', freeTextLocation: '', description: '',
+    // Intelligence Engine inputs - all optional, drive the health/failure/disposal scores
+    depreciationMethod: 'straight_line', warrantyExpiry: '', currentMarketValue: '', currentReplacementCost: '',
+    hoursUsed: '', maintenanceCount: '', repairCount: '', failureCount: '', inspectionScore: '',
+    maintenanceCostTotal: '', repairCostTotal: '',
+    usageIntensity: 'normal', assetReliability: '', maintenanceCompliance: '', criticalityScore: '',
+    corrosionRisk: 'low', dustExposure: 'low', resaleDemand: 'moderate',
   });
 
   useEffect(() => {
@@ -109,6 +116,86 @@ export default function AssetCreate() {
               value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })}
             />
           </label>
+
+          <div className="border border-primary-100 rounded-lg overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setShowAdvanced(!showAdvanced)}
+              className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-ink bg-primary-50/50 hover:bg-primary-50"
+            >
+              <span className="flex items-center gap-2"><Sparkles size={15} className="text-primary" /> Asset Intelligence Engine data (optional)</span>
+              {showAdvanced ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+            {showAdvanced && (
+              <div className="p-4 space-y-5">
+                <p className="text-xs text-ink/50 -mt-1">
+                  None of this is required to register the asset. The more you fill in, the more
+                  accurate the health, failure-risk, and disposal recommendations will be \u2014 and the
+                  higher the AI confidence score. This covers the fields with the most direct impact
+                  on those scores, not every field the engine can use.
+                </p>
+
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-2">Depreciation</p>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <Select label="Depreciation method" value={form.depreciationMethod} onChange={(e) => setForm({ ...form, depreciationMethod: e.target.value })}>
+                      <option value="straight_line">Straight line</option>
+                      <option value="reducing_balance">Reducing balance</option>
+                      <option value="double_declining_balance">Double declining balance</option>
+                      <option value="sum_of_years_digits">Sum of years' digits</option>
+                      <option value="ai_adaptive">AI Adaptive (factors in usage, maintenance, environment)</option>
+                    </Select>
+                    <Input label="Warranty expiry" type="date" value={form.warrantyExpiry} onChange={(e) => setForm({ ...form, warrantyExpiry: e.target.value })} />
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-2">Operational history</p>
+                  <div className="grid sm:grid-cols-3 gap-4">
+                    <Input label="Hours used" type="number" value={form.hoursUsed} onChange={(e) => setForm({ ...form, hoursUsed: e.target.value })} />
+                    <Input label="Maintenance count" type="number" value={form.maintenanceCount} onChange={(e) => setForm({ ...form, maintenanceCount: e.target.value })} />
+                    <Input label="Repair count" type="number" value={form.repairCount} onChange={(e) => setForm({ ...form, repairCount: e.target.value })} />
+                    <Input label="Failure count" type="number" value={form.failureCount} onChange={(e) => setForm({ ...form, failureCount: e.target.value })} />
+                    <Input label="Latest inspection score (0-100)" type="number" min="0" max="100" value={form.inspectionScore} onChange={(e) => setForm({ ...form, inspectionScore: e.target.value })} />
+                    <Select label="Usage intensity" value={form.usageIntensity} onChange={(e) => setForm({ ...form, usageIntensity: e.target.value })}>
+                      <option value="light">Light</option>
+                      <option value="normal">Normal</option>
+                      <option value="heavy">Heavy</option>
+                      <option value="extreme">Extreme</option>
+                    </Select>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-2">Financial (beyond purchase price)</p>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <Input label="Total maintenance cost to date" type="number" step="0.01" value={form.maintenanceCostTotal} onChange={(e) => setForm({ ...form, maintenanceCostTotal: e.target.value })} />
+                    <Input label="Total repair cost to date" type="number" step="0.01" value={form.repairCostTotal} onChange={(e) => setForm({ ...form, repairCostTotal: e.target.value })} />
+                    <Input label="Current market value" type="number" step="0.01" value={form.currentMarketValue} onChange={(e) => setForm({ ...form, currentMarketValue: e.target.value })} />
+                    <Input label="Current replacement cost" type="number" step="0.01" value={form.currentReplacementCost} onChange={(e) => setForm({ ...form, currentReplacementCost: e.target.value })} />
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-2">Condition &amp; environment</p>
+                  <div className="grid sm:grid-cols-3 gap-4">
+                    <Input label="Reliability score (0-100)" type="number" min="0" max="100" value={form.assetReliability} onChange={(e) => setForm({ ...form, assetReliability: e.target.value })} />
+                    <Input label="Maintenance compliance (0-100)" type="number" min="0" max="100" value={form.maintenanceCompliance} onChange={(e) => setForm({ ...form, maintenanceCompliance: e.target.value })} />
+                    <Input label="Criticality to operations (0-100)" type="number" min="0" max="100" value={form.criticalityScore} onChange={(e) => setForm({ ...form, criticalityScore: e.target.value })} />
+                    <Select label="Corrosion risk" value={form.corrosionRisk} onChange={(e) => setForm({ ...form, corrosionRisk: e.target.value })}>
+                      <option value="low">Low</option><option value="moderate">Moderate</option><option value="high">High</option>
+                    </Select>
+                    <Select label="Dust exposure" value={form.dustExposure} onChange={(e) => setForm({ ...form, dustExposure: e.target.value })}>
+                      <option value="low">Low</option><option value="moderate">Moderate</option><option value="high">High</option>
+                    </Select>
+                    <Select label="Resale demand" value={form.resaleDemand} onChange={(e) => setForm({ ...form, resaleDemand: e.target.value })}>
+                      <option value="low">Low</option><option value="moderate">Moderate</option><option value="high">High</option>
+                    </Select>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
 
           <div className="flex justify-end gap-3 pt-2">
             <Button type="button" variant="outline" onClick={() => navigate(-1)}>Cancel</Button>
