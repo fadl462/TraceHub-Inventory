@@ -9,6 +9,7 @@ const plans = require('./plans');
 const testimonials = require('./testimonials');
 const faqs = require('./faqs');
 const footerLinks = require('./footerLinks');
+const { seedDemoCompany, DEMO_PASSWORD } = require('./demoData');
 
 async function seed() {
   console.log('Connecting to database and syncing schema...');
@@ -80,6 +81,10 @@ async function seed() {
   } else {
     console.log('  Super Admin already exists.');
   }
+
+  console.log('Seeding demo company with sample assets, users, and assignments...');
+  await seedDemoCompany();
+  console.log(`  Demo accounts all use password: ${DEMO_PASSWORD}`);
 
   console.log('\nSeeding complete.');
   process.exit(0);

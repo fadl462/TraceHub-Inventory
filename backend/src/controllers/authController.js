@@ -224,7 +224,7 @@ async function me(req, res) {
 }
 
 function sanitizeUser(user) {
-  const { passwordHash, ...rest } = user.toJSON();
+  const { passwordHash, twoFactorSecret, ...rest } = user.toJSON();
   return rest;
 }
 

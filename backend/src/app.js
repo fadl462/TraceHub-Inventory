@@ -25,6 +25,7 @@ const footerLinkRoutes = require('./routes/footerLinkRoutes');
 const cmsPageRoutes = require('./routes/cmsPageRoutes');
 const couponRoutes = require('./routes/couponRoutes');
 const platformSettingsRoutes = require('./routes/platformSettingsRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
@@ -67,6 +68,7 @@ app.use('/api/footer-links', footerLinkRoutes);
 app.use('/api/cms-pages', cmsPageRoutes);
 app.use('/api/coupons', couponRoutes);
 app.use('/api/platform-settings', platformSettingsRoutes);
+app.use('/api/ai', aiRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

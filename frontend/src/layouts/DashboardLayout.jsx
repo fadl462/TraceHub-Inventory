@@ -7,6 +7,8 @@ import {
 import { useAuth } from '../context/AuthContext';
 import client from '../api/client';
 import TraceHubMark from '../components/TraceHubMark';
+import { useScrollToTop } from '../hooks/useScrollToTop';
+import AiChatWidget from '../components/AiChatWidget';
 
 const NAV_ITEMS = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, roles: ['company_admin', 'manager', 'staff'] },
@@ -23,6 +25,7 @@ const NAV_ITEMS = [
 export default function DashboardLayout() {
   const { user, company, logout } = useAuth();
   const navigate = useNavigate();
+  const mainRef = useScrollToTop();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
   const [notifications, setNotifications] = useState([]);
@@ -116,10 +119,11 @@ export default function DashboardLayout() {
             )}
           </div>
         </header>
-        <main className="flex-1 p-4 sm:p-6 max-w-[1400px] w-full mx-auto">
+        <main ref={mainRef} className="flex-1 p-4 sm:p-6 max-w-[1400px] w-full mx-auto">
           <Outlet />
         </main>
       </div>
+      <AiChatWidget />
     </div>
   );
 }

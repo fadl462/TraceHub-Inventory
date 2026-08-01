@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ScanLine, Sparkles, ShieldCheck, BarChart3, CalendarClock, CreditCard,
-  ArrowRight, Check, QrCode, ChevronDown,
+  ArrowRight, Check, QrCode,
 } from 'lucide-react';
 import TraceHubMark from '../components/TraceHubMark';
+import AiChatWidget from '../components/AiChatWidget';
 import RadarLocateVisual from '../components/landing/RadarLocateVisual';
 import ScanIllustration from '../components/landing/ScanIllustration';
 import TrackedAssetsIllustration from '../components/landing/TrackedAssetsIllustration';
@@ -363,28 +364,37 @@ function Testimonials({ items }) {
   );
 }
 
-function FaqItem({ q, a }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-ink/5 py-5">
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between text-left gap-4">
-        <span className="font-medium text-ink">{q}</span>
-        <ChevronDown size={18} className={`text-ink/40 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
-      </button>
-      {open && <p className="mt-3 text-sm text-ink/60 leading-relaxed pr-8">{a}</p>}
-    </div>
-  );
-}
-
-function Faq({ items }) {
-  if (!items || items.length === 0) return null;
+function AiAssistantSection({ faqs, onOpenChat }) {
+  const prompts = (faqs || []).slice(0, 3).map((f) => f.question);
   return (
     <section className="bg-primary-50 py-24">
-      <div className="max-w-3xl mx-auto px-6">
-        <h2 className="font-display text-3xl font-bold text-ink tracking-tight text-center">Frequently asked questions</h2>
-        <div className="mt-10">
-          {items.map((f) => <FaqItem key={f.id} q={f.question} a={f.answer} />)}
-        </div>
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        <span className="inline-flex items-center gap-1.5 text-xs font-mono font-medium tracking-widest uppercase text-primary bg-primary/10 px-3 py-1.5 rounded-full">
+          <Sparkles size={13} /> AI assistant
+        </span>
+        <h2 className="mt-5 font-display text-3xl font-bold text-ink tracking-tight">Have a question? Just ask.</h2>
+        <p className="mt-3 text-ink/60 leading-relaxed max-w-md mx-auto">
+          Skip the FAQ scavenger hunt \u2014 our AI assistant knows TraceHub inside out and answers in seconds.
+        </p>
+        <button
+          onClick={onOpenChat}
+          className="mt-7 inline-flex items-center gap-2 bg-primary text-white font-semibold px-6 py-3.5 rounded-lg hover:bg-primary-600 transition-colors"
+        >
+          <Sparkles size={17} /> Chat with the assistant
+        </button>
+        {prompts.length > 0 && (
+          <div className="mt-6 flex flex-wrap justify-center gap-2">
+            {prompts.map((q) => (
+              <button
+                key={q}
+                onClick={onOpenChat}
+                className="text-xs font-medium text-ink/60 bg-white border border-ink/10 hover:border-primary/30 px-3 py-1.5 rounded-full transition-colors"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
@@ -449,6 +459,7 @@ export default function Landing() {
   const [testimonials, setTestimonials] = useState([]);
   const [faqs, setFaqs] = useState([]);
   const [footerLinks, setFooterLinks] = useState([]);
+  const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => {
     client.get('/site-content').then(({ data }) => setContent(data.content)).catch(() => {});
@@ -470,9 +481,10 @@ export default function Landing() {
       <TrackedOperations />
       <Pricing plans={plans} />
       <Testimonials items={testimonials} />
-      <Faq items={faqs} />
+      <AiAssistantSection faqs={faqs} onOpenChat={() => setChatOpen(true)} />
       <FinalCTA content={content} />
       <Footer content={content} links={footerLinks} />
+      <AiChatWidget quickPrompts={faqs.slice(0, 3).map((f) => f.question)} isOpen={chatOpen} onOpenChange={setChatOpen} />
     </div>
   );
 }

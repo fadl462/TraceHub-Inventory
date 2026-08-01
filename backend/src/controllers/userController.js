@@ -7,7 +7,7 @@ const { sendMail } = require('../utils/mailer');
 const { logAction } = require('../middleware/audit');
 
 function sanitize(user) {
-  const { passwordHash, ...rest } = user.toJSON();
+  const { passwordHash, twoFactorSecret, ...rest } = user.toJSON();
   return rest;
 }
 

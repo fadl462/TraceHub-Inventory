@@ -5,6 +5,8 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import TraceHubMark from '../components/TraceHubMark';
+import { useScrollToTop } from '../hooks/useScrollToTop';
+import AiChatWidget from '../components/AiChatWidget';
 
 const NAV_GROUPS = [
   {
@@ -44,6 +46,7 @@ const NAV_GROUPS = [
 
 export default function SuperAdminLayout() {
   const { user, logout } = useAuth();
+  const mainRef = useScrollToTop();
   return (
     <div className="min-h-screen bg-surface flex">
       <aside className="w-64 bg-primary-900 text-white flex flex-col">
@@ -81,9 +84,10 @@ export default function SuperAdminLayout() {
           </div>
         </div>
       </aside>
-      <main className="flex-1 p-6 max-w-[1400px] mx-auto w-full overflow-y-auto">
+      <main ref={mainRef} className="flex-1 p-6 max-w-[1400px] mx-auto w-full overflow-y-auto">
         <Outlet />
       </main>
+      <AiChatWidget />
     </div>
   );
 }
