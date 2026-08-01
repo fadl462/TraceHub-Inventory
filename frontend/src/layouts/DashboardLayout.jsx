@@ -9,6 +9,8 @@ import client from '../api/client';
 import TraceHubMark from '../components/TraceHubMark';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 import AiChatWidget from '../components/AiChatWidget';
+import { useTheme } from '../context/ThemeContext';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 
 const NAV_ITEMS = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, roles: ['company_admin', 'manager', 'staff'] },
@@ -24,6 +26,7 @@ const NAV_ITEMS = [
 
 export default function DashboardLayout() {
   const { user, company, logout } = useAuth();
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const mainRef = useScrollToTop();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -48,7 +51,7 @@ export default function DashboardLayout() {
   const items = NAV_ITEMS.filter((i) => !user || i.roles.includes(user.role));
 
   return (
-    <div className="min-h-screen bg-surface flex">
+    <div className="th-app-shell min-h-screen flex" data-theme={theme}>
       {/* Sidebar */}
       <aside className={`fixed lg:static z-30 inset-y-0 left-0 w-64 bg-primary-800 text-white flex flex-col transition-transform ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
         <div className="h-16 flex items-center px-5 border-b border-white/10">
@@ -70,6 +73,9 @@ export default function DashboardLayout() {
             </NavLink>
           ))}
         </nav>
+        <div className="px-4 pb-1">
+          <ThemeSwitcher />
+        </div>
         <div className="p-3 border-t border-white/10">
           <div className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm">
             <div className="h-8 w-8 rounded-full bg-secondary flex items-center justify-center font-semibold text-primary-800 text-xs shrink-0">

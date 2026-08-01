@@ -16,15 +16,23 @@ export function Button({ children, variant = 'primary', className = '', ...props
 }
 
 export function Card({ children, className = '' }) {
-  return <div className={`bg-white rounded-xl2 shadow-card border border-primary-100/60 ${className}`}>{children}</div>;
+  return (
+    <div
+      className={`rounded-xl2 shadow-card border ${className}`}
+      style={{ background: 'rgb(var(--th-surface))', borderColor: 'rgb(var(--th-border))', color: 'rgb(var(--th-text))' }}
+    >
+      {children}
+    </div>
+  );
 }
 
 export function Input({ label, error, className = '', ...props }) {
   return (
     <label className="block">
-      {label && <span className="mb-1.5 block text-sm font-medium text-ink/80">{label}</span>}
+      {label && <span className="mb-1.5 block text-sm font-medium" style={{ color: 'rgb(var(--th-text-muted))' }}>{label}</span>}
       <input
-        className={`w-full rounded-lg border px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/40 focus-ring focus:border-secondary ${error ? 'border-red-400' : 'border-primary-100'} ${className}`}
+        className={`w-full rounded-lg border px-3.5 py-2.5 text-sm focus-ring focus:border-secondary ${error ? 'border-red-400' : ''} ${className}`}
+        style={{ background: 'rgb(var(--th-surface))', color: 'rgb(var(--th-text))', borderColor: error ? undefined : 'rgb(var(--th-border))' }}
         {...props}
       />
       {error && <span className="mt-1 block text-xs text-red-600">{error}</span>}
@@ -35,9 +43,10 @@ export function Input({ label, error, className = '', ...props }) {
 export function Select({ label, className = '', children, ...props }) {
   return (
     <label className="block">
-      {label && <span className="mb-1.5 block text-sm font-medium text-ink/80">{label}</span>}
+      {label && <span className="mb-1.5 block text-sm font-medium" style={{ color: 'rgb(var(--th-text-muted))' }}>{label}</span>}
       <select
-        className={`w-full rounded-lg border border-primary-100 px-3.5 py-2.5 text-sm text-ink focus-ring focus:border-secondary bg-white ${className}`}
+        className={`w-full rounded-lg border px-3.5 py-2.5 text-sm focus-ring focus:border-secondary ${className}`}
+        style={{ background: 'rgb(var(--th-surface))', color: 'rgb(var(--th-text))', borderColor: 'rgb(var(--th-border))' }}
         {...props}
       >
         {children}

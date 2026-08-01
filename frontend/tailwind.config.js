@@ -27,7 +27,7 @@ export default {
           dark: '#5CB93A',
         },
         surface: '#F4F7FA',
-        ink: '#2C2C2C',
+        ink: 'rgb(var(--th-text) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

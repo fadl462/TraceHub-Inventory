@@ -8,6 +8,8 @@ import TraceHubMark from '../components/TraceHubMark';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 import AiChatWidget from '../components/AiChatWidget';
 import GlobalSearchBar from '../components/superadmin/GlobalSearchBar';
+import { useTheme } from '../context/ThemeContext';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 
 const NAV_GROUPS = [
   {
@@ -48,9 +50,10 @@ const NAV_GROUPS = [
 
 export default function SuperAdminLayout() {
   const { user, logout } = useAuth();
+  const { theme } = useTheme();
   const mainRef = useScrollToTop();
   return (
-    <div className="min-h-screen bg-surface flex">
+    <div className="th-app-shell min-h-screen flex" data-theme={theme}>
       <aside className="w-64 bg-primary-900 text-white flex flex-col">
         <div className="h-16 flex items-center px-5 border-b border-white/10 shrink-0">
           <Link to="/" title="Back to homepage">
@@ -76,6 +79,9 @@ export default function SuperAdminLayout() {
             </div>
           ))}
         </nav>
+        <div className="px-4 pb-1 shrink-0">
+          <ThemeSwitcher />
+        </div>
         <div className="p-3 border-t border-white/10 shrink-0">
           <div className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm">
             <div className="min-w-0 flex-1">

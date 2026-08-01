@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import Login from './pages/auth/Login';
@@ -48,6 +49,7 @@ const COMPANY_ROLES = ['company_admin', 'manager', 'staff'];
 export default function App() {
   return (
     <BrowserRouter>
+      <ThemeProvider>
       <AuthProvider>
         <Toaster position="top-right" toastOptions={{ style: { fontSize: '14px' } }} />
         <Routes>
@@ -96,6 +98,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

@@ -98,20 +98,19 @@ export default function SettingsPage() {
             {fields.length === 0 && <p className="text-sm text-ink/40">No custom fields yet.</p>}
           </div>
           <form onSubmit={addField} className="flex gap-2">
-            <input
-              className="flex-1 rounded-lg border border-primary-100 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary"
+            <Input
+              className="flex-1"
               placeholder="Field label (e.g. Warranty Expiry)"
               value={newField.label} onChange={(e) => setNewField({ ...newField, label: e.target.value })}
             />
-            <select
-              className="rounded-lg border border-primary-100 px-3 py-2.5 text-sm bg-white"
+            <Select
               value={newField.fieldType} onChange={(e) => setNewField({ ...newField, fieldType: e.target.value })}
             >
               <option value="text">Text</option>
               <option value="number">Number</option>
               <option value="date">Date</option>
               <option value="boolean">Yes/No</option>
-            </select>
+            </Select>
             <Button type="submit"><Plus size={15} /></Button>
           </form>
         </Card>

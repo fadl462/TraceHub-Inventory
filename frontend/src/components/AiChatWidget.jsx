@@ -8,10 +8,24 @@ import client from '../api/client';
  * when mounted inside the authenticated app, automatically gets richer
  * context about the visitor's own company from the backend.
  */
-export default function AiChatWidget({ quickPrompts = [], isOpen, onOpenChange }) {
+export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
   const [internalOpen, setInternalOpen] = useState(false);
   const open = isOpen !== undefined ? isOpen : internalOpen;
   const setOpen = onOpenChange || setInternalOpen;
+  const [fetchedPrompts, setFetchedPrompts] = useState([]);
+
+  // If the mounting page didn't pass its own quickPrompts (e.g. the
+  // in-app dashboard/admin instances just render <AiChatWidget /> with no
+  // props), fetch the live FAQ list ourselves so the widget never opens
+  // with an empty "Popular questions" section.
+  useEffect(() => {
+    if (quickPrompts !== undefined) return;
+    client.get('/faqs').then(({ data }) => {
+      setFetchedPrompts((data.faqs || []).slice(0, 5).map((f) => f.question));
+    }).catch(() => {});
+  }, [quickPrompts]);
+
+  const effectivePrompts = quickPrompts !== undefined ? quickPrompts : fetchedPrompts;
   const [messages, setMessages] = useState([
     { role: 'assistant', content: "Hi! I'm the TraceHub assistant. Ask me anything about depreciation, tracking, pricing, or how to get started." },
   ]);
@@ -74,11 +88,11 @@ export default function AiChatWidget({ quickPrompts = [], isOpen, onOpenChange }
                 </div>
               </div>
             )}
-            {messages.length === 1 && quickPrompts.length > 0 && (
+            {messages.length === 1 && effectivePrompts.length > 0 && (
               <div className="pt-1">
                 <p className="text-[11px] font-semibold uppercase tracking-wide text-ink/40 mb-2">Popular questions</p>
                 <div className="flex flex-col gap-2">
-                  {quickPrompts.map((q) => (
+                  {effectivePrompts.map((q) => (
                     <button
                       key={q}
                       onClick={() => send(q)}

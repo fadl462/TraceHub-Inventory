@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const {
   Company, User, Subscription, SubscriptionPlan, AssetCategory, DepreciationProfile,
-  Asset, Location, AssetLocationEvent, Assignment,
+  Asset, Location, AssetLocationEvent, Assignment, Payment, AuditLog,
 } = require('../models');
 const { estimateDepreciation } = require('../utils/depreciationEngine');
 const { generateAssetTag, generateQrToken } = require('../utils/qrTag');
@@ -120,8 +120,9 @@ async function seedOneCompany(spec) {
   }
 
   const plan = await SubscriptionPlan.findOne({ where: { code: spec.plan } });
+  let subscription = null;
   if (plan) {
-    await Subscription.findOrCreate({
+    [subscription] = await Subscription.findOrCreate({
       where: { companyId: company.id },
       defaults: {
         companyId: company.id, planId: plan.id, billingCycle: 'monthly',
@@ -212,6 +213,73 @@ async function seedOneCompany(spec) {
     if (s.status !== 'returned') {
       asset.status = 'assigned';
       await asset.save();
+    }
+  }
+
+  // Realistic payment history - 3 months of successful renewals at the
+  // plan's real monthly price, so revenue totals/trends/by-plan chart show
+  // actual numbers instead of zero. One company also gets a failed payment
+  // so the system-health "failed payments" stat has something to show.
+  if (plan) {
+    const existingPayments = await Payment.count({ where: { companyId: company.id } });
+    if (existingPayments === 0) {
+      for (let m = 2; m >= 0; m -= 1) {
+        const paidAt = new Date();
+        paidAt.setMonth(paidAt.getMonth() - m);
+        // eslint-disable-next-line no-await-in-loop
+        await Payment.create({
+          companyId: company.id,
+          subscriptionId: subscription?.id || null,
+          provider: 'flutterwave',
+          txRef: `SEED-${company.slug}-${m}-${Date.now()}`,
+          amount: plan.priceMonthly,
+          currency: 'USD',
+          status: 'successful',
+          paymentMethod: 'card',
+          invoiceNumber: `INV-${company.slug}-${m}-${Date.now()}`,
+          paidAt,
+        });
+      }
+      if (spec.slug === 'accra-field-services') {
+        const failedAt = new Date();
+        failedAt.setDate(failedAt.getDate() - 5);
+        await Payment.create({
+          companyId: company.id,
+          subscriptionId: subscription?.id || null,
+          provider: 'flutterwave',
+          txRef: `SEED-${company.slug}-failed-${Date.now()}`,
+          amount: plan.priceMonthly,
+          currency: 'USD',
+          status: 'failed',
+          createdAt: failedAt,
+          updatedAt: failedAt,
+        });
+      }
+    }
+  }
+
+  // A handful of realistic recent activity entries so the global audit log
+  // (and its CSV export) has something real to show rather than "no
+  // activity yet".
+  const existingLogs = await AuditLog.count({ where: { companyId: company.id } });
+  if (existingLogs === 0) {
+    const activityTemplates = [
+      { action: 'asset.create', entityType: 'Asset', userKey: 'staff', daysAgo: 1 },
+      { action: 'assignment.create', entityType: 'Assignment', userKey: 'company_admin', daysAgo: 2 },
+      { action: 'asset.update', entityType: 'Asset', userKey: 'manager', daysAgo: 4 },
+      { action: 'user.create', entityType: 'User', userKey: 'company_admin', daysAgo: 8 },
+    ];
+    for (const t of activityTemplates) {
+      const createdAt = new Date();
+      createdAt.setDate(createdAt.getDate() - t.daysAgo);
+      // eslint-disable-next-line no-await-in-loop
+      await AuditLog.create({
+        companyId: company.id,
+        userId: users[t.userKey]?.id || users.company_admin.id,
+        action: t.action,
+        entityType: t.entityType,
+        createdAt,
+      });
     }
   }
 

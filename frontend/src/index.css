@@ -6,12 +6,73 @@
 
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; }
+
+/* ---------------------------------------------------------------------
+   Theme system: three themes for the authenticated app (Dashboard/Super
+   Admin portals). The public marketing site always uses the light brand
+   palette regardless of this setting - these variables only apply within
+   .th-app-shell, which wraps DashboardLayout/SuperAdminLayout.
+--------------------------------------------------------------------- */
+:root,
+[data-theme="light"] {
+  --th-page-bg: 244 247 250;
+  --th-surface: 255 255 255;
+  --th-surface-alt: 234 241 250;
+  --th-border: 228 236 245;
+  --th-text: 44 44 44;
+  --th-text-muted: 107 114 128;
+  --th-sidebar-bg: 10 31 58;
+  --th-sidebar-text: 232 238 246;
+}
+
+[data-theme="dark"] {
+  --th-page-bg: 18 22 28;
+  --th-surface: 27 33 41;
+  --th-surface-alt: 35 42 51;
+  --th-border: 44 53 65;
+  --th-text: 237 239 242;
+  --th-text-muted: 156 166 179;
+  --th-sidebar-bg: 11 14 19;
+  --th-sidebar-text: 220 226 234;
+}
+
+[data-theme="midnight"] {
+  --th-page-bg: 21 19 43;
+  --th-surface: 30 27 60;
+  --th-surface-alt: 39 35 72;
+  --th-border: 53 48 100;
+  --th-text: 236 235 247;
+  --th-text-muted: 167 159 214;
+  --th-sidebar-bg: 15 13 34;
+  --th-sidebar-text: 228 225 245;
+}
+
 body {
   margin: 0;
   background-color: #F4F7FA;
   color: #2C2C2C;
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+.th-app-shell {
+  background-color: rgb(var(--th-page-bg));
+  color: rgb(var(--th-text));
+}
+
+/* Covers raw <input>/<select>/<textarea> elements that don't use the shared
+   ui.jsx components (several admin pages build their own inline forms) -
+   inline styles on the shared components always win over this, so there's
+   no conflict, this just catches everything else. */
+.th-app-shell textarea,
+.th-app-shell select,
+.th-app-shell input:not([type="checkbox"]):not([type="radio"]) {
+  background-color: rgb(var(--th-surface));
+  color: rgb(var(--th-text));
+  border-color: rgb(var(--th-border));
+}
+.th-app-shell ::placeholder {
+  color: rgb(var(--th-text-muted));
 }
 
 ::-webkit-scrollbar { width: 8px; height: 8px; }
