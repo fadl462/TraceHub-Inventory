@@ -12,9 +12,13 @@ function formatDate(d) {
 export default function Blog() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    client.get('/blog-posts').then(({ data }) => setPosts(data.posts)).finally(() => setLoading(false));
+    client.get('/blog-posts')
+      .then(({ data }) => setPosts(data.posts))
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -31,6 +35,14 @@ export default function Blog() {
 
         {loading ? (
           <div className="flex justify-center py-16"><Spinner size={28} /></div>
+        ) : error ? (
+          <div className="text-center py-16">
+            <p className="text-sm text-ink/60">Couldn't load posts right now \u2014 please refresh the page.</p>
+          </div>
+        ) : posts.length === 0 ? (
+          <div className="text-center py-16">
+            <p className="text-sm text-ink/60">No posts published yet. Check back soon.</p>
+          </div>
         ) : (
           <div className="space-y-8">
             {posts.map((p) => (
