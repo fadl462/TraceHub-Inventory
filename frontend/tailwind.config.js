@@ -40,7 +40,25 @@ export default {
       borderRadius: {
         xl2: '1rem',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': '#2C2C2C',
+            '--tw-prose-headings': '#2C2C2C',
+            '--tw-prose-links': '#1A4D8F',
+            '--tw-prose-bold': '#2C2C2C',
+            '--tw-prose-bullets': '#1A4D8F',
+            '--tw-prose-quotes': '#2C2C2C',
+            '--tw-prose-quote-borders': '#D1E1F3',
+            maxWidth: 'none',
+            fontFamily: 'Inter, system-ui, sans-serif',
+            h3: { fontFamily: '"Space Grotesk", Inter, sans-serif', fontWeight: 600, marginTop: '2em' },
+            p: { lineHeight: '1.75' },
+            'p + p': { marginTop: '1.25em' },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

@@ -6,11 +6,11 @@ import {
 } from 'lucide-react';
 import TraceHubMark from '../components/TraceHubMark';
 import AiChatWidget from '../components/AiChatWidget';
+import SiteHeader from '../components/landing/SiteHeader';
+import SiteFooter from '../components/landing/SiteFooter';
 import RadarLocateVisual from '../components/landing/RadarLocateVisual';
 import ScanIllustration from '../components/landing/ScanIllustration';
 import TrackedAssetsIllustration from '../components/landing/TrackedAssetsIllustration';
-import SocialIcon from '../components/landing/SocialIcon';
-import { useAuth } from '../context/AuthContext';
 import client from '../api/client';
 
 const STEPS = [
@@ -83,41 +83,6 @@ function formatPlan(p) {
     features: (p.features || []).map((f) => FEATURE_LABELS[f] || f),
     highlight: p.code === 'pro',
   };
-}
-
-function NavBar() {
-  const { user } = useAuth();
-  return (
-    <header className="sticky top-0 z-40 bg-surface/80 backdrop-blur border-b border-ink/5">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <TraceHubMark size={30} withWordmark />
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/70">
-          <a href="#how-it-works" className="hover:text-ink transition-colors">How it works</a>
-          <a href="#features" className="hover:text-ink transition-colors">Features</a>
-          <a href="#pricing" className="hover:text-ink transition-colors">Pricing</a>
-          <Link to="/blog" className="hover:text-ink transition-colors">Blog</Link>
-        </nav>
-        {user ? (
-          <Link
-            to={user.role === 'super_admin' ? '/admin' : '/dashboard'}
-            className="inline-flex items-center gap-1.5 bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors"
-          >
-            Go to dashboard
-          </Link>
-        ) : (
-          <div className="flex items-center gap-3">
-            <Link to="/login" className="hidden sm:inline text-sm font-medium text-ink/70 hover:text-ink transition-colors">Log in</Link>
-            <Link
-              to="/register"
-              className="inline-flex items-center gap-1.5 bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors"
-            >
-              Get started free
-            </Link>
-          </div>
-        )}
-      </div>
-    </header>
-  );
 }
 
 function Hero({ content }) {
@@ -448,128 +413,11 @@ function FinalCTA({ content }) {
   );
 }
 
-function NewsletterForm() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // idle | sending | done | error
-  const [message, setMessage] = useState('');
-
-  const submit = async (e) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setStatus('sending');
-    try {
-      const { data } = await client.post('/newsletter/subscribe', { email });
-      setMessage(data.message);
-      setStatus('done');
-      setEmail('');
-    } catch (err) {
-      setMessage(err.response?.data?.error || 'Something went wrong. Please try again.');
-      setStatus('error');
-    }
-  };
-
-  return (
-    <form onSubmit={submit} className="max-w-xs">
-      <p className="text-sm font-semibold text-white mb-2">Stay in the loop</p>
-      <p className="text-xs text-primary-100/50 mb-3">Product updates, occasionally. No spam.</p>
-      {status === 'done' ? (
-        <p className="text-xs text-accent font-medium">{message}</p>
-      ) : (
-        <>
-          <div className="flex gap-2">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@company.com"
-              className="flex-1 min-w-0 text-sm px-3 py-2 rounded-lg border border-ink/10 focus-ring focus:border-secondary"
-            />
-            <button
-              type="submit"
-              disabled={status === 'sending'}
-              className="shrink-0 text-sm font-semibold bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors disabled:opacity-50"
-            >
-              {status === 'sending' ? '...' : 'Join'}
-            </button>
-          </div>
-          {status === 'error' && <p className="mt-2 text-xs text-red-300">{message}</p>}
-        </>
-      )}
-    </form>
-  );
-}
-
-function Footer({ content, links }) {
-  const nav = (links || []).filter((l) => l.group === 'nav');
-  const legal = (links || []).filter((l) => l.group === 'legal');
-  const social = (links || []).filter((l) => l.group === 'social');
-
-  return (
-    <footer className="bg-primary-900">
-      <div className="max-w-6xl mx-auto px-6 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        <div className="lg:col-span-1">
-          <TraceHubMark size={24} withWordmark tone="white" animate={false} />
-          {content.footerDescription && <p className="mt-3 text-sm text-primary-100/60 leading-relaxed">{content.footerDescription}</p>}
-          {social.length > 0 && (
-            <div className="mt-5 flex items-center gap-2">
-              {social.map((l) => (
-                <a
-                  key={l.id}
-                  href={l.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={l.label}
-                  className="w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
-                >
-                  <SocialIcon label={l.label} />
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {nav.length > 0 && (
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-primary-200/50 mb-3">Product</p>
-            <ul className="space-y-2">
-              {nav.map((l) => (
-                <li key={l.id}><a href={l.url} className="text-sm text-primary-100/70 hover:text-white transition-colors">{l.label}</a></li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {legal.length > 0 && (
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-primary-200/50 mb-3">Legal</p>
-            <ul className="space-y-2">
-              {legal.map((l) => (
-                <li key={l.id}><a href={l.url} className="text-sm text-primary-100/70 hover:text-white transition-colors">{l.label}</a></li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {content.footerNewsletterEnabled && (
-          <div>
-            <NewsletterForm />
-          </div>
-        )}
-      </div>
-      <div className="border-t border-white/10 py-5">
-        <p className="max-w-6xl mx-auto px-6 text-xs text-primary-200/50">&copy; {new Date().getFullYear()} {content.footerCopyright}</p>
-      </div>
-    </footer>
-  );
-}
-
 export default function Landing() {
   const [content, setContent] = useState(DEFAULT_CONTENT);
   const [plans, setPlans] = useState(DEFAULT_PLANS);
   const [testimonials, setTestimonials] = useState([]);
   const [faqs, setFaqs] = useState([]);
-  const [footerLinks, setFooterLinks] = useState([]);
   const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => {
@@ -579,12 +427,11 @@ export default function Landing() {
     }).catch(() => {});
     client.get('/testimonials').then(({ data }) => setTestimonials(data.testimonials || [])).catch(() => {});
     client.get('/faqs').then(({ data }) => setFaqs(data.faqs || [])).catch(() => {});
-    client.get('/footer-links').then(({ data }) => setFooterLinks(data.links || [])).catch(() => {});
   }, []);
 
   return (
     <div className="bg-surface">
-      <NavBar />
+      <SiteHeader />
       <Hero content={content} />
       <HowItWorks />
       <DepreciationProof />
@@ -594,7 +441,7 @@ export default function Landing() {
       <Testimonials items={testimonials} />
       <AiAssistantSection faqs={faqs} onOpenChat={() => setChatOpen(true)} />
       <FinalCTA content={content} />
-      <Footer content={content} links={footerLinks} />
+      <SiteFooter />
       <AiChatWidget quickPrompts={faqs.slice(0, 5).map((f) => f.question)} isOpen={chatOpen} onOpenChange={setChatOpen} />
     </div>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Boxes, ClipboardList, AlertTriangle, TrendingDown, Plus, ScanLine } from 'lucide-react';
+import { Boxes, ClipboardList, AlertTriangle, TrendingDown, Plus, ScanLine, Sparkles } from 'lucide-react';
 import client from '../api/client';
 import { Card, Button, Spinner } from '../components/ui';
 import { useAuth } from '../context/AuthContext';
@@ -19,6 +19,29 @@ function Stat({ icon: Icon, label, value, tone = 'primary' }) {
         <p className="text-2xl font-bold text-ink leading-none">{value}</p>
         <p className="text-xs text-ink/60 mt-1">{label}</p>
       </div>
+    </Card>
+  );
+}
+
+function AiInsightCard() {
+  const [insight, setInsight] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    client.get('/reports/ai-insights').then(({ data }) => setInsight(data)).finally(() => setLoading(false));
+  }, []);
+
+  return (
+    <Card className="p-5 bg-gradient-to-br from-primary-800 to-primary-900 text-white">
+      <div className="flex items-center gap-2 mb-2">
+        <Sparkles size={16} className="text-accent" />
+        <p className="text-xs font-semibold uppercase tracking-wide text-primary-200/70">AI insight</p>
+      </div>
+      {loading ? (
+        <div className="h-5 w-2/3 bg-white/10 rounded animate-pulse" />
+      ) : (
+        <p className="text-sm text-primary-50 leading-relaxed">{insight?.insight}</p>
+      )}
     </Card>
   );
 }
@@ -76,20 +99,22 @@ export default function Dashboard() {
             })}
           </div>
         </Card>
-        <Card className="p-5">
-          <h3 className="font-semibold text-ink mb-4">Fleet value</h3>
-          <div className="space-y-4">
-            <div>
-              <p className="text-xs text-ink/50">Total purchase value</p>
-              <p className="text-xl font-bold text-ink">{company?.currency || 'USD'} {Number(overview?.totalPurchaseValue || 0).toLocaleString()}</p>
-            </div>
-            <div>
-              <p className="text-xs text-ink/50">Current estimated value (AI)</p>
-              <p className="text-xl font-bold text-primary">{company?.currency || 'USD'} {Number(overview?.totalCurrentValue || 0).toLocaleString()}</p>
-            </div>
-          </div>
-        </Card>
+        <AiInsightCard />
       </div>
+
+      <Card className="p-5">
+        <h3 className="font-semibold text-ink mb-4">Fleet value</h3>
+        <div className="grid sm:grid-cols-2 gap-6">
+          <div>
+            <p className="text-xs text-ink/50">Total purchase value</p>
+            <p className="text-xl font-bold text-ink">{company?.currency || 'USD'} {Number(overview?.totalPurchaseValue || 0).toLocaleString()}</p>
+          </div>
+          <div>
+            <p className="text-xs text-ink/50">Current estimated value (AI)</p>
+            <p className="text-xl font-bold text-primary">{company?.currency || 'USD'} {Number(overview?.totalCurrentValue || 0).toLocaleString()}</p>
+          </div>
+        </div>
+      </Card>
     </div>
   );
 }

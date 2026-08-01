@@ -7,6 +7,7 @@ const router = express.Router();
 router.use(authenticate, requireRole('super_admin'));
 
 router.get('/dashboard', ctrl.dashboardStats);
+router.get('/ai-insights', ctrl.aiInsights);
 router.get('/companies', ctrl.listCompanies);
 router.get('/companies/:id', ctrl.getCompany);
 router.patch('/companies/:id/status', ctrl.updateCompanyStatus);

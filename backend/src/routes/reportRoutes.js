@@ -7,6 +7,7 @@ const router = express.Router();
 router.use(authenticate, requireCompanyContext);
 
 router.get('/overview', ctrl.companyOverview);
+router.get('/ai-insights', ctrl.aiInsights);
 router.get('/assets-by-category', ctrl.assetsByCategory);
 router.get('/depreciation', ctrl.depreciationReport);
 router.get('/location-activity', ctrl.locationActivityReport);
