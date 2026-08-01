@@ -9,6 +9,7 @@ import AiChatWidget from '../components/AiChatWidget';
 import RadarLocateVisual from '../components/landing/RadarLocateVisual';
 import ScanIllustration from '../components/landing/ScanIllustration';
 import TrackedAssetsIllustration from '../components/landing/TrackedAssetsIllustration';
+import SocialIcon from '../components/landing/SocialIcon';
 import { useAuth } from '../context/AuthContext';
 import client from '../api/client';
 
@@ -56,11 +57,21 @@ const DEFAULT_CONTENT = {
 };
 
 const DEFAULT_PLANS = [
-  { name: 'Trial', price: '$0', period: 'for 30 days', assets: '10 assets', users: '3 users', highlight: false },
-  { name: 'Basic', price: '$19', period: '/ month', assets: '100 assets', users: '5 users', highlight: false },
-  { name: 'Pro', price: '$49', period: '/ month', assets: '1,000 assets', users: '25 users', highlight: true },
-  { name: 'Enterprise', price: '$149', period: '/ month', assets: 'Unlimited assets', users: 'Unlimited users', highlight: false },
+  { name: 'Trial', price: '$0', period: 'for 30 days', assets: '10 assets', users: '3 users', features: ['Reports & analytics'], highlight: false },
+  { name: 'Basic', price: '$19', period: '/ month', assets: '100 assets', users: '5 users', features: ['Reports & analytics', 'QR code scanning'], highlight: false },
+  { name: 'Pro', price: '$49', period: '/ month', assets: '1,000 assets', users: '25 users', features: ['Reports & analytics', 'QR code scanning', 'API access', 'Custom fields', 'Multi-location support'], highlight: true },
+  { name: 'Enterprise', price: '$149', period: '/ month', assets: 'Unlimited assets', users: 'Unlimited users', features: ['Everything in Pro', 'Custom domain', 'Priority support'], highlight: false },
 ];
+
+const FEATURE_LABELS = {
+  reporting: 'Reports & analytics',
+  qr_scanning: 'QR code scanning',
+  api_access: 'API access',
+  custom_fields: 'Custom fields',
+  multi_location: 'Multi-location support',
+  custom_domain: 'Custom domain',
+  priority_support: 'Priority support',
+};
 
 function formatPlan(p) {
   return {
@@ -69,6 +80,7 @@ function formatPlan(p) {
     period: p.code === 'trial' ? 'for 30 days' : '/ month',
     assets: p.assetLimit === -1 ? 'Unlimited assets' : `${p.assetLimit.toLocaleString()} assets`,
     users: p.userLimit === -1 ? 'Unlimited users' : `${p.userLimit} users`,
+    features: (p.features || []).map((f) => FEATURE_LABELS[f] || f),
     highlight: p.code === 'pro',
   };
 }
@@ -298,42 +310,52 @@ function Pricing({ plans }) {
       }}
       />
       <div className="relative max-w-6xl mx-auto px-6">
-        <div className="max-w-xl">
+        <div className="max-w-xl mx-auto text-center">
           <h2 className="font-display text-3xl font-bold text-white tracking-tight">Pricing that scales with your asset count</h2>
           <p className="mt-3 text-primary-100/70 leading-relaxed">
             Every plan includes the full depreciation engine, QR-based tracking, and reporting. Higher tiers add room and reach.
           </p>
         </div>
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {plans.map((p) => (
             <div
               key={p.name}
-              className={`rounded-2xl p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1.5 ${
-                p.highlight ? 'bg-white ring-2 ring-accent shadow-xl shadow-black/20' : 'bg-white/[0.06] ring-1 ring-white/10'
+              className={`relative rounded-2xl flex flex-col transition-transform duration-200 hover:-translate-y-1.5 ${
+                p.highlight ? 'bg-white ring-2 ring-accent shadow-2xl shadow-black/30 lg:scale-105' : 'bg-white/[0.06] ring-1 ring-white/10'
               }`}
             >
               {p.highlight && (
-                <span className="self-start text-[11px] font-mono font-semibold tracking-wide uppercase text-accent-dark bg-accent/20 px-2 py-0.5 rounded-full mb-3">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[11px] font-mono font-semibold tracking-wide uppercase text-primary-900 bg-accent px-3 py-1 rounded-full shadow-sm">
                   Most popular
                 </span>
               )}
-              <h3 className={`font-display font-semibold ${p.highlight ? 'text-ink' : 'text-white'}`}>{p.name}</h3>
-              <div className="mt-2 flex items-baseline gap-1">
-                <span className={`font-display text-2xl font-bold ${p.highlight ? 'text-ink' : 'text-white'}`}>{p.price}</span>
-                <span className={`text-xs ${p.highlight ? 'text-ink/50' : 'text-primary-100/60'}`}>{p.period}</span>
+              <div className="p-6 pb-5">
+                <h3 className={`font-display font-semibold text-lg ${p.highlight ? 'text-ink' : 'text-white'}`}>{p.name}</h3>
+                <div className="mt-3 flex items-baseline gap-1">
+                  <span className={`font-display text-3xl font-bold ${p.highlight ? 'text-ink' : 'text-white'}`}>{p.price}</span>
+                  <span className={`text-xs ${p.highlight ? 'text-ink/50' : 'text-primary-100/60'}`}>{p.period}</span>
+                </div>
               </div>
-              <ul className={`mt-5 space-y-2 text-sm flex-1 ${p.highlight ? 'text-ink/70' : 'text-primary-100/80'}`}>
-                <li className="flex items-center gap-2"><Check size={15} className={p.highlight ? 'text-accent-dark' : 'text-accent'} />{p.assets}</li>
-                <li className="flex items-center gap-2"><Check size={15} className={p.highlight ? 'text-accent-dark' : 'text-accent'} />{p.users}</li>
-              </ul>
-              <Link
-                to="/register"
-                className={`mt-6 text-center text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors ${
-                  p.highlight ? 'bg-primary text-white hover:bg-primary-600' : 'bg-white/10 text-white hover:bg-white/20'
-                }`}
+
+              <div className={`h-px mx-6 ${p.highlight ? 'bg-ink/10' : 'bg-white/10'}`} />
+
+              <div className="p-6 pt-5 flex-1 flex flex-col">
+                <ul className={`space-y-2.5 text-sm flex-1 ${p.highlight ? 'text-ink/70' : 'text-primary-100/80'}`}>
+                  <li className="flex items-center gap-2 font-medium"><Check size={15} className={p.highlight ? 'text-accent-dark' : 'text-accent'} />{p.assets}</li>
+                  <li className="flex items-center gap-2 font-medium"><Check size={15} className={p.highlight ? 'text-accent-dark' : 'text-accent'} />{p.users}</li>
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2"><Check size={15} className={p.highlight ? 'text-accent-dark' : 'text-accent'} />{f}</li>
+                  ))}
+                </ul>
+                <Link
+                  to="/register"
+                  className={`mt-6 text-center text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors ${
+                    p.highlight ? 'bg-primary text-white hover:bg-primary-600' : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
               >
                 Get started
               </Link>
+              </div>
             </div>
           ))}
         </div>
@@ -425,29 +447,117 @@ function FinalCTA({ content }) {
   );
 }
 
+function NewsletterForm() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | sending | done | error
+  const [message, setMessage] = useState('');
+
+  const submit = async (e) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setStatus('sending');
+    try {
+      const { data } = await client.post('/newsletter/subscribe', { email });
+      setMessage(data.message);
+      setStatus('done');
+      setEmail('');
+    } catch (err) {
+      setMessage(err.response?.data?.error || 'Something went wrong. Please try again.');
+      setStatus('error');
+    }
+  };
+
+  return (
+    <form onSubmit={submit} className="max-w-xs">
+      <p className="text-sm font-semibold text-ink mb-2">Stay in the loop</p>
+      <p className="text-xs text-ink/50 mb-3">Product updates, occasionally. No spam.</p>
+      {status === 'done' ? (
+        <p className="text-xs text-accent-dark font-medium">{message}</p>
+      ) : (
+        <>
+          <div className="flex gap-2">
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@company.com"
+              className="flex-1 min-w-0 text-sm px-3 py-2 rounded-lg border border-ink/10 focus-ring focus:border-secondary"
+            />
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className="shrink-0 text-sm font-semibold bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors disabled:opacity-50"
+            >
+              {status === 'sending' ? '...' : 'Join'}
+            </button>
+          </div>
+          {status === 'error' && <p className="mt-2 text-xs text-red-600">{message}</p>}
+        </>
+      )}
+    </form>
+  );
+}
+
 function Footer({ content, links }) {
+  const nav = (links || []).filter((l) => l.group === 'nav');
   const legal = (links || []).filter((l) => l.group === 'legal');
   const social = (links || []).filter((l) => l.group === 'social');
+
   return (
-    <footer className="border-t border-ink/5 py-10">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <TraceHubMark size={22} withWordmark animate={false} />
-            {content.footerDescription && <p className="mt-2 text-xs text-ink/50">{content.footerDescription}</p>}
-          </div>
-          {(legal.length > 0 || social.length > 0) && (
-            <div className="flex flex-wrap items-center gap-5 text-xs text-ink/60">
-              {legal.map((l) => (
-                <a key={l.id} href={l.url} className="hover:text-ink transition-colors">{l.label}</a>
-              ))}
+    <footer className="border-t border-ink/5 bg-white">
+      <div className="max-w-6xl mx-auto px-6 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="lg:col-span-1">
+          <TraceHubMark size={24} withWordmark animate={false} />
+          {content.footerDescription && <p className="mt-3 text-sm text-ink/50 leading-relaxed">{content.footerDescription}</p>}
+          {social.length > 0 && (
+            <div className="mt-5 flex items-center gap-2">
               {social.map((l) => (
-                <a key={l.id} href={l.url} target="_blank" rel="noreferrer" className="hover:text-ink transition-colors">{l.label}</a>
+                <a
+                  key={l.id}
+                  href={l.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={l.label}
+                  className="w-9 h-9 rounded-full bg-primary-50 text-primary flex items-center justify-center hover:bg-primary/10 transition-colors"
+                >
+                  <SocialIcon label={l.label} />
+                </a>
               ))}
             </div>
           )}
         </div>
-        <p className="mt-6 text-xs text-ink/45">&copy; {new Date().getFullYear()} {content.footerCopyright}</p>
+
+        {nav.length > 0 && (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-3">Product</p>
+            <ul className="space-y-2">
+              {nav.map((l) => (
+                <li key={l.id}><a href={l.url} className="text-sm text-ink/60 hover:text-ink transition-colors">{l.label}</a></li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {legal.length > 0 && (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-3">Legal</p>
+            <ul className="space-y-2">
+              {legal.map((l) => (
+                <li key={l.id}><a href={l.url} className="text-sm text-ink/60 hover:text-ink transition-colors">{l.label}</a></li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {content.footerNewsletterEnabled && (
+          <div>
+            <NewsletterForm />
+          </div>
+        )}
+      </div>
+      <div className="border-t border-ink/5 py-5">
+        <p className="max-w-6xl mx-auto px-6 text-xs text-ink/45">&copy; {new Date().getFullYear()} {content.footerCopyright}</p>
       </div>
     </footer>
   );
@@ -484,7 +594,7 @@ export default function Landing() {
       <AiAssistantSection faqs={faqs} onOpenChat={() => setChatOpen(true)} />
       <FinalCTA content={content} />
       <Footer content={content} links={footerLinks} />
-      <AiChatWidget quickPrompts={faqs.slice(0, 3).map((f) => f.question)} isOpen={chatOpen} onOpenChange={setChatOpen} />
+      <AiChatWidget quickPrompts={faqs.slice(0, 5).map((f) => f.question)} isOpen={chatOpen} onOpenChange={setChatOpen} />
     </div>
   );
 }

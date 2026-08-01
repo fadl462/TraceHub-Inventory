@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     // Footer
     footerDescription: { type: DataTypes.STRING, defaultValue: 'Precision asset tracking, built for real operations.' },
     footerCopyright: { type: DataTypes.STRING, defaultValue: 'TraceHub Inventory. All rights reserved.' },
-    footerNewsletterEnabled: { type: DataTypes.BOOLEAN, defaultValue: false },
+    footerNewsletterEnabled: { type: DataTypes.BOOLEAN, defaultValue: true },
   }, {
     tableName: 'site_content',
     timestamps: true,

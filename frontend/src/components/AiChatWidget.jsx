@@ -47,7 +47,7 @@ export default function AiChatWidget({ quickPrompts = [], isOpen, onOpenChange }
   return (
     <>
       {open ? (
-        <div className="fixed bottom-6 right-6 z-50 w-[calc(100vw-3rem)] max-w-sm h-[520px] max-h-[75vh] bg-white rounded-2xl shadow-2xl border border-ink/10 flex flex-col overflow-hidden">
+        <div className="fixed top-6 right-6 bottom-6 z-50 w-[calc(100vw-3rem)] max-w-sm bg-white rounded-2xl shadow-2xl border border-ink/10 flex flex-col overflow-hidden">
           <div className="bg-primary-800 text-white px-4 py-3.5 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2">
               <Sparkles size={17} className="text-accent" />
@@ -75,16 +75,19 @@ export default function AiChatWidget({ quickPrompts = [], isOpen, onOpenChange }
               </div>
             )}
             {messages.length === 1 && quickPrompts.length > 0 && (
-              <div className="flex flex-wrap gap-2 pt-1">
-                {quickPrompts.map((q) => (
-                  <button
-                    key={q}
-                    onClick={() => send(q)}
-                    className="text-xs font-medium text-primary bg-primary/10 hover:bg-primary/15 px-3 py-1.5 rounded-full transition-colors"
-                  >
-                    {q}
-                  </button>
-                ))}
+              <div className="pt-1">
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-ink/40 mb-2">Popular questions</p>
+                <div className="flex flex-col gap-2">
+                  {quickPrompts.map((q) => (
+                    <button
+                      key={q}
+                      onClick={() => send(q)}
+                      className="text-left text-xs font-medium text-primary bg-primary/10 hover:bg-primary/15 px-3 py-2 rounded-lg transition-colors"
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
           </div>

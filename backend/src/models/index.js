@@ -24,6 +24,7 @@ const FooterLink = require('./footerLink')(sequelize, DataTypes);
 const CmsPage = require('./cmsPage')(sequelize, DataTypes);
 const Coupon = require('./coupon')(sequelize, DataTypes);
 const PlatformSettings = require('./platformSettings')(sequelize, DataTypes);
+const NewsletterSubscriber = require('./newsletterSubscriber')(sequelize, DataTypes);
 
 // ---------------------------------------------------------------------------
 // Associations
@@ -134,4 +135,5 @@ module.exports = {
   CmsPage,
   Coupon,
   PlatformSettings,
+  NewsletterSubscriber,
 };

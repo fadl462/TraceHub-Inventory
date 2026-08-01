@@ -69,6 +69,7 @@ app.use('/api/cms-pages', cmsPageRoutes);
 app.use('/api/coupons', couponRoutes);
 app.use('/api/platform-settings', platformSettingsRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/newsletter', require('./routes/newsletterRoutes'));
 
 app.use(notFound);
 app.use(errorHandler);
