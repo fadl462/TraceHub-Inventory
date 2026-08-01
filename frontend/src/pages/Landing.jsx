@@ -470,10 +470,10 @@ function NewsletterForm() {
 
   return (
     <form onSubmit={submit} className="max-w-xs">
-      <p className="text-sm font-semibold text-ink mb-2">Stay in the loop</p>
-      <p className="text-xs text-ink/50 mb-3">Product updates, occasionally. No spam.</p>
+      <p className="text-sm font-semibold text-white mb-2">Stay in the loop</p>
+      <p className="text-xs text-primary-100/50 mb-3">Product updates, occasionally. No spam.</p>
       {status === 'done' ? (
-        <p className="text-xs text-accent-dark font-medium">{message}</p>
+        <p className="text-xs text-accent font-medium">{message}</p>
       ) : (
         <>
           <div className="flex gap-2">
@@ -493,7 +493,7 @@ function NewsletterForm() {
               {status === 'sending' ? '...' : 'Join'}
             </button>
           </div>
-          {status === 'error' && <p className="mt-2 text-xs text-red-600">{message}</p>}
+          {status === 'error' && <p className="mt-2 text-xs text-red-300">{message}</p>}
         </>
       )}
     </form>
@@ -506,11 +506,11 @@ function Footer({ content, links }) {
   const social = (links || []).filter((l) => l.group === 'social');
 
   return (
-    <footer className="border-t border-ink/5 bg-white">
+    <footer className="bg-primary-900">
       <div className="max-w-6xl mx-auto px-6 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div className="lg:col-span-1">
-          <TraceHubMark size={24} withWordmark animate={false} />
-          {content.footerDescription && <p className="mt-3 text-sm text-ink/50 leading-relaxed">{content.footerDescription}</p>}
+          <TraceHubMark size={24} withWordmark tone="white" animate={false} />
+          {content.footerDescription && <p className="mt-3 text-sm text-primary-100/60 leading-relaxed">{content.footerDescription}</p>}
           {social.length > 0 && (
             <div className="mt-5 flex items-center gap-2">
               {social.map((l) => (
@@ -520,7 +520,7 @@ function Footer({ content, links }) {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={l.label}
-                  className="w-9 h-9 rounded-full bg-primary-50 text-primary flex items-center justify-center hover:bg-primary/10 transition-colors"
+                  className="w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
                 >
                   <SocialIcon label={l.label} />
                 </a>
@@ -531,10 +531,10 @@ function Footer({ content, links }) {
 
         {nav.length > 0 && (
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-3">Product</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-primary-200/50 mb-3">Product</p>
             <ul className="space-y-2">
               {nav.map((l) => (
-                <li key={l.id}><a href={l.url} className="text-sm text-ink/60 hover:text-ink transition-colors">{l.label}</a></li>
+                <li key={l.id}><a href={l.url} className="text-sm text-primary-100/70 hover:text-white transition-colors">{l.label}</a></li>
               ))}
             </ul>
           </div>
@@ -542,10 +542,10 @@ function Footer({ content, links }) {
 
         {legal.length > 0 && (
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-3">Legal</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-primary-200/50 mb-3">Legal</p>
             <ul className="space-y-2">
               {legal.map((l) => (
-                <li key={l.id}><a href={l.url} className="text-sm text-ink/60 hover:text-ink transition-colors">{l.label}</a></li>
+                <li key={l.id}><a href={l.url} className="text-sm text-primary-100/70 hover:text-white transition-colors">{l.label}</a></li>
               ))}
             </ul>
           </div>
@@ -557,8 +557,8 @@ function Footer({ content, links }) {
           </div>
         )}
       </div>
-      <div className="border-t border-ink/5 py-5">
-        <p className="max-w-6xl mx-auto px-6 text-xs text-ink/45">&copy; {new Date().getFullYear()} {content.footerCopyright}</p>
+      <div className="border-t border-white/10 py-5">
+        <p className="max-w-6xl mx-auto px-6 text-xs text-primary-200/50">&copy; {new Date().getFullYear()} {content.footerCopyright}</p>
       </div>
     </footer>
   );

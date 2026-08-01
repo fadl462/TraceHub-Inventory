@@ -4,8 +4,8 @@
 
   "forwardPorts": [5000, 5173],
   "portsAttributes": {
-    "5000": { "label": "TraceHub API", "onAutoForward": "notify" },
-    "5173": { "label": "TraceHub Web App", "onAutoForward": "openPreview" }
+    "5000": { "label": "TraceHub API", "onAutoForward": "notify", "visibility": "public" },
+    "5173": { "label": "TraceHub Web App", "onAutoForward": "openPreview", "visibility": "public" }
   },
 
   "postCreateCommand": "bash .devcontainer/setup.sh",
