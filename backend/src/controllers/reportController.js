@@ -1,6 +1,6 @@
 const { Op, fn, col, literal } = require('sequelize');
 const {
-  Asset, AssetCategory, Assignment, AssetLocationEvent, Location,
+  Asset, AssetCategory, Assignment, AssetLocationEvent, Location, User,
 } = require('../models');
 const { generateInsight } = require('../utils/aiInsights');
 const { generateFleetInsights } = require('../utils/fleetInsights');
@@ -171,6 +171,51 @@ async function learningLoopReport(req, res, next) {
   } catch (err) { next(err); }
 }
 
+/**
+ * Full assignment tracking for the dashboard: who has what, when it was
+ * issued, when it's due back, how many days it's been out (or overdue),
+ * and full contact info - so admins never have to click into each asset
+ * to see who to chase.
+ */
+async function assignmentTrackingReport(req, res, next) {
+  try {
+    const companyId = req.companyId;
+    const rows = await Assignment.findAll({
+      where: { companyId, status: { [Op.in]: ['active', 'overdue'] } },
+      include: [
+        { model: Asset, attributes: ['id', 'name', 'assetTag'] },
+        { model: User, as: 'assignee', attributes: ['id', 'firstName', 'lastName', 'email', 'phone', 'role'] },
+      ],
+      order: [['expectedReturnDate', 'ASC']],
+    });
+
+    const today = new Date();
+    const assignments = rows.map((a) => {
+      const daysHeld = Math.max(0, Math.floor((today - new Date(a.assignedAt)) / 86400000));
+      const daysOverdue = a.expectedReturnDate
+        ? Math.max(0, Math.floor((today - new Date(a.expectedReturnDate)) / 86400000))
+        : 0;
+      return {
+        id: a.id,
+        asset: a.Asset ? { id: a.Asset.id, name: a.Asset.name, assetTag: a.Asset.assetTag } : null,
+        assigneeName: a.assignee ? `${a.assignee.firstName} ${a.assignee.lastName}` : a.externalAssigneeName,
+        assigneeType: a.assignee ? 'staff' : 'external',
+        assigneeRole: a.assignee?.role || null,
+        contactEmail: a.assignee?.email || a.externalAssigneeEmail || null,
+        contactPhone: a.assignee?.phone || a.externalAssigneePhone || null,
+        assignedAt: a.assignedAt,
+        expectedReturnDate: a.expectedReturnDate,
+        daysHeld,
+        isOverdue: a.status === 'overdue' || (a.expectedReturnDate && a.expectedReturnDate < today.toISOString().slice(0, 10)),
+        daysOverdue,
+        purpose: a.purpose,
+      };
+    });
+
+    res.json({ assignments });
+  } catch (err) { next(err); }
+}
+
 /** Asset usage/status breakdown by category, for charting */
 async function assetsByCategory(req, res, next) {
   try {
@@ -262,5 +307,5 @@ async function aiInsights(req, res, next) {
 
 module.exports = {
   companyOverview, intelligenceOverview, assetsByCategory, depreciationReport, locationActivityReport, aiInsights,
-  fleetInsightsReport, learningLoopReport,
+  fleetInsightsReport, learningLoopReport, assignmentTrackingReport,
 };

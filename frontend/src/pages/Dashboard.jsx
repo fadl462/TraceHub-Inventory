@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Boxes, ClipboardList, AlertTriangle, TrendingDown, Plus, ScanLine, Sparkles } from 'lucide-react';
+import { Boxes, ClipboardList, AlertTriangle, TrendingDown, Plus, ScanLine, Sparkles, Mail, Phone, Calendar } from 'lucide-react';
 import client from '../api/client';
 import { Card, Button, Spinner } from '../components/ui';
 import { useAuth } from '../context/AuthContext';
@@ -237,9 +237,77 @@ function IntelligenceKpiSection({ currency }) {
         <RankedList title="Most expensive to maintain" items={data.mostExpensiveToMaintain} currency={currency} valueKey={(a) => Number(a.maintenanceCostTotal || 0) + Number(a.repairCostTotal || 0)} />
       </div>
 
+      <AssignmentTrackingPanel />
       <FleetInsightsPanel />
       <LearningLoopPanel />
     </>
+  );
+}
+
+function daysBetween(from, to = new Date()) {
+  return Math.floor((new Date(to) - new Date(from)) / 86400000);
+}
+
+function AssignmentTrackingPanel() {
+  const [assignments, setAssignments] = useState(null);
+
+  useEffect(() => {
+    client.get('/reports/assignment-tracking').then(({ data }) => setAssignments(data.assignments)).catch(() => setAssignments([]));
+  }, []);
+
+  if (assignments === null) {
+    return (
+      <Card className="p-5">
+        <div className="h-6 w-48 bg-primary-50/50 rounded animate-pulse mb-4" />
+        <div className="space-y-2">
+          {[0, 1, 2].map((i) => <div key={i} className="h-14 rounded-lg bg-primary-50/50 animate-pulse" />)}
+        </div>
+      </Card>
+    );
+  }
+
+  if (assignments.length === 0) return null;
+
+  const overdueCount = assignments.filter((a) => a.isOverdue).length;
+
+  return (
+    <Card className="p-5">
+      <div className="flex items-center justify-between mb-1">
+        <h3 className="font-semibold text-ink flex items-center gap-2"><ClipboardList size={16} className="text-primary" /> Assets currently assigned</h3>
+        {overdueCount > 0 && (
+          <span className="text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-1 rounded-full">{overdueCount} overdue</span>
+        )}
+      </div>
+      <p className="text-xs text-ink/50 mb-4">Who has what, when it was issued, and how long it's been out.</p>
+      <div className="space-y-2">
+        {assignments.map((a) => (
+          <div
+            key={a.id}
+            className={`flex flex-wrap items-center justify-between gap-3 p-3 rounded-lg ${a.isOverdue ? 'bg-red-50' : 'bg-primary-50/40'}`}
+          >
+            <div className="min-w-0">
+              <p className="text-sm font-medium text-ink truncate">
+                <Link to={`/assets/${a.asset?.id}`} className="hover:text-link">{a.asset?.name}</Link>
+                <span className="text-ink/40 font-normal"> \u2192 {a.assigneeName}</span>
+              </p>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-1 text-xs text-ink/50">
+                <span className="flex items-center gap-1"><Calendar size={11} /> Issued {new Date(a.assignedAt).toLocaleDateString()}</span>
+                {a.expectedReturnDate && <span>Due {a.expectedReturnDate}</span>}
+                {a.contactEmail && <span className="flex items-center gap-1"><Mail size={11} /> {a.contactEmail}</span>}
+                {a.contactPhone && <span className="flex items-center gap-1"><Phone size={11} /> {a.contactPhone}</span>}
+              </div>
+            </div>
+            <div className="shrink-0 text-right">
+              {a.isOverdue ? (
+                <span className="text-sm font-bold text-red-600">{a.daysHeld}d held \u2014 {a.daysOverdue}d overdue</span>
+              ) : (
+                <span className="text-sm font-medium text-ink/70">{a.daysHeld}d held</span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Card>
   );
 }
 

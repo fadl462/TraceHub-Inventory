@@ -11,6 +11,7 @@ router.get('/intelligence-overview', ctrl.intelligenceOverview);
 router.get('/ai-insights', ctrl.aiInsights);
 router.get('/fleet-insights', ctrl.fleetInsightsReport);
 router.get('/learning-loop-summary', ctrl.learningLoopReport);
+router.get('/assignment-tracking', ctrl.assignmentTrackingReport);
 router.get('/assets-by-category', ctrl.assetsByCategory);
 router.get('/depreciation', ctrl.depreciationReport);
 router.get('/location-activity', ctrl.locationActivityReport);

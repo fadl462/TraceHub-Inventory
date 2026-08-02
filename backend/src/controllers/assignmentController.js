@@ -84,7 +84,7 @@ async function listAssignments(req, res, next) {
       where,
       include: [
         { model: Asset },
-        { model: User, as: 'assignee', attributes: ['id', 'firstName', 'lastName', 'email'] },
+        { model: User, as: 'assignee', attributes: ['id', 'firstName', 'lastName', 'email', 'phone'] },
         { model: User, as: 'assigner', attributes: ['id', 'firstName', 'lastName'] },
       ],
       order: [['createdAt', 'DESC']],

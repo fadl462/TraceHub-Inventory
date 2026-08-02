@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
     // Reminder tracking flags (3-days-before + due-day, per spec) so cron doesn't double-send
     reminder3DaySentAt: { type: DataTypes.DATE, allowNull: true },
     reminderDueDaySentAt: { type: DataTypes.DATE, allowNull: true },
+    // Once overdue, a fresh alert goes out every day it remains unreturned -
+    // this tracks the last date one was sent so the daily cron doesn't
+    // double-send if it runs more than once on the same day.
+    lastOverdueAlertSentAt: { type: DataTypes.DATEONLY, allowNull: true },
 
     // Return confirmation link for the borrower to acknowledge return (per handover notes)
     returnConfirmationToken: { type: DataTypes.STRING, allowNull: true, unique: true },

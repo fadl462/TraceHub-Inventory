@@ -95,6 +95,72 @@ async function processReturnReminders() {
   }
 }
 
+/**
+ * Once an assignment is overdue, sends a fresh alert EVERY day it remains
+ * unreturned (not just the single due-day reminder above) to both the
+ * borrower and the company's admins, with a running day count so nobody
+ * has to do the math themselves. Idempotent per calendar day via
+ * lastOverdueAlertSentAt, so running this more than once on the same day
+ * is safe.
+ */
+async function processOverdueDailyAlerts() {
+  const todayStr = toDateOnly(new Date());
+
+  const overdue = await Assignment.findAll({
+    where: {
+      status: 'overdue',
+      [Op.or]: [{ lastOverdueAlertSentAt: null }, { lastOverdueAlertSentAt: { [Op.ne]: todayStr } }],
+    },
+    include: [
+      { model: Asset },
+      { model: User, as: 'assignee', attributes: ['id', 'firstName', 'lastName', 'email', 'phone'] },
+    ],
+  });
+
+  for (const assignment of overdue) {
+    const asset = assignment.Asset;
+    const recipientEmail = assignment.assignee?.email || assignment.externalAssigneeEmail;
+    const recipientName = assignment.assignee?.firstName || assignment.externalAssigneeName || 'there';
+    const daysOverdue = Math.max(1, Math.floor((Date.now() - new Date(assignment.expectedReturnDate).getTime()) / 86400000));
+
+    const subject = `Overdue ${daysOverdue} day${daysOverdue === 1 ? '' : 's'}: ${asset?.name} needs to be returned`;
+    const borrowerBody = `<p>Hi ${recipientName},</p><p><strong>${asset?.name}</strong> (${asset?.assetTag}) was due back on <strong>${assignment.expectedReturnDate}</strong> and is now <strong>${daysOverdue} day${daysOverdue === 1 ? '' : 's'} overdue</strong>. Please return it as soon as possible or contact your admin if you need an extension.</p>`;
+
+    // eslint-disable-next-line no-await-in-loop
+    if (recipientEmail) await sendMail({ to: recipientEmail, subject, html: borrowerBody }).catch(() => {});
+
+    // eslint-disable-next-line no-await-in-loop
+    const admins = await User.findAll({ where: { companyId: assignment.companyId, role: 'company_admin' } });
+    const contactLine = [assignment.assignee?.email || assignment.externalAssigneeEmail, assignment.assignee?.phone || assignment.externalAssigneePhone]
+      .filter(Boolean).join(' \u00b7 ');
+    const adminBody = `<p>Hi {name},</p><p><strong>${asset?.name}</strong> (${asset?.assetTag}), assigned to <strong>${recipientName}</strong>${contactLine ? ` (${contactLine})` : ''}, was due back on <strong>${assignment.expectedReturnDate}</strong> and is now <strong>${daysOverdue} day${daysOverdue === 1 ? '' : 's'} overdue</strong>.</p>`;
+    // eslint-disable-next-line no-await-in-loop
+    await Promise.all(admins.map((admin) => sendMail({
+      to: admin.email,
+      subject: `[Overdue - Day ${daysOverdue}] ${subject}`,
+      html: adminBody.replace('{name}', admin.firstName),
+    }).catch(() => {})));
+
+    // eslint-disable-next-line no-await-in-loop
+    await Promise.all(admins.map((admin) => Notification.create({
+      companyId: assignment.companyId,
+      userId: admin.id,
+      type: 'return_overdue_daily',
+      channel: 'in_app',
+      title: subject,
+      body: `${asset?.name} (${asset?.assetTag}) with ${recipientName}${contactLine ? ` \u2014 ${contactLine}` : ''}`,
+      sentAt: new Date(),
+      meta: { assignmentId: assignment.id, assetId: asset?.id, daysOverdue },
+    })));
+
+    assignment.lastOverdueAlertSentAt = todayStr;
+    // eslint-disable-next-line no-await-in-loop
+    await assignment.save();
+  }
+
+  return { alertsSent: overdue.length };
+}
+
 /** Flags trials/subscriptions nearing expiry so companies get an in-app warning before being blocked */
 async function processSubscriptionWarnings() {
   const in3Days = new Date(Date.now() + 3 * 86400000);
@@ -133,7 +199,7 @@ async function processSubscriptionWarnings() {
 function startCronJobs() {
   // Runs once daily at 07:00 server time
   cron.schedule('0 7 * * *', () => {
-    Promise.all([processReturnReminders(), processSubscriptionWarnings(), processLearningLoopEvaluation()])
+    Promise.all([processReturnReminders(), processOverdueDailyAlerts(), processSubscriptionWarnings(), processLearningLoopEvaluation()])
       .then(() => recordCronRun())
       .catch((e) => console.error('[cron] jobs failed:', e));
   });
@@ -150,4 +216,6 @@ async function recordCronRun() {
   }
 }
 
-module.exports = { startCronJobs, processReturnReminders, processSubscriptionWarnings, processLearningLoopEvaluation };
+module.exports = {
+  startCronJobs, processReturnReminders, processOverdueDailyAlerts, processSubscriptionWarnings, processLearningLoopEvaluation,
+};
