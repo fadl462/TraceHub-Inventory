@@ -89,7 +89,6 @@ export default function SuperAdminLayout() {
               <p className="truncate font-medium text-white">{user?.firstName} {user?.lastName}</p>
               <p className="text-xs text-primary-200/70">Super Admin</p>
             </div>
-            <button onClick={logout} className="text-primary-200/70 hover:text-white"><LogOut size={17} /></button>
           </div>
         </div>
       </aside>
@@ -104,6 +103,9 @@ export default function SuperAdminLayout() {
           <button className="lg:hidden text-ink/70 shrink-0" onClick={() => setMobileOpen(true)}><Menu size={22} /></button>
           <GlobalSearchBar />
           <div className="ml-auto"><ThemeSwitcher /></div>
+          <button onClick={logout} title="Log out" aria-label="Log out" className="text-ink/60 hover:text-red-600 p-2 rounded-full hover:bg-red-50 transition-colors">
+            <LogOut size={19} />
+          </button>
         </div>
         <div className="flex-1 p-4 sm:p-6 max-w-[1400px] mx-auto w-full">
           <Outlet />

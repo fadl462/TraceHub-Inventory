@@ -1,9 +1,20 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Plus, Users, Trash2 } from 'lucide-react';
+import { Plus, Users, Trash2, Phone, Mail, Clock, ShieldCheck, ShieldOff, CalendarDays, KeyRound } from 'lucide-react';
 import client from '../api/client';
 import { Card, Button, Input, Select, Badge, EmptyState, Spinner } from '../components/ui';
 import { useAuth } from '../context/AuthContext';
+
+function timeAgo(dateStr) {
+  if (!dateStr) return 'Never';
+  const diffMs = Date.now() - new Date(dateStr).getTime();
+  const days = Math.floor(diffMs / 86400000);
+  if (days === 0) return 'Today';
+  if (days === 1) return 'Yesterday';
+  if (days < 30) return `${days} days ago`;
+  const months = Math.floor(days / 30);
+  return `${months} month${months === 1 ? '' : 's'} ago`;
+}
 
 export default function TeamPage() {
   const { user: me } = useAuth();
@@ -90,12 +101,27 @@ export default function TeamPage() {
         ) : (
           <div className="divide-y divide-primary-50">
             {users.map((u) => (
-              <div key={u.id} className="flex items-center justify-between px-5 py-4">
-                <div>
-                  <p className="font-medium text-ink">{u.firstName} {u.lastName} {u.id === me.id && <span className="text-xs text-ink/40">(you)</span>}</p>
-                  <p className="text-xs text-ink/50">{u.email}</p>
+              <div key={u.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 py-4">
+                <div className="min-w-0">
+                  <p className="font-medium text-ink flex items-center gap-2 flex-wrap">
+                    {u.firstName} {u.lastName} {u.id === me.id && <span className="text-xs text-ink/40">(you)</span>}
+                    {u.mustChangePassword && (
+                      <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">
+                        <KeyRound size={11} /> Pending first login
+                      </span>
+                    )}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-1 text-xs text-ink/50">
+                    <span className="flex items-center gap-1"><Mail size={11} /> {u.email}</span>
+                    {u.phone && <span className="flex items-center gap-1"><Phone size={11} /> {u.phone}</span>}
+                    <span className="flex items-center gap-1"><Clock size={11} /> Last login: {timeAgo(u.lastLoginAt)}</span>
+                    <span className="flex items-center gap-1"><CalendarDays size={11} /> Joined {new Date(u.createdAt).toLocaleDateString()}</span>
+                    <span className={`flex items-center gap-1 ${u.twoFactorEnabled ? 'text-accent-dark' : ''}`}>
+                      {u.twoFactorEnabled ? <ShieldCheck size={11} /> : <ShieldOff size={11} />} 2FA {u.twoFactorEnabled ? 'on' : 'off'}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 shrink-0">
                   <Badge tone={u.role === 'company_admin' ? 'info' : 'default'}>{u.role.replace('_', ' ')}</Badge>
                   <Badge tone={u.isActive ? 'success' : 'danger'}>{u.isActive ? 'Active' : 'Disabled'}</Badge>
                   {u.id !== me.id && (

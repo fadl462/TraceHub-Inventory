@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2, ShieldCheck, ShieldOff } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Input, Select } from '../../components/ui';
 import { useAuth } from '../../context/AuthContext';
@@ -11,6 +11,41 @@ export default function SettingsPage() {
   const [passwordForm, setPasswordForm] = useState({ currentPassword: '', newPassword: '' });
   const [fields, setFields] = useState([]);
   const [newField, setNewField] = useState({ label: '', fieldType: 'text' });
+  const [qrDataUrl, setQrDataUrl] = useState(null);
+  const [twoFaCode, setTwoFaCode] = useState('');
+  const [disablePassword, setDisablePassword] = useState('');
+
+  const start2fa = async () => {
+    try {
+      const { data } = await client.post('/users/me/2fa/setup');
+      setQrDataUrl(data.qrDataUrl);
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Failed to start 2FA setup');
+    }
+  };
+  const verify2fa = async (e) => {
+    e.preventDefault();
+    try {
+      await client.post('/users/me/2fa/verify', { token: twoFaCode });
+      toast.success('Two-factor authentication enabled');
+      setQrDataUrl(null);
+      setTwoFaCode('');
+      refresh();
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Invalid code');
+    }
+  };
+  const disable2fa = async (e) => {
+    e.preventDefault();
+    try {
+      await client.post('/users/me/2fa/disable', { password: disablePassword });
+      toast.success('Two-factor authentication disabled');
+      setDisablePassword('');
+      refresh();
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Failed to disable 2FA');
+    }
+  };
 
   useEffect(() => {
     if (company) setCompanyForm({ name: company.name || '', industry: company.industry || '', currency: company.currency || 'USD' });
@@ -123,6 +158,33 @@ export default function SettingsPage() {
           <Input label="New password" type="password" required minLength={8} value={passwordForm.newPassword} onChange={(e) => setPasswordForm({ ...passwordForm, newPassword: e.target.value })} />
           <Button type="submit">Update password</Button>
         </form>
+      </Card>
+
+      <Card className="p-6">
+        <h3 className="font-semibold text-ink mb-1 flex items-center gap-2">
+          {user?.twoFactorEnabled ? <ShieldCheck size={17} className="text-accent-dark" /> : <ShieldOff size={17} className="text-ink/40" />}
+          Two-factor authentication
+        </h3>
+        <p className="text-sm text-ink/60 mb-4">
+          {user?.twoFactorEnabled
+            ? 'Enabled \u2014 your account requires a code from your authenticator app to sign in.'
+            : "Add an extra layer of security so a password alone isn't enough to sign in as you."}
+        </p>
+        {user?.twoFactorEnabled ? (
+          <form onSubmit={disable2fa} className="max-w-sm space-y-3">
+            <Input label="Confirm your password to disable" type="password" required value={disablePassword} onChange={(e) => setDisablePassword(e.target.value)} />
+            <Button type="submit" variant="danger">Disable 2FA</Button>
+          </form>
+        ) : !qrDataUrl ? (
+          <Button onClick={start2fa}><ShieldCheck size={16} /> Enable 2FA</Button>
+        ) : (
+          <form onSubmit={verify2fa} className="max-w-sm space-y-4">
+            <img src={qrDataUrl} alt="2FA QR code" className="rounded-lg border border-primary-100" width={160} height={160} />
+            <p className="text-xs text-ink/50">Scan with your authenticator app, then enter the 6-digit code.</p>
+            <Input label="6-digit code" required maxLength={6} value={twoFaCode} onChange={(e) => setTwoFaCode(e.target.value)} />
+            <Button type="submit">Verify & enable</Button>
+          </form>
+        )}
       </Card>
     </div>
   );

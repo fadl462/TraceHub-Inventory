@@ -14,15 +14,18 @@ export default function ReportsPage() {
   const { company } = useAuth();
   const [breakdown, setBreakdown] = useState([]);
   const [depreciation, setDepreciation] = useState([]);
+  const [locationEvents, setLocationEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     Promise.all([
       client.get('/reports/assets-by-category'),
       client.get('/reports/depreciation'),
-    ]).then(([bd, dep]) => {
+      client.get('/reports/location-activity'),
+    ]).then(([bd, dep, loc]) => {
       setBreakdown(bd.data.breakdown.map((b) => ({ name: b.AssetCategory?.name || 'Uncategorized', value: Number(b.count) })));
       setDepreciation(dep.data.assets);
+      setLocationEvents(loc.data.events);
     }).finally(() => setLoading(false));
   }, []);
 
@@ -41,6 +44,13 @@ export default function ReportsPage() {
       rows: depreciation.map((a) => [
         a.name, a.assetTag, Number(a.purchasePrice).toLocaleString(),
         Number(a.aiEstimatedCurrentValue || 0).toLocaleString(), a.aiSuggestedDisposalDate || '\u2014',
+      ]),
+    },
+    {
+      heading: 'Location activity',
+      columns: ['Date', 'Asset', 'Location', 'Event'],
+      rows: locationEvents.map((e) => [
+        new Date(e.createdAt).toLocaleString(), e.Asset?.name || '\u2014', e.Location?.name || '\u2014', e.eventType.replace('_', ' '),
       ]),
     },
   ];
@@ -70,23 +80,23 @@ export default function ReportsPage() {
 
       <div className="grid lg:grid-cols-2 gap-5">
         <Card className="p-6">
-          <h3 className="font-semibold text-ink mb-4">Assets by category</h3>
+          <h3 className="font-semibold text-ink text-lg mb-4">Assets by category</h3>
           {breakdown.length === 0 ? (
             <p className="text-sm text-ink/50 py-10 text-center">No categorized assets yet.</p>
           ) : (
             <>
-              <ResponsiveContainer width="100%" height={240}>
+              <ResponsiveContainer width="100%" height={260}>
                 <PieChart>
                   <Pie data={breakdown} dataKey="value" nameKey="name" innerRadius={60} outerRadius={95} paddingAngle={2}>
                     {breakdown.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                   </Pie>
-                  <Tooltip />
+                  <Tooltip wrapperStyle={{ fontSize: 14 }} />
                 </PieChart>
               </ResponsiveContainer>
-              <div className="flex flex-wrap gap-x-4 gap-y-1.5 mt-3 justify-center">
+              <div className="flex flex-wrap gap-x-5 gap-y-2 mt-4 justify-center">
                 {breakdown.map((b, i) => (
-                  <span key={b.name} className="flex items-center gap-1.5 text-xs text-ink/60">
-                    <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
+                  <span key={b.name} className="flex items-center gap-2 text-sm text-ink/70">
+                    <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                     {b.name} ({b.value})
                   </span>
                 ))}
@@ -96,30 +106,30 @@ export default function ReportsPage() {
         </Card>
 
         <Card className="p-6">
-          <h3 className="font-semibold text-ink mb-4">Depreciation report</h3>
+          <h3 className="font-semibold text-ink text-lg mb-4">Depreciation report</h3>
           {depreciation.length === 0 ? (
             <p className="text-sm text-ink/50 py-10 text-center">No priced assets yet.</p>
           ) : (
-            <div className="max-h-72 overflow-y-auto overflow-x-auto">
-              <table className="w-full text-sm min-w-[480px]">
-                <thead className="text-xs uppercase tracking-wide text-ink/40 text-left">
+            <div className="max-h-96 overflow-y-auto overflow-x-auto">
+              <table className="w-full text-[15px] min-w-[520px]">
+                <thead className="text-sm uppercase tracking-wide text-ink/50 text-left">
                   <tr>
-                    <th className="pb-2 whitespace-nowrap">Asset</th>
-                    <th className="pb-2 whitespace-nowrap">Purchased</th>
-                    <th className="pb-2 whitespace-nowrap">Current value</th>
-                    <th className="pb-2 whitespace-nowrap">Disposal date</th>
+                    <th className="pb-3 whitespace-nowrap">Asset</th>
+                    <th className="pb-3 whitespace-nowrap">Purchased</th>
+                    <th className="pb-3 whitespace-nowrap">Current value</th>
+                    <th className="pb-3 whitespace-nowrap">Disposal date</th>
                   </tr>
                 </thead>
                 <tbody>
                   {depreciation.map((a) => (
                     <tr key={a.id} className="border-t border-primary-50">
-                      <td className="py-2">
+                      <td className="py-3">
                         <p className="font-medium text-ink">{a.name}</p>
-                        <p className="text-xs text-ink/40">{a.assetTag}</p>
+                        <p className="text-sm text-ink/50">{a.assetTag}</p>
                       </td>
-                      <td className="py-2 text-ink/70">{Number(a.purchasePrice).toLocaleString()}</td>
-                      <td className="py-2 text-link font-medium">{Number(a.aiEstimatedCurrentValue || 0).toLocaleString()}</td>
-                      <td className="py-2 text-ink/70">{a.aiSuggestedDisposalDate || '—'}</td>
+                      <td className="py-3 text-ink/70">{Number(a.purchasePrice).toLocaleString()}</td>
+                      <td className="py-3 text-link font-semibold">{Number(a.aiEstimatedCurrentValue || 0).toLocaleString()}</td>
+                      <td className="py-3 text-ink/70">{a.aiSuggestedDisposalDate || '—'}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -128,6 +138,39 @@ export default function ReportsPage() {
           )}
         </Card>
       </div>
+
+      <Card className="p-6">
+        <h3 className="font-semibold text-ink text-lg mb-4">Location activity</h3>
+        {locationEvents.length === 0 ? (
+          <p className="text-sm text-ink/50 py-10 text-center">No scan activity recorded yet.</p>
+        ) : (
+          <div className="max-h-96 overflow-y-auto overflow-x-auto">
+            <table className="w-full text-[15px] min-w-[560px]">
+              <thead className="text-sm uppercase tracking-wide text-ink/50 text-left">
+                <tr>
+                  <th className="pb-3 whitespace-nowrap">Date</th>
+                  <th className="pb-3 whitespace-nowrap">Asset</th>
+                  <th className="pb-3 whitespace-nowrap">Location</th>
+                  <th className="pb-3 whitespace-nowrap">Event</th>
+                </tr>
+              </thead>
+              <tbody>
+                {locationEvents.slice(0, 50).map((e) => (
+                  <tr key={e.id} className="border-t border-primary-50">
+                    <td className="py-3 text-ink/70 whitespace-nowrap">{new Date(e.createdAt).toLocaleString()}</td>
+                    <td className="py-3">
+                      <p className="font-medium text-ink">{e.Asset?.name || '\u2014'}</p>
+                      <p className="text-sm text-ink/50">{e.Asset?.assetTag}</p>
+                    </td>
+                    <td className="py-3 text-ink/70">{e.Location?.name || '\u2014'}</td>
+                    <td className="py-3 text-ink/70 capitalize">{e.eventType.replace('_', ' ')}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </Card>
     </div>
   );
 }

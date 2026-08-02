@@ -30,12 +30,13 @@ async function createStaff(req, res, next) {
       firstName, lastName, email, phone,
       role: allowedRoles.includes(role) ? role : 'staff',
       passwordHash,
+      mustChangePassword: true,
     });
 
     await sendMail({
       to: email,
       subject: 'You have been added to TraceHub Inventory',
-      html: `<p>Hi ${firstName},</p><p>You've been added to ${req.company.name}'s TraceHub Inventory workspace as <strong>${user.role}</strong>.</p><p>Temporary password: <strong>${tempPassword}</strong></p><p>Please log in and change it immediately: ${process.env.CLIENT_URL}/login</p>`,
+      html: `<p>Hi ${firstName},</p><p>You've been added to ${req.company.name}'s TraceHub Inventory workspace as <strong>${user.role}</strong>.</p><p>Temporary password: <strong>${tempPassword}</strong></p><p>Log in at ${process.env.CLIENT_URL}/login \u2014 you'll be asked to set your own password before you can access anything else, and you'll have the option to enable two-factor authentication right away.</p>`,
     });
 
     await logAction(req, { action: 'user.create', entityType: 'User', entityId: user.id, after: sanitize(user) });
@@ -106,9 +107,11 @@ async function changePassword(req, res, next) {
     const { currentPassword, newPassword } = req.body;
     const valid = await bcrypt.compare(currentPassword, req.user.passwordHash);
     if (!valid) return res.status(400).json({ error: 'Current password is incorrect' });
+    if (newPassword.length < 8) return res.status(400).json({ error: 'New password must be at least 8 characters' });
     req.user.passwordHash = await bcrypt.hash(newPassword, 12);
+    req.user.mustChangePassword = false;
     await req.user.save();
-    res.json({ message: 'Password updated successfully' });
+    res.json({ message: 'Password updated successfully', user: sanitize(req.user) });
   } catch (err) { next(err); }
 }
 

@@ -34,6 +34,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     isActive: { type: DataTypes.BOOLEAN, defaultValue: true },
     isEmailVerified: { type: DataTypes.BOOLEAN, defaultValue: false },
+    // True for every user created via createStaff (system-generated temp
+    // password). Login still succeeds so the person can authenticate with
+    // the temp password, but the frontend blocks access to everything
+    // except the "set your own password" screen until this clears.
+    mustChangePassword: { type: DataTypes.BOOLEAN, defaultValue: false },
     lastLoginAt: { type: DataTypes.DATE, allowNull: true },
     avatarUrl: { type: DataTypes.STRING, allowNull: true },
     // Two-factor authentication (TOTP, e.g. Google/Microsoft Authenticator)

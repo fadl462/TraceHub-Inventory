@@ -1,6 +1,17 @@
 const { verifyAccessToken } = require('../utils/jwt');
 const { User, Company } = require('../models');
 
+// Routes that stay reachable while a user is forced to set their own
+// password after a company-admin invite - just enough to change the
+// password, set up 2FA if they want, check who they are, and log out.
+const ALLOWED_DURING_PASSWORD_CHANGE = [
+  '/api/users/me/change-password',
+  '/api/users/me/2fa/setup',
+  '/api/users/me/2fa/verify',
+  '/api/auth/me',
+  '/api/auth/logout',
+];
+
 async function authenticate(req, res, next) {
   try {
     const header = req.headers.authorization || '';
@@ -10,6 +21,11 @@ async function authenticate(req, res, next) {
     const payload = verifyAccessToken(token);
     const user = await User.findByPk(payload.sub);
     if (!user || !user.isActive) return res.status(401).json({ error: 'Invalid or inactive account' });
+
+    const fullPath = req.originalUrl.split('?')[0];
+    if (user.mustChangePassword && !ALLOWED_DURING_PASSWORD_CHANGE.includes(fullPath)) {
+      return res.status(403).json({ error: 'You must set your own password before continuing.', code: 'PASSWORD_CHANGE_REQUIRED' });
+    }
 
     req.user = user;
     req.companyId = user.companyId;

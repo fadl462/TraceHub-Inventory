@@ -81,12 +81,65 @@ export default function Dashboard() {
   const { company } = useAuth();
   const [overview, setOverview] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [exporting, setExporting] = useState(false);
 
   useEffect(() => {
     client.get('/reports/overview').then(({ data }) => setOverview(data)).finally(() => setLoading(false));
   }, []);
 
   if (loading) return <div className="flex justify-center py-20"><Spinner size={32} /></div>;
+
+  const subtitle = `${company?.name || ''} \u00b7 Generated ${new Date().toLocaleDateString()}`;
+
+  const buildDashboardSections = async () => {
+    const [{ data: intel }, { data: assign }, { data: insights }] = await Promise.all([
+      client.get('/reports/intelligence-overview'),
+      client.get('/reports/assignment-tracking'),
+      client.get('/reports/fleet-insights'),
+    ]);
+    return [
+      {
+        heading: 'Fleet overview',
+        columns: ['Metric', 'Value'],
+        rows: [
+          ['Total assets', overview?.assetCounts.total ?? 0],
+          ['Active assignments', overview?.activeAssignments ?? 0],
+          ['Overdue returns', overview?.overdueAssignments ?? 0],
+          ['Healthy assets', intel.healthyCount], ['Critical assets', intel.criticalCount],
+          ['Near disposal', intel.nearDisposalCount], ['Due maintenance', intel.dueMaintenanceCount],
+          ['Replacement budget needed', `${company?.currency || 'USD'} ${Number(intel.replacementBudget).toLocaleString()}`],
+        ],
+      },
+      {
+        heading: 'Assets currently assigned',
+        columns: ['Asset', 'Assigned to', 'Contact', 'Due', 'Status'],
+        rows: assign.assignments.map((a) => [
+          a.asset?.name || '', a.assigneeName, [a.contactEmail, a.contactPhone].filter(Boolean).join(' / ') || '\u2014',
+          a.expectedReturnDate || '\u2014', a.isOverdue ? `${a.daysOverdue}d overdue` : `${a.daysHeld}d held`,
+        ]),
+      },
+      {
+        heading: 'AI Insights',
+        columns: ['Insight'],
+        rows: insights.insights.map((i) => [i.text]),
+      },
+    ];
+  };
+
+  const handleExportDashboardPdf = async () => {
+    setExporting(true);
+    try {
+      const sections = await buildDashboardSections();
+      exportToPdf('tracehub-dashboard-summary', 'Dashboard Summary', subtitle, sections);
+    } finally { setExporting(false); }
+  };
+  const handleExportDashboardPptx = async () => {
+    setExporting(true);
+    try {
+      const sections = await buildDashboardSections();
+      exportToPptx('tracehub-dashboard-summary', 'Dashboard Summary', subtitle, sections);
+    } finally { setExporting(false); }
+  };
 
   return (
     <div className="space-y-6">
@@ -95,7 +148,13 @@ export default function Dashboard() {
           <h1 className="text-xl font-bold text-ink">Dashboard</h1>
           <p className="text-sm text-ink/60 mt-0.5">Your asset inventory at a glance.</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <button onClick={handleExportDashboardPdf} disabled={exporting} title="Export dashboard summary as PDF" aria-label="Export PDF" className="text-ink/50 hover:text-link p-2 rounded-lg border border-primary-100 hover:bg-primary-50 transition-colors disabled:opacity-50">
+            <FileText size={17} />
+          </button>
+          <button onClick={handleExportDashboardPptx} disabled={exporting} title="Export dashboard summary as PowerPoint" aria-label="Export PowerPoint" className="text-ink/50 hover:text-link p-2 rounded-lg border border-primary-100 hover:bg-primary-50 transition-colors disabled:opacity-50">
+            <Presentation size={17} />
+          </button>
           <Link to="/scan"><Button variant="outline"><ScanLine size={16} /> Scan asset</Button></Link>
           <Link to="/assets/new"><Button><Plus size={16} /> Add asset</Button></Link>
         </div>

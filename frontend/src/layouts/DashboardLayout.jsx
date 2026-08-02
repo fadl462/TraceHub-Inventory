@@ -83,9 +83,6 @@ export default function DashboardLayout() {
               <p className="truncate font-medium text-white">{user?.firstName} {user?.lastName}</p>
               <p className="truncate text-xs text-primary-200/70 capitalize">{user?.role?.replace('_', ' ')}</p>
             </div>
-            <button onClick={logout} title="Log out" className="text-primary-200/70 hover:text-white">
-              <LogOut size={17} />
-            </button>
           </div>
         </div>
       </aside>
@@ -126,6 +123,9 @@ export default function DashboardLayout() {
               </div>
             )}
           </div>
+          <button onClick={logout} title="Log out" aria-label="Log out" className="text-ink/60 hover:text-red-600 p-2 rounded-full hover:bg-red-50 transition-colors">
+            <LogOut size={19} />
+          </button>
         </header>
         <main ref={mainRef} className="flex-1 p-4 sm:p-6 max-w-[1400px] w-full mx-auto">
           <Outlet />
