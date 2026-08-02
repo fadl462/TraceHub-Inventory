@@ -96,6 +96,11 @@ module.exports = (sequelize, DataTypes) => {
     failureProbability60d: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
     failureProbability90d: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
     failureProbability180d: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
+    // 0-100 overall risk index the Failure Prediction Engine computes internally
+    // to derive the 30/60/90/180d probabilities above - listed as its own field
+    // ("Risk Score") in the spec's AI Behaviour Variables, so persisted here
+    // rather than discarded after being used to derive the probabilities.
+    riskScore: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
     failureReasons: { type: DataTypes.JSON, allowNull: true },
     disposalReadinessScore: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
     disposalRecommendation: { type: DataTypes.STRING, allowNull: true }, // KEEP | REPAIR | SELL | SCRAP

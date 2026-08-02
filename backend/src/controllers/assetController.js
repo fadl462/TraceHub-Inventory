@@ -68,6 +68,7 @@ async function computeAndApplyDepreciation(asset) {
   asset.failureProbability60d = intelligence.failure.probability60d;
   asset.failureProbability90d = intelligence.failure.probability90d;
   asset.failureProbability180d = intelligence.failure.probability180d;
+  asset.riskScore = intelligence.failure.riskIndex;
   asset.failureReasons = intelligence.failure.reasons;
   asset.disposalReadinessScore = intelligence.disposal.score;
   asset.disposalRecommendation = intelligence.disposal.recommendation;

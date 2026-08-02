@@ -170,8 +170,13 @@ function calculateDepreciation(asset, profile) {
     case 'double_declining_balance': {
       const rate = lifeYears > 0 ? 2 / lifeYears : 0.4;
       let bookValue = cost;
-      for (let y = 0; y < Math.floor(age); y += 1) {
+      const fullYears = Math.floor(age);
+      const fraction = age - fullYears;
+      for (let y = 0; y < fullYears; y += 1) {
         bookValue = Math.max(residual, bookValue - bookValue * rate);
+      }
+      if (fraction > 0 && bookValue > residual) {
+        bookValue = Math.max(residual, bookValue - bookValue * rate * fraction);
       }
       currentValue = bookValue;
       break;
@@ -180,8 +185,13 @@ function calculateDepreciation(asset, profile) {
       const n = Math.max(1, Math.round(lifeYears));
       const syd = (n * (n + 1)) / 2;
       let accumulated = 0;
-      for (let y = 0; y < Math.min(Math.floor(age), n); y += 1) {
+      const fullYears = Math.floor(age);
+      const fraction = age - fullYears;
+      for (let y = 0; y < Math.min(fullYears, n); y += 1) {
         accumulated += ((n - y) / syd) * depreciableBase;
+      }
+      if (fraction > 0 && fullYears < n) {
+        accumulated += ((n - fullYears) / syd) * depreciableBase * fraction;
       }
       currentValue = Math.max(residual, cost - accumulated);
       break;
@@ -512,7 +522,7 @@ function calculateConfidence(asset, learningAdjustment = 0) {
 // ENGINE 5 - Executive Recommendation Engine (deterministic synthesis)
 // ---------------------------------------------------------------------------
 
-function buildExecutiveRecommendation(asset, { health, failure, disposal, confidence }) {
+function buildExecutiveRecommendation(asset, { health, failure, disposal, confidence, maintenanceSchedule }) {
   let headline;
   if (disposal.recommendation === 'SCRAP' || disposal.recommendation === 'REPLACE') {
     headline = `Replace ${disposal.timeframe === 'within 1 month' ? 'immediately' : disposal.timeframe}.`;
@@ -522,6 +532,13 @@ function buildExecutiveRecommendation(asset, { health, failure, disposal, confid
     headline = 'Schedule repair/service before the next assignment.';
   } else if (health.tier === 'Critical' || health.tier === 'High Risk') {
     headline = 'Monitor closely - health score is low even though disposal isn\u2019t yet recommended.';
+  } else if (maintenanceSchedule?.nextServiceDate) {
+    // Matches the spec's own worked example: "Keep... Next Maintenance: 96 Days" -
+    // use the real Maintenance Scheduling Engine output instead of a separate heuristic.
+    const daysUntil = Math.round((new Date(maintenanceSchedule.nextServiceDate) - Date.now()) / 86400000);
+    headline = daysUntil >= 0
+      ? `Keep in service. Next scheduled maintenance in ${daysUntil} day${daysUntil === 1 ? '' : 's'}.`
+      : `Keep in service, but maintenance is ${Math.abs(daysUntil)} day${Math.abs(daysUntil) === 1 ? '' : 's'} overdue - schedule service soon.`;
   } else {
     headline = `Keep in service. Next review recommended in ${Math.max(30, Math.round(180 - failure.probability180d))} days.`;
   }
@@ -537,7 +554,9 @@ function runFullIntelligenceAnalysis(asset, profile, learningAdjustment = 0) {
   const maintenanceSchedule = estimateNextServiceDate(asset, health);
   const disposal = calculateDisposalReadiness(asset, profile, health, depreciation);
   const confidence = calculateConfidence(asset, learningAdjustment);
-  const executive = buildExecutiveRecommendation(asset, { health, failure, disposal, confidence });
+  const executive = buildExecutiveRecommendation(asset, {
+    health, failure, disposal, confidence, maintenanceSchedule,
+  });
 
   return { depreciation, health, failure, maintenanceSchedule, disposal, confidence, executive };
 }

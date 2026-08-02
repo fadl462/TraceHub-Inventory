@@ -147,6 +147,7 @@ export default function AssetDetail() {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-xs font-semibold uppercase tracking-wide text-ink/50 flex items-center gap-1"><AlertTriangle size={12} /> Failure risk</p>
+                    {asset.riskScore != null && <span className="text-xs font-semibold text-ink">{asset.riskScore}% risk score</span>}
                   </div>
                   <div className="grid grid-cols-4 gap-2 text-center mb-2">
                     <FailureStat label="30 days" value={asset.failureProbability30d} />
