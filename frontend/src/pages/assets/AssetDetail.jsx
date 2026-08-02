@@ -11,19 +11,24 @@ export default function AssetDetail() {
   const [asset, setAsset] = useState(null);
   const [qr, setQr] = useState(null);
   const [locationHistory, setLocationHistory] = useState([]);
+  const [inspections, setInspections] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [inspectionForm, setInspectionForm] = useState({ score: '', condition: 'good', notes: '' });
+  const [submittingInspection, setSubmittingInspection] = useState(false);
 
   const load = async () => {
     setLoading(true);
     try {
-      const [{ data: assetData }, { data: qrData }, { data: locData }] = await Promise.all([
+      const [{ data: assetData }, { data: qrData }, { data: locData }, { data: inspData }] = await Promise.all([
         client.get(`/assets/${id}`),
         client.get(`/assets/${id}/qr`),
         client.get(`/locations/history/${id}`),
+        client.get(`/assets/${id}/inspections`),
       ]);
       setAsset(assetData.asset);
       setQr(qrData.qrDataUrl);
       setLocationHistory(locData.events);
+      setInspections(inspData.inspections);
     } finally {
       setLoading(false);
     }
@@ -48,6 +53,26 @@ export default function AssetDetail() {
       toast.success('Disposal case opened - visible under Disposal cases');
     } catch (err) {
       toast.error(err.response?.data?.error || 'Failed to open disposal case');
+    }
+  };
+
+  const submitInspection = async (e) => {
+    e.preventDefault();
+    const score = Number(inspectionForm.score);
+    if (Number.isNaN(score) || score < 0 || score > 100) {
+      toast.error('Score must be between 0 and 100');
+      return;
+    }
+    setSubmittingInspection(true);
+    try {
+      await client.post(`/assets/${id}/inspections`, inspectionForm);
+      toast.success('Inspection logged \u2014 health score recalculated');
+      setInspectionForm({ score: '', condition: 'good', notes: '' });
+      await load();
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Failed to log inspection');
+    } finally {
+      setSubmittingInspection(false);
     }
   };
 
@@ -190,6 +215,59 @@ export default function AssetDetail() {
               </div>
             </div>
           )}
+
+          <div>
+            <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><Activity size={15} /> Inspection history</h4>
+            <form onSubmit={submitInspection} className="flex flex-wrap items-end gap-2 mb-3 p-3 rounded-lg bg-primary-50/60">
+              <label className="text-xs">
+                <span className="block text-ink/50 mb-1">Score (0-100)</span>
+                <input
+                  type="number" min="0" max="100" required value={inspectionForm.score}
+                  onChange={(e) => setInspectionForm({ ...inspectionForm, score: e.target.value })}
+                  className="w-24 rounded-lg border border-primary-100 px-2.5 py-1.5 text-sm focus-ring focus:border-secondary"
+                />
+              </label>
+              <label className="text-xs">
+                <span className="block text-ink/50 mb-1">Condition</span>
+                <select
+                  value={inspectionForm.condition} onChange={(e) => setInspectionForm({ ...inspectionForm, condition: e.target.value })}
+                  className="rounded-lg border border-primary-100 px-2.5 py-1.5 text-sm focus-ring focus:border-secondary"
+                >
+                  <option value="excellent">Excellent</option>
+                  <option value="good">Good</option>
+                  <option value="fair">Fair</option>
+                  <option value="poor">Poor</option>
+                  <option value="critical">Critical</option>
+                </select>
+              </label>
+              <label className="text-xs flex-1 min-w-[160px]">
+                <span className="block text-ink/50 mb-1">Notes (optional)</span>
+                <input
+                  type="text" value={inspectionForm.notes} placeholder="What did you check?"
+                  onChange={(e) => setInspectionForm({ ...inspectionForm, notes: e.target.value })}
+                  className="w-full rounded-lg border border-primary-100 px-2.5 py-1.5 text-sm focus-ring focus:border-secondary"
+                />
+              </label>
+              <Button type="submit" disabled={submittingInspection}>{submittingInspection ? 'Logging...' : 'Log inspection'}</Button>
+            </form>
+            {inspections.length ? (
+              <div className="space-y-2">
+                {inspections.map((insp) => (
+                  <div key={insp.id} className="flex items-center justify-between text-sm border-b border-primary-50 pb-2">
+                    <span className="text-ink/80">
+                      <span className="font-semibold text-ink">{insp.score}%</span>
+                      {' '}&mdash;{' '}{insp.condition}
+                      {insp.notes && <span className="text-ink/50"> \u00b7 {insp.notes}</span>}
+                      {insp.inspectedBy && <span className="text-ink/40"> \u00b7 {insp.inspectedBy.firstName} {insp.inspectedBy.lastName}</span>}
+                    </span>
+                    <span className="text-ink/50 text-xs shrink-0 ml-2">{new Date(insp.inspectedAt).toLocaleDateString()}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-ink/50">No inspections logged yet.</p>
+            )}
+          </div>
 
           <div>
             <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><Clock size={15} /> Recent assignments</h4>

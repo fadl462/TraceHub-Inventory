@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const {
   Company, User, Subscription, SubscriptionPlan, AssetCategory, DepreciationProfile,
-  Asset, Location, AssetLocationEvent, Assignment, Payment, AuditLog,
+  Asset, Location, AssetLocationEvent, Assignment, Payment, AuditLog, AssetInspection,
 } = require('../models');
 const { estimateDepreciation } = require('../utils/depreciationEngine');
 const { runFullIntelligenceAnalysis } = require('../utils/assetIntelligence');
@@ -188,6 +188,27 @@ async function seedOneCompany(spec) {
       ...wear,
     });
 
+    // Real inspection history (previously TraceHub only ever stored a single
+    // cached "latest score" with zero history at all). Seed 1-3 past
+    // inspections trending toward the wear profile's current score, so the
+    // AI Confidence Score has genuine records to count.
+    const inspectionCount = 1 + (wearTier % 3);
+    const baseInspectionScore = wear.inspectionScore || 75;
+    for (let k = inspectionCount; k >= 1; k -= 1) {
+      const monthsAgo = k * 2;
+      const drift = (inspectionCount - k) * 4; // earlier inspections scored a bit better (declining trend toward today)
+      const score = Math.min(100, baseInspectionScore + drift);
+      // eslint-disable-next-line no-await-in-loop
+      await AssetInspection.create({
+        assetId: asset.id,
+        inspectedByUserId: (users.staff || users.manager || users.company_admin)?.id || null,
+        score,
+        condition: score >= 80 ? 'good' : score >= 60 ? 'fair' : 'poor',
+        notes: k === 1 ? 'Routine inspection' : 'Scheduled inspection',
+        inspectedAt: new Date(Date.now() - monthsAgo * 30 * 86400000),
+      });
+    }
+
     if (profile) {
       const result = estimateDepreciation({
         purchasePrice: a.price, manufactureYear: a.year,
@@ -202,7 +223,12 @@ async function seedOneCompany(spec) {
 
     // Run the full Asset Intelligence Engine so seeded assets show real,
     // varied health/failure/disposal/executive scores - not nulls.
-    const intelligence = runFullIntelligenceAnalysis(asset, profile ? { usefulLifeYears: profile.usefulLifeYears, scrapValuePercent: profile.scrapValuePercent } : null);
+    const intelligence = runFullIntelligenceAnalysis(
+      asset,
+      profile ? { usefulLifeYears: profile.usefulLifeYears, scrapValuePercent: profile.scrapValuePercent } : null,
+      0,
+      inspectionCount,
+    );
     asset.healthScore = intelligence.health.score;
     asset.healthBreakdown = intelligence.health.breakdown;
     asset.failureProbability30d = intelligence.failure.probability30d;

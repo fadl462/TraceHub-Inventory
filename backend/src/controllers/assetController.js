@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
 const {
   Asset, AssetCategory, DepreciationProfile, AssetCustomFieldValue,
-  CustomFieldDefinition, Location, AssetLocationEvent, Assignment, DisposalCase,
+  CustomFieldDefinition, Location, AssetLocationEvent, Assignment, DisposalCase, AssetInspection,
 } = require('../models');
 const { estimateDepreciation } = require('../utils/depreciationEngine');
 const { runFullIntelligenceAnalysis } = require('../utils/assetIntelligence');
@@ -61,7 +61,8 @@ async function computeAndApplyDepreciation(asset) {
   // how often, historically, ignoring a disposal recommendation here has
   // actually been followed by a failure. See utils/learningLoop.js.
   const reliability = await getCompanyReliability(asset.companyId, { DisposalCase });
-  const intelligence = runFullIntelligenceAnalysis(asset, profile, reliability.confidenceAdjustment);
+  const inspectionCount = await AssetInspection.count({ where: { assetId: asset.id } });
+  const intelligence = runFullIntelligenceAnalysis(asset, profile, reliability.confidenceAdjustment, inspectionCount);
   asset.healthScore = intelligence.health.score;
   asset.healthBreakdown = intelligence.health.breakdown;
   asset.failureProbability30d = intelligence.failure.probability30d;
@@ -269,6 +270,61 @@ async function recalculateDepreciation(req, res, next) {
   } catch (err) { next(err); }
 }
 
+/**
+ * Logs a real inspection record (Engine 2/AI Confidence Score's honest
+ * inspection history - previously TraceHub only stored the single latest
+ * score with no history at all). Also updates the asset's cached
+ * inspectionScore to the new value and recomputes the full intelligence
+ * engine, since a new inspection is real new evidence that should
+ * immediately move health/confidence/etc.
+ */
+async function logInspection(req, res, next) {
+  try {
+    const asset = await Asset.findByPk(req.params.id);
+    if (!asset) return res.status(404).json({ error: 'Asset not found' });
+    if (asset.companyId !== req.companyId) return res.status(403).json({ error: 'Not authorized' });
+
+    const { score, condition, notes, inspectedAt } = req.body;
+    if (score === undefined || score === null || Number.isNaN(Number(score)) || Number(score) < 0 || Number(score) > 100) {
+      return res.status(400).json({ error: 'score must be a number between 0 and 100' });
+    }
+
+    const inspection = await AssetInspection.create({
+      assetId: asset.id,
+      inspectedByUserId: req.user.id,
+      score: Number(score),
+      condition: condition || null,
+      notes: notes || null,
+      inspectedAt: inspectedAt ? new Date(inspectedAt) : new Date(),
+    });
+
+    // Cached "latest score" field stays in sync with the newest inspection by date,
+    // not necessarily the one just created (a backdated inspection shouldn't win).
+    const latest = await AssetInspection.findOne({ where: { assetId: asset.id }, order: [['inspectedAt', 'DESC']] });
+    asset.inspectionScore = latest.score;
+    await computeAndApplyDepreciation(asset);
+    await asset.save();
+
+    res.status(201).json({ inspection, asset });
+  } catch (err) { next(err); }
+}
+
+/** Full inspection history for an asset, most recent first - the AI Confidence Score's real evidence trail. */
+async function listInspections(req, res, next) {
+  try {
+    const asset = await Asset.findByPk(req.params.id);
+    if (!asset) return res.status(404).json({ error: 'Asset not found' });
+    if (asset.companyId !== req.companyId) return res.status(403).json({ error: 'Not authorized' });
+
+    const inspections = await AssetInspection.findAll({
+      where: { assetId: asset.id },
+      order: [['inspectedAt', 'DESC']],
+      include: [{ model: require('../models').User, as: 'inspectedBy', attributes: ['id', 'firstName', 'lastName'] }],
+    });
+    res.json({ inspections });
+  } catch (err) { next(err); }
+}
+
 async function archiveAsset(req, res, next) {
   try {
     const asset = await Asset.findByPk(req.params.id);
@@ -310,4 +366,5 @@ async function resolveByQrToken(req, res, next) {
 module.exports = {
   createAsset, listAssets, getAsset, updateAsset, recalculateDepreciation,
   archiveAsset, getAssetQr, resolveByQrToken, computeAndApplyDepreciation,
+  logInspection, listInspections,
 };

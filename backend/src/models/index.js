@@ -12,6 +12,7 @@ const Asset = require('./asset')(sequelize, DataTypes);
 const AssetCustomFieldValue = require('./assetCustomFieldValue')(sequelize, DataTypes);
 const Location = require('./location')(sequelize, DataTypes);
 const AssetLocationEvent = require('./assetLocationEvent')(sequelize, DataTypes);
+const AssetInspection = require('./assetInspection')(sequelize, DataTypes);
 const Assignment = require('./assignment')(sequelize, DataTypes);
 const Notification = require('./notification')(sequelize, DataTypes);
 const AuditLog = require('./auditLog')(sequelize, DataTypes);
@@ -86,6 +87,12 @@ AssetLocationEvent.belongsTo(Location, { foreignKey: 'locationId' });
 User.hasMany(AssetLocationEvent, { foreignKey: 'scannedByUserId' });
 AssetLocationEvent.belongsTo(User, { foreignKey: 'scannedByUserId', as: 'scannedBy' });
 
+// Asset <-> AssetInspection (real inspection history, most recent feeds asset.inspectionScore)
+Asset.hasMany(AssetInspection, { foreignKey: 'assetId', onDelete: 'CASCADE' });
+AssetInspection.belongsTo(Asset, { foreignKey: 'assetId' });
+User.hasMany(AssetInspection, { foreignKey: 'inspectedByUserId' });
+AssetInspection.belongsTo(User, { foreignKey: 'inspectedByUserId', as: 'inspectedBy' });
+
 Asset.hasMany(DisposalCase, { foreignKey: 'assetId', onDelete: 'CASCADE' });
 DisposalCase.belongsTo(Asset, { foreignKey: 'assetId' });
 DisposalCase.belongsTo(Company, { foreignKey: 'companyId' });
@@ -133,6 +140,7 @@ module.exports = {
   AssetCustomFieldValue,
   Location,
   AssetLocationEvent,
+  AssetInspection,
   Assignment,
   Notification,
   AuditLog,

@@ -495,24 +495,25 @@ const CONFIDENCE_FIELDS = [
  *   followed by an actual failure. This is a real, transparent, bounded
  *   number derived from this company's own disposal-case history - not a
  *   fabricated "the AI is learning" claim.
+ * @param {number} [inspectionCount] - real count of AssetInspection records
+ *   for this asset (see models/assetInspection.js). Previously this engine
+ *   could only report 0 or 1 since TraceHub had no inspection history model
+ *   at all - now a genuine count, matching the spec's confidence example
+ *   ("3 inspections").
  */
-function calculateConfidence(asset, learningAdjustment = 0) {
+function calculateConfidence(asset, learningAdjustment = 0, inspectionCount = null) {
   const populated = CONFIDENCE_FIELDS.filter((f) => asset[f] !== null && asset[f] !== undefined).length;
   const completeness = (populated / CONFIDENCE_FIELDS.length) * 100;
-  const recordBonus = Math.min(num(asset.maintenanceCount), 10) * 1.5 + (asset.inspectionScore != null ? 5 : 0);
+  const realInspectionCount = inspectionCount != null ? inspectionCount : (asset.inspectionScore != null ? 1 : 0);
+  const recordBonus = Math.min(num(asset.maintenanceCount), 10) * 1.5 + Math.min(realInspectionCount, 5) * 2;
   const bounded = clamp(learningAdjustment, -10, 10);
 
-  // NOTE ON HONESTY: TraceHub currently stores only the *latest* inspection
-  // score per asset, not a full inspection history, so "inspectionsConsidered"
-  // below is 0 or 1 - a true count, not the "3 inspections" richness shown in
-  // the spec's mock example. Building a real inspection-history model is
-  // listed as a follow-up (see handoff doc), not faked here.
   return {
     score: Math.round(clamp(35 + completeness * 0.5 + recordBonus + bounded) * 10) / 10,
     fieldsPopulated: populated,
     fieldsTotal: CONFIDENCE_FIELDS.length,
     maintenanceRecordsConsidered: num(asset.maintenanceCount),
-    inspectionsConsidered: asset.inspectionScore != null ? 1 : 0,
+    inspectionsConsidered: realInspectionCount,
     marketDataAvailable: asset.currentMarketValue != null,
     learningLoopAdjustment: Math.round(bounded * 10) / 10,
   };
@@ -547,13 +548,13 @@ function buildExecutiveRecommendation(asset, { health, failure, disposal, confid
 }
 
 /** Runs all five engines and returns the consolidated result to persist on the asset. */
-function runFullIntelligenceAnalysis(asset, profile, learningAdjustment = 0) {
+function runFullIntelligenceAnalysis(asset, profile, learningAdjustment = 0, inspectionCount = null) {
   const depreciation = calculateDepreciation(asset, profile);
   const health = calculateHealthScore(asset, profile);
   const failure = calculateFailureRisk(asset, profile, health);
   const maintenanceSchedule = estimateNextServiceDate(asset, health);
   const disposal = calculateDisposalReadiness(asset, profile, health, depreciation);
-  const confidence = calculateConfidence(asset, learningAdjustment);
+  const confidence = calculateConfidence(asset, learningAdjustment, inspectionCount);
   const executive = buildExecutiveRecommendation(asset, {
     health, failure, disposal, confidence, maintenanceSchedule,
   });
