@@ -2,6 +2,7 @@ const { Op } = require('sequelize');
 const { DisposalCase, Asset, User } = require('../models');
 const { logAction } = require('../middleware/audit');
 const { sendMail } = require('../utils/mailer');
+const { snapshotRejectionForLearning, evaluateOutcomes, getCompanyReliability } = require('../utils/learningLoop');
 
 const VALID_TRANSITIONS = {
   flagged: ['manager_review', 'rejected'],
@@ -131,6 +132,10 @@ async function transitionCase(req, res, next) {
       }
     } else if (toStatus === 'rejected') {
       disposalCase.rejectionReason = rejectionReason || notes || 'No reason given';
+      // AI Learning Loop: remember where the asset's incident count stood
+      // the moment this recommendation was ignored, so we can later tell
+      // whether a real failure followed.
+      if (disposalCase.Asset) snapshotRejectionForLearning(disposalCase, disposalCase.Asset);
     }
 
     disposalCase.status = toStatus;
@@ -155,4 +160,26 @@ async function transitionCase(req, res, next) {
   } catch (err) { next(err); }
 }
 
-module.exports = { createCase, listCases, getCase, transitionCase };
+/**
+ * AI Learning Loop: checks rejected-and-ignored recommendations that are now
+ * old enough to judge, and marks whether a real failure followed. Safe to
+ * call as often as you like - already-evaluated cases are skipped.
+ */
+async function evaluateLearningLoop(req, res, next) {
+  try {
+    const result = await evaluateOutcomes(req.companyId, { DisposalCase, Asset });
+    res.json(result);
+  } catch (err) { next(err); }
+}
+
+/** Company-level AI Learning Loop reliability stats, for the transparency panel on the dashboard. */
+async function getLearningLoopStats(req, res, next) {
+  try {
+    const stats = await getCompanyReliability(req.companyId, { DisposalCase });
+    res.json(stats);
+  } catch (err) { next(err); }
+}
+
+module.exports = {
+  createCase, listCases, getCase, transitionCase, evaluateLearningLoop, getLearningLoopStats,
+};

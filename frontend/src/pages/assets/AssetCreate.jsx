@@ -17,6 +17,7 @@ export default function AssetCreate() {
     currentLocationId: '', freeTextLocation: '', description: '',
     // Intelligence Engine inputs - all optional, drive the health/failure/disposal scores
     depreciationMethod: 'straight_line', warrantyExpiry: '', currentMarketValue: '', currentReplacementCost: '',
+    unitsProductionCapacity: '', customDepreciationFormula: '',
     hoursUsed: '', maintenanceCount: '', repairCount: '', failureCount: '', inspectionScore: '',
     maintenanceCostTotal: '', repairCostTotal: '',
     usageIntensity: 'normal', assetReliability: '', maintenanceCompliance: '', criticalityScore: '',
@@ -143,10 +144,41 @@ export default function AssetCreate() {
                       <option value="reducing_balance">Reducing balance</option>
                       <option value="double_declining_balance">Double declining balance</option>
                       <option value="sum_of_years_digits">Sum of years' digits</option>
+                      <option value="units_of_production">Units of production</option>
+                      <option value="machine_hours">Machine hours</option>
+                      <option value="mileage_based">Mileage based</option>
                       <option value="ai_adaptive">AI Adaptive (factors in usage, maintenance, environment)</option>
+                      <option value="custom_formula">Custom formula</option>
                     </Select>
                     <Input label="Warranty expiry" type="date" value={form.warrantyExpiry} onChange={(e) => setForm({ ...form, warrantyExpiry: e.target.value })} />
                   </div>
+                  {['units_of_production', 'machine_hours', 'mileage_based'].includes(form.depreciationMethod) && (
+                    <div className="mt-4">
+                      <Input
+                        label="Total expected capacity over useful life (units / hours / miles, matching the method above)"
+                        type="number" value={form.unitsProductionCapacity}
+                        onChange={(e) => setForm({ ...form, unitsProductionCapacity: e.target.value })}
+                      />
+                    </div>
+                  )}
+                  {form.depreciationMethod === 'custom_formula' && (
+                    <div className="mt-4">
+                      <label className="block">
+                        <span className="mb-1.5 block text-sm font-medium text-ink/80">Custom formula</span>
+                        <input
+                          type="text" placeholder="e.g. cost - (repairCount * 25) - (age * 100)"
+                          className="w-full rounded-lg border border-primary-100 px-3.5 py-2.5 text-sm font-mono focus-ring focus:border-secondary"
+                          value={form.customDepreciationFormula}
+                          onChange={(e) => setForm({ ...form, customDepreciationFormula: e.target.value })}
+                        />
+                      </label>
+                      <p className="text-xs text-ink/50 mt-1.5">
+                        Basic arithmetic only (+ - * / ^ and parentheses) - no functions. Available variables:{' '}
+                        <code className="text-[11px]">cost, residual, lifeYears, age, hoursUsed, mileage, operatingCycles, repairCount, maintenanceCount, maintenanceCostTotal, repairCostTotal</code>.
+                        An invalid formula safely falls back to straight-line rather than breaking the asset.
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div>

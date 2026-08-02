@@ -40,6 +40,16 @@ module.exports = (sequelize, DataTypes) => {
     finalSaleCurrency: { type: DataTypes.STRING, allowNull: true },
     disposedAt: { type: DataTypes.DATE, allowNull: true },
     rejectionReason: { type: DataTypes.TEXT, allowNull: true },
+
+    // ---- AI Learning Loop (see utils/learningLoop.js) ----
+    // Snapshot of the asset's failureCount+accidentCount at the moment the
+    // case was rejected, so a later evaluation pass can tell whether new
+    // failures occurred *after* management chose to ignore the recommendation.
+    incidentCountAtDecision: { type: DataTypes.INTEGER, allowNull: true },
+    // true once we've checked what happened after a rejection; irrelevant for disposed cases (evaluated immediately)
+    outcomeEvaluatedAt: { type: DataTypes.DATE, allowNull: true },
+    // Did the asset go on to fail/have an incident after the recommendation was ignored?
+    outcomeFailureOccurred: { type: DataTypes.BOOLEAN, allowNull: true },
   }, {
     tableName: 'disposal_cases',
     timestamps: true,

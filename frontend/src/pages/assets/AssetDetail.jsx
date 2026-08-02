@@ -110,9 +110,20 @@ export default function AssetDetail() {
               <div className="flex items-center justify-between">
                 <p className="font-medium text-ink text-sm flex items-center gap-2"><Activity size={16} className="text-primary" /> Asset Intelligence Engine</p>
                 {asset.executiveConfidence != null && (
-                  <span className="text-xs text-ink/50">{asset.executiveConfidence}% confidence</span>
+                  <span className="text-xs text-ink/50" title={asset.confidenceDetail ? `${asset.confidenceDetail.fieldsPopulated}/${asset.confidenceDetail.fieldsTotal} fields \u00b7 ${asset.confidenceDetail.maintenanceRecordsConsidered} maintenance records${asset.confidenceDetail.marketDataAvailable ? ' \u00b7 market data available' : ''}${asset.confidenceDetail.learningLoopAdjustment ? ` \u00b7 learning loop ${asset.confidenceDetail.learningLoopAdjustment > 0 ? '+' : ''}${asset.confidenceDetail.learningLoopAdjustment}` : ''}` : undefined}>
+                    {asset.executiveConfidence}% confidence
+                  </span>
                 )}
               </div>
+
+              {asset.confidenceDetail && (
+                <p className="text-xs text-ink/40 -mt-3">
+                  Based on {asset.confidenceDetail.fieldsPopulated}/{asset.confidenceDetail.fieldsTotal} fields populated
+                  {asset.confidenceDetail.maintenanceRecordsConsidered > 0 ? `, ${asset.confidenceDetail.maintenanceRecordsConsidered} maintenance record${asset.confidenceDetail.maintenanceRecordsConsidered === 1 ? '' : 's'}` : ''}
+                  {asset.confidenceDetail.marketDataAvailable ? ', current market data' : ''}
+                  {asset.confidenceDetail.learningLoopAdjustment ? `, ${asset.confidenceDetail.learningLoopAdjustment > 0 ? '+' : ''}${asset.confidenceDetail.learningLoopAdjustment} from this company's disposal-outcome history` : ''}.
+                </p>
+              )}
 
               {asset.executiveRecommendation && (
                 <div className="bg-primary-800 text-white rounded-lg p-3.5">
@@ -137,8 +148,9 @@ export default function AssetDetail() {
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-xs font-semibold uppercase tracking-wide text-ink/50 flex items-center gap-1"><AlertTriangle size={12} /> Failure risk</p>
                   </div>
-                  <div className="grid grid-cols-3 gap-2 text-center mb-2">
+                  <div className="grid grid-cols-4 gap-2 text-center mb-2">
                     <FailureStat label="30 days" value={asset.failureProbability30d} />
+                    <FailureStat label="60 days" value={asset.failureProbability60d} />
                     <FailureStat label="90 days" value={asset.failureProbability90d} />
                     <FailureStat label="180 days" value={asset.failureProbability180d} />
                   </div>

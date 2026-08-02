@@ -1,10 +1,11 @@
 const { Op } = require('sequelize');
 const {
   Asset, AssetCategory, DepreciationProfile, AssetCustomFieldValue,
-  CustomFieldDefinition, Location, AssetLocationEvent, Assignment,
+  CustomFieldDefinition, Location, AssetLocationEvent, Assignment, DisposalCase,
 } = require('../models');
 const { estimateDepreciation } = require('../utils/depreciationEngine');
 const { runFullIntelligenceAnalysis } = require('../utils/assetIntelligence');
+const { getCompanyReliability } = require('../utils/learningLoop');
 const { generateAssetTag, generateQrToken, generateQrDataUrl } = require('../utils/qrTag');
 const { logAction } = require('../middleware/audit');
 
@@ -22,6 +23,7 @@ const INTELLIGENCE_FIELDS = [
   'humidity', 'temperature', 'dustExposure', 'outdoorExposure', 'chemicalExposure', 'corrosionRisk', 'weatherConditions',
   'userRating', 'technicianRating', 'assetReliability', 'usageIntensity', 'abuseScore', 'criticalityScore',
   'maintenanceCompliance', 'resaleDemand', 'depreciationMethod', 'unitsProductionCapacity',
+  'customDepreciationFormula',
 ];
 
 function pickIntelligenceFields(body) {
@@ -54,10 +56,16 @@ async function computeAndApplyDepreciation(asset) {
   // Full Asset Intelligence Engine (health, failure risk, disposal readiness,
   // executive recommendation) - a superset computed alongside the simpler
   // depreciation-only result above, which many existing views still read.
-  const intelligence = runFullIntelligenceAnalysis(asset, profile);
+  //
+  // The confidence score factors in this company's AI Learning Loop history:
+  // how often, historically, ignoring a disposal recommendation here has
+  // actually been followed by a failure. See utils/learningLoop.js.
+  const reliability = await getCompanyReliability(asset.companyId, { DisposalCase });
+  const intelligence = runFullIntelligenceAnalysis(asset, profile, reliability.confidenceAdjustment);
   asset.healthScore = intelligence.health.score;
   asset.healthBreakdown = intelligence.health.breakdown;
   asset.failureProbability30d = intelligence.failure.probability30d;
+  asset.failureProbability60d = intelligence.failure.probability60d;
   asset.failureProbability90d = intelligence.failure.probability90d;
   asset.failureProbability180d = intelligence.failure.probability180d;
   asset.failureReasons = intelligence.failure.reasons;
@@ -66,6 +74,7 @@ async function computeAndApplyDepreciation(asset) {
   asset.disposalBreakdown = intelligence.disposal.breakdown;
   asset.executiveRecommendation = intelligence.executive.headline;
   asset.executiveConfidence = intelligence.executive.confidence;
+  asset.confidenceDetail = intelligence.confidence;
   asset.intelligenceLastCalculatedAt = new Date();
 
   // If the ai_adaptive depreciation method is selected, its (potentially

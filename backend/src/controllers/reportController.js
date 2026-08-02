@@ -3,6 +3,9 @@ const {
   Asset, AssetCategory, Assignment, AssetLocationEvent, Location,
 } = require('../models');
 const { generateInsight } = require('../utils/aiInsights');
+const { generateFleetInsights } = require('../utils/fleetInsights');
+const { getCompanyReliability } = require('../utils/learningLoop');
+const { DisposalCase } = require('../models');
 
 /** Company-level dashboard KPIs */
 async function companyOverview(req, res, next) {
@@ -118,6 +121,26 @@ async function intelligenceOverview(req, res, next) {
   } catch (err) { next(err); }
 }
 
+/**
+ * AI Insights Panel: rule-based pattern detection across the whole fleet
+ * (see utils/fleetInsights.js). Every sentence here is generated from a real
+ * query against this company's own asset data - no fabricated figures.
+ */
+async function fleetInsightsReport(req, res, next) {
+  try {
+    const insights = await generateFleetInsights(req.companyId, { Asset, AssetCategory });
+    res.json({ insights });
+  } catch (err) { next(err); }
+}
+
+/** AI Learning Loop transparency panel: how reliable this company's history shows the disposal engine to be. */
+async function learningLoopReport(req, res, next) {
+  try {
+    const stats = await getCompanyReliability(req.companyId, { DisposalCase });
+    res.json(stats);
+  } catch (err) { next(err); }
+}
+
 /** Asset usage/status breakdown by category, for charting */
 async function assetsByCategory(req, res, next) {
   try {
@@ -207,4 +230,7 @@ async function aiInsights(req, res, next) {
   } catch (err) { next(err); }
 }
 
-module.exports = { companyOverview, intelligenceOverview, assetsByCategory, depreciationReport, locationActivityReport, aiInsights };
+module.exports = {
+  companyOverview, intelligenceOverview, assetsByCategory, depreciationReport, locationActivityReport, aiInsights,
+  fleetInsightsReport, learningLoopReport,
+};

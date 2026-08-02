@@ -88,6 +88,7 @@ module.exports = (sequelize, DataTypes) => {
     healthScore: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
     healthBreakdown: { type: DataTypes.JSON, allowNull: true },
     failureProbability30d: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
+    failureProbability60d: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
     failureProbability90d: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
     failureProbability180d: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
     failureReasons: { type: DataTypes.JSON, allowNull: true },
@@ -96,16 +97,24 @@ module.exports = (sequelize, DataTypes) => {
     disposalBreakdown: { type: DataTypes.JSON, allowNull: true },
     executiveRecommendation: { type: DataTypes.TEXT, allowNull: true },
     executiveConfidence: { type: DataTypes.DECIMAL(5, 2), allowNull: true },
+    // Full breakdown behind executiveConfidence (fields populated, maintenance
+    // records considered, whether a market-value comp exists, and the
+    // learning-loop adjustment applied) - see assetIntelligence.calculateConfidence.
+    confidenceDetail: { type: DataTypes.JSON, allowNull: true },
     intelligenceLastCalculatedAt: { type: DataTypes.DATE, allowNull: true },
 
     depreciationMethod: {
       type: DataTypes.ENUM(
         'straight_line', 'reducing_balance', 'double_declining_balance', 'sum_of_years_digits',
-        'units_of_production', 'machine_hours', 'mileage_based', 'ai_adaptive',
+        'units_of_production', 'machine_hours', 'mileage_based', 'ai_adaptive', 'custom_formula',
       ),
       defaultValue: 'straight_line',
     },
     unitsProductionCapacity: { type: DataTypes.DECIMAL(14, 2), allowNull: true }, // total expected units/hours/miles over useful life, for the usage-based methods
+    // Only used when depreciationMethod = 'custom_formula'. Restricted to a safe
+    // arithmetic grammar (+ - * / ^ ( ) numbers and a fixed variable whitelist) -
+    // see evaluateCustomFormula() in assetIntelligence.js. Never eval()'d.
+    customDepreciationFormula: { type: DataTypes.TEXT, allowNull: true },
 
     // Life expectancy as provided by the user (can override the category/AI default)
     lifeExpectancyYearsOverride: { type: DataTypes.FLOAT, allowNull: true },

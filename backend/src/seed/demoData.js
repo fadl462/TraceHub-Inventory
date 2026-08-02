@@ -203,6 +203,7 @@ async function seedOneCompany(spec) {
     asset.healthScore = intelligence.health.score;
     asset.healthBreakdown = intelligence.health.breakdown;
     asset.failureProbability30d = intelligence.failure.probability30d;
+    asset.failureProbability60d = intelligence.failure.probability60d;
     asset.failureProbability90d = intelligence.failure.probability90d;
     asset.failureProbability180d = intelligence.failure.probability180d;
     asset.failureReasons = intelligence.failure.reasons;
@@ -211,6 +212,7 @@ async function seedOneCompany(spec) {
     asset.disposalBreakdown = intelligence.disposal.breakdown;
     asset.executiveRecommendation = intelligence.executive.headline;
     asset.executiveConfidence = intelligence.executive.confidence;
+    asset.confidenceDetail = intelligence.confidence;
     asset.intelligenceLastCalculatedAt = new Date();
     await asset.save();
 

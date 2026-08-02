@@ -9,6 +9,8 @@ router.use(authenticate, requireCompanyContext);
 router.get('/overview', ctrl.companyOverview);
 router.get('/intelligence-overview', ctrl.intelligenceOverview);
 router.get('/ai-insights', ctrl.aiInsights);
+router.get('/fleet-insights', ctrl.fleetInsightsReport);
+router.get('/learning-loop-summary', ctrl.learningLoopReport);
 router.get('/assets-by-category', ctrl.assetsByCategory);
 router.get('/depreciation', ctrl.depreciationReport);
 router.get('/location-activity', ctrl.locationActivityReport);

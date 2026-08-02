@@ -1,9 +1,23 @@
 const cron = require('node-cron');
 const { Op } = require('sequelize');
 const {
-  Assignment, Asset, User, Notification, Company, Subscription, PlatformSettings,
+  Assignment, Asset, User, Notification, Company, Subscription, PlatformSettings, DisposalCase,
 } = require('../models');
 const { sendMail } = require('../utils/mailer');
+const { evaluateOutcomes } = require('../utils/learningLoop');
+
+/**
+ * AI Learning Loop: for every company, check rejected-and-ignored disposal
+ * recommendations that are now old enough to judge, and record whether a
+ * real failure followed. See utils/learningLoop.js for the full rationale.
+ */
+async function processLearningLoopEvaluation() {
+  const companies = await Company.findAll({ attributes: ['id'] });
+  for (const company of companies) {
+    // eslint-disable-next-line no-await-in-loop
+    await evaluateOutcomes(company.id, { DisposalCase, Asset }).catch((e) => console.error(`[cron] learning loop evaluation failed for company ${company.id}:`, e.message));
+  }
+}
 
 function toDateOnly(d) { return new Date(d).toISOString().slice(0, 10); }
 
@@ -119,7 +133,7 @@ async function processSubscriptionWarnings() {
 function startCronJobs() {
   // Runs once daily at 07:00 server time
   cron.schedule('0 7 * * *', () => {
-    Promise.all([processReturnReminders(), processSubscriptionWarnings()])
+    Promise.all([processReturnReminders(), processSubscriptionWarnings(), processLearningLoopEvaluation()])
       .then(() => recordCronRun())
       .catch((e) => console.error('[cron] jobs failed:', e));
   });
@@ -136,4 +150,4 @@ async function recordCronRun() {
   }
 }
 
-module.exports = { startCronJobs, processReturnReminders, processSubscriptionWarnings };
+module.exports = { startCronJobs, processReturnReminders, processSubscriptionWarnings, processLearningLoopEvaluation };

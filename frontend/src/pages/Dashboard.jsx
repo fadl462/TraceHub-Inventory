@@ -232,7 +232,88 @@ function IntelligenceKpiSection({ currency }) {
         <RankedList title="Most repaired assets" items={data.mostRepaired} currency={currency} valueKey="repairCount" suffix=" repairs" />
         <RankedList title="Most expensive to maintain" items={data.mostExpensiveToMaintain} currency={currency} valueKey={(a) => Number(a.maintenanceCostTotal || 0) + Number(a.repairCostTotal || 0)} />
       </div>
+
+      <FleetInsightsPanel />
+      <LearningLoopPanel />
     </>
+  );
+}
+
+function FleetInsightsPanel() {
+  const [insights, setInsights] = useState(null);
+
+  useEffect(() => {
+    client.get('/reports/fleet-insights').then(({ data }) => setInsights(data.insights)).catch(() => setInsights([]));
+  }, []);
+
+  const severityDot = { danger: 'bg-red-500', warning: 'bg-amber-400', info: 'bg-secondary' };
+
+  return (
+    <Card className="p-5">
+      <h3 className="font-semibold text-ink mb-1 flex items-center gap-2"><Sparkles size={16} className="text-primary" /> AI Insights Panel</h3>
+      <p className="text-xs text-ink/50 mb-4">Rule-based patterns detected across your fleet \u2014 real numbers from your own asset data, not fabricated.</p>
+      {insights === null ? (
+        <div className="space-y-2">
+          {[0, 1, 2].map((i) => <div key={i} className="h-9 rounded-lg bg-primary-50/50 animate-pulse" />)}
+        </div>
+      ) : insights.length === 0 ? (
+        <p className="text-sm text-ink/50 py-4 text-center">No notable patterns right now \u2014 your fleet looks steady.</p>
+      ) : (
+        <ul className="space-y-3">
+          {insights.map((ins, i) => (
+            <li key={i} className="flex items-start gap-2.5 text-sm text-ink/80">
+              <span className={`mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 ${severityDot[ins.severity] || 'bg-primary'}`} />
+              {ins.text}
+            </li>
+          ))}
+        </ul>
+      )}
+    </Card>
+  );
+}
+
+function LearningLoopPanel() {
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => {
+    client.get('/reports/learning-loop-summary').then(({ data }) => setStats(data)).catch(() => {});
+  }, []);
+
+  if (!stats) return null;
+
+  const totalDecisions = stats.recommendationsFollowed + stats.recommendationsRejected;
+  if (totalDecisions === 0) return null; // nothing to show yet for a brand-new company
+
+  return (
+    <Card className="p-5">
+      <h3 className="font-semibold text-ink mb-1">AI Learning Loop</h3>
+      <p className="text-xs text-ink/50 mb-4">
+        How this company's own disposal-decision history is feeding back into the engine's confidence scoring.
+      </p>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+        <div>
+          <p className="text-xl font-bold text-ink">{stats.recommendationsFollowed}</p>
+          <p className="text-xs text-ink/50 mt-0.5">Recommendations followed</p>
+        </div>
+        <div>
+          <p className="text-xl font-bold text-ink">{stats.recommendationsRejected}</p>
+          <p className="text-xs text-ink/50 mt-0.5">Recommendations rejected</p>
+        </div>
+        <div>
+          <p className="text-xl font-bold text-ink">{stats.reliabilityRate != null ? `${stats.reliabilityRate}%` : '\u2014'}</p>
+          <p className="text-xs text-ink/50 mt-0.5">Rejected cases later followed by a real failure</p>
+        </div>
+        <div>
+          <p className="text-xl font-bold text-ink">{stats.confidenceAdjustment > 0 ? '+' : ''}{stats.confidenceAdjustment}</p>
+          <p className="text-xs text-ink/50 mt-0.5">Current confidence adjustment</p>
+        </div>
+      </div>
+      {!stats.hasEnoughHistory && (
+        <p className="text-xs text-ink/40 mt-4">
+          Not yet applying an adjustment \u2014 needs at least 5 evaluated rejections before trusting the rate ({stats.rejectionsEvaluated} so far, {stats.rejectionsPendingEvaluation} still pending their 30-day evaluation window).
+        </p>
+      )}
+    </Card>
   );
 }
 
