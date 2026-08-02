@@ -56,7 +56,7 @@ export default function BlogPosts() {
           <div className="grid sm:grid-cols-2 gap-4">
             <Input label="Title" value={draft.title} onChange={(e) => setDraft({ ...draft, title: e.target.value })} />
             <Input
-              label="URL slug (optional \u2014 derived from title if left blank)"
+              label="URL slug (optional — derived from title if left blank)"
               value={draft.slug}
               onChange={(e) => setDraft({ ...draft, slug: e.target.value })}
             />
@@ -96,7 +96,7 @@ export default function BlogPosts() {
               <div key={p.id} className="p-4 flex items-center gap-4">
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-ink">{p.title}</p>
-                  <p className="text-xs text-ink/50">/blog/{p.slug} \u00b7 {new Date(p.publishedAt).toLocaleDateString()}</p>
+                  <p className="text-xs text-ink/50">/blog/{p.slug} · {new Date(p.publishedAt).toLocaleDateString()}</p>
                 </div>
                 {!p.isPublished && <Badge tone="warning">Draft</Badge>}
                 <button onClick={() => setDraft({ ...p })} className="text-xs font-medium text-link shrink-0">Edit</button>

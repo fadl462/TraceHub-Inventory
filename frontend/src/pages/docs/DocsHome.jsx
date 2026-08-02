@@ -39,7 +39,7 @@ export default function DocsHome() {
         <div className="relative max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-widest text-secondary mb-3">TraceHub Documentation</p>
           <h1 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight mb-3">Everything you need to know, organized the way you actually work</h1>
-          <p className="text-white/70 max-w-xl">Not a generic help center \u2014 every article here traces back to real, built functionality: the exact engine weights, the exact reminder timing, real worked examples throughout.</p>
+          <p className="text-white/70 max-w-xl">Not a generic help center — every article here traces back to real, built functionality: the exact engine weights, the exact reminder timing, real worked examples throughout.</p>
         </div>
       </div>
 
@@ -80,7 +80,7 @@ export default function DocsHome() {
 
       <div className="bg-primary text-white px-6 sm:px-10 py-14 text-center">
         <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3">Don't have a TraceHub account yet?</h2>
-        <p className="text-white/80 mb-6 max-w-xl mx-auto">Sign up and get started for free \u2014 every workspace starts with a 30-day trial, first 10 assets included, no card required.</p>
+        <p className="text-white/80 mb-6 max-w-xl mx-auto">Sign up and get started for free — every workspace starts with a 30-day trial, first 10 assets included, no card required.</p>
         <Link to="/register" className="inline-block bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-white/90 transition-colors">
           TRY TRACEHUB TODAY
         </Link>
@@ -93,7 +93,7 @@ export default function DocsHome() {
             <div className="bg-primary-50/50 px-5 py-3 flex items-center gap-2 font-semibold text-primary text-sm">
               <MessageCircleQuestion size={16} /> AI ASSISTANT
             </div>
-            <p className="p-5 text-sm text-ink/60">Click the chat bubble in the corner \u2014 grounded in this same documentation, and, once logged in, your own live fleet data too.</p>
+            <p className="p-5 text-sm text-ink/60">Click the chat bubble in the corner — grounded in this same documentation, and, once logged in, your own live fleet data too.</p>
           </div>
           <div className="border border-ink/10 rounded-xl overflow-hidden">
             <div className="bg-primary-50/50 px-5 py-3 flex items-center gap-2 font-semibold text-primary text-sm">

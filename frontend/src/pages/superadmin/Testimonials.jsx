@@ -102,7 +102,7 @@ export default function Testimonials() {
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-ink/80 italic">&ldquo;{t.quote}&rdquo;</p>
                   <p className="text-xs text-ink/50 mt-1.5">
-                    {t.authorName}{t.authorRole ? `, ${t.authorRole}` : ''}{t.companyName ? ` \u2014 ${t.companyName}` : ''}
+                    {t.authorName}{t.authorRole ? `, ${t.authorRole}` : ''}{t.companyName ? ` — ${t.companyName}` : ''}
                   </p>
                 </div>
                 <label className="flex items-center gap-1.5 text-xs text-ink/60 shrink-0">

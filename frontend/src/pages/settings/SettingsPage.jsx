@@ -167,7 +167,7 @@ export default function SettingsPage() {
         </h3>
         <p className="text-sm text-ink/60 mb-4">
           {user?.twoFactorEnabled
-            ? 'Enabled \u2014 your account requires a code from your authenticator app to sign in.'
+            ? 'Enabled — your account requires a code from your authenticator app to sign in.'
             : "Add an extra layer of security so a password alone isn't enough to sign in as you."}
         </p>
         {user?.twoFactorEnabled ? (

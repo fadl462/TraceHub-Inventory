@@ -78,7 +78,7 @@ export default function PaymentSettings() {
       <Card className="p-6 space-y-4">
         <h2 className="font-semibold text-ink">Test the connection</h2>
         <p className="text-sm text-ink/60">
-          Initiates a real $1 test checkout session against your saved keys \u2014 confirms the API keys are valid without charging anyone
+          Initiates a real $1 test checkout session against your saved keys — confirms the API keys are valid without charging anyone
           (nothing completes unless you finish the checkout yourself).
         </p>
         <Button onClick={runTest} disabled={testing} variant="outline">{testing ? 'Testing...' : 'Run test transaction'}</Button>

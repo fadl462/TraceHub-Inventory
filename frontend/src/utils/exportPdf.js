@@ -65,7 +65,7 @@ export function exportToPdf(filename, title, subtitle, sections) {
     doc.setFontSize(8);
     doc.setTextColor(150, 150, 150);
     doc.text(
-      `Generated ${new Date().toLocaleString()} \u00b7 Page ${i} of ${pageCount}`,
+      `Generated ${new Date().toLocaleString()} · Page ${i} of ${pageCount}`,
       marginX,
       doc.internal.pageSize.getHeight() - 20,
     );

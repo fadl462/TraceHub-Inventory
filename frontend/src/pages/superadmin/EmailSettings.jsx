@@ -77,7 +77,7 @@ export default function EmailSettings() {
           <Input placeholder="you@example.com" value={testEmail} onChange={(e) => setTestEmail(e.target.value)} className="flex-1" />
           <Button onClick={sendTest} disabled={testing || !testEmail} variant="outline">{testing ? 'Sending...' : 'Send test'}</Button>
         </div>
-        <p className="text-xs text-ink/45">Uses whatever SMTP settings are currently saved \u2014 save your changes above first if you\u2019ve edited them.</p>
+        <p className="text-xs text-ink/45">Uses whatever SMTP settings are currently saved — save your changes above first if you’ve edited them.</p>
       </Card>
     </div>
   );

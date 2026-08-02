@@ -44,7 +44,7 @@ export default function ReportsPage() {
   const uniqueDepreciationCategories = [...new Set(depreciation.map((a) => a.AssetCategory?.name).filter(Boolean))];
   const filteredDepreciation = depreciation.filter((a) => !depreciationCategoryFilter || a.AssetCategory?.name === depreciationCategoryFilter);
 
-  const subtitle = `${company?.name || ''} \u00b7 Generated ${new Date().toLocaleDateString()}`;
+  const subtitle = `${company?.name || ''} · Generated ${new Date().toLocaleDateString()}`;
   const reportSections = () => [
     {
       heading: 'Assets by category',
@@ -56,14 +56,14 @@ export default function ReportsPage() {
       columns: ['Asset', 'Tag', 'Purchased', 'Current value', 'Disposal date'],
       rows: depreciation.map((a) => [
         a.name, a.assetTag, Number(a.purchasePrice).toLocaleString(),
-        Number(a.aiEstimatedCurrentValue || 0).toLocaleString(), a.aiSuggestedDisposalDate || '\u2014',
+        Number(a.aiEstimatedCurrentValue || 0).toLocaleString(), a.aiSuggestedDisposalDate || '—',
       ]),
     },
     {
       heading: 'Location activity',
       columns: ['Date', 'Asset', 'Location', 'Event'],
       rows: locationEvents.map((e) => [
-        new Date(e.createdAt).toLocaleString(), e.Asset?.name || '\u2014', e.Location?.name || '\u2014', e.eventType.replace('_', ' '),
+        new Date(e.createdAt).toLocaleString(), e.Asset?.name || '—', e.Location?.name || '—', e.eventType.replace('_', ' '),
       ]),
     },
   ];
@@ -198,10 +198,10 @@ export default function ReportsPage() {
                   <tr key={e.id} className="border-t border-primary-50">
                     <td className="py-3 text-ink/70 whitespace-nowrap">{new Date(e.createdAt).toLocaleString()}</td>
                     <td className="py-3">
-                      <p className="font-medium text-ink">{e.Asset?.name || '\u2014'}</p>
+                      <p className="font-medium text-ink">{e.Asset?.name || '—'}</p>
                       <p className="text-sm text-ink/50">{e.Asset?.assetTag}</p>
                     </td>
-                    <td className="py-3 text-ink/70">{e.Location?.name || '\u2014'}</td>
+                    <td className="py-3 text-ink/70">{e.Location?.name || '—'}</td>
                     <td className="py-3 text-ink/70 capitalize">{e.eventType.replace('_', ' ')}</td>
                   </tr>
                 ))}

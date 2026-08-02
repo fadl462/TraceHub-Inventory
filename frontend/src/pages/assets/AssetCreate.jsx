@@ -200,7 +200,7 @@ export default function AssetCreate() {
               <div className="p-4 space-y-5">
                 <p className="text-xs text-ink/50 -mt-1">
                   None of this is required to register the asset. The more you fill in, the more
-                  accurate the health, failure-risk, and disposal recommendations will be \u2014 and the
+                  accurate the health, failure-risk, and disposal recommendations will be — and the
                   higher the AI confidence score. This covers the fields with the most direct impact
                   on those scores, not every field the engine can use.
                 </p>

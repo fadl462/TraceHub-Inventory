@@ -47,7 +47,7 @@ export default function CmsPages() {
         <div>
           <h1 className="text-xl font-bold text-ink">Custom pages</h1>
           <p className="text-sm text-ink/60 mt-0.5">
-            Support, privacy, or terms pages \u2014 published at /pages/[slug], with no code changes needed.
+            Support, privacy, or terms pages — published at /pages/[slug], with no code changes needed.
           </p>
         </div>
         {!draft && <Button onClick={() => setDraft({ ...BLANK, sortOrder: items.length })}><Plus size={16} /> New page</Button>}
@@ -58,7 +58,7 @@ export default function CmsPages() {
           <div className="grid sm:grid-cols-2 gap-4">
             <Input label="Title" value={draft.title} onChange={(e) => setDraft({ ...draft, title: e.target.value })} />
             <Input
-              label="URL slug (optional \u2014 derived from title if left blank)"
+              label="URL slug (optional — derived from title if left blank)"
               placeholder="privacy-policy"
               value={draft.slug}
               onChange={(e) => setDraft({ ...draft, slug: e.target.value })}

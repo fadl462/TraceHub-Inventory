@@ -59,7 +59,7 @@ export function exportToPptx(filename, title, subtitle, sections) {
     });
 
     if (section.rows.length > 14) {
-      slide.addText(`+ ${section.rows.length - 14} more rows \u2014 see the full CSV export for the complete dataset.`, {
+      slide.addText(`+ ${section.rows.length - 14} more rows — see the full CSV export for the complete dataset.`, {
         x: 0.4, y: 5.25, w: 9.2, h: 0.3, fontSize: 9, italic: true, color: '8A8A8A', fontFace: 'Arial',
       });
     }

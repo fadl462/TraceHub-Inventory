@@ -53,7 +53,7 @@ export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
     } catch (err) {
       setMessages((m) => [...m, {
         role: 'assistant',
-        content: err.response?.data?.error || "Something went wrong on my end \u2014 please try again in a moment.",
+        content: err.response?.data?.error || "Something went wrong on my end — please try again in a moment.",
       }]);
     } finally { setSending(false); }
   };

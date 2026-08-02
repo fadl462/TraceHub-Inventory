@@ -107,7 +107,7 @@ export default function DisposalCases() {
                       {c.engineRecommendation && (
                         <p className="text-xs text-ink/50 mt-1">Engine said: <span className="font-medium">{c.engineRecommendation}</span> ({c.engineScore}% readiness)</p>
                       )}
-                      <p className="text-xs text-ink/40 mt-1">Opened by {c.initiatedBy ? `${c.initiatedBy.firstName} ${c.initiatedBy.lastName}` : 'system'} \u00b7 {new Date(c.createdAt).toLocaleDateString()}</p>
+                      <p className="text-xs text-ink/40 mt-1">Opened by {c.initiatedBy ? `${c.initiatedBy.firstName} ${c.initiatedBy.lastName}` : 'system'} · {new Date(c.createdAt).toLocaleDateString()}</p>
                     </div>
                     <Badge tone={STAGE_TONE[c.status]}>{STAGE_LABELS[c.status]}</Badge>
                   </div>
@@ -142,7 +142,7 @@ export default function DisposalCases() {
                   {c.status === 'disposed' && (
                     <p className="mt-2 text-xs text-accent-dark flex items-center gap-1">
                       <CheckCircle2 size={13} /> Disposed {new Date(c.disposedAt).toLocaleDateString()}
-                      {c.finalSaleAmount != null && ` \u2014 ${c.finalSaleCurrency || ''} ${Number(c.finalSaleAmount).toLocaleString()}`}
+                      {c.finalSaleAmount != null && ` — ${c.finalSaleCurrency || ''} ${Number(c.finalSaleAmount).toLocaleString()}`}
                     </p>
                   )}
                   {c.status === 'rejected' && c.rejectionReason && (

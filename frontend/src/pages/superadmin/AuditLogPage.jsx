@@ -52,7 +52,7 @@ export default function AuditLogPage() {
                   <p className="text-ink">
                     <span className="font-medium">{log.userName || 'System'}</span>
                     {log.companyName && <span className="text-ink/50"> at {log.companyName}</span>}
-                    <span className="text-ink/50"> \u2014 {log.action.replace(/\./g, ' ').replace(/_/g, ' ')}</span>
+                    <span className="text-ink/50"> — {log.action.replace(/\./g, ' ').replace(/_/g, ' ')}</span>
                     {log.entityType && <span className="text-ink/40"> ({log.entityType})</span>}
                   </p>
                   <p className="text-xs text-ink/40 mt-0.5">{new Date(log.createdAt).toLocaleString()}</p>

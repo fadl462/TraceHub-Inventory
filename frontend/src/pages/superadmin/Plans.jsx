@@ -38,7 +38,7 @@ export default function Plans() {
   };
 
   const deactivate = async (id) => {
-    if (!confirm('Deactivate this plan? Existing subscribers keep it, but it won\u2019t be offered to new sign-ups.')) return;
+    if (!confirm('Deactivate this plan? Existing subscribers keep it, but it won’t be offered to new sign-ups.')) return;
     await client.delete(`/plans/${id}`);
     toast.success('Plan deactivated');
     load();

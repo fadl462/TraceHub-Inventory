@@ -166,7 +166,7 @@ export default function LocationsPage() {
                       <p className="font-medium text-ink truncate">{l.name}</p>
                       <p className="text-xs text-ink/50 truncate">
                         {l.address || 'No address set'}
-                        {l.latitude != null && ` \u00b7 ${l.latitude.toFixed(4)}, ${l.longitude.toFixed(4)}`}
+                        {l.latitude != null && ` · ${l.latitude.toFixed(4)}, ${l.longitude.toFixed(4)}`}
                       </p>
                     </div>
                   </div>

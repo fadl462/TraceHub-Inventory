@@ -126,7 +126,7 @@ export default function BlogPostView() {
               </form>
 
               {comments.length === 0 ? (
-                <p className="text-sm text-ink/50 text-center py-6">No comments yet \u2014 be the first to share your thoughts.</p>
+                <p className="text-sm text-ink/50 text-center py-6">No comments yet — be the first to share your thoughts.</p>
               ) : (
                 <div className="space-y-5">
                   {comments.map((c) => (

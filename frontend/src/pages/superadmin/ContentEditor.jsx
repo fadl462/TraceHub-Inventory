@@ -32,7 +32,7 @@ export default function ContentEditor() {
       <div>
         <h1 className="text-xl font-bold text-ink">Homepage &amp; login content</h1>
         <p className="text-sm text-ink/60 mt-0.5">
-          Edit the copy shown on the public landing page and login screen \u2014 no code changes needed.
+          Edit the copy shown on the public landing page and login screen — no code changes needed.
           Changes go live immediately after saving.
         </p>
       </div>

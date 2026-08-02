@@ -49,7 +49,7 @@ export default function AssignmentsList() {
   const togglePaid = async (a) => {
     try {
       await client.patch(`/assignments/${a.id}/hire-payment`, { paid: !a.hireFeePaid });
-      toast.success(a.hireFeePaid ? 'Marked as unpaid' : 'Marked as paid \u2014 confirmation email sent');
+      toast.success(a.hireFeePaid ? 'Marked as unpaid' : 'Marked as paid — confirmation email sent');
       load();
     } catch (err) {
       toast.error(err.response?.data?.error || 'Failed to update payment status');
@@ -129,10 +129,10 @@ export default function AssignmentsList() {
                           </div>
                         )}
                       </td>
-                      <td className="px-5 py-3 text-ink/70">{a.assignedAt ? new Date(a.assignedAt).toLocaleDateString() : '\u2014'}</td>
-                      <td className="px-5 py-3 text-ink/70">{a.expectedReturnDate || '\u2014'}</td>
+                      <td className="px-5 py-3 text-ink/70">{a.assignedAt ? new Date(a.assignedAt).toLocaleDateString() : '—'}</td>
+                      <td className="px-5 py-3 text-ink/70">{a.expectedReturnDate || '—'}</td>
                       <td className="px-5 py-3">
-                        {daysHeld == null ? '\u2014' : isOverdue ? (
+                        {daysHeld == null ? '—' : isOverdue ? (
                           <span className="font-semibold text-red-600">{daysHeld}d ({daysOverdue}d overdue)</span>
                         ) : (
                           <span className="text-ink/70">{daysHeld}d</span>
@@ -148,10 +148,10 @@ export default function AssignmentsList() {
                             }`}
                           >
                             {a.hireFeePaid ? <CheckCircle2 size={13} /> : <Circle size={13} />}
-                            {a.hireFeeCurrency} {Number(a.hireFeeAmount).toFixed(2)} \u00b7 {a.hireFeePaid ? 'Paid' : 'Unpaid'}
+                            {a.hireFeeCurrency} {Number(a.hireFeeAmount).toFixed(2)} · {a.hireFeePaid ? 'Paid' : 'Unpaid'}
                           </button>
                         ) : (
-                          <span className="text-ink/30 text-xs">\u2014</span>
+                          <span className="text-ink/30 text-xs">—</span>
                         )}
                       </td>
                       <td className="px-5 py-3 text-right">

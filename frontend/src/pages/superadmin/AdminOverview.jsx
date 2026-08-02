@@ -64,7 +64,7 @@ function WelcomeInsightBanner() {
             <p className="mt-1.5 text-lg text-white leading-relaxed">{insight?.insight}</p>
           )}
           {insight && !insight.configured && (
-            <p className="mt-2 text-xs text-primary-200/50">Add an ANTHROPIC_API_KEY for AI-generated analysis \u2014 showing a computed summary for now.</p>
+            <p className="mt-2 text-xs text-primary-200/50">Add an ANTHROPIC_API_KEY for AI-generated analysis — showing a computed summary for now.</p>
           )}
         </div>
       </div>
@@ -110,10 +110,10 @@ export default function AdminOverview() {
   if (!stats) return <div className="flex justify-center py-20"><Spinner size={28} /></div>;
 
   const cards = [
-    { icon: Building2, label: 'Total companies', value: stats.totalCompanies, sub: `${stats.activeCompanies} active \u00b7 ${stats.trialCompanies} trialing`, to: '/admin/companies', trend: stats.trends.companies },
-    { icon: Boxes, label: 'Total assets tracked', value: stats.totalAssets, sub: `${stats.assignedCount} assigned \u00b7 ${stats.availableCount} available`, to: '/admin/companies', trend: stats.trends.assets },
+    { icon: Building2, label: 'Total companies', value: stats.totalCompanies, sub: `${stats.activeCompanies} active · ${stats.trialCompanies} trialing`, to: '/admin/companies', trend: stats.trends.companies },
+    { icon: Boxes, label: 'Total assets tracked', value: stats.totalAssets, sub: `${stats.assignedCount} assigned · ${stats.availableCount} available`, to: '/admin/companies', trend: stats.trends.assets },
     { icon: Users, label: 'Total users', value: stats.totalUsers, to: '/admin/companies', trend: stats.trends.users },
-    { icon: DollarSign, label: 'Total revenue', value: `USD ${Number(stats.revenueTotal).toLocaleString()}`, sub: `${stats.activeSubs} active subs \u00b7 ${stats.pastDueSubs} past due`, to: '/admin/plans', trend: stats.trends.revenue },
+    { icon: DollarSign, label: 'Total revenue', value: `USD ${Number(stats.revenueTotal).toLocaleString()}`, sub: `${stats.activeSubs} active subs · ${stats.pastDueSubs} past due`, to: '/admin/plans', trend: stats.trends.revenue },
   ];
 
   const exportAuditLog = () => {
@@ -125,14 +125,14 @@ export default function AdminOverview() {
     exportToPdf('audit-log', 'Global Audit Log', `Generated ${new Date().toLocaleDateString()}`, [{
       heading: 'Recent activity',
       columns: ['Date', 'User', 'Company', 'Action'],
-      rows: stats.recentAuditLog.map((l) => [new Date(l.createdAt).toLocaleString(), l.userName || 'System', l.companyName || '\u2014', l.action]),
+      rows: stats.recentAuditLog.map((l) => [new Date(l.createdAt).toLocaleString(), l.userName || 'System', l.companyName || '—', l.action]),
     }]);
   };
   const exportGrowthChart = () => {
     exportToCsv(`asset-growth-${granularity}`, stats.assetGrowthSeries.map((r) => ({ period: r.month, registered: r.registered, disposed: r.disposed })));
   };
   const exportGrowthChartPdf = () => {
-    exportToPdf(`asset-growth-${granularity}`, 'Asset Growth Report', `${granularity} view \u00b7 Generated ${new Date().toLocaleDateString()}`, [{
+    exportToPdf(`asset-growth-${granularity}`, 'Asset Growth Report', `${granularity} view · Generated ${new Date().toLocaleDateString()}`, [{
       heading: 'Registered vs. disposed',
       columns: ['Period', 'Registered', 'Disposed'],
       rows: stats.assetGrowthSeries.map((r) => [r.month, r.registered, r.disposed]),
@@ -287,7 +287,7 @@ export default function AdminOverview() {
                     <p className="text-ink">
                       <span className="font-medium">{log.userName || 'System'}</span>
                       {log.companyName && <span className="text-ink/50"> at {log.companyName}</span>}
-                      <span className="text-ink/50"> \u2014 {log.action.replace(/\./g, ' ').replace(/_/g, ' ')}</span>
+                      <span className="text-ink/50"> — {log.action.replace(/\./g, ' ').replace(/_/g, ' ')}</span>
                     </p>
                     <p className="text-xs text-ink/40">{new Date(log.createdAt).toLocaleString()}</p>
                   </div>

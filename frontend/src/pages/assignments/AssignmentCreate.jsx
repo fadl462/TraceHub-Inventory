@@ -84,7 +84,7 @@ export default function AssignmentCreate() {
           <div className="rounded-lg border border-primary-100 p-4">
             <label className="flex items-center gap-2 text-sm font-medium text-ink">
               <input type="checkbox" checked={isHire} onChange={(e) => setIsHire(e.target.checked)} />
-              This is a paid hire \u2014 track a fee and payment status
+              This is a paid hire — track a fee and payment status
             </label>
             {isHire && (
               <div className="grid sm:grid-cols-2 gap-4 mt-4">

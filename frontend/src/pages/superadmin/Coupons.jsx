@@ -109,7 +109,7 @@ export default function Coupons() {
               <div key={c.id} className="p-4 flex items-center gap-4">
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-mono font-semibold text-ink">{c.code}</p>
-                  <p className="text-xs text-ink/50">{c.name} \u2014 {previewDiscount(c)} \u00b7 used {c.timesUsed}{c.usageLimit ? `/${c.usageLimit}` : ''} times</p>
+                  <p className="text-xs text-ink/50">{c.name} — {previewDiscount(c)} · used {c.timesUsed}{c.usageLimit ? `/${c.usageLimit}` : ''} times</p>
                 </div>
                 <Badge tone={c.isActive ? 'success' : 'default'}>{c.isActive ? 'Active' : 'Inactive'}</Badge>
                 <button onClick={() => setDraft({ ...c, usageLimit: c.usageLimit ?? '' })} className="text-xs font-medium text-link shrink-0">Edit</button>

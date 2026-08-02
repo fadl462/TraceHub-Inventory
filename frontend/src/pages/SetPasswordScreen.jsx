@@ -28,7 +28,7 @@ export default function SetPasswordScreen() {
       toast.success('Password set');
       setStep('twofactor');
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Failed to set password \u2014 check your temporary password');
+      toast.error(err.response?.data?.error || 'Failed to set password — check your temporary password');
     } finally {
       setSubmitting(false);
     }
@@ -51,7 +51,7 @@ export default function SetPasswordScreen() {
       toast.success('Two-factor authentication enabled');
       await refresh();
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Invalid code \u2014 try again');
+      toast.error(err.response?.data?.error || 'Invalid code — try again');
     } finally {
       setVerifying2fa(false);
     }

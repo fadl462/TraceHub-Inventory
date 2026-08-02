@@ -7,7 +7,7 @@ import client from '../../api/client';
 import { Card, Badge, statusTone, Spinner } from '../../components/ui';
 
 function formatDate(d) {
-  return d ? new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : '\u2014';
+  return d ? new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : '—';
 }
 
 export default function CompanyDetail() {
@@ -48,7 +48,7 @@ export default function CompanyDetail() {
           <h1 className="text-xl font-bold text-ink flex items-center gap-2">
             <Building2 size={20} className="text-link" /> {company.name}
           </h1>
-          <p className="text-sm text-ink/60 mt-0.5">{company.slug} \u00b7 {company.industry || 'No industry set'}</p>
+          <p className="text-sm text-ink/60 mt-0.5">{company.slug} · {company.industry || 'No industry set'}</p>
         </div>
         <Badge tone={statusTone(company.status)}>{company.status}</Badge>
       </div>
@@ -114,7 +114,7 @@ export default function CompanyDetail() {
         <p className="text-sm font-semibold text-ink mb-3">Subscription</p>
         {sub ? (
           <div className="flex items-center justify-between text-sm">
-            <span className="text-ink/70">{sub.SubscriptionPlan?.name} \u00b7 {sub.billingCycle}</span>
+            <span className="text-ink/70">{sub.SubscriptionPlan?.name} · {sub.billingCycle}</span>
             <Badge tone={sub.status === 'active' ? 'success' : sub.status === 'past_due' ? 'warning' : 'default'}>{sub.status}</Badge>
           </div>
         ) : (
@@ -188,7 +188,7 @@ export default function CompanyDetail() {
                     <td className="px-5 py-3 text-ink/70">{formatDate(p.paidAt || p.createdAt)}</td>
                     <td className="px-5 py-3 text-ink/70 font-mono text-xs">{p.invoiceNumber || p.txRef}</td>
                     <td className="px-5 py-3 text-ink font-medium">{p.currency} {Number(p.amount).toFixed(2)}</td>
-                    <td className="px-5 py-3 text-ink/70 capitalize">{p.paymentMethod || '\u2014'}</td>
+                    <td className="px-5 py-3 text-ink/70 capitalize">{p.paymentMethod || '—'}</td>
                     <td className="px-5 py-3">
                       <Badge tone={p.status === 'successful' ? 'success' : p.status === 'failed' ? 'danger' : 'warning'}>{p.status}</Badge>
                     </td>

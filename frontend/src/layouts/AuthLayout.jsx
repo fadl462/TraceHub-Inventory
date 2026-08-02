@@ -6,7 +6,7 @@ import client from '../api/client';
 
 const DEFAULTS = {
   loginTagline: 'Know where every asset is, always.',
-  heroSubheadline: 'Register equipment in seconds, let AI propose disposal timelines, assign gear to your team, and track it all with a simple scan \u2014 no hardware required.',
+  heroSubheadline: 'Register equipment in seconds, let AI propose disposal timelines, assign gear to your team, and track it all with a simple scan — no hardware required.',
   loginHighlight1: 'Your first 10 assets are free',
   loginHighlight2: 'No hardware, no setup fees',
   footerCopyright: 'TraceHub Inventory. All rights reserved.',

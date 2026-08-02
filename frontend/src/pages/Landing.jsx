@@ -22,17 +22,17 @@ const STEPS = [
   {
     n: '02',
     title: 'Get its disposal timeline instantly',
-    body: 'The moment you enter a purchase price, the depreciation engine estimates scrap value, useful life, and today\u2019s book value \u2014 no spreadsheet required.',
+    body: 'The moment you enter a purchase price, the depreciation engine estimates scrap value, useful life, and today’s book value — no spreadsheet required.',
   },
   {
     n: '03',
     title: 'Assign it and track it',
-    body: 'Hand it to a teammate or an outside contact. Update its location with a phone camera scan at any checkpoint \u2014 no RFID, no GPS hardware.',
+    body: 'Hand it to a teammate or an outside contact. Update its location with a phone camera scan at any checkpoint — no RFID, no GPS hardware.',
   },
   {
     n: '04',
     title: 'Get reminders, not surprises',
-    body: 'Automatic alerts land three days before anything is due back, and again on the day \u2014 to both the borrower and whoever assigned it.',
+    body: 'Automatic alerts land three days before anything is due back, and again on the day — to both the borrower and whoever assigned it.',
   },
 ];
 
@@ -40,16 +40,16 @@ const FEATURES = [
   { icon: Sparkles, title: 'AI-driven depreciation', body: 'Category-aware scrap value and useful-life estimates, recalculated automatically whenever price or category changes.' },
   { icon: ScanLine, title: 'QR scan-based tracking', body: 'Every asset gets a scannable code. Check it in or out at a warehouse, branch, or job site from any phone.' },
   { icon: CalendarClock, title: 'Assignments & reminders', body: 'Assign to staff or outside contacts, with automatic return-date reminders so nothing goes missing quietly.' },
-  { icon: ShieldCheck, title: 'Role-based access', body: 'Super Admin, Company Admin, Manager, and Staff each see exactly what their role needs \u2014 nothing more.' },
-  { icon: BarChart3, title: 'Reports built in', body: 'Asset value, depreciation, location history, and team activity \u2014 without exporting to a separate BI tool.' },
+  { icon: ShieldCheck, title: 'Role-based access', body: 'Super Admin, Company Admin, Manager, and Staff each see exactly what their role needs — nothing more.' },
+  { icon: BarChart3, title: 'Reports built in', body: 'Asset value, depreciation, location history, and team activity — without exporting to a separate BI tool.' },
   { icon: CreditCard, title: 'Local billing, built in', body: 'Subscriptions billed through Flutterwave, so payment works the way your business already pays for things.' },
 ];
 
 const DEFAULT_CONTENT = {
   heroEyebrow: 'Asset & inventory management',
   heroHeadline: 'Know where every asset is, always.',
-  heroSubheadline: 'Register equipment in seconds, let AI propose disposal timelines, assign gear to your team, and track it all with a simple scan \u2014 no hardware required.',
-  heroCtaText: 'Start free \u2014 10 assets, 30 days',
+  heroSubheadline: 'Register equipment in seconds, let AI propose disposal timelines, assign gear to your team, and track it all with a simple scan — no hardware required.',
+  heroCtaText: 'Start free — 10 assets, 30 days',
   heroCtaLink: '/register',
   heroSecondaryCtaText: 'See how it works',
   footerDescription: 'Precision asset tracking, built for real operations.',
@@ -252,7 +252,7 @@ function TrackedOperations() {
           <ul className="mt-7 space-y-3">
             {[
               'Any asset category, with fields your business actually uses',
-              'Works the moment a phone can open a browser \u2014 no app install',
+              'Works the moment a phone can open a browser — no app install',
               'Every scan, assignment, and edit lands in one audit trail',
             ].map((item) => (
               <li key={item} className="flex items-start gap-3 text-sm text-ink/70">
@@ -349,7 +349,7 @@ function Testimonials({ items }) {
               <p className="text-sm text-ink/70 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
               <p className="mt-4 text-sm font-semibold text-ink">{t.authorName}</p>
               <p className="text-xs text-ink/50">
-                {t.authorRole}{t.authorRole && t.companyName ? ' \u2014 ' : ''}{t.companyName}
+                {t.authorRole}{t.authorRole && t.companyName ? ' — ' : ''}{t.companyName}
               </p>
             </div>
           ))}
@@ -369,7 +369,7 @@ function AiAssistantSection({ faqs, onOpenChat }) {
         </span>
         <h2 className="mt-5 font-display text-3xl font-bold text-ink tracking-tight">Have a question? Just ask.</h2>
         <p className="mt-3 text-ink/60 leading-relaxed max-w-md mx-auto">
-          Skip the FAQ scavenger hunt \u2014 our AI assistant knows TraceHub inside out and answers in seconds.
+          Skip the FAQ scavenger hunt — our AI assistant knows TraceHub inside out and answers in seconds.
         </p>
         <button
           onClick={onOpenChat}

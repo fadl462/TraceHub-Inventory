@@ -34,7 +34,7 @@ export default function Blog() {
           <div className="flex justify-center py-16"><Spinner size={28} /></div>
         ) : error ? (
           <div className="text-center py-16">
-            <p className="text-sm text-ink/60">Couldn't load posts right now \u2014 please refresh the page.</p>
+            <p className="text-sm text-ink/60">Couldn't load posts right now — please refresh the page.</p>
           </div>
         ) : posts.length === 0 ? (
           <div className="text-center py-16">

@@ -51,7 +51,7 @@ function WelcomeInsightBanner({ overview }) {
           <Sparkles size={20} />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold text-white/70">{greeting}, {user?.firstName} \u2014 here's what's happening with {company?.name}</p>
+          <p className="text-sm font-semibold text-white/70">{greeting}, {user?.firstName} — here's what's happening with {company?.name}</p>
           {loading ? (
             <div className="h-6 w-3/4 bg-white/10 rounded animate-pulse mt-2" />
           ) : (
@@ -89,7 +89,7 @@ export default function Dashboard() {
 
   if (loading) return <div className="flex justify-center py-20"><Spinner size={32} /></div>;
 
-  const subtitle = `${company?.name || ''} \u00b7 Generated ${new Date().toLocaleDateString()}`;
+  const subtitle = `${company?.name || ''} · Generated ${new Date().toLocaleDateString()}`;
 
   const buildDashboardSections = async () => {
     const [{ data: intel }, { data: assign }, { data: insights }] = await Promise.all([
@@ -114,8 +114,8 @@ export default function Dashboard() {
         heading: 'Assets currently assigned',
         columns: ['Asset', 'Assigned to', 'Contact', 'Due', 'Status'],
         rows: assign.assignments.map((a) => [
-          a.asset?.name || '', a.assigneeName, [a.contactEmail, a.contactPhone].filter(Boolean).join(' / ') || '\u2014',
-          a.expectedReturnDate || '\u2014', a.isOverdue ? `${a.daysOverdue}d overdue` : `${a.daysHeld}d held`,
+          a.asset?.name || '', a.assigneeName, [a.contactEmail, a.contactPhone].filter(Boolean).join(' / ') || '—',
+          a.expectedReturnDate || '—', a.isOverdue ? `${a.daysOverdue}d overdue` : `${a.daysHeld}d held`,
         ]),
       },
       {
@@ -327,25 +327,25 @@ function AssignmentTrackingPanel() {
   }));
   const handleCsv = () => exportToCsv('tracehub-assigned-assets', exportRows());
   const handlePdf = () => exportToPdf(
-    'tracehub-assigned-assets', 'Assets Currently Assigned', `${company?.name || ''} \u00b7 Generated ${new Date().toLocaleDateString()}`,
+    'tracehub-assigned-assets', 'Assets Currently Assigned', `${company?.name || ''} · Generated ${new Date().toLocaleDateString()}`,
     [{
       heading: 'Assigned assets',
       columns: ['Asset', 'Assigned to', 'Contact', 'Issued', 'Due', 'Days held', 'Overdue'],
       rows: assignments.map((a) => [
-        a.asset?.name || '', a.assigneeName, [a.contactEmail, a.contactPhone].filter(Boolean).join(' / ') || '\u2014',
-        new Date(a.assignedAt).toLocaleDateString(), a.expectedReturnDate || '\u2014', a.daysHeld,
+        a.asset?.name || '', a.assigneeName, [a.contactEmail, a.contactPhone].filter(Boolean).join(' / ') || '—',
+        new Date(a.assignedAt).toLocaleDateString(), a.expectedReturnDate || '—', a.daysHeld,
         a.isOverdue ? `${a.daysOverdue}d overdue` : 'On time',
       ]),
     }],
   );
   const handlePptx = () => exportToPptx(
-    'tracehub-assigned-assets', 'Assets Currently Assigned', `${company?.name || ''} \u00b7 Generated ${new Date().toLocaleDateString()}`,
+    'tracehub-assigned-assets', 'Assets Currently Assigned', `${company?.name || ''} · Generated ${new Date().toLocaleDateString()}`,
     [{
       heading: 'Assigned assets',
       columns: ['Asset', 'Assigned to', 'Contact', 'Due', 'Status'],
       rows: assignments.map((a) => [
-        a.asset?.name || '', a.assigneeName, [a.contactEmail, a.contactPhone].filter(Boolean).join(' / ') || '\u2014',
-        a.expectedReturnDate || '\u2014', a.isOverdue ? `${a.daysOverdue}d overdue` : `${a.daysHeld}d held`,
+        a.asset?.name || '', a.assigneeName, [a.contactEmail, a.contactPhone].filter(Boolean).join(' / ') || '—',
+        a.expectedReturnDate || '—', a.isOverdue ? `${a.daysOverdue}d overdue` : `${a.daysHeld}d held`,
       ]),
     }],
   );
@@ -411,7 +411,7 @@ function AssignmentTrackingPanel() {
             </div>
             <div className="shrink-0 text-right">
               {a.isOverdue ? (
-                <span className="text-sm font-bold text-red-600">{a.daysHeld}d held \u2014 {a.daysOverdue}d overdue</span>
+                <span className="text-sm font-bold text-red-600">{a.daysHeld}d held — {a.daysOverdue}d overdue</span>
               ) : (
                 <span className="text-sm font-medium text-ink/70">{a.daysHeld}d held</span>
               )}
@@ -466,16 +466,16 @@ function FleetIntelligencePanel() {
           </div>
         )}
       </div>
-      <p className="text-xs text-ink/50 mb-4">Portfolio-level view across your whole fleet \u2014 real aggregates, not per-asset detail.</p>
+      <p className="text-xs text-ink/50 mb-4">Portfolio-level view across your whole fleet — real aggregates, not per-asset detail.</p>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
         <div className="bg-primary-50/50 rounded-lg p-3">
           <p className="text-xs text-ink/50">Portfolio Health</p>
-          <p className="text-lg font-bold text-ink">{data.portfolioHealth != null ? `${data.portfolioHealth}%` : '\u2014'}</p>
+          <p className="text-lg font-bold text-ink">{data.portfolioHealth != null ? `${data.portfolioHealth}%` : '—'}</p>
         </div>
         <div className="bg-primary-50/50 rounded-lg p-3">
           <p className="text-xs text-ink/50">Asset Availability</p>
-          <p className="text-lg font-bold text-ink">{data.assetAvailabilityPct != null ? `${data.assetAvailabilityPct}%` : '\u2014'}</p>
+          <p className="text-lg font-bold text-ink">{data.assetAvailabilityPct != null ? `${data.assetAvailabilityPct}%` : '—'}</p>
         </div>
         <div className="bg-primary-50/50 rounded-lg p-3">
           <p className="text-xs text-ink/50">Capital Risk</p>
@@ -504,7 +504,7 @@ function FleetIntelligencePanel() {
               style={{ backgroundColor: `${tier.dot}18`, color: tier.dot }}
             >
               <span className="h-2 w-2 rounded-full" style={{ backgroundColor: tier.dot }} />
-              {tier.label} \u00b7 {count}
+              {tier.label} · {count}
             </Link>
           );
         })}
@@ -514,7 +514,7 @@ function FleetIntelligencePanel() {
       {data.projectedSavings > 0 && (
         <div className="mt-4 bg-primary-800 text-white rounded-lg p-3.5 flex items-center justify-between flex-wrap gap-2">
           <p className="text-sm">
-            You've spent <strong>{company?.currency || 'USD'} {data.projectedSavings.toLocaleString()}</strong> maintaining assets the AI recommends replacing \u2014 money you'd stop spending by acting on it.
+            You've spent <strong>{company?.currency || 'USD'} {data.projectedSavings.toLocaleString()}</strong> maintaining assets the AI recommends replacing — money you'd stop spending by acting on it.
           </p>
         </div>
       )}
@@ -534,13 +534,13 @@ function FleetInsightsPanel() {
   return (
     <Card className="p-5">
       <h3 className="font-semibold text-ink mb-1 flex items-center gap-2"><Sparkles size={16} className="text-link" /> AI Insights Panel</h3>
-      <p className="text-xs text-ink/50 mb-4">Rule-based patterns detected across your fleet \u2014 real numbers from your own asset data, not fabricated.</p>
+      <p className="text-xs text-ink/50 mb-4">Rule-based patterns detected across your fleet — real numbers from your own asset data, not fabricated.</p>
       {insights === null ? (
         <div className="space-y-2">
           {[0, 1, 2].map((i) => <div key={i} className="h-9 rounded-lg bg-primary-50/50 animate-pulse" />)}
         </div>
       ) : insights.length === 0 ? (
-        <p className="text-sm text-ink/50 py-4 text-center">No notable patterns right now \u2014 your fleet looks steady.</p>
+        <p className="text-sm text-ink/50 py-4 text-center">No notable patterns right now — your fleet looks steady.</p>
       ) : (
         <ul className="space-y-3">
           {insights.map((ins, i) => (
@@ -583,7 +583,7 @@ function LearningLoopPanel() {
           <p className="text-xs text-ink/50 mt-0.5">Recommendations rejected</p>
         </div>
         <div>
-          <p className="text-xl font-bold text-ink">{stats.reliabilityRate != null ? `${stats.reliabilityRate}%` : '\u2014'}</p>
+          <p className="text-xl font-bold text-ink">{stats.reliabilityRate != null ? `${stats.reliabilityRate}%` : '—'}</p>
           <p className="text-xs text-ink/50 mt-0.5">Rejected cases later followed by a real failure</p>
         </div>
         <div>
@@ -593,7 +593,7 @@ function LearningLoopPanel() {
       </div>
       {!stats.hasEnoughHistory && (
         <p className="text-xs text-ink/40 mt-4">
-          Not yet applying an adjustment \u2014 needs at least 5 evaluated rejections before trusting the rate ({stats.rejectionsEvaluated} so far, {stats.rejectionsPendingEvaluation} still pending their 30-day evaluation window).
+          Not yet applying an adjustment — needs at least 5 evaluated rejections before trusting the rate ({stats.rejectionsEvaluated} so far, {stats.rejectionsPendingEvaluation} still pending their 30-day evaluation window).
         </p>
       )}
     </Card>

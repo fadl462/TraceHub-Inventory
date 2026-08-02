@@ -17,7 +17,7 @@ export default function Branding() {
     try {
       const { data } = await client.patch('/platform-settings/branding', form);
       setForm(data);
-      toast.success('Branding saved \u2014 reflected across the platform');
+      toast.success('Branding saved — reflected across the platform');
     } catch (err) {
       toast.error(err.response?.data?.error || 'Failed to save branding');
     } finally { setSaving(false); }
@@ -53,7 +53,7 @@ export default function Branding() {
           onChange={(e) => setForm({ ...form, faviconUrl: e.target.value })}
         />
         <p className="text-xs text-ink/45">
-          Paste a hosted image URL for each. There\u2019s no file upload yet \u2014 upload the image
+          Paste a hosted image URL for each. There’s no file upload yet — upload the image
           somewhere (e.g. your own storage or a CDN) and link to it here.
         </p>
       </Card>

@@ -80,7 +80,7 @@ export default function AssetDetail() {
     setSubmittingInspection(true);
     try {
       await client.post(`/assets/${id}/inspections`, inspectionForm);
-      toast.success('Inspection logged \u2014 health score recalculated');
+      toast.success('Inspection logged — health score recalculated');
       setInspectionForm({ score: '', condition: 'good', notes: '' });
       await load();
     } catch (err) {
@@ -149,7 +149,7 @@ export default function AssetDetail() {
               <div className="flex items-center justify-between">
                 <p className="font-medium text-ink text-sm flex items-center gap-2"><Activity size={16} className="text-link" /> Asset Intelligence Engine</p>
                 {asset.executiveConfidence != null && (
-                  <span className="text-xs text-ink/50" title={asset.confidenceDetail ? `${asset.confidenceDetail.fieldsPopulated}/${asset.confidenceDetail.fieldsTotal} fields \u00b7 ${asset.confidenceDetail.maintenanceRecordsConsidered} maintenance records${asset.confidenceDetail.marketDataAvailable ? ' \u00b7 market data available' : ''}${asset.confidenceDetail.learningLoopAdjustment ? ` \u00b7 learning loop ${asset.confidenceDetail.learningLoopAdjustment > 0 ? '+' : ''}${asset.confidenceDetail.learningLoopAdjustment}` : ''}` : undefined}>
+                  <span className="text-xs text-ink/50" title={asset.confidenceDetail ? `${asset.confidenceDetail.fieldsPopulated}/${asset.confidenceDetail.fieldsTotal} fields · ${asset.confidenceDetail.maintenanceRecordsConsidered} maintenance records${asset.confidenceDetail.marketDataAvailable ? ' · market data available' : ''}${asset.confidenceDetail.learningLoopAdjustment ? ` · learning loop ${asset.confidenceDetail.learningLoopAdjustment > 0 ? '+' : ''}${asset.confidenceDetail.learningLoopAdjustment}` : ''}` : undefined}>
                     {asset.executiveConfidence}% confidence
                   </span>
                 )}
@@ -299,8 +299,8 @@ export default function AssetDetail() {
                     <span className="text-ink/80">
                       <span className="font-semibold text-ink">{insp.score}%</span>
                       {' '}&mdash;{' '}{insp.condition}
-                      {insp.notes && <span className="text-ink/50"> \u00b7 {insp.notes}</span>}
-                      {insp.inspectedBy && <span className="text-ink/40"> \u00b7 {insp.inspectedBy.firstName} {insp.inspectedBy.lastName}</span>}
+                      {insp.notes && <span className="text-ink/50"> · {insp.notes}</span>}
+                      {insp.inspectedBy && <span className="text-ink/40"> · {insp.inspectedBy.firstName} {insp.inspectedBy.lastName}</span>}
                     </span>
                     <span className="text-ink/50 text-xs shrink-0 ml-2">{new Date(insp.inspectedAt).toLocaleDateString()}</span>
                   </div>
