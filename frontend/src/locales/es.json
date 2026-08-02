@@ -1,0 +1,68 @@
+{
+  "common": {
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "getStartedFree": "Comenzar gratis",
+    "goToDashboard": "Ir al panel",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "search": "Buscar",
+    "loading": "Cargando...",
+    "language": "Idioma"
+  },
+  "siteHeader": {
+    "howItWorks": "Cómo funciona",
+    "features": "Funciones",
+    "pricing": "Precios",
+    "blog": "Blog"
+  },
+  "landing": {
+    "heroEyebrow": "Gestión de activos e inventario",
+    "heroHeadline": "Sepa siempre dónde está cada activo.",
+    "heroSubheadline": "Registre su equipo en segundos, deje que la IA proponga cronogramas de baja, asigne el equipo a su personal y rastree todo con un simple escaneo — sin necesidad de hardware.",
+    "heroCta": "Prueba gratis — 10 activos, 30 días",
+    "heroSecondaryCta": "Vea cómo funciona",
+    "noCardRequired": "No se requiere tarjeta",
+    "liveInMinutes": "Listo en minutos",
+    "noRfidOrGps": "Sin hardware RFID ni GPS"
+  },
+  "auth": {
+    "loginTitle": "Bienvenido de nuevo",
+    "loginSubtitle": "Inicie sesión en su espacio de trabajo de TraceHub Inventory",
+    "emailLabel": "Correo electrónico",
+    "passwordLabel": "Contraseña",
+    "forgotPassword": "¿Olvidó su contraseña?",
+    "loginButton": "Iniciar sesión",
+    "newToTraceHub": "¿Nuevo en TraceHub?",
+    "createWorkspace": "Crear un espacio de trabajo",
+    "registerTitle": "Cree su espacio de trabajo",
+    "registerSubtitle": "Sus primeros 10 activos son gratis durante 30 días — no se requiere tarjeta.",
+    "firstNameLabel": "Nombre",
+    "lastNameLabel": "Apellido",
+    "companyNameLabel": "Nombre de la empresa",
+    "registerButton": "Crear espacio de trabajo",
+    "alreadyHaveAccount": "¿Ya tiene una cuenta?",
+    "backToHome": "Volver al inicio",
+    "accountTypeLabel": "Tipo de cuenta",
+    "accountTypeCompany": "Empresa / Organización",
+    "accountTypeIndividual": "Particular",
+    "phoneLabel": "Teléfono (opcional)",
+    "startFreeTrial": "Iniciar prueba gratuita",
+    "creatingWorkspace": "Creando espacio de trabajo..."
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "assets": "Activos",
+    "scan": "Escanear",
+    "assignments": "Asignaciones",
+    "disposalCases": "Casos de baja",
+    "locations": "Ubicaciones",
+    "reports": "Informes",
+    "team": "Equipo",
+    "featureRequests": "Solicitudes de funciones",
+    "billing": "Facturación",
+    "settings": "Configuración"
+  }
+}

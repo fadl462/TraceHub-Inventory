@@ -1,18 +1,21 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import TraceHubMark from '../TraceHubMark';
+import LanguageSwitcher from '../LanguageSwitcher';
 import { useAuth } from '../../context/AuthContext';
-
-const SECTIONS = [
-  { id: 'how-it-works', label: 'How it works' },
-  { id: 'features', label: 'Features' },
-  { id: 'pricing', label: 'Pricing' },
-];
 
 export default function SiteHeader() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const onLanding = pathname === '/';
+
+  const SECTIONS = [
+    { id: 'how-it-works', label: t('siteHeader.howItWorks') },
+    { id: 'features', label: t('siteHeader.features') },
+    { id: 'pricing', label: t('siteHeader.pricing') },
+  ];
 
   // From another page, go home first, then scroll to the section once the
   // landing page has actually mounted (avoids relying on URL hash fragments,
@@ -28,7 +31,7 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 bg-surface/80 backdrop-blur border-b border-ink/5">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         <Link to="/"><TraceHubMark size={30} withWordmark /></Link>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/70">
           {SECTIONS.map((s) => (
@@ -36,26 +39,29 @@ export default function SiteHeader() {
               {s.label}
             </a>
           ))}
-          <Link to="/blog" className="hover:text-ink transition-colors">Blog</Link>
+          <Link to="/blog" className="hover:text-ink transition-colors">{t('siteHeader.blog')}</Link>
         </nav>
-        {user ? (
-          <Link
-            to={user.role === 'super_admin' ? '/admin' : '/dashboard'}
-            className="inline-flex items-center gap-1.5 bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors"
-          >
-            Go to dashboard
-          </Link>
-        ) : (
-          <div className="flex items-center gap-3">
-            <Link to="/login" className="hidden sm:inline text-sm font-medium text-ink/70 hover:text-ink transition-colors">Log in</Link>
+        <div className="flex items-center gap-2">
+          <LanguageSwitcher />
+          {user ? (
             <Link
-              to="/register"
+              to={user.role === 'super_admin' ? '/admin' : '/dashboard'}
               className="inline-flex items-center gap-1.5 bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors"
             >
-              Get started free
+              {t('common.goToDashboard')}
             </Link>
-          </div>
-        )}
+          ) : (
+            <div className="flex items-center gap-3">
+              <Link to="/login" className="hidden sm:inline text-sm font-medium text-ink/70 hover:text-ink transition-colors">{t('common.login')}</Link>
+              <Link
+                to="/register"
+                className="inline-flex items-center gap-1.5 bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors"
+              >
+                {t('common.getStartedFree')}
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

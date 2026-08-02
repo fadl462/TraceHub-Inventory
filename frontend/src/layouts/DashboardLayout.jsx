@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Link, Outlet, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   LayoutDashboard, Boxes, Users, MapPin, ClipboardList, BarChart3,
   Settings, Bell, LogOut, Menu, X, ScanLine, CreditCard, Trash2, Lightbulb,
@@ -11,24 +12,26 @@ import { useScrollToTop } from '../hooks/useScrollToTop';
 import AiChatWidget from '../components/AiChatWidget';
 import { useTheme } from '../context/ThemeContext';
 import ThemeSwitcher from '../components/ThemeSwitcher';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 const NAV_ITEMS = [
-  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, roles: ['company_admin', 'manager', 'staff'] },
-  { to: '/assets', label: 'Assets', icon: Boxes, roles: ['company_admin', 'manager', 'staff'] },
-  { to: '/scan', label: 'Scan', icon: ScanLine, roles: ['company_admin', 'manager', 'staff'] },
-  { to: '/assignments', label: 'Assignments', icon: ClipboardList, roles: ['company_admin', 'manager', 'staff'] },
-  { to: '/disposal-cases', label: 'Disposal cases', icon: Trash2, roles: ['company_admin', 'manager'] },
-  { to: '/locations', label: 'Locations', icon: MapPin, roles: ['company_admin', 'manager'] },
-  { to: '/reports', label: 'Reports', icon: BarChart3, roles: ['company_admin', 'manager'] },
-  { to: '/team', label: 'Team', icon: Users, roles: ['company_admin', 'manager'] },
-  { to: '/feature-requests', label: 'Feature Requests', icon: Lightbulb, roles: ['company_admin', 'manager', 'staff'] },
-  { to: '/billing', label: 'Billing', icon: CreditCard, roles: ['company_admin'] },
-  { to: '/settings', label: 'Settings', icon: Settings, roles: ['company_admin', 'manager', 'staff'] },
+  { to: '/dashboard', labelKey: 'nav.dashboard', icon: LayoutDashboard, roles: ['company_admin', 'manager', 'staff'] },
+  { to: '/assets', labelKey: 'nav.assets', icon: Boxes, roles: ['company_admin', 'manager', 'staff'] },
+  { to: '/scan', labelKey: 'nav.scan', icon: ScanLine, roles: ['company_admin', 'manager', 'staff'] },
+  { to: '/assignments', labelKey: 'nav.assignments', icon: ClipboardList, roles: ['company_admin', 'manager', 'staff'] },
+  { to: '/disposal-cases', labelKey: 'nav.disposalCases', icon: Trash2, roles: ['company_admin', 'manager'] },
+  { to: '/locations', labelKey: 'nav.locations', icon: MapPin, roles: ['company_admin', 'manager'] },
+  { to: '/reports', labelKey: 'nav.reports', icon: BarChart3, roles: ['company_admin', 'manager'] },
+  { to: '/team', labelKey: 'nav.team', icon: Users, roles: ['company_admin', 'manager'] },
+  { to: '/feature-requests', labelKey: 'nav.featureRequests', icon: Lightbulb, roles: ['company_admin', 'manager', 'staff'] },
+  { to: '/billing', labelKey: 'nav.billing', icon: CreditCard, roles: ['company_admin'] },
+  { to: '/settings', labelKey: 'nav.settings', icon: Settings, roles: ['company_admin', 'manager', 'staff'] },
 ];
 
 export default function DashboardLayout() {
   const { user, company, logout } = useAuth();
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const mainRef = useScrollToTop();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -63,7 +66,7 @@ export default function DashboardLayout() {
           <button className="ml-auto lg:hidden text-white/70" onClick={() => setMobileOpen(false)}><X size={20} /></button>
         </div>
         <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
-          {items.map(({ to, label, icon: Icon }) => (
+          {items.map(({ to, labelKey, icon: Icon }) => (
             <NavLink
               key={to} to={to} onClick={() => setMobileOpen(false)}
               className={({ isActive }) => `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
@@ -71,7 +74,7 @@ export default function DashboardLayout() {
               }`}
             >
               <Icon size={18} />
-              {label}
+              {t(labelKey)}
             </NavLink>
           ))}
         </nav>
@@ -101,6 +104,7 @@ export default function DashboardLayout() {
             <p className="text-sm font-semibold text-ink truncate">{company?.name}</p>
             {company?.status === 'trial' && <p className="text-xs text-secondary-dark">Free trial active</p>}
           </div>
+          <LanguageSwitcher />
           <ThemeSwitcher />
           <div className="relative">
             <button onClick={() => setNotifOpen((o) => !o)} className="relative text-ink/60 hover:text-ink p-2 rounded-full hover:bg-primary-50">

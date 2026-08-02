@@ -1,0 +1,68 @@
+{
+  "common": {
+    "login": "Se connecter",
+    "logout": "Se déconnecter",
+    "getStartedFree": "Commencer gratuitement",
+    "goToDashboard": "Accéder au tableau de bord",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "search": "Rechercher",
+    "loading": "Chargement...",
+    "language": "Langue"
+  },
+  "siteHeader": {
+    "howItWorks": "Comment ça marche",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "blog": "Blog"
+  },
+  "landing": {
+    "heroEyebrow": "Gestion des actifs et des stocks",
+    "heroHeadline": "Sachez toujours où se trouve chaque actif.",
+    "heroSubheadline": "Enregistrez votre équipement en quelques secondes, laissez l'IA proposer des délais de mise au rebut, attribuez le matériel à votre équipe et suivez le tout par un simple scan — aucun matériel requis.",
+    "heroCta": "Essai gratuit — 10 actifs, 30 jours",
+    "heroSecondaryCta": "Voir comment ça marche",
+    "noCardRequired": "Aucune carte requise",
+    "liveInMinutes": "Opérationnel en quelques minutes",
+    "noRfidOrGps": "Aucun matériel RFID ou GPS"
+  },
+  "auth": {
+    "loginTitle": "Bon retour",
+    "loginSubtitle": "Connectez-vous à votre espace de travail TraceHub Inventory",
+    "emailLabel": "Adresse e-mail",
+    "passwordLabel": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "loginButton": "Se connecter",
+    "newToTraceHub": "Nouveau sur TraceHub ?",
+    "createWorkspace": "Créer un espace de travail",
+    "registerTitle": "Créez votre espace de travail",
+    "registerSubtitle": "Vos 10 premiers actifs sont gratuits pendant 30 jours — aucune carte requise.",
+    "firstNameLabel": "Prénom",
+    "lastNameLabel": "Nom",
+    "companyNameLabel": "Nom de l'entreprise",
+    "registerButton": "Créer l'espace de travail",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "backToHome": "Retour à l'accueil",
+    "accountTypeLabel": "Type de compte",
+    "accountTypeCompany": "Entreprise / Organisation",
+    "accountTypeIndividual": "Particulier",
+    "phoneLabel": "Téléphone (facultatif)",
+    "startFreeTrial": "Démarrer l'essai gratuit",
+    "creatingWorkspace": "Création de l'espace de travail..."
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "assets": "Actifs",
+    "scan": "Scanner",
+    "assignments": "Affectations",
+    "disposalCases": "Dossiers de mise au rebut",
+    "locations": "Emplacements",
+    "reports": "Rapports",
+    "team": "Équipe",
+    "featureRequests": "Suggestions de fonctionnalités",
+    "billing": "Facturation",
+    "settings": "Paramètres"
+  }
+}

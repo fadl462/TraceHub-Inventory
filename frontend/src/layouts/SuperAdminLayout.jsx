@@ -11,6 +11,7 @@ import AiChatWidget from '../components/AiChatWidget';
 import GlobalSearchBar from '../components/superadmin/GlobalSearchBar';
 import { useTheme } from '../context/ThemeContext';
 import ThemeSwitcher from '../components/ThemeSwitcher';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 const NAV_GROUPS = [
   {
@@ -102,7 +103,7 @@ export default function SuperAdminLayout() {
         >
           <button className="lg:hidden text-ink/70 shrink-0" onClick={() => setMobileOpen(true)}><Menu size={22} /></button>
           <GlobalSearchBar />
-          <div className="ml-auto"><ThemeSwitcher /></div>
+          <div className="ml-auto flex items-center gap-2"><LanguageSwitcher /><ThemeSwitcher /></div>
           <button onClick={logout} title="Log out" aria-label="Log out" className="text-ink/60 hover:text-red-600 p-2 rounded-full hover:bg-red-50 transition-colors">
             <LogOut size={19} />
           </button>

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Check } from 'lucide-react';
 import TraceHubMark from '../components/TraceHubMark';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import client from '../api/client';
 
 const DEFAULTS = {
@@ -13,6 +15,7 @@ const DEFAULTS = {
 };
 
 export default function AuthLayout({ children, title, subtitle }) {
+  const { t } = useTranslation();
   const [content, setContent] = useState(DEFAULTS);
 
   useEffect(() => {
@@ -53,8 +56,9 @@ export default function AuthLayout({ children, title, subtitle }) {
               to="/"
               className="hidden lg:inline-flex items-center gap-1.5 text-sm font-medium text-ink/50 hover:text-ink transition-colors"
             >
-              <ArrowLeft size={15} /> Back to home
+              <ArrowLeft size={15} /> {t('auth.backToHome')}
             </Link>
+            <LanguageSwitcher />
           </div>
           <h1 className="text-2xl font-bold text-ink">{title}</h1>
           {subtitle && <p className="mt-1.5 text-sm text-ink/60">{subtitle}</p>}

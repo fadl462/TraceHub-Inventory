@@ -1,0 +1,68 @@
+{
+  "common": {
+    "login": "Log in",
+    "logout": "Log out",
+    "getStartedFree": "Get started free",
+    "goToDashboard": "Go to dashboard",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "loading": "Loading...",
+    "language": "Language"
+  },
+  "siteHeader": {
+    "howItWorks": "How it works",
+    "features": "Features",
+    "pricing": "Pricing",
+    "blog": "Blog"
+  },
+  "landing": {
+    "heroEyebrow": "Asset & inventory management",
+    "heroHeadline": "Know where every asset is, always.",
+    "heroSubheadline": "Register equipment in seconds, let AI propose disposal timelines, assign gear to your team, and track it all with a simple scan — no hardware required.",
+    "heroCta": "Start free — 10 assets, 30 days",
+    "heroSecondaryCta": "See how it works",
+    "noCardRequired": "No card required",
+    "liveInMinutes": "Live in minutes",
+    "noRfidOrGps": "No RFID or GPS hardware"
+  },
+  "auth": {
+    "loginTitle": "Welcome back",
+    "loginSubtitle": "Log in to your TraceHub Inventory workspace",
+    "emailLabel": "Email address",
+    "passwordLabel": "Password",
+    "forgotPassword": "Forgot password?",
+    "loginButton": "Log in",
+    "newToTraceHub": "New to TraceHub?",
+    "createWorkspace": "Create a workspace",
+    "registerTitle": "Create your workspace",
+    "registerSubtitle": "Your first 10 assets are free for 30 days — no card required.",
+    "firstNameLabel": "First name",
+    "lastNameLabel": "Last name",
+    "companyNameLabel": "Company name",
+    "registerButton": "Create workspace",
+    "alreadyHaveAccount": "Already have an account?",
+    "backToHome": "Back to home",
+    "accountTypeLabel": "Account type",
+    "accountTypeCompany": "Company / Organization",
+    "accountTypeIndividual": "Individual",
+    "phoneLabel": "Phone (optional)",
+    "startFreeTrial": "Start free trial",
+    "creatingWorkspace": "Creating workspace..."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "assets": "Assets",
+    "scan": "Scan",
+    "assignments": "Assignments",
+    "disposalCases": "Disposal cases",
+    "locations": "Locations",
+    "reports": "Reports",
+    "team": "Team",
+    "featureRequests": "Feature Requests",
+    "billing": "Billing",
+    "settings": "Settings"
+  }
+}
