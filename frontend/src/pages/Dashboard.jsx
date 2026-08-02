@@ -313,6 +313,7 @@ function daysBetween(from, to = new Date()) {
 function AssignmentTrackingPanel() {
   const { company } = useAuth();
   const [assignments, setAssignments] = useState(null);
+  const [filter, setFilter] = useState('all');
 
   useEffect(() => {
     client.get('/reports/assignment-tracking').then(({ data }) => setAssignments(data.assignments)).catch(() => setAssignments([]));
@@ -362,6 +363,8 @@ function AssignmentTrackingPanel() {
   if (assignments.length === 0) return null;
 
   const overdueCount = assignments.filter((a) => a.isOverdue).length;
+  const visibleAssignments = filter === 'overdue' ? assignments.filter((a) => a.isOverdue)
+    : filter === 'ontime' ? assignments.filter((a) => !a.isOverdue) : assignments;
 
   return (
     <Card className="p-5">
@@ -371,6 +374,14 @@ function AssignmentTrackingPanel() {
           {overdueCount > 0 && (
             <span className="text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-1 rounded-full mr-1">{overdueCount} overdue</span>
           )}
+          <select
+            value={filter} onChange={(e) => setFilter(e.target.value)}
+            className="text-xs rounded-md border border-primary-100 px-2 py-1.5 mr-1 focus-ring focus:border-secondary bg-transparent text-ink"
+          >
+            <option value="all">All</option>
+            <option value="overdue">Overdue only</option>
+            <option value="ontime">On time only</option>
+          </select>
           <button onClick={handleCsv} title="Export CSV" aria-label="Export CSV" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors"><Download size={14} /></button>
           <button onClick={handlePdf} title="Export PDF" aria-label="Export PDF" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors"><FileText size={14} /></button>
           <button onClick={handlePptx} title="Export PowerPoint" aria-label="Export PowerPoint" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors"><Presentation size={14} /></button>
@@ -378,7 +389,9 @@ function AssignmentTrackingPanel() {
       </div>
       <p className="text-xs text-ink/50 mb-4">Who has what, when it was issued, and how long it's been out.</p>
       <div className="space-y-2">
-        {assignments.map((a) => (
+        {visibleAssignments.length === 0 ? (
+          <p className="text-sm text-ink/50 text-center py-4">No assignments match this filter.</p>
+        ) : visibleAssignments.map((a) => (
           <div
             key={a.id}
             className={`flex flex-wrap items-center justify-between gap-3 p-3 rounded-lg ${a.isOverdue ? 'bg-red-50' : 'bg-primary-50/40'}`}

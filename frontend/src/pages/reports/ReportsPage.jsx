@@ -14,6 +14,7 @@ export default function ReportsPage() {
   const { company } = useAuth();
   const [breakdown, setBreakdown] = useState([]);
   const [depreciation, setDepreciation] = useState([]);
+  const [depreciationCategoryFilter, setDepreciationCategoryFilter] = useState('');
   const [locationEvents, setLocationEvents] = useState([]);
   const [locationFilter, setLocationFilter] = useState('');
   const [eventTypeFilter, setEventTypeFilter] = useState('');
@@ -39,6 +40,9 @@ export default function ReportsPage() {
     (!locationFilter || e.Location?.name === locationFilter)
     && (!eventTypeFilter || e.eventType === eventTypeFilter)
   ));
+
+  const uniqueDepreciationCategories = [...new Set(depreciation.map((a) => a.AssetCategory?.name).filter(Boolean))];
+  const filteredDepreciation = depreciation.filter((a) => !depreciationCategoryFilter || a.AssetCategory?.name === depreciationCategoryFilter);
 
   const subtitle = `${company?.name || ''} \u00b7 Generated ${new Date().toLocaleDateString()}`;
   const reportSections = () => [
@@ -115,9 +119,19 @@ export default function ReportsPage() {
         </Card>
 
         <Card className="p-6">
-          <h3 className="font-semibold text-ink text-lg mb-4">Depreciation report</h3>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <h3 className="font-semibold text-ink text-lg">Depreciation report</h3>
+            {depreciation.length > 0 && (
+              <Select value={depreciationCategoryFilter} onChange={(e) => setDepreciationCategoryFilter(e.target.value)} className="w-52">
+                <option value="">All categories</option>
+                {uniqueDepreciationCategories.map((n) => <option key={n} value={n}>{n}</option>)}
+              </Select>
+            )}
+          </div>
           {depreciation.length === 0 ? (
             <p className="text-sm text-ink/50 py-10 text-center">No priced assets yet.</p>
+          ) : filteredDepreciation.length === 0 ? (
+            <p className="text-sm text-ink/50 py-10 text-center">No assets match this filter.</p>
           ) : (
             <div className="max-h-96 overflow-y-auto overflow-x-auto">
               <table className="w-full text-[15px] min-w-[520px]">
@@ -130,7 +144,7 @@ export default function ReportsPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {depreciation.map((a) => (
+                  {filteredDepreciation.map((a) => (
                     <tr key={a.id} className="border-t border-primary-50">
                       <td className="py-3">
                         <p className="font-medium text-ink">{a.name}</p>

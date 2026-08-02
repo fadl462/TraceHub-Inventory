@@ -4,6 +4,15 @@ import toast from 'react-hot-toast';
 import { Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Input, Select } from '../../components/ui';
+import { COLOR_NAMES } from '../../utils/colorList';
+
+const CURRENCY_OPTIONS = [
+  { code: 'USD', label: 'USD ($) - US Dollar' },
+  { code: 'GHS', label: 'GHS (\u20b5) - Ghanaian Cedi' },
+  { code: 'CNY', label: 'CNY (\u00a5) - Chinese Yuan (coming soon)', disabled: true },
+  { code: 'EUR', label: 'EUR (\u20ac) - Euro (coming soon)', disabled: true },
+  { code: 'GBP', label: 'GBP (\u00a3) - British Pound (coming soon)', disabled: true },
+];
 
 export default function AssetCreate() {
   const navigate = useNavigate();
@@ -11,6 +20,11 @@ export default function AssetCreate() {
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [priceCurrency, setPriceCurrency] = useState('USD');
+  const [foreignAmount, setForeignAmount] = useState('');
+  const [fxRate, setFxRate] = useState('');
+  const [fxLoading, setFxLoading] = useState(false);
+  const [fxError, setFxError] = useState('');
   const [form, setForm] = useState({
     name: '', categoryId: '', brand: '', model: '', color: '', serialNumber: '',
     manufactureYear: '', purchaseDate: '', purchasePrice: '', condition: 'good',
@@ -29,6 +43,30 @@ export default function AssetCreate() {
     client.get('/categories').then(({ data }) => setCategories(data.categories));
     client.get('/locations').then(({ data }) => setLocations(data.locations));
   }, []);
+
+  const fetchLiveRate = async () => {
+    setFxLoading(true);
+    setFxError('');
+    try {
+      const { data } = await client.get('/fx-rate', { params: { from: priceCurrency, to: 'USD' } });
+      setFxRate(data.rate);
+    } catch (err) {
+      setFxError(err.response?.data?.error || 'Could not fetch a live rate - enter it manually below.');
+    } finally {
+      setFxLoading(false);
+    }
+  };
+
+  const usdEquivalent = foreignAmount && fxRate ? (Number(foreignAmount) * Number(fxRate)) : null;
+
+  const applyConversion = () => {
+    if (!usdEquivalent) return;
+    setForm((f) => ({ ...f, purchasePrice: usdEquivalent.toFixed(2) }));
+    setPriceCurrency('USD');
+    setForeignAmount('');
+    setFxRate('');
+    toast.success(`Set purchase price to $${usdEquivalent.toFixed(2)}`);
+  };
 
   const selectedCategory = categories.find((c) => c.id === form.categoryId);
   const profile = selectedCategory?.DepreciationProfile;
@@ -77,7 +115,13 @@ export default function AssetCreate() {
           <div className="grid sm:grid-cols-3 gap-4">
             <Input label="Brand" value={form.brand} onChange={(e) => setForm({ ...form, brand: e.target.value })} />
             <Input label="Model" value={form.model} onChange={(e) => setForm({ ...form, model: e.target.value })} />
-            <Input label="Color" value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} />
+            <Input
+              label="Color" value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })}
+              list="th-color-list" placeholder="Start typing or pick a color..." autoComplete="off"
+            />
+            <datalist id="th-color-list">
+              {COLOR_NAMES.map((c) => <option key={c} value={c} />)}
+            </datalist>
           </div>
 
           <Input label="Serial number" value={form.serialNumber} onChange={(e) => setForm({ ...form, serialNumber: e.target.value })} />
@@ -85,7 +129,31 @@ export default function AssetCreate() {
           <div className="grid sm:grid-cols-3 gap-4">
             <Input label="Manufacture year" type="number" placeholder="2023" value={form.manufactureYear} onChange={(e) => setForm({ ...form, manufactureYear: e.target.value })} />
             <Input label="Purchase date" type="date" value={form.purchaseDate} onChange={(e) => setForm({ ...form, purchaseDate: e.target.value })} />
-            <Input label="Purchase price" type="number" step="0.01" placeholder="500" value={form.purchasePrice} onChange={(e) => setForm({ ...form, purchasePrice: e.target.value })} />
+            <Input label="Purchase price (USD)" type="number" step="0.01" placeholder="500" value={form.purchasePrice} onChange={(e) => setForm({ ...form, purchasePrice: e.target.value })} />
+          </div>
+
+          <div className="rounded-lg border border-primary-100 p-4">
+            <p className="text-sm font-medium text-ink/80 mb-1">Paid in a different currency?</p>
+            <p className="text-xs text-ink/50 mb-3">Purchase price is always stored in USD - convert your local amount here and it'll fill in the field above.</p>
+            <div className="grid sm:grid-cols-3 gap-3 items-end">
+              <Select label="Currency" value={priceCurrency} onChange={(e) => { setPriceCurrency(e.target.value); setFxRate(''); setFxError(''); }}>
+                {CURRENCY_OPTIONS.map((c) => <option key={c.code} value={c.code} disabled={c.disabled}>{c.label}</option>)}
+              </Select>
+              <Input label={`Amount in ${priceCurrency}`} type="number" step="0.01" value={foreignAmount} onChange={(e) => setForeignAmount(e.target.value)} disabled={priceCurrency === 'USD'} />
+              <div className="flex gap-2">
+                <Input label="Rate (1 USD =)" type="number" step="0.0001" value={fxRate} onChange={(e) => setFxRate(e.target.value)} disabled={priceCurrency === 'USD'} />
+                <Button type="button" variant="outline" onClick={fetchLiveRate} disabled={priceCurrency === 'USD' || fxLoading} className="mb-0.5">
+                  {fxLoading ? '...' : 'Fetch rate'}
+                </Button>
+              </div>
+            </div>
+            {fxError && <p className="text-xs text-red-600 mt-2">{fxError}</p>}
+            {usdEquivalent != null && (
+              <div className="flex items-center justify-between mt-3 bg-primary-50/60 rounded-lg px-3 py-2">
+                <span className="text-sm text-ink">\u2248 <strong>${usdEquivalent.toFixed(2)}</strong> USD</span>
+                <Button type="button" onClick={applyConversion}>Use this amount</Button>
+              </div>
+            )}
           </div>
 
           {profile && form.purchasePrice && (

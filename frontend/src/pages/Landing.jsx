@@ -332,21 +332,28 @@ function Pricing({ plans }) {
 
 function Testimonials({ items }) {
   if (!items || items.length === 0) return null;
+  // Duplicated once so the track can loop seamlessly at translateX(-50%) -
+  // the marquee CSS lives in index.css (.th-marquee-track).
+  const looped = [...items, ...items];
   return (
-    <section className="max-w-6xl mx-auto px-6 py-24">
-      <div className="max-w-xl">
-        <h2 className="font-display text-3xl font-bold text-ink tracking-tight">What teams say after switching</h2>
+    <section className="py-24">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-xl">
+          <h2 className="font-display text-3xl font-bold text-ink tracking-tight">What teams say after switching</h2>
+        </div>
       </div>
-      <div className="mt-12 grid md:grid-cols-3 gap-6">
-        {items.map((t) => (
-          <div key={t.id} className="p-6 rounded-2xl border border-ink/5 bg-white">
-            <p className="text-sm text-ink/70 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
-            <p className="mt-4 text-sm font-semibold text-ink">{t.authorName}</p>
-            <p className="text-xs text-ink/50">
-              {t.authorRole}{t.authorRole && t.companyName ? ' \u2014 ' : ''}{t.companyName}
-            </p>
-          </div>
-        ))}
+      <div className="mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+        <div className="th-marquee-track flex gap-6 w-max px-6">
+          {looped.map((t, i) => (
+            <div key={`${t.id}-${i}`} className="p-6 rounded-2xl border border-ink/5 bg-white w-80 shrink-0">
+              <p className="text-sm text-ink/70 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
+              <p className="mt-4 text-sm font-semibold text-ink">{t.authorName}</p>
+              <p className="text-xs text-ink/50">
+                {t.authorRole}{t.authorRole && t.companyName ? ' \u2014 ' : ''}{t.companyName}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -59,6 +59,7 @@ app.use('/api/billing', billingRoutes);
 app.use('/api/plans', planRoutes);
 app.use('/api/super-admin', superAdminRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/fx-rate', require('./routes/fxRoutes'));
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/company', companyRoutes);
 app.use('/api/site-content', siteContentRoutes);

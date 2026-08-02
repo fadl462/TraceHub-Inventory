@@ -95,3 +95,20 @@ body {
   outline: 2px solid #4DA3FF;
   outline-offset: 2px;
 }
+
+/* Testimonials marquee: continuous horizontal scroll, paused on hover so it
+   stays readable. The track's content is duplicated in the JSX so
+   translateX(-50%) loops seamlessly with no visible jump/reset. */
+@keyframes th-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.th-marquee-track {
+  animation: th-marquee 32s linear infinite;
+}
+.th-marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .th-marquee-track { animation: none; }
+}

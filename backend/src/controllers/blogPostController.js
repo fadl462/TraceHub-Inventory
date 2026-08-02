@@ -8,7 +8,15 @@ function slugify(str) {
 
 async function ensureSeeded() {
   const count = await BlogPost.count();
-  if (count === 0) await BlogPost.bulkCreate(defaultPosts);
+  if (count === 0) {
+    await BlogPost.bulkCreate(defaultPosts);
+    return;
+  }
+  // Publishing a new post later shouldn't require wiping existing blog data -
+  // add any post from the default set that isn't already present by slug.
+  const existingSlugs = new Set((await BlogPost.findAll({ attributes: ['slug'] })).map((p) => p.slug));
+  const missing = defaultPosts.filter((p) => !existingSlugs.has(p.slug));
+  if (missing.length > 0) await BlogPost.bulkCreate(missing);
 }
 
 async function listPublic(req, res, next) {
