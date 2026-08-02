@@ -61,7 +61,8 @@ async function seed() {
 
   console.log('Seeding default footer links...');
   for (const l of footerLinks) {
-    const [, created] = await FooterLink.findOrCreate({ where: { label: l.label, group: l.group }, defaults: l });
+    const [row, created] = await FooterLink.findOrCreate({ where: { label: l.label, group: l.group }, defaults: l });
+    if (!created && row.url !== l.url) { row.url = l.url; await row.save(); }
     console.log(`  ${created ? 'created' : 'exists'}: ${l.label}`);
   }
 

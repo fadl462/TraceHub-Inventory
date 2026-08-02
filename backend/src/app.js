@@ -72,6 +72,7 @@ app.use('/api/platform-settings', platformSettingsRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/newsletter', require('./routes/newsletterRoutes'));
 app.use('/api/blog-posts', require('./routes/blogPostRoutes'));
+app.use('/api/docs', require('./routes/docArticleRoutes'));
 app.use('/api/disposal-cases', require('./routes/disposalCaseRoutes'));
 
 app.use(notFound);

@@ -21,6 +21,9 @@ const Landing = lazy(() => import('./pages/Landing'));
 const ScanRedirect = lazy(() => import('./pages/ScanRedirect'));
 const CmsPageView = lazy(() => import('./pages/CmsPageView'));
 const Blog = lazy(() => import('./pages/Blog'));
+const DocsLayout = lazy(() => import('./layouts/DocsLayout'));
+const DocsHome = lazy(() => import('./pages/docs/DocsHome'));
+const DocArticleView = lazy(() => import('./pages/docs/DocArticleView'));
 const BlogPostView = lazy(() => import('./pages/BlogPostView'));
 
 const DashboardLayout = lazy(() => import('./layouts/DashboardLayout'));
@@ -73,6 +76,10 @@ export default function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/pages/:slug" element={<CmsPageView />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/docs" element={<DocsLayout />}>
+            <Route index element={<DocsHome />} />
+            <Route path=":slug" element={<DocArticleView />} />
+          </Route>
           <Route path="/blog/:slug" element={<BlogPostView />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
