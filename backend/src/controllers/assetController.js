@@ -171,7 +171,7 @@ async function getFullAsset(id) {
 async function listAssets(req, res, next) {
   try {
     const {
-      status, categoryId, search, locationId, page = 1, pageSize = 25, sortBy = 'createdAt', sortDir = 'DESC',
+      status, categoryId, search, locationId, health, page = 1, pageSize = 25, sortBy = 'createdAt', sortDir = 'DESC',
     } = req.query;
 
     const where = { isArchived: false };
@@ -183,6 +183,18 @@ async function listAssets(req, res, next) {
     if (status) where.status = status;
     if (categoryId) where.categoryId = categoryId;
     if (locationId) where.currentLocationId = locationId;
+    // Matches the exact tier bands the Health Score engine and the
+    // Dashboard's Executive Heat Map use - not a separate filter scale.
+    if (health) {
+      const HEALTH_RANGES = {
+        excellent: { [Op.gte]: 90 },
+        healthy: { [Op.gte]: 75, [Op.lt]: 90 },
+        needsAttention: { [Op.gte]: 60, [Op.lt]: 75 },
+        highRisk: { [Op.gte]: 40, [Op.lt]: 60 },
+        critical: { [Op.lt]: 40 },
+      };
+      if (HEALTH_RANGES[health]) where.healthScore = HEALTH_RANGES[health];
+    }
     if (search) {
       where[Op.or] = [
         { name: { [Op.like]: `%${search}%` } },

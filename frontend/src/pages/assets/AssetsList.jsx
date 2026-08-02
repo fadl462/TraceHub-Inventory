@@ -4,6 +4,35 @@ import { Plus, Search, Boxes, QrCode } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Input, Select, Badge, statusTone, EmptyState, Spinner } from '../../components/ui';
 
+// Matches the exact tier bands used by the real Health Score engine
+// (assetIntelligence.js: Excellent >=90, Healthy >=75, Needs Attention >=60,
+// High Risk >=40, Critical <40) - not a separate UI-invented scale.
+function healthColor(score) {
+  if (score >= 90) return 'text-accent-dark';
+  if (score >= 75) return 'text-emerald-600';
+  if (score >= 60) return 'text-amber-600';
+  if (score >= 40) return 'text-orange-600';
+  return 'text-red-600';
+}
+function healthDot(score) {
+  if (score >= 90) return '#15803D';
+  if (score >= 75) return '#16A34A';
+  if (score >= 60) return '#D97706';
+  if (score >= 40) return '#EA580C';
+  return '#DC2626';
+}
+function failureColor(pct) {
+  if (pct < 20) return 'text-accent-dark';
+  if (pct < 45) return 'text-amber-600';
+  if (pct < 70) return 'text-orange-600';
+  return 'text-red-600';
+}
+function recommendationTone(rec) {
+  if (rec === 'KEEP') return 'success';
+  if (rec === 'REPAIR') return 'warning';
+  return 'danger'; // SELL / SCRAP / REPLACE
+}
+
 export default function AssetsList() {
   const [searchParams] = useSearchParams();
   const [assets, setAssets] = useState([]);
@@ -11,6 +40,7 @@ export default function AssetsList() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState(searchParams.get('status') || '');
+  const [health] = useState(searchParams.get('health') || '');
   const [categoryId, setCategoryId] = useState('');
   const [locationId, setLocationId] = useState('');
   const [categories, setCategories] = useState([]);
@@ -20,7 +50,7 @@ export default function AssetsList() {
   const load = async () => {
     setLoading(true);
     try {
-      const { data } = await client.get('/assets', { params: { search, status, categoryId, locationId, page, pageSize: 20 } });
+      const { data } = await client.get('/assets', { params: { search, status, categoryId, locationId, health, page, pageSize: 20 } });
       setAssets(data.assets);
       setTotal(data.total);
     } finally {
@@ -99,6 +129,9 @@ export default function AssetsList() {
                   <th className="px-5 py-3 font-medium">Category</th>
                   <th className="px-5 py-3 font-medium">Location</th>
                   <th className="px-5 py-3 font-medium">Status</th>
+                  <th className="px-5 py-3 font-medium">Health</th>
+                  <th className="px-5 py-3 font-medium">Failure risk</th>
+                  <th className="px-5 py-3 font-medium">AI recommendation</th>
                   <th className="px-5 py-3 font-medium">Current value</th>
                   <th className="px-5 py-3" />
                 </tr>
@@ -114,6 +147,24 @@ export default function AssetsList() {
                     <td className="px-5 py-3 text-ink/70">{a.AssetCategory?.name || '—'}</td>
                     <td className="px-5 py-3 text-ink/70">{a.Location?.name || a.freeTextLocation || '—'}</td>
                     <td className="px-5 py-3"><Badge tone={statusTone(a.status)}>{a.status.replace('_', ' ')}</Badge></td>
+                    <td className="px-5 py-3">
+                      {a.healthScore != null ? (
+                        <span className={`inline-flex items-center gap-1.5 text-xs font-semibold ${healthColor(a.healthScore)}`}>
+                          <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: healthDot(a.healthScore) }} />
+                          {a.healthScore}%
+                        </span>
+                      ) : <span className="text-ink/30 text-xs">—</span>}
+                    </td>
+                    <td className="px-5 py-3">
+                      {a.failureProbability180d != null ? (
+                        <span className={`text-xs font-semibold ${failureColor(a.failureProbability180d)}`}>{a.failureProbability180d}%</span>
+                      ) : <span className="text-ink/30 text-xs">—</span>}
+                    </td>
+                    <td className="px-5 py-3">
+                      {a.disposalRecommendation ? (
+                        <Badge tone={recommendationTone(a.disposalRecommendation)}>{a.disposalRecommendation}</Badge>
+                      ) : <span className="text-ink/30 text-xs">—</span>}
+                    </td>
                     <td className="px-5 py-3 text-ink/70">{a.aiEstimatedCurrentValue != null ? `${a.currency} ${Number(a.aiEstimatedCurrentValue).toLocaleString()}` : '—'}</td>
                     <td className="px-5 py-3 text-right">
                       <Link to={`/assets/${a.id}`} className="text-secondary hover:underline text-xs font-medium inline-flex items-center gap-1">

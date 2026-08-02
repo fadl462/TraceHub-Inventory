@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Boxes, ClipboardList, AlertTriangle, TrendingDown, Plus, ScanLine, Sparkles, Mail, Phone, Calendar, Download, FileText, Presentation } from 'lucide-react';
+import { Boxes, ClipboardList, AlertTriangle, TrendingDown, Plus, ScanLine, Sparkles, Mail, Phone, Calendar, Download, FileText, Presentation, Gauge } from 'lucide-react';
 import client from '../api/client';
 import { Card, Button, Spinner } from '../components/ui';
 import { useAuth } from '../context/AuthContext';
@@ -300,6 +300,7 @@ function IntelligenceKpiSection({ currency }) {
       </div>
 
       <AssignmentTrackingPanel />
+      <FleetIntelligencePanel />
       <FleetInsightsPanel />
       <LearningLoopPanel />
     </>
@@ -418,6 +419,105 @@ function AssignmentTrackingPanel() {
           </div>
         ))}
       </div>
+    </Card>
+  );
+}
+
+const HEALTH_TIER_META = [
+  { key: 'excellent', label: 'Excellent', dot: '#15803D' },
+  { key: 'healthy', label: 'Healthy', dot: '#22C55E' },
+  { key: 'needsAttention', label: 'Needs Attention', dot: '#D97706' },
+  { key: 'highRisk', label: 'High Risk', dot: '#EA580C' },
+  { key: 'critical', label: 'Critical', dot: '#DC2626' },
+];
+
+function FleetIntelligencePanel() {
+  const { company } = useAuth();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    client.get('/reports/fleet-intelligence-summary').then(({ data }) => setData(data)).catch(() => setData(false));
+  }, []);
+
+  if (data === null) {
+    return (
+      <Card className="p-5">
+        <div className="h-6 w-56 bg-primary-50/50 rounded animate-pulse mb-4" />
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[0, 1, 2, 3].map((i) => <div key={i} className="h-16 rounded-lg bg-primary-50/50 animate-pulse" />)}
+        </div>
+      </Card>
+    );
+  }
+  if (!data) return null;
+
+  const gradeColor = { A: '#15803D', B: '#22C55E', C: '#D97706', D: '#EA580C', F: '#DC2626' }[data.fleetGrade] || '#94A3B8';
+  const riskColor = { Low: 'text-accent-dark', Medium: 'text-amber-600', High: 'text-red-600' };
+  const totalTiered = Object.values(data.healthTiers).reduce((a, b) => a + b, 0);
+
+  return (
+    <Card className="p-5">
+      <div className="flex items-center justify-between mb-1">
+        <h3 className="font-semibold text-ink flex items-center gap-2"><Gauge size={16} className="text-primary" /> Fleet Intelligence</h3>
+        {data.fleetGrade && (
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-ink/50">Overall Fleet Grade</span>
+            <span className="h-8 w-8 rounded-full flex items-center justify-center font-bold text-white text-sm" style={{ backgroundColor: gradeColor }}>{data.fleetGrade}</span>
+          </div>
+        )}
+      </div>
+      <p className="text-xs text-ink/50 mb-4">Portfolio-level view across your whole fleet \u2014 real aggregates, not per-asset detail.</p>
+
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+        <div className="bg-primary-50/50 rounded-lg p-3">
+          <p className="text-xs text-ink/50">Portfolio Health</p>
+          <p className="text-lg font-bold text-ink">{data.portfolioHealth != null ? `${data.portfolioHealth}%` : '\u2014'}</p>
+        </div>
+        <div className="bg-primary-50/50 rounded-lg p-3">
+          <p className="text-xs text-ink/50">Asset Availability</p>
+          <p className="text-lg font-bold text-ink">{data.assetAvailabilityPct != null ? `${data.assetAvailabilityPct}%` : '\u2014'}</p>
+        </div>
+        <div className="bg-primary-50/50 rounded-lg p-3">
+          <p className="text-xs text-ink/50">Capital Risk</p>
+          <p className={`text-lg font-bold ${riskColor[data.financialRisk] || 'text-ink'}`}>{data.capitalRiskPct}%</p>
+        </div>
+        <div className="bg-primary-50/50 rounded-lg p-3">
+          <p className="text-xs text-ink/50">Financial / Operational Risk</p>
+          <p className="text-sm font-bold">
+            <span className={riskColor[data.financialRisk]}>{data.financialRisk}</span>
+            <span className="text-ink/30 mx-1">/</span>
+            <span className={riskColor[data.operationalRisk]}>{data.operationalRisk}</span>
+          </p>
+        </div>
+      </div>
+
+      <p className="text-xs font-semibold text-ink/60 uppercase tracking-wide mb-2">Executive Heat Map</p>
+      <div className="flex flex-wrap gap-2 mb-1">
+        {HEALTH_TIER_META.map((tier) => {
+          const count = data.healthTiers[tier.key];
+          if (!count) return null;
+          return (
+            <Link
+              key={tier.key}
+              to={`/assets?health=${tier.key}`}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium hover:opacity-80 transition-opacity"
+              style={{ backgroundColor: `${tier.dot}18`, color: tier.dot }}
+            >
+              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: tier.dot }} />
+              {tier.label} \u00b7 {count}
+            </Link>
+          );
+        })}
+        {totalTiered === 0 && <p className="text-sm text-ink/50">No assets have a computed health score yet.</p>}
+      </div>
+
+      {data.projectedSavings > 0 && (
+        <div className="mt-4 bg-primary-800 text-white rounded-lg p-3.5 flex items-center justify-between flex-wrap gap-2">
+          <p className="text-sm">
+            You've spent <strong>{company?.currency || 'USD'} {data.projectedSavings.toLocaleString()}</strong> maintaining assets the AI recommends replacing \u2014 money you'd stop spending by acting on it.
+          </p>
+        </div>
+      )}
     </Card>
   );
 }

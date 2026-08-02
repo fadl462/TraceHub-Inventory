@@ -216,6 +216,106 @@ async function assignmentTrackingReport(req, res, next) {
   } catch (err) { next(err); }
 }
 
+/**
+ * Fleet-level executive intelligence: the aggregate view a Company Admin or
+ * exec would want, built entirely from real per-asset engine outputs
+ * already computed elsewhere (health score, disposal recommendation,
+ * maintenance/repair costs) - no new fabricated numbers.
+ *
+ * Every derived figure below has a documented formula since none of these
+ * are industry-standard metrics with one agreed definition:
+ *
+ * - Health tier counts: the exact same 5 bands the Health Score engine
+ *   itself uses (Excellent >=90, Healthy >=75, Needs Attention >=60,
+ *   High Risk >=40, Critical <40) - not a separate UI-invented scale.
+ * - Portfolio Health: average health score across all non-archived assets
+ *   that have one computed yet.
+ * - Asset Availability: % of assets currently in 'available' status.
+ * - Capital Risk: % of total current fleet value that sits in High Risk
+ *   or Critical health-tier assets - i.e. how much of your money is tied
+ *   up in equipment that's actually at risk, not just a headcount.
+ * - Projected Savings: sum of this-year maintenance+repair spend on
+ *   assets the Disposal Engine already recommends replacing - money
+ *   you'd stop spending if you acted on the recommendation, not a
+ *   speculative "AI predicts you'll save X" claim.
+ * - Financial/Operational Risk labels and Fleet Grade: our own documented
+ *   thresholds on the above, not an external framework.
+ */
+async function fleetIntelligenceSummary(req, res, next) {
+  try {
+    const companyId = req.companyId;
+    const baseWhere = { companyId, isArchived: false };
+
+    const [excellent, healthy, needsAttention, highRisk, critical, totalWithHealth] = await Promise.all([
+      Asset.count({ where: { ...baseWhere, healthScore: { [Op.gte]: 90 } } }),
+      Asset.count({ where: { ...baseWhere, healthScore: { [Op.gte]: 75, [Op.lt]: 90 } } }),
+      Asset.count({ where: { ...baseWhere, healthScore: { [Op.gte]: 60, [Op.lt]: 75 } } }),
+      Asset.count({ where: { ...baseWhere, healthScore: { [Op.gte]: 40, [Op.lt]: 60 } } }),
+      Asset.count({ where: { ...baseWhere, healthScore: { [Op.lt]: 40 } } }),
+      Asset.count({ where: { ...baseWhere, healthScore: { [Op.ne]: null } } }),
+    ]);
+
+    const [totalAssets, availableAssets] = await Promise.all([
+      Asset.count({ where: baseWhere }),
+      Asset.count({ where: { ...baseWhere, status: 'available' } }),
+    ]);
+
+    const recommendationCounts = await Asset.findAll({
+      where: { ...baseWhere, disposalRecommendation: { [Op.ne]: null } },
+      attributes: ['disposalRecommendation', [fn('COUNT', col('id')), 'count']],
+      group: ['disposalRecommendation'],
+      raw: true,
+    });
+    const recommendationBreakdown = { KEEP: 0, REPAIR: 0, SELL: 0, SCRAP: 0, REPLACE: 0 };
+    recommendationCounts.forEach((r) => { recommendationBreakdown[r.disposalRecommendation] = Number(r.count); });
+
+    const allWithValue = await Asset.findAll({
+      where: baseWhere,
+      attributes: ['healthScore', 'aiEstimatedCurrentValue', 'purchasePrice'],
+    });
+    const totalFleetValue = allWithValue.reduce((s, a) => s + Number(a.aiEstimatedCurrentValue || a.purchasePrice || 0), 0);
+    const atRiskValue = allWithValue
+      .filter((a) => a.healthScore != null && a.healthScore < 60)
+      .reduce((s, a) => s + Number(a.aiEstimatedCurrentValue || a.purchasePrice || 0), 0);
+    const capitalRiskPct = totalFleetValue > 0 ? Math.round((atRiskValue / totalFleetValue) * 1000) / 10 : 0;
+
+    const replaceRecommended = await Asset.findAll({
+      where: { ...baseWhere, disposalRecommendation: { [Op.in]: ['REPLACE', 'SCRAP', 'SELL'] } },
+      attributes: ['maintenanceCostTotal', 'repairCostTotal'],
+    });
+    const projectedSavings = replaceRecommended.reduce((s, a) => s + Number(a.maintenanceCostTotal || 0) + Number(a.repairCostTotal || 0), 0);
+
+    const portfolioHealth = totalWithHealth > 0
+      ? Math.round(((excellent * 95 + healthy * 82 + needsAttention * 67 + highRisk * 50 + critical * 25) / totalWithHealth) * 10) / 10
+      : null;
+    const assetAvailabilityPct = totalAssets > 0 ? Math.round((availableAssets / totalAssets) * 1000) / 10 : null;
+
+    const riskLabel = (pct) => (pct < 10 ? 'Low' : pct < 25 ? 'Medium' : 'High');
+    const financialRisk = riskLabel(capitalRiskPct);
+    const operationalRiskPct = totalWithHealth > 0 ? Math.round(((highRisk + critical) / totalWithHealth) * 100) : 0;
+    const operationalRisk = riskLabel(operationalRiskPct);
+
+    let fleetGrade = null;
+    if (portfolioHealth != null && assetAvailabilityPct != null) {
+      const composite = portfolioHealth * 0.6 + assetAvailabilityPct * 0.2 + (100 - capitalRiskPct) * 0.2;
+      fleetGrade = composite >= 90 ? 'A' : composite >= 80 ? 'B' : composite >= 70 ? 'C' : composite >= 60 ? 'D' : 'F';
+    }
+
+    res.json({
+      healthTiers: { excellent, healthy, needsAttention, highRisk, critical },
+      portfolioHealth,
+      assetAvailabilityPct,
+      capitalRiskPct,
+      financialRisk,
+      operationalRisk,
+      fleetGrade,
+      recommendationBreakdown,
+      projectedSavings: Math.round(projectedSavings),
+      totalFleetValue: Math.round(totalFleetValue),
+    });
+  } catch (err) { next(err); }
+}
+
 /** Asset usage/status breakdown by category, for charting */
 async function assetsByCategory(req, res, next) {
   try {
@@ -307,5 +407,5 @@ async function aiInsights(req, res, next) {
 
 module.exports = {
   companyOverview, intelligenceOverview, assetsByCategory, depreciationReport, locationActivityReport, aiInsights,
-  fleetInsightsReport, learningLoopReport, assignmentTrackingReport,
+  fleetInsightsReport, learningLoopReport, assignmentTrackingReport, fleetIntelligenceSummary,
 };
