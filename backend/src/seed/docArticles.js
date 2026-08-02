@@ -923,17 +923,556 @@ const billing = [
   },
 ];
 
+// ===================== EXPANDED: INTELLIGENCE ENGINE DEPTH =====================
+const intelligenceEngineExpanded = [
+  {
+    title: 'Time-based depreciation methods explained',
+    slug: 'time-based-depreciation-methods',
+    category: 'The Asset Intelligence Engine', categorySortOrder: 2, sortOrder: 8,
+    excerpt: 'Straight Line, Reducing Balance, Double Declining Balance, and Sum of Years\u2019 Digits, with worked numbers.',
+    bodyHtml: `
+      <p>Four of the nine depreciation methods are based purely on time (age), not usage. Here's
+      what each actually does with a concrete example: a $10,000 asset, 5-year useful life, $500
+      scrap value.</p>
+
+      <h3>Straight Line</h3>
+      <p>Depreciates by an equal amount every year: <code>(cost - scrap) / lifeYears</code> = $1,900
+      per year. After 2 years, book value = $10,000 - (2 \u00d7 $1,900) = $6,200.</p>
+
+      <h3>Reducing Balance</h3>
+      <p>Applies a fixed percentage to whatever the <em>remaining</em> book value is each year,
+      rather than the original cost \u2014 so depreciation is larger in early years and tapers off.
+      The rate is derived so the asset reaches its scrap value by the end of its useful life.</p>
+
+      <h3>Double Declining Balance</h3>
+      <p>An accelerated version of reducing balance, using twice the straight-line rate
+      (<code>2 / lifeYears</code>) applied to the remaining balance each year. For a 5-year asset,
+      that's a 40% rate: year 1 book value = $10,000 \u00d7 0.6 = $6,000; year 2 = $6,000 \u00d7 0.6 =
+      $3,600. It never depreciates below the scrap value. TraceHub prorates this smoothly for
+      partial years \u2014 an asset 2.5 years old is valued between its 2-year and 3-year figures, not
+      identical to either.</p>
+
+      <h3>Sum of Years' Digits</h3>
+      <p>Also accelerated, but using a digit-sum weighting: for a 5-year asset, the digits 5+4+3+2+1
+      = 15. Year 1 depreciates 5/15 of the depreciable base, year 2 depreciates 4/15, and so on \u2014
+      front-loaded, but less aggressively than double declining balance. Like DDB, TraceHub prorates
+      this for partial years rather than jumping in whole-year steps.</p>
+
+      <h3>Which to pick</h3>
+      <p>Straight Line is the right default for most office equipment and furniture that loses value
+      steadily. The accelerated methods (Reducing Balance, DDB, SYD) suit equipment that genuinely
+      loses most of its value in the first year or two \u2014 vehicles and some machinery are common
+      candidates.</p>
+    `,
+  },
+  {
+    title: 'Usage-based depreciation methods explained',
+    slug: 'usage-based-depreciation-methods',
+    category: 'The Asset Intelligence Engine', categorySortOrder: 2, sortOrder: 9,
+    excerpt: 'Units of Production, Machine Hours, and Mileage Based \u2014 for equipment that wears by use, not time.',
+    bodyHtml: `
+      <p>Three methods depreciate based on how much an asset has actually been used, not how long
+      you've owned it \u2014 appropriate for equipment where usage varies wildly between units of the
+      same age.</p>
+      <ul>
+        <li><strong>Units of Production</strong> \u2014 set the asset's total expected output capacity
+        (e.g. a printer rated for 500,000 pages). Depreciation accrues proportionally to units
+        actually produced against that capacity.</li>
+        <li><strong>Machine Hours</strong> \u2014 the same idea, using operating hours instead of a
+        production count. A generator rated for 20,000 hours that's logged 5,000 hours has used 25%
+        of its depreciable life, regardless of its calendar age.</li>
+        <li><strong>Mileage Based</strong> \u2014 for vehicles: set expected total mileage, and
+        depreciation tracks the odometer.</li>
+      </ul>
+      <p>All three require you to keep the relevant usage figure (units, hours, or mileage) updated
+      on the asset \u2014 either manually via the Edit Asset form, or by logging it whenever you record
+      an inspection or maintenance event. An asset on one of these methods with a stale usage figure
+      will show a value based on outdated usage, the same honest limitation any usage-based system has.</p>
+    `,
+  },
+  {
+    title: 'AI Adaptive depreciation in depth',
+    slug: 'ai-adaptive-depreciation-in-depth',
+    category: 'The Asset Intelligence Engine', categorySortOrder: 2, sortOrder: 10,
+    excerpt: 'The multiplicative model behind TraceHub\u2019s most data-responsive method.',
+    bodyHtml: `
+      <p>AI Adaptive is the most sophisticated built-in method: rather than a single time or usage
+      curve, it multiplies together five real adjustment factors on top of a straight-line base:</p>
+      <ul>
+        <li><strong>Usage factor</strong> \u2014 higher for Heavy/Extreme usage intensity, lower for Light.</li>
+        <li><strong>Maintenance factor</strong> \u2014 well-maintained assets depreciate more slowly
+        than their maintenance history would otherwise suggest.</li>
+        <li><strong>Environment factor</strong> \u2014 harsher conditions (high corrosion risk, heavy
+        dust exposure) accelerate depreciation.</li>
+        <li><strong>Market factor</strong> \u2014 if you've entered a current market value, it pulls
+        the estimate toward real-world resale reality rather than a pure formula.</li>
+        <li><strong>Reliability factor</strong> \u2014 informed by repair frequency and failure history.</li>
+      </ul>
+      <p>Because it draws on so many inputs, AI Adaptive is also the method most affected by how
+      much "Asset Intelligence Engine data" you've filled in \u2014 an asset with usage intensity,
+      environment, and maintenance history all populated gets a genuinely tailored curve; one with
+      none of that data effectively falls back toward straight-line behavior. This is also reflected
+      honestly in that asset's AI Confidence Score.</p>
+    `,
+  },
+  {
+    title: 'Writing custom depreciation formulas',
+    slug: 'writing-custom-depreciation-formulas',
+    category: 'The Asset Intelligence Engine', categorySortOrder: 2, sortOrder: 11,
+    excerpt: 'Syntax rules, available variables, and several real worked examples.',
+    bodyHtml: `
+      <p>If none of the eight built-in methods match how your organization actually values an
+      asset, write your own formula \u2014 evaluated by a safe, restricted arithmetic parser (no code
+      execution, just numbers and operators), so an invalid formula can never break the asset's
+      record; it safely falls back to straight-line instead.</p>
+
+      <h3>Syntax</h3>
+      <p>Basic arithmetic only: <code>+ - * / ^</code> and parentheses. No function calls, no
+      comparisons, no text. Available variables:</p>
+      <table style="width:100%;border-collapse:collapse;margin:0.75rem 0;font-size:0.88rem;">
+        <tbody>
+          <tr><td style="padding:0.3rem;"><code>cost</code></td><td style="padding:0.3rem;">Purchase price</td></tr>
+          <tr><td style="padding:0.3rem;"><code>residual</code></td><td style="padding:0.3rem;">Scrap value</td></tr>
+          <tr><td style="padding:0.3rem;"><code>lifeYears</code></td><td style="padding:0.3rem;">Useful life in years</td></tr>
+          <tr><td style="padding:0.3rem;"><code>age</code></td><td style="padding:0.3rem;">Current age in years (fractional)</td></tr>
+          <tr><td style="padding:0.3rem;"><code>hoursUsed / mileage / operatingCycles</code></td><td style="padding:0.3rem;">Usage figures</td></tr>
+          <tr><td style="padding:0.3rem;"><code>repairCount / maintenanceCount</code></td><td style="padding:0.3rem;">Event counts</td></tr>
+          <tr><td style="padding:0.3rem;"><code>maintenanceCostTotal / repairCostTotal</code></td><td style="padding:0.3rem;">Cumulative spend</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Worked examples</h3>
+      <p><strong>Penalize repairs and age together:</strong><br/>
+      <code>cost - (repairCount * 25) - (age * 100)</code><br/>
+      Starts at full cost, loses $25 per repair and $100 per year of age.</p>
+
+      <p><strong>A floor at residual value:</strong> the parser doesn't automatically clamp to your
+      residual value the way built-in methods do \u2014 if you want that guarantee, build it into the
+      formula's logic by keeping terms small enough relative to cost, or simply monitor the result
+      and adjust; an extreme formula could theoretically produce a negative number, which TraceHub
+      will still store, so test your formula against a real asset before relying on it broadly.</p>
+    `,
+  },
+  {
+    title: 'Understanding the Risk Score',
+    slug: 'understanding-risk-score',
+    category: 'The Asset Intelligence Engine', categorySortOrder: 2, sortOrder: 12,
+    excerpt: 'The 0-100 index behind the four failure-probability horizons.',
+    bodyHtml: `
+      <p>Alongside the 30/60/90/180-day failure probabilities, every asset has a single
+      <strong>Risk Score</strong> (0-100) \u2014 the overall risk index the Failure Prediction Engine
+      computes internally, from which the four time-horizon probabilities are all derived as
+      different points along the same risk curve. A higher Risk Score means a steeper probability
+      curve across all four horizons, not just a higher number at one specific point in time.</p>
+      <p>It's shown directly on the Asset Detail page next to the Failure Risk section, so you can
+      see the single underlying number driving the four percentages above it, rather than treating
+      them as four unrelated figures.</p>
+    `,
+  },
+  {
+    title: 'The AI Insights Panel: all five pattern detectors explained',
+    slug: 'ai-insights-panel-detectors-explained',
+    category: 'The Asset Intelligence Engine', categorySortOrder: 2, sortOrder: 13,
+    excerpt: 'Exactly what triggers each insight shown on your Dashboard.',
+    bodyHtml: `
+      <p>The Dashboard's AI Insights Panel runs five independent, rule-based pattern detectors
+      across your whole fleet every time you load it. Each one is deterministic \u2014 given the same
+      data, it always produces the same sentence \u2014 and a detector that finds nothing simply
+      contributes nothing, rather than forcing a sentence out of thin air.</p>
+      <ol>
+        <li><strong>Accelerated depreciation from heavy usage</strong> \u2014 flags a category where
+        multiple heavily-used assets are losing value noticeably faster than that category's own
+        average. Example: <em>"3 assets in Vehicles are depreciating faster than the category
+        average due to heavy usage."</em></li>
+        <li><strong>Maintenance budget exceeded</strong> \u2014 flags the single asset whose
+        cumulative maintenance and repair spend has most exceeded a documented budget assumption (a
+        percentage of its replacement cost). Example: <em>"Forklift 02 has exceeded its projected
+        maintenance budget by 49%; replacement is likely more economical than continued repair."</em></li>
+        <li><strong>Approaching end-of-life</strong> \u2014 flags categories with assets whose
+        suggested disposal date falls within the next six months.</li>
+        <li><strong>Idle assets</strong> \u2014 flags categories with assets sitting unused (available
+        status) for an extended period, worth reassigning or selling.</li>
+        <li><strong>Category-wide maintenance alarm</strong> \u2014 flags a whole category (not a
+        single asset) where cumulative upkeep spend across all its assets has crossed a high
+        threshold relative to their combined replacement value.</li>
+      </ol>
+      <p>None of these are guesses \u2014 every number in every sentence traces back to a real query
+      against your own asset data at the moment the Dashboard loads.</p>
+    `,
+  },
+];
+
+
+// ===================== FOR SUPER ADMINS =====================
+const superAdmin = [
+  {
+    title: 'Managing tenant companies',
+    slug: 'managing-tenant-companies',
+    category: 'For Super Admins', categorySortOrder: 9, sortOrder: 0,
+    excerpt: 'The platform-level view across every company using TraceHub.',
+    bodyHtml: `
+      <p>Super Admins have a completely separate portal (<code>/admin</code>) from the company-level
+      app, covering the platform as a whole rather than any single workspace's data. From
+      <strong>Companies</strong>, you can see every tenant company, its plan, asset/user counts, and
+      subscription status, and change a company's status (active/suspended) directly.</p>
+      <p>Opening an individual company shows its own detail page \u2014 usage figures, users, and
+      subscription history \u2014 without exposing that company's actual asset records to you as
+      Super Admin; the platform's own operational data is separate from customer data by design, per
+      the Privacy Policy.</p>
+    `,
+  },
+  {
+    title: 'CMS content management',
+    slug: 'cms-content-management',
+    category: 'For Super Admins', categorySortOrder: 9, sortOrder: 1,
+    excerpt: 'Editing the homepage, testimonials, FAQs, and legal/documentation pages.',
+    bodyHtml: `
+      <p>Everything on the public marketing site is editable from the Super Admin portal without a
+      code change:</p>
+      <ul>
+        <li><strong>Hero &amp; login copy</strong> \u2014 the homepage headline and subheadline.</li>
+        <li><strong>Testimonials</strong> \u2014 the scrolling quotes on the homepage.</li>
+        <li><strong>FAQ</strong> \u2014 also doubles as the AI Assistant's marketing-mode knowledge base.</li>
+        <li><strong>Footer links</strong> \u2014 add, remove, or reorder any footer link.</li>
+        <li><strong>Custom pages</strong> \u2014 the Privacy Policy, Terms of Service, and Cookie
+        Policy are all editable here, along with any additional page you create.</li>
+        <li><strong>Blog / updates</strong> \u2014 write and publish new posts, moderate comments.</li>
+      </ul>
+      <p>All CMS content self-heals on a fresh reseed for a small set of "managed" pages (the legal
+      pages and this documentation) \u2014 meaning platform-provided content updates reach an
+      already-running installation automatically, while custom edits to unrelated pages are never
+      silently overwritten.</p>
+    `,
+  },
+  {
+    title: 'Email / SMTP configuration',
+    slug: 'email-smtp-configuration',
+    category: 'For Super Admins', categorySortOrder: 9, sortOrder: 2,
+    excerpt: 'Why this must be configured before real customers rely on the platform.',
+    bodyHtml: `
+      <p>Password resets, staff invitations, and overdue-asset alerts all depend on real email
+      delivery. Configure your SMTP provider from <strong>Email/SMTP</strong> in the Super Admin
+      portal \u2014 host, port, username, password, and sender name.</p>
+      <div class="th-legal-callout"><strong>Important:</strong> without a configured SMTP provider,
+      TraceHub does not fail loudly \u2014 it silently logs what it "would have sent" instead of
+      actually delivering it. A real company signing up would hit "forgot password" and receive
+      nothing, with no visible error. Configure this before opening the platform to real users.</div>
+    `,
+  },
+  {
+    title: 'Payment / Flutterwave configuration',
+    slug: 'payment-flutterwave-configuration',
+    category: 'For Super Admins', categorySortOrder: 9, sortOrder: 3,
+    excerpt: 'Wiring up real subscription billing.',
+    bodyHtml: `
+      <p>Subscription billing runs through Flutterwave. Configure your Flutterwave API keys from
+      <strong>Payments</strong> in the Super Admin portal. The webhook that confirms successful and
+      failed charges (and drives auto-renewal) is real and signature-verified \u2014 not a stub \u2014
+      but should be tested against your actual production Flutterwave credentials before relying on
+      it for real customer billing, since sandbox/test-mode behavior can differ from production.</p>
+    `,
+  },
+  {
+    title: 'Managing plans and coupons',
+    slug: 'managing-plans-and-coupons',
+    category: 'For Super Admins', categorySortOrder: 9, sortOrder: 4,
+    excerpt: 'Defining subscription tiers and discount codes.',
+    bodyHtml: `
+      <p>From <strong>Plans</strong>, define each subscription tier's price, billing cycle, and
+      asset/user limits \u2014 these are what companies see and choose from on their own Billing page.
+      From <strong>Coupons</strong>, create discount codes with a percentage or fixed-amount
+      discount, an optional expiry date, and a usage limit.</p>
+    `,
+  },
+  {
+    title: 'Global audit log and security',
+    slug: 'global-audit-log-and-security',
+    category: 'For Super Admins', categorySortOrder: 9, sortOrder: 5,
+    excerpt: 'Platform-wide activity monitoring.',
+    bodyHtml: `
+      <p>The Super Admin <strong>Audit log</strong> shows meaningful actions across every company on
+      the platform \u2014 sign-ins, disposal-case transitions, plan changes \u2014 each with a real
+      timestamp and the acting user, exportable to CSV or PDF. The <strong>Security</strong> page
+      covers platform-level account and security settings for the Super Admin account itself.</p>
+    `,
+  },
+];
+
+
+// ===================== TROUBLESHOOTING & FAQS =====================
+const troubleshooting = [
+  {
+    title: "I can't log in",
+    slug: 'troubleshoot-cant-log-in',
+    category: 'Troubleshooting & FAQs', categorySortOrder: 10, sortOrder: 0,
+    excerpt: 'The most common causes and what to check.',
+    bodyHtml: `
+      <ul>
+        <li><strong>"Invalid email or password"</strong> \u2014 double check for extra spaces, and
+        remember passwords are case-sensitive. Use <strong>Forgot password</strong> if you're unsure.</li>
+        <li><strong>Nothing happens / a blocked screen appears</strong> \u2014 if you were recently
+        invited to a workspace, you may be on the mandatory first-login password setup screen; you
+        must set your own password (and optionally 2FA) before anything else becomes accessible.
+        This is enforced by design, not a bug.</li>
+        <li><strong>2FA code rejected</strong> \u2014 authenticator app codes are time-based; make
+        sure your device's clock is accurate. If you've lost access to your authenticator app
+        entirely, contact your Company Admin, since 2FA reset for a locked-out account is an
+        administrative action.</li>
+      </ul>
+    `,
+  },
+  {
+    title: "My invited teammate never received their email",
+    slug: 'troubleshoot-invite-email-not-received',
+    category: 'Troubleshooting & FAQs', categorySortOrder: 10, sortOrder: 1,
+    excerpt: 'Almost always an SMTP configuration issue, not a bug in the invite itself.',
+    bodyHtml: `
+      <p>If a newly invited team member never receives their temporary password email, the most
+      common cause by far is that your platform's SMTP provider hasn't been configured yet by a
+      Super Admin \u2014 without it, TraceHub doesn't fail loudly, it silently logs the email instead
+      of sending it. Check with whoever manages your TraceHub deployment that SMTP is actually set
+      up, or check spam/junk folders as a second possibility.</p>
+    `,
+  },
+  {
+    title: "An asset's Health Score, Failure Risk, or Recommendation shows nothing",
+    slug: 'troubleshoot-blank-intelligence-scores',
+    category: 'Troubleshooting & FAQs', categorySortOrder: 10, sortOrder: 2,
+    excerpt: 'Why a brand-new asset might briefly show blank scores.',
+    bodyHtml: `
+      <p>The Intelligence Engine recalculates whenever an asset is created or updated \u2014 if you
+      see blank scores immediately after creating an asset, refresh the page; the calculation runs
+      synchronously as part of saving the asset, so a blank score after a refresh is unusual and
+      worth checking that the asset actually has a purchase price and category set, since those are
+      the minimum inputs the engine needs to produce anything at all.</p>
+    `,
+  },
+  {
+    title: "Scanning a QR code says the asset wasn't found",
+    slug: 'troubleshoot-scan-asset-not-found',
+    category: 'Troubleshooting & FAQs', categorySortOrder: 10, sortOrder: 3,
+    excerpt: 'Common causes: stale printed codes, wrong workspace, or an archived asset.',
+    bodyHtml: `
+      <ul>
+        <li><strong>The asset was archived or deleted</strong> since the tag was printed \u2014 its
+        QR token no longer resolves to an active asset.</li>
+        <li><strong>You're logged into a different company's workspace</strong> than the one that
+        registered the asset \u2014 QR tokens are scoped to the company that created them.</li>
+        <li><strong>A damaged or low-quality printed code</strong> \u2014 try the manual token entry
+        option on the Scan page instead of the camera if a physical tag has become hard to read.</li>
+      </ul>
+    `,
+  },
+  {
+    title: 'What currencies are supported for Purchase Price?',
+    slug: 'faq-supported-currencies',
+    category: 'Troubleshooting & FAQs', categorySortOrder: 10, sortOrder: 4,
+    excerpt: 'USD is the standard; GHS conversion is live; more are planned.',
+    bodyHtml: `
+      <p>Purchase price is always stored in USD across the platform, for consistent reporting and
+      comparison. If you paid in Ghanaian Cedis (GHS), use the built-in currency conversion helper
+      on the Add/Edit Asset form to convert your local amount to USD automatically. Chinese Yuan,
+      Euro, and British Pound conversion are planned but not yet live \u2014 shown as "coming soon" in
+      the currency selector.</p>
+    `,
+  },
+  {
+    title: 'Does TraceHub track GPS location?',
+    slug: 'faq-does-tracehub-track-gps',
+    category: 'Troubleshooting & FAQs', categorySortOrder: 10, sortOrder: 5,
+    excerpt: 'No \u2014 and here\u2019s why that\u2019s a deliberate choice, not a limitation.',
+    bodyHtml: `
+      <p>No. TraceHub deliberately does not use GPS or IoT tracking hardware. Location is tracked
+      via <strong>checkpoint scanning</strong> \u2014 an asset's location updates when someone
+      actually scans its QR code at a location, using nothing more than a phone camera. This is a
+      cost-effective, software-only design choice: no hardware to buy, install, or maintain. The
+      trade-off is honest and worth understanding: an asset's shown location is wherever it was
+      <em>last scanned</em>, not a live, continuously-updating position.</p>
+    `,
+  },
+];
+
+
+// ===================== GLOSSARY =====================
+const glossary = [
+  {
+    title: 'Glossary of terms',
+    slug: 'glossary-of-terms',
+    category: 'Reference', categorySortOrder: 11, sortOrder: 0,
+    excerpt: 'Every TraceHub-specific term in one place.',
+    bodyHtml: `
+      <dl>
+        <dt><strong>Health Score</strong></dt><dd>0-100 weighted composite of age, maintenance, repairs, usage, inspection, and environment. See <a href="/docs/asset-health-score">Asset Health Score</a>.</dd>
+        <dt><strong>Risk Score</strong></dt><dd>0-100 overall risk index behind the four failure-probability horizons.</dd>
+        <dt><strong>Disposal Readiness Score</strong></dt><dd>0-100 score behind the KEEP/REPAIR/SELL/SCRAP/REPLACE recommendation.</dd>
+        <dt><strong>AI Confidence Score</strong></dt><dd>How much real evidence backs a given asset's scores \u2014 fields populated, maintenance records, inspection data, market value.</dd>
+        <dt><strong>AI Learning Loop</strong></dt><dd>Tracks whether ignoring a disposal recommendation was later followed by a real failure, feeding a bounded adjustment back into future confidence.</dd>
+        <dt><strong>Portfolio Health</strong></dt><dd>Fleet-wide weighted average across health tiers, shown on the Fleet Intelligence panel.</dd>
+        <dt><strong>Capital Risk</strong></dt><dd>% of total fleet <em>value</em> sitting in High Risk/Critical health-tier assets.</dd>
+        <dt><strong>Fleet Grade</strong></dt><dd>A-F composite letter grade from Portfolio Health, Asset Availability, and Capital Risk.</dd>
+        <dt><strong>Executive Heat Map</strong></dt><dd>Clickable health-tier breakdown on the Dashboard, linking to a filtered Assets list.</dd>
+        <dt><strong>Checkpoint</strong></dt><dd>A Location \u2014 a warehouse, branch, or site \u2014 that assets get scanned into and out of.</dd>
+        <dt><strong>Disposal case</strong></dt><dd>A formal six-stage record tracking an asset from Flagged through Disposed.</dd>
+        <dt><strong>Company Admin / Manager / Staff</strong></dt><dd>The three roles \u2014 see <a href="/docs/roles-and-permissions">Roles and permissions</a>.</dd>
+      </dl>
+    `,
+  },
+];
+
+
+// ===================== MORE DEPTH: DISPOSAL, TEAM, REPORTS, BILLING, ASSETS =====================
+const moreDisposal = [
+  {
+    title: 'Rejecting a disposal case',
+    slug: 'rejecting-a-disposal-case',
+    category: 'Disposal Workflow', categorySortOrder: 5, sortOrder: 2,
+    excerpt: 'What happens when you decide to keep an asset the engine recommended disposing of.',
+    bodyHtml: `
+      <p>At any stage, a disposal case can be rejected with a required reason \u2014 a legitimate
+      business decision, not a system failure. Common reasons: cash flow timing, a planned fleet
+      refresh next quarter, or genuine confidence the asset will keep performing despite the
+      numbers.</p>
+      <p>Rejecting a case quietly feeds the <strong>AI Learning Loop</strong>: TraceHub notes the
+      asset's incident count at that moment and checks back 30 days later whether a real failure
+      followed. Over time, this builds your company's own recommendation reliability rate, visible
+      on the Dashboard's Learning Loop panel once enough history exists (at least 5 evaluated
+      rejections) \u2014 see
+      <a href="/docs/ai-confidence-score-and-learning-loop">AI Confidence Score and the Learning Loop</a>.</p>
+    `,
+  },
+];
+
+const moreTeamSecurity = [
+  {
+    title: 'Disabling or removing a team member',
+    slug: 'disabling-removing-team-member',
+    category: 'Team & Security', categorySortOrder: 6, sortOrder: 4,
+    excerpt: 'The difference between disabling and permanently removing access.',
+    bodyHtml: `
+      <p>From <strong>Team</strong>, a Company Admin can <strong>disable</strong> a member \u2014
+      blocking their login immediately while preserving their history (who they were, what they did,
+      past assignments) \u2014 or <strong>remove</strong> them entirely. Disabling is the right choice
+      for someone leaving temporarily or under review; removal is for someone who's genuinely gone
+      and won't be back.</p>
+    `,
+  },
+  {
+    title: 'How login and sessions work',
+    slug: 'how-login-and-sessions-work',
+    category: 'Team & Security', categorySortOrder: 6, sortOrder: 5,
+    excerpt: 'Access tokens, refresh tokens, and what "staying logged in" actually means.',
+    bodyHtml: `
+      <p>When you log in, TraceHub issues two tokens stored in your browser's local storage: a
+      short-lived access token used for every request, and a longer-lived refresh token used to
+      silently obtain a new access token when the first one expires \u2014 which is why you generally
+      stay logged in across visits without re-entering your password constantly. Logging out, or
+      clearing your browser's local storage, ends the session. See the
+      <a href="/pages/cookie-policy">Cookie Policy</a> for exactly what's stored and why.</p>
+    `,
+  },
+];
+
+const moreReports = [
+  {
+    title: 'PDF export in detail',
+    slug: 'pdf-export-in-detail',
+    category: 'Reports & Exporting', categorySortOrder: 7, sortOrder: 4,
+    excerpt: 'What a generated PDF actually contains.',
+    bodyHtml: `
+      <p>PDF exports are branded, multi-section, and paginated \u2014 a title and subtitle (your
+      company name and generation date), followed by one formatted table per report section. They
+      generate entirely in your browser, so no data leaves your machine to a third-party rendering
+      service to produce the file.</p>
+    `,
+  },
+  {
+    title: 'PowerPoint export in detail',
+    slug: 'powerpoint-export-in-detail',
+    category: 'Reports & Exporting', categorySortOrder: 7, sortOrder: 5,
+    excerpt: 'A real presentation deck, not a spreadsheet dumped into slides.',
+    bodyHtml: `
+      <p>The PowerPoint option builds an actual presentation: a branded title slide, followed by one
+      slide per report section with a properly formatted table (not an image of one) \u2014 built to
+      be handed directly to leadership without you reformatting anything. Tables longer than 14 rows
+      are truncated on the slide with a note pointing to the full CSV export for the complete data.</p>
+    `,
+  },
+  {
+    title: 'CSV export in detail',
+    slug: 'csv-export-in-detail',
+    category: 'Reports & Exporting', categorySortOrder: 7, sortOrder: 6,
+    excerpt: 'The most complete, most portable export format.',
+    bodyHtml: `
+      <p>CSV export is the most complete format \u2014 unlike PDF/PowerPoint, it's never truncated for
+      length, making it the right choice when you need every row of a large report (for example, a
+      full year's location activity log) rather than a presentation-ready summary.</p>
+    `,
+  },
+];
+
+const moreBilling = [
+  {
+    title: 'What happens if a payment fails',
+    slug: 'what-happens-if-payment-fails',
+    category: 'Billing & Subscriptions', categorySortOrder: 8, sortOrder: 2,
+    excerpt: 'Your data is never deleted for a failed charge.',
+    bodyHtml: `
+      <p>If an automatic renewal payment fails, TraceHub attempts to notify you and may temporarily
+      restrict access to paid-tier features until it's resolved \u2014 but your data is never deleted
+      as a result of a failed payment. Update your payment method and retry from
+      <strong>Billing</strong>.</p>
+    `,
+  },
+];
+
+const moreAssets = [
+  {
+    title: 'Editing an existing asset',
+    slug: 'editing-an-existing-asset',
+    category: 'Managing Assets', categorySortOrder: 1, sortOrder: 5,
+    excerpt: 'What updating triggers automatically.',
+    bodyHtml: `
+      <p>Open any asset and click Edit. Any change \u2014 a new maintenance count, an updated market
+      value, a corrected purchase price \u2014 triggers an immediate recalculation of the entire
+      Intelligence Engine for that asset: depreciation, health, failure risk, maintenance schedule,
+      and disposal recommendation all update together, not independently.</p>
+    `,
+  },
+  {
+    title: 'Bulk filtering the Assets list',
+    slug: 'bulk-filtering-assets-list',
+    category: 'Managing Assets', categorySortOrder: 1, sortOrder: 6,
+    excerpt: 'Search, status, category, location, and health-tier filters together.',
+    bodyHtml: `
+      <p>The Assets list supports combining a text search (name, tag, serial, brand) with status,
+      category, and location filters simultaneously \u2014 useful for a question like "show me all
+      available laptops at the Accra warehouse." Clicking a segment of the Dashboard's Executive
+      Heat Map also lands here pre-filtered to a specific health tier.</p>
+    `,
+  },
+];
+
+
 const defaultDocArticles = [
   ...gettingStarted,
   ...managingAssets,
+  ...moreAssets,
   ...intelligenceEngine,
+  ...intelligenceEngineExpanded,
   ...aiAssistant,
   ...trackingScanning,
   ...assignments,
   ...disposalWorkflow,
+  ...moreDisposal,
   ...teamSecurity,
+  ...moreTeamSecurity,
   ...reportsExporting,
+  ...moreReports,
   ...billing,
+  ...moreBilling,
+  ...superAdmin,
+  ...troubleshooting,
+  ...glossary,
 ];
 
 module.exports = { defaultDocArticles };
