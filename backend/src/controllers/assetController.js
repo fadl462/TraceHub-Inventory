@@ -23,7 +23,7 @@ const INTELLIGENCE_FIELDS = [
   'humidity', 'temperature', 'dustExposure', 'outdoorExposure', 'chemicalExposure', 'corrosionRisk', 'weatherConditions',
   'userRating', 'technicianRating', 'assetReliability', 'usageIntensity', 'abuseScore', 'criticalityScore',
   'maintenanceCompliance', 'resaleDemand', 'depreciationMethod', 'unitsProductionCapacity',
-  'customDepreciationFormula',
+  'customDepreciationFormula', 'lastMaintenanceDate', 'maintenanceIntervalDaysOverride',
 ];
 
 function pickIntelligenceFields(body) {
@@ -75,6 +75,8 @@ async function computeAndApplyDepreciation(asset) {
   asset.executiveRecommendation = intelligence.executive.headline;
   asset.executiveConfidence = intelligence.executive.confidence;
   asset.confidenceDetail = intelligence.confidence;
+  asset.nextServiceDate = intelligence.maintenanceSchedule.nextServiceDate;
+  asset.nextServiceReason = intelligence.maintenanceSchedule.reason;
   asset.intelligenceLastCalculatedAt = new Date();
 
   // If the ai_adaptive depreciation method is selected, its (potentially

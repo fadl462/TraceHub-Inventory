@@ -359,6 +359,53 @@ function calculateFailureRisk(asset, profile, healthResult) {
 }
 
 // ---------------------------------------------------------------------------
+// ENGINE 3B - Maintenance Scheduling Engine
+// ---------------------------------------------------------------------------
+// Answers the spec's third question - "when should this asset be serviced?"
+// - which nothing else here actually answered: calibrationStatus only
+// applies to equipment that needs calibration (scales, sensors, meters),
+// so most assets could never surface as "due maintenance" no matter how
+// worn they were. This engine gives every asset a real predicted date.
+//
+// The base interval is a documented assumption (not fabricated per-asset
+// data): usage intensity is the strongest available signal for how often
+// something needs servicing, so it drives the default. A per-asset
+// override (maintenanceIntervalDaysOverride) always wins when set. The
+// interval is then pulled forward as health declines, on the honest logic
+// that a degrading asset needs attention sooner than a healthy one on the
+// same nominal schedule - capped so it can never recommend service more
+// than twice as often as the base interval.
+
+const USAGE_INTERVAL_DAYS = {
+  extreme: 45, heavy: 90, normal: 180, light: 365,
+};
+
+function estimateNextServiceDate(asset, healthResult) {
+  const baseInterval = num(asset.maintenanceIntervalDaysOverride) || USAGE_INTERVAL_DAYS[asset.usageIntensity] || USAGE_INTERVAL_DAYS.normal;
+
+  // Health below 100 pulls the interval in; a health score of 0 would (in
+  // principle) halve it. Clamped at 0.5x so this can never become absurd.
+  const healthFactor = clamp(1 - (100 - healthResult.score) / 200, 0.5, 1);
+  const effectiveInterval = Math.round(baseInterval * healthFactor);
+
+  const anchorDate = asset.lastMaintenanceDate || asset.purchaseDate || (asset.manufactureYear ? `${asset.manufactureYear}-01-01` : null);
+  const reasons = [];
+  if (!asset.lastMaintenanceDate) reasons.push('No maintenance on record yet - scheduled from purchase date');
+  if (!anchorDate) return { nextServiceDate: null, reason: 'No purchase date, manufacture year, or maintenance history to schedule from' };
+
+  const anchor = new Date(anchorDate);
+  const next = new Date(anchor.getTime() + effectiveInterval * 86400000);
+
+  reasons.push(`${effectiveInterval}-day interval (${asset.usageIntensity || 'normal'} usage${asset.maintenanceIntervalDaysOverride ? ', manual override' : ''}${healthFactor < 1 ? `, shortened for health score ${healthResult.score}%` : ''})`);
+
+  return {
+    nextServiceDate: next.toISOString().slice(0, 10),
+    reason: reasons.join(' \u2014 '),
+    intervalDaysUsed: effectiveInterval,
+  };
+}
+
+// ---------------------------------------------------------------------------
 // ENGINE 4 - Disposal Intelligence Engine
 // ---------------------------------------------------------------------------
 
@@ -487,15 +534,16 @@ function runFullIntelligenceAnalysis(asset, profile, learningAdjustment = 0) {
   const depreciation = calculateDepreciation(asset, profile);
   const health = calculateHealthScore(asset, profile);
   const failure = calculateFailureRisk(asset, profile, health);
+  const maintenanceSchedule = estimateNextServiceDate(asset, health);
   const disposal = calculateDisposalReadiness(asset, profile, health, depreciation);
   const confidence = calculateConfidence(asset, learningAdjustment);
   const executive = buildExecutiveRecommendation(asset, { health, failure, disposal, confidence });
 
-  return { depreciation, health, failure, disposal, confidence, executive };
+  return { depreciation, health, failure, maintenanceSchedule, disposal, confidence, executive };
 }
 
 module.exports = {
-  calculateDepreciation, calculateHealthScore, calculateFailureRisk,
+  calculateDepreciation, calculateHealthScore, calculateFailureRisk, estimateNextServiceDate,
   calculateDisposalReadiness, calculateConfidence, buildExecutiveRecommendation,
   runFullIntelligenceAnalysis, ageInYears, evaluateCustomFormula,
 };

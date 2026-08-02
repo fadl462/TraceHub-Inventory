@@ -207,7 +207,7 @@ function IntelligenceKpiSection({ currency }) {
 
       <Card className="p-5">
         <h3 className="font-semibold text-ink mb-4">Depreciation &amp; replacement projections</h3>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           <div>
             <p className="text-xs text-ink/50">Depreciation today</p>
             <p className="text-lg font-bold text-ink">{currency} {Number(data.depreciationToday).toLocaleString()}</p>
@@ -223,6 +223,10 @@ function IntelligenceKpiSection({ currency }) {
           <div>
             <p className="text-xs text-ink/50">Projected disposal cost</p>
             <p className="text-lg font-bold text-ink">{currency} {Number(data.projectedDisposalCost).toLocaleString()}</p>
+          </div>
+          <div>
+            <p className="text-xs text-ink/50" title="Assets not yet flagged today, but whose engine-suggested disposal date falls within the next 12 months.">Projected replacement cost (12mo)</p>
+            <p className="text-lg font-bold text-ink">{currency} {Number(data.projectedReplacementCost).toLocaleString()}</p>
           </div>
         </div>
       </Card>

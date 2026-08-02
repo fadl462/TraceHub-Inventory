@@ -216,6 +216,8 @@ async function seedOneCompany(spec) {
     asset.executiveRecommendation = intelligence.executive.headline;
     asset.executiveConfidence = intelligence.executive.confidence;
     asset.confidenceDetail = intelligence.confidence;
+    asset.nextServiceDate = intelligence.maintenanceSchedule.nextServiceDate;
+    asset.nextServiceReason = intelligence.maintenanceSchedule.reason;
     asset.intelligenceLastCalculatedAt = new Date();
     await asset.save();
 

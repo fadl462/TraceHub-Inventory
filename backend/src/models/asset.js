@@ -43,6 +43,11 @@ module.exports = (sequelize, DataTypes) => {
     fuelUsage: { type: DataTypes.DECIMAL(12, 2), defaultValue: 0 },
     energyConsumption: { type: DataTypes.DECIMAL(12, 2), defaultValue: 0 },
     maintenanceCount: { type: DataTypes.INTEGER, defaultValue: 0 },
+    lastMaintenanceDate: { type: DataTypes.DATEONLY, allowNull: true },
+    // Optional override for the assumed service interval (days). If not set,
+    // the Maintenance Scheduling Engine infers a default from usageIntensity
+    // and category - see estimateNextServiceDate() in assetIntelligence.js.
+    maintenanceIntervalDaysOverride: { type: DataTypes.INTEGER, allowNull: true },
     repairCount: { type: DataTypes.INTEGER, defaultValue: 0 },
     downtimeHours: { type: DataTypes.DECIMAL(12, 2), defaultValue: 0 },
     idleTimeHours: { type: DataTypes.DECIMAL(12, 2), defaultValue: 0 },
@@ -101,6 +106,11 @@ module.exports = (sequelize, DataTypes) => {
     // records considered, whether a market-value comp exists, and the
     // learning-loop adjustment applied) - see assetIntelligence.calculateConfidence.
     confidenceDetail: { type: DataTypes.JSON, allowNull: true },
+    // Engine 6 - Maintenance Scheduling: answers the spec's "when should
+    // this be serviced?" question, which nothing else here actually
+    // answered - calibrationStatus only applies to calibrated equipment.
+    nextServiceDate: { type: DataTypes.DATEONLY, allowNull: true },
+    nextServiceReason: { type: DataTypes.TEXT, allowNull: true },
     intelligenceLastCalculatedAt: { type: DataTypes.DATE, allowNull: true },
 
     depreciationMethod: {

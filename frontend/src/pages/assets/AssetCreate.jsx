@@ -19,6 +19,7 @@ export default function AssetCreate() {
     depreciationMethod: 'straight_line', warrantyExpiry: '', currentMarketValue: '', currentReplacementCost: '',
     unitsProductionCapacity: '', customDepreciationFormula: '',
     hoursUsed: '', maintenanceCount: '', repairCount: '', failureCount: '', inspectionScore: '',
+    lastMaintenanceDate: '', maintenanceIntervalDaysOverride: '',
     maintenanceCostTotal: '', repairCostTotal: '',
     usageIntensity: 'normal', assetReliability: '', maintenanceCompliance: '', criticalityScore: '',
     corrosionRisk: 'low', dustExposure: 'low', resaleDemand: 'moderate',
@@ -195,6 +196,11 @@ export default function AssetCreate() {
                       <option value="heavy">Heavy</option>
                       <option value="extreme">Extreme</option>
                     </Select>
+                    <Input label="Last maintenance date" type="date" value={form.lastMaintenanceDate} onChange={(e) => setForm({ ...form, lastMaintenanceDate: e.target.value })} />
+                    <Input
+                      label="Service interval override (days, optional)" type="number" placeholder="e.g. 90"
+                      value={form.maintenanceIntervalDaysOverride} onChange={(e) => setForm({ ...form, maintenanceIntervalDaysOverride: e.target.value })}
+                    />
                   </div>
                 </div>
 

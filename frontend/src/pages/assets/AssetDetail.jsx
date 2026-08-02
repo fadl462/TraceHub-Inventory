@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Download, Archive, UserPlus, MapPin, Sparkles, Clock, Activity, AlertTriangle, TrendingDown, Flag } from 'lucide-react';
+import { Download, Archive, UserPlus, MapPin, Sparkles, Clock, Activity, AlertTriangle, TrendingDown, Flag, Wrench } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Badge, statusTone, Spinner } from '../../components/ui';
 
@@ -161,6 +161,18 @@ export default function AssetDetail() {
                   )}
                 </div>
               </div>
+
+              {asset.nextServiceDate && (
+                <div className="flex items-start gap-2 border-t border-primary-50 pt-4 text-sm">
+                  <Wrench size={14} className="text-ink/50 mt-0.5 shrink-0" />
+                  <div>
+                    <p className="text-ink">
+                      Next service due <span className="font-semibold">{asset.nextServiceDate}</span>
+                    </p>
+                    {asset.nextServiceReason && <p className="text-xs text-ink/40 mt-0.5">{asset.nextServiceReason}</p>}
+                  </div>
+                </div>
+              )}
 
               <div className="flex items-center justify-between border-t border-primary-50 pt-4">
                 <div>

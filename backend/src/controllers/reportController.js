@@ -68,7 +68,19 @@ async function intelligenceOverview(req, res, next) {
       Asset.count({ where: { companyId, isArchived: false, healthScore: { [Op.gte]: 75 } } }),
       Asset.count({ where: { companyId, isArchived: false, healthScore: { [Op.lt]: 40 } } }),
       Asset.count({ where: { companyId, isArchived: false, disposalReadinessScore: { [Op.gte]: 65 } } }),
-      Asset.count({ where: { companyId, isArchived: false, calibrationStatus: { [Op.in]: ['due_soon', 'overdue'] } } }),
+      // "Due maintenance" = either a calibration due/overdue (for equipment
+      // that needs calibration), OR the Maintenance Scheduling Engine's own
+      // predicted next-service date has arrived - calibrationStatus alone
+      // would miss every asset that doesn't need calibration at all.
+      Asset.count({
+        where: {
+          companyId, isArchived: false,
+          [Op.or]: [
+            { calibrationStatus: { [Op.in]: ['due_soon', 'overdue'] } },
+            { nextServiceDate: { [Op.lte]: in60Days } },
+          ],
+        },
+      }),
       Asset.count({ where: { companyId, isArchived: false, warrantyExpiry: { [Op.between]: [today, in60Days] } } }),
       Asset.count({ where: { companyId, isArchived: false, status: 'available', idleTimeHours: { [Op.gte]: 200 } } }),
     ]);
@@ -91,12 +103,30 @@ async function intelligenceOverview(req, res, next) {
     // Budget/loss projections - real sums over stored engine outputs, not
     // fabricated figures. Documented here since the spec doesn't define
     // exact formulas for these cards, only their names:
+    //
+    // "Replacement budget needed" = money needed RIGHT NOW for assets the
+    // Disposal Engine already recommends replacing/scrapping/selling.
+    // "Projected replacement cost" is a genuinely different, forward-looking
+    // number: assets NOT yet flagged today but whose engine-suggested
+    // disposal date falls within the next 12 months - i.e. what's coming
+    // down the pipe next, not what's due today.
     const flaggedAssets = await Asset.findAll({
       where: { companyId, isArchived: false, disposalRecommendation: { [Op.in]: ['SELL', 'SCRAP', 'REPLACE'] } },
       attributes: ['currentReplacementCost', 'purchasePrice'],
     });
     const replacementBudget = flaggedAssets.reduce((sum, a) => sum + Number(a.currentReplacementCost || a.purchasePrice || 0), 0);
     const projectedDisposalCost = Math.round(replacementBudget * 0.05); // handling/logistics estimate
+
+    const in12Months = new Date(Date.now() + 365 * 86400000).toISOString().slice(0, 10);
+    const upcomingAssets = await Asset.findAll({
+      where: {
+        companyId, isArchived: false,
+        disposalRecommendation: { [Op.notIn]: ['SELL', 'SCRAP', 'REPLACE'] }, // exclude what's already counted in replacementBudget above
+        aiSuggestedDisposalDate: { [Op.ne]: null, [Op.lte]: in12Months },
+      },
+      attributes: ['currentReplacementCost', 'purchasePrice'],
+    });
+    const projectedReplacementCost = upcomingAssets.reduce((sum, a) => sum + Number(a.currentReplacementCost || a.purchasePrice || 0), 0);
 
     const allAssets = await Asset.findAll({
       where: { companyId, isArchived: false },
@@ -114,7 +144,7 @@ async function intelligenceOverview(req, res, next) {
       mostValuable, mostRepaired, mostExpensiveToMaintain,
       replacementBudget: Math.round(replacementBudget),
       projectedDisposalCost,
-      projectedReplacementCost: Math.round(replacementBudget), // forward 12-month view over currently-flagged assets
+      projectedReplacementCost: Math.round(projectedReplacementCost), // 12-month forward view over assets NOT yet flagged today
       depreciationToday: Math.round((annualDepreciationTotal / 365) * 100) / 100,
       monthlyAssetLoss: Math.round((annualDepreciationTotal / 12) * 100) / 100,
     });
