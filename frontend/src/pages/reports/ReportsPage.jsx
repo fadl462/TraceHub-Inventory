@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { Download, FileText, Presentation } from 'lucide-react';
 import client from '../../api/client';
-import { Card, Spinner, Button } from '../../components/ui';
+import { Card, Spinner, Button, Select } from '../../components/ui';
 import { useAuth } from '../../context/AuthContext';
 import { exportToCsv } from '../../utils/exportCsv';
 import { exportToPdf } from '../../utils/exportPdf';
@@ -15,6 +15,8 @@ export default function ReportsPage() {
   const [breakdown, setBreakdown] = useState([]);
   const [depreciation, setDepreciation] = useState([]);
   const [locationEvents, setLocationEvents] = useState([]);
+  const [locationFilter, setLocationFilter] = useState('');
+  const [eventTypeFilter, setEventTypeFilter] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,6 +32,13 @@ export default function ReportsPage() {
   }, []);
 
   if (loading) return <div className="flex justify-center py-20"><Spinner size={28} /></div>;
+
+  const uniqueLocationNames = [...new Set(locationEvents.map((e) => e.Location?.name).filter(Boolean))];
+  const uniqueEventTypes = [...new Set(locationEvents.map((e) => e.eventType))];
+  const filteredLocationEvents = locationEvents.filter((e) => (
+    (!locationFilter || e.Location?.name === locationFilter)
+    && (!eventTypeFilter || e.eventType === eventTypeFilter)
+  ));
 
   const subtitle = `${company?.name || ''} \u00b7 Generated ${new Date().toLocaleDateString()}`;
   const reportSections = () => [
@@ -140,9 +149,25 @@ export default function ReportsPage() {
       </div>
 
       <Card className="p-6">
-        <h3 className="font-semibold text-ink text-lg mb-4">Location activity</h3>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <h3 className="font-semibold text-ink text-lg">Location activity</h3>
+          {locationEvents.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              <Select value={locationFilter} onChange={(e) => setLocationFilter(e.target.value)} className="w-44">
+                <option value="">All locations</option>
+                {uniqueLocationNames.map((n) => <option key={n} value={n}>{n}</option>)}
+              </Select>
+              <Select value={eventTypeFilter} onChange={(e) => setEventTypeFilter(e.target.value)} className="w-44">
+                <option value="">All event types</option>
+                {uniqueEventTypes.map((t) => <option key={t} value={t}>{t.replace('_', ' ')}</option>)}
+              </Select>
+            </div>
+          )}
+        </div>
         {locationEvents.length === 0 ? (
           <p className="text-sm text-ink/50 py-10 text-center">No scan activity recorded yet.</p>
+        ) : filteredLocationEvents.length === 0 ? (
+          <p className="text-sm text-ink/50 py-10 text-center">No activity matches these filters.</p>
         ) : (
           <div className="max-h-96 overflow-y-auto overflow-x-auto">
             <table className="w-full text-[15px] min-w-[560px]">
@@ -155,7 +180,7 @@ export default function ReportsPage() {
                 </tr>
               </thead>
               <tbody>
-                {locationEvents.slice(0, 50).map((e) => (
+                {filteredLocationEvents.slice(0, 50).map((e) => (
                   <tr key={e.id} className="border-t border-primary-50">
                     <td className="py-3 text-ink/70 whitespace-nowrap">{new Date(e.createdAt).toLocaleString()}</td>
                     <td className="py-3">

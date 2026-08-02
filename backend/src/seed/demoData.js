@@ -145,7 +145,16 @@ async function seedOneCompany(spec) {
   for (const locSpec of spec.locations) {
     const name = typeof locSpec === 'string' ? locSpec : locSpec.name;
     const extra = typeof locSpec === 'string' ? {} : { address: locSpec.address, latitude: locSpec.latitude, longitude: locSpec.longitude };
-    const [loc] = await Location.findOrCreate({ where: { companyId: company.id, name }, defaults: { companyId: company.id, name, ...extra } });
+    const [loc, created] = await Location.findOrCreate({ where: { companyId: company.id, name }, defaults: { companyId: company.id, name, ...extra } });
+    // findOrCreate's `defaults` only apply to a brand-new row - a location
+    // created in an earlier session (before coordinates were part of the
+    // seed data) would otherwise never get backfilled on a later reseed.
+    if (!created && extra.latitude != null && loc.latitude == null) {
+      loc.address = extra.address;
+      loc.latitude = extra.latitude;
+      loc.longitude = extra.longitude;
+      await loc.save();
+    }
     locations[name] = loc;
   }
   const locKeys = Object.keys(locations);

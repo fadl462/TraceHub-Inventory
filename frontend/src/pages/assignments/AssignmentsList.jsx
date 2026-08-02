@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Plus, ClipboardList, RotateCcw, CheckCircle2, Circle, Mail, Phone } from 'lucide-react';
+import { Plus, ClipboardList, RotateCcw, CheckCircle2, Circle, Mail, Phone, Search } from 'lucide-react';
 import client from '../../api/client';
-import { Card, Button, Badge, statusTone, EmptyState, Spinner } from '../../components/ui';
+import { Card, Button, Badge, statusTone, EmptyState, Spinner, Select } from '../../components/ui';
 
 function daysBetween(from, to = new Date()) {
   return Math.floor((new Date(to) - new Date(from)) / 86400000);
@@ -12,16 +12,29 @@ function daysBetween(from, to = new Date()) {
 export default function AssignmentsList() {
   const [assignments, setAssignments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState('');
+  const [search, setSearch] = useState('');
 
   const load = async () => {
     setLoading(true);
     try {
-      const { data } = await client.get('/assignments');
+      const { data } = await client.get('/assignments', { params: status ? { status } : {} });
       setAssignments(data.assignments);
     } finally { setLoading(false); }
   };
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { load(); }, [status]);
+
+  const filteredAssignments = assignments.filter((a) => {
+    if (!search.trim()) return true;
+    const q = search.toLowerCase();
+    const assigneeName = a.assignee ? `${a.assignee.firstName} ${a.assignee.lastName}` : (a.externalAssigneeName || '');
+    return (
+      a.Asset?.name?.toLowerCase().includes(q)
+      || a.Asset?.assetTag?.toLowerCase().includes(q)
+      || assigneeName.toLowerCase().includes(q)
+    );
+  });
 
   const markReturned = async (id) => {
     try {
@@ -53,10 +66,30 @@ export default function AssignmentsList() {
         <Link to="/assignments/new"><Button><Plus size={16} /> New assignment</Button></Link>
       </div>
 
+      <Card className="p-4">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+          <div className="relative flex-1 min-w-[200px]">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink/40" />
+            <input
+              className="w-full rounded-lg border border-primary-100 pl-9 pr-3 py-2.5 text-sm focus-ring focus:border-secondary"
+              placeholder="Search by asset or assignee..."
+              value={search} onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+          <Select value={status} onChange={(e) => setStatus(e.target.value)} className="sm:w-48">
+            <option value="">All statuses</option>
+            <option value="active">Active</option>
+            <option value="overdue">Overdue</option>
+            <option value="returned">Returned</option>
+            <option value="cancelled">Cancelled</option>
+          </Select>
+        </div>
+      </Card>
+
       <Card className="overflow-hidden">
         {loading ? (
           <div className="flex justify-center py-16"><Spinner size={28} /></div>
-        ) : assignments.length === 0 ? (
+        ) : filteredAssignments.length === 0 ? (
           <EmptyState icon={ClipboardList} title="No assignments yet" description="Assign an asset to a staff member or an outside party to track its return." />
         ) : (
           <div className="overflow-x-auto">
@@ -74,7 +107,7 @@ export default function AssignmentsList() {
                 </tr>
               </thead>
               <tbody>
-                {assignments.map((a) => {
+                {filteredAssignments.map((a) => {
                   const email = a.assignee?.email || a.externalAssigneeEmail;
                   const phone = a.assignee?.phone || a.externalAssigneePhone;
                   const isActive = a.status === 'active' || a.status === 'overdue';

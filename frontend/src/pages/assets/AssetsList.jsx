@@ -11,12 +11,16 @@ export default function AssetsList() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState(searchParams.get('status') || '');
+  const [categoryId, setCategoryId] = useState('');
+  const [locationId, setLocationId] = useState('');
+  const [categories, setCategories] = useState([]);
+  const [locations, setLocations] = useState([]);
   const [page, setPage] = useState(1);
 
   const load = async () => {
     setLoading(true);
     try {
-      const { data } = await client.get('/assets', { params: { search, status, page, pageSize: 20 } });
+      const { data } = await client.get('/assets', { params: { search, status, categoryId, locationId, page, pageSize: 20 } });
       setAssets(data.assets);
       setTotal(data.total);
     } finally {
@@ -24,7 +28,12 @@ export default function AssetsList() {
     }
   };
 
-  useEffect(() => { load(); }, [status, page]);
+  useEffect(() => {
+    client.get('/categories').then(({ data }) => setCategories(data.categories)).catch(() => {});
+    client.get('/locations').then(({ data }) => setLocations(data.locations)).catch(() => {});
+  }, []);
+
+  useEffect(() => { load(); }, [status, categoryId, locationId, page]);
   useEffect(() => {
     const t = setTimeout(load, 350);
     return () => clearTimeout(t);
@@ -42,7 +51,7 @@ export default function AssetsList() {
       </div>
 
       <Card className="p-4">
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3">
           <div className="relative flex-1">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink/40" />
             <input
@@ -59,6 +68,14 @@ export default function AssetsList() {
             <option value="reserved">Reserved</option>
             <option value="disposed">Disposed</option>
             <option value="lost">Lost</option>
+          </Select>
+          <Select value={categoryId} onChange={(e) => setCategoryId(e.target.value)} className="sm:w-48">
+            <option value="">All categories</option>
+            {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+          </Select>
+          <Select value={locationId} onChange={(e) => setLocationId(e.target.value)} className="sm:w-48">
+            <option value="">All locations</option>
+            {locations.map((l) => <option key={l.id} value={l.id}>{l.name}</option>)}
           </Select>
         </div>
       </Card>

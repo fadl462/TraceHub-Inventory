@@ -22,6 +22,9 @@ export default function TeamPage() {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', role: 'staff' });
+  const [roleFilter, setRoleFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
+  const [search, setSearch] = useState('');
 
   const load = async () => {
     setLoading(true);
@@ -32,6 +35,18 @@ export default function TeamPage() {
   };
 
   useEffect(() => { load(); }, []);
+
+  const filteredUsers = users.filter((u) => {
+    if (roleFilter && u.role !== roleFilter) return false;
+    if (statusFilter === 'active' && !u.isActive) return false;
+    if (statusFilter === 'disabled' && u.isActive) return false;
+    if (statusFilter === 'pending' && !u.mustChangePassword) return false;
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      if (!`${u.firstName} ${u.lastName} ${u.email}`.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -93,14 +108,36 @@ export default function TeamPage() {
         </Card>
       )}
 
+      <Card className="p-4">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+          <input
+            className="flex-1 min-w-[200px] rounded-lg border border-primary-100 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary"
+            placeholder="Search by name or email..."
+            value={search} onChange={(e) => setSearch(e.target.value)}
+          />
+          <Select value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)} className="sm:w-48">
+            <option value="">All roles</option>
+            <option value="company_admin">Company admin</option>
+            <option value="manager">Manager</option>
+            <option value="staff">Staff</option>
+          </Select>
+          <Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="sm:w-48">
+            <option value="">All statuses</option>
+            <option value="active">Active</option>
+            <option value="disabled">Disabled</option>
+            <option value="pending">Pending first login</option>
+          </Select>
+        </div>
+      </Card>
+
       <Card className="overflow-hidden">
         {loading ? (
           <div className="flex justify-center py-16"><Spinner size={28} /></div>
-        ) : users.length === 0 ? (
-          <EmptyState icon={Users} title="No team members yet" />
+        ) : filteredUsers.length === 0 ? (
+          <EmptyState icon={Users} title="No team members match these filters" />
         ) : (
           <div className="divide-y divide-primary-50">
-            {users.map((u) => (
+            {filteredUsers.map((u) => (
               <div key={u.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 py-4">
                 <div className="min-w-0">
                   <p className="font-medium text-ink flex items-center gap-2 flex-wrap">
