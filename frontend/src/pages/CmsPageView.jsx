@@ -22,7 +22,7 @@ export default function CmsPageView() {
   return (
     <div className="min-h-screen bg-surface flex flex-col">
       <SiteHeader />
-      <main className="flex-1 max-w-2xl mx-auto px-6 py-16 w-full">
+      <main className="flex-1 max-w-5xl mx-auto px-6 sm:px-10 py-16 w-full">
         {status === 'loading' && <div className="flex justify-center py-16"><Spinner size={28} /></div>}
         {status === 'notfound' && (
           <div className="text-center py-16">
@@ -37,10 +37,10 @@ export default function CmsPageView() {
             <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-ink/50 hover:text-ink font-medium mb-8 transition-colors">
               <ArrowLeft size={15} /> Back to home
             </Link>
-            <article className="bg-white rounded-2xl border border-ink/5 shadow-card p-8 sm:p-12">
+            <article className="bg-white rounded-2xl border border-ink/5 shadow-card p-8 sm:p-14">
               <h1 className="font-display text-3xl font-bold text-ink tracking-tight mb-8">{page.title}</h1>
               {/* eslint-disable-next-line react/no-danger */}
-              <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: page.bodyHtml || '' }} />
+              <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: page.bodyHtml || '' }} />
             </article>
           </>
         )}

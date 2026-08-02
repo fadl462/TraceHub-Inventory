@@ -113,10 +113,14 @@ body {
   .th-marquee-track { animation: none; }
 }
 
-/* Legal pages (Privacy/Terms/Cookie Policy): a small styled "last updated"
-   tag at the top, and a visually distinct disclaimer note at the bottom -
-   set within .prose so Tailwind Typography's own heading/paragraph spacing
-   still applies to the rest of the content. */
+/* Legal pages (Privacy/Terms/Cookie Policy): each numbered section renders
+   as its own tinted card with a numbered badge, alternating two background
+   tints for visual rhythm, plus a distinct amber callout style for the
+   handful of sentences that actually matter most (auto-renewal, data
+   ownership, what's actually stored). Body text is deliberately smaller
+   than default .prose-lg per an explicit request - readability is kept
+   reasonable via the wider container in CmsPageView.jsx compensating for
+   the smaller type. */
 .prose .th-legal-updated {
   display: inline-block;
   font-size: 0.8rem;
@@ -125,12 +129,64 @@ body {
   background: #EAF1FA;
   padding: 0.3rem 0.85rem;
   border-radius: 999px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
+
+.prose .th-legal-section {
+  border-radius: 1rem;
+  padding: 1.6rem 1.9rem;
+  margin: 0 0 1.1rem 0;
+}
+.prose .th-legal-section:nth-of-type(odd) { background: #EAF1FA; }
+.prose .th-legal-section:nth-of-type(even) { background: #F4F7FA; }
+
+.prose .th-legal-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+.prose .th-legal-section h3 .th-legal-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  background: #1A4D8F;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.prose .th-legal-section p,
+.prose .th-legal-section li {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #374151;
+}
+.prose .th-legal-section p + p { margin-top: 0.75rem; }
+.prose .th-legal-section ul { margin-top: 0.5rem; }
+
+.prose .th-legal-callout {
+  margin-top: 0.9rem;
+  padding: 0.85rem 1.1rem;
+  background: #FFF7E8;
+  border-left: 3px solid #F4A261;
+  border-radius: 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #7C4A12;
+}
+.prose .th-legal-callout strong { color: #7C4A12; }
+
 .prose .th-legal-disclaimer {
-  margin-top: 3rem;
+  margin-top: 2.25rem;
   padding: 1.1rem 1.4rem;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   line-height: 1.6;
   color: #6B7280;
   background: #F4F7FA;
