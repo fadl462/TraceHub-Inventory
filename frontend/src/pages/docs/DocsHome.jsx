@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import {
   ArrowRight, MessageCircleQuestion, Newspaper, Rocket, Boxes, Sparkles, ScanLine,
   ClipboardList, Trash2, ShieldCheck, BarChart3, CreditCard, Settings, LifeBuoy, BookOpen,
@@ -24,6 +24,7 @@ const CATEGORY_META = {
 };
 
 export default function DocsHome() {
+  const { openChat } = useOutletContext();
   const [categories, setCategories] = useState(null);
 
   useEffect(() => {
@@ -89,20 +90,26 @@ export default function DocsHome() {
       <div className="px-6 sm:px-10 py-14">
         <h2 className="font-display text-2xl font-bold text-ink text-center mb-8">Other resources</h2>
         <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          <div className="border border-ink/10 rounded-xl overflow-hidden">
+          <button
+            onClick={openChat}
+            className="text-left border border-ink/10 rounded-xl overflow-hidden hover:border-primary/30 hover:shadow-lg transition-all"
+          >
             <div className="bg-primary-50/50 px-5 py-3 flex items-center gap-2 font-semibold text-primary text-sm">
               <MessageCircleQuestion size={16} /> AI ASSISTANT
             </div>
-            <p className="p-5 text-sm text-ink/60">Click the chat bubble in the corner — grounded in this same documentation, and, once logged in, your own live fleet data too.</p>
-          </div>
-          <div className="border border-ink/10 rounded-xl overflow-hidden">
+            <p className="p-5 text-sm text-ink/60">Click here — or the chat bubble in the corner — grounded in this same documentation, and, once logged in, your own live fleet data too.</p>
+          </button>
+          <Link
+            to="/blog"
+            className="text-left block border border-ink/10 rounded-xl overflow-hidden hover:border-primary/30 hover:shadow-lg transition-all"
+          >
             <div className="bg-primary-50/50 px-5 py-3 flex items-center gap-2 font-semibold text-primary text-sm">
               <Newspaper size={16} /> BLOG &amp; UPDATES
             </div>
             <p className="p-5 text-sm text-ink/60">
-              <Link to="/blog" className="text-link hover:underline">Read our latest posts</Link> for deeper dives into how the AI engines work and what's new on the platform.
+              Read our latest posts for deeper dives into how the AI engines work and what's new on the platform.
             </p>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

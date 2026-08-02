@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import client from '../api/client';
 import TraceHubMark from '../components/TraceHubMark';
+import AiChatWidget from '../components/AiChatWidget';
 import { useAuth } from '../context/AuthContext';
 import { Spinner, Button } from '../components/ui';
 
@@ -33,6 +34,7 @@ export default function DocsLayout() {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => {
     client.get('/docs').then(({ data }) => {
@@ -178,9 +180,11 @@ export default function DocsLayout() {
         </aside>
 
         <main className="flex-1 min-w-0">
-          <Outlet />
+          <Outlet context={{ openChat: () => setChatOpen(true) }} />
         </main>
       </div>
+
+      <AiChatWidget isOpen={chatOpen} onOpenChange={setChatOpen} />
     </div>
   );
 }
