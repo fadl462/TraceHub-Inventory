@@ -1,9 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Download, Archive, UserPlus, MapPin, Sparkles, Clock, Activity, AlertTriangle, TrendingDown, Flag, Wrench } from 'lucide-react';
+import { Download, Archive, UserPlus, MapPin, Sparkles, Clock, Activity, AlertTriangle, TrendingDown, Flag, Wrench, ShoppingCart, UserCheck, UserX, ScanLine, ClipboardCheck, Trash2, ShieldAlert, CircleDot } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Badge, statusTone, Spinner } from '../../components/ui';
+
+const TIMELINE_ICONS = {
+  purchased: ShoppingCart,
+  assignment: UserCheck,
+  return: UserX,
+  scan: ScanLine,
+  inspection: ClipboardCheck,
+  disposal: Trash2,
+  warranty: ShieldAlert,
+  current: CircleDot,
+};
 
 export default function AssetDetail() {
   const { id } = useParams();
@@ -12,6 +23,7 @@ export default function AssetDetail() {
   const [qr, setQr] = useState(null);
   const [locationHistory, setLocationHistory] = useState([]);
   const [inspections, setInspections] = useState([]);
+  const [timeline, setTimeline] = useState([]);
   const [loading, setLoading] = useState(true);
   const [inspectionForm, setInspectionForm] = useState({ score: '', condition: 'good', notes: '' });
   const [submittingInspection, setSubmittingInspection] = useState(false);
@@ -19,16 +31,18 @@ export default function AssetDetail() {
   const load = async () => {
     setLoading(true);
     try {
-      const [{ data: assetData }, { data: qrData }, { data: locData }, { data: inspData }] = await Promise.all([
+      const [{ data: assetData }, { data: qrData }, { data: locData }, { data: inspData }, { data: timelineData }] = await Promise.all([
         client.get(`/assets/${id}`),
         client.get(`/assets/${id}/qr`),
         client.get(`/locations/history/${id}`),
         client.get(`/assets/${id}/inspections`),
+        client.get(`/assets/${id}/timeline`),
       ]);
       setAsset(assetData.asset);
       setQr(qrData.qrDataUrl);
       setLocationHistory(locData.events);
       setInspections(inspData.inspections);
+      setTimeline(timelineData.events);
     } finally {
       setLoading(false);
     }
@@ -212,6 +226,34 @@ export default function AssetDetail() {
                 {['SELL', 'SCRAP', 'REPLACE', 'REPAIR'].includes(asset.disposalRecommendation) && (
                   <Button variant="outline" onClick={flagForDisposal}><Flag size={15} /> Flag for disposal</Button>
                 )}
+              </div>
+            </div>
+          )}
+
+          {timeline.length > 0 && (
+            <div>
+              <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><Clock size={15} /> Timeline</h4>
+              <div className="relative pl-6">
+                <div className="absolute left-[7px] top-1 bottom-1 w-px bg-primary-100" />
+                {timeline.map((e, i) => {
+                  const Icon = TIMELINE_ICONS[e.type] || CircleDot;
+                  const isCurrent = e.type === 'current';
+                  return (
+                    <div key={i} className="relative pb-4 last:pb-0">
+                      <div className={`absolute -left-6 top-0.5 h-3.5 w-3.5 rounded-full flex items-center justify-center ${isCurrent ? 'bg-primary' : 'bg-white border-2 border-primary-200'}`}>
+                        {isCurrent && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Icon size={14} className="text-ink/40 mt-0.5 shrink-0" />
+                        <div className="min-w-0">
+                          <p className="text-sm font-medium text-ink">{e.title}</p>
+                          {e.detail && <p className="text-xs text-ink/50">{e.detail}</p>}
+                          <p className="text-xs text-ink/35 mt-0.5">{new Date(e.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}

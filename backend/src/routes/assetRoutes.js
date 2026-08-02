@@ -14,6 +14,7 @@ router.get('/:id', ctrl.getAsset);
 router.patch('/:id', requireRole('company_admin', 'manager', 'staff', 'super_admin'), ctrl.updateAsset);
 router.post('/:id/recalculate-depreciation', requireRole('company_admin', 'manager', 'super_admin'), ctrl.recalculateDepreciation);
 router.get('/:id/inspections', ctrl.listInspections);
+router.get('/:id/timeline', ctrl.getAssetTimeline);
 router.post('/:id/inspections', requireRole('company_admin', 'manager', 'staff', 'super_admin'), ctrl.logInspection);
 router.post('/:id/archive', requireRole('company_admin', 'manager', 'super_admin'), ctrl.archiveAsset);
 router.get('/:id/qr', ctrl.getAssetQr);

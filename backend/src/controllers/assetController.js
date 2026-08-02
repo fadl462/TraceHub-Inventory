@@ -2,6 +2,7 @@ const { Op } = require('sequelize');
 const {
   Asset, AssetCategory, DepreciationProfile, AssetCustomFieldValue,
   CustomFieldDefinition, Location, AssetLocationEvent, Assignment, DisposalCase, AssetInspection,
+  AuditLog, User,
 } = require('../models');
 const { estimateDepreciation } = require('../utils/depreciationEngine');
 const { runFullIntelligenceAnalysis } = require('../utils/assetIntelligence');
@@ -290,6 +291,86 @@ async function recalculateDepreciation(req, res, next) {
  * engine, since a new inspection is real new evidence that should
  * immediately move health/confidence/etc.
  */
+/**
+ * A single chronological timeline for one asset, merged from every real
+ * dated source TraceHub actually has - not a fabricated narrative. Each
+ * entry traces back to a real database row:
+ *   - Purchased: asset.purchaseDate
+ *   - Assignment / Return: real Assignment rows
+ *   - Location scan: real AssetLocationEvent rows
+ *   - Inspection: real AssetInspection rows
+ *   - Disposal workflow stage: real DisposalCase transitions, taken from
+ *     the audit log entries logged at each transition
+ *   - Warranty: asset.warrantyExpiry (shown as a milestone marker, not
+ *     something that "happened")
+ *   - Current status: always present, dated today
+ *
+ * Deliberately NOT included, because there's no real dated data behind
+ * them: individual repair events (TraceHub only stores aggregate
+ * repairCount/repairCostTotal, no per-repair date log), GPS history
+ * (this product has no GPS/IoT hardware by design), and insurance as a
+ * dated event (there's a cost field but no insurance date anywhere).
+ */
+async function getAssetTimeline(req, res, next) {
+  try {
+    const asset = await Asset.findByPk(req.params.id);
+    if (!asset) return res.status(404).json({ error: 'Asset not found' });
+    if (asset.companyId !== req.companyId && req.user.role !== 'super_admin') {
+      return res.status(403).json({ error: 'Not authorized' });
+    }
+
+    const events = [];
+
+    if (asset.purchaseDate) {
+      events.push({ date: asset.purchaseDate, type: 'purchased', title: 'Purchased', detail: `${asset.currency} ${Number(asset.purchasePrice || 0).toLocaleString()}` });
+    }
+
+    const assignments = await Assignment.findAll({
+      where: { assetId: asset.id },
+      include: [{ model: User, as: 'assignee', attributes: ['firstName', 'lastName'] }],
+    });
+    assignments.forEach((a) => {
+      const who = a.assignee ? `${a.assignee.firstName} ${a.assignee.lastName}` : (a.externalAssigneeName || 'someone');
+      if (a.assignedAt) events.push({ date: a.assignedAt, type: 'assignment', title: 'Assigned', detail: `To ${who}` });
+      if (a.returnedAt) events.push({ date: a.returnedAt, type: 'return', title: 'Returned', detail: `From ${who}` });
+    });
+
+    const locationEvents = await AssetLocationEvent.findAll({
+      where: { assetId: asset.id },
+      include: [{ model: Location, attributes: ['name'] }],
+    });
+    locationEvents.forEach((e) => {
+      events.push({ date: e.createdAt, type: 'scan', title: `Scanned \u2014 ${e.eventType.replace('_', ' ')}`, detail: e.Location?.name || 'Unknown location' });
+    });
+
+    const inspections = await AssetInspection.findAll({ where: { assetId: asset.id } });
+    inspections.forEach((i) => {
+      events.push({ date: i.inspectedAt, type: 'inspection', title: 'Inspected', detail: `Score ${i.score}%${i.condition ? ` \u2014 ${i.condition}` : ''}${i.notes ? `: ${i.notes}` : ''}` });
+    });
+
+    const disposalCases = await DisposalCase.findAll({ where: { assetId: asset.id }, attributes: ['id'] });
+    if (disposalCases.length > 0) {
+      const transitions = await AuditLog.findAll({
+        where: { entityType: 'DisposalCase', entityId: { [Op.in]: disposalCases.map((d) => d.id) } },
+        order: [['createdAt', 'ASC']],
+      });
+      transitions.forEach((t) => {
+        const stage = t.action.replace('disposal_case.', '').replace(/_/g, ' ');
+        events.push({ date: t.createdAt, type: 'disposal', title: `Disposal: ${stage}`, detail: '' });
+      });
+    }
+
+    if (asset.warrantyExpiry) {
+      events.push({ date: asset.warrantyExpiry, type: 'warranty', title: 'Warranty expiry', detail: new Date(asset.warrantyExpiry) < new Date() ? 'Expired' : 'Upcoming' });
+    }
+
+    events.sort((a, b) => new Date(a.date) - new Date(b.date));
+    events.push({ date: new Date().toISOString(), type: 'current', title: 'Current status', detail: `${asset.status.replace('_', ' ')}${asset.healthScore != null ? ` \u2014 ${asset.healthScore}% health` : ''}` });
+
+    res.json({ events });
+  } catch (err) { next(err); }
+}
+
 async function logInspection(req, res, next) {
   try {
     const asset = await Asset.findByPk(req.params.id);
@@ -378,5 +459,5 @@ async function resolveByQrToken(req, res, next) {
 module.exports = {
   createAsset, listAssets, getAsset, updateAsset, recalculateDepreciation,
   archiveAsset, getAssetQr, resolveByQrToken, computeAndApplyDepreciation,
-  logInspection, listInspections,
+  logInspection, listInspections, getAssetTimeline,
 };
