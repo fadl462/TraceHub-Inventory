@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   Building2, Boxes, Users, DollarSign, Sparkles, AlertTriangle,
   Plus, UserPlus, FileBarChart, Activity, ArrowRight, TrendingUp, TrendingDown,
-  Download, CreditCard as CardIcon, Clock, Mail as MailIcon, Trophy,
+  Download, CreditCard as CardIcon, Clock, Mail as MailIcon, Trophy, FileText,
 } from 'lucide-react';
 import {
   ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -13,6 +13,7 @@ import client from '../../api/client';
 import { Card, Spinner, Button, EmptyState } from '../../components/ui';
 import { useAuth } from '../../context/AuthContext';
 import { exportToCsv } from '../../utils/exportCsv';
+import { exportToPdf } from '../../utils/exportPdf';
 
 const PLAN_COLORS = ['#1A4D8F', '#4DA3FF', '#7ED957', '#8CC2FF', '#5CB93A'];
 
@@ -120,8 +121,22 @@ export default function AdminOverview() {
       date: new Date(l.createdAt).toISOString(), user: l.userName || 'System', company: l.companyName || '', action: l.action,
     })));
   };
+  const exportAuditLogPdf = () => {
+    exportToPdf('audit-log', 'Global Audit Log', `Generated ${new Date().toLocaleDateString()}`, [{
+      heading: 'Recent activity',
+      columns: ['Date', 'User', 'Company', 'Action'],
+      rows: stats.recentAuditLog.map((l) => [new Date(l.createdAt).toLocaleString(), l.userName || 'System', l.companyName || '\u2014', l.action]),
+    }]);
+  };
   const exportGrowthChart = () => {
     exportToCsv(`asset-growth-${granularity}`, stats.assetGrowthSeries.map((r) => ({ period: r.month, registered: r.registered, disposed: r.disposed })));
+  };
+  const exportGrowthChartPdf = () => {
+    exportToPdf(`asset-growth-${granularity}`, 'Asset Growth Report', `${granularity} view \u00b7 Generated ${new Date().toLocaleDateString()}`, [{
+      heading: 'Registered vs. disposed',
+      columns: ['Period', 'Registered', 'Disposed'],
+      rows: stats.assetGrowthSeries.map((r) => [r.month, r.registered, r.disposed]),
+    }]);
   };
 
   return (
@@ -175,8 +190,11 @@ export default function AdminOverview() {
                 </button>
               ))}
             </div>
-            <button onClick={exportGrowthChart} aria-label="Export chart data as CSV" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors">
+            <button onClick={exportGrowthChart} aria-label="Export chart data as CSV" title="Export CSV" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors">
               <Download size={15} />
+            </button>
+            <button onClick={exportGrowthChartPdf} aria-label="Export chart as PDF" title="Export PDF" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors">
+              <FileText size={15} />
             </button>
           </div>
         </div>
@@ -247,9 +265,14 @@ export default function AdminOverview() {
             <div className="flex items-center gap-1">
               <Link to="/admin/audit-log" className="text-xs font-medium text-link hover:underline px-1">View all</Link>
               {stats.recentAuditLog.length > 0 && (
-                <button onClick={exportAuditLog} aria-label="Export audit log as CSV" className="text-ink/40 hover:text-link p-1 rounded-md hover:bg-primary-50 transition-colors">
-                  <Download size={14} />
-                </button>
+                <>
+                  <button onClick={exportAuditLog} aria-label="Export audit log as CSV" title="Export CSV" className="text-ink/40 hover:text-link p-1 rounded-md hover:bg-primary-50 transition-colors">
+                    <Download size={14} />
+                  </button>
+                  <button onClick={exportAuditLogPdf} aria-label="Export audit log as PDF" title="Export PDF" className="text-ink/40 hover:text-link p-1 rounded-md hover:bg-primary-50 transition-colors">
+                    <FileText size={14} />
+                  </button>
+                </>
               )}
             </div>
           </div>

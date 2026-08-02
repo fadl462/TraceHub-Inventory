@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Boxes, ClipboardList, AlertTriangle, TrendingDown, Plus, ScanLine, Sparkles, Mail, Phone, Calendar } from 'lucide-react';
+import { Boxes, ClipboardList, AlertTriangle, TrendingDown, Plus, ScanLine, Sparkles, Mail, Phone, Calendar, Download, FileText, Presentation } from 'lucide-react';
 import client from '../api/client';
 import { Card, Button, Spinner } from '../components/ui';
 import { useAuth } from '../context/AuthContext';
+import { exportToCsv } from '../utils/exportCsv';
+import { exportToPdf } from '../utils/exportPdf';
+import { exportToPptx } from '../utils/exportPptx';
 
 function Stat({ icon: Icon, label, value, tone = 'primary', to }) {
   const tones = {
@@ -249,11 +252,42 @@ function daysBetween(from, to = new Date()) {
 }
 
 function AssignmentTrackingPanel() {
+  const { company } = useAuth();
   const [assignments, setAssignments] = useState(null);
 
   useEffect(() => {
     client.get('/reports/assignment-tracking').then(({ data }) => setAssignments(data.assignments)).catch(() => setAssignments([]));
   }, []);
+
+  const exportRows = () => assignments.map((a) => ({
+    asset: a.asset?.name || '', assetTag: a.asset?.assetTag || '', assignedTo: a.assigneeName,
+    email: a.contactEmail || '', phone: a.contactPhone || '', issued: new Date(a.assignedAt).toLocaleDateString(),
+    dueDate: a.expectedReturnDate || '', daysHeld: a.daysHeld, overdue: a.isOverdue ? `Yes (${a.daysOverdue}d)` : 'No',
+  }));
+  const handleCsv = () => exportToCsv('tracehub-assigned-assets', exportRows());
+  const handlePdf = () => exportToPdf(
+    'tracehub-assigned-assets', 'Assets Currently Assigned', `${company?.name || ''} \u00b7 Generated ${new Date().toLocaleDateString()}`,
+    [{
+      heading: 'Assigned assets',
+      columns: ['Asset', 'Assigned to', 'Contact', 'Issued', 'Due', 'Days held', 'Overdue'],
+      rows: assignments.map((a) => [
+        a.asset?.name || '', a.assigneeName, [a.contactEmail, a.contactPhone].filter(Boolean).join(' / ') || '\u2014',
+        new Date(a.assignedAt).toLocaleDateString(), a.expectedReturnDate || '\u2014', a.daysHeld,
+        a.isOverdue ? `${a.daysOverdue}d overdue` : 'On time',
+      ]),
+    }],
+  );
+  const handlePptx = () => exportToPptx(
+    'tracehub-assigned-assets', 'Assets Currently Assigned', `${company?.name || ''} \u00b7 Generated ${new Date().toLocaleDateString()}`,
+    [{
+      heading: 'Assigned assets',
+      columns: ['Asset', 'Assigned to', 'Contact', 'Due', 'Status'],
+      rows: assignments.map((a) => [
+        a.asset?.name || '', a.assigneeName, [a.contactEmail, a.contactPhone].filter(Boolean).join(' / ') || '\u2014',
+        a.expectedReturnDate || '\u2014', a.isOverdue ? `${a.daysOverdue}d overdue` : `${a.daysHeld}d held`,
+      ]),
+    }],
+  );
 
   if (assignments === null) {
     return (
@@ -272,11 +306,16 @@ function AssignmentTrackingPanel() {
 
   return (
     <Card className="p-5">
-      <div className="flex items-center justify-between mb-1">
-        <h3 className="font-semibold text-ink flex items-center gap-2"><ClipboardList size={16} className="text-primary" /> Assets currently assigned</h3>
-        {overdueCount > 0 && (
-          <span className="text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-1 rounded-full">{overdueCount} overdue</span>
-        )}
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+        <h3 className="font-semibold text-ink flex items-center gap-2 text-sm sm:text-base"><ClipboardList size={16} className="text-primary shrink-0" /> Assets currently assigned</h3>
+        <div className="flex items-center gap-1">
+          {overdueCount > 0 && (
+            <span className="text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-1 rounded-full mr-1">{overdueCount} overdue</span>
+          )}
+          <button onClick={handleCsv} title="Export CSV" aria-label="Export CSV" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors"><Download size={14} /></button>
+          <button onClick={handlePdf} title="Export PDF" aria-label="Export PDF" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors"><FileText size={14} /></button>
+          <button onClick={handlePptx} title="Export PowerPoint" aria-label="Export PowerPoint" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors"><Presentation size={14} /></button>
+        </div>
       </div>
       <p className="text-xs text-ink/50 mb-4">Who has what, when it was issued, and how long it's been out.</p>
       <div className="space-y-2">
