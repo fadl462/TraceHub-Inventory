@@ -25,7 +25,7 @@ export default function Blog() {
   return (
     <div className="min-h-screen bg-surface flex flex-col">
       <SiteHeader />
-      <main className="flex-1 max-w-3xl mx-auto px-6 py-16 w-full">
+      <main className="flex-1 max-w-6xl mx-auto px-6 py-16 w-full">
         <p className="text-xs font-semibold uppercase tracking-widest text-secondary-dark mb-3">Updates</p>
         <h1 className="font-display text-4xl font-bold text-ink tracking-tight mb-2">Updates &amp; releases</h1>
         <p className="text-ink/60 mb-12">What's new on TraceHub Inventory.</p>
@@ -41,22 +41,22 @@ export default function Blog() {
             <p className="text-sm text-ink/60">No posts published yet. Check back soon.</p>
           </div>
         ) : (
-          <div className="grid gap-8">
-            {posts.map((p, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map((p) => (
               <Link
                 key={p.id}
                 to={`/blog/${p.slug}`}
-                className={`group block rounded-2xl border border-ink/5 bg-white hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 overflow-hidden ${i === 0 ? 'sm:grid sm:grid-cols-2' : ''}`}
+                className="group flex flex-col rounded-2xl border border-ink/5 bg-white hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 overflow-hidden"
               >
-                {p.coverImageUrl && (
-                  <div className={`overflow-hidden ${i === 0 ? 'h-full min-h-[220px]' : 'h-48'}`}>
+                <div className="overflow-hidden h-44 bg-primary-50">
+                  {p.coverImageUrl && (
                     <img src={p.coverImageUrl} alt="" className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300" />
-                  </div>
-                )}
-                <div className="p-7 flex flex-col justify-center">
+                  )}
+                </div>
+                <div className="p-6 flex flex-col flex-1">
                   <p className="flex items-center gap-1.5 text-xs text-ink/45 mb-2"><Calendar size={13} /> {formatDate(p.publishedAt)}</p>
-                  <h2 className={`font-display font-semibold text-ink group-hover:text-primary transition-colors ${i === 0 ? 'text-2xl' : 'text-lg'}`}>{p.title}</h2>
-                  {p.excerpt && <p className="mt-2 text-sm text-ink/60 leading-relaxed">{p.excerpt}</p>}
+                  <h2 className="font-display font-semibold text-lg text-ink group-hover:text-primary transition-colors">{p.title}</h2>
+                  {p.excerpt && <p className="mt-2 text-sm text-ink/60 leading-relaxed flex-1">{p.excerpt}</p>}
                 </div>
               </Link>
             ))}

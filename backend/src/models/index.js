@@ -27,6 +27,7 @@ const Coupon = require('./coupon')(sequelize, DataTypes);
 const PlatformSettings = require('./platformSettings')(sequelize, DataTypes);
 const NewsletterSubscriber = require('./newsletterSubscriber')(sequelize, DataTypes);
 const BlogPost = require('./blogPost')(sequelize, DataTypes);
+const BlogComment = require('./blogComment')(sequelize, DataTypes);
 const DisposalCase = require('./disposalCase')(sequelize, DataTypes);
 
 // ---------------------------------------------------------------------------
@@ -127,6 +128,10 @@ AuditLog.belongsTo(User, { foreignKey: 'userId' });
 User.hasMany(PasswordReset, { foreignKey: 'userId', onDelete: 'CASCADE' });
 PasswordReset.belongsTo(User, { foreignKey: 'userId' });
 
+// BlogPost <-> BlogComment
+BlogPost.hasMany(BlogComment, { foreignKey: 'blogPostId', onDelete: 'CASCADE' });
+BlogComment.belongsTo(BlogPost, { foreignKey: 'blogPostId' });
+
 module.exports = {
   sequelize,
   Company,
@@ -155,5 +160,6 @@ module.exports = {
   PlatformSettings,
   NewsletterSubscriber,
   BlogPost,
+  BlogComment,
   DisposalCase,
 };

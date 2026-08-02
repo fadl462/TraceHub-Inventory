@@ -1,27 +1,63 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Calendar } from 'lucide-react';
+import toast from 'react-hot-toast';
+import { ArrowLeft, Calendar, MessageSquare } from 'lucide-react';
 import client from '../api/client';
 import SiteHeader from '../components/landing/SiteHeader';
 import SiteFooter from '../components/landing/SiteFooter';
-import { Spinner } from '../components/ui';
+import { Spinner, Button } from '../components/ui';
 
 function formatDate(d) {
   return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function timeAgo(d) {
+  const days = Math.floor((Date.now() - new Date(d).getTime()) / 86400000);
+  if (days === 0) return 'Today';
+  if (days === 1) return 'Yesterday';
+  if (days < 30) return `${days} days ago`;
+  return formatDate(d);
 }
 
 export default function BlogPostView() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
   const [status, setStatus] = useState('loading');
+  const [comments, setComments] = useState([]);
+  const [commentForm, setCommentForm] = useState({ authorName: '', authorEmail: '', body: '' });
+  const [submittingComment, setSubmittingComment] = useState(false);
+
+  const loadComments = () => {
+    client.get(`/blog-posts/slug/${slug}/comments`).then(({ data }) => setComments(data.comments)).catch(() => {});
+  };
 
   useEffect(() => {
     setStatus('loading');
     window.scrollTo(0, 0);
     client.get(`/blog-posts/slug/${slug}`)
-      .then(({ data }) => { setPost(data.post); setStatus('found'); })
+      .then(({ data }) => { setPost(data.post); setStatus('found'); loadComments(); })
       .catch(() => setStatus('notfound'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
+
+  const submitComment = async (e) => {
+    e.preventDefault();
+    if (!commentForm.authorName.trim() || !commentForm.body.trim()) {
+      toast.error('Name and comment are required');
+      return;
+    }
+    setSubmittingComment(true);
+    try {
+      await client.post(`/blog-posts/slug/${slug}/comments`, commentForm);
+      toast.success('Thanks for contributing!');
+      setCommentForm({ authorName: '', authorEmail: '', body: '' });
+      loadComments();
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Failed to post comment');
+    } finally {
+      setSubmittingComment(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-surface flex flex-col">
@@ -58,6 +94,57 @@ export default function BlogPostView() {
               <Link to="/register" className="inline-flex items-center gap-1.5 text-sm font-semibold bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
                 Start free
               </Link>
+            </div>
+
+            <div className="mt-16 pt-10 border-t border-ink/5">
+              <h2 className="font-display text-xl font-bold text-ink flex items-center gap-2 mb-6">
+                <MessageSquare size={19} /> Contributions &amp; comments {comments.length > 0 && <span className="text-ink/40 font-normal text-base">({comments.length})</span>}
+              </h2>
+
+              <form onSubmit={submitComment} className="rounded-2xl border border-ink/10 bg-white p-6 mb-8 space-y-3">
+                <p className="text-sm font-medium text-ink">Add your thoughts or a correction</p>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <input
+                    className="rounded-lg border border-ink/10 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary"
+                    placeholder="Your name *" required
+                    value={commentForm.authorName} onChange={(e) => setCommentForm({ ...commentForm, authorName: e.target.value })}
+                  />
+                  <input
+                    className="rounded-lg border border-ink/10 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary"
+                    placeholder="Email (optional, never shown publicly)" type="email"
+                    value={commentForm.authorEmail} onChange={(e) => setCommentForm({ ...commentForm, authorEmail: e.target.value })}
+                  />
+                </div>
+                <textarea
+                  className="w-full rounded-lg border border-ink/10 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary resize-none"
+                  rows={4} placeholder="Share an experience, ask a question, or point out something we got wrong..." required maxLength={3000}
+                  value={commentForm.body} onChange={(e) => setCommentForm({ ...commentForm, body: e.target.value })}
+                />
+                <div className="flex justify-end">
+                  <Button type="submit" disabled={submittingComment}>{submittingComment ? 'Posting...' : 'Post comment'}</Button>
+                </div>
+              </form>
+
+              {comments.length === 0 ? (
+                <p className="text-sm text-ink/50 text-center py-6">No comments yet \u2014 be the first to share your thoughts.</p>
+              ) : (
+                <div className="space-y-5">
+                  {comments.map((c) => (
+                    <div key={c.id} className="flex gap-3">
+                      <div className="h-9 w-9 rounded-full bg-primary-50 text-primary font-semibold text-sm flex items-center justify-center shrink-0">
+                        {c.authorName.trim()[0]?.toUpperCase() || '?'}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-baseline gap-2">
+                          <p className="font-semibold text-sm text-ink">{c.authorName}</p>
+                          <p className="text-xs text-ink/40">{timeAgo(c.createdAt)}</p>
+                        </div>
+                        <p className="text-sm text-ink/70 leading-relaxed mt-0.5 whitespace-pre-wrap">{c.body}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </article>
         )}

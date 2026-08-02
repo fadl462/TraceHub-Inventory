@@ -112,3 +112,28 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .th-marquee-track { animation: none; }
 }
+
+/* Legal pages (Privacy/Terms/Cookie Policy): a small styled "last updated"
+   tag at the top, and a visually distinct disclaimer note at the bottom -
+   set within .prose so Tailwind Typography's own heading/paragraph spacing
+   still applies to the rest of the content. */
+.prose .th-legal-updated {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1A4D8F;
+  background: #EAF1FA;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+.prose .th-legal-disclaimer {
+  margin-top: 3rem;
+  padding: 1.1rem 1.4rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #6B7280;
+  background: #F4F7FA;
+  border-left: 3px solid #A3C3E7;
+  border-radius: 0.5rem;
+}

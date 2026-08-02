@@ -33,11 +33,16 @@ export default function CmsPageView() {
           </div>
         )}
         {status === 'found' && page && (
-          <article>
-            <h1 className="font-display text-3xl font-bold text-ink tracking-tight mb-8">{page.title}</h1>
-            {/* eslint-disable-next-line react/no-danger */}
-            <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: page.bodyHtml || '' }} />
-          </article>
+          <>
+            <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-ink/50 hover:text-ink font-medium mb-8 transition-colors">
+              <ArrowLeft size={15} /> Back to home
+            </Link>
+            <article className="bg-white rounded-2xl border border-ink/5 shadow-card p-8 sm:p-12">
+              <h1 className="font-display text-3xl font-bold text-ink tracking-tight mb-8">{page.title}</h1>
+              {/* eslint-disable-next-line react/no-danger */}
+              <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: page.bodyHtml || '' }} />
+            </article>
+          </>
         )}
       </main>
       <SiteFooter />

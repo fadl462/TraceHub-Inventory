@@ -6,9 +6,30 @@ function slugify(str) {
   return String(str).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
+// The legal pages we explicitly rewrote with real content - synced to an
+// already-seeded database too, not just fresh installs. Deliberately scoped
+// to just these slugs (not every default CMS page) so a Super Admin's own
+// edits to other pages (e.g. Documentation) are never silently overwritten.
+const MANAGED_LEGAL_SLUGS = ['privacy-policy', 'terms-of-service', 'cookie-policy'];
+
 async function ensureSeeded() {
   const count = await CmsPage.count();
-  if (count === 0) await CmsPage.bulkCreate(defaultCmsPages);
+  if (count === 0) {
+    await CmsPage.bulkCreate(defaultCmsPages);
+    return;
+  }
+  const existing = await CmsPage.findAll({ where: { slug: MANAGED_LEGAL_SLUGS } });
+  const existingBySlug = new Map(existing.map((p) => [p.slug, p]));
+  await Promise.all(defaultCmsPages
+    .filter((p) => MANAGED_LEGAL_SLUGS.includes(p.slug))
+    .map(async (p) => {
+      const row = existingBySlug.get(p.slug);
+      if (!row) { await CmsPage.create(p); return; }
+      if (row.bodyHtml !== p.bodyHtml) {
+        row.bodyHtml = p.bodyHtml;
+        await row.save();
+      }
+    }));
 }
 
 async function listPublic(req, res, next) {
