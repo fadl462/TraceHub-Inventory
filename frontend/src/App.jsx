@@ -9,6 +9,7 @@ import Register from './pages/auth/Register';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
 import Landing from './pages/Landing';
+import ScanRedirect from './pages/ScanRedirect';
 import CmsPageView from './pages/CmsPageView';
 import Blog from './pages/Blog';
 import BlogPostView from './pages/BlogPostView';
@@ -63,6 +64,7 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/scan/:token" element={<ScanRedirect />} />
 
           <Route element={<ProtectedRoute roles={COMPANY_ROLES}><DashboardLayout /></ProtectedRoute>}>
             <Route path="dashboard" element={<Dashboard />} />

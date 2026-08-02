@@ -21,7 +21,13 @@ const COMPANIES = [
       { role: 'staff', firstName: 'Efua', lastName: 'Mensah', email: 'staff@demo-logistics.test' },
       { role: 'company_admin', firstName: 'Sady', lastName: 'Essel', email: 'sady@demo-logistics.test' },
     ],
-    locations: ['Accra HQ Warehouse', 'Kumasi Branch', 'Takoradi Depot'],
+    locations: [
+      // Real-world coordinates so the Locations map has something genuine to
+      // show out of the box, not placeholder pins - verified via web search.
+      { name: 'Accra HQ Warehouse', address: 'West Legon, Accra, Ghana', latitude: 5.6470, longitude: -0.1900 },
+      { name: 'Kumasi Branch', address: 'Manhyia, Kumasi, Ghana', latitude: 6.70361, longitude: -1.61583 },
+      { name: 'Takoradi Depot', address: 'Takoradi, Western Region, Ghana', latitude: 4.9016, longitude: -1.7831 },
+    ],
     assets: [
       { name: 'Dell Latitude 5420', category: 'Laptops & Computers', brand: 'Dell', model: 'Latitude 5420', color: 'Silver', price: 950, year: 2023 },
       { name: 'MacBook Pro 14"', category: 'Laptops & Computers', brand: 'Apple', model: 'MacBook Pro 14', color: 'Space Grey', price: 2200, year: 2024 },
@@ -136,8 +142,10 @@ async function seedOneCompany(spec) {
   }
 
   const locations = {};
-  for (const name of spec.locations) {
-    const [loc] = await Location.findOrCreate({ where: { companyId: company.id, name }, defaults: { companyId: company.id, name } });
+  for (const locSpec of spec.locations) {
+    const name = typeof locSpec === 'string' ? locSpec : locSpec.name;
+    const extra = typeof locSpec === 'string' ? {} : { address: locSpec.address, latitude: locSpec.latitude, longitude: locSpec.longitude };
+    const [loc] = await Location.findOrCreate({ where: { companyId: company.id, name }, defaults: { companyId: company.id, name, ...extra } });
     locations[name] = loc;
   }
   const locKeys = Object.keys(locations);

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Html5Qrcode } from 'html5-qrcode';
 import toast from 'react-hot-toast';
 import { ScanLine, MapPin, CheckCircle2, Keyboard } from 'lucide-react';
@@ -6,6 +7,7 @@ import client from '../../api/client';
 import { Card, Button, Select, Badge, statusTone } from '../../components/ui';
 
 export default function ScanPage() {
+  const [searchParams] = useSearchParams();
   const [scanning, setScanning] = useState(false);
   const [manualToken, setManualToken] = useState('');
   const [locations, setLocations] = useState([]);
@@ -16,6 +18,10 @@ export default function ScanPage() {
 
   useEffect(() => {
     client.get('/locations').then(({ data }) => setLocations(data.locations)).catch(() => {});
+    // Arrived here via a real, physically-scanned QR code (see ScanRedirect) -
+    // look the asset up immediately rather than making the person scan again.
+    const incomingToken = searchParams.get('token');
+    if (incomingToken) submitScan(incomingToken);
     return () => stopScanner();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
