@@ -67,7 +67,7 @@ export default function GlobalSearchBar() {
                   <p className="px-4 pb-1 text-[11px] font-semibold uppercase tracking-wide text-ink/40">Companies</p>
                   {results.companies.map((c) => (
                     <button key={c.id} onClick={() => goToCompany(c.id)} className="w-full flex items-center gap-2.5 px-4 py-2 text-sm hover:bg-primary-50 text-left">
-                      <Building2 size={15} className="text-primary shrink-0" />
+                      <Building2 size={15} className="text-link shrink-0" />
                       <span className="text-ink">{c.name}</span>
                       <span className="text-xs text-ink/40 ml-auto">{c.status}</span>
                     </button>

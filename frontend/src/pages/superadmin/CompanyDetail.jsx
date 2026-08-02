@@ -46,7 +46,7 @@ export default function CompanyDetail() {
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
           <h1 className="text-xl font-bold text-ink flex items-center gap-2">
-            <Building2 size={20} className="text-primary" /> {company.name}
+            <Building2 size={20} className="text-link" /> {company.name}
           </h1>
           <p className="text-sm text-ink/60 mt-0.5">{company.slug} \u00b7 {company.industry || 'No industry set'}</p>
         </div>
@@ -89,21 +89,21 @@ export default function CompanyDetail() {
       <div className="grid sm:grid-cols-3 gap-4">
         <button onClick={() => scrollTo('assets-section')} className="text-left">
           <Card className="p-5 hover:shadow-card hover:-translate-y-0.5 transition-all duration-150 cursor-pointer h-full">
-            <div className="h-10 w-10 rounded-xl bg-primary-50 text-primary flex items-center justify-center mb-3"><Boxes size={18} /></div>
+            <div className="h-10 w-10 rounded-xl bg-primary-50 text-link flex items-center justify-center mb-3"><Boxes size={18} /></div>
             <p className="text-2xl font-bold text-ink">{assetCount}</p>
             <p className="text-xs text-ink/60 mt-1">Assets tracked</p>
           </Card>
         </button>
         <button onClick={() => scrollTo('users-section')} className="text-left">
           <Card className="p-5 hover:shadow-card hover:-translate-y-0.5 transition-all duration-150 cursor-pointer h-full">
-            <div className="h-10 w-10 rounded-xl bg-primary-50 text-primary flex items-center justify-center mb-3"><Users size={18} /></div>
+            <div className="h-10 w-10 rounded-xl bg-primary-50 text-link flex items-center justify-center mb-3"><Users size={18} /></div>
             <p className="text-2xl font-bold text-ink">{userCount}</p>
             <p className="text-xs text-ink/60 mt-1">Users</p>
           </Card>
         </button>
         <button onClick={() => scrollTo('invoices-section')} className="text-left">
           <Card className="p-5 hover:shadow-card hover:-translate-y-0.5 transition-all duration-150 cursor-pointer h-full">
-            <div className="h-10 w-10 rounded-xl bg-primary-50 text-primary flex items-center justify-center mb-3"><DollarSign size={18} /></div>
+            <div className="h-10 w-10 rounded-xl bg-primary-50 text-link flex items-center justify-center mb-3"><DollarSign size={18} /></div>
             <p className="text-2xl font-bold text-ink">USD {Number(revenueTotal).toLocaleString()}</p>
             <p className="text-xs text-ink/60 mt-1">Total revenue</p>
           </Card>

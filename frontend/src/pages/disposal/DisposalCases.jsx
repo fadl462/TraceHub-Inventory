@@ -75,7 +75,7 @@ export default function DisposalCases() {
     <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-xl font-bold text-ink flex items-center gap-2"><Trash2 size={20} className="text-primary" /> Disposal cases</h1>
+          <h1 className="text-xl font-bold text-ink flex items-center gap-2"><Trash2 size={20} className="text-link" /> Disposal cases</h1>
           <p className="text-sm text-ink/60 mt-0.5">Flagged \u2192 Manager review \u2192 Finance review \u2192 Approved \u2192 Disposed.</p>
         </div>
         <Select value={filter} onChange={(e) => setFilter(e.target.value)} className="w-52">
@@ -102,7 +102,7 @@ export default function DisposalCases() {
                 <div key={c.id} className="p-5">
                   <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div>
-                      <Link to={`/assets/${c.assetId}`} className="font-medium text-ink hover:text-primary">{c.Asset?.name}</Link>
+                      <Link to={`/assets/${c.assetId}`} className="font-medium text-ink hover:text-link">{c.Asset?.name}</Link>
                       <p className="text-xs text-ink/50 font-mono">{c.Asset?.assetTag}</p>
                       {c.engineRecommendation && (
                         <p className="text-xs text-ink/50 mt-1">Engine said: <span className="font-medium">{c.engineRecommendation}</span> ({c.engineScore}% readiness)</p>

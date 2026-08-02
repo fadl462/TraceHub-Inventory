@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 
 function Stat({ icon: Icon, label, value, tone = 'primary', to }) {
   const tones = {
-    primary: 'bg-primary-50 text-primary', accent: 'bg-green-50 text-accent-dark',
+    primary: 'bg-primary-50 text-link', accent: 'bg-green-50 text-accent-dark',
     warning: 'bg-amber-50 text-amber-600', danger: 'bg-red-50 text-red-600',
   };
   const content = (
@@ -138,7 +138,7 @@ export default function Dashboard() {
           </div>
           <div>
             <p className="text-xs text-ink/50">Current estimated value (AI)</p>
-            <p className="text-xl font-bold text-primary">{company?.currency || 'USD'} {Number(overview?.totalCurrentValue || 0).toLocaleString()}</p>
+            <p className="text-xl font-bold text-link">{company?.currency || 'USD'} {Number(overview?.totalCurrentValue || 0).toLocaleString()}</p>
           </div>
         </div>
       </Card>
@@ -218,7 +218,7 @@ function IntelligenceKpiSection({ currency }) {
           </div>
           <div>
             <p className="text-xs text-ink/50">Replacement budget needed</p>
-            <p className="text-lg font-bold text-primary">{currency} {Number(data.replacementBudget).toLocaleString()}</p>
+            <p className="text-lg font-bold text-link">{currency} {Number(data.replacementBudget).toLocaleString()}</p>
           </div>
           <div>
             <p className="text-xs text-ink/50">Projected disposal cost</p>
@@ -254,7 +254,7 @@ function FleetInsightsPanel() {
 
   return (
     <Card className="p-5">
-      <h3 className="font-semibold text-ink mb-1 flex items-center gap-2"><Sparkles size={16} className="text-primary" /> AI Insights Panel</h3>
+      <h3 className="font-semibold text-ink mb-1 flex items-center gap-2"><Sparkles size={16} className="text-link" /> AI Insights Panel</h3>
       <p className="text-xs text-ink/50 mb-4">Rule-based patterns detected across your fleet \u2014 real numbers from your own asset data, not fabricated.</p>
       {insights === null ? (
         <div className="space-y-2">
@@ -334,7 +334,7 @@ function RankedList({ title, items, currency, valueKey, suffix = '' }) {
             return (
               <li key={a.id}>
                 <Link to={`/assets/${a.id}`} className="flex items-center justify-between text-sm group">
-                  <span className="text-ink/80 group-hover:text-primary transition-colors truncate pr-2">{a.name}</span>
+                  <span className="text-ink/80 group-hover:text-link transition-colors truncate pr-2">{a.name}</span>
                   <span className="font-medium text-ink shrink-0">
                     {suffix ? `${value}${suffix}` : `${currency} ${Number(value).toLocaleString()}`}
                   </span>

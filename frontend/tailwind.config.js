@@ -28,6 +28,7 @@ export default {
         },
         surface: '#F4F7FA',
         ink: 'rgb(var(--th-text) / <alpha-value>)',
+        link: 'rgb(var(--th-link) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

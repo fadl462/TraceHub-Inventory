@@ -112,7 +112,7 @@ export default function Coupons() {
                   <p className="text-xs text-ink/50">{c.name} \u2014 {previewDiscount(c)} \u00b7 used {c.timesUsed}{c.usageLimit ? `/${c.usageLimit}` : ''} times</p>
                 </div>
                 <Badge tone={c.isActive ? 'success' : 'default'}>{c.isActive ? 'Active' : 'Inactive'}</Badge>
-                <button onClick={() => setDraft({ ...c, usageLimit: c.usageLimit ?? '' })} className="text-xs font-medium text-primary shrink-0">Edit</button>
+                <button onClick={() => setDraft({ ...c, usageLimit: c.usageLimit ?? '' })} className="text-xs font-medium text-link shrink-0">Edit</button>
                 <button onClick={() => remove(c.id)} className="text-ink/40 hover:text-red-600 shrink-0"><Trash2 size={16} /></button>
               </div>
             ))}

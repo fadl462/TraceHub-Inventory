@@ -133,7 +133,7 @@ export default function AssetDetail() {
           {asset.healthScore != null && (
             <div className="rounded-lg border border-primary-100 p-4 space-y-5">
               <div className="flex items-center justify-between">
-                <p className="font-medium text-ink text-sm flex items-center gap-2"><Activity size={16} className="text-primary" /> Asset Intelligence Engine</p>
+                <p className="font-medium text-ink text-sm flex items-center gap-2"><Activity size={16} className="text-link" /> Asset Intelligence Engine</p>
                 {asset.executiveConfidence != null && (
                   <span className="text-xs text-ink/50" title={asset.confidenceDetail ? `${asset.confidenceDetail.fieldsPopulated}/${asset.confidenceDetail.fieldsTotal} fields \u00b7 ${asset.confidenceDetail.maintenanceRecordsConsidered} maintenance records${asset.confidenceDetail.marketDataAvailable ? ' \u00b7 market data available' : ''}${asset.confidenceDetail.learningLoopAdjustment ? ` \u00b7 learning loop ${asset.confidenceDetail.learningLoopAdjustment > 0 ? '+' : ''}${asset.confidenceDetail.learningLoopAdjustment}` : ''}` : undefined}>
                     {asset.executiveConfidence}% confidence

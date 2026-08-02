@@ -109,7 +109,7 @@ export default function Plans() {
                     <td className="px-5 py-3 text-ink/70">{p.userLimit === -1 ? 'Unlimited' : p.userLimit}</td>
                     <td className="px-5 py-3"><Badge tone={p.isActive ? 'success' : 'default'}>{p.isActive ? 'Active' : 'Inactive'}</Badge></td>
                     <td className="px-5 py-3 text-right space-x-3">
-                      <button onClick={() => setDraft({ ...p })} className="text-xs font-medium text-primary">Edit</button>
+                      <button onClick={() => setDraft({ ...p })} className="text-xs font-medium text-link">Edit</button>
                       {p.isActive && <button onClick={() => deactivate(p.id)} className="text-xs font-medium text-red-600">Deactivate</button>}
                     </td>
                   </tr>

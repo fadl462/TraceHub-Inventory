@@ -70,7 +70,7 @@ export default function ReportsPage() {
                         <p className="text-xs text-ink/40">{a.assetTag}</p>
                       </td>
                       <td className="py-2 text-ink/70">{Number(a.purchasePrice).toLocaleString()}</td>
-                      <td className="py-2 text-primary font-medium">{Number(a.aiEstimatedCurrentValue || 0).toLocaleString()}</td>
+                      <td className="py-2 text-link font-medium">{Number(a.aiEstimatedCurrentValue || 0).toLocaleString()}</td>
                       <td className="py-2 text-ink/70">{a.aiSuggestedDisposalDate || '—'}</td>
                     </tr>
                   ))}

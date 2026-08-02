@@ -93,7 +93,7 @@ export default function Faqs() {
                 <label className="flex items-center gap-1.5 text-xs text-ink/60 shrink-0">
                   <input type="checkbox" checked={f.isPublished} onChange={() => togglePublished(f)} /> Published
                 </label>
-                <button onClick={() => setDraft({ ...f })} className="text-xs font-medium text-primary shrink-0">Edit</button>
+                <button onClick={() => setDraft({ ...f })} className="text-xs font-medium text-link shrink-0">Edit</button>
                 <button onClick={() => remove(f.id)} className="text-ink/40 hover:text-red-600 shrink-0"><Trash2 size={16} /></button>
               </div>
             ))}

@@ -84,7 +84,7 @@ export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
             {sending && (
               <div className="flex justify-start">
                 <div className="bg-primary-50 rounded-2xl rounded-bl-sm px-3.5 py-2">
-                  <Loader2 size={15} className="animate-spin text-primary" />
+                  <Loader2 size={15} className="animate-spin text-link" />
                 </div>
               </div>
             )}
@@ -96,7 +96,7 @@ export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
                     <button
                       key={q}
                       onClick={() => send(q)}
-                      className="text-left text-xs font-medium text-primary bg-primary/10 hover:bg-primary/15 px-3 py-2 rounded-lg transition-colors"
+                      className="text-left text-xs font-medium text-link bg-primary/10 hover:bg-primary/15 px-3 py-2 rounded-lg transition-colors"
                     >
                       {q}
                     </button>

@@ -108,7 +108,7 @@ export default function Testimonials() {
                 <label className="flex items-center gap-1.5 text-xs text-ink/60 shrink-0">
                   <input type="checkbox" checked={t.isPublished} onChange={() => togglePublished(t)} /> Published
                 </label>
-                <button onClick={() => startEdit(t)} className="text-xs font-medium text-primary shrink-0">Edit</button>
+                <button onClick={() => startEdit(t)} className="text-xs font-medium text-link shrink-0">Edit</button>
                 <button onClick={() => remove(t.id)} className="text-ink/40 hover:text-red-600 shrink-0"><Trash2 size={16} /></button>
               </div>
             ))}

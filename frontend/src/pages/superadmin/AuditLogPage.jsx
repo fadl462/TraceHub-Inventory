@@ -32,7 +32,7 @@ export default function AuditLogPage() {
 
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-ink flex items-center gap-2"><Activity size={20} className="text-primary" /> Global audit log</h1>
+          <h1 className="text-xl font-bold text-ink flex items-center gap-2"><Activity size={20} className="text-link" /> Global audit log</h1>
           <p className="text-sm text-ink/60 mt-0.5">Every recorded action across all tenant companies.</p>
         </div>
         {logs.length > 0 && <Button variant="outline" onClick={exportCsv}><Download size={15} /> Export CSV</Button>}

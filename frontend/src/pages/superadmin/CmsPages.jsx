@@ -105,7 +105,7 @@ export default function CmsPages() {
                   <p className="text-xs text-ink/50">/pages/{p.slug}</p>
                 </div>
                 {!p.isPublished && <Badge tone="warning">Draft</Badge>}
-                <button onClick={() => setDraft({ ...p })} className="text-xs font-medium text-primary shrink-0">Edit</button>
+                <button onClick={() => setDraft({ ...p })} className="text-xs font-medium text-link shrink-0">Edit</button>
                 <button onClick={() => remove(p.id)} className="text-ink/40 hover:text-red-600 shrink-0"><Trash2 size={16} /></button>
               </div>
             ))}

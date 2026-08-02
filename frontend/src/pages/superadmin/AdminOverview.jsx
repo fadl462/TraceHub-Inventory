@@ -80,7 +80,7 @@ function SystemHealthStrip({ health }) {
         <Clock size={13} />
         Reminders job: {health.lastCronRunAt ? new Date(health.lastCronRunAt).toLocaleString() : 'never run yet'}
       </span>
-      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-medium bg-primary-50 text-primary">
+      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-medium bg-primary-50 text-link">
         <MailIcon size={13} /> {health.pendingReminders} reminder{health.pendingReminders === 1 ? '' : 's'} pending today
       </span>
       {health.failedPayments30d > 0 && (
@@ -148,7 +148,7 @@ export default function AdminOverview() {
           <Link key={label} to={to} aria-label={`${label}: ${value}. View details`}>
             <Card className="p-5 hover:shadow-card hover:-translate-y-0.5 transition-all duration-150 cursor-pointer h-full">
               <div className="flex items-start justify-between mb-3">
-                <div className="h-10 w-10 rounded-xl bg-primary-50 text-primary flex items-center justify-center" aria-hidden="true"><Icon size={18} /></div>
+                <div className="h-10 w-10 rounded-xl bg-primary-50 text-link flex items-center justify-center" aria-hidden="true"><Icon size={18} /></div>
                 <TrendBadge value={trend} />
               </div>
               <p className="text-2xl font-bold text-ink">{value}</p>
@@ -175,7 +175,7 @@ export default function AdminOverview() {
                 </button>
               ))}
             </div>
-            <button onClick={exportGrowthChart} aria-label="Export chart data as CSV" className="text-ink/40 hover:text-primary p-1.5 rounded-md hover:bg-primary-50 transition-colors">
+            <button onClick={exportGrowthChart} aria-label="Export chart data as CSV" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors">
               <Download size={15} />
             </button>
           </div>
@@ -231,8 +231,8 @@ export default function AdminOverview() {
               {stats.topCompanies.map((c, i) => (
                 <li key={c.id}>
                   <Link to={`/admin/companies/${c.id}`} className="flex items-center gap-3 group">
-                    <span className="w-6 h-6 rounded-full bg-primary-50 text-primary text-xs font-bold flex items-center justify-center shrink-0">{i + 1}</span>
-                    <span className="text-sm text-ink group-hover:text-primary transition-colors flex-1 truncate">{c.name}</span>
+                    <span className="w-6 h-6 rounded-full bg-primary-50 text-link text-xs font-bold flex items-center justify-center shrink-0">{i + 1}</span>
+                    <span className="text-sm text-ink group-hover:text-link transition-colors flex-1 truncate">{c.name}</span>
                     <span className="text-sm font-semibold text-ink/70">{c.assetCount}</span>
                   </Link>
                 </li>
@@ -245,9 +245,9 @@ export default function AdminOverview() {
           <div className="flex items-center justify-between mb-4">
             <p className="text-sm font-semibold text-ink flex items-center gap-1.5"><Activity size={15} /> Audit log</p>
             <div className="flex items-center gap-1">
-              <Link to="/admin/audit-log" className="text-xs font-medium text-primary hover:underline px-1">View all</Link>
+              <Link to="/admin/audit-log" className="text-xs font-medium text-link hover:underline px-1">View all</Link>
               {stats.recentAuditLog.length > 0 && (
-                <button onClick={exportAuditLog} aria-label="Export audit log as CSV" className="text-ink/40 hover:text-primary p-1 rounded-md hover:bg-primary-50 transition-colors">
+                <button onClick={exportAuditLog} aria-label="Export audit log as CSV" className="text-ink/40 hover:text-link p-1 rounded-md hover:bg-primary-50 transition-colors">
                   <Download size={14} />
                 </button>
               )}

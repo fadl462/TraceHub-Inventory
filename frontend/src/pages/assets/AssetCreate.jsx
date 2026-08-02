@@ -125,7 +125,7 @@ export default function AssetCreate() {
               onClick={() => setShowAdvanced(!showAdvanced)}
               className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-ink bg-primary-50/50 hover:bg-primary-50"
             >
-              <span className="flex items-center gap-2"><Sparkles size={15} className="text-primary" /> Asset Intelligence Engine data (optional)</span>
+              <span className="flex items-center gap-2"><Sparkles size={15} className="text-link" /> Asset Intelligence Engine data (optional)</span>
               {showAdvanced ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
             </button>
             {showAdvanced && (

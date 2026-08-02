@@ -71,7 +71,7 @@ export default function AssignmentsList() {
                 {assignments.map((a) => (
                   <tr key={a.id} className="border-b border-primary-50 last:border-0 hover:bg-primary-50/40">
                     <td className="px-5 py-3">
-                      <Link to={`/assets/${a.assetId}`} className="font-medium text-ink hover:text-primary">{a.Asset?.name}</Link>
+                      <Link to={`/assets/${a.assetId}`} className="font-medium text-ink hover:text-link">{a.Asset?.name}</Link>
                       <p className="text-xs text-ink/50 font-mono">{a.Asset?.assetTag}</p>
                     </td>
                     <td className="px-5 py-3 text-ink/80">

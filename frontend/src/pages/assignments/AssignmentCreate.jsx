@@ -59,8 +59,8 @@ export default function AssignmentCreate() {
           </Select>
 
           <div className="flex gap-2">
-            <button type="button" onClick={() => setAssigneeType('staff')} className={`flex-1 rounded-lg border px-4 py-2.5 text-sm font-medium ${assigneeType === 'staff' ? 'border-primary bg-primary-50 text-primary' : 'border-primary-100 text-ink/60'}`}>Staff member</button>
-            <button type="button" onClick={() => setAssigneeType('external')} className={`flex-1 rounded-lg border px-4 py-2.5 text-sm font-medium ${assigneeType === 'external' ? 'border-primary bg-primary-50 text-primary' : 'border-primary-100 text-ink/60'}`}>Outsider</button>
+            <button type="button" onClick={() => setAssigneeType('staff')} className={`flex-1 rounded-lg border px-4 py-2.5 text-sm font-medium ${assigneeType === 'staff' ? 'border-primary bg-primary-50 text-link' : 'border-primary-100 text-ink/60'}`}>Staff member</button>
+            <button type="button" onClick={() => setAssigneeType('external')} className={`flex-1 rounded-lg border px-4 py-2.5 text-sm font-medium ${assigneeType === 'external' ? 'border-primary bg-primary-50 text-link' : 'border-primary-100 text-ink/60'}`}>Outsider</button>
           </div>
 
           {assigneeType === 'staff' ? (

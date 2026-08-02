@@ -65,7 +65,7 @@ export default function BillingPage() {
         {plans.map((p) => (
           <Card key={p.id} className={`p-5 flex flex-col ${subscription?.planId === p.id ? 'ring-2 ring-primary' : ''}`}>
             <p className="font-semibold text-ink">{p.name}</p>
-            <p className="text-2xl font-bold text-primary mt-2">{p.currency} {Number(p.priceMonthly).toLocaleString()}<span className="text-sm font-normal text-ink/50">/mo</span></p>
+            <p className="text-2xl font-bold text-link mt-2">{p.currency} {Number(p.priceMonthly).toLocaleString()}<span className="text-sm font-normal text-ink/50">/mo</span></p>
             <p className="text-xs text-ink/50 mt-1">{p.assetLimit === -1 ? 'Unlimited assets' : `${p.assetLimit} assets`} · {p.userLimit === -1 ? 'Unlimited users' : `${p.userLimit} users`}</p>
             <ul className="mt-4 space-y-1.5 flex-1">
               {p.features.map((f) => (

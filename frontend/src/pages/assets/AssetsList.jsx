@@ -90,7 +90,7 @@ export default function AssetsList() {
                 {assets.map((a) => (
                   <tr key={a.id} className="border-b border-primary-50 last:border-0 hover:bg-primary-50/40">
                     <td className="px-5 py-3">
-                      <Link to={`/assets/${a.id}`} className="font-medium text-ink hover:text-primary">{a.name}</Link>
+                      <Link to={`/assets/${a.id}`} className="font-medium text-ink hover:text-link">{a.name}</Link>
                       <p className="text-xs text-ink/50">{a.brand} {a.model}</p>
                     </td>
                     <td className="px-5 py-3 font-mono text-xs text-ink/70">{a.assetTag}</td>

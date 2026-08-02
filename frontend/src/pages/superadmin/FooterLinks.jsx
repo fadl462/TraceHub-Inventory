@@ -92,7 +92,7 @@ export default function FooterLinks() {
                     <p className="text-sm font-medium text-ink">{l.label}</p>
                     <p className="text-xs text-ink/50 truncate">{l.url}</p>
                   </div>
-                  <button onClick={() => setDraft({ ...l })} className="text-xs font-medium text-primary shrink-0">Edit</button>
+                  <button onClick={() => setDraft({ ...l })} className="text-xs font-medium text-link shrink-0">Edit</button>
                   <button onClick={() => remove(l.id)} className="text-ink/40 hover:text-red-600 shrink-0"><Trash2 size={16} /></button>
                 </div>
               ))}

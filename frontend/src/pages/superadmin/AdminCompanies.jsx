@@ -55,7 +55,7 @@ export default function AdminCompanies() {
                 {companies.map((c) => (
                   <tr key={c.id} className="border-b border-primary-50 last:border-0">
                     <td className="px-5 py-3">
-                      <Link to={`/admin/companies/${c.id}`} className="font-medium text-ink hover:text-primary transition-colors">{c.name}</Link>
+                      <Link to={`/admin/companies/${c.id}`} className="font-medium text-ink hover:text-link transition-colors">{c.name}</Link>
                       <p className="text-xs text-ink/50">{c.slug}</p>
                     </td>
                     <td className="px-5 py-3 text-ink/70">{c.Subscriptions?.[0]?.SubscriptionPlan?.name || '—'}</td>

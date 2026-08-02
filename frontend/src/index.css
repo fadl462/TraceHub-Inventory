@@ -23,6 +23,12 @@ html, body, #root { height: 100%; }
   --th-text-muted: 107 114 128;
   --th-sidebar-bg: 10 31 58;
   --th-sidebar-text: 232 238 246;
+  /* Interactive/accent text color (icons, links, active states) that sits on
+     adaptive surfaces like bg-primary-50 - NOT used for solid button
+     backgrounds (bg-primary), which stay a fixed navy regardless of theme
+     since white text on navy has good contrast in every theme already.
+     Unchanged from the original fixed brand navy in light mode. */
+  --th-link: 26 77 143;
 }
 
 [data-theme="dark"] {
@@ -34,6 +40,7 @@ html, body, #root { height: 100%; }
   --th-text-muted: 156 166 179;
   --th-sidebar-bg: 11 14 19;
   --th-sidebar-text: 220 226 234;
+  --th-link: 92 170 255;
 }
 
 /* Built around TraceHub's own accent green (#7ED957 - the "located/found"
@@ -49,6 +56,7 @@ html, body, #root { height: 100%; }
   --th-text-muted: 150 182 160;
   --th-sidebar-bg: 10 22 16;
   --th-sidebar-text: 230 242 232;
+  --th-link: 92 170 255;
 }
 
 body {
