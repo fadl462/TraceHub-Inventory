@@ -19,6 +19,7 @@ const COMPANIES = [
       { role: 'company_admin', firstName: 'Ama', lastName: 'Boateng', email: 'admin@demo-logistics.test' },
       { role: 'manager', firstName: 'Kwesi', lastName: 'Owusu', email: 'manager@demo-logistics.test' },
       { role: 'staff', firstName: 'Efua', lastName: 'Mensah', email: 'staff@demo-logistics.test' },
+      { role: 'company_admin', firstName: 'Sady', lastName: 'Essel', email: 'sady@demo-logistics.test' },
     ],
     locations: ['Accra HQ Warehouse', 'Kumasi Branch', 'Takoradi Depot'],
     assets: [
@@ -48,6 +49,7 @@ const COMPANIES = [
       { role: 'company_admin', firstName: 'Yaw', lastName: 'Asante', email: 'admin@northline-it.test' },
       { role: 'manager', firstName: 'Abena', lastName: 'Darko', email: 'manager@northline-it.test' },
       { role: 'staff', firstName: 'Kojo', lastName: 'Appiah', email: 'staff@northline-it.test' },
+      { role: 'company_admin', firstName: 'Sady', lastName: 'Essel', email: 'sady@northline-it.test' },
     ],
     locations: ['Head Office \u2014 Airport City', 'Client Site \u2014 East Legon'],
     assets: [
@@ -74,6 +76,7 @@ const COMPANIES = [
       { role: 'company_admin', firstName: 'Nana', lastName: 'Adjei', email: 'admin@accra-field.test' },
       { role: 'manager', firstName: 'Akosua', lastName: 'Frimpong', email: 'manager@accra-field.test' },
       { role: 'staff', firstName: 'Kwame', lastName: 'Nkrumah-Boateng', email: 'staff@accra-field.test' },
+      { role: 'company_admin', firstName: 'Sady', lastName: 'Essel', email: 'sady@accra-field.test' },
     ],
     locations: ['Tema Equipment Yard', 'Spintex Workshop'],
     assets: [
@@ -116,7 +119,7 @@ async function seedOneCompany(spec) {
       where: { email: r.email },
       defaults: { companyId: company.id, firstName: r.firstName, lastName: r.lastName, role: r.role, passwordHash, isEmailVerified: true },
     });
-    users[r.role] = user;
+    users[r.role] = users[r.role] || user; // first user per role stays "primary" for assignedBy/audit-log references below
     console.log(`  ${r.role}: ${r.email} / ${DEMO_PASSWORD}`);
   }
 
