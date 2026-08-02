@@ -72,6 +72,7 @@ export function statusTone(status) {
     disposed: 'default', lost: 'danger', reserved: 'warning',
     active: 'success', returned: 'default', overdue: 'danger', cancelled: 'default',
     trialing: 'info', trial: 'info', past_due: 'warning', expired: 'danger', suspended: 'danger', cancelled_sub: 'default',
+    open: 'info', planned: 'warning', in_progress: 'warning', completed: 'success', declined: 'danger',
   };
   return map[status] || 'default';
 }

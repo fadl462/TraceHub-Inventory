@@ -39,6 +39,7 @@ const AssignmentCreate = lazy(() => import('./pages/assignments/AssignmentCreate
 const LocationsPage = lazy(() => import('./pages/locations/LocationsPage'));
 const ReportsPage = lazy(() => import('./pages/reports/ReportsPage'));
 const TeamPage = lazy(() => import('./pages/TeamPage'));
+const FeatureRequestsPage = lazy(() => import('./pages/FeatureRequestsPage'));
 const BillingPage = lazy(() => import('./pages/settings/BillingPage'));
 const SettingsPage = lazy(() => import('./pages/settings/SettingsPage'));
 
@@ -115,6 +116,7 @@ export default function App() {
             <Route path="locations" element={<LocationsPage />} />
             <Route path="reports" element={<ReportsPage />} />
             <Route path="team" element={<TeamPage />} />
+            <Route path="feature-requests" element={<FeatureRequestsPage />} />
             <Route path="billing" element={<BillingPage />} />
             <Route path="settings" element={<SettingsPage />} />
           </Route>

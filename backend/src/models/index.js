@@ -28,6 +28,8 @@ const PlatformSettings = require('./platformSettings')(sequelize, DataTypes);
 const NewsletterSubscriber = require('./newsletterSubscriber')(sequelize, DataTypes);
 const BlogPost = require('./blogPost')(sequelize, DataTypes);
 const DocArticle = require('./docArticle')(sequelize, DataTypes);
+const FeatureRequest = require('./featureRequest')(sequelize, DataTypes);
+const FeatureRequestVote = require('./featureRequestVote')(sequelize, DataTypes);
 const BlogComment = require('./blogComment')(sequelize, DataTypes);
 const DisposalCase = require('./disposalCase')(sequelize, DataTypes);
 
@@ -133,6 +135,12 @@ PasswordReset.belongsTo(User, { foreignKey: 'userId' });
 BlogPost.hasMany(BlogComment, { foreignKey: 'blogPostId', onDelete: 'CASCADE' });
 BlogComment.belongsTo(BlogPost, { foreignKey: 'blogPostId' });
 
+// FeatureRequest <-> FeatureRequestVote, and attribution to the requesting user/company
+FeatureRequest.hasMany(FeatureRequestVote, { foreignKey: 'featureRequestId', onDelete: 'CASCADE' });
+FeatureRequestVote.belongsTo(FeatureRequest, { foreignKey: 'featureRequestId' });
+User.hasMany(FeatureRequest, { foreignKey: 'createdByUserId' });
+FeatureRequest.belongsTo(User, { foreignKey: 'createdByUserId', as: 'createdBy' });
+
 module.exports = {
   sequelize,
   Company,
@@ -163,5 +171,7 @@ module.exports = {
   BlogPost,
   BlogComment,
   DocArticle,
+  FeatureRequest,
+  FeatureRequestVote,
   DisposalCase,
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { NavLink, Link, Outlet, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, Boxes, Users, MapPin, ClipboardList, BarChart3,
-  Settings, Bell, LogOut, Menu, X, ScanLine, CreditCard, Trash2,
+  Settings, Bell, LogOut, Menu, X, ScanLine, CreditCard, Trash2, Lightbulb,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import client from '../api/client';
@@ -21,6 +21,7 @@ const NAV_ITEMS = [
   { to: '/locations', label: 'Locations', icon: MapPin, roles: ['company_admin', 'manager'] },
   { to: '/reports', label: 'Reports', icon: BarChart3, roles: ['company_admin', 'manager'] },
   { to: '/team', label: 'Team', icon: Users, roles: ['company_admin', 'manager'] },
+  { to: '/feature-requests', label: 'Feature Requests', icon: Lightbulb, roles: ['company_admin', 'manager', 'staff'] },
   { to: '/billing', label: 'Billing', icon: CreditCard, roles: ['company_admin'] },
   { to: '/settings', label: 'Settings', icon: Settings, roles: ['company_admin', 'manager', 'staff'] },
 ];
