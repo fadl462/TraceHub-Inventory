@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+Allow: /blog
+Allow: /pages/
+Disallow: /dashboard
+Disallow: /assets
+Disallow: /assignments
+Disallow: /disposal-cases
+Disallow: /locations
+Disallow: /reports
+Disallow: /team
+Disallow: /billing
+Disallow: /settings
+Disallow: /scan
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+
+Sitemap: https://tracehubinventory.com/sitemap.xml

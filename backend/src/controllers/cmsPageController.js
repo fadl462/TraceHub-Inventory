@@ -6,11 +6,11 @@ function slugify(str) {
   return String(str).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
-// The legal pages we explicitly rewrote with real content - synced to an
-// already-seeded database too, not just fresh installs. Deliberately scoped
-// to just these slugs (not every default CMS page) so a Super Admin's own
-// edits to other pages (e.g. Documentation) are never silently overwritten.
-const MANAGED_LEGAL_SLUGS = ['privacy-policy', 'terms-of-service', 'cookie-policy'];
+// Pages we explicitly rewrote with real content - synced to an already-seeded
+// database too, not just fresh installs. Deliberately scoped to just these
+// slugs (not every default CMS page) so a Super Admin's own edits to other
+// pages are never silently overwritten.
+const MANAGED_LEGAL_SLUGS = ['privacy-policy', 'terms-of-service', 'cookie-policy', 'documentation'];
 
 async function ensureSeeded() {
   const count = await CmsPage.count();

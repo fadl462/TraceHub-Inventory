@@ -1,53 +1,66 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import { Spinner } from './components/ui';
 
-import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
-import ForgotPassword from './pages/auth/ForgotPassword';
-import ResetPassword from './pages/auth/ResetPassword';
-import Landing from './pages/Landing';
-import ScanRedirect from './pages/ScanRedirect';
-import CmsPageView from './pages/CmsPageView';
-import Blog from './pages/Blog';
-import BlogPostView from './pages/BlogPostView';
+// Route-level code splitting: previously every page (including the public
+// marketing homepage) was bundled into one ~2.3MB chunk that also pulled in
+// jsPDF, PptxGenJS, Leaflet, and html2canvas - libraries only the
+// authenticated app actually uses. An anonymous visitor to the homepage
+// was paying that entire download before seeing anything. Each import()
+// below becomes its own chunk, loaded only when its route is actually
+// visited.
+const Login = lazy(() => import('./pages/auth/Login'));
+const Register = lazy(() => import('./pages/auth/Register'));
+const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/auth/ResetPassword'));
+const Landing = lazy(() => import('./pages/Landing'));
+const ScanRedirect = lazy(() => import('./pages/ScanRedirect'));
+const CmsPageView = lazy(() => import('./pages/CmsPageView'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPostView = lazy(() => import('./pages/BlogPostView'));
 
-import DashboardLayout from './layouts/DashboardLayout';
-import Dashboard from './pages/Dashboard';
-import AssetsList from './pages/assets/AssetsList';
-import AssetCreate from './pages/assets/AssetCreate';
-import AssetDetail from './pages/assets/AssetDetail';
-import ScanPage from './pages/assets/ScanPage';
-import AssignmentsList from './pages/assignments/AssignmentsList';
-import DisposalCases from './pages/disposal/DisposalCases';
-import AssignmentCreate from './pages/assignments/AssignmentCreate';
-import LocationsPage from './pages/locations/LocationsPage';
-import ReportsPage from './pages/reports/ReportsPage';
-import TeamPage from './pages/TeamPage';
-import BillingPage from './pages/settings/BillingPage';
-import SettingsPage from './pages/settings/SettingsPage';
+const DashboardLayout = lazy(() => import('./layouts/DashboardLayout'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const AssetsList = lazy(() => import('./pages/assets/AssetsList'));
+const AssetCreate = lazy(() => import('./pages/assets/AssetCreate'));
+const AssetDetail = lazy(() => import('./pages/assets/AssetDetail'));
+const ScanPage = lazy(() => import('./pages/assets/ScanPage'));
+const AssignmentsList = lazy(() => import('./pages/assignments/AssignmentsList'));
+const DisposalCases = lazy(() => import('./pages/disposal/DisposalCases'));
+const AssignmentCreate = lazy(() => import('./pages/assignments/AssignmentCreate'));
+const LocationsPage = lazy(() => import('./pages/locations/LocationsPage'));
+const ReportsPage = lazy(() => import('./pages/reports/ReportsPage'));
+const TeamPage = lazy(() => import('./pages/TeamPage'));
+const BillingPage = lazy(() => import('./pages/settings/BillingPage'));
+const SettingsPage = lazy(() => import('./pages/settings/SettingsPage'));
 
-import SuperAdminLayout from './layouts/SuperAdminLayout';
-import AdminOverview from './pages/superadmin/AdminOverview';
-import AdminCompanies from './pages/superadmin/AdminCompanies';
-import CompanyDetail from './pages/superadmin/CompanyDetail';
-import AuditLogPage from './pages/superadmin/AuditLogPage';
-import ContentEditor from './pages/superadmin/ContentEditor';
-import Testimonials from './pages/superadmin/Testimonials';
-import Faqs from './pages/superadmin/Faqs';
-import FooterLinks from './pages/superadmin/FooterLinks';
-import CmsPages from './pages/superadmin/CmsPages';
-import BlogPosts from './pages/superadmin/BlogPosts';
-import Plans from './pages/superadmin/Plans';
-import Coupons from './pages/superadmin/Coupons';
-import Branding from './pages/superadmin/Branding';
-import Security from './pages/superadmin/Security';
-import EmailSettings from './pages/superadmin/EmailSettings';
-import PaymentSettings from './pages/superadmin/PaymentSettings';
+const SuperAdminLayout = lazy(() => import('./layouts/SuperAdminLayout'));
+const AdminOverview = lazy(() => import('./pages/superadmin/AdminOverview'));
+const AdminCompanies = lazy(() => import('./pages/superadmin/AdminCompanies'));
+const CompanyDetail = lazy(() => import('./pages/superadmin/CompanyDetail'));
+const AuditLogPage = lazy(() => import('./pages/superadmin/AuditLogPage'));
+const ContentEditor = lazy(() => import('./pages/superadmin/ContentEditor'));
+const Testimonials = lazy(() => import('./pages/superadmin/Testimonials'));
+const Faqs = lazy(() => import('./pages/superadmin/Faqs'));
+const FooterLinks = lazy(() => import('./pages/superadmin/FooterLinks'));
+const CmsPages = lazy(() => import('./pages/superadmin/CmsPages'));
+const BlogPosts = lazy(() => import('./pages/superadmin/BlogPosts'));
+const Plans = lazy(() => import('./pages/superadmin/Plans'));
+const Coupons = lazy(() => import('./pages/superadmin/Coupons'));
+const Branding = lazy(() => import('./pages/superadmin/Branding'));
+const Security = lazy(() => import('./pages/superadmin/Security'));
+const EmailSettings = lazy(() => import('./pages/superadmin/EmailSettings'));
+const PaymentSettings = lazy(() => import('./pages/superadmin/PaymentSettings'));
 
 const COMPANY_ROLES = ['company_admin', 'manager', 'staff'];
+
+function RouteFallback() {
+  return <div className="min-h-screen flex items-center justify-center"><Spinner size={32} /></div>;
+}
 
 export default function App() {
   return (
@@ -55,6 +68,7 @@ export default function App() {
       <ThemeProvider>
       <AuthProvider>
         <Toaster position="top-right" toastOptions={{ style: { fontSize: '14px' } }} />
+        <Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/pages/:slug" element={<CmsPageView />} />
@@ -103,6 +117,7 @@ export default function App() {
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        </Suspense>
       </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>

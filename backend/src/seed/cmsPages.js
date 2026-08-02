@@ -299,16 +299,108 @@ module.exports = [
     showInFooter: true,
     isPublished: true,
     bodyHtml: `
-      <p>Full documentation is coming soon. In the meantime, here's a quick orientation:</p>
-      <h3>Getting started</h3>
-      <p>Register a workspace, then add your first asset from the Assets page \u2014 entering a
-      purchase price automatically triggers the depreciation estimate.</p>
-      <h3>Tracking locations</h3>
-      <p>Create checkpoints under Locations, then use the Scan page to check assets in or out
-      with your phone's camera.</p>
-      <h3>Need help?</h3>
-      <p>Use the AI assistant (the chat bubble in the corner) for instant answers, or contact
-      your workspace administrator.</p>
+      <p>A practical walkthrough of TraceHub Inventory, organized by what you're trying to do
+      rather than by feature list. If something here doesn't match what you're seeing, use the AI
+      assistant (the chat bubble in the corner) \u2014 it's grounded in this same content plus your
+      live workspace data.</p>
+
+      <div class="th-legal-section">
+        <h3><span class="th-legal-badge">1</span> Getting started</h3>
+        <p>Create a workspace from the "Get started free" button \u2014 you'll be the first Company
+        Admin. From there, add your first asset from the <strong>Assets</strong> page. Entering a
+        purchase price automatically triggers a depreciation estimate using your asset category's
+        useful-life and scrap-value profile; you don't need a separate spreadsheet.</p>
+        <div class="th-legal-callout"><strong>Tip:</strong> open the collapsible "Asset
+        Intelligence Engine data" section on the Add Asset form to feed in maintenance history,
+        usage intensity, and environmental conditions \u2014 the more of these you fill in, the more
+        confident the AI's health and disposal recommendations become.</p></div>
+      </div>
+
+      <div class="th-legal-section">
+        <h3><span class="th-legal-badge">2</span> Tracking where assets actually are</h3>
+        <p>Create checkpoints (a warehouse, a branch, a job site) under <strong>Locations</strong>.
+        Every asset gets a unique QR code the moment it's registered \u2014 print or display it, and
+        any team member can scan it with their phone camera from the <strong>Scan</strong> page (or
+        by scanning the physical tag directly with their normal camera app) to check it in or out
+        of a checkpoint.</p>
+        <p>Worth knowing: TraceHub tracks location by <em>checkpoint scan</em>, not continuous GPS.
+        An asset's "current location" is wherever it was last scanned into \u2014 it won't update
+        again until the next scan.</p>
+      </div>
+
+      <div class="th-legal-section">
+        <h3><span class="th-legal-badge">3</span> Assigning equipment to people</h3>
+        <p>Use <strong>Assignments</strong> to hand equipment to a staff member or an outside
+        contact. Set an expected return date and TraceHub handles the rest: a reminder email three
+        days before it's due, another on the due date, and then a daily overdue alert to both the
+        borrower and every Company Admin for as long as it stays out \u2014 with real day-counts, not
+        vague nagging.</p>
+      </div>
+
+      <div class="th-legal-section">
+        <h3><span class="th-legal-badge">4</span> Understanding the AI Intelligence Engine</h3>
+        <p>Every asset is continuously scored across six real, deterministic engines \u2014 not a
+        black box:</p>
+        <ul>
+          <li><strong>Depreciation</strong> \u2014 nine methods including straight line, declining
+          balance, units of production, and a custom formula you define yourself.</li>
+          <li><strong>Health Score (0-100)</strong> \u2014 weighted across age, maintenance,
+          repairs, usage, inspection, and environment.</li>
+          <li><strong>Failure Risk</strong> \u2014 probability of failure at 30/60/90/180 days.</li>
+          <li><strong>Maintenance Scheduling</strong> \u2014 a real predicted next-service date, not
+          a generic annual reminder.</li>
+          <li><strong>Disposal Readiness</strong> \u2014 a KEEP/REPAIR/SELL/SCRAP/REPLACE
+          recommendation with a plain-language executive summary.</li>
+          <li><strong>AI Learning Loop</strong> \u2014 tracks whether ignoring a disposal
+          recommendation was later followed by a real failure, and feeds that back into future
+          confidence scores for your company specifically.</li>
+        </ul>
+        <p>You can see the full breakdown \u2014 not just the final number \u2014 on any asset's
+        detail page.</p>
+      </div>
+
+      <div class="th-legal-section">
+        <h3><span class="th-legal-badge">5</span> When an asset's time is up</h3>
+        <p><strong>Disposal cases</strong> follow a real six-stage workflow: Flagged \u2192 Manager
+        review \u2192 Finance review \u2192 Approved \u2192 Auction/Sale/Donation/Scrap/Recycle \u2192
+        Disposed, with role-based approval gates and a full audit trail at every step. You can flag
+        an asset directly from its detail page whenever the engine recommends it.</p>
+      </div>
+
+      <div class="th-legal-section">
+        <h3><span class="th-legal-badge">6</span> Team, roles, and security</h3>
+        <p>Invite teammates from <strong>Team</strong> as Manager or Staff. New team members log in
+        with a system-generated temporary password and are required to set their own password
+        before they can access anything else \u2014 with an option to enable two-factor
+        authentication right there during that first login. You (and they) can turn 2FA on or off
+        later from <strong>Settings</strong>.</p>
+        <table style="width:100%;border-collapse:collapse;margin-top:0.75rem;font-size:0.88rem;">
+          <thead><tr style="text-align:left;border-bottom:1px solid #E2E8F0;">
+            <th style="padding:0.4rem 0.5rem;">Role</th><th style="padding:0.4rem 0.5rem;">Can do</th>
+          </tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #EDF2F7;"><td style="padding:0.4rem 0.5rem;"><strong>Company Admin</strong></td><td style="padding:0.4rem 0.5rem;">Everything, including billing, team management, and disposal approvals.</td></tr>
+            <tr style="border-bottom:1px solid #EDF2F7;"><td style="padding:0.4rem 0.5rem;"><strong>Manager</strong></td><td style="padding:0.4rem 0.5rem;">Assets, assignments, disposal workflow, reports \u2014 no billing or team management.</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem;"><strong>Staff</strong></td><td style="padding:0.4rem 0.5rem;">Register and scan assets, view assignments \u2014 day-to-day operational access.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="th-legal-section">
+        <h3><span class="th-legal-badge">7</span> Reports and exporting for leadership</h3>
+        <p>The <strong>Reports</strong> page covers category breakdowns, depreciation, and
+        location activity, with CSV, PDF, and PowerPoint export on each. The Dashboard's "Assets
+        currently assigned" panel and AI Insights Panel export the same way \u2014 the PowerPoint
+        option builds an actual presentation deck (title slide + formatted tables), ready to hand
+        to management without reformatting anything.</p>
+      </div>
+
+      <div class="th-legal-section">
+        <h3><span class="th-legal-badge">8</span> Need help?</h3>
+        <p>Use the AI assistant (the chat bubble, bottom-right, on both the public site and inside
+        your workspace) for instant answers grounded in your live data, or contact your
+        workspace's Company Admin.</p>
+      </div>
     `,
   },
 ];
