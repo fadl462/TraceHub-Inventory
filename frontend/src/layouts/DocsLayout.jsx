@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 import {
   Search, ChevronDown, ChevronUp, Menu, X, Rocket, Boxes, Sparkles, ScanLine,
-  ClipboardList, Trash2, ShieldCheck, BarChart3, CreditCard, Settings, LifeBuoy, BookOpen,
+  ClipboardList, Trash2, ShieldCheck, BarChart3, CreditCard, Settings, LifeBuoy, BookOpen, Home,
 } from 'lucide-react';
 import client from '../api/client';
 import TraceHubMark from '../components/TraceHubMark';
@@ -73,6 +73,12 @@ export default function DocsLayout() {
 
   const sidebarContent = (
     <>
+      <Link
+        to="/docs" onClick={() => setMobileNavOpen(false)}
+        className="flex items-center gap-2.5 py-2 mb-3 text-sm font-semibold text-white hover:text-secondary transition-colors"
+      >
+        <Home size={16} className="text-secondary" /> Documentation Home
+      </Link>
       <div className="relative mb-5">
         <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
         <input
@@ -148,7 +154,7 @@ export default function DocsLayout() {
             <TraceHubMark size={30} withWordmark tone="white" />
           </Link>
           <span className="hidden sm:inline text-white/30 text-sm">|</span>
-          <span className="hidden sm:inline text-white/60 text-sm font-medium">Documentation</span>
+          <Link to="/docs" className="hidden sm:inline text-white/60 hover:text-white text-sm font-medium transition-colors">Documentation</Link>
           <div className="ml-auto flex items-center gap-3">
             {user ? (
               <Link to={user.role === 'super_admin' ? '/admin' : '/dashboard'}>

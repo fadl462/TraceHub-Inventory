@@ -55,7 +55,11 @@ export default function DocArticleView() {
   return (
     <div className="px-6 sm:px-10 py-10 flex gap-10 max-w-6xl">
       <div className="min-w-0 flex-1 max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-secondary-dark mb-2">{article.category}</p>
+        <nav className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest mb-3">
+          <Link to="/docs" className="text-ink/40 hover:text-primary transition-colors">Documentation</Link>
+          <span className="text-ink/25">/</span>
+          <span className="text-secondary-dark">{article.category}</span>
+        </nav>
         <h1 className="font-display text-3xl font-bold text-ink tracking-tight mb-6">{article.title}</h1>
         {/* eslint-disable-next-line react/no-danger */}
         <div ref={contentRef} className="prose max-w-none" dangerouslySetInnerHTML={{ __html: article.bodyHtml }} />
