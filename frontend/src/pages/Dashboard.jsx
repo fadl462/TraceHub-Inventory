@@ -150,10 +150,34 @@ export default function Dashboard() {
 
 function IntelligenceKpiSection({ currency }) {
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    client.get('/reports/intelligence-overview').then(({ data }) => setData(data)).catch(() => {});
+    client.get('/reports/intelligence-overview')
+      .then(({ data }) => setData(data))
+      .catch((err) => setError(err?.response?.data?.message || err?.message || 'Failed to load intelligence data'))
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={i} className="rounded-xl p-4 bg-primary-50/50 h-[68px] animate-pulse" />
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card className="p-5 border border-red-200">
+        <p className="text-sm text-red-600 font-medium">Couldn't load Intelligence KPIs</p>
+        <p className="text-xs text-ink/50 mt-1">{error}</p>
+      </Card>
+    );
+  }
 
   if (!data) return null;
 
