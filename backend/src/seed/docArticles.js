@@ -1299,22 +1299,67 @@ const glossary = [
     title: 'Glossary of terms',
     slug: 'glossary-of-terms',
     category: 'Reference', categorySortOrder: 11, sortOrder: 0,
-    excerpt: 'Every TraceHub-specific term in one place.',
+    excerpt: 'Every TraceHub-specific term in one place \u2014 updated as the platform grows.',
     bodyHtml: `
+      <div class="th-legal-callout">This glossary is kept accurate as of the current build, not
+      frozen at launch \u2014 as new features and terms are added to TraceHub, this page is updated
+      alongside them.</div>
+
+      <h3 style="margin-top:1.5rem;">Scores &amp; engines</h3>
       <dl>
         <dt><strong>Health Score</strong></dt><dd>0-100 weighted composite of age, maintenance, repairs, usage, inspection, and environment. See <a href="/docs/asset-health-score">Asset Health Score</a>.</dd>
-        <dt><strong>Risk Score</strong></dt><dd>0-100 overall risk index behind the four failure-probability horizons.</dd>
+        <dt><strong>Health tiers</strong></dt><dd>The five bands a Health Score falls into: Excellent (90-100), Healthy (75-89), Needs Attention (60-74), High Risk (40-59), Critical (below 40).</dd>
+        <dt><strong>Risk Score</strong></dt><dd>0-100 overall risk index behind the four failure-probability horizons (30/60/90/180 days).</dd>
         <dt><strong>Disposal Readiness Score</strong></dt><dd>0-100 score behind the KEEP/REPAIR/SELL/SCRAP/REPLACE recommendation.</dd>
         <dt><strong>AI Confidence Score</strong></dt><dd>How much real evidence backs a given asset's scores \u2014 fields populated, maintenance records, inspection data, market value.</dd>
         <dt><strong>AI Learning Loop</strong></dt><dd>Tracks whether ignoring a disposal recommendation was later followed by a real failure, feeding a bounded adjustment back into future confidence.</dd>
-        <dt><strong>Portfolio Health</strong></dt><dd>Fleet-wide weighted average across health tiers, shown on the Fleet Intelligence panel.</dd>
-        <dt><strong>Capital Risk</strong></dt><dd>% of total fleet <em>value</em> sitting in High Risk/Critical health-tier assets.</dd>
+        <dt><strong>AI Insights Panel</strong></dt><dd>Five rule-based pattern detectors on the Dashboard \u2014 see <a href="/docs/ai-insights-panel-detectors-explained">the full breakdown</a>.</dd>
+        <dt><strong>Maintenance Scheduling Engine / Next Service Date</strong></dt><dd>A real predicted date an asset is next due for service, based on usage intensity and current health.</dd>
+        <dt><strong>Custom Formula</strong></dt><dd>A user-written depreciation formula using a safe, restricted arithmetic parser \u2014 no code execution.</dd>
+      </dl>
+
+      <h3>Portfolio-level (Fleet Intelligence panel)</h3>
+      <dl>
+        <dt><strong>Portfolio Health</strong></dt><dd>Fleet-wide weighted average across health tiers.</dd>
+        <dt><strong>Capital Risk</strong></dt><dd>% of total fleet <em>value</em> (not asset count) sitting in High Risk/Critical health-tier assets.</dd>
+        <dt><strong>Asset Availability</strong></dt><dd>% of your fleet currently in "Available" status.</dd>
         <dt><strong>Fleet Grade</strong></dt><dd>A-F composite letter grade from Portfolio Health, Asset Availability, and Capital Risk.</dd>
         <dt><strong>Executive Heat Map</strong></dt><dd>Clickable health-tier breakdown on the Dashboard, linking to a filtered Assets list.</dd>
-        <dt><strong>Checkpoint</strong></dt><dd>A Location \u2014 a warehouse, branch, or site \u2014 that assets get scanned into and out of.</dd>
-        <dt><strong>Disposal case</strong></dt><dd>A formal six-stage record tracking an asset from Flagged through Disposed.</dd>
-        <dt><strong>Company Admin / Manager / Staff</strong></dt><dd>The three roles \u2014 see <a href="/docs/roles-and-permissions">Roles and permissions</a>.</dd>
+        <dt><strong>Projected Savings</strong></dt><dd>Real maintenance/repair spend so far on assets already recommended for replacement, scrap, or sale.</dd>
       </dl>
+
+      <h3>Asset status</h3>
+      <dl>
+        <dt><strong>Available / Assigned / In maintenance / Reserved / Disposed / Lost</strong></dt>
+        <dd>The six possible statuses an asset can have \u2014 see <a href="/docs/understanding-asset-status">Understanding asset status</a>.</dd>
+        <dt><strong>Idle asset</strong></dt><dd>An asset in "Available" status that has logged 200+ idle hours \u2014 a candidate for reassignment or sale.</dd>
+      </dl>
+
+      <h3>Tracking &amp; workflow</h3>
+      <dl>
+        <dt><strong>Checkpoint</strong></dt><dd>A Location \u2014 a warehouse, branch, or site \u2014 that assets get scanned into and out of.</dd>
+        <dt><strong>Disposal case</strong></dt><dd>A formal record tracking an asset through the six-stage disposal workflow.</dd>
+        <dt><strong>Disposal stages</strong></dt><dd>Flagged \u2192 Manager review \u2192 Finance review \u2192 Approved \u2192 (Auction/Sale/Donation/Scrap/Recycle) \u2192 Disposed. A case can also be Rejected at any stage.</dd>
+        <dt><strong>Assignment status</strong></dt><dd>Active, Overdue, Returned, or Cancelled.</dd>
+        <dt><strong>Hire fee</strong></dt><dd>An optional charge tracked on an assignment when equipment is rented out, with a Paid/Unpaid toggle.</dd>
+        <dt><strong>Audit log</strong></dt><dd>A real, timestamped record of every meaningful action in your workspace.</dd>
+      </dl>
+
+      <h3>Roles &amp; security</h3>
+      <dl>
+        <dt><strong>Company Admin / Manager / Staff</strong></dt><dd>The three roles \u2014 see <a href="/docs/roles-and-permissions">Roles and permissions</a>.</dd>
+        <dt><strong>Two-factor authentication (2FA)</strong></dt><dd>An optional extra login step via any authenticator app.</dd>
+        <dt><strong>Pending first login</strong></dt><dd>A team-member status shown until they complete the mandatory temporary-password setup.</dd>
+      </dl>
+
+      <h3>Billing</h3>
+      <dl>
+        <dt><strong>Trial / Basic / Pro / Enterprise</strong></dt><dd>The subscription tiers, each with its own asset and user limits.</dd>
+        <dt><strong>Subscription status</strong></dt><dd>Trialing, Active, Past due, Cancelled, or Expired.</dd>
+        <dt><strong>Coupon</strong></dt><dd>A discount code (percentage or fixed amount) a Super Admin can create for new sign-ups.</dd>
+      </dl>
+
+      <p style="margin-top:1.5rem;font-size:0.85rem;color:#6B7280;">Missing a term you'd expect to see here? Ask the AI Assistant, or let your workspace's Company Admin know so it can be added.</p>
     `,
   },
 ];

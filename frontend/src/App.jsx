@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import { Spinner } from './components/ui';
+import { useScrollToTop } from './hooks/useScrollToTop';
 
 // Route-level code splitting: previously every page (including the public
 // marketing homepage) was bundled into one ~2.3MB chunk that also pulled in
@@ -65,9 +66,24 @@ function RouteFallback() {
   return <div className="min-h-screen flex items-center justify-center"><Spinner size={32} /></div>;
 }
 
+/**
+ * React Router doesn't reset scroll position on navigation by default - a
+ * link clicked from partway down a page (e.g. "Try TraceHub today" near the
+ * bottom of the docs homepage) would otherwise land on the new page already
+ * scrolled to that same pixel offset, appearing to open "in the middle."
+ * Rather than adding a manual window.scrollTo(0,0) to every individual page
+ * (easy to miss on new pages), this applies the fix once, globally, for
+ * every route change across the whole app.
+ */
+function GlobalScrollReset() {
+  useScrollToTop();
+  return null;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
+      <GlobalScrollReset />
       <ThemeProvider>
       <AuthProvider>
         <Toaster position="top-right" toastOptions={{ style: { fontSize: '14px' } }} />
