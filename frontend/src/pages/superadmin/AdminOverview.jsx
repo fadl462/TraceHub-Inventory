@@ -56,7 +56,7 @@ function WelcomeInsightBanner() {
           <Sparkles size={20} />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold text-primary-100/80">{greeting}, {user?.firstName}</p>
+          <p className="text-sm font-semibold text-white/70">{greeting}, {user?.firstName}</p>
           {loading ? (
             <div className="h-6 w-3/4 bg-white/10 rounded animate-pulse mt-2" role="status" aria-label="Loading insight" />
           ) : (

@@ -48,7 +48,7 @@ function WelcomeInsightBanner({ overview }) {
           <Sparkles size={20} />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold text-primary-100/80">{greeting}, {user?.firstName} \u2014 here's what's happening with {company?.name}</p>
+          <p className="text-sm font-semibold text-white/70">{greeting}, {user?.firstName} \u2014 here's what's happening with {company?.name}</p>
           {loading ? (
             <div className="h-6 w-3/4 bg-white/10 rounded animate-pulse mt-2" />
           ) : (
@@ -191,7 +191,7 @@ function IntelligenceKpiSection({ currency }) {
   ];
   const chipTones = {
     accent: 'bg-green-50 text-accent-dark', danger: 'bg-red-50 text-red-600',
-    warning: 'bg-amber-50 text-amber-600', primary: 'bg-primary-50 text-primary',
+    warning: 'bg-amber-50 text-amber-600', primary: 'bg-primary-50 text-ink',
   };
 
   return (
