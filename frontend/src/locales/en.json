@@ -102,5 +102,81 @@
     "locationActivity": "Location activity",
     "purchased": "Purchased",
     "disposalDate": "Disposal date"
+  },
+  "assignments": {
+    "title": "Assignments",
+    "subtitle": "Track who has which asset, when it's due back, and whether hire fees are paid.",
+    "newAssignment": "New assignment",
+    "searchPlaceholder": "Search by asset or assignee...",
+    "allStatuses": "All statuses",
+    "active": "Active",
+    "overdue": "Overdue",
+    "returned": "Returned",
+    "cancelled": "Cancelled",
+    "assignedTo": "Assigned to",
+    "issued": "Issued",
+    "returnDate": "Return date",
+    "daysHeld": "Days held",
+    "hireFee": "Hire fee",
+    "markReturned": "Mark returned"
+  },
+  "disposal": {
+    "title": "Disposal cases",
+    "subtitle": "Flagged → Manager review → Finance review → Approved → Disposed.",
+    "allStages": "All stages"
+  },
+  "locations": {
+    "title": "Locations",
+    "subtitle": "Define checkpoints (warehouses, branches, sites) staff can scan assets into.",
+    "addLocation": "Add location",
+    "locationName": "Location name *",
+    "address": "Address",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "noLocationsYet": "No locations yet",
+    "noLocationsDesc": "Add warehouses or branches so staff can check assets in/out by scanning."
+  },
+  "team": {
+    "title": "Team",
+    "addTeamMember": "Add team member",
+    "lastLogin": "Last login",
+    "twoFaOn": "2FA on",
+    "twoFaOff": "2FA off"
+  },
+  "billing": {
+    "title": "Billing & subscription"
+  },
+  "settingsPage": {
+    "title": "Settings",
+    "saveChanges": "Save changes",
+    "companyProfile": "Company profile",
+    "companyNameLabel": "Company name",
+    "industry": "Industry",
+    "currency": "Currency",
+    "customAssetFields": "Custom asset fields",
+    "changePassword": "Change password",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "updatePassword": "Update password",
+    "twoFactorAuth": "Two-factor authentication",
+    "disable2fa": "Disable 2FA",
+    "verifyAndEnable": "Verify & enable",
+    "confirmPasswordToDisable": "Confirm your password to disable"
+  },
+  "assetDetail": {
+    "condition": "Condition"
+  },
+  "assetCreate": {
+    "title": "Register a new asset",
+    "registering": "Registering...",
+    "registerAsset": "Register asset"
+  },
+  "scan": {
+    "title": "Scan asset"
+  },
+  "featureRequests": {
+    "title": "Feature Requests",
+    "suggestIdea": "Suggest an idea",
+    "allStatuses": "All statuses"
   }
 }

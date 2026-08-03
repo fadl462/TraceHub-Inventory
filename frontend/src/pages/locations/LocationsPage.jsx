@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 import { Plus, MapPin, Trash2, Pencil } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 'react-leaflet';
 import L from 'leaflet';
@@ -36,6 +37,7 @@ function IntroFlyIn({ center, zoom }) {
 }
 
 export default function LocationsPage() {
+  const { t } = useTranslation();
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -114,10 +116,10 @@ export default function LocationsPage() {
     <div className="space-y-5">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-bold text-ink">Locations</h1>
-          <p className="text-sm text-ink/60 mt-0.5">Define checkpoints (warehouses, branches, sites) staff can scan assets into.</p>
+          <h1 className="text-xl font-bold text-ink">{t('locations.title')}</h1>
+          <p className="text-sm text-ink/60 mt-0.5">{t('locations.subtitle')}</p>
         </div>
-        <Button onClick={startAdd}><Plus size={16} /> Add location</Button>
+        <Button onClick={startAdd}><Plus size={16} /> {t('locations.addLocation')}</Button>
       </div>
 
       {showForm && (
@@ -125,10 +127,10 @@ export default function LocationsPage() {
           <h3 className="font-semibold text-ink mb-4">{editingId ? 'Edit location' : 'New location'}</h3>
           <form onSubmit={onSubmit} className="space-y-4">
             <div className="grid sm:grid-cols-2 gap-4">
-              <Input label="Location name *" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-              <Input label="Address" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} />
-              <Input label="Latitude" type="number" step="any" placeholder="e.g. 5.6037" value={form.latitude} onChange={(e) => setForm({ ...form, latitude: e.target.value })} />
-              <Input label="Longitude" type="number" step="any" placeholder="e.g. -0.1870" value={form.longitude} onChange={(e) => setForm({ ...form, longitude: e.target.value })} />
+              <Input label={t('locations.locationName')} required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+              <Input label={t('locations.address')} value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} />
+              <Input label={t('locations.latitude')} type="number" step="any" placeholder="e.g. 5.6037" value={form.latitude} onChange={(e) => setForm({ ...form, latitude: e.target.value })} />
+              <Input label={t('locations.longitude')} type="number" step="any" placeholder="e.g. -0.1870" value={form.longitude} onChange={(e) => setForm({ ...form, longitude: e.target.value })} />
             </div>
             <div>
               <p className="text-sm font-medium text-ink/80 mb-1.5">Or click the map to set coordinates</p>
@@ -143,7 +145,7 @@ export default function LocationsPage() {
               </div>
             </div>
             <div className="flex justify-end gap-2">
-              <Button type="button" variant="outline" onClick={() => { setShowForm(false); setEditingId(null); }}>Cancel</Button>
+              <Button type="button" variant="outline" onClick={() => { setShowForm(false); setEditingId(null); }}>{t('common.cancel')}</Button>
               <Button type="submit">{editingId ? 'Save changes' : 'Save location'}</Button>
             </div>
           </form>
@@ -153,7 +155,7 @@ export default function LocationsPage() {
       {loading ? (
         <div className="flex justify-center py-16"><Spinner size={28} /></div>
       ) : locations.length === 0 ? (
-        <Card><EmptyState icon={MapPin} title="No locations yet" description="Add warehouses or branches so staff can check assets in/out by scanning." /></Card>
+        <Card><EmptyState icon={MapPin} title={t('locations.noLocationsYet')} description={t('locations.noLocationsDesc')} /></Card>
       ) : (
         <div className="grid lg:grid-cols-2 gap-5">
           <Card className="overflow-hidden">

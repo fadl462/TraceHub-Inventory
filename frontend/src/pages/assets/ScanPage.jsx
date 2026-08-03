@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Html5Qrcode } from 'html5-qrcode';
 import toast from 'react-hot-toast';
 import { ScanLine, MapPin, CheckCircle2, Keyboard } from 'lucide-react';
@@ -7,6 +8,7 @@ import client from '../../api/client';
 import { Card, Button, Select, Badge, statusTone } from '../../components/ui';
 
 export default function ScanPage() {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const [scanning, setScanning] = useState(false);
   const [manualToken, setManualToken] = useState('');
@@ -79,7 +81,7 @@ export default function ScanPage() {
   return (
     <div className="max-w-xl mx-auto space-y-5">
       <div>
-        <h1 className="text-xl font-bold text-ink flex items-center gap-2"><ScanLine size={22} /> Scan asset</h1>
+        <h1 className="text-xl font-bold text-ink flex items-center gap-2"><ScanLine size={22} /> {t('scan.title')}</h1>
         <p className="text-sm text-ink/60 mt-0.5">Scan an asset's QR tag to check it in at a location, or look it up manually.</p>
       </div>
 

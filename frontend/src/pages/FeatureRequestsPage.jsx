@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 import { Plus, Lightbulb, ChevronUp, Trash2, Filter } from 'lucide-react';
 import client from '../api/client';
 import { useAuth } from '../context/AuthContext';
@@ -21,6 +22,7 @@ function timeAgo(d) {
 
 export default function FeatureRequestsPage() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState('');
@@ -92,10 +94,10 @@ export default function FeatureRequestsPage() {
     <div className="space-y-5">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-bold text-ink flex items-center gap-2"><Lightbulb size={20} className="text-primary" /> Feature Requests</h1>
+          <h1 className="text-xl font-bold text-ink flex items-center gap-2"><Lightbulb size={20} className="text-primary" /> {t('featureRequests.title')}</h1>
           <p className="text-sm text-ink/60 mt-0.5">Suggest an improvement, or vote for one already suggested \u2014 the ideas with the most support across every TraceHub customer rise to the top.</p>
         </div>
-        <Button onClick={() => setShowForm((s) => !s)}><Plus size={16} /> Suggest an idea</Button>
+        <Button onClick={() => setShowForm((s) => !s)}><Plus size={16} /> {t('featureRequests.suggestIdea')}</Button>
       </div>
 
       {showForm && (
@@ -128,7 +130,7 @@ export default function FeatureRequestsPage() {
       <div className="flex items-center gap-2">
         <Filter size={14} className="text-ink/40" />
         <Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="w-48">
-          <option value="">All statuses</option>
+          <option value="">{t('featureRequests.allStatuses')}</option>
           {Object.entries(STATUS_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
         </Select>
       </div>

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 import { Check, CreditCard } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Badge, Spinner } from '../../components/ui';
 
 export default function BillingPage() {
+  const { t } = useTranslation();
   const [plans, setPlans] = useState([]);
   const [subscription, setSubscription] = useState(null);
   const [invoices, setInvoices] = useState([]);
@@ -44,7 +46,7 @@ export default function BillingPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-ink">Billing & subscription</h1>
+        <h1 className="text-xl font-bold text-ink">{t('billing.title')}</h1>
         <p className="text-sm text-ink/60 mt-0.5">Manage your plan, payment method, and invoices.</p>
       </div>
 

@@ -102,5 +102,81 @@
     "locationActivity": "Activité par emplacement",
     "purchased": "Acheté",
     "disposalDate": "Date de mise au rebut"
+  },
+  "assignments": {
+    "title": "Affectations",
+    "subtitle": "Suivez qui a quel actif, quand il doit être rendu, et si les frais de location sont payés.",
+    "newAssignment": "Nouvelle affectation",
+    "searchPlaceholder": "Rechercher par actif ou destinataire...",
+    "allStatuses": "Tous les statuts",
+    "active": "Actif",
+    "overdue": "En retard",
+    "returned": "Rendu",
+    "cancelled": "Annulé",
+    "assignedTo": "Attribué à",
+    "issued": "Délivré",
+    "returnDate": "Date de retour",
+    "daysHeld": "Jours détenus",
+    "hireFee": "Frais de location",
+    "markReturned": "Marquer comme rendu"
+  },
+  "disposal": {
+    "title": "Dossiers de mise au rebut",
+    "subtitle": "Signalé → Revue du responsable → Revue financière → Approuvé → Mis au rebut.",
+    "allStages": "Toutes les étapes"
+  },
+  "locations": {
+    "title": "Emplacements",
+    "subtitle": "Définissez des points de contrôle (entrepôts, succursales, sites) où le personnel peut scanner les actifs.",
+    "addLocation": "Ajouter un emplacement",
+    "locationName": "Nom de l'emplacement *",
+    "address": "Adresse",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "noLocationsYet": "Pas encore d'emplacements",
+    "noLocationsDesc": "Ajoutez des entrepôts ou des succursales pour que le personnel puisse enregistrer les entrées/sorties d'actifs par scan."
+  },
+  "team": {
+    "title": "Équipe",
+    "addTeamMember": "Ajouter un membre",
+    "lastLogin": "Dernière connexion",
+    "twoFaOn": "A2F activée",
+    "twoFaOff": "A2F désactivée"
+  },
+  "billing": {
+    "title": "Facturation et abonnement"
+  },
+  "settingsPage": {
+    "title": "Paramètres",
+    "saveChanges": "Enregistrer les modifications",
+    "companyProfile": "Profil de l'entreprise",
+    "companyNameLabel": "Nom de l'entreprise",
+    "industry": "Secteur",
+    "currency": "Devise",
+    "customAssetFields": "Champs personnalisés des actifs",
+    "changePassword": "Changer le mot de passe",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe",
+    "updatePassword": "Mettre à jour le mot de passe",
+    "twoFactorAuth": "Authentification à deux facteurs",
+    "disable2fa": "Désactiver l'A2F",
+    "verifyAndEnable": "Vérifier et activer",
+    "confirmPasswordToDisable": "Confirmez votre mot de passe pour désactiver"
+  },
+  "assetDetail": {
+    "condition": "État"
+  },
+  "assetCreate": {
+    "title": "Enregistrer un nouvel actif",
+    "registering": "Enregistrement...",
+    "registerAsset": "Enregistrer l'actif"
+  },
+  "scan": {
+    "title": "Scanner un actif"
+  },
+  "featureRequests": {
+    "title": "Suggestions de fonctionnalités",
+    "suggestIdea": "Suggérer une idée",
+    "allStatuses": "Tous les statuts"
   }
 }

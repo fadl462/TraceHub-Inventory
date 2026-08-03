@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 import client from '../../api/client';
@@ -15,6 +16,7 @@ const CURRENCY_OPTIONS = [
 ];
 
 export default function AssetCreate() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [locations, setLocations] = useState([]);
@@ -90,7 +92,7 @@ export default function AssetCreate() {
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-ink">Register a new asset</h1>
+        <h1 className="text-xl font-bold text-ink">{t('assetCreate.title')}</h1>
         <p className="text-sm text-ink/60 mt-0.5">A QR code and AI-estimated disposal timeline will be generated automatically.</p>
       </div>
 
@@ -305,7 +307,7 @@ export default function AssetCreate() {
 
           <div className="flex justify-end gap-3 pt-2">
             <Button type="button" variant="outline" onClick={() => navigate(-1)}>Cancel</Button>
-            <Button type="submit" disabled={loading}>{loading ? 'Registering...' : 'Register asset'}</Button>
+            <Button type="submit" disabled={loading}>{loading ? t('assetCreate.registering') : t('assetCreate.registerAsset')}</Button>
           </div>
         </Card>
       </form>

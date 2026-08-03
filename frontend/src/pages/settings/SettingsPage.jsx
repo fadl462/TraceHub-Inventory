@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 import { Plus, Trash2, ShieldCheck, ShieldOff } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Input, Select } from '../../components/ui';
@@ -7,6 +8,7 @@ import { useAuth } from '../../context/AuthContext';
 
 export default function SettingsPage() {
   const { company, refresh, user } = useAuth();
+  const { t } = useTranslation();
   const [companyForm, setCompanyForm] = useState({ name: '', industry: '', currency: 'USD' });
   const [passwordForm, setPasswordForm] = useState({ currentPassword: '', newPassword: '' });
   const [fields, setFields] = useState([]);
@@ -98,30 +100,30 @@ export default function SettingsPage() {
   return (
     <div className="max-w-3xl space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-ink">Settings</h1>
+        <h1 className="text-xl font-bold text-ink">{t('settingsPage.title')}</h1>
         <p className="text-sm text-ink/60 mt-0.5">Manage your workspace preferences.</p>
       </div>
 
       {isAdmin && (
         <Card className="p-6">
-          <h3 className="font-semibold text-ink mb-4">Company profile</h3>
+          <h3 className="font-semibold text-ink mb-4">{t('settingsPage.companyProfile')}</h3>
           <form onSubmit={saveCompany} className="space-y-4">
-            <Input label="Company name" value={companyForm.name} onChange={(e) => setCompanyForm({ ...companyForm, name: e.target.value })} />
-            <Input label="Industry" value={companyForm.industry} onChange={(e) => setCompanyForm({ ...companyForm, industry: e.target.value })} />
-            <Select label="Currency" value={companyForm.currency} onChange={(e) => setCompanyForm({ ...companyForm, currency: e.target.value })}>
+            <Input label={t('settingsPage.companyNameLabel')} value={companyForm.name} onChange={(e) => setCompanyForm({ ...companyForm, name: e.target.value })} />
+            <Input label={t('settingsPage.industry')} value={companyForm.industry} onChange={(e) => setCompanyForm({ ...companyForm, industry: e.target.value })} />
+            <Select label={t('settingsPage.currency')} value={companyForm.currency} onChange={(e) => setCompanyForm({ ...companyForm, currency: e.target.value })}>
               <option value="GHS">GHS - Ghana Cedi</option>
               <option value="USD">USD - US Dollar</option>
               <option value="EUR">EUR - Euro</option>
               <option value="NGN">NGN - Nigerian Naira</option>
             </Select>
-            <div className="flex justify-end"><Button type="submit">Save changes</Button></div>
+            <div className="flex justify-end"><Button type="submit">{t('settingsPage.saveChanges')}</Button></div>
           </form>
         </Card>
       )}
 
       {isAdmin && (
         <Card className="p-6">
-          <h3 className="font-semibold text-ink mb-1">Custom asset fields</h3>
+          <h3 className="font-semibold text-ink mb-1">{t('settingsPage.customAssetFields')}</h3>
           <p className="text-sm text-ink/60 mb-4">Add fields specific to your business (e.g. "Warranty expiry", "Fuel type").</p>
           <div className="space-y-2 mb-4">
             {fields.map((f) => (
@@ -152,18 +154,18 @@ export default function SettingsPage() {
       )}
 
       <Card className="p-6">
-        <h3 className="font-semibold text-ink mb-4">Change password</h3>
+        <h3 className="font-semibold text-ink mb-4">{t('settingsPage.changePassword')}</h3>
         <form onSubmit={changePassword} className="space-y-4 max-w-sm">
-          <Input label="Current password" type="password" required value={passwordForm.currentPassword} onChange={(e) => setPasswordForm({ ...passwordForm, currentPassword: e.target.value })} />
-          <Input label="New password" type="password" required minLength={8} value={passwordForm.newPassword} onChange={(e) => setPasswordForm({ ...passwordForm, newPassword: e.target.value })} />
-          <Button type="submit">Update password</Button>
+          <Input label={t('settingsPage.currentPassword')} type="password" required value={passwordForm.currentPassword} onChange={(e) => setPasswordForm({ ...passwordForm, currentPassword: e.target.value })} />
+          <Input label={t('settingsPage.newPassword')} type="password" required minLength={8} value={passwordForm.newPassword} onChange={(e) => setPasswordForm({ ...passwordForm, newPassword: e.target.value })} />
+          <Button type="submit">{t('settingsPage.updatePassword')}</Button>
         </form>
       </Card>
 
       <Card className="p-6">
         <h3 className="font-semibold text-ink mb-1 flex items-center gap-2">
           {user?.twoFactorEnabled ? <ShieldCheck size={17} className="text-accent-dark" /> : <ShieldOff size={17} className="text-ink/40" />}
-          Two-factor authentication
+          {t('settingsPage.twoFactorAuth')}
         </h3>
         <p className="text-sm text-ink/60 mb-4">
           {user?.twoFactorEnabled
@@ -172,8 +174,8 @@ export default function SettingsPage() {
         </p>
         {user?.twoFactorEnabled ? (
           <form onSubmit={disable2fa} className="max-w-sm space-y-3">
-            <Input label="Confirm your password to disable" type="password" required value={disablePassword} onChange={(e) => setDisablePassword(e.target.value)} />
-            <Button type="submit" variant="danger">Disable 2FA</Button>
+            <Input label={t('settingsPage.confirmPasswordToDisable')} type="password" required value={disablePassword} onChange={(e) => setDisablePassword(e.target.value)} />
+            <Button type="submit" variant="danger">{t('settingsPage.disable2fa')}</Button>
           </form>
         ) : !qrDataUrl ? (
           <Button onClick={start2fa}><ShieldCheck size={16} /> Enable 2FA</Button>
@@ -182,7 +184,7 @@ export default function SettingsPage() {
             <img src={qrDataUrl} alt="2FA QR code" className="rounded-lg border border-primary-100" width={160} height={160} />
             <p className="text-xs text-ink/50">Scan with your authenticator app, then enter the 6-digit code.</p>
             <Input label="6-digit code" required maxLength={6} value={twoFaCode} onChange={(e) => setTwoFaCode(e.target.value)} />
-            <Button type="submit">Verify & enable</Button>
+            <Button type="submit">{t('settingsPage.verifyAndEnable')}</Button>
           </form>
         )}
       </Card>

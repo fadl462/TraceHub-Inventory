@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { Plus, ClipboardList, RotateCcw, CheckCircle2, Circle, Mail, Phone, Search } from 'lucide-react';
 import client from '../../api/client';
@@ -10,6 +11,7 @@ function daysBetween(from, to = new Date()) {
 }
 
 export default function AssignmentsList() {
+  const { t } = useTranslation();
   const [assignments, setAssignments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState('');
@@ -60,10 +62,10 @@ export default function AssignmentsList() {
     <div className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-ink">Assignments</h1>
-          <p className="text-sm text-ink/60 mt-0.5">Track who has which asset, when it's due back, and whether hire fees are paid.</p>
+          <h1 className="text-xl font-bold text-ink">{t('assignments.title')}</h1>
+          <p className="text-sm text-ink/60 mt-0.5">{t('assignments.subtitle')}</p>
         </div>
-        <Link to="/assignments/new"><Button><Plus size={16} /> New assignment</Button></Link>
+        <Link to="/assignments/new"><Button><Plus size={16} /> {t('assignments.newAssignment')}</Button></Link>
       </div>
 
       <Card className="p-4">
@@ -72,16 +74,16 @@ export default function AssignmentsList() {
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink/40" />
             <input
               className="w-full rounded-lg border border-primary-100 pl-9 pr-3 py-2.5 text-sm focus-ring focus:border-secondary"
-              placeholder="Search by asset or assignee..."
+              placeholder={t('assignments.searchPlaceholder')}
               value={search} onChange={(e) => setSearch(e.target.value)}
             />
           </div>
           <Select value={status} onChange={(e) => setStatus(e.target.value)} className="sm:w-48">
-            <option value="">All statuses</option>
-            <option value="active">Active</option>
-            <option value="overdue">Overdue</option>
-            <option value="returned">Returned</option>
-            <option value="cancelled">Cancelled</option>
+            <option value="">{t('assignments.allStatuses')}</option>
+            <option value="active">{t('assignments.active')}</option>
+            <option value="overdue">{t('assignments.overdue')}</option>
+            <option value="returned">{t('assignments.returned')}</option>
+            <option value="cancelled">{t('assignments.cancelled')}</option>
           </Select>
         </div>
       </Card>
@@ -96,13 +98,13 @@ export default function AssignmentsList() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-primary-50 text-left text-xs uppercase tracking-wide text-ink/50">
-                  <th className="px-5 py-3 font-medium">Asset</th>
-                  <th className="px-5 py-3 font-medium">Assigned to</th>
-                  <th className="px-5 py-3 font-medium">Issued</th>
-                  <th className="px-5 py-3 font-medium">Return date</th>
-                  <th className="px-5 py-3 font-medium">Days held</th>
-                  <th className="px-5 py-3 font-medium">Status</th>
-                  <th className="px-5 py-3 font-medium">Hire fee</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.asset')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assignments.assignedTo')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assignments.issued')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assignments.returnDate')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assignments.daysHeld')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.status')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assignments.hireFee')}</th>
                   <th className="px-5 py-3" />
                 </tr>
               </thead>
@@ -157,7 +159,7 @@ export default function AssignmentsList() {
                       <td className="px-5 py-3 text-right">
                         {isActive ? (
                           <button onClick={() => markReturned(a.id)} className="text-secondary hover:underline text-xs font-medium inline-flex items-center gap-1">
-                            <RotateCcw size={13} /> Mark returned
+                            <RotateCcw size={13} /> {t('assignments.markReturned')}
                           </button>
                         ) : null}
                       </td>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 import { Plus, Users, Trash2, Phone, Mail, Clock, ShieldCheck, ShieldOff, CalendarDays, KeyRound } from 'lucide-react';
 import client from '../api/client';
 import { Card, Button, Input, Select, Badge, EmptyState, Spinner } from '../components/ui';
@@ -18,6 +19,7 @@ function timeAgo(dateStr) {
 
 export default function TeamPage() {
   const { user: me } = useAuth();
+  const { t } = useTranslation();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -84,10 +86,10 @@ export default function TeamPage() {
     <div className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-ink">Team</h1>
+          <h1 className="text-xl font-bold text-ink">{t('team.title')}</h1>
           <p className="text-sm text-ink/60 mt-0.5">Manage staff access and permissions.</p>
         </div>
-        <Button onClick={() => setShowForm((s) => !s)}><Plus size={16} /> Add team member</Button>
+        <Button onClick={() => setShowForm((s) => !s)}><Plus size={16} /> {t('team.addTeamMember')}</Button>
       </div>
 
       {showForm && (
@@ -151,10 +153,10 @@ export default function TeamPage() {
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-1 text-xs text-ink/50">
                     <span className="flex items-center gap-1"><Mail size={11} /> {u.email}</span>
                     {u.phone && <span className="flex items-center gap-1"><Phone size={11} /> {u.phone}</span>}
-                    <span className="flex items-center gap-1"><Clock size={11} /> Last login: {timeAgo(u.lastLoginAt)}</span>
+                    <span className="flex items-center gap-1"><Clock size={11} /> {t('team.lastLogin')}: {timeAgo(u.lastLoginAt)}</span>
                     <span className="flex items-center gap-1"><CalendarDays size={11} /> Joined {new Date(u.createdAt).toLocaleDateString()}</span>
                     <span className={`flex items-center gap-1 ${u.twoFactorEnabled ? 'text-accent-dark' : ''}`}>
-                      {u.twoFactorEnabled ? <ShieldCheck size={11} /> : <ShieldOff size={11} />} 2FA {u.twoFactorEnabled ? 'on' : 'off'}
+                      {u.twoFactorEnabled ? <ShieldCheck size={11} /> : <ShieldOff size={11} />} {u.twoFactorEnabled ? t('team.twoFaOn') : t('team.twoFaOff')}
                     </span>
                   </div>
                 </div>

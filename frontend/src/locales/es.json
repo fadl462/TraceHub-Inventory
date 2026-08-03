@@ -102,5 +102,81 @@
     "locationActivity": "Actividad por ubicación",
     "purchased": "Comprado",
     "disposalDate": "Fecha de baja"
+  },
+  "assignments": {
+    "title": "Asignaciones",
+    "subtitle": "Controle quién tiene cada activo, cuándo debe devolverse y si las tarifas de alquiler están pagadas.",
+    "newAssignment": "Nueva asignación",
+    "searchPlaceholder": "Buscar por activo o destinatario...",
+    "allStatuses": "Todos los estados",
+    "active": "Activo",
+    "overdue": "Vencido",
+    "returned": "Devuelto",
+    "cancelled": "Cancelado",
+    "assignedTo": "Asignado a",
+    "issued": "Emitido",
+    "returnDate": "Fecha de devolución",
+    "daysHeld": "Días retenido",
+    "hireFee": "Tarifa de alquiler",
+    "markReturned": "Marcar como devuelto"
+  },
+  "disposal": {
+    "title": "Casos de baja",
+    "subtitle": "Marcado → Revisión del gerente → Revisión financiera → Aprobado → Dado de baja.",
+    "allStages": "Todas las etapas"
+  },
+  "locations": {
+    "title": "Ubicaciones",
+    "subtitle": "Defina puntos de control (almacenes, sucursales, sitios) donde el personal pueda escanear los activos.",
+    "addLocation": "Agregar ubicación",
+    "locationName": "Nombre de la ubicación *",
+    "address": "Dirección",
+    "latitude": "Latitud",
+    "longitude": "Longitud",
+    "noLocationsYet": "Aún no hay ubicaciones",
+    "noLocationsDesc": "Agregue almacenes o sucursales para que el personal pueda registrar la entrada/salida de activos escaneando."
+  },
+  "team": {
+    "title": "Equipo",
+    "addTeamMember": "Agregar miembro",
+    "lastLogin": "Último acceso",
+    "twoFaOn": "2FA activado",
+    "twoFaOff": "2FA desactivado"
+  },
+  "billing": {
+    "title": "Facturación y suscripción"
+  },
+  "settingsPage": {
+    "title": "Configuración",
+    "saveChanges": "Guardar cambios",
+    "companyProfile": "Perfil de la empresa",
+    "companyNameLabel": "Nombre de la empresa",
+    "industry": "Industria",
+    "currency": "Moneda",
+    "customAssetFields": "Campos personalizados de activos",
+    "changePassword": "Cambiar contraseña",
+    "currentPassword": "Contraseña actual",
+    "newPassword": "Nueva contraseña",
+    "updatePassword": "Actualizar contraseña",
+    "twoFactorAuth": "Autenticación de dos factores",
+    "disable2fa": "Desactivar 2FA",
+    "verifyAndEnable": "Verificar y activar",
+    "confirmPasswordToDisable": "Confirme su contraseña para desactivar"
+  },
+  "assetDetail": {
+    "condition": "Condición"
+  },
+  "assetCreate": {
+    "title": "Registrar un nuevo activo",
+    "registering": "Registrando...",
+    "registerAsset": "Registrar activo"
+  },
+  "scan": {
+    "title": "Escanear activo"
+  },
+  "featureRequests": {
+    "title": "Solicitudes de funciones",
+    "suggestIdea": "Sugerir una idea",
+    "allStatuses": "Todos los estados"
   }
 }

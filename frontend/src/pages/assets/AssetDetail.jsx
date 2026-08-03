@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { Download, Archive, UserPlus, MapPin, Sparkles, Clock, Activity, AlertTriangle, TrendingDown, Flag, Wrench, ShoppingCart, UserCheck, UserX, ScanLine, ClipboardCheck, Trash2, ShieldAlert, CircleDot } from 'lucide-react';
 import client from '../../api/client';
@@ -17,6 +18,7 @@ const TIMELINE_ICONS = {
 };
 
 export default function AssetDetail() {
+  const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   const [asset, setAsset] = useState(null);
@@ -270,7 +272,7 @@ export default function AssetDetail() {
                 />
               </label>
               <label className="text-xs">
-                <span className="block text-ink/50 mb-1">Condition</span>
+                <span className="block text-ink/50 mb-1">{t('assetDetail.condition')}</span>
                 <select
                   value={inspectionForm.condition} onChange={(e) => setInspectionForm({ ...inspectionForm, condition: e.target.value })}
                   className="rounded-lg border border-primary-100 px-2.5 py-1.5 text-sm focus-ring focus:border-secondary"

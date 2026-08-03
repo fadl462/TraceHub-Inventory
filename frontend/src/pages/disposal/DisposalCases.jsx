@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { Trash2, ArrowRight, CheckCircle2, XCircle } from 'lucide-react';
 import client from '../../api/client';
@@ -33,6 +34,7 @@ const NEXT_STEPS = {
 };
 
 export default function DisposalCases() {
+  const { t } = useTranslation();
   const [cases, setCases] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('');
@@ -75,11 +77,11 @@ export default function DisposalCases() {
     <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-xl font-bold text-ink flex items-center gap-2"><Trash2 size={20} className="text-link" /> Disposal cases</h1>
-          <p className="text-sm text-ink/60 mt-0.5">Flagged \u2192 Manager review \u2192 Finance review \u2192 Approved \u2192 Disposed.</p>
+          <h1 className="text-xl font-bold text-ink flex items-center gap-2"><Trash2 size={20} className="text-link" /> {t('disposal.title')}</h1>
+          <p className="text-sm text-ink/60 mt-0.5">{t('disposal.subtitle')}</p>
         </div>
         <Select value={filter} onChange={(e) => setFilter(e.target.value)} className="w-52">
-          <option value="">All stages</option>
+          <option value="">{t('disposal.allStages')}</option>
           {Object.entries(STAGE_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
         </Select>
       </div>
