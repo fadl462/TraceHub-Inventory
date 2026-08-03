@@ -1526,6 +1526,8 @@ const frenchIntelligenceEngine = require('./docArticles.fr-intelligence-engine')
 const frenchIntelligenceEngineExpanded = require('./docArticles.fr-intelligence-engine-expanded');
 const frenchTrackingAssignments = require('./docArticles.fr-tracking-assignments');
 const frenchDisposalWorkflow = require('./docArticles.fr-disposal-workflow');
+const frenchTeamSecurity = require('./docArticles.fr-team-security');
+const frenchReportsBilling = require('./docArticles.fr-reports-billing');
 
 module.exports = {
   defaultDocArticles: [
@@ -1536,5 +1538,7 @@ module.exports = {
     ...frenchIntelligenceEngineExpanded,
     ...frenchTrackingAssignments,
     ...frenchDisposalWorkflow,
+    ...frenchTeamSecurity,
+    ...frenchReportsBilling,
   ],
 };
