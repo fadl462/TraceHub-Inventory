@@ -17,7 +17,39 @@ const MAINTENANCE_BUDGET_RATIO = 0.20; // assumption: a healthy asset's lifetime
 const MAINTENANCE_ALARM_RATIO = 0.65; // spec's own worked example threshold ("exceeds 65% of replacement value")
 const END_OF_LIFE_WINDOW_DAYS = 180;
 
-async function generateFleetInsights(companyId, { Asset, AssetCategory }) {
+/**
+ * Locale-aware sentence templates for each detector. Kept as plain
+ * functions (not a translation-key/interpolation system) since these are
+ * full generated sentences with real grammar decisions (English singular/
+ * plural verb forms, for example) that don't map cleanly onto simple
+ * placeholder substitution the way static UI strings do.
+ */
+const TEMPLATES = {
+  en: {
+    acceleratedDepreciation: (count, categoryName) => `${count} asset${count === 1 ? '' : 's'} in ${categoryName} ${count === 1 ? 'is' : 'are'} depreciating faster than the category average due to heavy usage.`,
+    maintenanceBudgetExceeded: (assetLabel, overPct) => `${assetLabel} has exceeded its projected maintenance budget by ${overPct}%; replacement is likely more economical than continued repair.`,
+    approachingEndOfLife: (count, categoryName, months) => `${count} asset${count === 1 ? '' : 's'} in ${categoryName} ${count === 1 ? 'is' : 'are'} approaching end-of-life within the next ${months} months.`,
+    idleAssets: (count, categoryName, hours) => `${count} asset${count === 1 ? '' : 's'} in ${categoryName} ${count === 1 ? 'has' : 'have'} logged over ${hours} idle hours and could be reassigned or sold.`,
+    categoryMaintenanceAlarm: (count, categoryName, pct) => `Cumulative maintenance spend on ${count} assets in ${categoryName} now exceeds ${pct}% of their combined replacement value.`,
+  },
+  fr: {
+    acceleratedDepreciation: (count, categoryName) => `${count} actif${count === 1 ? '' : 's'} de la catégorie ${categoryName} se déprécie${count === 1 ? '' : 'nt'} plus vite que la moyenne de la catégorie en raison d'un usage intensif.`,
+    maintenanceBudgetExceeded: (assetLabel, overPct) => `${assetLabel} a dépassé son budget de maintenance prévu de ${overPct}% ; un remplacement est probablement plus économique qu'une réparation continue.`,
+    approachingEndOfLife: (count, categoryName, months) => `${count} actif${count === 1 ? '' : 's'} de la catégorie ${categoryName} approche${count === 1 ? '' : 'nt'} de la fin de vie dans les ${months} prochains mois.`,
+    idleAssets: (count, categoryName, hours) => `${count} actif${count === 1 ? '' : 's'} de la catégorie ${categoryName} totalise${count === 1 ? '' : 'nt'} plus de ${hours} heures d'inactivité et pourrai${count === 1 ? 't' : 'ent'} être réaffecté${count === 1 ? '' : 's'} ou vendu${count === 1 ? '' : 's'}.`,
+    categoryMaintenanceAlarm: (count, categoryName, pct) => `Les dépenses de maintenance cumulées sur ${count} actifs de la catégorie ${categoryName} dépassent désormais ${pct}% de leur valeur de remplacement combinée.`,
+  },
+  es: {
+    acceleratedDepreciation: (count, categoryName) => `${count} activo${count === 1 ? '' : 's'} en ${categoryName} se está${count === 1 ? '' : 'n'} depreciando más rápido que el promedio de la categoría debido al uso intensivo.`,
+    maintenanceBudgetExceeded: (assetLabel, overPct) => `${assetLabel} ha excedido su presupuesto de mantenimiento proyectado en ${overPct}%; el reemplazo probablemente sea más económico que continuar reparando.`,
+    approachingEndOfLife: (count, categoryName, months) => `${count} activo${count === 1 ? '' : 's'} en ${categoryName} se acerca${count === 1 ? '' : 'n'} al fin de su vida útil dentro de los próximos ${months} meses.`,
+    idleAssets: (count, categoryName, hours) => `${count} activo${count === 1 ? '' : 's'} en ${categoryName} ha${count === 1 ? '' : 'n'} registrado más de ${hours} horas inactivas y podría${count === 1 ? '' : 'n'} ser reasignado${count === 1 ? '' : 's'} o vendido${count === 1 ? '' : 's'}.`,
+    categoryMaintenanceAlarm: (count, categoryName, pct) => `El gasto de mantenimiento acumulado en ${count} activos de ${categoryName} ahora excede el ${pct}% de su valor de reemplazo combinado.`,
+  },
+};
+
+async function generateFleetInsights(companyId, { Asset, AssetCategory }, locale = 'en') {
+  const t = TEMPLATES[locale] || TEMPLATES.en;
   const assets = await Asset.findAll({
     where: { companyId, isArchived: false },
     include: [{ model: AssetCategory, attributes: ['id', 'name'] }],
@@ -48,7 +80,7 @@ async function generateFleetInsights(companyId, { Asset, AssetCategory }) {
       insights.push({
         type: 'accelerated_depreciation',
         severity: 'warning',
-        text: `${heavyUnderperformers.length} asset${heavyUnderperformers.length === 1 ? '' : 's'} in ${categoryName} ${heavyUnderperformers.length === 1 ? 'is' : 'are'} depreciating faster than the category average due to heavy usage.`,
+        text: t.acceleratedDepreciation(heavyUnderperformers.length, categoryName),
         assetIds: heavyUnderperformers.map((a) => a.id),
       });
     }
@@ -73,7 +105,7 @@ async function generateFleetInsights(companyId, { Asset, AssetCategory }) {
     insights.push({
       type: 'maintenance_budget_exceeded',
       severity: 'danger',
-      text: `${top.asset.name}${top.asset.assetTag ? ` (${top.asset.assetTag})` : ''} has exceeded its projected maintenance budget by ${top.overPct}%; replacement is likely more economical than continued repair.`,
+      text: t.maintenanceBudgetExceeded(`${top.asset.name}${top.asset.assetTag ? ` (${top.asset.assetTag})` : ''}`, top.overPct),
       assetIds: [top.asset.id],
     });
   }
@@ -87,7 +119,7 @@ async function generateFleetInsights(companyId, { Asset, AssetCategory }) {
       insights.push({
         type: 'approaching_end_of_life',
         severity: 'warning',
-        text: `${nearing.length} asset${nearing.length === 1 ? '' : 's'} in ${categoryName} ${nearing.length === 1 ? 'is' : 'are'} approaching end-of-life within the next ${Math.round(END_OF_LIFE_WINDOW_DAYS / 30)} months.`,
+        text: t.approachingEndOfLife(nearing.length, categoryName, Math.round(END_OF_LIFE_WINDOW_DAYS / 30)),
         assetIds: nearing.map((a) => a.id),
       });
     }
@@ -100,7 +132,7 @@ async function generateFleetInsights(companyId, { Asset, AssetCategory }) {
       insights.push({
         type: 'idle_assets',
         severity: 'info',
-        text: `${idle.length} asset${idle.length === 1 ? '' : 's'} in ${categoryName} ${idle.length === 1 ? 'has' : 'have'} logged over ${IDLE_HOURS_THRESHOLD} idle hours and could be reassigned or sold.`,
+        text: t.idleAssets(idle.length, categoryName, IDLE_HOURS_THRESHOLD),
         assetIds: idle.map((a) => a.id),
       });
     }
@@ -118,7 +150,7 @@ async function generateFleetInsights(companyId, { Asset, AssetCategory }) {
       insights.push({
         type: 'category_maintenance_alarm',
         severity: 'danger',
-        text: `Cumulative maintenance spend on ${withReplacement.length} assets in ${categoryName} now exceeds ${Math.round(ratio * 100)}% of their combined replacement value.`,
+        text: t.categoryMaintenanceAlarm(withReplacement.length, categoryName, Math.round(ratio * 100)),
         assetIds: withReplacement.map((a) => a.id),
       });
     }

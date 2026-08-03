@@ -30,13 +30,13 @@ function Stat({ icon: Icon, label, value, tone = 'primary', to }) {
 
 function WelcomeInsightBanner({ overview }) {
   const { user, company } = useAuth();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [insight, setInsight] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    client.get('/reports/ai-insights').then(({ data }) => setInsight(data)).finally(() => setLoading(false));
-  }, []);
+    client.get('/reports/ai-insights', { params: { locale: i18n.language } }).then(({ data }) => setInsight(data)).finally(() => setLoading(false));
+  }, [i18n.language]);
 
   const hour = new Date().getHours();
   const greeting = hour < 12 ? t('dashboard.greetingMorning') : hour < 18 ? t('dashboard.greetingAfternoon') : t('dashboard.greetingEvening');
@@ -81,7 +81,7 @@ function WelcomeInsightBanner({ overview }) {
 
 export default function Dashboard() {
   const { company } = useAuth();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [overview, setOverview] = useState(null);
   const [loading, setLoading] = useState(true);
   const [exporting, setExporting] = useState(false);
@@ -98,7 +98,7 @@ export default function Dashboard() {
     const [{ data: intel }, { data: assign }, { data: insights }] = await Promise.all([
       client.get('/reports/intelligence-overview'),
       client.get('/reports/assignment-tracking'),
-      client.get('/reports/fleet-insights'),
+      client.get('/reports/fleet-insights', { params: { locale: i18n.language } }),
     ]);
     return [
       {
@@ -539,12 +539,12 @@ function FleetIntelligencePanel() {
 }
 
 function FleetInsightsPanel() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [insights, setInsights] = useState(null);
 
   useEffect(() => {
-    client.get('/reports/fleet-insights').then(({ data }) => setInsights(data.insights)).catch(() => setInsights([]));
-  }, []);
+    client.get('/reports/fleet-insights', { params: { locale: i18n.language } }).then(({ data }) => setInsights(data.insights)).catch(() => setInsights([]));
+  }, [i18n.language]);
 
   const severityDot = { danger: 'bg-red-500', warning: 'bg-amber-400', info: 'bg-secondary' };
 

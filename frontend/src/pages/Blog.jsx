@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Calendar } from 'lucide-react';
 import client from '../api/client';
 import SiteHeader from '../components/landing/SiteHeader';
@@ -11,16 +12,17 @@ function formatDate(d) {
 }
 
 export default function Blog() {
+  const { i18n } = useTranslation();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    client.get('/blog-posts')
+    client.get('/blog-posts', { params: { locale: i18n.language } })
       .then(({ data }) => setPosts(data.posts))
       .catch(() => setError(true))
       .finally(() => setLoading(false));
-  }, []);
+  }, [i18n.language]);
 
   return (
     <div className="min-h-screen bg-surface flex flex-col">

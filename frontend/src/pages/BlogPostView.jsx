@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { ArrowLeft, Calendar, MessageSquare } from 'lucide-react';
 import client from '../api/client';
@@ -21,6 +22,7 @@ function timeAgo(d) {
 
 export default function BlogPostView() {
   const { slug } = useParams();
+  const { i18n } = useTranslation();
   const [post, setPost] = useState(null);
   const [status, setStatus] = useState('loading');
   const [comments, setComments] = useState([]);
@@ -34,11 +36,11 @@ export default function BlogPostView() {
   useEffect(() => {
     setStatus('loading');
     window.scrollTo(0, 0);
-    client.get(`/blog-posts/slug/${slug}`)
+    client.get(`/blog-posts/slug/${slug}`, { params: { locale: i18n.language } })
       .then(({ data }) => { setPost(data.post); setStatus('found'); loadComments(); })
       .catch(() => setStatus('notfound'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug]);
+  }, [slug, i18n.language]);
 
   const submitComment = async (e) => {
     e.preventDefault();
@@ -48,7 +50,7 @@ export default function BlogPostView() {
     }
     setSubmittingComment(true);
     try {
-      await client.post(`/blog-posts/slug/${slug}/comments`, commentForm);
+      await client.post(`/blog-posts/slug/${slug}/comments`, { ...commentForm, locale: i18n.language });
       toast.success('Thanks for contributing!');
       setCommentForm({ authorName: '', authorEmail: '', body: '' });
       loadComments();

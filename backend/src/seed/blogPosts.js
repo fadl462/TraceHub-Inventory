@@ -1,7 +1,8 @@
-module.exports = [
+const englishPosts = [
   {
     title: 'Welcome to TraceHub Inventory',
     slug: 'welcome-to-tracehub-inventory',
+    locale: 'en',
     excerpt: 'Why we built an asset management platform around a simple idea: you shouldn\u2019t need expensive hardware or a spreadsheet marathon to know what you own.',
     authorName: 'TraceHub Team',
     publishedAt: new Date('2026-08-01'),
@@ -87,6 +88,7 @@ module.exports = [
   {
     title: 'Repair or Replace? A Practical Framework for the Decision Every Asset Manager Eventually Faces',
     slug: 'repair-or-replace-decision-framework',
+    locale: 'en',
     excerpt: 'Most "repair or replace" calls are made on gut feel and whoever shouts loudest in the meeting. Here\u2019s a framework that replaces the guesswork with numbers you can actually defend.',
     authorName: 'TraceHub Team',
     publishedAt: new Date('2026-08-02'),
@@ -211,3 +213,8 @@ module.exports = [
     `,
   },
 ];
+
+const frenchPosts = require('./blogPosts.fr');
+const spanishPosts = require('./blogPosts.es');
+
+module.exports = [...englishPosts, ...frenchPosts, ...spanishPosts];

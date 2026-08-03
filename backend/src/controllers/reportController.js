@@ -159,7 +159,8 @@ async function intelligenceOverview(req, res, next) {
  */
 async function fleetInsightsReport(req, res, next) {
   try {
-    const insights = await generateFleetInsights(req.companyId, { Asset, AssetCategory });
+    const locale = ['en', 'fr', 'es'].includes(req.query.locale) ? req.query.locale : 'en';
+    const insights = await generateFleetInsights(req.companyId, { Asset, AssetCategory }, locale);
     res.json({ insights });
   } catch (err) { next(err); }
 }
@@ -323,6 +324,23 @@ async function aiInsights(req, res, next) {
       },
     });
 
+    const locale = ['en', 'fr', 'es'].includes(req.query.locale) ? req.query.locale : 'en';
+    const FALLBACKS = {
+      en: {
+        noAssets: 'No assets registered yet \u2014 add your first one to start tracking depreciation and location.',
+        summary: (t, a, o, d) => `${t} assets tracked, ${a} currently assigned${o > 0 ? `, ${o} overdue for return` : ''}${d > 0 ? `, and ${d} approaching their suggested disposal date` : ''}.`,
+      },
+      fr: {
+        noAssets: "Aucun actif enregistré pour l'instant \u2014 ajoutez le premier pour commencer à suivre la dépréciation et l'emplacement.",
+        summary: (t, a, o, d) => `${t} actifs suivis, ${a} actuellement affectés${o > 0 ? `, ${o} en retard de retour` : ''}${d > 0 ? `, et ${d} approchant leur date de mise au rebut suggérée` : ''}.`,
+      },
+      es: {
+        noAssets: 'Aún no hay activos registrados \u2014 agregue el primero para comenzar a rastrear la depreciación y la ubicación.',
+        summary: (t, a, o, d) => `${t} activos rastreados, ${a} actualmente asignados${o > 0 ? `, ${o} vencidos para devolución` : ''}${d > 0 ? `, y ${d} acercándose a su fecha de baja sugerida` : ''}.`,
+      },
+    };
+    const fb = FALLBACKS[locale];
+
     const result = await generateInsight({
       systemContext: `You are summarizing this specific company's asset data for ${req.user.role.replace('_', ' ')} on their TraceHub Inventory dashboard. Be specific and actionable, not generic.`,
       stats: {
@@ -330,9 +348,8 @@ async function aiInsights(req, res, next) {
         totalCurrentBookValueUSD: Math.round(totalCurrentValue || 0),
         overdueAssignments, assetsWithDisposalDateInNext90Days: upcomingDisposals,
       },
-      fallback: total === 0
-        ? 'No assets registered yet \u2014 add your first one to start tracking depreciation and location.'
-        : `${total} assets tracked, ${assigned} currently assigned${overdueAssignments > 0 ? `, ${overdueAssignments} overdue for return` : ''}${upcomingDisposals > 0 ? `, and ${upcomingDisposals} approaching their suggested disposal date` : ''}.`,
+      fallback: total === 0 ? fb.noAssets : fb.summary(total, assigned, overdueAssignments, upcomingDisposals),
+      locale,
     });
     res.json(result);
   } catch (err) { next(err); }
