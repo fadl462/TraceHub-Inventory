@@ -551,7 +551,14 @@
     "catBillingBlurb": "Plans, trials, and managing your subscription.",
     "catSuperAdminsBlurb": "Running the platform: companies, CMS, email, payments.",
     "catTroubleshootingBlurb": "Common issues and honest answers.",
-    "catReferenceBlurb": "A glossary of every TraceHub-specific term."
+    "catReferenceBlurb": "A glossary of every TraceHub-specific term.",
+    "minRead": "{{count}} min read",
+    "totalReadTime": "≈ {{count}} min read",
+    "diffBeginner": "Beginner",
+    "diffIntermediate": "Intermediate",
+    "diffAdvanced": "Advanced",
+    "lastUpdated": "Last updated {{date}}",
+    "relatedArticles": "Related articles"
   },
   "blogPage": {
     "updates": "Updates",
@@ -589,5 +596,19 @@
     "askQuestionPlaceholder": "Ask a question...",
     "askTheAssistant": "Ask the TraceHub assistant",
     "somethingWentWrong": "Something went wrong on my end — please try again in a moment."
+  },
+  "docArticle": {
+    "tryItYourself": "Try it yourself",
+    "calcPurchasePrice": "Purchase price ($)",
+    "calcUsefulLifeYears": "Useful life (years)",
+    "calcResidualPct": "Residual value (%)",
+    "calcAgeYears": "Current age (years)",
+    "calcAnnualDepreciation": "Annual depreciation",
+    "calcCurrentValue": "Current book value",
+    "calcPercentDepreciated": "Depreciated so far",
+    "calcDisclaimer": "Uses the same straight-line formula as the real Smart Depreciation Engine — try your own numbers.",
+    "articleNotFound": "Article not found",
+    "backToDocumentation": "Back to documentation",
+    "onThisPage": "On this page"
   }
 }

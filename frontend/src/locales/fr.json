@@ -551,7 +551,14 @@
     "catBillingBlurb": "Forfaits, essais, et gestion de votre abonnement.",
     "catSuperAdminsBlurb": "Gérer la plateforme : entreprises, CMS, e-mail, paiements.",
     "catTroubleshootingBlurb": "Problèmes courants et réponses honnêtes.",
-    "catReferenceBlurb": "Un glossaire de chaque terme propre à TraceHub."
+    "catReferenceBlurb": "Un glossaire de chaque terme propre à TraceHub.",
+    "minRead": "{{count}} min de lecture",
+    "totalReadTime": "≈ {{count}} min de lecture",
+    "diffBeginner": "Débutant",
+    "diffIntermediate": "Intermédiaire",
+    "diffAdvanced": "Avancé",
+    "lastUpdated": "Dernière mise à jour le {{date}}",
+    "relatedArticles": "Articles connexes"
   },
   "blogPage": {
     "updates": "Actualités",
@@ -589,5 +596,19 @@
     "askQuestionPlaceholder": "Posez une question...",
     "askTheAssistant": "Demander à l'assistant TraceHub",
     "somethingWentWrong": "Une erreur s'est produite de mon côté — veuillez réessayer dans un instant."
+  },
+  "docArticle": {
+    "tryItYourself": "Essayez par vous-même",
+    "calcPurchasePrice": "Prix d'achat ($)",
+    "calcUsefulLifeYears": "Durée de vie utile (années)",
+    "calcResidualPct": "Valeur résiduelle (%)",
+    "calcAgeYears": "Âge actuel (années)",
+    "calcAnnualDepreciation": "Dépréciation annuelle",
+    "calcCurrentValue": "Valeur comptable actuelle",
+    "calcPercentDepreciated": "Déprécié jusqu’à présent",
+    "calcDisclaimer": "Utilise la même formule linéaire que le véritable Moteur de dépréciation intelligent — essayez vos propres chiffres.",
+    "articleNotFound": "Article introuvable",
+    "backToDocumentation": "Retour à la documentation",
+    "onThisPage": "Sur cette page"
   }
 }

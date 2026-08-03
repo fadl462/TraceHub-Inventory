@@ -7,6 +7,39 @@ function normalizeLocale(raw) {
   return SUPPORTED_LOCALES.includes(raw) ? raw : 'en';
 }
 
+// Difficulty is assessed once, by slug, rather than duplicated across all
+// 189 individual article rows (63 articles x 3 languages) - the same
+// conceptual article carries the same difficulty regardless of which
+// language it's being read in. Anything not listed here defaults to
+// 'intermediate' rather than silently showing no badge.
+const ADVANCED_SLUGS = new Set([
+  'time-based-depreciation-methods', 'usage-based-depreciation-methods',
+  'ai-adaptive-depreciation-in-depth', 'writing-custom-depreciation-formulas',
+  'ai-insights-panel-detectors-explained',
+]);
+const INTERMEDIATE_SLUGS = new Set([
+  'ai-engine-overview', 'smart-depreciation-engine', 'asset-health-score', 'failure-prediction-engine',
+  'maintenance-scheduling-engine', 'disposal-intelligence-engine', 'ai-confidence-score-and-learning-loop',
+  'understanding-risk-score', 'fleet-intelligence-formulas-explained', 'managing-tenant-companies',
+  'cms-content-management', 'email-smtp-configuration', 'payment-flutterwave-configuration',
+  'managing-plans-and-coupons', 'global-audit-log-and-security',
+]);
+function difficultyForSlug(slug) {
+  if (ADVANCED_SLUGS.has(slug)) return 'advanced';
+  if (INTERMEDIATE_SLUGS.has(slug)) return 'intermediate';
+  return 'beginner';
+}
+
+// A real word count from the actual content, not a guessed/fixed number -
+// strips HTML tags, splits on whitespace, divides by an average adult
+// silent-reading speed (~200 wpm), rounded up so "1 min read" never shows
+// for something that takes noticeably longer.
+function estimateReadingMinutes(html) {
+  const text = String(html || '').replace(/<[^>]*>/g, ' ');
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
 async function ensureSeeded() {
   const count = await DocArticle.count();
   if (count === 0) {
@@ -43,7 +76,7 @@ async function listPublic(req, res, next) {
     let articles = await DocArticle.findAll({
       where: { isPublished: true, locale },
       order: [['categorySortOrder', 'ASC'], ['category', 'ASC'], ['sortOrder', 'ASC']],
-      attributes: ['id', 'title', 'slug', 'category', 'excerpt', 'sortOrder', 'categorySortOrder'],
+      attributes: ['id', 'title', 'slug', 'category', 'excerpt', 'sortOrder', 'categorySortOrder', 'bodyHtml'],
     });
     // Any article not yet translated into the requested language falls
     // back to its English version rather than silently disappearing from
@@ -54,7 +87,7 @@ async function listPublic(req, res, next) {
       const enFallback = await DocArticle.findAll({
         where: { isPublished: true, locale: 'en' },
         order: [['categorySortOrder', 'ASC'], ['category', 'ASC'], ['sortOrder', 'ASC']],
-        attributes: ['id', 'title', 'slug', 'category', 'excerpt', 'sortOrder', 'categorySortOrder'],
+        attributes: ['id', 'title', 'slug', 'category', 'excerpt', 'sortOrder', 'categorySortOrder', 'bodyHtml'],
       });
       articles = [...articles, ...enFallback.filter((a) => !translatedSlugs.has(a.slug))];
     }
@@ -67,11 +100,18 @@ async function listPublic(req, res, next) {
     articles.sort((a, b) => a.categorySortOrder - b.categorySortOrder || a.category.localeCompare(b.category) || a.sortOrder - b.sortOrder);
     articles.forEach((a) => {
       if (!byCategory.has(a.category)) {
-        const bucket = { category: a.category, articles: [] };
+        const bucket = { category: a.category, articles: [], totalReadingMinutes: 0 };
         byCategory.set(a.category, bucket);
         categories.push(bucket);
       }
-      byCategory.get(a.category).articles.push(a);
+      const readingMinutes = estimateReadingMinutes(a.bodyHtml);
+      const bucket = byCategory.get(a.category);
+      bucket.totalReadingMinutes += readingMinutes;
+      bucket.articles.push({
+        id: a.id, title: a.title, slug: a.slug, category: a.category, excerpt: a.excerpt,
+        sortOrder: a.sortOrder, categorySortOrder: a.categorySortOrder,
+        difficulty: difficultyForSlug(a.slug), readingMinutes,
+      });
     });
 
     res.json({ categories });
@@ -97,8 +137,20 @@ async function getBySlug(req, res, next) {
     const idx = siblings.findIndex((s) => s.id === article.id);
     const prev = idx > 0 ? siblings[idx - 1] : null;
     const next = idx >= 0 && idx < siblings.length - 1 ? siblings[idx + 1] : null;
+    // "Related articles" - the rest of this article's own category, since
+    // that's a real, honest relationship (not a fabricated recommendation
+    // engine) and keeps readers inside the section they're already in.
+    // Excludes this article and whichever two are already shown as
+    // prev/next, and caps at 3 so it stays a short list, not the whole
+    // category repeated.
+    const shownIds = new Set([article.id, prev?.id, next?.id].filter(Boolean));
+    const related = siblings.filter((s) => !shownIds.has(s.id)).slice(0, 3);
 
-    res.json({ article, prev, next });
+    const payload = article.toJSON();
+    payload.difficulty = difficultyForSlug(article.slug);
+    payload.readingMinutes = estimateReadingMinutes(article.bodyHtml);
+
+    res.json({ article: payload, prev, next, related });
   } catch (err) { next(err); }
 }
 

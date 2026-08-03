@@ -89,7 +89,10 @@ export default function DocsHome() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-ink group-hover:text-primary transition-colors">{c.category}</h3>
-                      <p className="text-xs text-ink/40">{c.articles.length}{c.articles.length === 1 ? t('docsHome.articleSingular') : t('docsHome.articlePlural')}</p>
+                      <p className="text-xs text-ink/40">
+                        {c.articles.length}{c.articles.length === 1 ? t('docsHome.articleSingular') : t('docsHome.articlePlural')}
+                        {c.totalReadingMinutes > 0 && <> &middot; {t('docsHome.totalReadTime', { count: c.totalReadingMinutes })}</>}
+                      </p>
                     </div>
                   </div>
                   <p className="text-sm text-ink/60 flex-1">{meta.blurbKey ? t(`docsHome.${meta.blurbKey}`) : ''}</p>

@@ -551,7 +551,14 @@
     "catBillingBlurb": "Planes, pruebas, y gestión de su suscripción.",
     "catSuperAdminsBlurb": "Ejecutar la plataforma: empresas, CMS, correo, pagos.",
     "catTroubleshootingBlurb": "Problemas comunes y respuestas honestas.",
-    "catReferenceBlurb": "Un glosario de cada término específico de TraceHub."
+    "catReferenceBlurb": "Un glosario de cada término específico de TraceHub.",
+    "minRead": "{{count}} min de lectura",
+    "totalReadTime": "≈ {{count}} min de lectura",
+    "diffBeginner": "Principiante",
+    "diffIntermediate": "Intermedio",
+    "diffAdvanced": "Avanzado",
+    "lastUpdated": "Última actualización el {{date}}",
+    "relatedArticles": "Artículos relacionados"
   },
   "blogPage": {
     "updates": "Actualizaciones",
@@ -589,5 +596,19 @@
     "askQuestionPlaceholder": "Haga una pregunta...",
     "askTheAssistant": "Preguntar al asistente de TraceHub",
     "somethingWentWrong": "Algo salió mal de mi lado — por favor, inténtelo de nuevo en un momento."
+  },
+  "docArticle": {
+    "tryItYourself": "Pruébelo usted mismo",
+    "calcPurchasePrice": "Precio de compra ($)",
+    "calcUsefulLifeYears": "Vida útil (años)",
+    "calcResidualPct": "Valor de rescate (%)",
+    "calcAgeYears": "Edad actual (años)",
+    "calcAnnualDepreciation": "Depreciación anual",
+    "calcCurrentValue": "Valor en libros actual",
+    "calcPercentDepreciated": "Depreciado hasta ahora",
+    "calcDisclaimer": "Usa la misma fórmula de línea recta que el verdadero Motor de depreciación inteligente — pruebe sus propios números.",
+    "articleNotFound": "Artículo no encontrado",
+    "backToDocumentation": "Volver a la documentación",
+    "onThisPage": "En esta página"
   }
 }
