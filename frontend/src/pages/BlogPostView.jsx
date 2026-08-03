@@ -8,16 +8,16 @@ import SiteHeader from '../components/landing/SiteHeader';
 import SiteFooter from '../components/landing/SiteFooter';
 import { Spinner, Button } from '../components/ui';
 
-function formatDate(d) {
-  return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+function formatDate(d, locale) {
+  return new Date(d).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-function timeAgo(d) {
+function timeAgo(d, t, locale) {
   const days = Math.floor((Date.now() - new Date(d).getTime()) / 86400000);
-  if (days === 0) return 'Today';
-  if (days === 1) return 'Yesterday';
-  if (days < 30) return `${days} days ago`;
-  return formatDate(d);
+  if (days === 0) return t('blogPage.today');
+  if (days === 1) return t('blogPage.yesterday');
+  if (days < 30) return t('blogPage.daysAgo', { count: days });
+  return formatDate(d, locale);
 }
 
 export default function BlogPostView() {
@@ -78,7 +78,7 @@ export default function BlogPostView() {
         {status === 'found' && post && (
           <article>
             <p className="flex items-center gap-1.5 text-xs font-medium text-ink/45 mb-4">
-              <Calendar size={13} /> {formatDate(post.publishedAt)} <span className="text-ink/25">&middot;</span> {post.authorName}
+              <Calendar size={13} /> {formatDate(post.publishedAt, i18n.language)} <span className="text-ink/25">&middot;</span> {post.authorName}
             </p>
             <h1 className="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight leading-tight mb-8">{post.title}</h1>
             {post.coverImageUrl && (
@@ -139,7 +139,7 @@ export default function BlogPostView() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-baseline gap-2">
                           <p className="font-semibold text-sm text-ink">{c.authorName}</p>
-                          <p className="text-xs text-ink/40">{timeAgo(c.createdAt)}</p>
+                          <p className="text-xs text-ink/40">{timeAgo(c.createdAt, t, i18n.language)}</p>
                         </div>
                         <p className="text-sm text-ink/70 leading-relaxed mt-0.5 whitespace-pre-wrap">{c.body}</p>
                       </div>

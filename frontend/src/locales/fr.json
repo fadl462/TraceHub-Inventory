@@ -573,10 +573,21 @@
     "noCommentsYet": "Aucun commentaire pour l'instant — soyez le premier à partager votre avis.",
     "nameAndCommentRequired": "Le nom et le commentaire sont requis",
     "thanksForContributing": "Merci pour votre contribution !",
-    "failedToPostComment": "Échec de la publication du commentaire"
+    "failedToPostComment": "Échec de la publication du commentaire",
+    "today": "Aujourd'hui",
+    "yesterday": "Hier",
+    "daysAgo": "il y a {{count}} jours"
   },
   "cmsPage": {
     "backToHome": "Retour à l'accueil",
     "pageNotFound": "Page introuvable"
+  },
+  "aiWidget": {
+    "assistantTitle": "Assistant TraceHub",
+    "greeting": "Bonjour ! Je suis l'assistant TraceHub. Posez-moi vos questions sur la dépréciation, le suivi, les tarifs, ou comment démarrer.",
+    "popularQuestions": "Questions populaires",
+    "askQuestionPlaceholder": "Posez une question...",
+    "askTheAssistant": "Demander à l'assistant TraceHub",
+    "somethingWentWrong": "Une erreur s'est produite de mon côté — veuillez réessayer dans un instant."
   }
 }

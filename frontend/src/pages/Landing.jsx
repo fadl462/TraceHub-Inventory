@@ -34,9 +34,17 @@ const FEATURE_KEYS = {
   custom_domain: 'featCustomDomain', priority_support: 'featPrioritySupport',
 };
 
+// Plan codes -> translation keys, for the default four tiers. A Super Admin
+// could rename these to anything (they're editable business data, same as
+// footer links or blog posts) - only the known default codes get a
+// translated display name; anything else falls back to whatever name is
+// actually stored, since forcing a translation onto a custom plan name
+// would be wrong.
+const PLAN_NAME_KEYS = { trial: 'planTrial', basic: 'planBasic', pro: 'planPro', enterprise: 'planEnterprise' };
+
 function formatPlan(p, t) {
   return {
-    name: p.name,
+    name: PLAN_NAME_KEYS[p.code] ? t(`landing.${PLAN_NAME_KEYS[p.code]}`) : p.name,
     price: Number(p.priceMonthly) === 0 ? '$0' : `$${p.priceMonthly}`,
     period: p.code === 'trial' ? t('landing.for30Days') : t('landing.perMonth'),
     assets: p.assetLimit === -1 ? t('landing.unlimitedAssets') : t('landing.assetsCount', { count: p.assetLimit }),
@@ -275,7 +283,7 @@ function Pricing({ plans }) {
               }`}
             >
               {p.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[11px] font-mono font-semibold tracking-wide uppercase text-primary-900 bg-accent px-3 py-1 rounded-full shadow-sm">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap text-[11px] font-mono font-semibold tracking-wide uppercase text-primary-900 bg-accent px-3 py-1 rounded-full shadow-sm">
                   {t('landing.mostPopular')}
                 </span>
               )}
@@ -410,25 +418,28 @@ function FinalCTA({ content }) {
 export default function Landing() {
   const { t, i18n } = useTranslation();
   const [content, setContent] = useState(DEFAULT_CONTENT);
-  const [plans, setPlans] = useState(null);
+  const [rawPlans, setRawPlans] = useState(null);
   const [testimonials, setTestimonials] = useState([]);
   const [faqs, setFaqs] = useState([]);
   const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => {
     client.get('/site-content', { params: { locale: i18n.language } }).then(({ data }) => setContent(data.content)).catch(() => {});
+    client.get('/testimonials', { params: { locale: i18n.language } }).then(({ data }) => setTestimonials(data.testimonials || [])).catch(() => {});
   }, [i18n.language]);
 
   useEffect(() => {
     client.get('/plans').then(({ data }) => {
-      if (data.plans?.length) setPlans(data.plans.map((p) => formatPlan(p, t)));
+      if (data.plans?.length) setRawPlans(data.plans);
     }).catch(() => {});
-    client.get('/testimonials').then(({ data }) => setTestimonials(data.testimonials || [])).catch(() => {});
     client.get('/faqs').then(({ data }) => setFaqs(data.faqs || [])).catch(() => {});
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const displayPlans = plans || defaultPlans(t);
+  // Computed at render time (not stored pre-formatted) so plan names/labels
+  // stay correctly translated if the language changes after the initial
+  // fetch, rather than being frozen in whatever language was active when
+  // the API call first resolved.
+  const displayPlans = rawPlans ? rawPlans.map((p) => formatPlan(p, t)) : defaultPlans(t);
 
   return (
     <div className="bg-surface">

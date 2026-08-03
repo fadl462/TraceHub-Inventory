@@ -36,11 +36,12 @@ async function ensureSeeded() {
   await Promise.all(defaultPosts.map(async (p) => {
     const row = existingByKey.get(`${p.slug}::${p.locale || 'en'}`);
     if (!row) return;
-    const needsUpdate = row.coverImageUrl !== p.coverImageUrl || row.bodyHtml !== p.bodyHtml || row.excerpt !== p.excerpt;
+    const needsUpdate = row.coverImageUrl !== p.coverImageUrl || row.bodyHtml !== p.bodyHtml || row.excerpt !== p.excerpt || row.authorName !== p.authorName;
     if (needsUpdate) {
       row.coverImageUrl = p.coverImageUrl;
       row.bodyHtml = p.bodyHtml;
       row.excerpt = p.excerpt;
+      row.authorName = p.authorName;
       await row.save();
     }
   }));

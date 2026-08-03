@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Sparkles, X, Send, Loader2 } from 'lucide-react';
 import client from '../api/client';
 
@@ -9,6 +10,7 @@ import client from '../api/client';
  * context about the visitor's own company from the backend.
  */
 export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
+  const { t, i18n } = useTranslation();
   const [internalOpen, setInternalOpen] = useState(false);
   const open = isOpen !== undefined ? isOpen : internalOpen;
   const setOpen = onOpenChange || setInternalOpen;
@@ -27,11 +29,20 @@ export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
 
   const effectivePrompts = quickPrompts !== undefined ? quickPrompts : fetchedPrompts;
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: "Hi! I'm the TraceHub assistant. Ask me anything about depreciation, tracking, pricing, or how to get started." },
+    { role: 'assistant', content: t('aiWidget.greeting') },
   ]);
   const [input, setInput] = useState('');
   const [sending, setSending] = useState(false);
   const scrollRef = useRef(null);
+
+  // If the person switches language before actually chatting (still just
+  // the initial greeting, nothing sent yet), update the greeting to match -
+  // once a real conversation has started, leave the transcript alone.
+  useEffect(() => {
+    setMessages((m) => (m.length === 1 && m[0].role === 'assistant'
+      ? [{ role: 'assistant', content: t('aiWidget.greeting') }]
+      : m));
+  }, [i18n.language, t]);
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -53,7 +64,7 @@ export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
     } catch (err) {
       setMessages((m) => [...m, {
         role: 'assistant',
-        content: err.response?.data?.error || "Something went wrong on my end — please try again in a moment.",
+        content: err.response?.data?.error || t('aiWidget.somethingWentWrong'),
       }]);
     } finally { setSending(false); }
   };
@@ -65,7 +76,7 @@ export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
           <div className="bg-primary-800 text-white px-4 py-3.5 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2">
               <Sparkles size={17} className="text-accent" />
-              <span className="font-semibold text-sm">TraceHub Assistant</span>
+              <span className="font-semibold text-sm">{t('aiWidget.assistantTitle')}</span>
             </div>
             <button onClick={() => setOpen(false)} className="text-white/70 hover:text-white"><X size={18} /></button>
           </div>
@@ -90,7 +101,7 @@ export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
             )}
             {messages.length === 1 && effectivePrompts.length > 0 && (
               <div className="pt-1">
-                <p className="text-[11px] font-semibold uppercase tracking-wide text-ink/40 mb-2">Popular questions</p>
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-ink/40 mb-2">{t('aiWidget.popularQuestions')}</p>
                 <div className="flex flex-col gap-2">
                   {effectivePrompts.map((q) => (
                     <button
@@ -113,7 +124,7 @@ export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask a question..."
+              placeholder={t('aiWidget.askQuestionPlaceholder')}
               className="flex-1 text-sm px-3 py-2 rounded-lg border border-ink/10 focus-ring focus:border-secondary"
             />
             <button
@@ -129,7 +140,7 @@ export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
         <button
           onClick={() => setOpen(true)}
           className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-white shadow-lg flex items-center justify-center hover:bg-primary-600 transition-colors"
-          title="Ask the TraceHub assistant"
+          title={t('aiWidget.askTheAssistant')}
         >
           <Sparkles size={22} />
         </button>

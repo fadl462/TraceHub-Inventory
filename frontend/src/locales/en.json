@@ -573,10 +573,21 @@
     "noCommentsYet": "No comments yet — be the first to share your thoughts.",
     "nameAndCommentRequired": "Name and comment are required",
     "thanksForContributing": "Thanks for contributing!",
-    "failedToPostComment": "Failed to post comment"
+    "failedToPostComment": "Failed to post comment",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "daysAgo": "{{count}} days ago"
   },
   "cmsPage": {
     "backToHome": "Back to home",
     "pageNotFound": "Page not found"
+  },
+  "aiWidget": {
+    "assistantTitle": "TraceHub Assistant",
+    "greeting": "Hi! I'm the TraceHub assistant. Ask me anything about depreciation, tracking, pricing, or how to get started.",
+    "popularQuestions": "Popular questions",
+    "askQuestionPlaceholder": "Ask a question...",
+    "askTheAssistant": "Ask the TraceHub assistant",
+    "somethingWentWrong": "Something went wrong on my end — please try again in a moment."
   }
 }

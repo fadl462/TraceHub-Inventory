@@ -7,8 +7,8 @@ import SiteHeader from '../components/landing/SiteHeader';
 import SiteFooter from '../components/landing/SiteFooter';
 import { Spinner } from '../components/ui';
 
-function formatDate(d) {
-  return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+function formatDate(d, locale) {
+  return new Date(d).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 export default function Blog() {
@@ -56,7 +56,7 @@ export default function Blog() {
                   )}
                 </div>
                 <div className="p-6 flex flex-col flex-1">
-                  <p className="flex items-center gap-1.5 text-xs text-ink/45 mb-2"><Calendar size={13} /> {formatDate(p.publishedAt)}</p>
+                  <p className="flex items-center gap-1.5 text-xs text-ink/45 mb-2"><Calendar size={13} /> {formatDate(p.publishedAt, i18n.language)}</p>
                   <h2 className="font-display font-semibold text-lg text-ink group-hover:text-primary transition-colors">{p.title}</h2>
                   {p.excerpt && <p className="mt-2 text-sm text-ink/60 leading-relaxed flex-1">{p.excerpt}</p>}
                 </div>
