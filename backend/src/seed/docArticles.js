@@ -1520,4 +1520,11 @@ const defaultDocArticles = [
   ...glossary,
 ];
 
-module.exports = { defaultDocArticles };
+const frenchGettingStarted = require('./docArticles.fr-getting-started');
+
+module.exports = {
+  defaultDocArticles: [
+    ...defaultDocArticles.map((a) => ({ locale: 'en', ...a })),
+    ...frenchGettingStarted,
+  ],
+};

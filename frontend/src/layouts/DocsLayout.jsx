@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   Search, ChevronDown, ChevronUp, Menu, X, Rocket, Boxes, Sparkles, ScanLine,
   ClipboardList, Trash2, ShieldCheck, BarChart3, CreditCard, Settings, LifeBuoy, BookOpen, Home,
@@ -29,6 +30,7 @@ export default function DocsLayout() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { i18n } = useTranslation();
   const [categories, setCategories] = useState(null);
   const [openCategories, setOpenCategories] = useState({});
   const [search, setSearch] = useState('');
@@ -37,7 +39,7 @@ export default function DocsLayout() {
   const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => {
-    client.get('/docs').then(({ data }) => {
+    client.get('/docs', { params: { locale: i18n.language } }).then(({ data }) => {
       setCategories(data.categories);
       const initial = {};
       data.categories.forEach((c, i) => {
@@ -46,7 +48,7 @@ export default function DocsLayout() {
       setOpenCategories(initial);
     }).catch(() => setCategories([]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [i18n.language]);
 
   useEffect(() => {
     if (!categories || !slug) return;
@@ -57,7 +59,7 @@ export default function DocsLayout() {
   useEffect(() => {
     if (search.trim().length < 2) { setSearchResults(null); return; }
     const t = setTimeout(() => {
-      client.get('/docs/search', { params: { q: search.trim() } }).then(({ data }) => setSearchResults(data.results)).catch(() => {});
+      client.get('/docs/search', { params: { q: search.trim(), locale: i18n.language } }).then(({ data }) => setSearchResults(data.results)).catch(() => {});
     }, 250);
     return () => clearTimeout(t);
   }, [search]);

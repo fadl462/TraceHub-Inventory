@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   ArrowRight, MessageCircleQuestion, Newspaper, Rocket, Boxes, Sparkles, ScanLine,
   ClipboardList, Trash2, ShieldCheck, BarChart3, CreditCard, Settings, LifeBuoy, BookOpen,
@@ -10,6 +11,7 @@ import { Spinner } from '../../components/ui';
 
 const CATEGORY_META = {
   'Getting Started': { icon: Rocket, blurb: 'What TraceHub is, and how to get a workspace running fast.' },
+  'Bien démarrer': { icon: Rocket, blurb: "Ce qu'est TraceHub, et comment démarrer rapidement un espace de travail." },
   'Managing Assets': { icon: Boxes, blurb: 'Registering, categorizing, and organizing your equipment.' },
   'The Asset Intelligence Engine': { icon: Sparkles, blurb: 'The six AI engines running underneath every asset.' },
   'Tracking & Scanning': { icon: ScanLine, blurb: 'Checkpoints, QR codes, and location history.' },
@@ -25,11 +27,12 @@ const CATEGORY_META = {
 
 export default function DocsHome() {
   const { openChat } = useOutletContext();
+  const { i18n } = useTranslation();
   const [categories, setCategories] = useState(null);
 
   useEffect(() => {
-    client.get('/docs').then(({ data }) => setCategories(data.categories)).catch(() => setCategories([]));
-  }, []);
+    client.get('/docs', { params: { locale: i18n.language } }).then(({ data }) => setCategories(data.categories)).catch(() => setCategories([]));
+  }, [i18n.language]);
 
   return (
     <div>

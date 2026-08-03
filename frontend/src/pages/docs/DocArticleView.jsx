@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ChevronLeft, ChevronRight, List } from 'lucide-react';
 import client from '../../api/client';
 import { Spinner } from '../../components/ui';
@@ -10,6 +11,7 @@ function slugifyHeading(text) {
 
 export default function DocArticleView() {
   const { slug } = useParams();
+  const { i18n } = useTranslation();
   const [state, setState] = useState({ status: 'loading', article: null, prev: null, next: null });
   const [toc, setToc] = useState([]);
   const contentRef = useRef(null);
@@ -18,10 +20,10 @@ export default function DocArticleView() {
     setState({ status: 'loading', article: null, prev: null, next: null });
     setToc([]);
     window.scrollTo(0, 0);
-    client.get(`/docs/slug/${slug}`)
+    client.get(`/docs/slug/${slug}`, { params: { locale: i18n.language } })
       .then(({ data }) => setState({ status: 'found', article: data.article, prev: data.prev, next: data.next }))
       .catch(() => setState({ status: 'notfound', article: null, prev: null, next: null }));
-  }, [slug]);
+  }, [slug, i18n.language]);
 
   // Build a real "On this page" mini table-of-contents from the article's own
   // h3 headings, assigning each one an anchor id so the links actually jump
