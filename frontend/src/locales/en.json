@@ -558,7 +558,10 @@
     "diffIntermediate": "Intermediate",
     "diffAdvanced": "Advanced",
     "lastUpdated": "Last updated {{date}}",
-    "relatedArticles": "Related articles"
+    "relatedArticles": "Related articles",
+    "complete": "complete",
+    "syncedToAccount": "Synced to your account",
+    "savedOnThisDevice": "Saved on this device"
   },
   "blogPage": {
     "updates": "Updates",

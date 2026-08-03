@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { DocArticle } = require('../models');
+const { DocArticle, DocReadProgress } = require('../models');
 const { defaultDocArticles } = require('../seed/docArticles');
 
 const SUPPORTED_LOCALES = ['en', 'fr', 'es'];
@@ -224,6 +224,37 @@ async function update(req, res, next) {
   } catch (err) { next(err); }
 }
 
+/**
+ * GET /docs/progress - the logged-in user's own reading progress, as a
+ * plain array of article slugs they've read. Anonymous visitors get an
+ * empty array rather than a 401 - the docs stay fully public either way,
+ * this endpoint just personalizes the experience when it can.
+ */
+async function getProgress(req, res, next) {
+  try {
+    if (!req.user) return res.json({ readSlugs: [] });
+    const rows = await DocReadProgress.findAll({ where: { userId: req.user.id }, attributes: ['articleSlug'] });
+    res.json({ readSlugs: rows.map((r) => r.articleSlug) });
+  } catch (err) { next(err); }
+}
+
+/**
+ * POST /docs/progress - mark an article as read for the logged-in user.
+ * A no-op (still 200) for anonymous visitors, since the frontend falls back
+ * to its own localStorage tracking for them instead of calling this at all
+ * - this endpoint existing and responding harmlessly either way means the
+ * same "mark as read" call site works regardless of login state.
+ */
+async function markRead(req, res, next) {
+  try {
+    if (!req.user) return res.json({ tracked: false });
+    const { slug } = req.body;
+    if (!slug) return res.status(400).json({ error: 'slug is required' });
+    await DocReadProgress.findOrCreate({ where: { userId: req.user.id, articleSlug: slug } });
+    res.json({ tracked: true });
+  } catch (err) { next(err); }
+}
+
 async function remove(req, res, next) {
   try {
     const article = await DocArticle.findByPk(req.params.id);
@@ -233,4 +264,6 @@ async function remove(req, res, next) {
   } catch (err) { next(err); }
 }
 
-module.exports = { listPublic, getBySlug, search, listAll, create, update, remove };
+module.exports = {
+  listPublic, getBySlug, search, listAll, create, update, remove, getProgress, markRead,
+};

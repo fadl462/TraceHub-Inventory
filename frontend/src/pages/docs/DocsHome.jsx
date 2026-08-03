@@ -8,6 +8,7 @@ import {
 import client from '../../api/client';
 import RadarLocateVisual from '../../components/landing/RadarLocateVisual';
 import { Spinner } from '../../components/ui';
+import { useDocProgress } from '../../hooks/useDocProgress';
 
 // Category names come back from the API already localized (e.g. "Getting
 // Started" / "Bien démarrer" / "Primeros pasos" depending on the requested
@@ -49,6 +50,7 @@ export default function DocsHome() {
   const { openChat } = useOutletContext();
   const { t, i18n } = useTranslation();
   const [categories, setCategories] = useState(null);
+  const { readSlugs, loaded: progressLoaded, isSynced } = useDocProgress();
 
   useEffect(() => {
     client.get('/docs', { params: { locale: i18n.language } }).then(({ data }) => setCategories(data.categories)).catch(() => setCategories([]));
@@ -68,7 +70,12 @@ export default function DocsHome() {
       </div>
 
       <div className="px-6 sm:px-10 py-14">
-        <h2 className="font-display text-xl font-bold text-ink mb-6">{t('docsHome.browseByCategory')}</h2>
+        <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
+          <h2 className="font-display text-xl font-bold text-ink">{t('docsHome.browseByCategory')}</h2>
+          {progressLoaded && readSlugs.size > 0 && (
+            <p className="text-xs text-ink/40">{isSynced ? t('docsHome.syncedToAccount') : t('docsHome.savedOnThisDevice')}</p>
+          )}
+        </div>
         {categories === null ? (
           <div className="flex justify-center py-12"><Spinner size={24} /></div>
         ) : (
@@ -96,6 +103,19 @@ export default function DocsHome() {
                     </div>
                   </div>
                   <p className="text-sm text-ink/60 flex-1">{meta.blurbKey ? t(`docsHome.${meta.blurbKey}`) : ''}</p>
+                  {progressLoaded && (() => {
+                    const readCount = c.articles.filter((a) => readSlugs.has(a.slug)).length;
+                    if (readCount === 0) return null;
+                    const pct = Math.round((readCount / c.articles.length) * 100);
+                    return (
+                      <div className="mt-3">
+                        <div className="h-1.5 w-full rounded-full bg-ink/10 overflow-hidden">
+                          <div className="h-full rounded-full bg-accent transition-all" style={{ width: `${pct}%` }} />
+                        </div>
+                        <p className="text-[11px] text-ink/40 mt-1">{pct}% {t('docsHome.complete')}</p>
+                      </div>
+                    );
+                  })()}
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-primary mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
                     {t('docsHome.browse')} <ArrowRight size={14} />
                   </span>

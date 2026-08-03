@@ -6,6 +6,7 @@ import client from '../../api/client';
 import { Spinner } from '../../components/ui';
 import DifficultyBadge from '../../components/docs/DifficultyBadge';
 import DepreciationCalculator from '../../components/docs/DepreciationCalculator';
+import { useDocProgress } from '../../hooks/useDocProgress';
 
 function slugifyHeading(text) {
   return text.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -23,6 +24,7 @@ const EMBEDDED_WIDGETS = {
 export default function DocArticleView() {
   const { slug } = useParams();
   const { t, i18n } = useTranslation();
+  const { markRead } = useDocProgress();
   const [state, setState] = useState({
     status: 'loading', article: null, prev: null, next: null, related: [],
   });
@@ -36,12 +38,16 @@ export default function DocArticleView() {
     setToc([]);
     window.scrollTo(0, 0);
     client.get(`/docs/slug/${slug}`, { params: { locale: i18n.language } })
-      .then(({ data }) => setState({
-        status: 'found', article: data.article, prev: data.prev, next: data.next, related: data.related || [],
-      }))
+      .then(({ data }) => {
+        setState({
+          status: 'found', article: data.article, prev: data.prev, next: data.next, related: data.related || [],
+        });
+        markRead(slug);
+      })
       .catch(() => setState({
         status: 'notfound', article: null, prev: null, next: null, related: [],
       }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug, i18n.language]);
 
   // Build a real "On this page" mini table-of-contents from the article's own

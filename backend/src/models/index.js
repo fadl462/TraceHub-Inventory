@@ -29,6 +29,7 @@ const NewsletterSubscriber = require('./newsletterSubscriber')(sequelize, DataTy
 const BlogPost = require('./blogPost')(sequelize, DataTypes);
 const DocArticle = require('./docArticle')(sequelize, DataTypes);
 const FeatureRequest = require('./featureRequest')(sequelize, DataTypes);
+const DocReadProgress = require('./docReadProgress')(sequelize, DataTypes);
 const FeatureRequestVote = require('./featureRequestVote')(sequelize, DataTypes);
 const BlogComment = require('./blogComment')(sequelize, DataTypes);
 const DisposalCase = require('./disposalCase')(sequelize, DataTypes);
@@ -172,6 +173,7 @@ module.exports = {
   BlogComment,
   DocArticle,
   FeatureRequest,
+  DocReadProgress,
   FeatureRequestVote,
   DisposalCase,
 };

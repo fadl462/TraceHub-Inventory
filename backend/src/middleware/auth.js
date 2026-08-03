@@ -43,6 +43,28 @@ async function authenticate(req, res, next) {
   }
 }
 
+/**
+ * Like authenticate, but never rejects the request - for genuinely public
+ * routes (the docs portal) that should work identically for anonymous
+ * visitors while still offering a real, personalized experience (reading
+ * progress) to anyone who happens to be logged in. Silently proceeds with
+ * no req.user on any missing/invalid/expired token rather than erroring.
+ */
+async function optionalAuthenticate(req, res, next) {
+  try {
+    const header = req.headers.authorization || '';
+    const token = header.startsWith('Bearer ') ? header.slice(7) : null;
+    if (!token) return next();
+
+    const payload = verifyAccessToken(token);
+    const user = await User.findByPk(payload.sub);
+    if (user && user.isActive) req.user = user;
+  } catch {
+    // Invalid/expired token on a public route - just proceed anonymously.
+  }
+  next();
+}
+
 /** Restrict route to one or more roles */
 function requireRole(...roles) {
   return (req, res, next) => {
@@ -60,4 +82,6 @@ function requireCompanyContext(req, res, next) {
   next();
 }
 
-module.exports = { authenticate, requireRole, requireCompanyContext };
+module.exports = {
+  authenticate, optionalAuthenticate, requireRole, requireCompanyContext,
+};
