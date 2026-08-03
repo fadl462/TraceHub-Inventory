@@ -20,7 +20,7 @@ const STAGE_TONE = {
 
 const NEXT_STEPS = {
   flagged: [{ to: 'manager_review', label: 'Send to manager review' }],
-  manager_review: [{ to: 'finance_review', label: 'Approve \u2192 finance review' }],
+  manager_review: [{ to: 'finance_review', label: 'Approve → finance review' }],
   finance_review: [{ to: 'approved', label: 'Approve for disposal' }],
   approved: [
     { to: 'auctioning', label: 'Send to auction' }, { to: 'selling', label: 'List for sale' },

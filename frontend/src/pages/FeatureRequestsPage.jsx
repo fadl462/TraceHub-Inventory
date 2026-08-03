@@ -95,7 +95,7 @@ export default function FeatureRequestsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-ink flex items-center gap-2"><Lightbulb size={20} className="text-primary" /> {t('featureRequests.title')}</h1>
-          <p className="text-sm text-ink/60 mt-0.5">Suggest an improvement, or vote for one already suggested \u2014 the ideas with the most support across every TraceHub customer rise to the top.</p>
+          <p className="text-sm text-ink/60 mt-0.5">Suggest an improvement, or vote for one already suggested — the ideas with the most support across every TraceHub customer rise to the top.</p>
         </div>
         <Button onClick={() => setShowForm((s) => !s)}><Plus size={16} /> {t('featureRequests.suggestIdea')}</Button>
       </div>
@@ -162,7 +162,7 @@ export default function FeatureRequestsPage() {
                 {r.statusNote && (
                   <p className="text-xs text-ink/50 mt-2 bg-primary-50/50 rounded-md px-2.5 py-1.5 inline-block">{r.statusNote}</p>
                 )}
-                <p className="text-xs text-ink/40 mt-2">Suggested by {r.createdByName} \u00b7 {timeAgo(r.createdAt)}</p>
+                <p className="text-xs text-ink/40 mt-2">Suggested by {r.createdByName} · {timeAgo(r.createdAt)}</p>
               </div>
               {(user?.role === 'super_admin' || (r.createdByUserId === user?.id && r.status === 'open')) && (
                 <button onClick={() => removeRequest(r.id)} className="text-ink/30 hover:text-red-600 shrink-0"><Trash2 size={15} /></button>

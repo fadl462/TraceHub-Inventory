@@ -30,6 +30,7 @@ function Stat({ icon: Icon, label, value, tone = 'primary', to }) {
 
 function WelcomeInsightBanner({ overview }) {
   const { user, company } = useAuth();
+  const { t } = useTranslation();
   const [insight, setInsight] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -38,7 +39,7 @@ function WelcomeInsightBanner({ overview }) {
   }, []);
 
   const hour = new Date().getHours();
-  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+  const greeting = hour < 12 ? t('dashboard.greetingMorning') : hour < 18 ? t('dashboard.greetingAfternoon') : t('dashboard.greetingEvening');
   const hasUrgent = (overview?.overdueAssignments || 0) > 0 || (overview?.upcomingDisposals || 0) > 0;
 
   return (
@@ -52,7 +53,7 @@ function WelcomeInsightBanner({ overview }) {
           <Sparkles size={20} />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold text-white/70">{greeting}, {user?.firstName} — here's what's happening with {company?.name}</p>
+          <p className="text-sm font-semibold text-white/70">{greeting}, {user?.firstName} \u2014 {t('dashboard.hereIsWhatsHappening', { company: company?.name })}</p>
           {loading ? (
             <div className="h-6 w-3/4 bg-white/10 rounded animate-pulse mt-2" />
           ) : (
@@ -62,12 +63,12 @@ function WelcomeInsightBanner({ overview }) {
             <div className="mt-3 flex flex-wrap gap-2">
               {overview.overdueAssignments > 0 && (
                 <Link to="/assignments" className="text-xs font-medium bg-white/10 hover:bg-white/20 transition-colors px-3 py-1.5 rounded-full">
-                  {overview.overdueAssignments} overdue return{overview.overdueAssignments === 1 ? '' : 's'} \u2192
+                  {t('dashboard.overdueReturnCount', { count: overview.overdueAssignments })}
                 </Link>
               )}
               {overview.upcomingDisposals > 0 && (
                 <Link to="/assets" className="text-xs font-medium bg-white/10 hover:bg-white/20 transition-colors px-3 py-1.5 rounded-full">
-                  {overview.upcomingDisposals} nearing disposal \u2192
+                  {t('dashboard.nearingDisposalCount', { count: overview.upcomingDisposals })}
                 </Link>
               )}
             </div>
@@ -178,10 +179,14 @@ export default function Dashboard() {
             const total = overview.assetCounts.total || 1;
             const pct = Math.round((count / total) * 100);
             const colors = { available: 'bg-accent', assigned: 'bg-secondary', maintenance: 'bg-amber-400', disposed: 'bg-ink/30' };
+            const statusLabels = {
+              available: t('dashboard.statusAvailable'), assigned: t('dashboard.statusAssigned'),
+              maintenance: t('dashboard.statusMaintenance'), disposed: t('dashboard.statusDisposed'),
+            };
             return (
               <Link key={status} to={`/assets?status=${status}`} className="block group">
                 <div className="flex justify-between text-sm mb-1">
-                  <span className="capitalize text-ink/70 group-hover:text-ink transition-colors">{status}</span>
+                  <span className="text-ink/70 group-hover:text-ink transition-colors">{statusLabels[status] || status}</span>
                   <span className="font-medium text-ink">{count}</span>
                 </div>
                 <div className="h-2 rounded-full bg-primary-50 overflow-hidden">
@@ -197,11 +202,11 @@ export default function Dashboard() {
         <h3 className="font-semibold text-ink mb-4">{t('dashboard.fleetValue')}</h3>
         <div className="grid sm:grid-cols-2 gap-6">
           <div>
-            <p className="text-xs text-ink/50">Total purchase value</p>
+            <p className="text-xs text-ink/50">{t('dashboard.totalPurchaseValue')}</p>
             <p className="text-xl font-bold text-ink">{company?.currency || 'USD'} {Number(overview?.totalPurchaseValue || 0).toLocaleString()}</p>
           </div>
           <div>
-            <p className="text-xs text-ink/50">Current estimated value (AI)</p>
+            <p className="text-xs text-ink/50">{t('dashboard.currentEstimatedValueAI')}</p>
             <p className="text-xl font-bold text-link">{company?.currency || 'USD'} {Number(overview?.totalCurrentValue || 0).toLocaleString()}</p>
           </div>
         </div>
@@ -247,12 +252,12 @@ function IntelligenceKpiSection({ currency }) {
   if (!data) return null;
 
   const chips = [
-    { label: 'Healthy assets', value: data.healthyCount, tone: 'accent' },
-    { label: 'Critical assets', value: data.criticalCount, tone: data.criticalCount > 0 ? 'danger' : 'primary' },
-    { label: 'Near disposal', value: data.nearDisposalCount, tone: data.nearDisposalCount > 0 ? 'warning' : 'primary' },
-    { label: 'Due maintenance', value: data.dueMaintenanceCount, tone: 'primary' },
-    { label: 'Warranty expiring (60d)', value: data.warrantyExpiringCount, tone: 'primary' },
-    { label: 'Idle assets', value: data.idleCount, tone: 'primary' },
+    { label: t('dashboard.healthyAssets'), value: data.healthyCount, tone: 'accent' },
+    { label: t('dashboard.criticalAssets'), value: data.criticalCount, tone: data.criticalCount > 0 ? 'danger' : 'primary' },
+    { label: t('dashboard.nearDisposalChip'), value: data.nearDisposalCount, tone: data.nearDisposalCount > 0 ? 'warning' : 'primary' },
+    { label: t('dashboard.dueMaintenanceChip'), value: data.dueMaintenanceCount, tone: 'primary' },
+    { label: t('dashboard.warrantyExpiring60d'), value: data.warrantyExpiringCount, tone: 'primary' },
+    { label: t('dashboard.idleAssets'), value: data.idleCount, tone: 'primary' },
   ];
   const chipTones = {
     accent: 'bg-green-50 text-accent-dark', danger: 'bg-red-50 text-red-600',
@@ -274,32 +279,32 @@ function IntelligenceKpiSection({ currency }) {
         <h3 className="font-semibold text-ink mb-4">{t('dashboard.depreciationProjections')}</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           <div>
-            <p className="text-xs text-ink/50">Depreciation today</p>
+            <p className="text-xs text-ink/50">{t('dashboard.depreciationToday')}</p>
             <p className="text-lg font-bold text-ink">{currency} {Number(data.depreciationToday).toLocaleString()}</p>
           </div>
           <div>
-            <p className="text-xs text-ink/50">Monthly asset loss</p>
+            <p className="text-xs text-ink/50">{t('dashboard.monthlyAssetLoss')}</p>
             <p className="text-lg font-bold text-ink">{currency} {Number(data.monthlyAssetLoss).toLocaleString()}</p>
           </div>
           <div>
-            <p className="text-xs text-ink/50">Replacement budget needed</p>
+            <p className="text-xs text-ink/50">{t('dashboard.replacementBudgetNeeded')}</p>
             <p className="text-lg font-bold text-link">{currency} {Number(data.replacementBudget).toLocaleString()}</p>
           </div>
           <div>
-            <p className="text-xs text-ink/50">Projected disposal cost</p>
+            <p className="text-xs text-ink/50">{t('dashboard.projectedDisposalCost')}</p>
             <p className="text-lg font-bold text-ink">{currency} {Number(data.projectedDisposalCost).toLocaleString()}</p>
           </div>
           <div>
-            <p className="text-xs text-ink/50" title="Assets not yet flagged today, but whose engine-suggested disposal date falls within the next 12 months.">Projected replacement cost (12mo)</p>
+            <p className="text-xs text-ink/50" title="Assets not yet flagged today, but whose engine-suggested disposal date falls within the next 12 months.">{t('dashboard.projectedReplacementCost12mo')}</p>
             <p className="text-lg font-bold text-ink">{currency} {Number(data.projectedReplacementCost).toLocaleString()}</p>
           </div>
         </div>
       </Card>
 
       <div className="grid lg:grid-cols-3 gap-4">
-        <RankedList title="Most valuable assets" items={data.mostValuable} currency={currency} valueKey="aiEstimatedCurrentValue" />
-        <RankedList title="Most repaired assets" items={data.mostRepaired} currency={currency} valueKey="repairCount" suffix=" repairs" />
-        <RankedList title="Most expensive to maintain" items={data.mostExpensiveToMaintain} currency={currency} valueKey={(a) => Number(a.maintenanceCostTotal || 0) + Number(a.repairCostTotal || 0)} />
+        <RankedList title={t('dashboard.mostValuableAssets')} items={data.mostValuable} currency={currency} valueKey="aiEstimatedCurrentValue" />
+        <RankedList title={t('dashboard.mostRepairedAssets')} items={data.mostRepaired} currency={currency} valueKey="repairCount" suffix={t('dashboard.repairsSuffix')} />
+        <RankedList title={t('dashboard.mostExpensiveToMaintain')} items={data.mostExpensiveToMaintain} currency={currency} valueKey={(a) => Number(a.maintenanceCostTotal || 0) + Number(a.repairCostTotal || 0)} />
       </div>
 
       <AssignmentTrackingPanel />
@@ -377,25 +382,25 @@ function AssignmentTrackingPanel() {
         <h3 className="font-semibold text-ink flex items-center gap-2 text-sm sm:text-base"><ClipboardList size={16} className="text-primary shrink-0" /> {t('dashboard.assetsCurrentlyAssigned')}</h3>
         <div className="flex items-center gap-1">
           {overdueCount > 0 && (
-            <span className="text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-1 rounded-full mr-1">{overdueCount} overdue</span>
+            <span className="text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-1 rounded-full mr-1">{t('dashboard.overdueCountSuffix', { count: overdueCount })}</span>
           )}
           <select
             value={filter} onChange={(e) => setFilter(e.target.value)}
             className="text-xs rounded-md border border-primary-100 px-2 py-1.5 mr-1 focus-ring focus:border-secondary bg-transparent text-ink"
           >
-            <option value="all">All</option>
-            <option value="overdue">Overdue only</option>
-            <option value="ontime">On time only</option>
+            <option value="all">{t('dashboard.filterAll')}</option>
+            <option value="overdue">{t('dashboard.filterOverdueOnly')}</option>
+            <option value="ontime">{t('dashboard.filterOnTimeOnly')}</option>
           </select>
           <button onClick={handleCsv} title="Export CSV" aria-label="Export CSV" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors"><Download size={14} /></button>
           <button onClick={handlePdf} title="Export PDF" aria-label="Export PDF" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors"><FileText size={14} /></button>
           <button onClick={handlePptx} title="Export PowerPoint" aria-label="Export PowerPoint" className="text-ink/40 hover:text-link p-1.5 rounded-md hover:bg-primary-50 transition-colors"><Presentation size={14} /></button>
         </div>
       </div>
-      <p className="text-xs text-ink/50 mb-4">Who has what, when it was issued, and how long it's been out.</p>
+      <p className="text-xs text-ink/50 mb-4">{t('dashboard.assignmentSubtitle')}</p>
       <div className="space-y-2">
         {visibleAssignments.length === 0 ? (
-          <p className="text-sm text-ink/50 text-center py-4">No assignments match this filter.</p>
+          <p className="text-sm text-ink/50 text-center py-4">{t('dashboard.noAssignmentsMatchFilter')}</p>
         ) : visibleAssignments.map((a) => (
           <div
             key={a.id}
@@ -404,20 +409,20 @@ function AssignmentTrackingPanel() {
             <div className="min-w-0">
               <p className="text-sm font-medium text-ink truncate">
                 <Link to={`/assets/${a.asset?.id}`} className="hover:text-link">{a.asset?.name}</Link>
-                <span className="text-ink/40 font-normal"> \u2192 {a.assigneeName}</span>
+                <span className="text-ink/40 font-normal"> → {a.assigneeName}</span>
               </p>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-1 text-xs text-ink/50">
-                <span className="flex items-center gap-1"><Calendar size={11} /> Issued {new Date(a.assignedAt).toLocaleDateString()}</span>
-                {a.expectedReturnDate && <span>Due {a.expectedReturnDate}</span>}
+                <span className="flex items-center gap-1"><Calendar size={11} /> {t('dashboard.issuedLabel')} {new Date(a.assignedAt).toLocaleDateString()}</span>
+                {a.expectedReturnDate && <span>{t('dashboard.dueLabel')} {a.expectedReturnDate}</span>}
                 {a.contactEmail && <span className="flex items-center gap-1"><Mail size={11} /> {a.contactEmail}</span>}
                 {a.contactPhone && <span className="flex items-center gap-1"><Phone size={11} /> {a.contactPhone}</span>}
               </div>
             </div>
             <div className="shrink-0 text-right">
               {a.isOverdue ? (
-                <span className="text-sm font-bold text-red-600">{a.daysHeld}d held — {a.daysOverdue}d overdue</span>
+                <span className="text-sm font-bold text-red-600">{t('dashboard.overdueHeldSuffix', { held: a.daysHeld, overdue: a.daysOverdue })}</span>
               ) : (
-                <span className="text-sm font-medium text-ink/70">{a.daysHeld}d held</span>
+                <span className="text-sm font-medium text-ink/70">{t('dashboard.heldSuffix', { days: a.daysHeld })}</span>
               )}
             </div>
           </div>
@@ -428,11 +433,11 @@ function AssignmentTrackingPanel() {
 }
 
 const HEALTH_TIER_META = [
-  { key: 'excellent', label: 'Excellent', dot: '#15803D' },
-  { key: 'healthy', label: 'Healthy', dot: '#22C55E' },
-  { key: 'needsAttention', label: 'Needs Attention', dot: '#D97706' },
-  { key: 'highRisk', label: 'High Risk', dot: '#EA580C' },
-  { key: 'critical', label: 'Critical', dot: '#DC2626' },
+  { key: 'excellent', dot: '#15803D' },
+  { key: 'healthy', dot: '#22C55E' },
+  { key: 'needsAttention', dot: '#D97706' },
+  { key: 'highRisk', dot: '#EA580C' },
+  { key: 'critical', dot: '#DC2626' },
 ];
 
 function FleetIntelligencePanel() {
@@ -458,6 +463,8 @@ function FleetIntelligencePanel() {
 
   const gradeColor = { A: '#15803D', B: '#22C55E', C: '#D97706', D: '#EA580C', F: '#DC2626' }[data.fleetGrade] || '#94A3B8';
   const riskColor = { Low: 'text-accent-dark', Medium: 'text-amber-600', High: 'text-red-600' };
+  const riskLabels = { Low: t('dashboard.riskLow'), Medium: t('dashboard.riskMedium'), High: t('dashboard.riskHigh') };
+  const riskLabel = (level) => riskLabels[level] || level;
   const totalTiered = Object.values(data.healthTiers).reduce((a, b) => a + b, 0);
 
   return (
@@ -466,41 +473,45 @@ function FleetIntelligencePanel() {
         <h3 className="font-semibold text-ink flex items-center gap-2"><Gauge size={16} className="text-primary" /> {t('dashboard.fleetIntelligence')}</h3>
         {data.fleetGrade && (
           <div className="flex items-center gap-2">
-            <span className="text-xs text-ink/50">Overall Fleet Grade</span>
+            <span className="text-xs text-ink/50">{t('dashboard.overallFleetGrade')}</span>
             <span className="h-8 w-8 rounded-full flex items-center justify-center font-bold text-white text-sm" style={{ backgroundColor: gradeColor }}>{data.fleetGrade}</span>
           </div>
         )}
       </div>
-      <p className="text-xs text-ink/50 mb-4">Portfolio-level view across your whole fleet — real aggregates, not per-asset detail.</p>
+      <p className="text-xs text-ink/50 mb-4">{t('dashboard.fleetIntelSubtitle')}</p>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
         <div className="bg-primary-50/50 rounded-lg p-3">
-          <p className="text-xs text-ink/50">Portfolio Health</p>
-          <p className="text-lg font-bold text-ink">{data.portfolioHealth != null ? `${data.portfolioHealth}%` : '—'}</p>
+          <p className="text-xs text-ink/50">{t('dashboard.portfolioHealthLabel')}</p>
+          <p className="text-lg font-bold text-ink">{data.portfolioHealth != null ? `${data.portfolioHealth}%` : '\u2014'}</p>
         </div>
         <div className="bg-primary-50/50 rounded-lg p-3">
-          <p className="text-xs text-ink/50">Asset Availability</p>
-          <p className="text-lg font-bold text-ink">{data.assetAvailabilityPct != null ? `${data.assetAvailabilityPct}%` : '—'}</p>
+          <p className="text-xs text-ink/50">{t('dashboard.assetAvailabilityLabel')}</p>
+          <p className="text-lg font-bold text-ink">{data.assetAvailabilityPct != null ? `${data.assetAvailabilityPct}%` : '\u2014'}</p>
         </div>
         <div className="bg-primary-50/50 rounded-lg p-3">
-          <p className="text-xs text-ink/50">Capital Risk</p>
+          <p className="text-xs text-ink/50">{t('dashboard.capitalRiskLabel')}</p>
           <p className={`text-lg font-bold ${riskColor[data.financialRisk] || 'text-ink'}`}>{data.capitalRiskPct}%</p>
         </div>
         <div className="bg-primary-50/50 rounded-lg p-3">
-          <p className="text-xs text-ink/50">Financial / Operational Risk</p>
+          <p className="text-xs text-ink/50">{t('dashboard.financialOperationalRisk')}</p>
           <p className="text-sm font-bold">
-            <span className={riskColor[data.financialRisk]}>{data.financialRisk}</span>
+            <span className={riskColor[data.financialRisk]}>{riskLabel(data.financialRisk)}</span>
             <span className="text-ink/30 mx-1">/</span>
-            <span className={riskColor[data.operationalRisk]}>{data.operationalRisk}</span>
+            <span className={riskColor[data.operationalRisk]}>{riskLabel(data.operationalRisk)}</span>
           </p>
         </div>
       </div>
 
-      <p className="text-xs font-semibold text-ink/60 uppercase tracking-wide mb-2">Executive Heat Map</p>
+      <p className="text-xs font-semibold text-ink/60 uppercase tracking-wide mb-2">{t('dashboard.executiveHeatMap')}</p>
       <div className="flex flex-wrap gap-2 mb-1">
         {HEALTH_TIER_META.map((tier) => {
           const count = data.healthTiers[tier.key];
           if (!count) return null;
+          const tierLabelKeys = {
+            excellent: 'dashboard.tierExcellent', healthy: 'dashboard.tierHealthy', needsAttention: 'dashboard.tierNeedsAttention',
+            highRisk: 'dashboard.tierHighRisk', critical: 'dashboard.tierCritical',
+          };
           return (
             <Link
               key={tier.key}
@@ -509,17 +520,17 @@ function FleetIntelligencePanel() {
               style={{ backgroundColor: `${tier.dot}18`, color: tier.dot }}
             >
               <span className="h-2 w-2 rounded-full" style={{ backgroundColor: tier.dot }} />
-              {tier.label} · {count}
+              {t(tierLabelKeys[tier.key])} \u00b7 {count}
             </Link>
           );
         })}
-        {totalTiered === 0 && <p className="text-sm text-ink/50">No assets have a computed health score yet.</p>}
+        {totalTiered === 0 && <p className="text-sm text-ink/50">{t('dashboard.noHealthScoreYet')}</p>}
       </div>
 
       {data.projectedSavings > 0 && (
         <div className="mt-4 bg-primary-800 text-white rounded-lg p-3.5 flex items-center justify-between flex-wrap gap-2">
           <p className="text-sm">
-            You've spent <strong>{company?.currency || 'USD'} {data.projectedSavings.toLocaleString()}</strong> maintaining assets the AI recommends replacing — money you'd stop spending by acting on it.
+            {t('dashboard.moneySpentMaintaining', { amount: `${company?.currency || 'USD'} ${data.projectedSavings.toLocaleString()}` })}
           </p>
         </div>
       )}
@@ -540,13 +551,13 @@ function FleetInsightsPanel() {
   return (
     <Card className="p-5">
       <h3 className="font-semibold text-ink mb-1 flex items-center gap-2"><Sparkles size={16} className="text-link" /> {t('dashboard.aiInsightsPanel')}</h3>
-      <p className="text-xs text-ink/50 mb-4">Rule-based patterns detected across your fleet — real numbers from your own asset data, not fabricated.</p>
+      <p className="text-xs text-ink/50 mb-4">{t('dashboard.aiInsightsSubtitle')}</p>
       {insights === null ? (
         <div className="space-y-2">
           {[0, 1, 2].map((i) => <div key={i} className="h-9 rounded-lg bg-primary-50/50 animate-pulse" />)}
         </div>
       ) : insights.length === 0 ? (
-        <p className="text-sm text-ink/50 py-4 text-center">No notable patterns right now — your fleet looks steady.</p>
+        <p className="text-sm text-ink/50 py-4 text-center">{t('dashboard.noInsightsYet')}</p>
       ) : (
         <ul className="space-y-3">
           {insights.map((ins, i) => (
@@ -578,29 +589,29 @@ function LearningLoopPanel() {
     <Card className="p-5">
       <h3 className="font-semibold text-ink mb-1">{t('dashboard.aiLearningLoop')}</h3>
       <p className="text-xs text-ink/50 mb-4">
-        How this company's own disposal-decision history is feeding back into the engine's confidence scoring.
+        {t('dashboard.learningLoopSubtitle')}
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
         <div>
           <p className="text-xl font-bold text-ink">{stats.recommendationsFollowed}</p>
-          <p className="text-xs text-ink/50 mt-0.5">Recommendations followed</p>
+          <p className="text-xs text-ink/50 mt-0.5">{t('dashboard.recommendationsFollowed')}</p>
         </div>
         <div>
           <p className="text-xl font-bold text-ink">{stats.recommendationsRejected}</p>
-          <p className="text-xs text-ink/50 mt-0.5">Recommendations rejected</p>
+          <p className="text-xs text-ink/50 mt-0.5">{t('dashboard.recommendationsRejected')}</p>
         </div>
         <div>
-          <p className="text-xl font-bold text-ink">{stats.reliabilityRate != null ? `${stats.reliabilityRate}%` : '—'}</p>
-          <p className="text-xs text-ink/50 mt-0.5">Rejected cases later followed by a real failure</p>
+          <p className="text-xl font-bold text-ink">{stats.reliabilityRate != null ? `${stats.reliabilityRate}%` : '\u2014'}</p>
+          <p className="text-xs text-ink/50 mt-0.5">{t('dashboard.rejectedCasesFollowedByFailure')}</p>
         </div>
         <div>
           <p className="text-xl font-bold text-ink">{stats.confidenceAdjustment > 0 ? '+' : ''}{stats.confidenceAdjustment}</p>
-          <p className="text-xs text-ink/50 mt-0.5">Current confidence adjustment</p>
+          <p className="text-xs text-ink/50 mt-0.5">{t('dashboard.currentConfidenceAdjustment')}</p>
         </div>
       </div>
       {!stats.hasEnoughHistory && (
         <p className="text-xs text-ink/40 mt-4">
-          Not yet applying an adjustment — needs at least 5 evaluated rejections before trusting the rate ({stats.rejectionsEvaluated} so far, {stats.rejectionsPendingEvaluation} still pending their 30-day evaluation window).
+          {t('dashboard.notYetApplyingAdjustment', { evaluated: stats.rejectionsEvaluated, pending: stats.rejectionsPendingEvaluation })}
         </p>
       )}
     </Card>
@@ -608,11 +619,12 @@ function LearningLoopPanel() {
 }
 
 function RankedList({ title, items, currency, valueKey, suffix = '' }) {
+  const { t } = useTranslation();
   return (
     <Card className="p-5">
       <h3 className="font-semibold text-ink mb-3 text-sm">{title}</h3>
       {!items || items.length === 0 ? (
-        <p className="text-sm text-ink/50 py-6 text-center">No data yet.</p>
+        <p className="text-sm text-ink/50 py-6 text-center">{t('dashboard.noDataYet')}</p>
       ) : (
         <ul className="space-y-2.5">
           {items.map((a) => {
