@@ -1521,10 +1521,14 @@ const defaultDocArticles = [
 ];
 
 const frenchGettingStarted = require('./docArticles.fr-getting-started');
+const frenchManagingAssets = require('./docArticles.fr-managing-assets');
+const frenchIntelligenceEngine = require('./docArticles.fr-intelligence-engine');
 
 module.exports = {
   defaultDocArticles: [
     ...defaultDocArticles.map((a) => ({ locale: 'en', ...a })),
     ...frenchGettingStarted,
+    ...frenchManagingAssets,
+    ...frenchIntelligenceEngine,
   ],
 };
