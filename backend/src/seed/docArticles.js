@@ -1528,6 +1528,8 @@ const frenchTrackingAssignments = require('./docArticles.fr-tracking-assignments
 const frenchDisposalWorkflow = require('./docArticles.fr-disposal-workflow');
 const frenchTeamSecurity = require('./docArticles.fr-team-security');
 const frenchReportsBilling = require('./docArticles.fr-reports-billing');
+const frenchSuperAdmin = require('./docArticles.fr-super-admin');
+const frenchTroubleshootingReference = require('./docArticles.fr-troubleshooting-reference');
 
 module.exports = {
   defaultDocArticles: [
@@ -1540,5 +1542,7 @@ module.exports = {
     ...frenchDisposalWorkflow,
     ...frenchTeamSecurity,
     ...frenchReportsBilling,
+    ...frenchSuperAdmin,
+    ...frenchTroubleshootingReference,
   ],
 };
