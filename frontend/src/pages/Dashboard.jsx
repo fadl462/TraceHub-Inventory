@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Boxes, ClipboardList, AlertTriangle, TrendingDown, Plus, ScanLine, Sparkles, Mail, Phone, Calendar, Download, FileText, Presentation, Gauge } from 'lucide-react';
 import client from '../api/client';
 import { Card, Button, Spinner } from '../components/ui';
@@ -79,6 +80,7 @@ function WelcomeInsightBanner({ overview }) {
 
 export default function Dashboard() {
   const { company } = useAuth();
+  const { t } = useTranslation();
   const [overview, setOverview] = useState(null);
   const [loading, setLoading] = useState(true);
   const [exporting, setExporting] = useState(false);
@@ -163,14 +165,14 @@ export default function Dashboard() {
       <WelcomeInsightBanner overview={overview} />
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <Stat icon={Boxes} label="Total assets" value={overview?.assetCounts.total ?? 0} to="/assets" />
-        <Stat icon={ClipboardList} label="Active assignments" value={overview?.activeAssignments ?? 0} tone="accent" to="/assignments" />
-        <Stat icon={AlertTriangle} label="Overdue returns" value={overview?.overdueAssignments ?? 0} tone={overview?.overdueAssignments ? 'danger' : 'primary'} to="/assignments" />
-        <Stat icon={TrendingDown} label="Due for disposal (90d)" value={overview?.upcomingDisposals ?? 0} tone="warning" to="/assets" />
+        <Stat icon={Boxes} label={t('dashboard.totalAssets')} value={overview?.assetCounts.total ?? 0} to="/assets" />
+        <Stat icon={ClipboardList} label={t('dashboard.activeAssignments')} value={overview?.activeAssignments ?? 0} tone="accent" to="/assignments" />
+        <Stat icon={AlertTriangle} label={t('dashboard.overdueReturns')} value={overview?.overdueAssignments ?? 0} tone={overview?.overdueAssignments ? 'danger' : 'primary'} to="/assignments" />
+        <Stat icon={TrendingDown} label={t('dashboard.dueForDisposal')} value={overview?.upcomingDisposals ?? 0} tone="warning" to="/assets" />
       </div>
 
       <Card className="p-5">
-        <h3 className="font-semibold text-ink mb-4">Asset status breakdown</h3>
+        <h3 className="font-semibold text-ink mb-4">{t('dashboard.assetStatusBreakdown')}</h3>
         <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
           {Object.entries(overview?.assetCounts || {}).filter(([k]) => k !== 'total').map(([status, count]) => {
             const total = overview.assetCounts.total || 1;
@@ -192,7 +194,7 @@ export default function Dashboard() {
       </Card>
 
       <Card className="p-5">
-        <h3 className="font-semibold text-ink mb-4">Fleet value</h3>
+        <h3 className="font-semibold text-ink mb-4">{t('dashboard.fleetValue')}</h3>
         <div className="grid sm:grid-cols-2 gap-6">
           <div>
             <p className="text-xs text-ink/50">Total purchase value</p>
@@ -268,7 +270,7 @@ function IntelligenceKpiSection({ currency }) {
       </div>
 
       <Card className="p-5">
-        <h3 className="font-semibold text-ink mb-4">Depreciation &amp; replacement projections</h3>
+        <h3 className="font-semibold text-ink mb-4">{t('dashboard.depreciationProjections')}</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           <div>
             <p className="text-xs text-ink/50">Depreciation today</p>
@@ -313,6 +315,7 @@ function daysBetween(from, to = new Date()) {
 
 function AssignmentTrackingPanel() {
   const { company } = useAuth();
+  const { t } = useTranslation();
   const [assignments, setAssignments] = useState(null);
   const [filter, setFilter] = useState('all');
 
@@ -370,7 +373,7 @@ function AssignmentTrackingPanel() {
   return (
     <Card className="p-5">
       <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-        <h3 className="font-semibold text-ink flex items-center gap-2 text-sm sm:text-base"><ClipboardList size={16} className="text-primary shrink-0" /> Assets currently assigned</h3>
+        <h3 className="font-semibold text-ink flex items-center gap-2 text-sm sm:text-base"><ClipboardList size={16} className="text-primary shrink-0" /> {t('dashboard.assetsCurrentlyAssigned')}</h3>
         <div className="flex items-center gap-1">
           {overdueCount > 0 && (
             <span className="text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-1 rounded-full mr-1">{overdueCount} overdue</span>
@@ -433,6 +436,7 @@ const HEALTH_TIER_META = [
 
 function FleetIntelligencePanel() {
   const { company } = useAuth();
+  const { t } = useTranslation();
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -458,7 +462,7 @@ function FleetIntelligencePanel() {
   return (
     <Card className="p-5">
       <div className="flex items-center justify-between mb-1">
-        <h3 className="font-semibold text-ink flex items-center gap-2"><Gauge size={16} className="text-primary" /> Fleet Intelligence</h3>
+        <h3 className="font-semibold text-ink flex items-center gap-2"><Gauge size={16} className="text-primary" /> {t('dashboard.fleetIntelligence')}</h3>
         {data.fleetGrade && (
           <div className="flex items-center gap-2">
             <span className="text-xs text-ink/50">Overall Fleet Grade</span>
@@ -523,6 +527,7 @@ function FleetIntelligencePanel() {
 }
 
 function FleetInsightsPanel() {
+  const { t } = useTranslation();
   const [insights, setInsights] = useState(null);
 
   useEffect(() => {
@@ -533,7 +538,7 @@ function FleetInsightsPanel() {
 
   return (
     <Card className="p-5">
-      <h3 className="font-semibold text-ink mb-1 flex items-center gap-2"><Sparkles size={16} className="text-link" /> AI Insights Panel</h3>
+      <h3 className="font-semibold text-ink mb-1 flex items-center gap-2"><Sparkles size={16} className="text-link" /> {t('dashboard.aiInsightsPanel')}</h3>
       <p className="text-xs text-ink/50 mb-4">Rule-based patterns detected across your fleet — real numbers from your own asset data, not fabricated.</p>
       {insights === null ? (
         <div className="space-y-2">
@@ -556,6 +561,7 @@ function FleetInsightsPanel() {
 }
 
 function LearningLoopPanel() {
+  const { t } = useTranslation();
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
@@ -569,7 +575,7 @@ function LearningLoopPanel() {
 
   return (
     <Card className="p-5">
-      <h3 className="font-semibold text-ink mb-1">AI Learning Loop</h3>
+      <h3 className="font-semibold text-ink mb-1">{t('dashboard.aiLearningLoop')}</h3>
       <p className="text-xs text-ink/50 mb-4">
         How this company's own disposal-decision history is feeding back into the engine's confidence scoring.
       </p>

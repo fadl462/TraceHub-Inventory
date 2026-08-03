@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import client from '../../api/client';
 import TraceHubMark from '../TraceHubMark';
 import SocialIcon from './SocialIcon';
@@ -62,13 +63,14 @@ function NewsletterForm() {
 }
 
 export default function SiteFooter() {
+  const { i18n } = useTranslation();
   const [content, setContent] = useState(DEFAULT_CONTENT);
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    client.get('/site-content').then(({ data }) => setContent({ ...DEFAULT_CONTENT, ...data.content })).catch(() => {});
+    client.get('/site-content', { params: { locale: i18n.language } }).then(({ data }) => setContent({ ...DEFAULT_CONTENT, ...data.content })).catch(() => {});
     client.get('/footer-links').then(({ data }) => setLinks(data.links || [])).catch(() => {});
-  }, []);
+  }, [i18n.language]);
 
   const nav = links.filter((l) => l.group === 'nav');
   const legal = links.filter((l) => l.group === 'legal');

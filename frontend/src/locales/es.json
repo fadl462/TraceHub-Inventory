@@ -64,5 +64,43 @@
     "featureRequests": "Solicitudes de funciones",
     "billing": "Facturación",
     "settings": "Configuración"
+  },
+  "dashboard": {
+    "totalAssets": "Total de activos",
+    "activeAssignments": "Asignaciones activas",
+    "overdueReturns": "Devoluciones vencidas",
+    "dueForDisposal": "Pendiente de baja (90 días)",
+    "assetStatusBreakdown": "Desglose del estado de los activos",
+    "fleetValue": "Valor de la flota",
+    "depreciationProjections": "Proyecciones de depreciación y reemplazo",
+    "assetsCurrentlyAssigned": "Activos actualmente asignados",
+    "fleetIntelligence": "Inteligencia de la flota",
+    "aiInsightsPanel": "Panel de información de IA",
+    "aiLearningLoop": "Bucle de aprendizaje de IA"
+  },
+  "assets": {
+    "title": "Activos",
+    "addAsset": "Agregar activo",
+    "asset": "Activo",
+    "tag": "Etiqueta",
+    "category": "Categoría",
+    "location": "Ubicación",
+    "status": "Estado",
+    "health": "Salud",
+    "failureRisk": "Riesgo de falla",
+    "aiRecommendation": "Recomendación de IA",
+    "currentValue": "Valor actual",
+    "allCategories": "Todas las categorías",
+    "allLocations": "Todas las ubicaciones",
+    "allStatuses": "Todos los estados"
+  },
+  "reports": {
+    "title": "Informes y análisis",
+    "subtitle": "Información sobre el uso de activos, categorías y depreciación.",
+    "assetsByCategory": "Activos por categoría",
+    "depreciationReport": "Informe de depreciación",
+    "locationActivity": "Actividad por ubicación",
+    "purchased": "Comprado",
+    "disposalDate": "Fecha de baja"
   }
 }

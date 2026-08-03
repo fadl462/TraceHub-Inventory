@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   ScanLine, Sparkles, ShieldCheck, BarChart3, CalendarClock, CreditCard,
   ArrowRight, Check, QrCode,
@@ -421,6 +422,7 @@ function FinalCTA({ content }) {
 }
 
 export default function Landing() {
+  const { i18n } = useTranslation();
   const [content, setContent] = useState(DEFAULT_CONTENT);
   const [plans, setPlans] = useState(DEFAULT_PLANS);
   const [testimonials, setTestimonials] = useState([]);
@@ -428,7 +430,10 @@ export default function Landing() {
   const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => {
-    client.get('/site-content').then(({ data }) => setContent(data.content)).catch(() => {});
+    client.get('/site-content', { params: { locale: i18n.language } }).then(({ data }) => setContent(data.content)).catch(() => {});
+  }, [i18n.language]);
+
+  useEffect(() => {
     client.get('/plans').then(({ data }) => {
       if (data.plans?.length) setPlans(data.plans.map(formatPlan));
     }).catch(() => {});

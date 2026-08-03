@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Plus, Search, Boxes, QrCode } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Button, Input, Select, Badge, statusTone, EmptyState, Spinner } from '../../components/ui';
@@ -34,6 +35,7 @@ function recommendationTone(rec) {
 }
 
 export default function AssetsList() {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const [assets, setAssets] = useState([]);
   const [total, setTotal] = useState(0);
@@ -74,10 +76,10 @@ export default function AssetsList() {
     <div className="space-y-5">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-ink">Assets</h1>
+          <h1 className="text-xl font-bold text-ink">{t('assets.title')}</h1>
           <p className="text-sm text-ink/60 mt-0.5">{total} asset{total !== 1 ? 's' : ''} registered</p>
         </div>
-        <Link to="/assets/new"><Button><Plus size={16} /> Add asset</Button></Link>
+        <Link to="/assets/new"><Button><Plus size={16} /> {t('assets.addAsset')}</Button></Link>
       </div>
 
       <Card className="p-4">
@@ -91,7 +93,7 @@ export default function AssetsList() {
             />
           </div>
           <Select value={status} onChange={(e) => setStatus(e.target.value)} className="sm:w-48">
-            <option value="">All statuses</option>
+            <option value="">{t('assets.allStatuses')}</option>
             <option value="available">Available</option>
             <option value="assigned">Assigned</option>
             <option value="in_maintenance">In maintenance</option>
@@ -100,11 +102,11 @@ export default function AssetsList() {
             <option value="lost">Lost</option>
           </Select>
           <Select value={categoryId} onChange={(e) => setCategoryId(e.target.value)} className="sm:w-48">
-            <option value="">All categories</option>
+            <option value="">{t('assets.allCategories')}</option>
             {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
           </Select>
           <Select value={locationId} onChange={(e) => setLocationId(e.target.value)} className="sm:w-48">
-            <option value="">All locations</option>
+            <option value="">{t('assets.allLocations')}</option>
             {locations.map((l) => <option key={l.id} value={l.id}>{l.name}</option>)}
           </Select>
         </div>
@@ -124,15 +126,15 @@ export default function AssetsList() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-primary-50 text-left text-xs uppercase tracking-wide text-ink/50">
-                  <th className="px-5 py-3 font-medium">Asset</th>
-                  <th className="px-5 py-3 font-medium">Tag</th>
-                  <th className="px-5 py-3 font-medium">Category</th>
-                  <th className="px-5 py-3 font-medium">Location</th>
-                  <th className="px-5 py-3 font-medium">Status</th>
-                  <th className="px-5 py-3 font-medium">Health</th>
-                  <th className="px-5 py-3 font-medium">Failure risk</th>
-                  <th className="px-5 py-3 font-medium">AI recommendation</th>
-                  <th className="px-5 py-3 font-medium">Current value</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.asset')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.tag')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.category')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.location')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.status')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.health')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.failureRisk')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.aiRecommendation')}</th>
+                  <th className="px-5 py-3 font-medium">{t('assets.currentValue')}</th>
                   <th className="px-5 py-3" />
                 </tr>
               </thead>

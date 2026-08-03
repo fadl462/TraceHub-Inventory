@@ -64,5 +64,43 @@
     "featureRequests": "Feature Requests",
     "billing": "Billing",
     "settings": "Settings"
+  },
+  "dashboard": {
+    "totalAssets": "Total assets",
+    "activeAssignments": "Active assignments",
+    "overdueReturns": "Overdue returns",
+    "dueForDisposal": "Due for disposal (90d)",
+    "assetStatusBreakdown": "Asset status breakdown",
+    "fleetValue": "Fleet value",
+    "depreciationProjections": "Depreciation & replacement projections",
+    "assetsCurrentlyAssigned": "Assets currently assigned",
+    "fleetIntelligence": "Fleet Intelligence",
+    "aiInsightsPanel": "AI Insights Panel",
+    "aiLearningLoop": "AI Learning Loop"
+  },
+  "assets": {
+    "title": "Assets",
+    "addAsset": "Add asset",
+    "asset": "Asset",
+    "tag": "Tag",
+    "category": "Category",
+    "location": "Location",
+    "status": "Status",
+    "health": "Health",
+    "failureRisk": "Failure risk",
+    "aiRecommendation": "AI recommendation",
+    "currentValue": "Current value",
+    "allCategories": "All categories",
+    "allLocations": "All locations",
+    "allStatuses": "All statuses"
+  },
+  "reports": {
+    "title": "Reports & analytics",
+    "subtitle": "Insights into asset usage, categories, and depreciation.",
+    "assetsByCategory": "Assets by category",
+    "depreciationReport": "Depreciation report",
+    "locationActivity": "Location activity",
+    "purchased": "Purchased",
+    "disposalDate": "Disposal date"
   }
 }

@@ -15,12 +15,12 @@ const DEFAULTS = {
 };
 
 export default function AuthLayout({ children, title, subtitle }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [content, setContent] = useState(DEFAULTS);
 
   useEffect(() => {
-    client.get('/site-content').then(({ data }) => setContent({ ...DEFAULTS, ...data.content })).catch(() => {});
-  }, []);
+    client.get('/site-content', { params: { locale: i18n.language } }).then(({ data }) => setContent({ ...DEFAULTS, ...data.content })).catch(() => {});
+  }, [i18n.language]);
 
   return (
     <div className="min-h-screen w-full grid lg:grid-cols-2 bg-surface">

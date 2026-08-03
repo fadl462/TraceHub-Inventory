@@ -64,5 +64,43 @@
     "featureRequests": "Suggestions de fonctionnalités",
     "billing": "Facturation",
     "settings": "Paramètres"
+  },
+  "dashboard": {
+    "totalAssets": "Total des actifs",
+    "activeAssignments": "Affectations actives",
+    "overdueReturns": "Retours en retard",
+    "dueForDisposal": "À mettre au rebut (90 j)",
+    "assetStatusBreakdown": "Répartition du statut des actifs",
+    "fleetValue": "Valeur du parc",
+    "depreciationProjections": "Projections de dépréciation et de remplacement",
+    "assetsCurrentlyAssigned": "Actifs actuellement affectés",
+    "fleetIntelligence": "Intelligence du parc",
+    "aiInsightsPanel": "Panneau d'informations IA",
+    "aiLearningLoop": "Boucle d'apprentissage de l'IA"
+  },
+  "assets": {
+    "title": "Actifs",
+    "addAsset": "Ajouter un actif",
+    "asset": "Actif",
+    "tag": "Étiquette",
+    "category": "Catégorie",
+    "location": "Emplacement",
+    "status": "Statut",
+    "health": "Santé",
+    "failureRisk": "Risque de panne",
+    "aiRecommendation": "Recommandation IA",
+    "currentValue": "Valeur actuelle",
+    "allCategories": "Toutes les catégories",
+    "allLocations": "Tous les emplacements",
+    "allStatuses": "Tous les statuts"
+  },
+  "reports": {
+    "title": "Rapports et analyses",
+    "subtitle": "Aperçus sur l'utilisation des actifs, les catégories et la dépréciation.",
+    "assetsByCategory": "Actifs par catégorie",
+    "depreciationReport": "Rapport de dépréciation",
+    "locationActivity": "Activité par emplacement",
+    "purchased": "Acheté",
+    "disposalDate": "Date de mise au rebut"
   }
 }

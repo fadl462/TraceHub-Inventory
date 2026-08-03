@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { Download, FileText, Presentation } from 'lucide-react';
 import client from '../../api/client';
@@ -12,6 +13,7 @@ const COLORS = ['#1A4D8F', '#4DA3FF', '#7ED957', '#F4A261', '#94A3B8'];
 
 export default function ReportsPage() {
   const { company } = useAuth();
+  const { t } = useTranslation();
   const [breakdown, setBreakdown] = useState([]);
   const [depreciation, setDepreciation] = useState([]);
   const [depreciationCategoryFilter, setDepreciationCategoryFilter] = useState('');
@@ -47,12 +49,12 @@ export default function ReportsPage() {
   const subtitle = `${company?.name || ''} · Generated ${new Date().toLocaleDateString()}`;
   const reportSections = () => [
     {
-      heading: 'Assets by category',
+      heading: t('reports.assetsByCategory'),
       columns: ['Category', 'Asset count'],
       rows: breakdown.map((b) => [b.name, b.value]),
     },
     {
-      heading: 'Depreciation report',
+      heading: t('reports.depreciationReport'),
       columns: ['Asset', 'Tag', 'Purchased', 'Current value', 'Disposal date'],
       rows: depreciation.map((a) => [
         a.name, a.assetTag, Number(a.purchasePrice).toLocaleString(),
@@ -60,7 +62,7 @@ export default function ReportsPage() {
       ]),
     },
     {
-      heading: 'Location activity',
+      heading: t('reports.locationActivity'),
       columns: ['Date', 'Asset', 'Location', 'Event'],
       rows: locationEvents.map((e) => [
         new Date(e.createdAt).toLocaleString(), e.Asset?.name || '—', e.Location?.name || '—', e.eventType.replace('_', ' '),
@@ -81,8 +83,8 @@ export default function ReportsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-bold text-ink">Reports & analytics</h1>
-          <p className="text-sm text-ink/60 mt-0.5">Insights into asset usage, categories, and depreciation.</p>
+          <h1 className="text-xl font-bold text-ink">{t('reports.title')}</h1>
+          <p className="text-sm text-ink/60 mt-0.5">{t('reports.subtitle')}</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <Button variant="outline" onClick={handleExportCsv}><Download size={15} /> CSV</Button>
@@ -93,7 +95,7 @@ export default function ReportsPage() {
 
       <div className="grid lg:grid-cols-2 gap-5">
         <Card className="p-6">
-          <h3 className="font-semibold text-ink text-lg mb-4">Assets by category</h3>
+          <h3 className="font-semibold text-ink text-lg mb-4">{t('reports.assetsByCategory')}</h3>
           {breakdown.length === 0 ? (
             <p className="text-sm text-ink/50 py-10 text-center">No categorized assets yet.</p>
           ) : (
@@ -120,7 +122,7 @@ export default function ReportsPage() {
 
         <Card className="p-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-            <h3 className="font-semibold text-ink text-lg">Depreciation report</h3>
+            <h3 className="font-semibold text-ink text-lg">{t('reports.depreciationReport')}</h3>
             {depreciation.length > 0 && (
               <Select value={depreciationCategoryFilter} onChange={(e) => setDepreciationCategoryFilter(e.target.value)} className="w-52">
                 <option value="">All categories</option>
@@ -138,9 +140,9 @@ export default function ReportsPage() {
                 <thead className="text-sm uppercase tracking-wide text-ink/50 text-left">
                   <tr>
                     <th className="pb-3 whitespace-nowrap">Asset</th>
-                    <th className="pb-3 whitespace-nowrap">Purchased</th>
+                    <th className="pb-3 whitespace-nowrap">{t('reports.purchased')}</th>
                     <th className="pb-3 whitespace-nowrap">Current value</th>
-                    <th className="pb-3 whitespace-nowrap">Disposal date</th>
+                    <th className="pb-3 whitespace-nowrap">{t('reports.disposalDate')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -164,7 +166,7 @@ export default function ReportsPage() {
 
       <Card className="p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-          <h3 className="font-semibold text-ink text-lg">Location activity</h3>
+          <h3 className="font-semibold text-ink text-lg">{t('reports.locationActivity')}</h3>
           {locationEvents.length > 0 && (
             <div className="flex flex-wrap gap-2">
               <Select value={locationFilter} onChange={(e) => setLocationFilter(e.target.value)} className="w-44">
