@@ -1523,6 +1523,9 @@ const defaultDocArticles = [
 const frenchGettingStarted = require('./docArticles.fr-getting-started');
 const frenchManagingAssets = require('./docArticles.fr-managing-assets');
 const frenchIntelligenceEngine = require('./docArticles.fr-intelligence-engine');
+const frenchIntelligenceEngineExpanded = require('./docArticles.fr-intelligence-engine-expanded');
+const frenchTrackingAssignments = require('./docArticles.fr-tracking-assignments');
+const frenchDisposalWorkflow = require('./docArticles.fr-disposal-workflow');
 
 module.exports = {
   defaultDocArticles: [
@@ -1530,5 +1533,8 @@ module.exports = {
     ...frenchGettingStarted,
     ...frenchManagingAssets,
     ...frenchIntelligenceEngine,
+    ...frenchIntelligenceEngineExpanded,
+    ...frenchTrackingAssignments,
+    ...frenchDisposalWorkflow,
   ],
 };
