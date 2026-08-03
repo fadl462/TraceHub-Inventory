@@ -22,7 +22,7 @@ function timeAgo(d) {
 
 export default function BlogPostView() {
   const { slug } = useParams();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [post, setPost] = useState(null);
   const [status, setStatus] = useState('loading');
   const [comments, setComments] = useState([]);
@@ -45,17 +45,17 @@ export default function BlogPostView() {
   const submitComment = async (e) => {
     e.preventDefault();
     if (!commentForm.authorName.trim() || !commentForm.body.trim()) {
-      toast.error('Name and comment are required');
+      toast.error(t('blogPage.nameAndCommentRequired'));
       return;
     }
     setSubmittingComment(true);
     try {
       await client.post(`/blog-posts/slug/${slug}/comments`, { ...commentForm, locale: i18n.language });
-      toast.success('Thanks for contributing!');
+      toast.success(t('blogPage.thanksForContributing'));
       setCommentForm({ authorName: '', authorEmail: '', body: '' });
       loadComments();
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Failed to post comment');
+      toast.error(err.response?.data?.error || t('blogPage.failedToPostComment'));
     } finally {
       setSubmittingComment(false);
     }
@@ -66,13 +66,13 @@ export default function BlogPostView() {
       <SiteHeader />
       <main className="flex-1 max-w-2xl mx-auto px-6 py-16 w-full">
         <Link to="/blog" className="inline-flex items-center gap-1.5 text-sm text-ink/50 hover:text-ink font-medium mb-8 transition-colors">
-          <ArrowLeft size={15} /> All updates
+          <ArrowLeft size={15} /> {t('blogPage.allUpdates')}
         </Link>
         {status === 'loading' && <div className="flex justify-center py-16"><Spinner size={28} /></div>}
         {status === 'notfound' && (
           <div className="text-center py-16">
-            <h1 className="text-xl font-bold text-ink">Post not found</h1>
-            <Link to="/blog" className="mt-3 inline-block text-sm text-primary font-medium">Back to all updates</Link>
+            <h1 className="text-xl font-bold text-ink">{t('blogPage.postNotFound')}</h1>
+            <Link to="/blog" className="mt-3 inline-block text-sm text-primary font-medium">{t('blogPage.backToAllUpdates')}</Link>
           </div>
         )}
         {status === 'found' && post && (
@@ -91,44 +91,44 @@ export default function BlogPostView() {
             />
             <div className="mt-16 pt-8 border-t border-ink/5 flex items-center justify-between">
               <Link to="/blog" className="inline-flex items-center gap-1.5 text-sm text-primary font-semibold hover:text-primary-600 transition-colors">
-                <ArrowLeft size={15} /> All updates
+                <ArrowLeft size={15} /> {t('blogPage.allUpdates')}
               </Link>
               <Link to="/register" className="inline-flex items-center gap-1.5 text-sm font-semibold bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
-                Start free
+                {t('blogPage.startFree')}
               </Link>
             </div>
 
             <div className="mt-16 pt-10 border-t border-ink/5">
               <h2 className="font-display text-xl font-bold text-ink flex items-center gap-2 mb-6">
-                <MessageSquare size={19} /> Contributions &amp; comments {comments.length > 0 && <span className="text-ink/40 font-normal text-base">({comments.length})</span>}
+                <MessageSquare size={19} /> {t('blogPage.contributionsComments')} {comments.length > 0 && <span className="text-ink/40 font-normal text-base">({comments.length})</span>}
               </h2>
 
               <form onSubmit={submitComment} className="rounded-2xl border border-ink/10 bg-white p-6 mb-8 space-y-3">
-                <p className="text-sm font-medium text-ink">Add your thoughts or a correction</p>
+                <p className="text-sm font-medium text-ink">{t('blogPage.addThoughts')}</p>
                 <div className="grid sm:grid-cols-2 gap-3">
                   <input
                     className="rounded-lg border border-ink/10 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary"
-                    placeholder="Your name *" required
+                    placeholder={t('blogPage.namePlaceholder')} required
                     value={commentForm.authorName} onChange={(e) => setCommentForm({ ...commentForm, authorName: e.target.value })}
                   />
                   <input
                     className="rounded-lg border border-ink/10 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary"
-                    placeholder="Email (optional, never shown publicly)" type="email"
+                    placeholder={t('blogPage.emailPlaceholder')} type="email"
                     value={commentForm.authorEmail} onChange={(e) => setCommentForm({ ...commentForm, authorEmail: e.target.value })}
                   />
                 </div>
                 <textarea
                   className="w-full rounded-lg border border-ink/10 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary resize-none"
-                  rows={4} placeholder="Share an experience, ask a question, or point out something we got wrong..." required maxLength={3000}
+                  rows={4} placeholder={t('blogPage.shareThoughtsPlaceholder')} required maxLength={3000}
                   value={commentForm.body} onChange={(e) => setCommentForm({ ...commentForm, body: e.target.value })}
                 />
                 <div className="flex justify-end">
-                  <Button type="submit" disabled={submittingComment}>{submittingComment ? 'Posting...' : 'Post comment'}</Button>
+                  <Button type="submit" disabled={submittingComment}>{submittingComment ? t('blogPage.posting') : t('blogPage.postComment')}</Button>
                 </div>
               </form>
 
               {comments.length === 0 ? (
-                <p className="text-sm text-ink/50 text-center py-6">No comments yet — be the first to share your thoughts.</p>
+                <p className="text-sm text-ink/50 text-center py-6">{t('blogPage.noCommentsYet')}</p>
               ) : (
                 <div className="space-y-5">
                   {comments.map((c) => (

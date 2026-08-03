@@ -14,38 +14,6 @@ import ScanIllustration from '../components/landing/ScanIllustration';
 import TrackedAssetsIllustration from '../components/landing/TrackedAssetsIllustration';
 import client from '../api/client';
 
-const STEPS = [
-  {
-    n: '01',
-    title: 'Register an asset',
-    body: 'Add a name, price, and category. Brand, model, colour, or anything else specific to your business can be a custom field you define yourself.',
-  },
-  {
-    n: '02',
-    title: 'Get its disposal timeline instantly',
-    body: 'The moment you enter a purchase price, the depreciation engine estimates scrap value, useful life, and today’s book value — no spreadsheet required.',
-  },
-  {
-    n: '03',
-    title: 'Assign it and track it',
-    body: 'Hand it to a teammate or an outside contact. Update its location with a phone camera scan at any checkpoint — no RFID, no GPS hardware.',
-  },
-  {
-    n: '04',
-    title: 'Get reminders, not surprises',
-    body: 'Automatic alerts land three days before anything is due back, and again on the day — to both the borrower and whoever assigned it.',
-  },
-];
-
-const FEATURES = [
-  { icon: Sparkles, title: 'AI-driven depreciation', body: 'Category-aware scrap value and useful-life estimates, recalculated automatically whenever price or category changes.' },
-  { icon: ScanLine, title: 'QR scan-based tracking', body: 'Every asset gets a scannable code. Check it in or out at a warehouse, branch, or job site from any phone.' },
-  { icon: CalendarClock, title: 'Assignments & reminders', body: 'Assign to staff or outside contacts, with automatic return-date reminders so nothing goes missing quietly.' },
-  { icon: ShieldCheck, title: 'Role-based access', body: 'Super Admin, Company Admin, Manager, and Staff each see exactly what their role needs — nothing more.' },
-  { icon: BarChart3, title: 'Reports built in', body: 'Asset value, depreciation, location history, and team activity — without exporting to a separate BI tool.' },
-  { icon: CreditCard, title: 'Local billing, built in', body: 'Subscriptions billed through Flutterwave, so payment works the way your business already pays for things.' },
-];
-
 const DEFAULT_CONTENT = {
   heroEyebrow: 'Asset & inventory management',
   heroHeadline: 'Know where every asset is, always.',
@@ -57,36 +25,38 @@ const DEFAULT_CONTENT = {
   footerCopyright: 'TraceHub Inventory. All rights reserved.',
 };
 
-const DEFAULT_PLANS = [
-  { name: 'Trial', price: '$0', period: 'for 30 days', assets: '10 assets', users: '3 users', features: ['Reports & analytics'], highlight: false },
-  { name: 'Basic', price: '$19', period: '/ month', assets: '100 assets', users: '5 users', features: ['Reports & analytics', 'QR code scanning'], highlight: false },
-  { name: 'Pro', price: '$49', period: '/ month', assets: '1,000 assets', users: '25 users', features: ['Reports & analytics', 'QR code scanning', 'API access', 'Custom fields', 'Multi-location support'], highlight: true },
-  { name: 'Enterprise', price: '$149', period: '/ month', assets: 'Unlimited assets', users: 'Unlimited users', features: ['Everything in Pro', 'Custom domain', 'Priority support'], highlight: false },
-];
-
-const FEATURE_LABELS = {
-  reporting: 'Reports & analytics',
-  qr_scanning: 'QR code scanning',
-  api_access: 'API access',
-  custom_fields: 'Custom fields',
-  multi_location: 'Multi-location support',
-  custom_domain: 'Custom domain',
-  priority_support: 'Priority support',
+// Plan feature codes -> translation keys (server sends stable codes like
+// 'reporting', 'qr_scanning' - only the DEFAULT_PLANS fallback below and the
+// live /plans response both resolve through this same map).
+const FEATURE_KEYS = {
+  reporting: 'featReporting', qr_scanning: 'featQrScanning', api_access: 'featApiAccess',
+  custom_fields: 'featCustomFields', multi_location: 'featMultiLocation',
+  custom_domain: 'featCustomDomain', priority_support: 'featPrioritySupport',
 };
 
-function formatPlan(p) {
+function formatPlan(p, t) {
   return {
     name: p.name,
     price: Number(p.priceMonthly) === 0 ? '$0' : `$${p.priceMonthly}`,
-    period: p.code === 'trial' ? 'for 30 days' : '/ month',
-    assets: p.assetLimit === -1 ? 'Unlimited assets' : `${p.assetLimit.toLocaleString()} assets`,
-    users: p.userLimit === -1 ? 'Unlimited users' : `${p.userLimit} users`,
-    features: (p.features || []).map((f) => FEATURE_LABELS[f] || f),
+    period: p.code === 'trial' ? t('landing.for30Days') : t('landing.perMonth'),
+    assets: p.assetLimit === -1 ? t('landing.unlimitedAssets') : t('landing.assetsCount', { count: p.assetLimit }),
+    users: p.userLimit === -1 ? t('landing.unlimitedUsers') : t('landing.usersCount', { count: p.userLimit }),
+    features: (p.features || []).map((f) => (FEATURE_KEYS[f] ? t(`landing.${FEATURE_KEYS[f]}`) : f)),
     highlight: p.code === 'pro',
   };
 }
 
+function defaultPlans(t) {
+  return [
+    { name: t('landing.planTrial'), price: '$0', period: t('landing.for30Days'), assets: t('landing.assetsCount', { count: 10 }), users: t('landing.usersCount', { count: 3 }), features: [t('landing.featReporting')], highlight: false },
+    { name: t('landing.planBasic'), price: '$19', period: t('landing.perMonth'), assets: t('landing.assetsCount', { count: 100 }), users: t('landing.usersCount', { count: 5 }), features: [t('landing.featReporting'), t('landing.featQrScanning')], highlight: false },
+    { name: t('landing.planPro'), price: '$49', period: t('landing.perMonth'), assets: t('landing.assetsCount', { count: 1000 }), users: t('landing.usersCount', { count: 25 }), features: [t('landing.featReporting'), t('landing.featQrScanning'), t('landing.featApiAccess'), t('landing.featCustomFields'), t('landing.featMultiLocation')], highlight: true },
+    { name: t('landing.planEnterprise'), price: '$149', period: t('landing.perMonth'), assets: t('landing.unlimitedAssets'), users: t('landing.unlimitedUsers'), features: [t('landing.featEverythingInPro'), t('landing.featCustomDomain'), t('landing.featPrioritySupport')], highlight: false },
+  ];
+}
+
 function Hero({ content }) {
+  const { t } = useTranslation();
   return (
     <section className="relative overflow-hidden bg-primary-800">
       <div className="absolute inset-0 opacity-[0.07]" style={{
@@ -121,9 +91,9 @@ function Hero({ content }) {
             </a>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-primary-100/60 font-medium">
-            <span className="flex items-center gap-1.5"><Check size={14} className="text-accent" /> No card required</span>
-            <span className="flex items-center gap-1.5"><Check size={14} className="text-accent" /> Live in minutes</span>
-            <span className="flex items-center gap-1.5"><Check size={14} className="text-accent" /> No RFID or GPS hardware</span>
+            <span className="flex items-center gap-1.5"><Check size={14} className="text-accent" /> {t('landing.noCardRequired')}</span>
+            <span className="flex items-center gap-1.5"><Check size={14} className="text-accent" /> {t('landing.liveInMinutes')}</span>
+            <span className="flex items-center gap-1.5"><Check size={14} className="text-accent" /> {t('landing.noRfidGps')}</span>
           </div>
         </div>
         {content.heroImageUrl ? (
@@ -137,18 +107,24 @@ function Hero({ content }) {
 }
 
 function HowItWorks() {
+  const { t } = useTranslation();
+  const steps = [
+    { n: '01', title: t('landing.step1Title'), body: t('landing.step1Body') },
+    { n: '02', title: t('landing.step2Title'), body: t('landing.step2Body') },
+    { n: '03', title: t('landing.step3Title'), body: t('landing.step3Body') },
+    { n: '04', title: t('landing.step4Title'), body: t('landing.step4Body') },
+  ];
   return (
     <section id="how-it-works" className="max-w-6xl mx-auto px-6 py-24">
       <div className="max-w-xl">
-        <h2 className="font-display text-3xl font-bold text-ink tracking-tight">From purchase to disposal, in four steps</h2>
+        <h2 className="font-display text-3xl font-bold text-ink tracking-tight">{t('landing.howItWorksTitle')}</h2>
         <p className="mt-3 text-ink/60 leading-relaxed">
-          The same flow whether you&rsquo;re tracking three laptops or three thousand pieces of
-          industrial equipment across multiple sites.
+          {t('landing.howItWorksSubtitle')}
         </p>
       </div>
       <div className="mt-14 grid lg:grid-cols-[1.1fr_0.9fr] gap-x-14 gap-y-16 items-center">
         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-12">
-          {STEPS.map((s) => (
+          {steps.map((s) => (
             <div key={s.n} className="flex gap-5">
               <span className="font-mono text-sm font-medium text-secondary shrink-0 pt-1">{s.n}</span>
               <div>
@@ -167,39 +143,39 @@ function HowItWorks() {
 }
 
 function DepreciationProof() {
+  const { t } = useTranslation();
   return (
     <section className="bg-primary-50 py-20">
       <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <span className="inline-flex items-center gap-1.5 text-xs font-mono font-medium tracking-widest uppercase text-primary bg-primary/10 px-3 py-1.5 rounded-full">
-            <Sparkles size={13} /> Depreciation engine
+            <Sparkles size={13} /> {t('landing.depreciationEngineTag')}
           </span>
           <h2 className="mt-5 font-display text-3xl font-bold text-ink tracking-tight">
-            Real numbers, the moment you register an asset
+            {t('landing.depreciationProofTitle')}
           </h2>
           <p className="mt-4 text-ink/60 leading-relaxed max-w-md">
-            Every category carries a useful-life and scrap-value profile. Enter a purchase price
-            and TraceHub does the arithmetic &mdash; no separate depreciation spreadsheet to maintain.
+            {t('landing.depreciationProofSubtitle')}
           </p>
         </div>
         <div className="bg-white rounded-2xl shadow-card border border-ink/5 p-8 font-mono text-sm">
           <div className="flex justify-between text-ink/50 pb-3 border-b border-ink/10">
-            <span>Asset</span><span>Dell Latitude 5420</span>
+            <span>{t('landing.demoAsset')}</span><span>Dell Latitude 5420</span>
           </div>
           <div className="flex justify-between py-3 border-b border-ink/10">
-            <span className="text-ink/50">Purchase price</span><span className="text-ink font-medium">$500.00</span>
+            <span className="text-ink/50">{t('landing.demoPurchasePrice')}</span><span className="text-ink font-medium">$500.00</span>
           </div>
           <div className="flex justify-between py-3 border-b border-ink/10">
-            <span className="text-ink/50">Category useful life</span><span className="text-ink font-medium">5 years</span>
+            <span className="text-ink/50">{t('landing.demoCategoryUsefulLife')}</span><span className="text-ink font-medium">5 {t('landing.demoYears')}</span>
           </div>
           <div className="flex justify-between py-3 border-b border-ink/10">
-            <span className="text-ink/50">Estimated scrap value</span><span className="text-ink font-medium">$50.00</span>
+            <span className="text-ink/50">{t('landing.demoEstimatedScrapValue')}</span><span className="text-ink font-medium">$50.00</span>
           </div>
           <div className="flex justify-between py-3 border-b border-ink/10">
-            <span className="text-ink/50">Annual depreciation</span><span className="text-ink font-medium">$90.00 / yr</span>
+            <span className="text-ink/50">{t('landing.demoAnnualDepreciation')}</span><span className="text-ink font-medium">$90.00 {t('landing.demoPerYear')}</span>
           </div>
           <div className="flex justify-between pt-3">
-            <span className="text-ink/70 font-medium">Book value after 3 years</span>
+            <span className="text-ink/70 font-medium">{t('landing.demoBookValueAfter3Years')}</span>
             <span className="text-accent-dark font-bold text-base">$230.00</span>
           </div>
         </div>
@@ -209,16 +185,25 @@ function DepreciationProof() {
 }
 
 function Features() {
+  const { t } = useTranslation();
+  const features = [
+    { icon: Sparkles, title: t('landing.feature1Title'), body: t('landing.feature1Body') },
+    { icon: ScanLine, title: t('landing.feature2Title'), body: t('landing.feature2Body') },
+    { icon: CalendarClock, title: t('landing.feature3Title'), body: t('landing.feature3Body') },
+    { icon: ShieldCheck, title: t('landing.feature4Title'), body: t('landing.feature4Body') },
+    { icon: BarChart3, title: t('landing.feature5Title'), body: t('landing.feature5Body') },
+    { icon: CreditCard, title: t('landing.feature6Title'), body: t('landing.feature6Body') },
+  ];
   return (
     <section id="features" className="max-w-6xl mx-auto px-6 py-24">
       <div className="max-w-xl">
-        <h2 className="font-display text-3xl font-bold text-ink tracking-tight">Everything an operations team needs</h2>
+        <h2 className="font-display text-3xl font-bold text-ink tracking-tight">{t('landing.featuresTitle')}</h2>
         <p className="mt-3 text-ink/60 leading-relaxed">
-          Nothing here is a bolt-on. Every module shares the same asset record, the same permissions, the same audit trail.
+          {t('landing.featuresSubtitle')}
         </p>
       </div>
       <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {FEATURES.map(({ icon: Icon, title, body }) => (
+        {features.map(({ icon: Icon, title, body }) => (
           <div
             key={title}
             className="p-6 rounded-2xl border border-ink/5 bg-white hover:shadow-card hover:-translate-y-1 transition-all duration-200"
@@ -236,6 +221,8 @@ function Features() {
 }
 
 function TrackedOperations() {
+  const { t } = useTranslation();
+  const bullets = [t('landing.trackedBullet1'), t('landing.trackedBullet2'), t('landing.trackedBullet3')];
   return (
     <section className="max-w-6xl mx-auto px-6 py-24">
       <div className="grid lg:grid-cols-2 gap-14 items-center">
@@ -244,18 +231,13 @@ function TrackedOperations() {
         </div>
         <div className="order-1 lg:order-2">
           <h2 className="font-display text-3xl font-bold text-ink tracking-tight">
-            Built for how operations teams actually work
+            {t('landing.trackedOpsTitle')}
           </h2>
           <p className="mt-4 text-ink/60 leading-relaxed max-w-md">
-            No RFID readers to install, no GPS units to budget for. A checkpoint is just a name
-            &mdash; a warehouse, a branch, a job site &mdash; and a scan is just a phone camera.
+            {t('landing.trackedOpsSubtitle')}
           </p>
           <ul className="mt-7 space-y-3">
-            {[
-              'Any asset category, with fields your business actually uses',
-              'Works the moment a phone can open a browser — no app install',
-              'Every scan, assignment, and edit lands in one audit trail',
-            ].map((item) => (
+            {bullets.map((item) => (
               <li key={item} className="flex items-start gap-3 text-sm text-ink/70">
                 <Check size={16} className="text-accent-dark mt-0.5 shrink-0" />
                 {item}
@@ -269,6 +251,7 @@ function TrackedOperations() {
 }
 
 function Pricing({ plans }) {
+  const { t } = useTranslation();
   return (
     <section id="pricing" className="relative bg-primary-800 py-24 overflow-hidden">
       <div className="absolute inset-0 opacity-[0.06]" style={{
@@ -278,9 +261,9 @@ function Pricing({ plans }) {
       />
       <div className="relative max-w-6xl mx-auto px-6">
         <div className="max-w-xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold text-white tracking-tight">Pricing that scales with your asset count</h2>
+          <h2 className="font-display text-3xl font-bold text-white tracking-tight">{t('landing.pricingTitle')}</h2>
           <p className="mt-3 text-primary-100/70 leading-relaxed">
-            Every plan includes the full depreciation engine, QR-based tracking, and reporting. Higher tiers add room and reach.
+            {t('landing.pricingSubtitle')}
           </p>
         </div>
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
@@ -293,7 +276,7 @@ function Pricing({ plans }) {
             >
               {p.highlight && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[11px] font-mono font-semibold tracking-wide uppercase text-primary-900 bg-accent px-3 py-1 rounded-full shadow-sm">
-                  Most popular
+                  {t('landing.mostPopular')}
                 </span>
               )}
               <div className="p-6 pb-5">
@@ -320,7 +303,7 @@ function Pricing({ plans }) {
                     p.highlight ? 'bg-primary text-white hover:bg-primary-600' : 'bg-white/10 text-white hover:bg-white/20'
                   }`}
               >
-                Get started
+                {t('landing.getStarted')}
               </Link>
               </div>
             </div>
@@ -332,6 +315,7 @@ function Pricing({ plans }) {
 }
 
 function Testimonials({ items }) {
+  const { t } = useTranslation();
   if (!items || items.length === 0) return null;
   // Duplicated once so the track can loop seamlessly at translateX(-50%) -
   // the marquee CSS lives in index.css (.th-marquee-track).
@@ -340,17 +324,17 @@ function Testimonials({ items }) {
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-xl">
-          <h2 className="font-display text-3xl font-bold text-ink tracking-tight">What teams say after switching</h2>
+          <h2 className="font-display text-3xl font-bold text-ink tracking-tight">{t('landing.testimonialsTitle')}</h2>
         </div>
       </div>
       <div className="mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
         <div className="th-marquee-track flex gap-6 w-max px-6">
-          {looped.map((t, i) => (
-            <div key={`${t.id}-${i}`} className="p-6 rounded-2xl border border-ink/5 bg-white w-80 shrink-0">
-              <p className="text-sm text-ink/70 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
-              <p className="mt-4 text-sm font-semibold text-ink">{t.authorName}</p>
+          {looped.map((t2, i) => (
+            <div key={`${t2.id}-${i}`} className="p-6 rounded-2xl border border-ink/5 bg-white w-80 shrink-0">
+              <p className="text-sm text-ink/70 leading-relaxed">&ldquo;{t2.quote}&rdquo;</p>
+              <p className="mt-4 text-sm font-semibold text-ink">{t2.authorName}</p>
               <p className="text-xs text-ink/50">
-                {t.authorRole}{t.authorRole && t.companyName ? ' — ' : ''}{t.companyName}
+                {t2.authorRole}{t2.authorRole && t2.companyName ? ' — ' : ''}{t2.companyName}
               </p>
             </div>
           ))}
@@ -361,22 +345,23 @@ function Testimonials({ items }) {
 }
 
 function AiAssistantSection({ faqs, onOpenChat }) {
+  const { t } = useTranslation();
   const prompts = (faqs || []).slice(0, 3).map((f) => f.question);
   return (
     <section className="bg-primary-50 py-24">
       <div className="max-w-3xl mx-auto px-6 text-center">
         <span className="inline-flex items-center gap-1.5 text-xs font-mono font-medium tracking-widest uppercase text-primary bg-primary/10 px-3 py-1.5 rounded-full">
-          <Sparkles size={13} /> AI assistant
+          <Sparkles size={13} /> {t('landing.aiAssistantTag')}
         </span>
-        <h2 className="mt-5 font-display text-3xl font-bold text-ink tracking-tight">Have a question? Just ask.</h2>
+        <h2 className="mt-5 font-display text-3xl font-bold text-ink tracking-tight">{t('landing.aiAssistantTitle')}</h2>
         <p className="mt-3 text-ink/60 leading-relaxed max-w-md mx-auto">
-          Skip the FAQ scavenger hunt — our AI assistant knows TraceHub inside out and answers in seconds.
+          {t('landing.aiAssistantSubtitle')}
         </p>
         <button
           onClick={onOpenChat}
           className="mt-7 inline-flex items-center gap-2 bg-primary text-white font-semibold px-6 py-3.5 rounded-lg hover:bg-primary-600 transition-colors"
         >
-          <Sparkles size={17} /> Chat with the assistant
+          <Sparkles size={17} /> {t('landing.chatWithAssistant')}
         </button>
         {prompts.length > 0 && (
           <div className="mt-6 flex flex-wrap justify-center gap-2">
@@ -397,6 +382,7 @@ function AiAssistantSection({ faqs, onOpenChat }) {
 }
 
 function FinalCTA({ content }) {
+  const { t } = useTranslation();
   return (
     <section className="relative max-w-6xl mx-auto px-6 py-24 text-center overflow-hidden">
       <div
@@ -405,16 +391,16 @@ function FinalCTA({ content }) {
       />
       <QrCode className="mx-auto text-primary" size={32} />
       <h2 className="mt-5 font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">
-        Ready to know where everything is?
+        {t('landing.finalCtaTitle')}
       </h2>
       <p className="mt-3 text-ink/60 max-w-md mx-auto">
-        Set up your workspace in a couple of minutes. No card required to start.
+        {t('landing.finalCtaSubtitle')}
       </p>
       <Link
         to={content.heroCtaLink || '/register'}
         className="mt-8 inline-flex items-center gap-2 bg-primary text-white font-semibold px-7 py-3.5 rounded-lg hover:bg-primary-600 transition-colors"
       >
-        Create your workspace
+        {t('landing.createWorkspace')}
         <ArrowRight size={18} />
       </Link>
     </section>
@@ -422,9 +408,9 @@ function FinalCTA({ content }) {
 }
 
 export default function Landing() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [content, setContent] = useState(DEFAULT_CONTENT);
-  const [plans, setPlans] = useState(DEFAULT_PLANS);
+  const [plans, setPlans] = useState(null);
   const [testimonials, setTestimonials] = useState([]);
   const [faqs, setFaqs] = useState([]);
   const [chatOpen, setChatOpen] = useState(false);
@@ -435,11 +421,14 @@ export default function Landing() {
 
   useEffect(() => {
     client.get('/plans').then(({ data }) => {
-      if (data.plans?.length) setPlans(data.plans.map(formatPlan));
+      if (data.plans?.length) setPlans(data.plans.map((p) => formatPlan(p, t)));
     }).catch(() => {});
     client.get('/testimonials').then(({ data }) => setTestimonials(data.testimonials || [])).catch(() => {});
     client.get('/faqs').then(({ data }) => setFaqs(data.faqs || [])).catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const displayPlans = plans || defaultPlans(t);
 
   return (
     <div className="bg-surface">
@@ -449,7 +438,7 @@ export default function Landing() {
       <DepreciationProof />
       <Features />
       <TrackedOperations />
-      <Pricing plans={plans} />
+      <Pricing plans={displayPlans} />
       <Testimonials items={testimonials} />
       <AiAssistantSection faqs={faqs} onOpenChat={() => setChatOpen(true)} />
       <FinalCTA content={content} />

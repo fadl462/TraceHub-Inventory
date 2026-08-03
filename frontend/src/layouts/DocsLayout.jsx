@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import client from '../api/client';
 import TraceHubMark from '../components/TraceHubMark';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import AiChatWidget from '../components/AiChatWidget';
 import { useAuth } from '../context/AuthContext';
 import { Spinner, Button } from '../components/ui';
@@ -30,7 +31,7 @@ export default function DocsLayout() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [categories, setCategories] = useState(null);
   const [openCategories, setOpenCategories] = useState({});
   const [search, setSearch] = useState('');
@@ -79,13 +80,13 @@ export default function DocsLayout() {
         to="/docs" onClick={() => setMobileNavOpen(false)}
         className="flex items-center gap-2.5 py-2 mb-3 text-sm font-semibold text-white hover:text-secondary transition-colors"
       >
-        <Home size={16} className="text-secondary" /> Documentation Home
+        <Home size={16} className="text-secondary" /> {t('docsLayout.documentationHome')}
       </Link>
       <div className="relative mb-5">
         <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
         <input
           value={search} onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search documentation..."
+          placeholder={t('docsLayout.searchPlaceholder')}
           className="w-full pl-9 pr-3 py-2.5 text-sm rounded-lg bg-white/10 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-secondary focus:bg-white/15 transition-colors"
         />
         {searchResults !== null && (
@@ -156,16 +157,17 @@ export default function DocsLayout() {
             <TraceHubMark size={30} withWordmark tone="white" />
           </Link>
           <span className="hidden sm:inline text-white/30 text-sm">|</span>
-          <Link to="/docs" className="hidden sm:inline text-white/60 hover:text-white text-sm font-medium transition-colors">Documentation</Link>
+          <Link to="/docs" className="hidden sm:inline text-white/60 hover:text-white text-sm font-medium transition-colors">{t('footer.linkDocumentation')}</Link>
           <div className="ml-auto flex items-center gap-3">
+            <LanguageSwitcher dark />
             {user ? (
               <Link to={user.role === 'super_admin' ? '/admin' : '/dashboard'}>
-                <Button variant="accent">Go to dashboard</Button>
+                <Button variant="accent">{t('common.goToDashboard')}</Button>
               </Link>
             ) : (
               <>
-                <Link to="/login" className="text-sm text-white/70 hover:text-white transition-colors">Log in</Link>
-                <Link to="/register"><Button variant="accent">Get started free</Button></Link>
+                <Link to="/login" className="text-sm text-white/70 hover:text-white transition-colors">{t('common.login')}</Link>
+                <Link to="/register"><Button variant="accent">{t('common.getStartedFree')}</Button></Link>
               </>
             )}
           </div>

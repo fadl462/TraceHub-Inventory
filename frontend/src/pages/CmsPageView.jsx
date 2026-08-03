@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft } from 'lucide-react';
 import client from '../api/client';
 import SiteHeader from '../components/landing/SiteHeader';
@@ -8,16 +9,17 @@ import { Spinner } from '../components/ui';
 
 export default function CmsPageView() {
   const { slug } = useParams();
+  const { t, i18n } = useTranslation();
   const [page, setPage] = useState(null);
   const [status, setStatus] = useState('loading');
 
   useEffect(() => {
     setStatus('loading');
     window.scrollTo(0, 0);
-    client.get(`/cms-pages/slug/${slug}`)
+    client.get(`/cms-pages/slug/${slug}`, { params: { locale: i18n.language } })
       .then(({ data }) => { setPage(data.page); setStatus('found'); })
       .catch(() => setStatus('notfound'));
-  }, [slug]);
+  }, [slug, i18n.language]);
 
   return (
     <div className="min-h-screen bg-surface flex flex-col">
@@ -26,16 +28,16 @@ export default function CmsPageView() {
         {status === 'loading' && <div className="flex justify-center py-16"><Spinner size={28} /></div>}
         {status === 'notfound' && (
           <div className="text-center py-16">
-            <h1 className="text-xl font-bold text-ink">Page not found</h1>
+            <h1 className="text-xl font-bold text-ink">{t('cmsPage.pageNotFound')}</h1>
             <Link to="/" className="mt-4 inline-flex items-center gap-1.5 text-sm text-primary font-medium">
-              <ArrowLeft size={15} /> Back to home
+              <ArrowLeft size={15} /> {t('cmsPage.backToHome')}
             </Link>
           </div>
         )}
         {status === 'found' && page && (
           <>
             <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-ink/50 hover:text-ink font-medium mb-8 transition-colors">
-              <ArrowLeft size={15} /> Back to home
+              <ArrowLeft size={15} /> {t('cmsPage.backToHome')}
             </Link>
             <article className="bg-white rounded-2xl border border-ink/5 shadow-card p-8 sm:p-14">
               <h1 className="font-display text-3xl font-bold text-ink tracking-tight mb-8">{page.title}</h1>

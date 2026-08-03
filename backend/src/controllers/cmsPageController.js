@@ -2,6 +2,11 @@ const { CmsPage } = require('../models');
 const { logAction } = require('../middleware/audit');
 const defaultCmsPages = require('../seed/cmsPages');
 
+const SUPPORTED_LOCALES = ['en', 'fr', 'es'];
+function normalizeLocale(raw) {
+  return SUPPORTED_LOCALES.includes(raw) ? raw : 'en';
+}
+
 function slugify(str) {
   return String(str).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
@@ -15,16 +20,16 @@ const MANAGED_LEGAL_SLUGS = ['privacy-policy', 'terms-of-service', 'cookie-polic
 async function ensureSeeded() {
   const count = await CmsPage.count();
   if (count === 0) {
-    await CmsPage.bulkCreate(defaultCmsPages);
+    await CmsPage.bulkCreate(defaultCmsPages.map((p) => ({ locale: 'en', ...p })));
     return;
   }
-  const existing = await CmsPage.findAll({ where: { slug: MANAGED_LEGAL_SLUGS } });
+  const existing = await CmsPage.findAll({ where: { slug: MANAGED_LEGAL_SLUGS, locale: 'en' } });
   const existingBySlug = new Map(existing.map((p) => [p.slug, p]));
   await Promise.all(defaultCmsPages
     .filter((p) => MANAGED_LEGAL_SLUGS.includes(p.slug))
     .map(async (p) => {
       const row = existingBySlug.get(p.slug);
-      if (!row) { await CmsPage.create(p); return; }
+      if (!row) { await CmsPage.create({ locale: 'en', ...p }); return; }
       if (row.bodyHtml !== p.bodyHtml) {
         row.bodyHtml = p.bodyHtml;
         await row.save();
@@ -35,8 +40,9 @@ async function ensureSeeded() {
 async function listPublic(req, res, next) {
   try {
     await ensureSeeded();
+    const locale = normalizeLocale(req.query.locale);
     const pages = await CmsPage.findAll({
-      where: { isPublished: true },
+      where: { isPublished: true, locale },
       order: [['sortOrder', 'ASC']],
       attributes: ['id', 'title', 'slug', 'showInNav', 'showInFooter'],
     });
@@ -47,7 +53,13 @@ async function listPublic(req, res, next) {
 async function getBySlug(req, res, next) {
   try {
     await ensureSeeded();
-    const page = await CmsPage.findOne({ where: { slug: req.params.slug, isPublished: true } });
+    const locale = normalizeLocale(req.query.locale);
+    let page = await CmsPage.findOne({ where: { slug: req.params.slug, locale, isPublished: true } });
+    if (!page && locale !== 'en') {
+      // Not yet translated into the requested language - fall back to
+      // English rather than a 404, same pattern as blog posts/doc articles.
+      page = await CmsPage.findOne({ where: { slug: req.params.slug, locale: 'en', isPublished: true } });
+    }
     if (!page) return res.status(404).json({ error: 'Page not found' });
     res.json({ page });
   } catch (err) { next(err); }
@@ -62,13 +74,14 @@ async function listAll(req, res, next) {
 
 async function create(req, res, next) {
   try {
-    const { title, slug, bodyHtml, showInNav, showInFooter, isPublished, sortOrder } = req.body;
+    const { title, slug, locale, bodyHtml, showInNav, showInFooter, isPublished, sortOrder } = req.body;
     const finalSlug = slug ? slugify(slug) : slugify(title);
-    const existing = await CmsPage.findOne({ where: { slug: finalSlug } });
-    if (existing) return res.status(409).json({ error: `A page with slug "${finalSlug}" already exists.` });
+    const finalLocale = normalizeLocale(locale);
+    const existing = await CmsPage.findOne({ where: { slug: finalSlug, locale: finalLocale } });
+    if (existing) return res.status(409).json({ error: `A page with slug "${finalSlug}" already exists for this language.` });
 
     const page = await CmsPage.create({
-      title, slug: finalSlug, bodyHtml, showInNav: !!showInNav, showInFooter: showInFooter !== false,
+      title, slug: finalSlug, locale: finalLocale, bodyHtml, showInNav: !!showInNav, showInFooter: showInFooter !== false,
       isPublished: isPublished !== false, sortOrder: sortOrder || 0,
     });
     await logAction(req, { action: 'cmsPage.create', entityType: 'CmsPage', entityId: page.id, after: page.toJSON() });
@@ -81,9 +94,10 @@ async function update(req, res, next) {
     const page = await CmsPage.findByPk(req.params.id);
     if (!page) return res.status(404).json({ error: 'Page not found' });
     const before = page.toJSON();
-    const { title, slug, bodyHtml, showInNav, showInFooter, isPublished, sortOrder } = req.body;
+    const { title, slug, locale, bodyHtml, showInNav, showInFooter, isPublished, sortOrder } = req.body;
     if (title !== undefined) page.title = title;
     if (slug !== undefined) page.slug = slugify(slug);
+    if (locale !== undefined) page.locale = normalizeLocale(locale);
     if (bodyHtml !== undefined) page.bodyHtml = bodyHtml;
     if (showInNav !== undefined) page.showInNav = showInNav;
     if (showInFooter !== undefined) page.showInFooter = showInFooter;

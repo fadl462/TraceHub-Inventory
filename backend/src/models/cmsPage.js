@@ -4,7 +4,11 @@ module.exports = (sequelize, DataTypes) => {
   const CmsPage = sequelize.define('CmsPage', {
     id: { type: DataTypes.UUID, defaultValue: () => uuidv4(), primaryKey: true },
     title: { type: DataTypes.STRING, allowNull: false },
-    slug: { type: DataTypes.STRING, allowNull: false, unique: true },
+    slug: { type: DataTypes.STRING, allowNull: false },
+    // Same slug reused across languages (one row per locale), matching the
+    // BlogPost/DocArticle pattern - the URL stays identical regardless of
+    // which language is showing.
+    locale: { type: DataTypes.STRING, allowNull: false, defaultValue: 'en' },
     bodyHtml: { type: DataTypes.TEXT, allowNull: true },
     showInNav: { type: DataTypes.BOOLEAN, defaultValue: false },
     showInFooter: { type: DataTypes.BOOLEAN, defaultValue: true },
@@ -13,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'cms_pages',
     timestamps: true,
+    indexes: [{ unique: true, fields: ['slug', 'locale'] }],
   });
 
   return CmsPage;

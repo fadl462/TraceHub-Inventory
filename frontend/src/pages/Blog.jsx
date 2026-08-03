@@ -12,7 +12,7 @@ function formatDate(d) {
 }
 
 export default function Blog() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -28,19 +28,19 @@ export default function Blog() {
     <div className="min-h-screen bg-surface flex flex-col">
       <SiteHeader />
       <main className="flex-1 max-w-6xl mx-auto px-6 py-16 w-full">
-        <p className="text-xs font-semibold uppercase tracking-widest text-secondary-dark mb-3">Updates</p>
-        <h1 className="font-display text-4xl font-bold text-ink tracking-tight mb-2">Updates &amp; releases</h1>
-        <p className="text-ink/60 mb-12">What's new on TraceHub Inventory.</p>
+        <p className="text-xs font-semibold uppercase tracking-widest text-secondary-dark mb-3">{t('blogPage.updates')}</p>
+        <h1 className="font-display text-4xl font-bold text-ink tracking-tight mb-2">{t('blogPage.updatesAndReleases')}</h1>
+        <p className="text-ink/60 mb-12">{t('blogPage.whatsNew')}</p>
 
         {loading ? (
           <div className="flex justify-center py-16"><Spinner size={28} /></div>
         ) : error ? (
           <div className="text-center py-16">
-            <p className="text-sm text-ink/60">Couldn't load posts right now — please refresh the page.</p>
+            <p className="text-sm text-ink/60">{t('blogPage.couldntLoadPosts')}</p>
           </div>
         ) : posts.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-sm text-ink/60">No posts published yet. Check back soon.</p>
+            <p className="text-sm text-ink/60">{t('blogPage.noPostsYet')}</p>
           </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
