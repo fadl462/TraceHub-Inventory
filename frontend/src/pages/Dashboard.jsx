@@ -213,6 +213,7 @@ export default function Dashboard() {
 }
 
 function IntelligenceKpiSection({ currency }) {
+  const { t } = useTranslation();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
