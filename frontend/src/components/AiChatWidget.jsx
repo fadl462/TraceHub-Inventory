@@ -22,10 +22,10 @@ export default function AiChatWidget({ quickPrompts, isOpen, onOpenChange }) {
   // with an empty "Popular questions" section.
   useEffect(() => {
     if (quickPrompts !== undefined) return;
-    client.get('/faqs').then(({ data }) => {
+    client.get('/faqs', { params: { locale: i18n.language } }).then(({ data }) => {
       setFetchedPrompts((data.faqs || []).slice(0, 5).map((f) => f.question));
     }).catch(() => {});
-  }, [quickPrompts]);
+  }, [quickPrompts, i18n.language]);
 
   const effectivePrompts = quickPrompts !== undefined ? quickPrompts : fetchedPrompts;
   const [messages, setMessages] = useState([

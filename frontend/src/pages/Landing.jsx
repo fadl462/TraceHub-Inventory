@@ -426,13 +426,13 @@ export default function Landing() {
   useEffect(() => {
     client.get('/site-content', { params: { locale: i18n.language } }).then(({ data }) => setContent(data.content)).catch(() => {});
     client.get('/testimonials', { params: { locale: i18n.language } }).then(({ data }) => setTestimonials(data.testimonials || [])).catch(() => {});
+    client.get('/faqs', { params: { locale: i18n.language } }).then(({ data }) => setFaqs(data.faqs || [])).catch(() => {});
   }, [i18n.language]);
 
   useEffect(() => {
     client.get('/plans').then(({ data }) => {
       if (data.plans?.length) setRawPlans(data.plans);
     }).catch(() => {});
-    client.get('/faqs').then(({ data }) => setFaqs(data.faqs || [])).catch(() => {});
   }, []);
 
   // Computed at render time (not stored pre-formatted) so plan names/labels
