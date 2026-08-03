@@ -67,7 +67,7 @@ export default function AssetCreate() {
     setPriceCurrency('USD');
     setForeignAmount('');
     setFxRate('');
-    toast.success(`Set purchase price to $${usdEquivalent.toFixed(2)}`);
+    toast.success(t('assetCreate.priceSetTo', { amount: usdEquivalent.toFixed(2) }));
   };
 
   const selectedCategory = categories.find((c) => c.id === form.categoryId);
@@ -80,10 +80,10 @@ export default function AssetCreate() {
       const payload = { ...form };
       Object.keys(payload).forEach((k) => { if (payload[k] === '') delete payload[k]; });
       const { data } = await client.post('/assets', payload);
-      toast.success('Asset registered successfully');
+      toast.success(t('assetCreate.assetRegisteredSuccess'));
       navigate(`/assets/${data.asset.id}`);
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Failed to register asset');
+      toast.error(err.response?.data?.error || t('assetCreate.failedToRegister'));
     } finally {
       setLoading(false);
     }
@@ -98,52 +98,52 @@ export default function AssetCreate() {
 
       <form onSubmit={onSubmit}>
         <Card className="p-6 space-y-5">
-          <Input label="Asset name *" required placeholder="e.g. Dell Latitude Laptop" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+          <Input label={t('assetCreate.nameLabel')} required placeholder={t('assetCreate.namePlaceholder')} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
 
           <div className="grid sm:grid-cols-2 gap-4">
-            <Select label="Category" value={form.categoryId} onChange={(e) => setForm({ ...form, categoryId: e.target.value })}>
-              <option value="">Select category</option>
+            <Select label={t('assetCreate.categoryLabel')} value={form.categoryId} onChange={(e) => setForm({ ...form, categoryId: e.target.value })}>
+              <option value="">{t('assetCreate.selectCategory')}</option>
               {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
             </Select>
-            <Select label="Condition" value={form.condition} onChange={(e) => setForm({ ...form, condition: e.target.value })}>
-              <option value="new">New</option>
-              <option value="good">Good</option>
-              <option value="fair">Fair</option>
-              <option value="poor">Poor</option>
-              <option value="damaged">Damaged</option>
+            <Select label={t('assetCreate.conditionLabel')} value={form.condition} onChange={(e) => setForm({ ...form, condition: e.target.value })}>
+              <option value="new">{t('assetCreate.conditionNew')}</option>
+              <option value="good">{t('assetCreate.conditionGood')}</option>
+              <option value="fair">{t('assetCreate.conditionFair')}</option>
+              <option value="poor">{t('assetCreate.conditionPoor')}</option>
+              <option value="damaged">{t('assetCreate.conditionDamaged')}</option>
             </Select>
           </div>
 
           <div className="grid sm:grid-cols-3 gap-4">
-            <Input label="Brand" value={form.brand} onChange={(e) => setForm({ ...form, brand: e.target.value })} />
-            <Input label="Model" value={form.model} onChange={(e) => setForm({ ...form, model: e.target.value })} />
+            <Input label={t('assetCreate.brandLabel')} value={form.brand} onChange={(e) => setForm({ ...form, brand: e.target.value })} />
+            <Input label={t('assetCreate.modelLabel')} value={form.model} onChange={(e) => setForm({ ...form, model: e.target.value })} />
             <Input
-              label="Color" value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })}
-              list="th-color-list" placeholder="Start typing or pick a color..." autoComplete="off"
+              label={t('assetCreate.colorLabel')} value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })}
+              list="th-color-list" placeholder={t('assetCreate.colorPlaceholder')} autoComplete="off"
             />
             <datalist id="th-color-list">
               {COLOR_NAMES.map((c) => <option key={c} value={c} />)}
             </datalist>
           </div>
 
-          <Input label="Serial number" value={form.serialNumber} onChange={(e) => setForm({ ...form, serialNumber: e.target.value })} />
+          <Input label={t('assetCreate.serialNumberLabel')} value={form.serialNumber} onChange={(e) => setForm({ ...form, serialNumber: e.target.value })} />
 
           <div className="grid sm:grid-cols-3 gap-4">
-            <Input label="Manufacture year" type="number" placeholder="2023" value={form.manufactureYear} onChange={(e) => setForm({ ...form, manufactureYear: e.target.value })} />
-            <Input label="Purchase date" type="date" value={form.purchaseDate} onChange={(e) => setForm({ ...form, purchaseDate: e.target.value })} />
-            <Input label="Purchase price (USD)" type="number" step="0.01" placeholder="500" value={form.purchasePrice} onChange={(e) => setForm({ ...form, purchasePrice: e.target.value })} />
+            <Input label={t('assetCreate.manufactureYearLabel')} type="number" placeholder="2023" value={form.manufactureYear} onChange={(e) => setForm({ ...form, manufactureYear: e.target.value })} />
+            <Input label={t('assetCreate.purchaseDateLabel')} type="date" value={form.purchaseDate} onChange={(e) => setForm({ ...form, purchaseDate: e.target.value })} />
+            <Input label={t('assetCreate.purchasePriceLabel')} type="number" step="0.01" placeholder="500" value={form.purchasePrice} onChange={(e) => setForm({ ...form, purchasePrice: e.target.value })} />
           </div>
 
           <div className="rounded-lg border border-primary-100 p-4">
             <p className="text-sm font-medium text-ink/80 mb-1">Paid in a different currency?</p>
             <p className="text-xs text-ink/50 mb-3">Purchase price is always stored in USD - convert your local amount here and it'll fill in the field above.</p>
             <div className="grid sm:grid-cols-3 gap-3 items-end">
-              <Select label="Currency" value={priceCurrency} onChange={(e) => { setPriceCurrency(e.target.value); setFxRate(''); setFxError(''); }}>
+              <Select label={t('assetCreate.currencyLabel')} value={priceCurrency} onChange={(e) => { setPriceCurrency(e.target.value); setFxRate(''); setFxError(''); }}>
                 {CURRENCY_OPTIONS.map((c) => <option key={c.code} value={c.code} disabled={c.disabled}>{c.label}</option>)}
               </Select>
               <Input label={`Amount in ${priceCurrency}`} type="number" step="0.01" value={foreignAmount} onChange={(e) => setForeignAmount(e.target.value)} disabled={priceCurrency === 'USD'} />
               <div className="flex gap-2">
-                <Input label="Rate (1 USD =)" type="number" step="0.0001" value={fxRate} onChange={(e) => setFxRate(e.target.value)} disabled={priceCurrency === 'USD'} />
+                <Input label={t('assetCreate.rateLabel')} type="number" step="0.0001" value={fxRate} onChange={(e) => setFxRate(e.target.value)} disabled={priceCurrency === 'USD'} />
                 <Button type="button" variant="outline" onClick={fetchLiveRate} disabled={priceCurrency === 'USD' || fxLoading} className="mb-0.5">
                   {fxLoading ? '...' : 'Fetch rate'}
                 </Button>
@@ -153,7 +153,7 @@ export default function AssetCreate() {
             {usdEquivalent != null && (
               <div className="flex items-center justify-between mt-3 bg-primary-50/60 rounded-lg px-3 py-2">
                 <span className="text-sm text-ink">\u2248 <strong>${usdEquivalent.toFixed(2)}</strong> USD</span>
-                <Button type="button" onClick={applyConversion}>Use this amount</Button>
+                <Button type="button" onClick={applyConversion}>{t('assetCreate.useThisAmount')}</Button>
               </div>
             )}
           </div>
@@ -171,13 +171,13 @@ export default function AssetCreate() {
             </div>
           )}
 
-          <Select label="Current location" value={form.currentLocationId} onChange={(e) => setForm({ ...form, currentLocationId: e.target.value })}>
-            <option value="">No fixed checkpoint / not set</option>
+          <Select label={t('assetCreate.currentLocationLabel')} value={form.currentLocationId} onChange={(e) => setForm({ ...form, currentLocationId: e.target.value })}>
+            <option value="">{t('assetCreate.noFixedCheckpoint')}</option>
             {locations.map((l) => <option key={l.id} value={l.id}>{l.name}</option>)}
           </Select>
 
           {locations.length === 0 && (
-            <Input label="Or describe location (e.g. 'Accra office, 2nd floor store')" value={form.freeTextLocation} onChange={(e) => setForm({ ...form, freeTextLocation: e.target.value })} />
+            <Input label={t('assetCreate.freeTextLocationLabel')} value={form.freeTextLocation} onChange={(e) => setForm({ ...form, freeTextLocation: e.target.value })} />
           )}
 
           <label className="block">
@@ -210,23 +210,23 @@ export default function AssetCreate() {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-2">Depreciation</p>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <Select label="Depreciation method" value={form.depreciationMethod} onChange={(e) => setForm({ ...form, depreciationMethod: e.target.value })}>
-                      <option value="straight_line">Straight line</option>
-                      <option value="reducing_balance">Reducing balance</option>
-                      <option value="double_declining_balance">Double declining balance</option>
-                      <option value="sum_of_years_digits">Sum of years' digits</option>
-                      <option value="units_of_production">Units of production</option>
-                      <option value="machine_hours">Machine hours</option>
-                      <option value="mileage_based">Mileage based</option>
-                      <option value="ai_adaptive">AI Adaptive (factors in usage, maintenance, environment)</option>
-                      <option value="custom_formula">Custom formula</option>
+                    <Select label={t('assetCreate.depreciationMethodLabel')} value={form.depreciationMethod} onChange={(e) => setForm({ ...form, depreciationMethod: e.target.value })}>
+                      <option value="straight_line">{t('assetCreate.methodStraightLine')}</option>
+                      <option value="reducing_balance">{t('assetCreate.methodReducingBalance')}</option>
+                      <option value="double_declining_balance">{t('assetCreate.methodDoubleDecliningBalance')}</option>
+                      <option value="sum_of_years_digits">{t('assetCreate.methodSumOfYearsDigits')}</option>
+                      <option value="units_of_production">{t('assetCreate.methodUnitsOfProduction')}</option>
+                      <option value="machine_hours">{t('assetCreate.methodMachineHours')}</option>
+                      <option value="mileage_based">{t('assetCreate.methodMileageBased')}</option>
+                      <option value="ai_adaptive">{t('assetCreate.methodAiAdaptive')}</option>
+                      <option value="custom_formula">{t('assetCreate.methodCustomFormula')}</option>
                     </Select>
-                    <Input label="Warranty expiry" type="date" value={form.warrantyExpiry} onChange={(e) => setForm({ ...form, warrantyExpiry: e.target.value })} />
+                    <Input label={t('assetCreate.warrantyExpiryLabel')} type="date" value={form.warrantyExpiry} onChange={(e) => setForm({ ...form, warrantyExpiry: e.target.value })} />
                   </div>
                   {['units_of_production', 'machine_hours', 'mileage_based'].includes(form.depreciationMethod) && (
                     <div className="mt-4">
                       <Input
-                        label="Total expected capacity over useful life (units / hours / miles, matching the method above)"
+                        label={t('assetCreate.totalExpectedCapacityLabel')}
                         type="number" value={form.unitsProductionCapacity}
                         onChange={(e) => setForm({ ...form, unitsProductionCapacity: e.target.value })}
                       />
@@ -237,7 +237,7 @@ export default function AssetCreate() {
                       <label className="block">
                         <span className="mb-1.5 block text-sm font-medium text-ink/80">Custom formula</span>
                         <input
-                          type="text" placeholder="e.g. cost - (repairCount * 25) - (age * 100)"
+                          type="text" placeholder={t('assetCreate.customFormulaPlaceholder')}
                           className="w-full rounded-lg border border-primary-100 px-3.5 py-2.5 text-sm font-mono focus-ring focus:border-secondary"
                           value={form.customDepreciationFormula}
                           onChange={(e) => setForm({ ...form, customDepreciationFormula: e.target.value })}
@@ -255,20 +255,20 @@ export default function AssetCreate() {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-2">Operational history</p>
                   <div className="grid sm:grid-cols-3 gap-4">
-                    <Input label="Hours used" type="number" value={form.hoursUsed} onChange={(e) => setForm({ ...form, hoursUsed: e.target.value })} />
-                    <Input label="Maintenance count" type="number" value={form.maintenanceCount} onChange={(e) => setForm({ ...form, maintenanceCount: e.target.value })} />
-                    <Input label="Repair count" type="number" value={form.repairCount} onChange={(e) => setForm({ ...form, repairCount: e.target.value })} />
-                    <Input label="Failure count" type="number" value={form.failureCount} onChange={(e) => setForm({ ...form, failureCount: e.target.value })} />
-                    <Input label="Latest inspection score (0-100)" type="number" min="0" max="100" value={form.inspectionScore} onChange={(e) => setForm({ ...form, inspectionScore: e.target.value })} />
-                    <Select label="Usage intensity" value={form.usageIntensity} onChange={(e) => setForm({ ...form, usageIntensity: e.target.value })}>
-                      <option value="light">Light</option>
-                      <option value="normal">Normal</option>
-                      <option value="heavy">Heavy</option>
-                      <option value="extreme">Extreme</option>
+                    <Input label={t('assetCreate.hoursUsedLabel')} type="number" value={form.hoursUsed} onChange={(e) => setForm({ ...form, hoursUsed: e.target.value })} />
+                    <Input label={t('assetCreate.maintenanceCountLabel')} type="number" value={form.maintenanceCount} onChange={(e) => setForm({ ...form, maintenanceCount: e.target.value })} />
+                    <Input label={t('assetCreate.repairCountLabel')} type="number" value={form.repairCount} onChange={(e) => setForm({ ...form, repairCount: e.target.value })} />
+                    <Input label={t('assetCreate.failureCountLabel')} type="number" value={form.failureCount} onChange={(e) => setForm({ ...form, failureCount: e.target.value })} />
+                    <Input label={t('assetCreate.latestInspectionScoreLabel')} type="number" min="0" max="100" value={form.inspectionScore} onChange={(e) => setForm({ ...form, inspectionScore: e.target.value })} />
+                    <Select label={t('assetCreate.usageIntensityLabel')} value={form.usageIntensity} onChange={(e) => setForm({ ...form, usageIntensity: e.target.value })}>
+                      <option value="light">{t('assetCreate.intensityLight')}</option>
+                      <option value="normal">{t('assetCreate.intensityNormal')}</option>
+                      <option value="heavy">{t('assetCreate.intensityHeavy')}</option>
+                      <option value="extreme">{t('assetCreate.intensityExtreme')}</option>
                     </Select>
-                    <Input label="Last maintenance date" type="date" value={form.lastMaintenanceDate} onChange={(e) => setForm({ ...form, lastMaintenanceDate: e.target.value })} />
+                    <Input label={t('assetCreate.lastMaintenanceDateLabel')} type="date" value={form.lastMaintenanceDate} onChange={(e) => setForm({ ...form, lastMaintenanceDate: e.target.value })} />
                     <Input
-                      label="Service interval override (days, optional)" type="number" placeholder="e.g. 90"
+                      label={t('assetCreate.serviceIntervalOverrideLabel')} type="number" placeholder={t('assetCreate.serviceIntervalPlaceholder')}
                       value={form.maintenanceIntervalDaysOverride} onChange={(e) => setForm({ ...form, maintenanceIntervalDaysOverride: e.target.value })}
                     />
                   </div>
@@ -277,27 +277,27 @@ export default function AssetCreate() {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-2">Financial (beyond purchase price)</p>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <Input label="Total maintenance cost to date" type="number" step="0.01" value={form.maintenanceCostTotal} onChange={(e) => setForm({ ...form, maintenanceCostTotal: e.target.value })} />
-                    <Input label="Total repair cost to date" type="number" step="0.01" value={form.repairCostTotal} onChange={(e) => setForm({ ...form, repairCostTotal: e.target.value })} />
-                    <Input label="Current market value" type="number" step="0.01" value={form.currentMarketValue} onChange={(e) => setForm({ ...form, currentMarketValue: e.target.value })} />
-                    <Input label="Current replacement cost" type="number" step="0.01" value={form.currentReplacementCost} onChange={(e) => setForm({ ...form, currentReplacementCost: e.target.value })} />
+                    <Input label={t('assetCreate.totalMaintenanceCostLabel')} type="number" step="0.01" value={form.maintenanceCostTotal} onChange={(e) => setForm({ ...form, maintenanceCostTotal: e.target.value })} />
+                    <Input label={t('assetCreate.totalRepairCostLabel')} type="number" step="0.01" value={form.repairCostTotal} onChange={(e) => setForm({ ...form, repairCostTotal: e.target.value })} />
+                    <Input label={t('assetCreate.currentMarketValueLabel')} type="number" step="0.01" value={form.currentMarketValue} onChange={(e) => setForm({ ...form, currentMarketValue: e.target.value })} />
+                    <Input label={t('assetCreate.currentReplacementCostLabel')} type="number" step="0.01" value={form.currentReplacementCost} onChange={(e) => setForm({ ...form, currentReplacementCost: e.target.value })} />
                   </div>
                 </div>
 
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-ink/40 mb-2">Condition &amp; environment</p>
                   <div className="grid sm:grid-cols-3 gap-4">
-                    <Input label="Reliability score (0-100)" type="number" min="0" max="100" value={form.assetReliability} onChange={(e) => setForm({ ...form, assetReliability: e.target.value })} />
-                    <Input label="Maintenance compliance (0-100)" type="number" min="0" max="100" value={form.maintenanceCompliance} onChange={(e) => setForm({ ...form, maintenanceCompliance: e.target.value })} />
-                    <Input label="Criticality to operations (0-100)" type="number" min="0" max="100" value={form.criticalityScore} onChange={(e) => setForm({ ...form, criticalityScore: e.target.value })} />
-                    <Select label="Corrosion risk" value={form.corrosionRisk} onChange={(e) => setForm({ ...form, corrosionRisk: e.target.value })}>
-                      <option value="low">Low</option><option value="moderate">Moderate</option><option value="high">High</option>
+                    <Input label={t('assetCreate.reliabilityScoreLabel')} type="number" min="0" max="100" value={form.assetReliability} onChange={(e) => setForm({ ...form, assetReliability: e.target.value })} />
+                    <Input label={t('assetCreate.maintenanceComplianceLabel')} type="number" min="0" max="100" value={form.maintenanceCompliance} onChange={(e) => setForm({ ...form, maintenanceCompliance: e.target.value })} />
+                    <Input label={t('assetCreate.criticalityScoreLabel')} type="number" min="0" max="100" value={form.criticalityScore} onChange={(e) => setForm({ ...form, criticalityScore: e.target.value })} />
+                    <Select label={t('assetCreate.corrosionRiskLabel')} value={form.corrosionRisk} onChange={(e) => setForm({ ...form, corrosionRisk: e.target.value })}>
+                      <option value="low">{t('assetCreate.levelLow')}</option><option value="moderate">{t('assetCreate.levelModerate')}</option><option value="high">{t('assetCreate.levelHigh')}</option>
                     </Select>
-                    <Select label="Dust exposure" value={form.dustExposure} onChange={(e) => setForm({ ...form, dustExposure: e.target.value })}>
-                      <option value="low">Low</option><option value="moderate">Moderate</option><option value="high">High</option>
+                    <Select label={t('assetCreate.dustExposureLabel')} value={form.dustExposure} onChange={(e) => setForm({ ...form, dustExposure: e.target.value })}>
+                      <option value="low">{t('assetCreate.levelLow')}</option><option value="moderate">{t('assetCreate.levelModerate')}</option><option value="high">{t('assetCreate.levelHigh')}</option>
                     </Select>
-                    <Select label="Resale demand" value={form.resaleDemand} onChange={(e) => setForm({ ...form, resaleDemand: e.target.value })}>
-                      <option value="low">Low</option><option value="moderate">Moderate</option><option value="high">High</option>
+                    <Select label={t('assetCreate.resaleDemandLabel')} value={form.resaleDemand} onChange={(e) => setForm({ ...form, resaleDemand: e.target.value })}>
+                      <option value="low">{t('assetCreate.levelLow')}</option><option value="moderate">{t('assetCreate.levelModerate')}</option><option value="high">{t('assetCreate.levelHigh')}</option>
                     </Select>
                   </div>
                 </div>
@@ -306,7 +306,7 @@ export default function AssetCreate() {
           </div>
 
           <div className="flex justify-end gap-3 pt-2">
-            <Button type="button" variant="outline" onClick={() => navigate(-1)}>Cancel</Button>
+            <Button type="button" variant="outline" onClick={() => navigate(-1)}>{t('common.cancel')}</Button>
             <Button type="submit" disabled={loading}>{loading ? t('assetCreate.registering') : t('assetCreate.registerAsset')}</Button>
           </div>
         </Card>
