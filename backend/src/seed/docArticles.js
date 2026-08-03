@@ -1530,6 +1530,16 @@ const frenchTeamSecurity = require('./docArticles.fr-team-security');
 const frenchReportsBilling = require('./docArticles.fr-reports-billing');
 const frenchSuperAdmin = require('./docArticles.fr-super-admin');
 const frenchTroubleshootingReference = require('./docArticles.fr-troubleshooting-reference');
+const spanishGettingStarted = require('./docArticles.es-getting-started');
+const spanishManagingAssets = require('./docArticles.es-managing-assets');
+const spanishIntelligenceEngine = require('./docArticles.es-intelligence-engine');
+const spanishIntelligenceEngineExpanded = require('./docArticles.es-intelligence-engine-expanded');
+const spanishTrackingAssignments = require('./docArticles.es-tracking-assignments');
+const spanishDisposalWorkflow = require('./docArticles.es-disposal-workflow');
+const spanishTeamSecurity = require('./docArticles.es-team-security');
+const spanishReportsBilling = require('./docArticles.es-reports-billing');
+const spanishSuperAdmin = require('./docArticles.es-super-admin');
+const spanishTroubleshootingReference = require('./docArticles.es-troubleshooting-reference');
 
 module.exports = {
   defaultDocArticles: [
@@ -1544,5 +1554,15 @@ module.exports = {
     ...frenchReportsBilling,
     ...frenchSuperAdmin,
     ...frenchTroubleshootingReference,
+    ...spanishGettingStarted,
+    ...spanishManagingAssets,
+    ...spanishIntelligenceEngine,
+    ...spanishIntelligenceEngineExpanded,
+    ...spanishTrackingAssignments,
+    ...spanishDisposalWorkflow,
+    ...spanishTeamSecurity,
+    ...spanishReportsBilling,
+    ...spanishSuperAdmin,
+    ...spanishTroubleshootingReference,
   ],
 };
