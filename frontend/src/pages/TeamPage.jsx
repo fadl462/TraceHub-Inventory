@@ -54,7 +54,7 @@ export default function TeamPage() {
     e.preventDefault();
     try {
       await client.post('/users', form);
-      toast.success('Team member added. A temporary password was emailed to them.');
+      toast.success(t('team.addedSuccess'));
       setForm({ firstName: '', lastName: '', email: '', role: 'staff' });
       setShowForm(false);
       load();
@@ -64,7 +64,7 @@ export default function TeamPage() {
   };
 
   const removeUser = async (id) => {
-    if (!confirm('Remove this team member?')) return;
+    if (!confirm(t('team.removeConfirm'))) return;
     try {
       await client.delete(`/users/${id}`);
       load();
@@ -95,16 +95,16 @@ export default function TeamPage() {
       {showForm && (
         <Card className="p-5">
           <form onSubmit={onSubmit} className="grid sm:grid-cols-2 gap-4">
-            <Input label="First name *" required value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
-            <Input label="Last name *" required value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
-            <Input label="Email *" type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-            <Select label="Role" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })}>
-              <option value="staff">Staff</option>
-              <option value="manager">Manager</option>
+            <Input label={t('team.firstNameLabel')} required value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
+            <Input label={t('team.lastNameLabel')} required value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
+            <Input label={t('team.emailLabel')} type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+            <Select label={t('team.roleLabel')} value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })}>
+              <option value="staff">{t('team.roleStaff')}</option>
+              <option value="manager">{t('team.roleManager')}</option>
             </Select>
             <div className="sm:col-span-2 flex justify-end gap-2">
-              <Button type="button" variant="outline" onClick={() => setShowForm(false)}>Cancel</Button>
-              <Button type="submit">Send invite</Button>
+              <Button type="button" variant="outline" onClick={() => setShowForm(false)}>{t('common.cancel')}</Button>
+              <Button type="submit">{t('team.sendInvite')}</Button>
             </div>
           </form>
         </Card>
@@ -114,20 +114,20 @@ export default function TeamPage() {
         <div className="flex flex-col sm:flex-row flex-wrap gap-3">
           <input
             className="flex-1 min-w-[200px] rounded-lg border border-primary-100 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary"
-            placeholder="Search by name or email..."
+            placeholder={t('team.searchPlaceholder')}
             value={search} onChange={(e) => setSearch(e.target.value)}
           />
           <Select value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)} className="sm:w-48">
-            <option value="">All roles</option>
-            <option value="company_admin">Company admin</option>
-            <option value="manager">Manager</option>
-            <option value="staff">Staff</option>
+            <option value="">{t('team.allRoles')}</option>
+            <option value="company_admin">{t('team.roleCompanyAdmin')}</option>
+            <option value="manager">{t('team.roleManager')}</option>
+            <option value="staff">{t('team.roleStaff')}</option>
           </Select>
           <Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="sm:w-48">
-            <option value="">All statuses</option>
-            <option value="active">Active</option>
-            <option value="disabled">Disabled</option>
-            <option value="pending">Pending first login</option>
+            <option value="">{t('team.allStatuses')}</option>
+            <option value="active">{t('team.statusActive')}</option>
+            <option value="disabled">{t('team.statusDisabled')}</option>
+            <option value="pending">{t('team.statusPending')}</option>
           </Select>
         </div>
       </Card>
@@ -136,7 +136,7 @@ export default function TeamPage() {
         {loading ? (
           <div className="flex justify-center py-16"><Spinner size={28} /></div>
         ) : filteredUsers.length === 0 ? (
-          <EmptyState icon={Users} title="No team members match these filters" />
+          <EmptyState icon={Users} title={t('team.noMembersMatch')} />
         ) : (
           <div className="divide-y divide-primary-50">
             {filteredUsers.map((u) => (
@@ -146,7 +146,7 @@ export default function TeamPage() {
                     {u.firstName} {u.lastName} {u.id === me.id && <span className="text-xs text-ink/40">(you)</span>}
                     {u.mustChangePassword && (
                       <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">
-                        <KeyRound size={11} /> Pending first login
+                        <KeyRound size={11} /> {t('team.pendingFirstLoginBadge')}
                       </span>
                     )}
                   </p>
@@ -161,8 +161,10 @@ export default function TeamPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
-                  <Badge tone={u.role === 'company_admin' ? 'info' : 'default'}>{u.role.replace('_', ' ')}</Badge>
-                  <Badge tone={u.isActive ? 'success' : 'danger'}>{u.isActive ? 'Active' : 'Disabled'}</Badge>
+                  <Badge tone={u.role === 'company_admin' ? 'info' : 'default'}>
+                    {u.role === 'company_admin' ? t('team.roleCompanyAdmin') : u.role === 'manager' ? t('team.roleManager') : t('team.roleStaff')}
+                  </Badge>
+                  <Badge tone={u.isActive ? 'success' : 'danger'}>{u.isActive ? t('team.statusActive') : t('team.statusDisabled')}</Badge>
                   {u.id !== me.id && (
                     <>
                       <button onClick={() => toggleActive(u)} className="text-xs text-secondary hover:underline">{u.isActive ? 'Disable' : 'Enable'}</button>

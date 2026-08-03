@@ -47,18 +47,18 @@ export default function BillingPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-xl font-bold text-ink">{t('billing.title')}</h1>
-        <p className="text-sm text-ink/60 mt-0.5">Manage your plan, payment method, and invoices.</p>
+        <p className="text-sm text-ink/60 mt-0.5">{t('billing.subtitle')}</p>
       </div>
 
       {subscription && (
         <Card className="p-5 flex items-center justify-between flex-wrap gap-3">
           <div>
-            <p className="text-sm text-ink/60">Current plan</p>
+            <p className="text-sm text-ink/60">{t('billing.currentPlan')}</p>
             <p className="text-lg font-bold text-ink">{subscription.SubscriptionPlan?.name}</p>
           </div>
           <div className="flex items-center gap-3">
             <Badge tone={subscription.status === 'active' ? 'success' : subscription.status === 'trialing' ? 'info' : 'warning'}>{subscription.status}</Badge>
-            <span className="text-sm text-ink/60">Renews/ends {new Date(subscription.currentPeriodEnd).toLocaleDateString()}</span>
+            <span className="text-sm text-ink/60">{t('billing.renewsEnds', { date: new Date(subscription.currentPeriodEnd).toLocaleDateString() })}</span>
           </div>
         </Card>
       )}
@@ -79,16 +79,16 @@ export default function BillingPage() {
               disabled={subscription?.planId === p.id || checkoutLoading === p.id}
               onClick={() => subscribe(p.id)}
             >
-              {subscription?.planId === p.id ? 'Current plan' : checkoutLoading === p.id ? 'Redirecting...' : <><CreditCard size={15} /> Subscribe</>}
+              {subscription?.planId === p.id ? t('billing.currentPlan') : checkoutLoading === p.id ? t('billing.redirecting') : <><CreditCard size={15} /> {t('billing.subscribe')}</>}
             </Button>
           </Card>
         ))}
       </div>
 
       <Card className="p-5">
-        <h3 className="font-semibold text-ink mb-4">Invoices</h3>
+        <h3 className="font-semibold text-ink mb-4">{t('billing.invoices')}</h3>
         {invoices.length === 0 ? (
-          <p className="text-sm text-ink/50">No invoices yet.</p>
+          <p className="text-sm text-ink/50">{t('billing.noInvoicesYet')}</p>
         ) : (
           <div className="divide-y divide-primary-50">
             {invoices.map((inv) => (

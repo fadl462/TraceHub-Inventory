@@ -6,10 +6,10 @@ import { Trash2, ArrowRight, CheckCircle2, XCircle } from 'lucide-react';
 import client from '../../api/client';
 import { Card, Badge, Spinner, EmptyState, Select, Button } from '../../components/ui';
 
-const STAGE_LABELS = {
-  flagged: 'Flagged', manager_review: 'Manager review', finance_review: 'Finance review',
-  approved: 'Approved', auctioning: 'Auctioning', selling: 'Selling', donating: 'Donating',
-  scrapping: 'Scrapping', recycling: 'Recycling', disposed: 'Disposed', rejected: 'Rejected',
+const STAGE_KEYS = {
+  flagged: 'stageFlagged', manager_review: 'stageManagerReview', finance_review: 'stageFinanceReview',
+  approved: 'stageApproved', auctioning: 'stageAuctioning', selling: 'stageSelling', donating: 'stageDonating',
+  scrapping: 'stageScrapping', recycling: 'stageRecycling', disposed: 'stageDisposed', rejected: 'stageRejected',
 };
 
 const STAGE_TONE = {
@@ -18,23 +18,24 @@ const STAGE_TONE = {
   disposed: 'success', rejected: 'danger',
 };
 
-const NEXT_STEPS = {
-  flagged: [{ to: 'manager_review', label: 'Send to manager review' }],
-  manager_review: [{ to: 'finance_review', label: 'Approve → finance review' }],
-  finance_review: [{ to: 'approved', label: 'Approve for disposal' }],
+const NEXT_STEP_KEYS = {
+  flagged: [{ to: 'manager_review', labelKey: 'nextStepManagerReview' }],
+  manager_review: [{ to: 'finance_review', labelKey: 'nextStepFinanceReview' }],
+  finance_review: [{ to: 'approved', labelKey: 'nextStepApprove' }],
   approved: [
-    { to: 'auctioning', label: 'Send to auction' }, { to: 'selling', label: 'List for sale' },
-    { to: 'donating', label: 'Donate' }, { to: 'scrapping', label: 'Scrap' }, { to: 'recycling', label: 'Recycle' },
+    { to: 'auctioning', labelKey: 'nextStepAuction' }, { to: 'selling', labelKey: 'nextStepSell' },
+    { to: 'donating', labelKey: 'nextStepDonate' }, { to: 'scrapping', labelKey: 'nextStepScrap' }, { to: 'recycling', labelKey: 'nextStepRecycle' },
   ],
-  auctioning: [{ to: 'disposed', label: 'Mark disposed' }],
-  selling: [{ to: 'disposed', label: 'Mark disposed' }],
-  donating: [{ to: 'disposed', label: 'Mark disposed' }],
-  scrapping: [{ to: 'disposed', label: 'Mark disposed' }],
-  recycling: [{ to: 'disposed', label: 'Mark disposed' }],
+  auctioning: [{ to: 'disposed', labelKey: 'nextStepMarkDisposed' }],
+  selling: [{ to: 'disposed', labelKey: 'nextStepMarkDisposed' }],
+  donating: [{ to: 'disposed', labelKey: 'nextStepMarkDisposed' }],
+  scrapping: [{ to: 'disposed', labelKey: 'nextStepMarkDisposed' }],
+  recycling: [{ to: 'disposed', labelKey: 'nextStepMarkDisposed' }],
 };
 
 export default function DisposalCases() {
   const { t } = useTranslation();
+  const stageLabel = (status) => t(`disposal.${STAGE_KEYS[status]}`);
   const [cases, setCases] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('');
@@ -54,7 +55,7 @@ export default function DisposalCases() {
     if (toStatus === 'disposed' && saleAmount[id]) payload.finalSaleAmount = Number(saleAmount[id]);
     try {
       await client.post(`/disposal-cases/${id}/transition`, payload);
-      toast.success(`Moved to ${STAGE_LABELS[toStatus]}`);
+      toast.success(t('disposal.movedTo', { stage: stageLabel(toStatus) }));
       load();
     } catch (err) {
       toast.error(err.response?.data?.error || 'Failed to update');
@@ -82,7 +83,7 @@ export default function DisposalCases() {
         </div>
         <Select value={filter} onChange={(e) => setFilter(e.target.value)} className="w-52">
           <option value="">{t('disposal.allStages')}</option>
-          {Object.entries(STAGE_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+          {Object.keys(STAGE_KEYS).map((k) => <option key={k} value={k}>{stageLabel(k)}</option>)}
         </Select>
       </div>
 
@@ -92,13 +93,13 @@ export default function DisposalCases() {
         ) : cases.length === 0 ? (
           <EmptyState
             icon={Trash2}
-            title="No disposal cases"
-            description="Open one from an asset's detail page when the Intelligence Engine recommends disposal, repair, or replacement."
+            title={t('disposal.noCases')}
+            description={t('disposal.noCasesDesc')}
           />
         ) : (
           <div className="divide-y divide-primary-50">
             {cases.map((c) => {
-              const nextSteps = NEXT_STEPS[c.status] || [];
+              const nextSteps = NEXT_STEP_KEYS[c.status] || [];
               const isFinal = c.status === 'disposed' || c.status === 'rejected';
               return (
                 <div key={c.id} className="p-5">
@@ -107,27 +108,27 @@ export default function DisposalCases() {
                       <Link to={`/assets/${c.assetId}`} className="font-medium text-ink hover:text-link">{c.Asset?.name}</Link>
                       <p className="text-xs text-ink/50 font-mono">{c.Asset?.assetTag}</p>
                       {c.engineRecommendation && (
-                        <p className="text-xs text-ink/50 mt-1">Engine said: <span className="font-medium">{c.engineRecommendation}</span> ({c.engineScore}% readiness)</p>
+                        <p className="text-xs text-ink/50 mt-1">{t('disposal.engineSaid')} <span className="font-medium">{c.engineRecommendation}</span> ({c.engineScore}{t('disposal.readinessSuffix')})</p>
                       )}
-                      <p className="text-xs text-ink/40 mt-1">Opened by {c.initiatedBy ? `${c.initiatedBy.firstName} ${c.initiatedBy.lastName}` : 'system'} · {new Date(c.createdAt).toLocaleDateString()}</p>
+                      <p className="text-xs text-ink/40 mt-1">{t('disposal.openedBy')} {c.initiatedBy ? `${c.initiatedBy.firstName} ${c.initiatedBy.lastName}` : t('disposal.system')} \u00b7 {new Date(c.createdAt).toLocaleDateString()}</p>
                     </div>
-                    <Badge tone={STAGE_TONE[c.status]}>{STAGE_LABELS[c.status]}</Badge>
+                    <Badge tone={STAGE_TONE[c.status]}>{stageLabel(c.status)}</Badge>
                   </div>
 
                   {!isFinal && (
                     <div className="mt-3 flex flex-wrap items-center gap-2">
                       {c.status === 'approved' && nextSteps.length > 0 && (
-                        <p className="text-xs text-ink/50 w-full mb-1">Choose a disposal method:</p>
+                        <p className="text-xs text-ink/50 w-full mb-1">{t('disposal.chooseDisposalMethod')}</p>
                       )}
                       {nextSteps.map((step) => (
                         <Button key={step.to} variant="outline" onClick={() => transition(c.id, step.to)}>
-                          {step.label} <ArrowRight size={14} />
+                          {t(`disposal.${step.labelKey}`)} <ArrowRight size={14} />
                         </Button>
                       ))}
                       {['auctioning', 'selling', 'donating', 'scrapping', 'recycling'].includes(c.status) && (
                         <input
                           type="number"
-                          placeholder="Final sale amount (optional)"
+                          placeholder={t('disposal.finalSaleAmountPlaceholder')}
                           value={saleAmount[c.id] || ''}
                           onChange={(e) => setSaleAmount({ ...saleAmount, [c.id]: e.target.value })}
                           className="text-sm px-3 py-2 rounded-lg border border-primary-100 w-56"
@@ -135,7 +136,7 @@ export default function DisposalCases() {
                       )}
                       {['flagged', 'manager_review', 'finance_review'].includes(c.status) && (
                         <button onClick={() => reject(c.id)} className="text-xs text-red-600 hover:underline inline-flex items-center gap-1 ml-1">
-                          <XCircle size={13} /> Reject
+                          <XCircle size={13} /> {t('disposal.reject')}
                         </button>
                       )}
                     </div>
@@ -143,12 +144,12 @@ export default function DisposalCases() {
 
                   {c.status === 'disposed' && (
                     <p className="mt-2 text-xs text-accent-dark flex items-center gap-1">
-                      <CheckCircle2 size={13} /> Disposed {new Date(c.disposedAt).toLocaleDateString()}
-                      {c.finalSaleAmount != null && ` — ${c.finalSaleCurrency || ''} ${Number(c.finalSaleAmount).toLocaleString()}`}
+                      <CheckCircle2 size={13} /> {t('disposal.disposedOn')} {new Date(c.disposedAt).toLocaleDateString()}
+                      {c.finalSaleAmount != null && ` \u2014 ${c.finalSaleCurrency || ''} ${Number(c.finalSaleAmount).toLocaleString()}`}
                     </p>
                   )}
                   {c.status === 'rejected' && c.rejectionReason && (
-                    <p className="mt-2 text-xs text-red-600">Rejected: {c.rejectionReason}</p>
+                    <p className="mt-2 text-xs text-red-600">{t('disposal.rejectedLabel')} {c.rejectionReason}</p>
                   )}
                 </div>
               );

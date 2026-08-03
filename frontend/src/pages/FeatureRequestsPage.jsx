@@ -8,8 +8,8 @@ import {
   Card, Button, Badge, statusTone, EmptyState, Spinner, Select,
 } from '../components/ui';
 
-const STATUS_LABELS = {
-  open: 'Open', planned: 'Planned', in_progress: 'In progress', completed: 'Completed', declined: 'Declined',
+const STATUS_KEYS = {
+  open: 'statusOpen', planned: 'statusPlanned', in_progress: 'statusInProgress', completed: 'statusCompleted', declined: 'statusDeclined',
 };
 
 function timeAgo(d) {
@@ -23,6 +23,7 @@ function timeAgo(d) {
 export default function FeatureRequestsPage() {
   const { user } = useAuth();
   const { t } = useTranslation();
+  const statusLabel = (status) => t(`featureRequests.${STATUS_KEYS[status]}`);
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState('');
@@ -45,16 +46,16 @@ export default function FeatureRequestsPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!form.title.trim()) { toast.error('Give your idea a title'); return; }
+    if (!form.title.trim()) { toast.error(t('featureRequests.giveIdeaTitle')); return; }
     setSubmitting(true);
     try {
       await client.post('/feature-requests', form);
-      toast.success('Thanks! Your idea is live - vote for it to help it stand out.');
+      toast.success(t('featureRequests.ideaSubmittedSuccess'));
       setForm({ title: '', description: '' });
       setShowForm(false);
       load();
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Failed to submit');
+      toast.error(err.response?.data?.error || t('featureRequests.failedToSubmit'));
     } finally {
       setSubmitting(false);
     }
@@ -71,7 +72,7 @@ export default function FeatureRequestsPage() {
       const { data } = await client.post(`/feature-requests/${id}/vote`);
       setRequests((rs) => rs.map((r) => (r.id === id ? { ...r, hasVoted: data.voted, voteCount: data.voteCount } : r)));
     } catch (err) {
-      toast.error('Failed to register your vote - please try again');
+      toast.error(t('featureRequests.failedToVote'));
       load();
     } finally {
       setVotingIds((s) => { const next = new Set(s); next.delete(id); return next; });
@@ -79,12 +80,12 @@ export default function FeatureRequestsPage() {
   };
 
   const removeRequest = async (id) => {
-    if (!confirm('Remove this request?')) return;
+    if (!confirm(t('featureRequests.removeConfirm'))) return;
     try {
       await client.delete(`/feature-requests/${id}`);
       load();
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Failed to remove');
+      toast.error(err.response?.data?.error || t('featureRequests.failedToRemove'));
     }
   };
 
@@ -104,7 +105,7 @@ export default function FeatureRequestsPage() {
         <Card className="p-5">
           <form onSubmit={onSubmit} className="space-y-4">
             <label className="block">
-              <span className="mb-1.5 block text-sm font-medium text-ink/80">Title *</span>
+              <span className="mb-1.5 block text-sm font-medium text-ink/80">{t('featureRequests.titleLabel')}</span>
               <input
                 required maxLength={200} value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })}
                 placeholder="e.g. Bulk-import assets from a CSV file"
@@ -112,16 +113,16 @@ export default function FeatureRequestsPage() {
               />
             </label>
             <label className="block">
-              <span className="mb-1.5 block text-sm font-medium text-ink/80">Description (optional)</span>
+              <span className="mb-1.5 block text-sm font-medium text-ink/80">{t('featureRequests.descriptionLabel')}</span>
               <textarea
                 rows={3} maxLength={2000} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })}
-                placeholder="What would this help you do that's hard or impossible today?"
+                placeholder={t('featureRequests.descriptionPlaceholder')}
                 className="w-full rounded-lg border border-primary-100 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary resize-none"
               />
             </label>
             <div className="flex justify-end gap-2">
-              <Button type="button" variant="outline" onClick={() => setShowForm(false)}>Cancel</Button>
-              <Button type="submit" disabled={submitting}>{submitting ? 'Submitting...' : 'Submit idea'}</Button>
+              <Button type="button" variant="outline" onClick={() => setShowForm(false)}>{t('common.cancel')}</Button>
+              <Button type="submit" disabled={submitting}>{submitting ? t('featureRequests.submitting') : t('featureRequests.submitIdea')}</Button>
             </div>
           </form>
         </Card>
@@ -131,14 +132,14 @@ export default function FeatureRequestsPage() {
         <Filter size={14} className="text-ink/40" />
         <Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="w-48">
           <option value="">{t('featureRequests.allStatuses')}</option>
-          {Object.entries(STATUS_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+          {Object.keys(STATUS_KEYS).map((k) => <option key={k} value={k}>{statusLabel(k)}</option>)}
         </Select>
       </div>
 
       {loading ? (
         <div className="flex justify-center py-16"><Spinner size={28} /></div>
       ) : filtered.length === 0 ? (
-        <Card><EmptyState icon={Lightbulb} title="No ideas here yet" description="Be the first to suggest an improvement." /></Card>
+        <Card><EmptyState icon={Lightbulb} title={t('featureRequests.noIdeasYet')} description={t('featureRequests.noIdeasDesc')} /></Card>
       ) : (
         <div className="space-y-3">
           {filtered.map((r) => (
@@ -156,13 +157,13 @@ export default function FeatureRequestsPage() {
               <div className="min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-2">
                   <h3 className="font-medium text-ink">{r.title}</h3>
-                  <Badge tone={statusTone(r.status)}>{STATUS_LABELS[r.status]}</Badge>
+                  <Badge tone={statusTone(r.status)}>{statusLabel(r.status)}</Badge>
                 </div>
                 {r.description && <p className="text-sm text-ink/60 mt-1">{r.description}</p>}
                 {r.statusNote && (
                   <p className="text-xs text-ink/50 mt-2 bg-primary-50/50 rounded-md px-2.5 py-1.5 inline-block">{r.statusNote}</p>
                 )}
-                <p className="text-xs text-ink/40 mt-2">Suggested by {r.createdByName} · {timeAgo(r.createdAt)}</p>
+                <p className="text-xs text-ink/40 mt-2">{t('featureRequests.suggestedBy', { name: r.createdByName })} \u00b7 {timeAgo(r.createdAt)}</p>
               </div>
               {(user?.role === 'super_admin' || (r.createdByUserId === user?.id && r.status === 'open')) && (
                 <button onClick={() => removeRequest(r.id)} className="text-ink/30 hover:text-red-600 shrink-0"><Trash2 size={15} /></button>

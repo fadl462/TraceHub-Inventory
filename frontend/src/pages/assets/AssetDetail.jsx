@@ -112,7 +112,7 @@ export default function AssetDetail() {
 
       <div className="grid lg:grid-cols-3 gap-5">
         <Card className="p-6 lg:col-span-2 space-y-5">
-          <h3 className="font-semibold text-ink">Asset details</h3>
+          <h3 className="font-semibold text-ink">{t('assetDetail.assetDetails')}</h3>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <Detail label="Category" value={asset.AssetCategory?.name || '—'} />
             <Detail label="Brand / Model" value={[asset.brand, asset.model].filter(Boolean).join(' / ') || '—'} />
@@ -188,7 +188,7 @@ export default function AssetDetail() {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-xs font-semibold uppercase tracking-wide text-ink/50 flex items-center gap-1"><AlertTriangle size={12} /> Failure risk</p>
-                    {asset.riskScore != null && <span className="text-xs font-semibold text-ink">{asset.riskScore}% risk score</span>}
+                    {asset.riskScore != null && <span className="text-xs font-semibold text-ink">{asset.riskScore}{t('assetDetail.riskScoreSuffix')}</span>}
                   </div>
                   <div className="grid grid-cols-4 gap-2 text-center mb-2">
                     <FailureStat label="30 days" value={asset.failureProbability30d} />
@@ -234,7 +234,7 @@ export default function AssetDetail() {
 
           {timeline.length > 0 && (
             <div>
-              <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><Clock size={15} /> Timeline</h4>
+              <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><Clock size={15} /> {t('assetDetail.timeline')}</h4>
               <div className="relative pl-6">
                 <div className="absolute left-[7px] top-1 bottom-1 w-px bg-primary-100" />
                 {timeline.map((e, i) => {
@@ -261,7 +261,7 @@ export default function AssetDetail() {
           )}
 
           <div>
-            <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><Activity size={15} /> Inspection history</h4>
+            <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><Activity size={15} /> {t('assetDetail.inspectionHistory')}</h4>
             <form onSubmit={submitInspection} className="flex flex-wrap items-end gap-2 mb-3 p-3 rounded-lg bg-primary-50/60">
               <label className="text-xs">
                 <span className="block text-ink/50 mb-1">Score (0-100)</span>
@@ -314,7 +314,7 @@ export default function AssetDetail() {
           </div>
 
           <div>
-            <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><Clock size={15} /> Recent assignments</h4>
+            <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><Clock size={15} /> {t('assetDetail.recentAssignments')}</h4>
             {asset.Assignments?.length ? (
               <div className="space-y-2">
                 {asset.Assignments.map((a) => (
@@ -328,7 +328,7 @@ export default function AssetDetail() {
           </div>
 
           <div>
-            <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><MapPin size={15} /> Location activity</h4>
+            <h4 className="font-medium text-ink text-sm mb-3 flex items-center gap-2"><MapPin size={15} /> {t('assetDetail.locationActivity')}</h4>
             {locationHistory.length ? (
               <div className="space-y-2">
                 {locationHistory.slice(0, 6).map((e) => (
@@ -343,7 +343,7 @@ export default function AssetDetail() {
         </Card>
 
         <Card className="p-6 flex flex-col items-center text-center h-fit">
-          <h3 className="font-semibold text-ink mb-4 self-start">Scan tag</h3>
+          <h3 className="font-semibold text-ink mb-4 self-start">{t('assetDetail.scanTag')}</h3>
           {qr && <img src={qr} alt="Asset QR code" className="w-48 h-48 rounded-lg border border-primary-100" />}
           <p className="text-xs text-ink/50 mt-3">Print and attach this to the physical asset. Staff can scan it to update location or status instantly.</p>
           <a href={qr} download={`${asset.assetTag}-qr.png`} className="mt-4 w-full">

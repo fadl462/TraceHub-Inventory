@@ -88,18 +88,18 @@ export default function AssetsList() {
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink/40" />
             <input
               className="w-full rounded-lg border border-primary-100 pl-9 pr-3 py-2.5 text-sm focus-ring focus:border-secondary"
-              placeholder="Search by name, tag, serial, brand..."
+              placeholder={t('assets.searchPlaceholder')}
               value={search} onChange={(e) => setSearch(e.target.value)}
             />
           </div>
           <Select value={status} onChange={(e) => setStatus(e.target.value)} className="sm:w-48">
             <option value="">{t('assets.allStatuses')}</option>
-            <option value="available">Available</option>
-            <option value="assigned">Assigned</option>
-            <option value="in_maintenance">In maintenance</option>
-            <option value="reserved">Reserved</option>
-            <option value="disposed">Disposed</option>
-            <option value="lost">Lost</option>
+            <option value="available">{t('dashboard.statusAvailable')}</option>
+            <option value="assigned">{t('dashboard.statusAssigned')}</option>
+            <option value="in_maintenance">{t('assets.statusInMaintenance')}</option>
+            <option value="reserved">{t('assets.statusReserved')}</option>
+            <option value="disposed">{t('dashboard.statusDisposed')}</option>
+            <option value="lost">{t('assets.statusLost')}</option>
           </Select>
           <Select value={categoryId} onChange={(e) => setCategoryId(e.target.value)} className="sm:w-48">
             <option value="">{t('assets.allCategories')}</option>
@@ -117,8 +117,8 @@ export default function AssetsList() {
           <div className="flex justify-center py-16"><Spinner size={28} /></div>
         ) : assets.length === 0 ? (
           <EmptyState
-            icon={Boxes} title="No assets yet"
-            description="Register your first asset to start tracking it with TraceHub."
+            icon={Boxes} title={t('assets.noAssetsYet')}
+            description={t('assets.noAssetsDesc')}
             action={<Link to="/assets/new"><Button><Plus size={16} /> Add your first asset</Button></Link>}
           />
         ) : (
@@ -183,9 +183,9 @@ export default function AssetsList() {
 
       {total > 20 && (
         <div className="flex justify-center gap-2">
-          <Button variant="outline" disabled={page <= 1} onClick={() => setPage((p) => p - 1)}>Previous</Button>
+          <Button variant="outline" disabled={page <= 1} onClick={() => setPage((p) => p - 1)}>{t('assets.previous')}</Button>
           <span className="px-3 py-2 text-sm text-ink/60">Page {page}</span>
-          <Button variant="outline" disabled={page * 20 >= total} onClick={() => setPage((p) => p + 1)}>Next</Button>
+          <Button variant="outline" disabled={page * 20 >= total} onClick={() => setPage((p) => p + 1)}>{t('assets.next')}</Button>
         </div>
       )}
     </div>

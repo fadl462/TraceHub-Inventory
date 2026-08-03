@@ -51,7 +51,7 @@ export default function AssignmentsList() {
   const togglePaid = async (a) => {
     try {
       await client.patch(`/assignments/${a.id}/hire-payment`, { paid: !a.hireFeePaid });
-      toast.success(a.hireFeePaid ? 'Marked as unpaid' : 'Marked as paid — confirmation email sent');
+      toast.success(a.hireFeePaid ? t('assignments.markedAsUnpaid') : t('assignments.markedAsPaid'));
       load();
     } catch (err) {
       toast.error(err.response?.data?.error || 'Failed to update payment status');
@@ -92,7 +92,7 @@ export default function AssignmentsList() {
         {loading ? (
           <div className="flex justify-center py-16"><Spinner size={28} /></div>
         ) : filteredAssignments.length === 0 ? (
-          <EmptyState icon={ClipboardList} title="No assignments yet" description="Assign an asset to a staff member or an outside party to track its return." />
+          <EmptyState icon={ClipboardList} title={t('assignments.noAssignmentsYet')} description={t('assignments.noAssignmentsDesc')} />
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -150,7 +150,7 @@ export default function AssignmentsList() {
                             }`}
                           >
                             {a.hireFeePaid ? <CheckCircle2 size={13} /> : <Circle size={13} />}
-                            {a.hireFeeCurrency} {Number(a.hireFeeAmount).toFixed(2)} · {a.hireFeePaid ? 'Paid' : 'Unpaid'}
+                            {a.hireFeeCurrency} {Number(a.hireFeeAmount).toFixed(2)} \u00b7 {a.hireFeePaid ? t('assignments.paid') : t('assignments.unpaid')}
                           </button>
                         ) : (
                           <span className="text-ink/30 text-xs">—</span>

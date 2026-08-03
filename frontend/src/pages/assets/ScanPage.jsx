@@ -60,7 +60,7 @@ export default function ScanPage() {
         () => {}
       );
     } catch (err) {
-      toast.error('Could not access camera. You can enter the code manually below.');
+      toast.error(t('scan.cameraAccessError'));
       setScanning(false);
     }
   };
@@ -72,9 +72,9 @@ export default function ScanPage() {
         qrToken, locationId: locationId || undefined, eventType: 'scan_in',
       });
       setResult(data.asset);
-      toast.success('Scan recorded');
+      toast.success(t('scan.scanRecorded'));
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Scan failed - unrecognized code');
+      toast.error(err.response?.data?.error || t('scan.scanFailed'));
     }
   };
 
@@ -82,12 +82,12 @@ export default function ScanPage() {
     <div className="max-w-xl mx-auto space-y-5">
       <div>
         <h1 className="text-xl font-bold text-ink flex items-center gap-2"><ScanLine size={22} /> {t('scan.title')}</h1>
-        <p className="text-sm text-ink/60 mt-0.5">Scan an asset's QR tag to check it in at a location, or look it up manually.</p>
+        <p className="text-sm text-ink/60 mt-0.5">{t('scan.subtitle')}</p>
       </div>
 
       <Card className="p-5">
-        <Select label="Checkpoint / location for this scan" value={locationId} onChange={(e) => setLocationId(e.target.value)}>
-          <option value="">Don't update location (just look up)</option>
+        <Select label={t('scan.checkpointLabel')} value={locationId} onChange={(e) => setLocationId(e.target.value)}>
+          <option value="">{t('scan.dontUpdateLocation')}</option>
           {locations.map((l) => <option key={l.id} value={l.id}>{l.name}</option>)}
         </Select>
       </Card>
@@ -98,7 +98,7 @@ export default function ScanPage() {
         </div>
         <div className="mt-4 flex gap-3">
           {!scanning ? (
-            <Button className="flex-1" onClick={startScanner}><ScanLine size={16} /> Start camera scan</Button>
+            <Button className="flex-1" onClick={startScanner}><ScanLine size={16} /> {t('scan.startCameraScan')}</Button>
           ) : (
             <Button variant="outline" className="flex-1" onClick={stopScanner}>Stop scanning</Button>
           )}
@@ -106,14 +106,14 @@ export default function ScanPage() {
       </Card>
 
       <Card className="p-5">
-        <p className="text-sm font-medium text-ink mb-3 flex items-center gap-2"><Keyboard size={15} /> Or enter the asset code manually</p>
+        <p className="text-sm font-medium text-ink mb-3 flex items-center gap-2"><Keyboard size={15} /> {t('scan.enterCodeManually')}</p>
         <div className="flex gap-2">
           <input
             className="flex-1 rounded-lg border border-primary-100 px-3.5 py-2.5 text-sm focus-ring focus:border-secondary"
-            placeholder="Paste QR token or asset code"
+            placeholder={t('scan.pasteTokenPlaceholder')}
             value={manualToken} onChange={(e) => setManualToken(e.target.value)}
           />
-          <Button onClick={() => submitScan(manualToken)}>Submit</Button>
+          <Button onClick={() => submitScan(manualToken)}>{t('scan.submit')}</Button>
         </div>
       </Card>
 
@@ -125,7 +125,14 @@ export default function ScanPage() {
               <p className="font-semibold text-ink">{result.name}</p>
               <p className="text-xs text-ink/60 font-mono">{result.assetTag}</p>
               <div className="mt-2 flex items-center gap-2 flex-wrap">
-                <Badge tone={statusTone(result.status)}>{result.status.replace('_', ' ')}</Badge>
+                <Badge tone={statusTone(result.status)}>
+                  {result.status === 'available' ? t('dashboard.statusAvailable')
+                    : result.status === 'assigned' ? t('dashboard.statusAssigned')
+                    : result.status === 'in_maintenance' ? t('assets.statusInMaintenance')
+                    : result.status === 'reserved' ? t('assets.statusReserved')
+                    : result.status === 'disposed' ? t('dashboard.statusDisposed')
+                    : result.status === 'lost' ? t('assets.statusLost') : result.status}
+                </Badge>
                 {result.Location && (
                   <span className="text-xs text-ink/60 flex items-center gap-1"><MapPin size={12} /> {result.Location.name}</span>
                 )}

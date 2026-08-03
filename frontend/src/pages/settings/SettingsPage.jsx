@@ -29,7 +29,7 @@ export default function SettingsPage() {
     e.preventDefault();
     try {
       await client.post('/users/me/2fa/verify', { token: twoFaCode });
-      toast.success('Two-factor authentication enabled');
+      toast.success(t('settingsPage.twoFaEnabledToast'));
       setQrDataUrl(null);
       setTwoFaCode('');
       refresh();
@@ -41,7 +41,7 @@ export default function SettingsPage() {
     e.preventDefault();
     try {
       await client.post('/users/me/2fa/disable', { password: disablePassword });
-      toast.success('Two-factor authentication disabled');
+      toast.success(t('settingsPage.twoFaDisabledToast'));
       setDisablePassword('');
       refresh();
     } catch (err) {
@@ -58,7 +58,7 @@ export default function SettingsPage() {
     e.preventDefault();
     try {
       await client.patch('/company/me', companyForm);
-      toast.success('Company settings updated');
+      toast.success(t('settingsPage.companyUpdatedToast'));
       refresh();
     } catch (err) {
       toast.error(err.response?.data?.error || 'Failed to update');
@@ -69,7 +69,7 @@ export default function SettingsPage() {
     e.preventDefault();
     try {
       await client.post('/users/me/change-password', passwordForm);
-      toast.success('Password changed');
+      toast.success(t('settingsPage.passwordChangedToast'));
       setPasswordForm({ currentPassword: '', newPassword: '' });
     } catch (err) {
       toast.error(err.response?.data?.error || 'Failed to change password');
@@ -82,7 +82,7 @@ export default function SettingsPage() {
       const { data } = await client.post('/custom-fields', newField);
       setFields((f) => [...f, data.field]);
       setNewField({ label: '', fieldType: 'text' });
-      toast.success('Custom field added');
+      toast.success(t('settingsPage.fieldAddedToast'));
     } catch (err) {
       toast.error(err.response?.data?.error || 'Failed to add field');
     }
@@ -132,21 +132,21 @@ export default function SettingsPage() {
                 <button onClick={() => removeField(f.id)} className="text-ink/40 hover:text-red-600"><Trash2 size={14} /></button>
               </div>
             ))}
-            {fields.length === 0 && <p className="text-sm text-ink/40">No custom fields yet.</p>}
+            {fields.length === 0 && <p className="text-sm text-ink/40">{t('settingsPage.noCustomFieldsYet')}</p>}
           </div>
           <form onSubmit={addField} className="flex gap-2">
             <Input
               className="flex-1"
-              placeholder="Field label (e.g. Warranty Expiry)"
+              placeholder={t('settingsPage.fieldLabelPlaceholder')}
               value={newField.label} onChange={(e) => setNewField({ ...newField, label: e.target.value })}
             />
             <Select
               value={newField.fieldType} onChange={(e) => setNewField({ ...newField, fieldType: e.target.value })}
             >
-              <option value="text">Text</option>
-              <option value="number">Number</option>
-              <option value="date">Date</option>
-              <option value="boolean">Yes/No</option>
+              <option value="text">{t('settingsPage.fieldTypeText')}</option>
+              <option value="number">{t('settingsPage.fieldTypeNumber')}</option>
+              <option value="date">{t('settingsPage.fieldTypeDate')}</option>
+              <option value="boolean">{t('settingsPage.fieldTypeBoolean')}</option>
             </Select>
             <Button type="submit"><Plus size={15} /></Button>
           </form>
@@ -169,8 +169,8 @@ export default function SettingsPage() {
         </h3>
         <p className="text-sm text-ink/60 mb-4">
           {user?.twoFactorEnabled
-            ? 'Enabled — your account requires a code from your authenticator app to sign in.'
-            : "Add an extra layer of security so a password alone isn't enough to sign in as you."}
+            ? t('settingsPage.twoFaEnabledDesc')
+            : t('settingsPage.twoFaDisabledDesc')}
         </p>
         {user?.twoFactorEnabled ? (
           <form onSubmit={disable2fa} className="max-w-sm space-y-3">
@@ -183,7 +183,7 @@ export default function SettingsPage() {
           <form onSubmit={verify2fa} className="max-w-sm space-y-4">
             <img src={qrDataUrl} alt="2FA QR code" className="rounded-lg border border-primary-100" width={160} height={160} />
             <p className="text-xs text-ink/50">Scan with your authenticator app, then enter the 6-digit code.</p>
-            <Input label="6-digit code" required maxLength={6} value={twoFaCode} onChange={(e) => setTwoFaCode(e.target.value)} />
+            <Input label={t('settingsPage.sixDigitCode')} required maxLength={6} value={twoFaCode} onChange={(e) => setTwoFaCode(e.target.value)} />
             <Button type="submit">{t('settingsPage.verifyAndEnable')}</Button>
           </form>
         )}
