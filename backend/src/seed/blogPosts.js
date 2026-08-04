@@ -1556,6 +1556,218 @@ const englishPosts = [
       closes that gap for the cost of a few minutes.</p>
     `,
   },
+  {
+    title: 'The Technician Shortage Means Institutional Knowledge Can\u2019t Just Live in Someone\u2019s Head Anymore',
+    slug: 'technician-shortage-institutional-knowledge',
+    locale: 'en',
+    excerpt: "A projected 2.6 million worker deficit across the skilled trades is real and structural. Here's the honest case for why captured maintenance history matters more because of it, not less.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-26T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/tech-shortage-cover.svg',
+    bodyHtml: `
+      <p>A number worth sitting with: US Bureau of Labor Statistics data points to a projected
+      deficit of 2.6 million workers across the skilled trades, and for every experienced
+      tradesperson currently retiring, roughly 0.6 new workers are entering the pipeline behind
+      them. Recent field service industry surveys put workforce capacity constraints among the top
+      barriers cited by service leaders trying to grow. This isn't a temporary post-pandemic
+      hiccup \u2014 every recent report on the subject describes it as structural, driven by an aging
+      workforce retiring faster than younger workers are entering skilled trades.</p>
+
+      <p>The part of this that gets less attention than the staffing math: those retiring
+      technicians are taking something with them that no job posting can immediately replace \u2014
+      the specific, accumulated knowledge of which pieces of equipment tend to act up, which
+      maintenance shortcuts are safe and which aren't, and what a particular unit's quirks actually
+      mean. That knowledge has traditionally lived almost entirely in one person's head.</p>
+
+      <h3>Why this makes captured maintenance history more valuable, not less</h3>
+      <p>When an experienced technician retires or moves on, whatever they knew about a specific
+      generator's history, a specific vehicle's quirks, or which assets tend to need attention
+      before they show obvious symptoms leaves with them \u2014 unless it was actually written down
+      somewhere durable. A <a href="/docs/the-audit-log">real, complete maintenance record</a>
+      per asset isn't just a compliance nicety in this environment. It's the difference between a
+      new hire inheriting genuine institutional context on day one versus starting from zero on
+      equipment someone else has quietly understood for a decade.</p>
+
+      <h3>Where a health score genuinely helps a smaller or newer team</h3>
+      <p>An experienced technician's mental model of "this one's due for trouble soon" is built from
+      years of pattern recognition that's difficult to teach quickly. A documented
+      <a href="/docs/asset-health-score">health score</a>, built from the same categories of input
+      an experienced eye would actually weigh \u2014 age, maintenance compliance, usage, environment \u2014
+      doesn't replace that judgment, but it gives someone with far less tenure a real, evidence-based
+      starting point instead of pure guesswork. In a labor market where the experienced people are
+      retiring faster than they're being replaced, that's a genuinely practical bridge, not a
+      luxury.</p>
+
+      <h3>The honest limit of this</h3>
+      <p>No system replaces a genuinely experienced technician's judgment, and we wouldn't claim
+      otherwise \u2014 a health score is a documented, evidence-based starting point, not a
+      substitute for someone who's spent fifteen years learning a specific fleet's quirks firsthand.
+      What it does do is make sure that when that experienced person eventually isn't there anymore,
+      whoever's left isn't starting completely from scratch.</p>
+
+      <p>The technician shortage isn't a problem asset-management software solves on its own. But
+      an organization that's been quietly capturing maintenance history and condition data all
+      along is in a materially better position to absorb the loss of an experienced hire than one
+      that's been relying entirely on what was in that person's head.</p>
+    `,
+  },
+  {
+    title: 'The Real Difference Between a Company Admin and a Manager (and Why Getting This Wrong Costs You Later)',
+    slug: 'company-admin-vs-manager',
+    locale: 'en',
+    excerpt: "Trust and access scope are different things. You can trust someone completely and still reasonably decide they don't need to be the one who can change billing details.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-28T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/admin-vs-manager-cover.svg',
+    bodyHtml: `
+      <p>The gap between what a Manager can do and what a Company Admin can do gets set once,
+      usually in the first week, and rarely revisited \u2014 which is exactly why it's worth getting
+      right the first time rather than fixing it eighteen months later after the wrong access has
+      already caused a real problem.</p>
+
+      <h3>Where the actual line sits</h3>
+      <p>Both roles handle the operational core: assets, assignments, reports, the disposal
+      workflow. What separates them is scope that extends beyond day-to-day operations \u2014
+      <a href="/docs/roles-and-permissions">Company Admin</a> access includes billing, team
+      management (inviting or removing people), and final sign-off on the disposal workflow's
+      later stages. A Manager can run operations fully without ever touching any of those three.</p>
+
+      <h3>The mistake that shows up most often</h3>
+      <p>The common failure isn't giving too little access \u2014 it's defaulting everyone who seems
+      senior to Company Admin because it feels like the "full" option and nobody wants to seem like
+      they're limiting a trusted person. The actual cost of that default: every Company Admin is
+      someone who can see billing details, add or remove other people's access, and give final
+      approval on writing off company assets. That's a reasonable set of capabilities for the one or
+      two people who genuinely own those responsibilities. It's an unnecessarily large blast radius
+      for someone whose actual job is running day-to-day operations well.</p>
+
+      <h3>A test that actually works</h3>
+      <p>Ask specifically: does this person need to see billing information, or manage who else has
+      access to the system? If the honest answer is no, Manager access covers everything they
+      actually do, with less exposure if their account is ever compromised and less confusion about
+      who's actually responsible for the handful of things Company Admin uniquely controls. The
+      instinct to give someone "more" access as a show of trust is understandable, but trust and
+      access scope are genuinely different things \u2014 you can trust someone completely and still
+      reasonably decide they don't need to be the one who can change billing details.</p>
+
+      <h3>What this looks like as a team grows</h3>
+      <p>A five-person team can sometimes get away with everyone at Company Admin because the blast
+      radius of a mistake is naturally small. That same pattern at fifty people is a genuinely
+      different risk \u2014 more people who can independently change billing, remove teammates, or
+      approve asset write-offs, with the number of people who should actually be doing any of those
+      three things not growing at anywhere near the same rate as headcount. Revisiting who actually
+      holds Company Admin access is worth doing at team-size milestones, not just at initial setup.</p>
+
+      <p>Getting this right isn't about restricting anyone unnecessarily \u2014 it's matching the
+      access someone holds to the responsibility they actually carry, which is both the safer
+      default and, in practice, the one that causes less confusion about who's actually accountable
+      for what.</p>
+    `,
+  },
+  {
+    title: 'Photos: The Cheapest Insurance Policy in Your Asset Record',
+    slug: 'photos-cheapest-insurance-policy',
+    locale: 'en',
+    excerpt: 'Ten seconds to take, and routinely the single most useful piece of evidence in exactly the moments that matter most.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-30T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/photos-cover.svg',
+    bodyHtml: `
+      <p>A photo attached to an asset record costs about ten seconds to take and is routinely the
+      single most useful piece of evidence in exactly the moments that matter most \u2014 a damage
+      dispute, an insurance claim, a disagreement about condition at handoff. It's also the field
+      people skip most often, precisely because none of those moments feel imminent on an ordinary
+      Tuesday when someone's registering a new piece of equipment.</p>
+
+      <h3>What a photo actually proves that a description can't</h3>
+      <p>"Good condition, minor wear" is somebody's honest opinion at a specific moment, and honest
+      opinions are exactly what get disputed later \u2014 by an insurer, by whoever borrowed the
+      equipment and returned it looking different, by a buyer questioning what they're actually
+      being sold. A timestamped photo isn't an opinion. It's what the thing actually looked like on a
+      specific date, which turns "I think it was fine when it left here" into something you can
+      actually point to instead of asserting from memory months later.</p>
+
+      <h3>The three moments where this pays off most</h3>
+      <p>At <a href="/docs/registering-an-asset">registration</a>, a photo establishes a genuine
+      baseline \u2014 what "new" or "as received" actually looked like, which matters later for any
+      comparison. At <a href="/docs/assigning-assets-to-people">handoff</a>, particularly to someone
+      outside your own organization, a photo taken at the moment of handoff and another at return
+      removes almost all ambiguity about whether damage happened during that specific loan or
+      existed beforehand. And when something is flagged for the disposal workflow, a current photo
+      supporting the condition assessment makes the recommendation itself far more defensible if
+      anyone ever questions why a specific asset was written off.</p>
+
+      <h3>Why this specific habit is worth building deliberately</h3>
+      <p>Nobody skips taking a photo out of laziness exactly \u2014 they skip it because in the
+      moment, everything about the asset seems obviously fine, and photographing something that
+      looks fine feels unnecessary. The problem is that the value of the photo isn't about capturing
+      damage. It's about having a real record for the specific moment, months or years later, when
+      a question actually comes up and memory alone won't settle it. You can't predict in advance
+      which ordinary-looking asset will be the one someone disputes later, which is exactly why the
+      habit has to apply to everything, not just the assets that already look like they might become
+      a problem.</p>
+
+      <p>Ten seconds, at the three moments above, is a genuinely small cost for evidence that's
+      often the only thing that actually resolves a dispute cleanly instead of dragging on as
+      competing memories of what something looked like. It's one of the cheapest insurance policies
+      available in the entire system, and it's free.</p>
+    `,
+  },
+  {
+    title: 'What Actually Happens to an Asset\u2019s History After You Archive It',
+    slug: 'what-happens-when-you-archive-an-asset',
+    locale: 'en',
+    excerpt: "If archiving quietly discarded history, it would just be deletion with an extra click. Here's why it isn't, and why that distinction is the entire point.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-03T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/archiving-cover.svg',
+    bodyHtml: `
+      <p>A reasonable question that comes up the first time someone actually clicks "archive" on an
+      asset: does the history disappear along with it? The honest, useful answer matters more than
+      it might seem, because it determines whether archiving feels safe enough to actually use, or
+      like a one-way door people avoid out of caution.</p>
+
+      <h3>What archiving actually does, precisely</h3>
+      <p><a href="/docs/archiving-and-deleting-assets">Archiving</a> removes an asset from the active
+      list and every dashboard count \u2014 it stops showing up in your day-to-day view because it's
+      no longer something you're managing day to day. What it does not do is touch the underlying
+      record. Every inspection, every assignment, every location scan, every disposal case tied to
+      that asset stays completely intact and remains fully restorable. Archiving is a visibility
+      change, not a deletion \u2014 the distinction matters enormously in practice.</p>
+
+      <h3>Why this distinction is the whole point</h3>
+      <p>If archiving quietly discarded history, it would functionally be deletion with an extra
+      click, and nobody would reasonably use it for anything they weren't already certain they'd
+      never need again \u2014 which defeats the actual purpose. The entire value of archiving as a
+      distinct action from deletion is that you can move something out of your active view with
+      genuine confidence, not hesitation, because nothing is actually being lost in the process.</p>
+
+      <h3>When archiving is the right call versus when it isn't</h3>
+      <p>Archive equipment you've stopped actively tracking day to day but still want a complete
+      record of \u2014 something retired from service, sold, or simply no longer part of current
+      operations, where the history still has real value for audits, tax records, or simple
+      institutional memory. Permanent deletion isn't offered as a routine action for exactly this
+      reason: asset history is valuable for audit and depreciation records long after the equipment
+      itself stops being actively used, and "I don't need to see this in my daily view anymore" is a
+      completely different situation from "I never want this data to exist anywhere again."</p>
+
+      <h3>What to actually check before archiving something</h3>
+      <p>The only real question worth asking before archiving: is there an open
+      <a href="/docs/six-stage-disposal-workflow">disposal case</a> or active
+      <a href="/docs/assigning-assets-to-people">assignment</a> still tied to this asset that
+      genuinely needs to be resolved first? Beyond that, there's very little real risk in the
+      action itself \u2014 it can always be reversed, and nothing about the underlying record
+      changes when you do it.</p>
+
+      <p>Understanding this distinction clearly is what makes archiving something people actually
+      use to keep their active list clean, rather than something everyone avoids out of a vague
+      worry about losing something they might need later. The history stays. Only the view changes.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');

@@ -1,0 +1,37 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg27" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow27" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg27)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow27)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Archive box -->
+  <rect x="490" y="230" width="220" height="150" rx="10" fill="#132C52" stroke="#8CC2FF" stroke-width="3.5"/>
+  <rect x="470" y="200" width="260" height="45" rx="10" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="3.5"/>
+  <rect x="565" y="222" width="70" height="14" rx="6" fill="#8CC2FF"/>
+
+  <!-- Dotted line from box to a small "history preserved" checklist -->
+  <path d="M 730 300 L 830 300" stroke="#7ED957" stroke-width="2.5" stroke-dasharray="5 6"/>
+  <g transform="translate(870, 300)">
+    <circle r="6" fill="#7ED957"/>
+    <path d="M 20 -25 L 20 25 M 20 -25 L 60 -25 M 20 0 L 55 0 M 20 25 L 50 25" stroke="#8CC2FF" stroke-width="3" opacity="0.5"/>
+    <path d="M 15 -25 L 18 -22 L 25 -30" fill="none" stroke="#7ED957" stroke-width="2.5"/>
+    <path d="M 15 0 L 18 3 L 25 -5" fill="none" stroke="#7ED957" stroke-width="2.5"/>
+    <path d="M 15 25 L 18 28 L 25 20" fill="none" stroke="#7ED957" stroke-width="2.5"/>
+  </g>
+
+  <g transform="translate(460, 470)">
+    <rect x="0" y="0" width="280" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="140" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">WHAT CHANGES WHEN YOU ARCHIVE</text>
+    <text x="140" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF">Only the view</text>
+  </g>
+</svg>
