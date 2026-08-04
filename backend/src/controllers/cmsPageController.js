@@ -20,18 +20,20 @@ const MANAGED_LEGAL_SLUGS = ['privacy-policy', 'terms-of-service', 'cookie-polic
 async function ensureSeeded() {
   const count = await CmsPage.count();
   if (count === 0) {
-    await CmsPage.bulkCreate(defaultCmsPages.map((p) => ({ locale: 'en', ...p })));
+    await CmsPage.bulkCreate(defaultCmsPages.map((p) => ({ locale: p.locale || 'en', ...p })));
     return;
   }
-  const existing = await CmsPage.findAll({ where: { slug: MANAGED_LEGAL_SLUGS, locale: 'en' } });
-  const existingBySlug = new Map(existing.map((p) => [p.slug, p]));
+  const existing = await CmsPage.findAll({ where: { slug: MANAGED_LEGAL_SLUGS } });
+  const existingByKey = new Map(existing.map((p) => [`${p.slug}::${p.locale || 'en'}`, p]));
   await Promise.all(defaultCmsPages
     .filter((p) => MANAGED_LEGAL_SLUGS.includes(p.slug))
     .map(async (p) => {
-      const row = existingBySlug.get(p.slug);
-      if (!row) { await CmsPage.create({ locale: 'en', ...p }); return; }
-      if (row.bodyHtml !== p.bodyHtml) {
+      const locale = p.locale || 'en';
+      const row = existingByKey.get(`${p.slug}::${locale}`);
+      if (!row) { await CmsPage.create({ ...p, locale }); return; }
+      if (row.bodyHtml !== p.bodyHtml || row.title !== p.title) {
         row.bodyHtml = p.bodyHtml;
+        row.title = p.title;
         await row.save();
       }
     }));

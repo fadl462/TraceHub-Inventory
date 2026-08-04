@@ -1,7 +1,8 @@
-module.exports = [
+const englishCmsPages = [
   {
     title: 'Privacy Policy',
     slug: 'privacy-policy',
+    locale: 'en',
     showInFooter: true,
     isPublished: true,
     bodyHtml: `
@@ -113,6 +114,7 @@ module.exports = [
   {
     title: 'Terms of Service',
     slug: 'terms-of-service',
+    locale: 'en',
     showInFooter: true,
     isPublished: true,
     bodyHtml: `
@@ -228,6 +230,7 @@ module.exports = [
   {
     title: 'Cookie Policy',
     slug: 'cookie-policy',
+    locale: 'en',
     showInFooter: true,
     isPublished: true,
     bodyHtml: `
@@ -295,6 +298,7 @@ module.exports = [
   {
     title: 'Documentation',
     slug: 'documentation',
+    locale: 'en',
     showInNav: false,
     showInFooter: true,
     isPublished: true,
@@ -404,3 +408,8 @@ module.exports = [
     `,
   },
 ];
+
+const frenchCmsPages = require('./cmsPages.fr');
+const spanishCmsPages = require('./cmsPages.es');
+
+module.exports = [...englishCmsPages, ...frenchCmsPages, ...spanishCmsPages];
