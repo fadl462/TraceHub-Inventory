@@ -1768,6 +1768,217 @@ const englishPosts = [
       worry about losing something they might need later. The history stays. Only the view changes.</p>
     `,
   },
+  {
+    title: 'The Real ROI of Switching From Excel: A Concrete Breakdown',
+    slug: 'roi-of-switching-from-excel',
+    locale: 'en',
+    excerpt: '"We\'ll save time" is the vaguest possible reason to switch off a spreadsheet. Here\'s where the time actually goes, with real numbers.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-05T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/excel-roi-cover.svg',
+    bodyHtml: `
+      <p>"We'll save time" is the vaguest possible reason to switch off a spreadsheet, and it's
+      usually the only reason anyone gives before actually making the switch. The honest, specific
+      version of that claim is more convincing and also more useful, because it tells you exactly
+      where the savings actually come from \u2014 which matters when you're the one having to justify
+      the switch to someone who isn't yet convinced.</p>
+
+      <h3>Where the time actually goes in a spreadsheet-based system</h3>
+      <p>It's rarely the act of typing a row into a spreadsheet that's expensive. It's everything
+      around that: manually recalculating depreciation once a year instead of automatically, cross-
+      referencing a separate document to check if something's still under warranty, texting someone
+      to ask where a piece of equipment currently is because the spreadsheet was last updated three
+      weeks ago, and reconstructing an audit trail from memory and email threads when someone asks
+      "who had this last."</p>
+
+      <h3>Putting real numbers on it</h3>
+      <p>Take a mid-sized fleet of a few hundred assets. A once-a-year manual depreciation
+      recalculation across that many assets, done carefully in a spreadsheet, is realistically a
+      multi-day task for whoever draws the short straw \u2014 automatic, real-time
+      <a href="/docs/smart-depreciation-engine">depreciation calculation</a> makes that number zero,
+      every year, indefinitely. A single "where is this" question that used to mean a round of
+      calls and texts becomes a lookup that takes seconds via
+      <a href="/docs/location-history-and-timeline">location history</a>. Multiply either of those
+      by how often they actually happen across a year, and the honest total is rarely "a little
+      time saved" \u2014 it's usually measured in real days of labor that were previously invisible
+      precisely because they were spread across dozens of small interruptions rather than one
+      obvious line item.</p>
+
+      <h3>The savings that are harder to quantify but just as real</h3>
+      <p>Beyond the measurable hours, there's a category of cost that's real but doesn't show up on
+      a spreadsheet of its own: decisions made on stale information because nobody had time to
+      update the master file that week, disputes that drag on because nobody can produce a clean
+      record, and the general erosion of trust in your own numbers once everyone knows the
+      spreadsheet is "probably" accurate rather than actually accurate. These costs are real. They're
+      just harder to put a specific dollar figure on than "hours spent recalculating."</p>
+
+      <h3>A fair way to frame the actual comparison</h3>
+      <p>The honest pitch isn't "software is better than spreadsheets" as an abstract claim \u2014
+      it's specific: what does your team currently spend time on that a live, automatically updating
+      record would make instantaneous, and how often does that actually happen? For most
+      organizations with more than a handful of assets, the answer is "often enough that it adds up
+      to real, countable time within the first month," not a vague long-term efficiency gain that's
+      hard to point to later.</p>
+    `,
+  },
+  {
+    title: 'Bulk Filtering: The Feature That Turns a Big Fleet From Overwhelming to Manageable',
+    slug: 'bulk-filtering-manageable-fleet',
+    locale: 'en',
+    excerpt: "Somewhere between ten assets and a few hundred, scrolling stops working. Here's what actually replaces it.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/bulk-filtering-cover.svg',
+    bodyHtml: `
+      <p>Somewhere between ten assets and a few hundred, a real shift happens in how a fleet feels
+      to manage \u2014 scrolling through a full list stops being a reasonable way to find anything,
+      and the tool that matters most quietly changes from the asset list itself to whatever lets you
+      narrow it down fast.</p>
+
+      <h3>Why scrolling stops working long before you'd expect</h3>
+      <p>A list of thirty assets is genuinely scannable by eye. A list of three hundred isn't, and
+      the threshold where that happens is lower than most people expect \u2014 somewhere in the range
+      of fifty to a hundred assets, depending on how visually similar they are, most people stop
+      being able to reliably spot the one they're looking for just by looking. Past that point, the
+      question changes from "can I find this by scanning" to "can I filter this down to the handful
+      of assets that could possibly be the one I want."</p>
+
+      <h3>What actually makes filtering powerful: combining criteria, not just one</h3>
+      <p>A single filter \u2014 just category, or just location \u2014 narrows things down, but the
+      real power shows up when filters combine. <a href="/docs/bulk-filtering-assets-list">
+      Combining</a> a text search with status, category, and location filters simultaneously turns
+      "show me everything" into "show me exactly the available laptops at the Accra warehouse,"
+      which is a genuinely different, more useful question than any single filter could answer
+      alone. Most of the value in a filtering system comes from exactly this kind of stacking, not
+      from any one filter being individually clever.</p>
+
+      <h3>The connection to the dashboard that's easy to miss</h3>
+      <p>Clicking a segment of the executive heat map on your dashboard \u2014 say, the "Critical"
+      health band \u2014 lands you on this same filtered list, pre-set to exactly that health level.
+      That's not a coincidence; it's the same filtering mechanism doing double duty as both a manual
+      search tool and the landing point for every dashboard drill-down. Getting comfortable with
+      filtering manually makes every one of those dashboard clicks make more intuitive sense too,
+      because you already understand what's actually happening when the list narrows.</p>
+
+      <h3>A practical habit worth building</h3>
+      <p>Before scrolling through a long list looking for something specific, pause and ask what
+      combination of category, status, and location would narrow it down instead. It's a small
+      mental habit shift, but it's the difference between a fleet of a few hundred assets feeling
+      overwhelming and feeling exactly as manageable as a fleet of ten \u2014 the actual list length
+      stops mattering once finding anything specific in it takes the same few seconds regardless of
+      how many rows are hiding behind the filter.</p>
+    `,
+  },
+  {
+    title: 'What a 90-Day Failure Probability Actually Means (and Doesn\u2019t)',
+    slug: 'understanding-failure-probability',
+    locale: 'en',
+    excerpt: "It's not a countdown and it's not a guarantee. Here's what the number is actually built from, and why the reasons behind it matter as much as the percentage.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-10T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/failure-probability-cover.svg',
+    bodyHtml: `
+      <p>A "35% probability of failure within 90 days" is one of those numbers that sounds precise
+      and gets misread constantly \u2014 as a countdown, as a near-certainty, or as noise not worth
+      acting on, depending on the reader's mood that day. It's actually none of those things, and
+      understanding what it genuinely represents changes how you should respond to it.</p>
+
+      <h3>What the number is not</h3>
+      <p>It is not a prediction that the asset will fail in exactly 90 days, or a guarantee it will
+      fail at all within that window \u2014 it's a probability, and a 35% probability means that,
+      across many similar situations, failure happens roughly a third of the time within that
+      window and doesn't happen the other two-thirds. A single asset either will or won't fail;
+      the probability describes the pattern across the population of similar cases, not a certainty
+      about this one specific unit.</p>
+
+      <h3>What it's actually built from</h3>
+      <p>The number comes from real, documented inputs \u2014 age relative to expected life,
+      maintenance compliance gaps, usage intensity \u2014 not a black box guess. That's precisely why
+      the <a href="/docs/failure-prediction-engine">failure reasons</a> listed alongside the
+      percentage matter as much as the number itself: "approaching expected life" and "maintenance
+      overdue" are two very different situations that happen to produce a similar-looking
+      probability, and they call for different responses \u2014 the first suggests planning a
+      replacement, the second suggests catching up on deferred maintenance might resolve the risk
+      entirely without replacing anything.</p>
+
+      <h3>How the four time horizons should actually change your response</h3>
+      <p>A meaningfully elevated probability at the 30-day horizon is a near-term operational
+      concern \u2014 worth scheduling attention now, not after the next slow week. The same
+      elevation only showing up at the 180-day horizon is a planning signal, not an emergency \u2014
+      it means "this is worth budgeting and scheduling for," not "stop using this today." Reading
+      only the headline percentage without checking which horizon it's attached to loses exactly the
+      information that tells you how urgently to actually act.</p>
+
+      <h3>The honest caveat: confidence matters as much as the percentage</h3>
+      <p>A failure probability calculated from an asset with rich, complete maintenance and usage
+      data deserves more weight than the same-looking percentage on an asset with almost no
+      recorded history behind it \u2014 which is exactly what the paired
+      <a href="/docs/ai-confidence-score-and-learning-loop">confidence score</a> exists to signal.
+      A 35% probability with high confidence and a 35% probability with low confidence are not
+      equally actionable numbers, even though they look identical at first glance.</p>
+
+      <p>The number is genuinely useful \u2014 it's just useful as a weighted signal to combine with
+      the reasons behind it and the confidence backing it, not as a standalone verdict to either
+      panic over or dismiss based on the percentage alone.</p>
+    `,
+  },
+  {
+    title: 'The Case for Tracking Tools You\u2019d Never Think to Track',
+    slug: 'tracking-small-tools',
+    locale: 'en',
+    excerpt: "Any single fifty-dollar drill isn't worth tracking. A steady pattern of them disappearing across a year is a different question entirely.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-12T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/small-tools-cover.svg',
+    bodyHtml: `
+      <p>Vehicles and generators get tracked almost universally \u2014 they're expensive enough that
+      nobody questions whether it's worth the effort. Hand tools, small power tools, and other
+      low-cost equipment get tracked far less consistently, usually on the reasoning that any single
+      one is cheap enough that losing it barely matters. That reasoning is correct about any single
+      tool and badly wrong about the category as a whole.</p>
+
+      <h3>The math that actually matters: aggregate, not individual</h3>
+      <p>A single fifty-dollar drill going missing genuinely isn't worth much process overhead to
+      prevent. A pattern of fifty-dollar tools disappearing steadily across a year, multiplied across
+      a team, adds up to a real number that most companies have never actually calculated \u2014
+      because nobody's tracking the category closely enough to add it up in the first place. The
+      individual-item reasoning that makes sense for one tool breaks down completely once you're
+      looking at the aggregate pattern across dozens of similar items over time.</p>
+
+      <h3>Why the "too cheap to bother" instinct is specifically backwards here</h3>
+      <p>Ironically, low-cost items are often the ones that benefit most from lightweight tracking,
+      precisely because nobody treats them with the same care as an expensive asset \u2014 they get
+      borrowed casually, left at job sites, tossed in the wrong truck at the end of a shift. The
+      informal handling that seems reasonable for something cheap is exactly what causes the
+      aggregate loss that eventually isn't cheap at all.</p>
+
+      <h3>The practical bar for what's worth tracking</h3>
+      <p>You don't need to track a box of identical zip ties. The reasonable line: track anything
+      individually identifiable that could plausibly be borrowed, moved between locations, or
+      confused with someone else's near-identical item \u2014 which covers most hand tools and small
+      power equipment, and excludes genuine consumables. A <a href="/docs/qr-codes-and-printing-tags">
+      QR code</a> on a tool costs pennies to produce and print; the actual cost of tracking it is
+      close to zero once it's tagged, which is exactly why the "not worth the effort" reasoning
+      applies far less often than instinct suggests.</p>
+
+      <h3>What changes once these are actually tracked</h3>
+      <p>The value isn't really about recovering any specific missing drill after the fact \u2014
+      it's that visible tracking changes behavior before anything goes missing at all. Equipment
+      that's logged when it leaves a location and logged again when it returns gets treated
+      differently than equipment nobody's watching, in the same way a monitored parking lot changes
+      behavior compared to an unmonitored one, independent of whether anyone's actually reviewing the
+      footage that day.</p>
+
+      <p>The category of "too small to bother tracking" is usually a much smaller category than it
+      first appears \u2014 the real threshold isn't the price of any individual item, it's whether
+      losing a steady trickle of them, over a year, would actually matter if anyone bothered to add
+      it up.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');

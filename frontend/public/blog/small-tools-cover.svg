@@ -1,0 +1,36 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg31" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/><stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow31" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/><stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg31)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow31)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Small stacked wrench icons -->
+  <g stroke="#8CC2FF" stroke-width="3" fill="none">
+    <g transform="translate(480, 220) rotate(20)"><path d="M -30 -8 A 11 11 0 1 1 -30 8 L -5 2 L -5 -2 Z"/><rect x="-5" y="-4" width="38" height="8" rx="3"/></g>
+    <g transform="translate(560, 260) rotate(-15)"><path d="M -30 -8 A 11 11 0 1 1 -30 8 L -5 2 L -5 -2 Z"/><rect x="-5" y="-4" width="38" height="8" rx="3"/></g>
+    <g transform="translate(500, 310) rotate(35)"><path d="M -30 -8 A 11 11 0 1 1 -30 8 L -5 2 L -5 -2 Z"/><rect x="-5" y="-4" width="38" height="8" rx="3"/></g>
+  </g>
+
+  <!-- QR tag on one, highlighted -->
+  <g transform="translate(700, 260)">
+    <rect x="-40" y="-40" width="80" height="80" rx="10" fill="#0A1F3A" stroke="#7ED957" stroke-width="4"/>
+    <rect x="-25" y="-25" width="16" height="16" fill="#7ED957"/>
+    <rect x="9" y="-25" width="16" height="16" fill="#7ED957"/>
+    <rect x="-25" y="9" width="16" height="16" fill="#7ED957"/>
+    <rect x="1" y="1" width="10" height="10" fill="#7ED957"/>
+  </g>
+
+  <g transform="translate(460, 480)">
+    <rect x="0" y="0" width="280" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="140" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">THE MATH THAT MATTERS</text>
+    <text x="140" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF">Aggregate, not one</text>
+  </g>
+</svg>
