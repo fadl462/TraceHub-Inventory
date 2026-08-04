@@ -871,6 +871,245 @@ const englishPosts = [
       spent deliberately on the four things above tends to save weeks of quiet avoidance later.</p>
     `,
   },
+  {
+    title: 'Why Your Asset Records Are Becoming an ESG Compliance Document, Whether You Planned For That or Not',
+    slug: 'esg-carbon-reporting-asset-records',
+    locale: 'en',
+    excerpt: "68% of fleet operators can't accurately track emissions per vehicle. Here's the honest case for why clean asset-level data matters here, and what we do and don't provide toward it.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-29T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/esg-cover.svg',
+    bodyHtml: `
+      <p>A statistic worth sitting with: recent industry surveys of fleet operators found that 68
+      percent cannot accurately track their own emissions at the individual vehicle level \u2014 let
+      alone produce the granular, auditable reporting that regulators and investors increasingly
+      expect. That gap is becoming expensive to leave unaddressed, and it's worth being honest about
+      why, and what actually closes it.</p>
+
+      <h3>The regulatory pressure is real, even after recent scale-backs</h3>
+      <p>The EU's Corporate Sustainability Reporting Directive had its scope significantly narrowed
+      in 2026 through the "Omnibus" simplification \u2014 roughly 85 to 90 percent fewer companies
+      now face mandatory requirements than under the original rules. That's a genuine retreat, but
+      it isn't the whole picture. The EU's Carbon Border Adjustment Mechanism entered its
+      operational phase on January 1, 2026, putting a real carbon price on imports of steel,
+      cement, aluminum, and several other emissions-intensive materials \u2014 which means
+      supply-chain emissions now directly affect cost for a lot of equipment-heavy businesses,
+      regardless of whether they personally file a sustainability report. In the US, California's
+      SB 253 creates binding climate disclosure obligations for large companies doing business in
+      the state, and it doesn't matter where the company is headquartered.</p>
+
+      <p>The net effect isn't "ESG reporting is now mandatory for everyone" \u2014 it clearly isn't.
+      It's that a meaningful and growing set of companies face real, binding requirements, and a much
+      larger set faces indirect cost and customer-procurement pressure even without a legal mandate
+      of their own.</p>
+
+      <h3>Why this becomes an asset-management problem, not just a compliance one</h3>
+      <p>Emissions reporting that's actually credible has to be asset-level, not a single
+      company-wide estimate \u2014 which usage hours, which maintenance patterns, which specific
+      units are driving the number. That's precisely the kind of granular, per-asset operational
+      data that a real asset-tracking system already collects as a byproduct of normal use:
+      <a href="/docs/registering-an-asset">usage intensity</a>, hours or mileage logged, maintenance
+      history. Companies that have that data cleanly organized per asset are already most of the way
+      to a credible emissions baseline. Companies still tracking equipment on a spreadsheet that
+      only captures purchase price and a vague location are starting from much further back,
+      exactly when the requirement to catch up is accelerating.</p>
+
+      <h3>Being straightforward about what this platform does and doesn't do</h3>
+      <p>We don't want to overclaim here: TraceHub does not currently calculate carbon emissions or
+      generate ESG-specific compliance reports. What it does do is give you clean, per-asset
+      operational data \u2014 usage intensity, hours, maintenance records, location history \u2014
+      already organized in a way that a real emissions calculation would need as its input. If
+      you're building toward asset-level sustainability reporting, whether by mandate or by customer
+      expectation, the actual bottleneck for most companies isn't finding the right carbon
+      calculation methodology. It's having clean, trustworthy, per-asset data to feed into one in
+      the first place \u2014 and that's a data-hygiene problem you can genuinely start solving today,
+      independent of which specific reporting framework eventually applies to you.</p>
+
+      <h3>A reasonable starting point regardless of your regulatory exposure</h3>
+      <p>You don't need to know yet whether CSRD, SB 253, or some other framework will eventually
+      apply to your company to benefit from cleaning this up now. Start by making sure usage data \u2014
+      hours run, distance covered, whatever's relevant to your equipment \u2014 is actually being
+      captured consistently per asset rather than estimated once a year. Whatever reporting
+      requirement eventually lands on your desk, that's the input it's going to ask for first.</p>
+    `,
+  },
+  {
+    title: 'The True Cost of a "Walked Off" Tool',
+    slug: 'true-cost-of-a-walked-off-tool',
+    locale: 'en',
+    excerpt: "Almost no equipment loss is actual theft. It's an informal handoff with no natural moment to write anything down. Here's the habit that fixes it.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-31T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/walked-off-cover.svg',
+    bodyHtml: `
+      <p>Ask most operations managers about their biggest source of unplanned equipment loss and
+      you'll rarely hear about a dramatic theft. You'll hear about a drill that went home in
+      someone's truck three months ago, was genuinely meant to come back, and never did \u2014 not
+      out of dishonesty, just the ordinary way small borrowed things quietly stop being tracked in
+      anyone's head.</p>
+
+      <p>The "walked off" tool is a bigger cost than most companies realize, and almost all of it is
+      preventable with a habit, not a policy.</p>
+
+      <h3>The real cost isn't just the replacement price</h3>
+      <p>When a tool disappears, the sticker price is the smallest part of the actual cost. There's
+      the delay while whoever needed it discovers it's missing, usually mid-task. There's the
+      replacement purchase, often made in a hurry at retail price rather than through whatever
+      procurement process would normally get a better rate. And there's the quieter cost: every
+      unresolved "where did this go" chips away at trust in the asset list as a whole, and once
+      people stop trusting the list, they stop bothering to keep it updated \u2014 which produces
+      more of exactly this problem.</p>
+
+      <h3>Why it happens even at well-run companies</h3>
+      <p>It's rarely negligence. It's that an informal handoff \u2014 "can I borrow this for the
+      Thursday job" \u2014 has no natural moment where anyone writes anything down. There's no bad
+      actor in this story, just a gap between how work actually happens (quick, verbal, in the
+      middle of something else) and how tracking traditionally requires you to behave (stop, find a
+      form, fill it in later).</p>
+
+      <h3>The fix is removing the friction, not adding a policy</h3>
+      <p>A written policy that says "always log when you borrow equipment" changes nothing if
+      logging still means finding a form later. What actually works is making the correct behavior
+      the fast behavior: an <a href="/docs/assigning-assets-to-people">assignment</a> that takes the
+      same ten seconds as the verbal handoff already took, with an
+      <a href="/docs/return-reminders-and-overdue-alerts">automatic reminder</a> three days before
+      it's due back and again on the day itself \u2014 so nobody has to remember to chase it down
+      manually, and nothing depends on anyone's memory holding up for months.</p>
+
+      <p>The other half of the fix: assignments should work the same way whether the person
+      borrowing something is an employee or <a href="/docs/assigning-assets-to-people">someone
+      outside the company entirely</a> \u2014 a contractor, a client. A surprising share of
+      permanently "lost" equipment was actually lent to someone external with no formal record at
+      all, which means there's no reminder system watching for it and no natural moment where anyone
+      would notice it's overdue.</p>
+
+      <h3>What to do about equipment already unaccounted for</h3>
+      <p>If you're reading this because something specific is already missing: check assignment
+      history first, including anything closed out or marked returned in the past few months \u2014
+      a surprising number of "lost" items turn out to have a real assignment record that just never
+      got closed out correctly. If nothing turns up, mark it honestly rather than leaving it in
+      limbo indefinitely; a clearly marked loss is far less damaging to your records than an asset
+      quietly sitting on the books as "available" when it hasn't actually been seen in a year.</p>
+
+      <p>None of this requires distrust of your team \u2014 it requires making the honest thing to do
+      also the easy thing to do. Most walked-off equipment was never actually stolen. It just never
+      had a moment where anyone was expected to write anything down.</p>
+    `,
+  },
+  {
+    title: 'Warranty Tracking: The Feature Nobody Thinks About Until They Need It',
+    slug: 'warranty-tracking-guide',
+    locale: 'en',
+    excerpt: 'The information was never really lost - it just became expensive to find at exactly the moment you needed it fastest.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-02T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/warranty-cover.svg',
+    bodyHtml: `
+      <p>Warranty tracking has a peculiar reputation: it's the feature nobody thinks about, right
+      up until the exact moment they desperately need it \u2014 standing at a repair counter, being
+      asked "do you have proof this is still under warranty," and realizing the honest answer is
+      "probably, but I'd have to dig through email for an hour to find the invoice."</p>
+
+      <h3>Why this specific piece of data goes missing so often</h3>
+      <p>Warranty information isn't hard to find at the moment of purchase \u2014 it's right there on
+      the invoice or the box. It becomes hard to find precisely because it's not needed again for
+      months or years, by which point the invoice has been filed somewhere, forwarded to someone
+      who's since left, or simply lost in the general churn of email. The information was never
+      genuinely lost forever; it just became disproportionately expensive to locate exactly when you
+      needed it fastest, which is usually the worst possible time to be searching.</p>
+
+      <h3>What actually goes wrong without it</h3>
+      <p>Two failure modes show up constantly. The obvious one: paying out of pocket for a repair
+      that was actually still covered, because nobody could produce proof in time to make the claim
+      before a repair got authorized. The less obvious one, and arguably more expensive: an asset
+      gets scheduled for costly preventive work, or even flagged as a repair-vs-replace candidate,
+      without anyone realizing the manufacturer would have covered the exact problem for free. A
+      recommendation engine \u2014 ours included \u2014 can only weigh repair cost accurately if it
+      knows the real repair cost is zero because it's still under warranty.</p>
+
+      <h3>The fix is genuinely simple: attach it at registration, not after</h3>
+      <p>The moment an asset is <a href="/docs/registering-an-asset">registered</a> is also the
+      moment its purchase details, including warranty terms, are freshest and easiest to capture \u2014
+      the invoice is right there, the coverage period is fresh in mind. Recording warranty
+      expiration as a real field on the asset record at that moment, rather than "I'll deal with
+      that if it ever comes up," turns a frantic search two years later into a field someone glances
+      at in five seconds.</p>
+
+      <p>The <a href="/docs/the-dashboard-explained">Warranty expiring</a> indicator
+      on the dashboard exists specifically to close the other half of this gap: not just "is this
+      still covered," but "is coverage about to run out on something I should get looked at now,
+      while it's still free, rather than after." A warranty that expires unused on a piece of
+      equipment that actually needed attention is a cost nobody notices, because nothing visibly
+      goes wrong \u2014 you simply pay for a repair a month later that would have been free a month
+      earlier.</p>
+
+      <h3>The broader pattern</h3>
+      <p>Warranty tracking is a small example of a bigger idea that shows up everywhere in good
+      asset records: information is nearly free to capture at the moment it naturally exists, and
+      expensive to reconstruct later once it doesn't. The fix is almost never "be more careful
+      later." It's capturing the thing once, at the one moment it's actually easy, so nobody has to
+      be careful about it ever again.</p>
+    `,
+  },
+  {
+    title: 'The Five-Minute Weekly Habit That Prevents Most Asset-Record Drift',
+    slug: 'five-minute-weekly-habit',
+    locale: 'en',
+    excerpt: "The companies with reliable asset records aren't the ones nothing ever drifts for. They're the ones who catch it early, every week, in small doses.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-05T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/weekly-habit-cover.svg',
+    bodyHtml: `
+      <p>Every set of asset records starts accurate and gets less accurate over time \u2014 that's
+      not a criticism of any particular company, it's just what happens to any record of a
+      constantly-changing physical reality if nothing actively keeps it current. The companies with
+      genuinely reliable records aren't the ones who never let anything drift. They're the ones who
+      caught it early, consistently, in small doses, rather than discovering a year of accumulated
+      drift all at once during a stressful audit.</p>
+
+      <h3>The habit is smaller than it sounds</h3>
+      <p>Once a week, for about five minutes, look at exactly three things: anything newly
+      <a href="/docs/return-reminders-and-overdue-alerts">overdue</a> on a return, anything that
+      moved to a <a href="/docs/asset-health-score">critical health score</a> since last week, and
+      anything the <a href="/docs/disposal-intelligence-engine">disposal engine</a> newly flagged
+      for attention. That's it. Not a full audit, not a review of the entire fleet \u2014 just the
+      handful of things that are new and time-sensitive since the last time you looked.</p>
+
+      <h3>Why five minutes weekly beats one intensive session quarterly</h3>
+      <p>A quarterly deep review catches problems that have already been accumulating for up to
+      three months \u2014 an overdue return that's been overdue for ten weeks instead of three days, a
+      health score that's been declining unnoticed since it first crossed into concerning territory.
+      By the time a quarterly review catches something, you've usually lost most of the window where
+      catching it early would have actually mattered. A five-minute weekly habit catches the same
+      issues within days of them appearing, when there's still a real choice available rather than
+      just damage control.</p>
+
+      <h3>What actually makes this sustainable</h3>
+      <p>The honest reason most "check the system regularly" intentions fail isn't lack of
+      discipline \u2014 it's that the review itself was never scoped down to something that
+      genuinely takes five minutes. If checking in means scrolling through the entire asset list
+      looking for anything that seems off, that's a real task people reasonably avoid when busy. If
+      it means glancing at three specific, already-filtered lists that only ever contain what's
+      actually new, it survives a busy week precisely because it never asks for more than it
+      promised.</p>
+
+      <h3>Where this fits with occasional deeper audits</h3>
+      <p>This weekly habit isn't a replacement for periodically <a href="/blog/running-a-physical-asset-audit">
+      physically verifying</a> that your records match reality \u2014 it's a different layer, catching
+      time-sensitive issues between those less frequent physical checks. Think of it as the
+      difference between glancing at a smoke detector's light weekly and testing the whole alarm
+      system twice a year. Both matter. Neither substitutes for the other.</p>
+
+      <p>If you only take one thing from this: pick a fixed day, keep the list to three things, and
+      don't let "I'll do a proper review later" replace it. The proper review is worth doing too \u2014
+      but it works far better on records that were never allowed to drift very far in the first
+      place.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');

@@ -1,0 +1,34 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg14" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow14" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg14)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow14)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Shield -->
+  <path d="M 600 130 L 700 165 L 700 260 C 700 340 650 380 600 400 C 550 380 500 340 500 260 L 500 165 Z"
+        fill="#132C52" stroke="#4DA3FF" stroke-width="4"/>
+  <path d="M 555 265 L 585 295 L 655 210" fill="none" stroke="#7ED957" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Small clock, overlapping bottom-right of shield -->
+  <g transform="translate(690, 340)">
+    <circle r="46" fill="#0A1F3A" stroke="#FF8A65" stroke-width="4"/>
+    <line x1="0" y1="0" x2="0" y2="-26" stroke="#FF8A65" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="18" y2="8" stroke="#FF8A65" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(480, 480)">
+    <rect x="0" y="0" width="240" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="120" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">EASIEST TIME TO CAPTURE</text>
+    <text x="120" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">At registration</text>
+  </g>
+</svg>

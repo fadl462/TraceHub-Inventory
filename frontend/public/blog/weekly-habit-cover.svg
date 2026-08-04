@@ -1,0 +1,53 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg15" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow15" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg15)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow15)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Calendar -->
+  <rect x="450" y="150" width="300" height="260" rx="18" fill="#132C52" stroke="#4DA3FF" stroke-width="3"/>
+  <rect x="450" y="150" width="300" height="55" rx="18" fill="#0A1F3A" stroke="#4DA3FF" stroke-width="3"/>
+  <line x1="510" y1="140" x2="510" y2="175" stroke="#8CC2FF" stroke-width="6" stroke-linecap="round"/>
+  <line x1="690" y1="140" x2="690" y2="175" stroke="#8CC2FF" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Grid of days, with one highlighted (the weekly check-in day) -->
+  <g>
+    <!-- row 1 -->
+    <circle cx="500" cy="240" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <circle cx="550" cy="240" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <circle cx="600" cy="240" r="16" fill="#0A1F3A" stroke="#7ED957" stroke-width="3.5"/>
+    <path d="M 593 240 L 598 246 L 609 232" fill="none" stroke="#7ED957" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="650" cy="240" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <circle cx="700" cy="240" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <!-- row 2 -->
+    <circle cx="500" cy="290" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <circle cx="550" cy="290" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <circle cx="600" cy="290" r="16" fill="#0A1F3A" stroke="#7ED957" stroke-width="3.5"/>
+    <path d="M 593 290 L 598 296 L 609 282" fill="none" stroke="#7ED957" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="650" cy="290" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <circle cx="700" cy="290" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <!-- row 3 -->
+    <circle cx="500" cy="340" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <circle cx="550" cy="340" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <circle cx="600" cy="340" r="16" fill="#0A1F3A" stroke="#7ED957" stroke-width="3.5"/>
+    <path d="M 593 340 L 598 346 L 609 332" fill="none" stroke="#7ED957" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="650" cy="340" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+    <circle cx="700" cy="340" r="14" fill="none" stroke="#8CC2FF" stroke-width="2" opacity="0.4"/>
+  </g>
+
+  <g transform="translate(480, 480)">
+    <rect x="0" y="0" width="240" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="120" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">JUST THREE THINGS</text>
+    <text x="120" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">5 min / week</text>
+  </g>
+</svg>
