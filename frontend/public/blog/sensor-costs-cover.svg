@@ -1,0 +1,40 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgSC" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glowSC" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgSC)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glowSC)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Sensor chip -->
+  <g transform="translate(600, 250)">
+    <rect x="-60" y="-60" width="120" height="120" rx="14" fill="#132C52" stroke="#8CC2FF" stroke-width="3.5"/>
+    <circle r="30" fill="none" stroke="#7ED957" stroke-width="3"/>
+    <circle r="12" fill="#7ED957"/>
+    <g stroke="#8CC2FF" stroke-width="3">
+      <line x1="-60" y1="-30" x2="-80" y2="-30"/><line x1="-60" y1="30" x2="-80" y2="30"/>
+      <line x1="60" y1="-30" x2="80" y2="-30"/><line x1="60" y1="30" x2="80" y2="30"/>
+    </g>
+  </g>
+
+  <!-- Falling price -->
+  <g transform="translate(830, 200)">
+    <text x="0" y="0" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#8CC2FF" opacity="0.6" text-decoration="line-through">$600</text>
+    <path d="M -20 20 L 0 45 L 20 20" fill="none" stroke="#7ED957" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="0" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="30" font-weight="700" fill="#7ED957">$50</text>
+  </g>
+
+  <g transform="translate(460, 480)">
+    <rect x="0" y="0" width="280" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="140" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">SENSOR COST DROP SINCE 2019</text>
+    <text x="140" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#FFFFFF">85%</text>
+  </g>
+</svg>

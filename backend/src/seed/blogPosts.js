@@ -2860,6 +2860,222 @@ const englishPosts = [
       afford to have surprise you.</p>
     `,
   },
+  {
+    title: 'Sensor Costs Just Dropped 85%: What That Means (and Doesn\u2019t Mean) for How You Predict Failures',
+    slug: 'sensor-costs-predictive-maintenance-2026',
+    locale: 'en',
+    excerpt: "Vibration sensors that cost $600 in 2019 cost under $50 in 2026. Here's the honest distinction between sensor-based and data-pattern prediction, and which one we actually build.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/sensor-costs-cover.svg',
+    bodyHtml: `
+      <p>A vibration sensor that cost around $600 per monitoring point in 2019 costs under $50 in
+      2026 \u2014 an 85 percent price collapse that's crossed a real threshold: sensor-based condition
+      monitoring now makes financial sense on equipment worth as little as $5,000, not just the
+      million-dollar turbines and compressors that used to be the only economically justifiable
+      candidates. This is a genuine shift worth understanding, and it's worth being precise about
+      what it does and doesn't mean for how failure prediction actually works.</p>
+
+      <h3>Two genuinely different kinds of prediction, worth not conflating</h3>
+      <p>"Predictive maintenance" gets used as a single term for two meaningfully different
+      approaches. <strong>Sensor-based prediction</strong> reads a physical signal directly off the
+      equipment in real time \u2014 vibration, temperature, current draw \u2014 and flags a deviation
+      from that specific unit's own normal pattern, often catching a developing bearing fault or
+      misalignment days before it would show up any other way. <strong>Data-pattern prediction</strong>
+      works from operational records instead \u2014 age relative to expected life, maintenance
+      history, usage intensity, environmental exposure \u2014 and forecasts failure probability from
+      how similar equipment has actually behaved under similar real-world conditions.</p>
+
+      <h3>Being precise about which one this platform actually does</h3>
+      <p>TraceHub's <a href="/docs/failure-prediction-engine">Failure Prediction Engine</a> is
+      firmly the second kind: real inputs, genuinely useful forecasting, but working from operational
+      data you enter and maintain, not from a live physical signal streaming off the equipment
+      itself. This is worth stating plainly rather than letting "AI-powered prediction" imply more
+      than it actually is \u2014 we don't currently read vibration or temperature sensors directly,
+      and a forecast built from maintenance history and usage patterns is a genuinely different, and
+      in some specific ways less immediate, signal than a sensor catching a bearing starting to fail
+      in real time.</p>
+
+      <h3>Why data-pattern prediction is still genuinely valuable, not a consolation prize</h3>
+      <p>Sensor-based monitoring is excellent at catching a specific developing mechanical fault
+      early. It says relatively little about the bigger financial question most fleets actually need
+      answered: given this asset's full history \u2014 not just its current vibration signature \u2014
+      is it worth repairing again, or has the pattern of cost and failures made replacement the
+      better call. That's a question about accumulated history and economics, and it's exactly what
+      data-pattern prediction and the <a href="/docs/disposal-intelligence-engine">disposal
+      recommendation engine</a> built on top of it are actually designed to answer.</p>
+
+      <h3>The honest, practical takeaway</h3>
+      <p>If a specific, high-value, mechanically complex asset would genuinely benefit from
+      real-time condition signals \u2014 the kind of equipment where a bearing failure is expensive
+      and hard to predict from usage patterns alone \u2014 the falling cost of sensors is real and
+      worth investigating as its own, separate investment. It's a complement to good operational
+      record-keeping, not a substitute for it, and the two answer genuinely different questions: one
+      tells you something's wrong right now, the other tells you whether it's worth continuing to fix
+      given everything that's happened so far.</p>
+    `,
+  },
+  {
+    title: 'The Honest Limits of What AI Can Tell You About a Forty-Year-Old Piece of Equipment',
+    slug: 'ai-limits-old-equipment',
+    locale: 'en',
+    excerpt: "Book value stops being the interesting question long before an asset stops running. Here's what still works well at that age, and what honestly doesn't.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-23T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/old-equipment-cover.svg',
+    bodyHtml: `
+      <p>Somewhere in most fleets sits a piece of equipment older than some of the people
+      maintaining it \u2014 fully depreciated decades ago, still running, still doing real work. It's
+      worth being honest about what an intelligence engine can and can't meaningfully tell you about
+      equipment like this, because the honest answer is genuinely different from what it can tell
+      you about something three years old.</p>
+
+      <h3>Why the depreciation number stops being the interesting part</h3>
+      <p>A straight-line or usage-based depreciation calculation on a forty-year-old asset will
+      correctly show it sitting at its residual value, has been for decades, and will keep showing
+      exactly that regardless of how many more years it runs. This isn't a limitation of the
+      calculation \u2014 it's an accurate reflection of the fact that book value genuinely stops being
+      the interesting question for equipment this old. The real question shifts entirely to
+      condition and ongoing cost, not remaining book value, because there effectively isn't any left
+      to track.</p>
+
+      <h3>Where the health score genuinely gets less reliable, honestly</h3>
+      <p>An <a href="/docs/asset-health-score">Asset Health Score</a> weighted partly on age relative
+      to expected useful life runs into an honest edge case here: a forty-year-old asset has usually
+      blown far past whatever useful-life assumption was ever entered for its category, which can
+      drag the age-adjusted component of its score down heavily regardless of its genuine current
+      condition. This is worth recognizing as a real limitation rather than papering over it \u2014 for
+      equipment this old, maintenance history and recent inspection data deserve more actual weight
+      in your own judgment than the automated score's age component, which is doing its best with an
+      assumption that was never really built for a forty-year time horizon.</p>
+
+      <h3>What still works well, and works well specifically because it doesn't depend on age</h3>
+      <p>Maintenance cost trends remain genuinely useful at any age \u2014 rising repair frequency or
+      cost on a decades-old asset is real signal regardless of how depreciated it already is on
+      paper. The <a href="/docs/disposal-intelligence-engine">disposal recommendation's</a> heaviest
+      weighting \u2014 maintenance cost relative to current replacement cost \u2014 stays meaningful
+      precisely because it doesn't depend on the asset's age at all, just its ongoing real cost
+      versus what a new equivalent would cost today.</p>
+
+      <h3>The practical adjustment worth making</h3>
+      <p>For equipment old enough that its book value has been sitting at residual for years, shift
+      your own attention toward the inputs that don't degrade with age \u2014 recent maintenance
+      pattern, actual current condition from your latest inspection, real replacement cost \u2014 and
+      treat an automated health score on equipment this old as one input among several rather than
+      the deciding factor. The honest answer, when someone asks whether the system is "wrong" about
+      old equipment, usually isn't that it's wrong \u2014 it's that a couple of its inputs were built
+      around assumptions that were never designed to describe equipment running decades past
+      anyone's original expectations, and knowing that distinction is worth more than blind trust in
+      any single number.</p>
+    `,
+  },
+  {
+    title: '"Everything Looks Fine" Is Sometimes the Most Dangerous Dashboard State',
+    slug: 'everything-looks-fine-danger',
+    locale: 'en',
+    excerpt: 'A dashboard can look identically green for two opposite reasons: genuine health, or data that quietly stopped flowing. The difference is invisible unless you check.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-25T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/everything-fine-cover.svg',
+    bodyHtml: `
+      <p>A dashboard showing every metric green is either genuinely reassuring or quietly dangerous,
+      and the difference between the two has nothing to do with the dashboard itself \u2014 it's
+      entirely about whether anyone's actually checking that the data behind it is real and current.</p>
+
+      <h3>The failure mode that looks identical to success</h3>
+      <p>Two situations produce an identical all-green dashboard: a fleet that's genuinely well
+      maintained and accurately tracked, and a fleet where data entry has quietly lapsed \u2014 nobody
+      logging maintenance, nobody updating condition, nobody scanning locations \u2014 which produces
+      the exact same visual absence of red flags, for the opposite reason. A health score can't flag
+      a problem it was never told about. Silence in a dashboard doesn't distinguish between "nothing
+      is wrong" and "nobody's telling us anything," and those are very different situations wearing
+      an identical green light.</p>
+
+      <h3>Why this specific failure mode is dangerous rather than merely unfortunate</h3>
+      <p>A dashboard full of active red flags at least prompts action \u2014 something visibly demands
+      attention, and someone eventually looks. An all-green dashboard produced by data that's quietly
+      stopped flowing prompts nothing at all, because there's no visible symptom telling anyone to
+      check. This is precisely the situation that turns into an unpleasant surprise months later: not
+      because anything failed unusually, but because nobody noticed record-keeping had stopped long
+      before the actual failure that eventually forced someone to look.</p>
+
+      <h3>The check that actually catches this</h3>
+      <p>The useful question isn't "does everything look fine" \u2014 it's "when was each of these
+      numbers last actually updated." A fleet health score is only as current as its most recent
+      inputs, and a quick scan of last-updated timestamps across recent maintenance records, recent
+      location scans, and recent inspections tells you something a green dashboard alone never
+      will: whether the reassuring picture is current information or a stale echo of whatever was
+      last actually entered, sitting there looking identical either way.</p>
+
+      <h3>Building the habit of checking for silence, not just for alarms</h3>
+      <p>Most monitoring habits are built entirely around catching bad news \u2014 watching for red
+      flags, overdue items, declining scores. Worth adding to that: an occasional check for the
+      opposite pattern \u2014 a location, a category, or a team that's gone unusually quiet, with
+      activity that's dropped off without any specific event explaining why. That absence is its own
+      kind of signal, and it's the one an all-green dashboard, by its very design, can never surface
+      on its own.</p>
+
+      <p>A quiet dashboard earns trust from real, current data behind it, not from the mere absence
+      of visible problems. The difference is invisible from the dashboard alone \u2014 which is
+      exactly why it's worth checking for occasionally, rather than assuming green always means what
+      it's supposed to mean.</p>
+    `,
+  },
+  {
+    title: 'The Real Value of a Boring Report Nobody Reads Until They Need It',
+    slug: 'value-of-boring-reports',
+    locale: 'en',
+    excerpt: "Its value shows up much later and unpredictably - which is exactly why the window to generate it proactively closes before you know you'll need it.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-28T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/boring-reports-cover.svg',
+    bodyHtml: `
+      <p>Nobody reads last month's location activity report for fun, and most companies quietly
+      stop generating routine reports nobody's actively reading, which feels like a reasonable
+      efficiency until the one week a year someone urgently needs exactly that boring report and
+      discovers it doesn't exist anymore.</p>
+
+      <h3>The report that earns its keep by almost never being opened</h3>
+      <p>A weekly or monthly export of routine activity \u2014 who scanned what, which assignments
+      closed, which maintenance got logged \u2014 is genuinely boring in the moment it's generated.
+      Its actual value shows up much later and unpredictably: an insurance question about where an
+      asset was on a specific date, an internal dispute about who had custody of something,
+      a compliance request for records covering a period nobody thought to specifically flag as
+      important at the time. None of these needs are foreseeable when the report is generated. All
+      of them are considerably easier to answer when a routine export already exists than when
+      someone has to reconstruct the same information from scratch under time pressure.</p>
+
+      <h3>Why "we can always look it up later" quietly stops being true</h3>
+      <p>Live system data is only as deep as your retention and your own diligence about logging
+      things consistently in the first place. A standing <a href="/docs/exporting-csv-pdf-powerpoint">
+      export</a> habit creates an independent, point-in-time record that exists specifically because
+      nobody yet knows which particular week will turn out to matter. By the time you know you need
+      a specific record, the window to have generated it proactively has usually already closed \u2014
+      you're now reconstructing after the fact, from memory and whatever's still sitting in the live
+      system, rather than pulling something that was already sitting there waiting.</p>
+
+      <h3>What actually deserves this treatment, and what doesn't</h3>
+      <p>Not everything needs a standing export habit \u2014 the goal isn't hoarding every possible
+      report indefinitely. What's worth it: whatever you'd genuinely regret not having if a dispute,
+      a claim, or an audit request landed on your desk unexpectedly. Location and assignment history
+      for higher-value or higher-mobility equipment categories is a reasonable default; a
+      comprehensive export of every category regardless of value is probably overkill for most
+      operations.</p>
+
+      <h3>The real cost-benefit, stated plainly</h3>
+      <p>Generating a report nobody reads costs a few minutes and some storage space. Needing a
+      record that doesn't exist costs considerably more \u2014 in time spent reconstructing it, in
+      credibility lost if you can't produce it convincingly, and in whatever decision was waiting on
+      an answer you couldn't provide quickly. The boring report earns its entire value on the one
+      occasion, unknowable in advance, when it turns out to be exactly what was needed \u2014 and
+      costs almost nothing on every other occasion when it just sits there, unread, doing its actual
+      job by simply existing.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');

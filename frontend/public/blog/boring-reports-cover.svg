@@ -1,0 +1,35 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgBR" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glowBR" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="spotlight" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#7ED957" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#7ED957" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgBR)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glowBR)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <circle cx="600" cy="270" r="140" fill="url(#spotlight)"/>
+  <!-- Plain document, unassuming, but spotlit -->
+  <rect x="530" y="180" width="140" height="180" rx="10" fill="#132C52" stroke="#7ED957" stroke-width="3.5"/>
+  <line x1="555" y1="220" x2="645" y2="220" stroke="#7ED957" stroke-width="4" opacity="0.6"/>
+  <line x1="555" y1="245" x2="645" y2="245" stroke="#7ED957" stroke-width="4" opacity="0.6"/>
+  <line x1="555" y1="270" x2="620" y2="270" stroke="#7ED957" stroke-width="4" opacity="0.6"/>
+  <line x1="555" y1="295" x2="645" y2="295" stroke="#7ED957" stroke-width="4" opacity="0.6"/>
+  <line x1="555" y1="320" x2="600" y2="320" stroke="#7ED957" stroke-width="4" opacity="0.6"/>
+
+  <g transform="translate(460, 480)">
+    <rect x="0" y="0" width="280" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="140" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">MATTERS ONCE, UNPREDICTABLY</text>
+    <text x="140" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">Costs nearly nothing</text>
+  </g>
+</svg>
