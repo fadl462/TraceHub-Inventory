@@ -1,9 +1,24 @@
 const { SubscriptionPlan } = require('../models');
 
+const VALID_REGIONS = ['ghana', 'africa', 'global'];
+
+/** Attaches the effective price for a given region onto a plain plan object, without mutating the model instance. */
+function withRegionalPrice(plan, region) {
+  const data = plan.toJSON ? plan.toJSON() : plan;
+  const override = region !== 'global' ? (data.regionalPricing || {})[region] : null;
+  return {
+    ...data,
+    priceMonthly: override ? override.monthly : data.priceMonthly,
+    priceAnnual: override ? override.annual : data.priceAnnual,
+    pricingRegion: region,
+  };
+}
+
 async function listPlans(req, res, next) {
   try {
+    const region = VALID_REGIONS.includes(req.query.region) ? req.query.region : 'global';
     const plans = await SubscriptionPlan.findAll({ where: { isActive: true }, order: [['sortOrder', 'ASC']] });
-    res.json({ plans });
+    res.json({ plans: plans.map((p) => withRegionalPrice(p, region)), region });
   } catch (err) { next(err); }
 }
 

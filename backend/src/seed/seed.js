@@ -18,9 +18,29 @@ async function seed() {
   await sequelize.sync({ alter: true });
 
   console.log('Seeding subscription plans...');
+  const currentCodes = plans.map((p) => p.code);
   for (const p of plans) {
     const [plan, created] = await SubscriptionPlan.findOrCreate({ where: { code: p.code }, defaults: p });
-    console.log(`  ${created ? 'created' : 'exists'}: ${plan.name}`);
+    if (!created) {
+      // A plan with this code already exists (e.g. re-running the seed after
+      // a price/limit change to an existing tier) - update it in place
+      // rather than silently leaving stale numbers, so a name/price/limit
+      // correction actually reaches an already-seeded database.
+      Object.assign(plan, p);
+      await plan.save();
+    }
+    console.log(`  ${created ? 'created' : 'updated'}: ${plan.name}`);
+  }
+  // Deprecated plan codes (e.g. 'basic'/'pro' renamed to 'essential'/
+  // 'professional' as part of the tier restructure) are deactivated, not
+  // deleted - any company already subscribed to one keeps working exactly
+  // as before, but the plan no longer appears to new signups on the
+  // pricing page.
+  const DEPRECATED_PLAN_CODES = ['basic', 'pro'];
+  const toDeactivate = DEPRECATED_PLAN_CODES.filter((c) => !currentCodes.includes(c));
+  if (toDeactivate.length > 0) {
+    const [count] = await SubscriptionPlan.update({ isActive: false }, { where: { code: toDeactivate, isActive: true } });
+    if (count > 0) console.log(`  deactivated ${count} deprecated plan(s): ${toDeactivate.join(', ')}`);
   }
 
   console.log('Seeding global asset categories + depreciation profiles...');
@@ -68,8 +88,10 @@ async function seed() {
 
   console.log('Seeding CMS pages (privacy, terms, cookies, docs)...');
   for (const p of cmsPages) {
-    const [, created] = await CmsPage.findOrCreate({ where: { slug: p.slug }, defaults: p });
-    console.log(`  ${created ? 'created' : 'exists'}: /${p.slug}`);
+    const locale = p.locale || 'en';
+    const [row, created] = await CmsPage.findOrCreate({ where: { slug: p.slug, locale }, defaults: { ...p, locale } });
+    if (!created && row.bodyHtml !== p.bodyHtml) { row.bodyHtml = p.bodyHtml; row.title = p.title; await row.save(); }
+    console.log(`  ${created ? 'created' : 'exists'}: /${p.slug} (${locale})`);
   }
 
   console.log('Seeding blog posts...');

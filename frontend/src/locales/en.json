@@ -97,7 +97,15 @@
     "chatWithAssistant": "Chat with the assistant",
     "finalCtaTitle": "Ready to know where everything is?",
     "finalCtaSubtitle": "Set up your workspace in a couple of minutes. No card required to start.",
-    "createWorkspace": "Create your workspace"
+    "createWorkspace": "Create your workspace",
+    "planEssential": "Essential",
+    "planProfessional": "Professional",
+    "planBusiness": "Business",
+    "pricingForRegion": "Pricing for:",
+    "regionGhana": "Ghana",
+    "regionAfrica": "Rest of Africa",
+    "regionGlobal": "Global (US/Europe)",
+    "startingAt": "Starting at"
   },
   "auth": {
     "loginTitle": "Welcome back",

@@ -40,26 +40,32 @@ const FEATURE_KEYS = {
 // translated display name; anything else falls back to whatever name is
 // actually stored, since forcing a translation onto a custom plan name
 // would be wrong.
-const PLAN_NAME_KEYS = { trial: 'planTrial', basic: 'planBasic', pro: 'planPro', enterprise: 'planEnterprise' };
+const PLAN_NAME_KEYS = {
+  trial: 'planTrial', essential: 'planEssential', professional: 'planProfessional',
+  business: 'planBusiness', enterprise: 'planEnterprise',
+};
 
 function formatPlan(p, t) {
+  const priceNum = Number(p.priceMonthly);
   return {
     name: PLAN_NAME_KEYS[p.code] ? t(`landing.${PLAN_NAME_KEYS[p.code]}`) : p.name,
-    price: Number(p.priceMonthly) === 0 ? '$0' : `$${p.priceMonthly}`,
+    price: priceNum === 0 ? '$0' : `$${priceNum}`,
+    pricePrefix: p.code === 'enterprise' ? t('landing.startingAt') : null,
     period: p.code === 'trial' ? t('landing.for30Days') : t('landing.perMonth'),
     assets: p.assetLimit === -1 ? t('landing.unlimitedAssets') : t('landing.assetsCount', { count: p.assetLimit }),
     users: p.userLimit === -1 ? t('landing.unlimitedUsers') : t('landing.usersCount', { count: p.userLimit }),
     features: (p.features || []).map((f) => (FEATURE_KEYS[f] ? t(`landing.${FEATURE_KEYS[f]}`) : f)),
-    highlight: p.code === 'pro',
+    highlight: p.code === 'professional',
   };
 }
 
 function defaultPlans(t) {
   return [
-    { name: t('landing.planTrial'), price: '$0', period: t('landing.for30Days'), assets: t('landing.assetsCount', { count: 10 }), users: t('landing.usersCount', { count: 3 }), features: [t('landing.featReporting')], highlight: false },
-    { name: t('landing.planBasic'), price: '$19', period: t('landing.perMonth'), assets: t('landing.assetsCount', { count: 100 }), users: t('landing.usersCount', { count: 5 }), features: [t('landing.featReporting'), t('landing.featQrScanning')], highlight: false },
-    { name: t('landing.planPro'), price: '$49', period: t('landing.perMonth'), assets: t('landing.assetsCount', { count: 1000 }), users: t('landing.usersCount', { count: 25 }), features: [t('landing.featReporting'), t('landing.featQrScanning'), t('landing.featApiAccess'), t('landing.featCustomFields'), t('landing.featMultiLocation')], highlight: true },
-    { name: t('landing.planEnterprise'), price: '$149', period: t('landing.perMonth'), assets: t('landing.unlimitedAssets'), users: t('landing.unlimitedUsers'), features: [t('landing.featEverythingInPro'), t('landing.featCustomDomain'), t('landing.featPrioritySupport')], highlight: false },
+    { name: t('landing.planTrial'), price: '$0', period: t('landing.for30Days'), assets: t('landing.assetsCount', { count: 10 }), users: t('landing.usersCount', { count: 3 }), features: [t('landing.featReporting'), t('landing.featQrScanning')], highlight: false },
+    { name: t('landing.planEssential'), price: '$29', period: t('landing.perMonth'), assets: t('landing.assetsCount', { count: 250 }), users: t('landing.usersCount', { count: 5 }), features: [t('landing.featReporting'), t('landing.featQrScanning')], highlight: false },
+    { name: t('landing.planProfessional'), price: '$69', period: t('landing.perMonth'), assets: t('landing.assetsCount', { count: 2500 }), users: t('landing.usersCount', { count: 25 }), features: [t('landing.featReporting'), t('landing.featQrScanning'), t('landing.featApiAccess'), t('landing.featCustomFields'), t('landing.featMultiLocation')], highlight: true },
+    { name: t('landing.planBusiness'), price: '$179', period: t('landing.perMonth'), assets: t('landing.assetsCount', { count: 10000 }), users: t('landing.usersCount', { count: 100 }), features: [t('landing.featReporting'), t('landing.featQrScanning'), t('landing.featApiAccess'), t('landing.featCustomFields'), t('landing.featMultiLocation'), t('landing.featPrioritySupport')], highlight: false },
+    { name: t('landing.planEnterprise'), price: '$499', pricePrefix: t('landing.startingAt'), period: t('landing.perMonth'), assets: t('landing.unlimitedAssets'), users: t('landing.unlimitedUsers'), features: [t('landing.featEverythingInPro'), t('landing.featCustomDomain'), t('landing.featPrioritySupport')], highlight: false },
   ];
 }
 
@@ -258,7 +264,7 @@ function TrackedOperations() {
   );
 }
 
-function Pricing({ plans }) {
+function Pricing({ plans, region, onRegionChange }) {
   const { t } = useTranslation();
   return (
     <section id="pricing" className="relative bg-primary-800 py-24 overflow-hidden">
@@ -274,7 +280,19 @@ function Pricing({ plans }) {
             {t('landing.pricingSubtitle')}
           </p>
         </div>
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        <div className="mt-6 flex items-center justify-center gap-2 text-sm">
+          <span className="text-primary-100/60">{t('landing.pricingForRegion')}</span>
+          <select
+            value={region}
+            onChange={(e) => onRegionChange(e.target.value)}
+            className="bg-white/10 text-white border border-white/20 rounded-lg px-2.5 py-1 text-sm focus-ring"
+          >
+            <option value="ghana" className="text-ink">{t('landing.regionGhana')}</option>
+            <option value="africa" className="text-ink">{t('landing.regionAfrica')}</option>
+            <option value="global" className="text-ink">{t('landing.regionGlobal')}</option>
+          </select>
+        </div>
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-5 items-stretch">
           {plans.map((p) => (
             <div
               key={p.name}
@@ -289,7 +307,8 @@ function Pricing({ plans }) {
               )}
               <div className="p-6 pb-5">
                 <h3 className={`font-display font-semibold text-lg ${p.highlight ? 'text-ink' : 'text-white'}`}>{p.name}</h3>
-                <div className="mt-3 flex items-baseline gap-1">
+                {p.pricePrefix && <p className={`text-[11px] font-medium mt-2 ${p.highlight ? 'text-ink/50' : 'text-primary-100/50'}`}>{p.pricePrefix}</p>}
+                <div className="mt-1 flex items-baseline gap-1">
                   <span className={`font-display text-3xl font-bold ${p.highlight ? 'text-ink' : 'text-white'}`}>{p.price}</span>
                   <span className={`text-xs ${p.highlight ? 'text-ink/50' : 'text-primary-100/60'}`}>{p.period}</span>
                 </div>
@@ -422,6 +441,7 @@ export default function Landing() {
   const [testimonials, setTestimonials] = useState([]);
   const [faqs, setFaqs] = useState([]);
   const [chatOpen, setChatOpen] = useState(false);
+  const [region, setRegion] = useState('ghana');
 
   useEffect(() => {
     client.get('/site-content', { params: { locale: i18n.language } }).then(({ data }) => setContent(data.content)).catch(() => {});
@@ -430,10 +450,10 @@ export default function Landing() {
   }, [i18n.language]);
 
   useEffect(() => {
-    client.get('/plans').then(({ data }) => {
+    client.get('/plans', { params: { region } }).then(({ data }) => {
       if (data.plans?.length) setRawPlans(data.plans);
     }).catch(() => {});
-  }, []);
+  }, [region]);
 
   // Computed at render time (not stored pre-formatted) so plan names/labels
   // stay correctly translated if the language changes after the initial
@@ -449,7 +469,7 @@ export default function Landing() {
       <DepreciationProof />
       <Features />
       <TrackedOperations />
-      <Pricing plans={displayPlans} />
+      <Pricing plans={displayPlans} region={region} onRegionChange={setRegion} />
       <Testimonials items={testimonials} />
       <AiAssistantSection faqs={faqs} onOpenChat={() => setChatOpen(true)} />
       <FinalCTA content={content} />

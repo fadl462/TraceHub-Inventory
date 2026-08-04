@@ -97,7 +97,15 @@
     "chatWithAssistant": "Chatear con el asistente",
     "finalCtaTitle": "¿Listo para saber dónde está todo?",
     "finalCtaSubtitle": "Configure su espacio de trabajo en un par de minutos. No se requiere tarjeta para comenzar.",
-    "createWorkspace": "Cree su espacio de trabajo"
+    "createWorkspace": "Cree su espacio de trabajo",
+    "planEssential": "Esencial",
+    "planProfessional": "Profesional",
+    "planBusiness": "Business",
+    "pricingForRegion": "Precios para:",
+    "regionGhana": "Ghana",
+    "regionAfrica": "Resto de África",
+    "regionGlobal": "Internacional (EE. UU./Europa)",
+    "startingAt": "Desde"
   },
   "auth": {
     "loginTitle": "Bienvenido de nuevo",
