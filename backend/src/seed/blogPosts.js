@@ -1979,6 +1979,443 @@ const englishPosts = [
       it up.</p>
     `,
   },
+  {
+    title: 'The Hidden Cost of "We\u2019ll Fix the Data Later"',
+    slug: 'hidden-cost-of-fix-later',
+    locale: 'en',
+    excerpt: "Bad data doesn't sit still while you wait - it actively spreads into every calculation built on top of it.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-14T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/fix-later-cover.svg',
+    bodyHtml: `
+      <p>"We'll fix the data later" is one of those sentences that sounds like a reasonable
+      temporary compromise and quietly becomes permanent \u2014 not through anyone deciding to leave
+      it broken forever, but because "later" never arrives with enough urgency attached to actually
+      happen, while the cost of the mess keeps compounding in the meantime.</p>
+
+      <h3>Why "later" almost never comes on its own</h3>
+      <p>Fixing existing data has no natural deadline the way a new task does. Nobody's waiting on
+      it, no meeting is scheduled around it, and every day it stays unfixed feels basically the same
+      as every day before it \u2014 until enough of those days accumulate that the gap between records
+      and reality has become a real problem, usually discovered at the worst possible moment, like
+      mid-audit or mid-claim.</p>
+
+      <h3>What actually compounds while you wait</h3>
+      <p>Bad data doesn't sit still \u2014 it actively spreads. A wrongly-categorized asset
+      distorts that category's average depreciation profile for every asset in it, not just itself.
+      A missing maintenance record on one unit makes that unit's <a href="/docs/asset-health-score">
+      health score</a> less trustworthy today and every day going forward until someone fixes it.
+      Every day the fix is deferred is a day more decisions get quietly made on the flawed version
+      instead of the correct one, and those decisions don't get automatically corrected once the
+      underlying data eventually does.</p>
+
+      <h3>Why this is genuinely a small fix if caught early, and a large one if not</h3>
+      <p>Fixing ten mis-entered records takes minutes. Fixing the same underlying mistake after
+      it's propagated across three hundred records, distorted a category-wide depreciation
+      assumption, and fed into a year of reports built on top of it is a fundamentally different
+      job \u2014 not because the fix itself got harder, but because untangling which downstream
+      numbers were affected and by how much becomes its own significant task. The actual cost of
+      "we'll fix it later" isn't the eventual fix. It's everything built on top of the broken version
+      in the meantime.</p>
+
+      <h3>What actually breaks the pattern</h3>
+      <p>The fix isn't more discipline \u2014 it's removing the gap between noticing a problem and
+      fixing it. If correcting a mistake takes the same few seconds as noticing it, in the same
+      screen, there's no meaningful "later" to defer to in the first place. This is exactly the
+      logic behind the <a href="/blog/five-minute-weekly-habit">five-minute weekly habit</a> we've
+      written about separately: catching drift constantly, in small amounts, is a fundamentally
+      easier problem than catching it rarely, in large ones.</p>
+
+      <p>"We'll fix it later" is rarely a lie when someone says it \u2014 it's an honest intention
+      that data cleanup simply has no natural mechanism to actually enforce. Building that mechanism
+      deliberately, rather than hoping later arrives on its own, is the entire difference between
+      records that stay trustworthy and ones that quietly don't.</p>
+    `,
+  },
+  {
+    title: 'Why Two-Factor Authentication Is Worth the Ten Seconds',
+    slug: 'why-two-factor-authentication-worth-it',
+    locale: 'en',
+    excerpt: "The asymmetry between the cost of turning it on and the cost of the incident it would have prevented isn't close.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-17T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/two-factor-cover.svg',
+    bodyHtml: `
+      <p>Two-factor authentication has an image problem: it feels like an inconvenience you're
+      choosing to accept for security's sake, ten seconds of friction added to every login in
+      exchange for protection against a threat that feels abstract until the day it isn't. That
+      framing undersells how lopsided the actual trade-off is.</p>
+
+      <h3>What it actually protects against, concretely</h3>
+      <p>A password can be guessed, reused from a breached site, or simply shared carelessly with
+      someone it shouldn't have been. <a href="/docs/two-factor-authentication">2FA</a> means a
+      stolen or leaked password alone isn't enough to get in \u2014 whoever's trying also needs your
+      physical authentication device. For a system holding your entire fleet's financial and
+      operational records, that's not a marginal improvement. It's the difference between "a leaked
+      password is a minor annoyance" and "a leaked password is a real incident."</p>
+
+      <h3>Why the ten-second cost is smaller than it feels</h3>
+      <p>The actual friction is minimal: scan a code once during setup, then a six-digit code from
+      your authenticator app at login going forward. Compare that ten seconds, paid occasionally, to
+      the actual cost of a compromised account with real access to your asset and financial
+      records \u2014 the asymmetry between the cost of turning it on and the cost of an incident it
+      would have prevented isn't close.</p>
+
+      <h3>Who should actually have it enabled</h3>
+      <p>Every account with access to anything sensitive, which in practice means everyone above
+      the most basic operational role \u2014 but especially any Company Admin account, since that
+      role's access to billing and team management makes it a meaningfully more valuable target than
+      a Staff account with narrower reach. If you're deciding where to start rather than rolling it
+      out everywhere at once, start there.</p>
+
+      <h3>The honest reason people skip it anyway</h3>
+      <p>Nobody skips 2FA because they've calculated the risk and decided it's not worth the
+      protection \u2014 they skip it because the setup moment feels like a small chore and the threat
+      it addresses doesn't feel real yet. That's precisely the same psychology behind skipping a
+      backup: the cost is only ever felt in the specific, uncertain future moment when you actually
+      needed the protection and didn't have it, which makes it easy to deprioritize right up until
+      it isn't.</p>
+
+      <p>Setting it up takes about a minute, once, per account. It's one of the very few security
+      measures where the effort required and the protection gained are this far out of proportion in
+      your favor \u2014 which is exactly why it's worth doing today rather than waiting for a reason
+      that makes it feel urgent.</p>
+    `,
+  },
+  {
+    title: 'The Case for a Company-Wide Naming Convention (and What Happens Without One)',
+    slug: 'naming-convention-case',
+    locale: 'en',
+    excerpt: 'None of the inconsistent names is wrong in isolation. Collectively, they quietly make search and reporting worse for everyone.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-19T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/naming-convention-cover.svg',
+    bodyHtml: `
+      <p>A naming convention is the kind of decision that feels too small to deserve a deliberate
+      conversation, right up until its absence has quietly created a mess spanning hundreds of
+      records that nobody wants to clean up. Setting one early is one of the cheapest decisions in
+      the entire life of an asset system, and skipping it is one of the more expensive omissions to
+      fix later.</p>
+
+      <h3>What happens without one, specifically</h3>
+      <p>Without an agreed convention, the same category of equipment ends up named a dozen
+      different ways by a dozen different people: "Toyota Forklift," "Forklift - Toyota," "FL-03,"
+      and "the yellow forklift" might all refer to different assets or, worse, the same one entered
+      twice by two people who didn't realize a record already existed. None of these names is
+      wrong in isolation. Collectively, they make search, filtering, and reporting all quietly
+      worse, because the system has no way to group things that a human would obviously recognize as
+      the same category.</p>
+
+      <h3>What a good convention actually looks like</h3>
+      <p>It doesn't need to be complicated \u2014 consistency matters more than cleverness. A
+      reasonable pattern: [Category] - [Brand/Model] - [Identifying detail], applied the same way
+      every time. "Forklift - Toyota - FL03" sorts predictably, searches predictably, and reads
+      clearly to anyone new. The specific format matters far less than everyone actually using the
+      same one, since the entire value comes from consistency, not from any particular pattern being
+      objectively superior to another reasonable one.</p>
+
+      <h3>Where custom fields fit into this</h3>
+      <p>A naming convention isn't the place to cram every piece of identifying information \u2014
+      that's what <a href="/docs/categories-and-custom-fields">custom fields</a> and dedicated fields
+      like serial number already exist for. The name should be just descriptive enough that a human
+      scanning a list can immediately recognize what something is; everything else belongs in its
+      own proper field where it's actually searchable and filterable, not buried inside a
+      increasingly long name nobody can read at a glance anymore.</p>
+
+      <h3>Fixing it after the fact versus setting it up front</h3>
+      <p>Establishing a convention before registering your first fifty assets costs one short
+      conversation. Retrofitting a convention across five hundred already-inconsistent names is a
+      real cleanup project, and it's exactly the kind of unglamorous task that tends to get
+      indefinitely postponed once it's grown large enough to actually be annoying. The five minutes
+      spent agreeing on a pattern before you start is disproportionately cheaper than fixing the
+      absence of one later.</p>
+    `,
+  },
+  {
+    title: 'What a Rejected Disposal Case Actually Teaches You',
+    slug: 'what-a-rejected-disposal-case-teaches-you',
+    locale: 'en',
+    excerpt: "Overriding a recommendation isn't a mistake to avoid - it's exactly the kind of decision the learning loop is built to learn from.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/rejected-disposal-cover.svg',
+    bodyHtml: `
+      <p>A rejected disposal case tends to get treated as a closed matter \u2014 someone decided to
+      keep the asset instead of following the recommendation, the case gets marked rejected, and
+      everyone moves on. That's a reasonable business decision to make. It's also, quietly, one of
+      the more useful pieces of data your fleet generates, and treating it as simply "closed" wastes
+      most of its value.</p>
+
+      <h3>What a rejection is actually recording</h3>
+      <p>Every time a disposal recommendation gets <a href="/docs/rejecting-a-disposal-case">
+      rejected</a>, the reason behind it is captured \u2014 a planned fleet renewal next quarter, a
+      cash-flow timing decision, genuine confidence the asset will keep performing despite what the
+      numbers suggested. That reason matters beyond documenting the decision in the moment. It's a
+      real, testable claim about the future: "we believe this asset will keep working fine."</p>
+
+      <h3>How that claim actually gets tested</h3>
+      <p>Thirty days after a rejection, the system quietly checks whether a real failure happened
+      since. Over enough rejections, this builds an actual, evidence-based
+      <a href="/docs/ai-confidence-score-and-learning-loop">reliability rate</a> \u2014 not a
+      generic industry benchmark, but a track record specific to your own fleet and your own past
+      decisions. If your rejections have mostly turned out fine, that's genuinely useful
+      information: your team's judgment on these calls is reliable, and future confidence scores
+      reflect that. If rejected assets have tended to fail anyway not long after, that's equally
+      useful information, just less comfortable to hear.</p>
+
+      <h3>Why this makes rejecting a recommendation a genuinely safe thing to do</h3>
+      <p>Some hesitation to override a system recommendation is natural \u2014 nobody wants to feel
+      like they're arguing with the data for no good reason. But a rejection isn't treated as a
+      failure of the system or a mistake to avoid; it's an input the learning loop is specifically
+      built to use. Overriding a recommendation with a real, documented reason is exactly the kind
+      of decision the system is designed to learn from, not penalize.</p>
+
+      <h3>The pattern worth actually watching for</h3>
+      <p>A single rejection followed by a failure isn't a meaningful pattern \u2014 it's one data
+      point. A recurring pattern of rejections in a specific category consistently followed by
+      failures within a short window is worth real attention, because it suggests something
+      specific and correctable: either that category's recommendations are systematically too
+      cautious, or the team's read on that particular category has consistently been optimistic.
+      Either conclusion is more useful discovered from a real pattern across many decisions than
+      guessed at from any single one.</p>
+
+      <p>A rejected disposal case isn't a dead end in the data \u2014 it's the beginning of a genuine
+      feedback loop, one that gets more accurate specifically because your own decisions, not a
+      generic industry model, are what it's actually learning from.</p>
+    `,
+  },
+  {
+    title: 'The Real Difference Between \u2019Available\u2019 and \u2019Idle\u2019 (and Why the Distinction Matters)',
+    slug: 'available-vs-idle-status',
+    locale: 'en',
+    excerpt: 'Every idle asset is available. Most available assets are not idle. Confusing the two is a quiet, common way fleet reporting ends up misleading.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-24T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/available-idle-cover.svg',
+    bodyHtml: `
+      <p>"Available" and "idle" sound like they should mean roughly the same thing \u2014 equipment
+      that's not currently being used. They're not the same thing at all, and confusing them is a
+      quiet, common way fleet reporting ends up misleading rather than merely imprecise.</p>
+
+      <h3>What each one actually measures</h3>
+      <p><a href="/docs/understanding-asset-status">Available</a> is a status: this specific asset
+      is not currently assigned to anyone, and as far as the system knows, it's ready to be handed
+      out the moment it's needed. It says nothing about how long it's been sitting that way. Idle is
+      a duration-based pattern: an asset that has held "Available" status for an extended period \u2014
+      TraceHub's threshold is 200 hours \u2014 without being assigned or used at all. Every idle
+      asset is available. Most available assets are not idle. That distinction matters more than it
+      sounds like it should.</p>
+
+      <h3>Why the difference actually matters for your numbers</h3>
+      <p>A healthy fleet has plenty of Available equipment \u2014 that's exactly what you want between
+      jobs: enough spare capacity that a new request doesn't sit waiting for something to free up.
+      A healthy fleet should have very little genuinely Idle equipment, because idle assets are
+      capital sitting completely unused, still depreciating, still technically owned, contributing
+      nothing. <a href="/docs/fleet-intelligence-formulas-explained">Asset Availability</a>, the
+      dashboard metric, is deliberately about the first idea \u2014 healthy operational slack \u2014
+      not a signal that something's wrong. A rising idle count is the one that's actually worth
+      investigating.</p>
+
+      <h3>What to actually do when something shows up as idle</h3>
+      <p>An idle asset usually means one of three things, and each has a different fix. It might be
+      genuinely surplus \u2014 bought for a project that ended, never redeployed, worth selling rather
+      than continuing to depreciate for nothing. It might be sitting at the wrong location for
+      current demand \u2014 fine equipment, just not where the work currently is, worth a transfer
+      rather than a sale. Or it might be functionally obsolete for how the fleet's needs have shifted,
+      even though it still works fine, which is a genuinely different conversation from either of
+      the other two.</p>
+
+      <p>The mistake is treating all three the same way \u2014 either ignoring idle equipment entirely
+      because "it's not actively a problem," or reflexively selling anything idle without checking
+      whether it's actually surplus versus just misallocated. A five-minute look at why something's
+      idle, specifically, usually makes which of the three situations you're looking at fairly
+      obvious.</p>
+
+      <h3>The habit worth building</h3>
+      <p>Idle assets are quiet by nature \u2014 nothing breaks, no alert fires on its own, it just sits
+      there costing you in slow depreciation and tied-up capital that could be doing something else.
+      Checking your idle list occasionally, the same way you'd check anything overdue or newly
+      flagged, catches this exact category of "nothing's technically wrong, but this is quietly
+      wasteful" before it accumulates into a genuinely large amount of dead capital nobody noticed
+      building up.</p>
+    `,
+  },
+  {
+    title: 'Why Your First Month of Asset Data Won\u2019t Be Perfect, and Why That\u2019s Fine',
+    slug: 'first-month-imperfect-data',
+    locale: 'en',
+    excerpt: "A lower-than-expected health score in week one is usually a missing-data problem, not a surprise about the equipment's actual condition.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-26T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/first-month-cover.svg',
+    bodyHtml: `
+      <p>Somewhere around week three of using a new asset system, a familiar moment of doubt shows
+      up: the data doesn't look as clean as expected. Some assets are missing details. A few health
+      scores look lower than they intuitively should. It's tempting to read this as a sign something's
+      wrong with the setup. It usually isn't \u2014 it's a sign the system is being honest about
+      exactly how much you actually knew about your own equipment before you started, which is
+      almost always less than it felt like beforehand.</p>
+
+      <h3>Why the first month always looks rougher than expected</h3>
+      <p>Before a real system existed, "we know our equipment" meant something informal and largely
+      unverified \u2014 a rough sense, spread across several people's memory, none of it checked
+      against reality recently. The moment you actually register everything with real fields \u2014
+      purchase dates, maintenance history, current condition \u2014 gaps that were always there
+      become visible for the first time, not because anything got worse, but because nothing was
+      hiding them before. A lower-than-expected <a href="/docs/asset-health-score">health score</a>
+      in week one is usually a missing-data problem, not a surprise about the equipment's actual
+      condition.</p>
+
+      <h3>What actually needs fixing versus what fixes itself</h3>
+      <p>Some gaps are worth actively closing: purchase price and category, since almost everything
+      else calculates from those two fields. Missing maintenance history is worth backfilling for
+      your highest-value or highest-risk assets specifically, rather than attempting all of it at
+      once \u2014 a complete history on the ten assets that matter most beats a superficial pass
+      across everything.</p>
+      <p>Other gaps genuinely fix themselves through ordinary use and don't need a dedicated cleanup
+      project: usage intensity and environment data get more accurate the more the system is
+      actually used day to day, and a <a href="/docs/ai-confidence-score-and-learning-loop">confidence
+      score</a> that's honestly low in month one because there isn't much history yet is doing
+      exactly what it should \u2014 it's supposed to be conservative before real evidence exists, not
+      confidently wrong.</p>
+
+      <h3>The mistake worth actively avoiding</h3>
+      <p>The real risk in month one isn't imperfect data \u2014 every real system starts there. It's
+      concluding the system is unreliable because of it, and quietly reverting to the informal
+      process it was meant to replace before giving the data time to actually mature. A recommendation
+      engine genuinely does get more accurate as real history accumulates behind it. Judging it
+      against a full year of eventual accuracy in week two is comparing it against a standard nothing
+      new could meet.</p>
+
+      <h3>A reasonable way to think about the first ninety days</h3>
+      <p>Expect the first month to surface gaps you didn't know you had \u2014 that's the system
+      working correctly, not a flaw in it. Expect month two to look meaningfully better as the
+      highest-priority gaps get closed and real usage data starts accumulating. By month three, most
+      operations find the numbers have caught up to something closer to what they assumed was already
+      true on day one. The lag between setup and full accuracy isn't a defect to route around. It's
+      just what it honestly takes to replace "we think we know" with "we actually know."</p>
+    `,
+  },
+  {
+    title: 'Seasonal Equipment: How to Handle Assets You Only Use Part of the Year',
+    slug: 'seasonal-equipment-tracking',
+    locale: 'en',
+    excerpt: 'Every number that assumes steady use gets distorted by months of entirely normal, expected inactivity that looks identical to something being forgotten.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-28T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/seasonal-cover.svg',
+    bodyHtml: `
+      <p>Equipment that only runs part of the year has a quiet reporting problem that equipment
+      running constantly never has: every number that assumes steady use \u2014 depreciation pace,
+      health score, "when did we last see this thing" \u2014 gets distorted by months of entirely
+      normal, expected inactivity that looks, on paper, identical to something being forgotten.</p>
+
+      <h3>Why seasonal equipment confuses systems built around continuous use</h3>
+      <p>A generator that runs every day ages predictably along a straight line. A generator that
+      runs three months a year for a specific seasonal operation \u2014 harvest equipment, event
+      infrastructure, snow-clearing machinery \u2014 experiences its wear in short bursts separated by
+      long stretches where nothing happens at all, and shouldn't. An
+      <a href="/docs/asset-health-score">idle-asset flag</a> that's perfectly correct for equipment
+      that's supposed to be in constant rotation will incorrectly flag seasonal equipment as
+      concerning every single off-season, for months at a time, unless something accounts for the
+      difference.</p>
+
+      <h3>Depreciation timing matters more here than it seems</h3>
+      <p><a href="/docs/usage-based-depreciation-methods">Usage-based depreciation</a> \u2014 tied to
+      actual hours or cycles run rather than calendar time \u2014 is usually the more honest choice
+      for genuinely seasonal equipment. A straight-line method assumes identical wear every month of
+      the year, which is precisely the assumption seasonal equipment violates by design. Getting this
+      one setting right avoids showing an asset as steadily losing value through eight months where
+      it never left the shed.</p>
+
+      <h3>The pre-season check matters more than the constant monitoring</h3>
+      <p>For equipment that only runs part of the year, the moment that matters most isn't a weekly
+      glance \u2014 it's a deliberate check right before the season starts. Equipment that's sat
+      unused for eight or nine months deserves an actual inspection before its first use of the
+      season, not an assumption that it's fine because nothing was logged as wrong while it sat
+      idle. A failure in week one of a short operating season is a far more expensive problem than
+      the same failure would be in month six of year-round use, simply because there's so much less
+      slack in the calendar to absorb the disruption.</p>
+
+      <h3>Don't let "it's off-season" become "we stopped tracking it"</h3>
+      <p>The specific failure mode worth avoiding: equipment quietly falls out of anyone's attention
+      during its long off-season, and by the time the season returns, nobody's entirely sure of its
+      condition, its location, or whether maintenance that was supposed to happen during the off-
+      season actually did. Treating the off-season as the deliberate window for maintenance \u2014
+      rather than a period where the asset simply disappears from anyone's radar \u2014 turns
+      unavoidable downtime into the most useful maintenance window the asset gets all year, instead
+      of a gap in anyone's attention.</p>
+
+      <p>None of this requires different software for seasonal equipment \u2014 it requires
+      remembering that "hasn't been used in months" means something completely different for a
+      combine harvester in January than it does for a delivery van, and setting expectations
+      accordingly rather than applying one universal standard to equipment that was never designed
+      to run on one universal schedule.</p>
+    `,
+  },
+  {
+    title: 'The Case for Assigning One Person to Actually Own Your Asset Data',
+    slug: 'case-for-data-ownership',
+    locale: 'en',
+    excerpt: '"Everyone\'s responsible for the data" quietly means no one is. Here\'s what a real owner actually does, and why it isn\'t a full-time role.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-10-31T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/data-ownership-cover.svg',
+    bodyHtml: `
+      <p>Ask most companies who's responsible for their asset data being accurate, and the honest
+      answer is usually "everyone," which in practice means no one. Data with a diffuse, unnamed
+      owner degrades quietly and nobody feels personally accountable for catching it \u2014 not out of
+      carelessness, just because a responsibility spread across an entire team is a responsibility
+      nobody specifically holds.</p>
+
+      <h3>Why "everyone's responsible" quietly means "no one is"</h3>
+      <p>When ten people can update an asset record, and none of them owns the outcome, small
+      inconsistencies accumulate without anyone noticing the pattern \u2014 one person's habit of
+      skipping the condition field, another's tendency to log locations a day late, a third who
+      never updates maintenance costs after a repair. Individually, each is a minor lapse. Collectively,
+      spread across a real fleet over a real year, they add up to records nobody can fully trust,
+      and no single person feels responsible for the accumulated drift because no single piece of it
+      was clearly theirs to own.</p>
+
+      <h3>What a real data owner actually does</h3>
+      <p>This doesn't need to be a full-time role, and it isn't about being the only person allowed
+      to touch records \u2014 <a href="/docs/roles-and-permissions">day-to-day updates</a> should
+      stay distributed across whoever's actually doing the work. It's a specific, narrower
+      responsibility: someone who periodically checks overall data health, decides what a category's
+      depreciation assumptions should actually be, and is the person who'd notice if something
+      systemic started going wrong \u2014 a whole category's health scores trending oddly, one
+      location's records looking consistently thinner than the rest.</p>
+
+      <h3>Why this role pays for itself quickly</h3>
+      <p>The alternative to a named owner isn't "nothing goes wrong," it's "problems go unnoticed
+      for longer, because nobody's specific job includes noticing them." A named owner reviewing the
+      <a href="/docs/fleet-intelligence-formulas-explained">fleet intelligence panel</a> even
+      occasionally catches systemic issues \u2014 a category's assumptions that never got updated, a
+      location whose records have quietly drifted \u2014 that would otherwise sit unnoticed until
+      they're large enough to be obvious to everyone, which is a far more expensive way to eventually
+      discover the same problem.</p>
+
+      <h3>This scales down, not just up</h3>
+      <p>Even a small operation benefits from naming this explicitly, even if it's a part-time
+      responsibility layered onto someone's existing role rather than a dedicated position. The
+      value isn't the title \u2014 it's that a specific person now has "is our asset data actually
+      trustworthy" as something they're accountable for, rather than a question that's implicitly
+      everyone's job and therefore, in practice, nobody's.</p>
+
+      <p>If you asked your own team right now who'd notice if your asset records started quietly
+      drifting from reality, and the honest answer is "I'm not sure, probably whoever happens to
+      catch it first" \u2014 that's worth fixing with a name, not a new tool. The system already
+      supports this. Someone just has to actually own it.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');

@@ -1,0 +1,30 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg33" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/><stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow33" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/><stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg33)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow33)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Lock with two layers -->
+  <rect x="510" y="230" width="180" height="140" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="3.5"/>
+  <path d="M 545 230 L 545 180 A 55 55 0 0 1 655 180 L 655 230" fill="none" stroke="#4DA3FF" stroke-width="8"/>
+  <circle cx="600" cy="300" r="20" fill="#0A1F3A" stroke="#7ED957" stroke-width="3"/>
+  <!-- Small phone icon with code, "second factor" -->
+  <g transform="translate(770, 300)">
+    <rect x="-30" y="-50" width="60" height="100" rx="10" fill="#0A1F3A" stroke="#7ED957" stroke-width="3.5"/>
+    <text x="0" y="8" text-anchor="middle" font-family="ui-monospace, monospace" font-size="16" fill="#7ED957" font-weight="700">482913</text>
+  </g>
+
+  <g transform="translate(460, 480)">
+    <rect x="0" y="0" width="280" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="140" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">SETUP TIME, ONE-TIME COST</text>
+    <text x="140" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#7ED957">~1 minute</text>
+  </g>
+</svg>
