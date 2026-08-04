@@ -1,0 +1,35 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg19" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow19" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg19)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow19)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Document -->
+  <path d="M 480 150 L 660 150 L 720 210 L 720 400 L 480 400 Z" fill="#132C52" stroke="#8CC2FF" stroke-width="3.5"/>
+  <path d="M 660 150 L 660 210 L 720 210 Z" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="2.5"/>
+  <line x1="510" y1="240" x2="650" y2="240" stroke="#8CC2FF" stroke-width="4" opacity="0.5"/>
+  <line x1="510" y1="270" x2="650" y2="270" stroke="#8CC2FF" stroke-width="4" opacity="0.5"/>
+  <line x1="510" y1="300" x2="610" y2="300" stroke="#8CC2FF" stroke-width="4" opacity="0.5"/>
+
+  <!-- Checkmark badge overlapping -->
+  <g transform="translate(700, 350)">
+    <circle r="46" fill="#0A1F3A" stroke="#7ED957" stroke-width="4.5"/>
+    <path d="M -18 0 L -6 14 L 20 -16" fill="none" stroke="#7ED957" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(460, 480)">
+    <rect x="0" y="0" width="280" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="140" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">SETTLED ON</text>
+    <text x="140" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">Actual cash value</text>
+  </g>
+</svg>

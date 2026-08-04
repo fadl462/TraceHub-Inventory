@@ -1110,6 +1110,230 @@ const englishPosts = [
       place.</p>
     `,
   },
+  {
+    title: 'The Generator Shortage Nobody\u2019s Talking About (and Why It Changes How Early You Should Act on Failure Warnings)',
+    slug: 'generator-shortage-2026',
+    locale: 'en',
+    excerpt: "AI data center demand is consuming generator and turbine manufacturing capacity. If a failure warning shows up on equipment that's now genuinely hard to quickly replace, that changes the math on how fast to act.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/generator-shortage-cover.svg',
+    bodyHtml: `
+      <p>If you own a generator and it's been running fine for years, there's a real chance you
+      haven't priced out a replacement recently \u2014 and if you had to order one today, you'd find
+      the market has changed underneath you. AI data center construction is consuming generator and
+      turbine manufacturing capacity at a scale the supply base wasn't built for. Industry buyers'
+      guides are now describing 2026 orders as effectively "queue-locked": the unit you can actually
+      get, not the one you'd ideally spec, increasingly drives the timeline.</p>
+
+      <p>This isn't limited to massive data-center-scale units either. The same manufacturing
+      capacity, the same transformer components, and in some cases the same raw material bottleneck
+      (a specialty steel called GOES, used in transformers, with the US relying on a single domestic
+      manufacturer) sits upstream of a lot of the mid-size generator equipment ordinary businesses
+      actually buy.</p>
+
+      <h3>Why lead time matters more than the purchase price right now</h3>
+      <p>The normal repair-versus-replace calculation weighs repair cost against replacement cost
+      and current condition. That calculation quietly assumes a replacement, once ordered, arrives
+      in a reasonable and predictable window. When lead times stretch \u2014 and multiple 2026
+      industry sources are describing exactly that for generator equipment right now \u2014 that
+      assumption breaks in a specific way: an asset that fails without warning doesn't just cost you
+      a repair bill, it potentially costs you weeks or months without the equipment at all while a
+      replacement works through a backlogged order queue.</p>
+
+      <h3>What this means practically: act earlier on warning signs, not later</h3>
+      <p>This is precisely the situation a <a href="/docs/failure-prediction-engine">failure
+      prediction window</a> is most valuable for. A forecast that a generator has an elevated
+      failure probability over the next 90 to 180 days used to mean "keep an eye on it, plan
+      routine maintenance." In a market where ordering a replacement today might not mean receiving
+      one for months, that same forecast means something closer to "if you're going to order a
+      replacement at all, the smart time to start that process is now, before you actually need
+      it" \u2014 not after a failure forces an emergency order into an already-backlogged queue at
+      whatever price and timeline you're offered under pressure.</p>
+
+      <p>The same logic applies to <a href="/docs/maintenance-scheduling-engine">scheduled
+      maintenance</a> that keeps slipping. A deferred service interval on equipment with a
+      comfortable replacement market is a minor scheduling problem. The same deferred interval on
+      equipment where a failure might mean months without a working replacement is a materially
+      different kind of risk, worth weighing accordingly.</p>
+
+      <h3>A reasonable response, without overreacting</h3>
+      <p>This doesn't mean panic-ordering replacements for equipment that's currently healthy. It
+      means treating any generator or similarly hard-to-quickly-replace equipment already flagged
+      with an elevated failure probability as a higher priority to actually act on \u2014 repair,
+      replace, or at minimum get a current quote and lead-time estimate \u2014 rather than letting it
+      sit on a watch list indefinitely. The cost of checking is small. The cost of discovering a
+      months-long lead time only after something has already failed is not.</p>
+    `,
+  },
+  {
+    title: '"It Still Runs" Is the Most Expensive Sentence in Asset Management',
+    slug: 'it-still-runs-expensive-sentence',
+    locale: 'en',
+    excerpt: "It's not wrong as a fact. It's incomplete as a decision - and it answers a different question than the one that actually matters.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-09T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/it-still-runs-cover.svg',
+    bodyHtml: `
+      <p>"It still runs" is the single most expensive sentence in asset management, and it doesn't
+      feel expensive when someone says it \u2014 it feels like common sense. That's exactly why it's
+      dangerous: it's not wrong as a fact, it's incomplete as a decision.</p>
+
+      <h3>What the sentence actually leaves out</h3>
+      <p>"It still runs" answers exactly one question: does this equipment currently function.
+      It answers nothing about what it costs to keep functioning, how much longer it's likely to
+      keep functioning, or what a comparable replacement would cost today. An asset can genuinely
+      still run and simultaneously be the most expensive way to accomplish its job in the entire
+      fleet \u2014 those two facts don't contradict each other, they just answer different
+      questions, and "it still runs" only ever answers the less useful one.</p>
+
+      <h3>Where this actually shows up</h3>
+      <p>The pattern is remarkably consistent: a piece of equipment needs its third repair this
+      year, each one individually reasonable to approve \u2014 a few hundred dollars here, a
+      part replacement there \u2014 and each one, taken alone, cheaper than replacement. Add them up
+      across the year and compare the total against current replacement cost, and the picture often
+      looks completely different than any single repair decision did in isolation. "It still runs"
+      was true at every single one of those individual decision points. It just was never the
+      question that mattered.</p>
+
+      <h3>The actual questions worth asking instead</h3>
+      <p>Our own <a href="/docs/disposal-intelligence-engine">disposal recommendation logic</a>
+      deliberately looks at cumulative maintenance cost relative to current replacement cost, not
+      whether any single repair looks reasonable on its own \u2014 because that's the comparison that
+      actually answers the question that matters. Three genuinely useful questions to ask instead of
+      "does it still run": What has this specific asset cost in repairs over the past twelve months,
+      total? What would a comparable replacement cost today, not what was originally paid for this
+      one? And is the gap between those two numbers closing or widening?</p>
+
+      <h3>Why the sentence persists anyway</h3>
+      <p>Part of the appeal of "it still runs" is that it's true and feels responsible \u2014 nobody
+      wants to be the person who replaced something that technically still worked. But the
+      responsible framing runs the other direction too: continuing to repair something whose
+      cumulative cost has quietly exceeded a sensible replacement isn't cautious spending, it's
+      the more expensive choice wearing a cautious-sounding sentence.</p>
+
+      <p>None of this means replace anything that needs a repair. It means the question worth
+      answering isn't whether something still works today \u2014 it's whether continuing to keep it
+      working is still the better financial choice than the alternative, and that's a question "it
+      still runs" was never actually designed to answer.</p>
+    `,
+  },
+  {
+    title: 'Setting Up Your First Location Structure: A Practical Walkthrough',
+    slug: 'setting-up-location-structure',
+    locale: 'en',
+    excerpt: "Fifteen minutes done well, months of quiet confusion done carelessly. Here's how to actually get it right the first time.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-12T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/location-setup-cover.svg',
+    bodyHtml: `
+      <p>Setting up locations is one of those tasks that takes fifteen minutes done well and causes
+      months of quiet confusion done carelessly \u2014 and because it's usually the very first thing
+      anyone does in a new asset system, it's easy to rush through before you've actually thought
+      about how your organization really operates.</p>
+
+      <h3>Match locations to how people actually talk about places, not the org chart</h3>
+      <p>The temptation is to set up locations that mirror a formal organizational structure \u2014
+      "Region 1 - Sub-district A - Warehouse 3." Nobody on the ground actually talks that way. If
+      your team says "the Tema warehouse" or "the north branch," your
+      <a href="/docs/setting-up-locations">location names</a> should say exactly that. A location
+      structure people have to translate in their heads before recognizing it is a structure people
+      will eventually stop checking carefully.</p>
+
+      <h3>Decide your granularity once, deliberately, not accidentally</h3>
+      <p>Is a location a whole building, or does it make sense to split large sites into zones \u2014
+      "Main Warehouse - Loading Dock" versus "Main Warehouse - Office Storage"? There's no universal
+      right answer, but there is a wrong way to arrive at one: doing it inconsistently, where some
+      sites get fine-grained zones and others get one location for an entire complex, based on
+      whoever happened to be setting things up that day rather than a deliberate standard. Pick a
+      granularity that matches how precisely you actually need to know where something is, apply it
+      the same way everywhere, and resist the urge to over-split a small site just because a bigger
+      one needed it.</p>
+
+      <h3>Set real coordinates from the start</h3>
+      <p>It takes one click on the map in the location form, and it's the difference between a
+      location list and an actual visual picture of where your operations physically are. This
+      matters more than it sounds like it should: a live map view makes a genuinely wrong location
+      assignment visually obvious \u2014 a truck showing up in the ocean, or three states away from
+      where it should be \u2014 in a way a list of names never will.</p>
+
+      <h3>Plan for the location you don't have yet</h3>
+      <p>If there's a real chance you'll open a second site within the next year, set up your
+      naming and structure now as if it already existed, even with just one location today. Retrofitting
+      a naming convention across months of existing scan history after the fact is a genuinely
+      annoying cleanup task that a few minutes of upfront thought avoids entirely. "Main Warehouse"
+      is a fine name for your only site. It becomes an ambiguous name the day a second site opens,
+      and by then it's touched hundreds of records instead of zero.</p>
+
+      <h3>The test for whether you got it right</h3>
+      <p>A good location structure passes a simple test: could someone brand new to the company,
+      looking only at the location list, correctly guess which one they'd actually need for a given
+      task? If the answer is yes, you've matched the structure to how people actually think about
+      your operation, which is the entire point \u2014 a location system nobody has to translate in
+      their head is one people will actually keep using correctly, month after month, without anyone
+      having to remind them.</p>
+    `,
+  },
+  {
+    title: 'How to Talk to Your Insurance Adjuster After an Equipment Loss',
+    slug: 'talking-to-insurance-adjuster',
+    locale: 'en',
+    excerpt: "The companies that get through a claim smoothly aren't the ones with better luck. They're the ones whose records already answered the questions before anyone asked them.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-14T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/insurance-cover.svg',
+    bodyHtml: `
+      <p>Nobody wants to be filing an insurance claim on damaged or lost equipment, and by the time
+      you're doing it, the last thing you want is to also be reconstructing basic facts about the
+      asset from memory while an adjuster waits on the other end of a call. The companies that get
+      through this process smoothly aren't the ones with better luck \u2014 they're the ones whose
+      records were already answering the adjuster's questions before the adjuster asked them.</p>
+
+      <h3>What an adjuster actually needs, and why "I'm not sure" costs you money</h3>
+      <p>A claim moves faster and settles more favorably when you can answer, immediately and
+      specifically: what the asset was, its condition immediately before the loss, its maintenance
+      history, and a defensible current value. Every "I'm not sure, let me check" doesn't just slow
+      the call down \u2014 it introduces room for a settlement to lean toward the adjuster's estimate
+      rather than yours, because an adjuster working from your confident, documented numbers has
+      less room to substitute their own assumptions than one working from vague memory.</p>
+
+      <h3>The record that actually helps: current value, not original price</h3>
+      <p>A common mistake is walking into a claim conversation with only the original purchase
+      price. Insurers settle based on actual cash value at the time of loss, not sentimental
+      attachment to what something originally cost \u2014 which means a defensible, current
+      <a href="/blog/understanding-asset-depreciation">depreciated value</a> is a far stronger
+      opening position than an outdated invoice number. If your book value already reflects real
+      usage, maintenance, and age rather than a static number from years ago, you walk into that
+      conversation from a position of leverage instead of catching up in real time.</p>
+
+      <h3>Maintenance history is proof of care, and it matters</h3>
+      <p>A well-maintained asset with a documented service history is a stronger claim than an
+      identical asset with no record of upkeep at all \u2014 it demonstrates the loss wasn't caused or
+      worsened by neglect, and it supports a higher legitimate valuation. A complete
+      <a href="/docs/the-audit-log">audit trail</a> covering when maintenance happened and who
+      performed it turns "we always took care of this" from an unsupported claim into a documented
+      fact an adjuster can actually verify.</p>
+
+      <h3>Location and assignment history close the "how did this happen" question fast</h3>
+      <p>Where an asset was, and who had it, at the time of a loss is frequently one of the first
+      questions asked \u2014 and one of the hardest to answer confidently from memory months or years
+      after the fact. <a href="/docs/location-history-and-timeline">Location history</a> and
+      assignment records answer this precisely, with real timestamps, removing an entire category of
+      back-and-forth from the conversation.</p>
+
+      <h3>The preparation that actually pays off</h3>
+      <p>None of this is about preparing for a claim you expect to file \u2014 it's that the same
+      records worth keeping for ordinary operational reasons happen to be exactly what you need the
+      one time something goes wrong. The best time to make sure an asset's value, maintenance
+      history, and location trail are all current isn't after a loss. It's now, on equipment that's
+      working perfectly fine, specifically because you don't know in advance which asset will need
+      this record someday.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');

@@ -1,0 +1,41 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg18" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow18" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg18)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow18)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Map panel -->
+  <rect x="420" y="150" width="360" height="260" rx="18" fill="#132C52" stroke="#4DA3FF" stroke-width="3"/>
+  <path d="M 420 220 L 780 220 M 500 150 L 500 410 M 620 150 L 620 410 M 700 150 L 700 410 M 420 300 L 780 300"
+        stroke="#4DA3FF" stroke-width="1" opacity="0.25"/>
+
+  <!-- Labeled pins -->
+  <g transform="translate(500, 250)">
+    <circle r="10" fill="#7ED957"/>
+    <rect x="18" y="-9" width="90" height="18" rx="5" fill="#0A1F3A" stroke="#7ED957" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(650, 280)">
+    <circle r="10" fill="#8CC2FF"/>
+    <rect x="18" y="-9" width="70" height="18" rx="5" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(560, 340)">
+    <circle r="10" fill="#8CC2FF"/>
+    <rect x="18" y="-9" width="80" height="18" rx="5" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="1.5"/>
+  </g>
+
+  <g transform="translate(460, 480)">
+    <rect x="0" y="0" width="280" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="140" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">TIME TO SET UP RIGHT</text>
+    <text x="140" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">~15 minutes</text>
+  </g>
+</svg>
