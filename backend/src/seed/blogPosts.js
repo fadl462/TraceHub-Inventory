@@ -3076,6 +3076,539 @@ const englishPosts = [
       job by simply existing.</p>
     `,
   },
+  {
+    title: 'Equipment-as-a-Service Is Growing 38% a Year: What That Means If You\u2019re the One Renting Equipment Out',
+    slug: 'equipment-as-a-service-2026',
+    locale: 'en',
+    excerpt: 'The market is projected to grow from \$5.6B to nearly \$55B by 2033. If you rent equipment out, this shift raises the stakes on your own records considerably.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-30T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/eaas-cover.svg',
+    bodyHtml: `
+      <p>The equipment-as-a-service market is projected to grow from roughly $5.6 billion in 2026
+      to nearly $55 billion by 2033 \u2014 a genuinely fast shift away from businesses buying
+      equipment outright toward paying for access to it, usage-based or subscription-based,
+      often with the provider retaining ownership and responsibility for upkeep. If you're on the
+      side of that relationship that owns the equipment and rents it out, this shift changes what
+      your own asset records need to do for you.</p>
+
+      <h3>Why renting out equipment raises the stakes on your own records</h3>
+      <p>When equipment sits in your own operation, sloppy records mostly cost you internally \u2014
+      inefficiency, some wasted spend, nothing anyone outside the company sees. The moment you're
+      renting equipment to someone else, your records become the actual basis of a business
+      relationship: what condition it was in when it left, what condition it came back in, whether
+      the agreed fee was actually paid, and who had it during a specific window if something goes
+      wrong. <a href="/docs/assigning-assets-to-people">Assignment tracking with hire fees</a>
+      exists precisely for this reason \u2014 the same mechanism that tracks an internal loan of
+      equipment also produces the record a rental relationship actually depends on.</p>
+
+      <h3>What this trend means practically</h3>
+      <p>As equipment-as-a-service models keep growing, the businesses winning in that model won't
+      be the ones with the best equipment \u2014 the equipment itself is often comparable across
+      competitors. They'll be the ones who can answer, instantly and confidently, exactly which unit
+      a customer has, its current condition, whether payment is current, and when it's due back.
+      That's not a hardware advantage. It's a records advantage, and it's available to any company
+      willing to actually keep the records current rather than tracking rentals in a notebook or a
+      memory that fades the moment a busy week hits.</p>
+
+      <p>If renting equipment out is already part of how you operate, or something you're
+      considering as this broader market keeps growing, the infrastructure question isn't whether
+      you can compete on equipment quality \u2014 it's whether your own records are good enough to
+      make the relationship trustworthy from the renter's side, every single time, not just when
+      someone remembers to check.</p>
+    `,
+  },
+  {
+    title: 'What a Report Actually Is vs. a Decision',
+    slug: 'report-vs-decision',
+    locale: 'en',
+    excerpt: 'It\u2019s entirely possible to review a thorough, accurate report every month and change nothing - because reviewing was mistaken for deciding.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-02T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/report-decision-cover.svg',
+    bodyHtml: `
+      <p>A report and a decision look similar \u2014 both involve numbers, both get reviewed, both
+      feel like progress \u2014 and treating them as the same thing is a quiet way a lot of good data
+      never actually changes anything.</p>
+
+      <h3>What separates the two</h3>
+      <p>A report describes a situation. A decision commits to a specific action because of it. It's
+      entirely possible to generate a thorough, accurate <a href="/docs/reports-and-analytics-page">
+      report</a> on fleet health every month, have everyone nod at it, and change nothing about how
+      the fleet is actually managed \u2014 the report did its job perfectly and the organization still
+      didn't act, because reviewing a report was mistaken for making a decision about it.</p>
+
+      <h3>Why this gap is so easy to fall into</h3>
+      <p>Reviewing a report feels like doing something \u2014 it takes real time, real attention, and
+      produces a real sense of having engaged with the data. A decision requires something harder: a
+      specific commitment, usually with a cost or a risk attached, made by someone willing to own
+      the outcome. It's genuinely easier to review twelve reports in a row than to make one hard call
+      based on what any of them actually said, and an organization can spend a lot of energy on the
+      easier half without ever reaching the harder one.</p>
+
+      <h3>The practical fix</h3>
+      <p>End every report review with an explicit question: given this, what are we actually doing
+      differently, starting when, and who owns it. If the honest answer is "nothing, we're just
+      noting it," that's sometimes genuinely the right call \u2014 but it should be a stated decision
+      to hold steady, not a report that quietly evaporated into a meeting with no actual outcome
+      attached to it. A report that doesn't produce at least an explicit decision to act or an
+      explicit decision not to hasn't finished its job yet.</p>
+    `,
+  },
+  {
+    title: 'The Case for Reviewing Your Fleet Grade Before Budget Season, Not During It',
+    slug: 'fleet-grade-before-budget-season',
+    locale: 'en',
+    excerpt: 'A number pulled cold under deadline pressure gets accepted at face value. There\u2019s no time left to investigate why it looks the way it does.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-05T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/grade-before-budget-cover.svg',
+    bodyHtml: `
+      <p>Budget season has a predictable rhythm: someone asks for fleet condition data right as
+      numbers are due, and whatever the <a href="/docs/fleet-intelligence-formulas-explained">fleet
+      grade</a> happens to say in that specific week becomes the basis for next year's equipment
+      spend. That timing is backwards, and it's worth fixing.</p>
+
+      <h3>Why checking during budget season is the wrong moment</h3>
+      <p>A fleet grade pulled cold, under deadline pressure, gets accepted at face value \u2014
+      there's no time to investigate why it looks the way it does, no time to distinguish a genuine
+      decline from a data gap, no time to separate an urgent capital need from a routine one. Whatever
+      the number says in that specific week becomes the plan for the next twelve months, for better
+      or worse, simply because there wasn't time to look closer.</p>
+
+      <h3>What reviewing it early actually buys you</h3>
+      <p>Checking your fleet grade and its underlying drivers a month or two before budget
+      conversations start gives you room to actually investigate anything surprising \u2014 chase
+      down whether a declining score reflects real wear or a maintenance-logging gap, identify which
+      specific category is driving Capital at Risk before you're asked to justify a number on the
+      spot, and walk into the actual budget conversation with a considered position rather than a
+      cold read of whatever the dashboard happened to show that week.</p>
+
+      <h3>The habit worth building</h3>
+      <p>Treat a fleet health review as its own separate step that happens before budget planning,
+      not as a number you glance at during it. The data doesn't change based on when you look at
+      it \u2014 your ability to actually understand and act on it does.</p>
+    `,
+  },
+  {
+    title: 'Why Asset Photos Age Poorly, and What to Do About It',
+    slug: 'why-asset-photos-age-poorly',
+    locale: 'en',
+    excerpt: 'A day-one photo is genuinely useful for about a year. After that it\u2019s a picture of what the equipment used to look like.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/photos-age-cover.svg',
+    bodyHtml: `
+      <p>A photo taken the day an asset was registered is genuinely useful \u2014 for about a year.
+      After that, it quietly becomes a picture of what the equipment used to look like, which is a
+      meaningfully different thing than what it looks like now, and the gap between the two grows
+      every month nobody notices it.</p>
+
+      <h3>Why a single photo isn't enough</h3>
+      <p>Equipment condition changes gradually enough that no single day feels like the moment to
+      take a new photo, which is exactly how three years can pass with the original day-one image
+      still sitting as the only visual record on file. That original photo remains accurate to a
+      pristine, freshly-purchased asset. It stops being accurate to reality almost immediately, in
+      small ways that eventually add up to a genuinely misleading picture of current condition.</p>
+
+      <h3>When a fresh photo is actually worth taking</h3>
+      <p>Rather than an arbitrary schedule, tie fresh photos to moments that already matter: after a
+      major repair, at the point an asset gets flagged in the
+      <a href="/docs/six-stage-disposal-workflow">disposal workflow</a>, or during a periodic
+      <a href="/blog/running-a-physical-asset-audit">physical audit</a> that's already happening
+      anyway. Each of these moments already has someone physically present with the equipment \u2014
+      capturing a current photo costs nothing extra and replaces a stale reference with an accurate
+      one, right when it matters most.</p>
+
+      <h3>The actual payoff</h3>
+      <p>A current photo, taken at the moment a real decision or claim depends on it, is worth
+      considerably more than a pristine day-one image that no longer resembles what anyone would
+      find walking up to the actual equipment. The habit isn't photographing constantly \u2014 it's
+      photographing at the moments that already matter, instead of relying on one image that ages out
+      of relevance almost immediately.</p>
+    `,
+  },
+  {
+    title: 'The Case for Reviewing Permissions Quarterly, Not Just at Hire and Departure',
+    slug: 'quarterly-permissions-review',
+    locale: 'en',
+    excerpt: 'Role assignments are usually correct on the day they\u2019re set. They become less correct as responsibilities genuinely change, and nobody\u2019s job includes noticing.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-09T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/permissions-review-cover.svg',
+    bodyHtml: `
+      <p>Most companies set access permissions carefully once \u2014 at hiring, maybe again at a
+      promotion or a departure \u2014 and never revisit them again in between. That leaves a real,
+      quietly accumulating gap: people whose actual responsibilities have shifted while their system
+      access stayed exactly where it started.</p>
+
+      <h3>Why access drifts even without anyone doing anything wrong</h3>
+      <p><a href="/docs/roles-and-permissions">Role assignments</a> are usually correct on the day
+      they're set. They become less correct as responsibilities genuinely change \u2014 someone moves
+      into a role that no longer needs Manager-level access, someone takes on responsibilities that
+      actually warrant more access than their original Staff role provided, and nobody's job includes
+      noticing either shift happened, because access review was never something anyone scheduled to
+      revisit.</p>
+
+      <h3>What a quarterly review actually catches</h3>
+      <p>A short, periodic pass through your team list \u2014 does each person's actual current
+      responsibility still match their access level \u2014 catches both directions of drift: someone
+      with more access than their current role justifies, which is a real security consideration, and
+      someone with less access than their current responsibilities need, which is a real productivity
+      one. Neither shows up on its own; both show up the moment someone actually asks the question.</p>
+
+      <h3>Why this is worth a standing calendar reminder</h3>
+      <p>Access review, like most things worth doing consistently, survives being a real habit far
+      better than a good intention. A quarterly fifteen-minute pass through your team's actual roles
+      costs almost nothing and catches drift within months rather than whenever a departure or an
+      incident finally forces someone to look closely at who can actually see what.</p>
+    `,
+  },
+  {
+    title: 'What Actually Happens to Your Data If You Ever Leave a Platform',
+    slug: 'data-portability-and-ownership',
+    locale: 'en',
+    excerpt: 'A fair question worth answering directly: could you walk away with everything that\u2019s actually yours, in a usable form, without a fight?',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-12T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/data-portability-cover.svg',
+    bodyHtml: `
+      <p>It's a fair question to ask of any platform holding your operational data, and an honest
+      one worth answering directly rather than dodging: what actually happens to your records if you
+      ever decide to leave.</p>
+
+      <h3>The honest answer</h3>
+      <p>Your asset, assignment, and location data is genuinely yours \u2014 not TraceHub's, and not
+      something held hostage to keep you subscribed. Every core report is available as a real
+      <a href="/docs/exporting-csv-pdf-powerpoint">CSV export</a>, which is deliberately the most
+      complete and portable format specifically because it's the one that opens cleanly in
+      essentially any other system, spreadsheet, or database you might move to next, without needing
+      us at all once it's in your hands.</p>
+
+      <h3>Why this matters even if you never plan to leave</h3>
+      <p>A platform that makes your own data hard to extract is optimizing for lock-in over trust,
+      and that's worth noticing as a signal regardless of whether you ever actually act on it. The
+      test worth applying to any system holding your operational records, this one included: could
+      you walk away with everything that's actually yours, in a usable form, without a fight. If the
+      honest answer is no, that's worth knowing well before you're ever in a position where you
+      urgently need it to be yes.</p>
+
+      <p>We'd rather earn your continued use through the platform actually being useful than through
+      making your own records difficult to take with you. That's not a marketing position \u2014 it's
+      why full CSV export exists on every report in the first place.</p>
+    `,
+  },
+  {
+    title: 'The Real Difference Between a Manager Reviewing Something and Approving It',
+    slug: 'reviewing-vs-approving',
+    locale: 'en',
+    excerpt: 'Reviewing means looking at it. Approving means putting your name behind a specific outcome. Conflating the two is where accountability quietly goes missing.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-14T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/review-approve-cover.svg',
+    bodyHtml: `
+      <p>"I reviewed it" and "I approved it" get used almost interchangeably in casual conversation,
+      and the gap between them is exactly where accountability quietly goes missing in a lot of
+      organizations.</p>
+
+      <h3>What each one actually commits to</h3>
+      <p>Reviewing something means looking at it. Approving it means putting your name behind a
+      specific outcome and accepting responsibility if it turns out to be wrong. A Manager who
+      "reviewed" a disposal case and a Manager who "approved" it at the same
+      <a href="/docs/six-stage-disposal-workflow">workflow stage</a> sound like they did the same
+      thing \u2014 only one of them actually committed to anything.</p>
+
+      <h3>Why conflating the two causes real problems</h3>
+      <p>When "reviewed" gets treated as equivalent to "approved," a genuine gap opens up: someone
+      glanced at something, didn't object, and later discovers they're being held accountable for a
+      decision they never actually felt they made. This isn't usually deception \u2014 it's genuine
+      ambiguity about what looking at something was actually supposed to mean, and it surfaces at
+      exactly the wrong moment, usually after something's already gone wrong.</p>
+
+      <h3>The fix is precision in language, not more process</h3>
+      <p>A workflow with real, distinct stages \u2014 review, then a separate approval \u2014 already
+      encodes this distinction structurally. The remaining work is cultural: making sure everyone
+      involved understands that moving something to "approved" is a genuine commitment, not a
+      formality that happens automatically once someone's looked at it. That small linguistic
+      precision, insisted on consistently, closes a surprising amount of the accountability gap that
+      opens up when review and approval quietly become the same word in everyone's head.</p>
+    `,
+  },
+  {
+    title: 'Why Consistent Timestamps Matter More Than People Realize',
+    slug: 'why-timestamps-matter',
+    locale: 'en',
+    excerpt: 'A system-generated timestamp is one of the few things in an asset record genuinely difficult to fake convincingly after the fact.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-16T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/timestamps-cover.svg',
+    bodyHtml: `
+      <p>A timestamp feels like the most boring possible piece of data \u2014 just a date and time,
+      automatically generated, nobody thinks about it. It's also one of the few things in an asset
+      record that's genuinely difficult to fake convincingly after the fact, which is exactly why it
+      quietly matters more than almost anything else on the page.</p>
+
+      <h3>What a real timestamp actually proves</h3>
+      <p>When a maintenance record, a location scan, or an assignment shows a specific timestamp
+      generated automatically by the system at the moment the action happened, that's a fundamentally
+      different kind of evidence than a date someone typed in from memory two weeks later. The
+      <a href="/docs/the-audit-log">audit log</a> exists specifically because "when did this
+      actually happen" is often the exact question that matters most in a dispute, an insurance claim,
+      or a compliance review \u2014 and a system-generated timestamp answers it far more credibly than
+      anyone's recollection ever could.</p>
+
+      <h3>Why this argues for logging things in real time, not in batches</h3>
+      <p>A maintenance record entered the moment work finishes carries a genuinely trustworthy
+      timestamp. The same record, reconstructed from memory at the end of a busy week and entered
+      three days later, carries a timestamp that's honest about when it was entered but says nothing
+      reliable about when the work actually happened. The gap between the two isn't cosmetic \u2014
+      it's the difference between a record that can genuinely answer "when" and one that can only
+      answer "sometime before this entry."</p>
+
+      <h3>The habit worth reinforcing</h3>
+      <p>Encourage logging as close to the actual moment as practically possible, not as an
+      end-of-day or end-of-week batch task. The few extra seconds this costs in the moment buys
+      genuinely credible timestamps later, exactly when a precise "when" turns out to matter more than
+      anyone expected it would.</p>
+    `,
+  },
+  {
+    title: 'The Case for a Standard Checklist When Opening a New Location, Not Just Onboarding a New Hire',
+    slug: 'new-location-checklist',
+    locale: 'en',
+    excerpt: 'None of it is individually hard. All of it is easy to skip when a new site is opening under time pressure.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-19T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/new-location-checklist-cover.svg',
+    bodyHtml: `
+      <p>Companies routinely build a real onboarding checklist for new hires and rarely build an
+      equivalent one for a new location \u2014 despite opening a new site introducing its own
+      predictable set of setup steps that are just as easy to skip under the pressure of getting a
+      new operation running quickly.</p>
+
+      <h3>What actually needs to happen, every time</h3>
+      <p>Every new <a href="/docs/setting-up-locations">location</a> needs the same handful of
+      things done well: a name that matches how the team will actually refer to it, real coordinates
+      set so it shows up correctly on the live map, and a decision about who at that site has which
+      level of access from day one, not figured out reactively after something's already gone wrong.
+      None of this is individually hard. All of it is easy to skip when a new site is opening under
+      time pressure and getting the doors open feels more urgent than getting the naming convention
+      right.</p>
+
+      <h3>Why skipping it costs more later than doing it right away</h3>
+      <p>A location set up hastily \u2014 a placeholder name, no coordinates, permissions figured out
+      ad hoc \u2014 usually keeps functioning well enough that nobody circles back to fix it properly,
+      right up until it's touched hundreds of asset records and retrofitting the fix means correcting
+      all of them retroactively instead of getting it right once, on day one, when there was nothing
+      yet to correct.</p>
+
+      <h3>The fix is genuinely simple</h3>
+      <p>A short, standard checklist for opening any new location \u2014 the same one every time,
+      regardless of how quickly the site needs to open \u2014 costs fifteen minutes and prevents the
+      exact kind of retroactive cleanup that's considerably more annoying than the setup itself ever
+      was.</p>
+    `,
+  },
+  {
+    title: 'What \u2019Unlimited Users\u2019 Actually Changes About How a Company Operates',
+    slug: 'what-unlimited-users-changes',
+    locale: 'en',
+    excerpt: 'Per-seat pricing quietly shapes behavior in a way that\u2019s easy to miss until it\u2019s gone - starting with shared logins that defeat the whole point of an audit trail.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/unlimited-users-cover.svg',
+    bodyHtml: `
+      <p>"Unlimited users" reads like a technical spec on a pricing page, and it's easy to skim past
+      without registering what it actually changes about how a company operates day to day \u2014
+      which is considerably more than the phrase suggests.</p>
+
+      <h3>The real shift it enables</h3>
+      <p>Per-seat pricing quietly shapes behavior in a way that's easy to miss until it's gone: when
+      every additional login costs money, companies naturally ration access \u2014 one shared login
+      for a whole crew, staff who could genuinely use visibility into their own assignments left out
+      because adding them costs another seat. Unlimited users removes that specific calculation
+      entirely: every person who could benefit from their own
+      <a href="/docs/roles-and-permissions">appropriately scoped access</a> can have it, without
+      anyone weighing whether it's worth the incremental cost.</p>
+
+      <h3>Why shared logins are a real, quiet cost</h3>
+      <p>A shared login means the audit trail can't actually tell you who did what \u2014 every action
+      taken under a shared account is attributed to whoever happens to be logged in, which defeats
+      much of the point of having an <a href="/docs/the-audit-log">audit log</a> at all. Real,
+      individual accounts for everyone who touches the system isn't a nice-to-have; it's what makes
+      accountability actually mean something instead of being a theoretical feature nobody can
+      practically use because the accounts themselves aren't individual.</p>
+
+      <h3>The practical takeaway</h3>
+      <p>If your team currently shares logins to avoid per-seat costs, unlimited user access isn't
+      just a pricing convenience \u2014 it's the thing that makes every other accountability feature
+      in the system actually work as intended, for everyone who touches equipment, not just whoever
+      happened to get an individual account under the old constraint.</p>
+    `,
+  },
+  {
+    title: 'The Case for Naming a Backup Approver, Not Just a Primary One',
+    slug: 'case-for-backup-approver',
+    locale: 'en',
+    excerpt: 'A single approver works perfectly right up until they\u2019re unreachable the exact week a genuinely time-sensitive case comes up.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-23T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/backup-approver-cover.svg',
+    bodyHtml: `
+      <p>A single approver for disposal decisions works perfectly right up until that person is on
+      leave, unreachable, or simply busy the exact week a genuinely time-sensitive case comes up \u2014
+      at which point a well-designed approval process quietly becomes a bottleneck nobody planned
+      for.</p>
+
+      <h3>Why a single point of approval is a real, if invisible, risk</h3>
+      <p>The <a href="/docs/six-stage-disposal-workflow">disposal workflow's</a> approval gates exist
+      to make sure the right person weighs in before a significant decision \u2014 exactly the right
+      design. What it doesn't automatically solve is what happens when that specific right person is
+      unavailable for a stretch of time, and a case that genuinely needed a timely decision instead
+      sits waiting, not because anyone did anything wrong, but because nobody planned for the
+      approver's own unavailability.</p>
+
+      <h3>The fix costs almost nothing to set up</h3>
+      <p>Naming a real backup approver \u2014 someone with the same access level who's briefed on
+      what a reasonable approval actually looks like \u2014 before it's urgently needed costs a short
+      conversation and an access-level check. Figuring it out during an actual delay, with a genuinely
+      time-sensitive case stuck waiting, costs considerably more, in both the delay itself and the
+      scramble to work out who's actually allowed to step in.</p>
+
+      <h3>Where else this same logic applies</h3>
+      <p>The same reasoning holds anywhere a single named person is the only one who can move
+      something forward \u2014 not just disposal approval, but anywhere a workflow has exactly one
+      person capable of unblocking it. A backup, named in advance rather than improvised under
+      pressure, is one of the cheapest resilience investments available, and one of the most commonly
+      skipped simply because the primary approver usually is around, right up until the one time they
+      aren't.</p>
+    `,
+  },
+  {
+    title: 'Why \u2019We\u2019ve Always Done It This Way\u2019 Is the Most Expensive Sentence in Any Legacy Process',
+    slug: 'always-done-it-this-way',
+    locale: 'en',
+    excerpt: 'It\u2019s rarely wrong about the past. The trouble is what it quietly assumes about the present, without anyone actually checking.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-26T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/always-done-it-cover.svg',
+    bodyHtml: `
+      <p>"We've always done it this way" is rarely wrong about the past \u2014 it's usually an
+      accurate description of how things have genuinely been handled for years. The trouble is what
+      it quietly assumes about the present: that whatever justified the original approach still
+      applies, without anyone actually checking.</p>
+
+      <h3>Why legacy processes survive long past their reason</h3>
+      <p>A process built around a real constraint \u2014 no phones capable of scanning a code, a
+      smaller fleet where a spreadsheet genuinely sufficed, a single location where informal tracking
+      worked fine \u2014 often keeps running on habit alone long after that original constraint
+      disappeared. Nobody consciously decided to keep doing it the old way forever; the original
+      reason just quietly stopped being checked once the process became familiar enough to stop
+      questioning.</p>
+
+      <h3>The question worth asking about any long-standing process</h3>
+      <p>Not "has this always worked" \u2014 it probably has, well enough to survive this long. The
+      more useful question: what was actually true when this started, and is it still true now.
+      A manual audit process built when the fleet was small enough to walk in an afternoon deserves a
+      second look once that same fleet has tripled. A verbal handoff system built when everyone
+      worked from one building deserves reconsidering the moment a second site opens.</p>
+
+      <h3>The practical habit</h3>
+      <p>Periodically ask, of any process that's been running unchanged for years: if we were
+      designing this from scratch today, knowing what we know now, would we build it exactly this
+      way. If the honest answer is no, "we've always done it this way" was never actually a reason to
+      keep going \u2014 it was just the absence of anyone stopping to ask.</p>
+    `,
+  },
+  {
+    title: 'What a Company\u2019s Very First Week on a Real Asset System Actually Looks Like',
+    slug: 'first-week-on-a-real-system',
+    locale: 'en',
+    excerpt: 'It looks nothing like a product demo, and that gap is exactly where early enthusiasm can sour into disappointment that was never actually warranted.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-28T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/first-week-cover.svg',
+    bodyHtml: `
+      <p>A company's first real week on an actual asset-tracking system looks nothing like the
+      polished dashboard in a product demo, and it's worth describing honestly, because the gap
+      between expectation and reality is exactly where a lot of early enthusiasm quietly sours into
+      disappointment that was never actually warranted.</p>
+
+      <h3>What actually happens in week one</h3>
+      <p>Someone registers the first handful of assets and immediately notices gaps in what they
+      actually know \u2014 a purchase date nobody wrote down, a maintenance history that exists only
+      as someone's memory. The first few QR scans feel slightly awkward before becoming completely
+      routine within days. A <a href="/blog/first-month-imperfect-data">health score</a> shows up
+      looking rougher than expected, for reasons that have nothing to do with the equipment and
+      everything to do with how little historical data exists yet to work from.</p>
+
+      <h3>Why this is normal, not a bad sign</h3>
+      <p>None of this reflects the system working poorly \u2014 it reflects a real, honest system
+      encountering a real, imperfect starting point for the first time, which is exactly what should
+      happen. The alternative, a system that shows a polished, complete-looking picture from day one
+      regardless of what's actually been entered, would be lying to you in a much more dangerous
+      way than an honest "we don't know enough yet" ever could.</p>
+
+      <h3>What to actually expect, and when</h3>
+      <p>The first week is registration and mild friction. The first month is closing the most
+      important data gaps. By the third month, most operations find the numbers have caught up to
+      something close to what they assumed was already true on day one \u2014 except now it's
+      actually verified, not assumed. The rough first week isn't a sign to worry. It's a sign the
+      system is being honest with you from the very start.</p>
+    `,
+  },
+  {
+    title: 'Closing Out the Year: A Genuine Year-End Asset Review Checklist',
+    slug: 'year-end-asset-review-checklist',
+    locale: 'en',
+    excerpt: 'A natural checkpoint that exists on the calendar whether you use it deliberately or not. Four things actually worth a real look before the year closes.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-12-30T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/year-end-review-cover.svg',
+    bodyHtml: `
+      <p>Closing out a year is a genuinely useful, underused moment for asset management \u2014 a
+      natural checkpoint that exists on the calendar whether you use it deliberately or not, and one
+      that's easy to let pass with nothing more than a vague sense that "we should look at this
+      sometime."</p>
+
+      <h3>What actually deserves a look before the year closes</h3>
+      <p>Four things are worth a genuine year-end pass, not a quick glance: whether category
+      <a href="/blog/recalibrate-depreciation-assumptions">depreciation assumptions</a> still match
+      how your equipment actually aged this year; whether your <a href="/docs/fleet-intelligence-formulas-explained">
+      fleet grade</a> trend over the past twelve months tells a story worth acting on heading into
+      next year; whether anything's been sitting <a href="/blog/available-vs-idle-status">idle</a>
+      long enough that it's worth a real decision rather than another year of quiet neglect; and
+      whether your team's <a href="/docs/roles-and-permissions">access levels</a> still match who's
+      actually doing what, a year on from whenever they were last reviewed.</p>
+
+      <h3>Why year-end specifically, rather than any other time</h3>
+      <p>None of these four things strictly require a calendar-driven trigger \u2014 they're worth
+      doing periodically regardless of the date. But a natural year-end checkpoint, already
+      happening on every calendar whether you use it or not, is an easy anchor to actually build the
+      habit around, rather than leaving "we should review this sometime" to compete against whatever
+      feels more urgent in any given ordinary week.</p>
+
+      <h3>Starting the next year on solid ground</h3>
+      <p>None of this needs to be elaborate. An afternoon spent on these four questions, once a
+      year, closes exactly the kind of drift that otherwise accumulates quietly for months at a time.
+      Whatever this year looked like, next year's numbers are worth starting from an honestly
+      reviewed baseline rather than whatever assumptions happened to carry over unexamined.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');
