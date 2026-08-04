@@ -64,7 +64,7 @@ export default function BlogPostView() {
   return (
     <div className="min-h-screen bg-surface flex flex-col">
       <SiteHeader />
-      <main className="flex-1 max-w-2xl mx-auto px-6 py-16 w-full">
+      <main className="flex-1 max-w-5xl mx-auto px-6 sm:px-10 py-16 w-full">
         <Link to="/blog" className="inline-flex items-center gap-1.5 text-sm text-ink/50 hover:text-ink font-medium mb-8 transition-colors">
           <ArrowLeft size={15} /> {t('blogPage.allUpdates')}
         </Link>
