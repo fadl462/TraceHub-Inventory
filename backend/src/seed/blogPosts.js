@@ -1334,6 +1334,228 @@ const englishPosts = [
       this record someday.</p>
     `,
   },
+  {
+    title: 'Your Maintenance Records Are Now a Selling Point in a Booming Used-Equipment Market',
+    slug: 'used-equipment-market-documentation-value',
+    locale: 'en',
+    excerpt: 'The used equipment market is having a structural boom, not a cyclical one. Documented condition and maintenance history is exactly where that shows up in what you can actually sell for.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-16T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/used-equipment-cover.svg',
+    bodyHtml: `
+      <p>The used equipment market used to be where you shopped when you couldn't afford new. That
+      framing is genuinely out of date. The global used construction equipment market alone is
+      projected in the range of $130 billion for 2026, growing steadily year over year \u2014 and
+      industry analysts are explicit that this is a structural shift in how fleets get built, not a
+      temporary reaction to a bad economy. Contractors with the budget for new equipment are
+      deliberately choosing well-maintained used machines instead, in meaningful numbers.</p>
+
+      <h3>Why this is happening now, specifically</h3>
+      <p>Two forces are reinforcing each other. New-equipment lead times have stretched into the
+      12-to-18-month range in some categories, which turns a used machine from a fallback option
+      into the only realistic way to get equipment running this quarter rather than next year.
+      At the same time, digital marketplaces have made it far easier for a buyer to actually
+      evaluate a used machine's condition, history, and pricing before committing \u2014 which
+      matters, because that evaluation is exactly where documentation stops being paperwork and
+      starts being a real financial factor.</p>
+
+      <h3>What this means if you're the one selling</h3>
+      <p>A buyer evaluating two otherwise-identical used machines, one with a complete, verifiable
+      maintenance and usage history and one with none, isn't choosing between equal options at
+      different prices \u2014 the documented one is a fundamentally lower-risk purchase, and buyers
+      in a market with real choice will pay for that. A <a href="/docs/the-audit-log">complete audit
+      trail</a> covering maintenance, location, and prior assignments isn't just an internal
+      record-keeping nicety anymore. In a market this active, it's leverage in an actual negotiation,
+      the difference between a buyer's confident offer and a buyer's cautious, discounted one.</p>
+
+      <p>This connects directly to how we built the <a href="/docs/six-stage-disposal-workflow">
+      disposal workflow's</a> sale pathway: recording a final sale amount and method isn't
+      bureaucracy for its own sake, it's building exactly the kind of documented history that makes
+      the next comparable asset easier to sell for a fair price, because the pattern of what your
+      equipment actually sells for becomes a real, referenceable data point instead of a guess.</p>
+
+      <h3>What this means if you're the one buying used</h3>
+      <p>The same logic runs in reverse: this is a good moment to be skeptical of a used listing
+      with no real service history behind it, precisely because the market is competitive enough
+      that well-documented equipment is out there to compare against. A machine with genuine,
+      verifiable maintenance records is worth a premium over an identical-looking one with none \u2014
+      and in an active market, you don't have to accept the undocumented one just because it's
+      available first.</p>
+
+      <p>None of this requires predicting where equipment prices go next. It just means treating
+      your own maintenance and usage records as something with real resale value attached, not
+      merely an internal bookkeeping habit \u2014 because in the market as it actually exists right
+      now, that's exactly what they are.</p>
+    `,
+  },
+  {
+    title: 'Custom Fields: The Feature That Makes or Breaks Adoption at Scale',
+    slug: 'custom-fields-adoption',
+    locale: 'en',
+    excerpt: 'The moment someone starts a parallel spreadsheet for the one piece of information the system has nowhere to put, trust in the main system starts eroding for everything.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-19T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/custom-fields-cover.svg',
+    bodyHtml: `
+      <p>Custom fields are one of those features that sound minor in a product tour and turn out to
+      quietly determine whether a system actually gets adopted at scale. The pattern is
+      consistent: the platform works fine for the first month, and then someone on the team hits
+      the same wall \u2014 "there's nowhere to put the one piece of information we actually organize
+      our work around" \u2014 and starts keeping a parallel spreadsheet for exactly that. Once a
+      parallel spreadsheet exists for anything, trust in the main system starts eroding for
+      everything.</p>
+
+      <h3>What that missing field usually turns out to be</h3>
+      <p>It's rarely something exotic. It's a compliance certificate number a regulated industry
+      needs on file. It's an internal project code that finance reconciles against. It's a
+      manufacturer's specific asset tag format that predates the current system and everyone still
+      refers to informally. None of these are edge cases \u2014 they're the specific vocabulary a
+      given organization actually uses to talk about its own equipment, and a system without room
+      for that vocabulary is asking people to translate in their heads every single time, which is
+      exactly the kind of friction that erodes adoption slowly and invisibly.</p>
+
+      <h3>Why bolting it on later is worse than planning for it early</h3>
+      <p><a href="/docs/categories-and-custom-fields">Custom fields</a> defined early, before
+      hundreds of assets exist, cost nothing beyond a few minutes of setup. The same fields added
+      after the fact mean retroactively populating them across every existing asset \u2014 the exact
+      kind of unglamorous cleanup work that gets postponed indefinitely and often just never
+      happens. If there's a real chance your organization tracks something specific that a generic
+      asset system wouldn't anticipate, it's worth a five-minute conversation before registering
+      your first hundred assets, not after.</p>
+
+      <h3>The discipline that actually matters: don't over-add</h3>
+      <p>The opposite failure mode is real too \u2014 a system with forty custom fields, most of them
+      relevant to only a handful of assets, is its own kind of friction. Every optional field adds a
+      small amount of visual noise to a form everyone has to fill out. The right number of custom
+      fields is genuinely "as many as your organization needs to describe what makes your equipment
+      distinctly yours, and not one more" \u2014 which is a judgment call worth making deliberately,
+      not a box to fill just because the option exists.</p>
+
+      <h3>A practical test before adding one</h3>
+      <p>Ask whether the field answers a question someone actually gets asked regularly \u2014 "what's
+      the compliance cert number on this" \u2014 versus a question that's theoretically interesting
+      but never actually comes up. If nobody's asked the question in the last six months, it's
+      probably not worth a permanent field on every asset form. If it comes up regularly enough that
+      someone's currently tracking it in a side spreadsheet, that's exactly the signal that it
+      belongs in the system properly instead.</p>
+
+      <p>The measure of a good custom field setup isn't how comprehensive it looks on day one \u2014
+      it's whether, six months in, anyone still feels the need to keep a second, unofficial record
+      of anything. That's the actual sign the system fits how your organization really works.</p>
+    `,
+  },
+  {
+    title: 'The Difference Between Reserved and Available (and Why It\u2019s Easy to Get Wrong)',
+    slug: 'reserved-vs-available-status',
+    locale: 'en',
+    excerpt: "Both describe an asset nobody currently has. Only one of them means it's genuinely up for grabs - and mixing them up quietly corrupts your availability numbers.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/reserved-available-cover.svg',
+    bodyHtml: `
+      <p>Of the six asset statuses, Reserved and Available cause the most confusion, and the
+      confusion is understandable \u2014 they're genuinely similar in one important way and genuinely
+      different in another, and mixing them up quietly corrupts availability reporting in a way
+      that's easy to miss until someone's making a decision based on numbers that don't mean what
+      they think.</p>
+
+      <h3>What actually distinguishes them</h3>
+      <p>Both statuses describe an asset that isn't currently assigned to anyone \u2014 that's the
+      similarity, and it's exactly what causes people to reach for whichever one comes to mind
+      first. The real distinction is intent: <a href="/docs/understanding-asset-status">Available</a>
+      means genuinely up for grabs, no plan attached. Reserved means specifically held for a known,
+      upcoming use \u2014 next week's job, a specific project already on the calendar \u2014 without
+      being formally assigned yet because the work hasn't actually started.</p>
+
+      <h3>Why the difference matters more than it seems to</h3>
+      <p>Your dashboard's asset availability figure counts what's genuinely Available \u2014 and
+      that number directly informs decisions like whether you actually need to rent or buy
+      something additional for an upcoming job, or whether you already have enough sitting idle.
+      If equipment that's actually earmarked for next week gets left marked Available instead of
+      Reserved, that availability number overstates what you can genuinely deploy right now,
+      and someone might reasonably decide against a rental they'll end up needing after all \u2014
+      or double-book equipment that was never really free in the first place.</p>
+
+      <h3>The habit that keeps this clean</h3>
+      <p>The moment you know an asset is earmarked for something specific but the work hasn't
+      started yet, mark it Reserved rather than leaving it Available "for now" with a mental note to
+      remember it's spoken for. Mental notes don't show up on anyone else's dashboard. A status
+      change takes seconds and means the next person checking availability sees an accurate picture
+      instead of one that depends on them also knowing what you're privately planning.</p>
+
+      <h3>What to do once the reserved use actually starts</h3>
+      <p>Reserved isn't meant to be a permanent parking spot \u2014 once the planned use actually
+      begins, it should become a real <a href="/docs/assigning-assets-to-people">assignment</a>,
+      not stay marked Reserved indefinitely. An asset sitting in Reserved for months usually means
+      either the plan changed and nobody updated the status, or the plan happened and nobody moved
+      it to a real assignment \u2014 either way, worth a quick check rather than leaving it exactly
+      because it currently isn't causing an obvious problem.</p>
+
+      <p>Six statuses instead of two or three exists specifically so a status can describe reality
+      precisely rather than approximately. Using Reserved and Available for what they're each
+      actually for is a small habit that keeps your most-checked dashboard number honest.</p>
+    `,
+  },
+  {
+    title: 'How Often Should You Actually Recalibrate Your Depreciation Assumptions?',
+    slug: 'recalibrate-depreciation-assumptions',
+    locale: 'en',
+    excerpt: "A depreciation profile that's never been revisited isn't necessarily wrong - but it's also never been confirmed right, and those are different things.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-09-23T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/recalibrate-cover.svg',
+    bodyHtml: `
+      <p>Every asset category carries a default useful-life and residual-value assumption, set once
+      and, for most companies, never revisited again. That default was a reasonable estimate the
+      day someone set it. Whether it's still reasonable is worth actually checking periodically \u2014
+      and most companies don't, simply because nothing prompts the question until a number looks
+      obviously wrong.</p>
+
+      <h3>Why the default eventually drifts from reality</h3>
+      <p>A useful-life assumption is a bet about how long equipment in a category typically lasts
+      under typical use. That bet can quietly go stale in either direction. Equipment might be
+      genuinely lasting longer than assumed because maintenance practices improved since the
+      assumption was set, or shorter because usage intensity crept up as the business grew. Either
+      way, every asset registered under that category inherits a depreciation curve that no longer
+      matches what's actually happening to your equipment \u2014 not because anyone did anything
+      wrong, but because nobody revisited an assumption that was only ever meant to be a reasonable
+      starting estimate.</p>
+
+      <h3>The honest signal that it's time to check</h3>
+      <p>You don't need a calendar reminder for this \u2014 you need to notice a specific pattern:
+      multiple assets in the same category consistently reaching the end of their assumed useful
+      life while still functioning well, or the reverse, consistently failing well before their
+      assumed life is up. Either pattern, repeated across several assets rather than one outlier,
+      is a real signal that the <a href="/docs/categories-and-custom-fields">category's
+      depreciation profile</a> itself needs adjusting, not just the individual assets.</p>
+
+      <h3>What adjusting it actually fixes, and what it doesn't</h3>
+      <p>Updating a category's useful-life or residual-value assumption changes the baseline for
+      future depreciation calculations \u2014 both for new assets registered under that category and
+      for the ongoing calculations on existing ones. It's a genuinely useful correction when the
+      pattern is real. It's not a substitute for <a href="/docs/registering-an-asset">per-asset
+      overrides</a> when one specific unit is legitimately different from its category's typical
+      case \u2014 a generator that's seen unusually light use, or one running in an unusually harsh
+      environment, is better handled with an individual override than by changing the assumption for
+      every asset in that category on its account.</p>
+
+      <h3>A reasonable check-in cadence</h3>
+      <p>Once a year, per category, is a reasonable default \u2014 not because depreciation
+      assumptions need constant tinkering, but because a year is long enough for a real pattern to
+      show up clearly and short enough that any drift hasn't compounded into a serious distortion of
+      your fleet's book value. The check itself takes minutes: look at how your assumed useful life
+      compares to how long equipment in that category has actually been lasting, across enough
+      assets that you're looking at a real pattern rather than one unusual case.</p>
+
+      <p>A depreciation profile that's never been revisited isn't necessarily wrong \u2014 but it's
+      also never been confirmed right, and those are different things. Once a year, per category,
+      closes that gap for the cost of a few minutes.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');
