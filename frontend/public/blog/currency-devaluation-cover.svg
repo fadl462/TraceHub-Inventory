@@ -1,0 +1,33 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgCD" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glowCD" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgCD)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glowCD)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Two currency symbols, one stable (USD-like) one wobbling -->
+  <g transform="translate(460, 260)">
+    <circle r="70" fill="#0A1F3A" stroke="#7ED957" stroke-width="4"/>
+    <text x="0" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="46" font-weight="700" fill="#7ED957">$</text>
+  </g>
+  <g transform="translate(740, 260) rotate(-8)">
+    <circle r="70" fill="#132C52" stroke="#FF8A65" stroke-width="4" stroke-dasharray="10 6"/>
+    <text x="0" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="700" fill="#FF8A65">?</text>
+  </g>
+  <path d="M 540 260 L 660 260" stroke="#8CC2FF" stroke-width="2" stroke-dasharray="5 5" opacity="0.5"/>
+
+  <g transform="translate(460, 480)">
+    <rect x="0" y="0" width="280" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="140" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">DEVALUATION-TO-INFLATION</text>
+    <text x="140" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">30-80% pass-through</text>
+  </g>
+</svg>

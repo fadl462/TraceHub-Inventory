@@ -2636,6 +2636,230 @@ const englishPosts = [
       rest into decisions where the gap between the two numbers is genuinely large.</p>
     `,
   },
+  {
+    title: 'When Your Currency Moves Overnight, Your Equipment Records Need to Keep Up',
+    slug: 'currency-devaluation-equipment-records',
+    locale: 'en',
+    excerpt: "Devaluation-to-inflation pass-through in emerging markets runs 30-80% per IMF research. Here's why storing purchase price in a stable reference currency isn't bureaucratic caution.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-11T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/currency-devaluation-cover.svg',
+    bodyHtml: `
+      <p>When Egypt allowed its currency to float in March 2024, the pound moved from roughly 31 to
+      over 50 to the dollar in a matter of weeks. Anyone holding equipment records priced in local
+      currency at the old rate woke up to numbers that no longer meant anything close to what they
+      used to. This isn't a rare, one-off event \u2014 currency devaluation with real, sudden
+      pass-through to import costs continues to be a live risk across a meaningful list of emerging
+      markets in 2026, and imported equipment is exactly the kind of purchase that gets hit hardest
+      when it happens.</p>
+
+      <h3>The mechanism, and why it matters specifically for equipment</h3>
+      <p>The IMF's own research puts the typical devaluation-to-inflation pass-through in emerging
+      markets at 30 to 80 percent \u2014 meaning a 50 percent devaluation can translate into 15 to 40
+      percent additional inflation within a year, concentrated hardest in imported goods. Equipment
+      is disproportionately exposed to this specific effect: machinery, vehicles, and generators are
+      frequently imported or priced against imported components, which means their replacement cost
+      in local currency can jump dramatically overnight in a way a locally-manufactured good simply
+      doesn't.</p>
+
+      <h3>Why storing purchase price in a stable reference currency is the right call</h3>
+      <p>This is precisely the reasoning behind keeping <a href="/docs/registering-an-asset">purchase
+      price recorded in USD</a> regardless of what currency was actually paid, with local currency
+      conversion handled as a display and input convenience rather than the underlying stored value.
+      A depreciation schedule built on a number that itself moves 50 percent overnight for reasons
+      having nothing to do with the equipment's actual condition produces comparisons across time
+      that don't mean anything \u2014 you can't tell whether an asset's relative value changed because
+      of real wear, or because the currency it happened to be priced in moved. A stable reference
+      currency as the underlying calculation basis isn't bureaucratic caution; it's what makes a
+      depreciation number comparable to itself across a multi-year window in a country where the
+      local currency might not be.</p>
+
+      <h3>What still needs local-currency attention, honestly</h3>
+      <p>This doesn't mean local currency is irrelevant \u2014 insurance claims, local resale value,
+      and local tax treatment all genuinely operate in local currency, and those numbers do need to
+      reflect current local reality, updated when the exchange rate actually moves rather than left
+      at whatever rate happened to be current when an asset was first entered. The practical split
+      worth keeping in mind: let the stable reference currency handle depreciation math and
+      cross-time comparison, and treat local currency value as its own separate, actively maintained
+      figure for the decisions that are genuinely local \u2014 not the same number wearing two
+      different currency symbols.</p>
+
+      <h3>A reasonable habit if you operate anywhere with real currency volatility</h3>
+      <p>If your operations sit in a market with a real history of currency movement, it's worth
+      periodically checking whether your recorded local-currency figures \u2014 wherever you do use
+      them \u2014 still reflect current reality, rather than a rate from whenever the asset was first
+      registered. The equipment itself hasn't changed. What it would cost to replace it, in the
+      currency you'd actually be paying with, might have changed considerably \u2014 and that gap is
+      worth knowing about before a real decision depends on it, not after.</p>
+    `,
+  },
+  {
+    title: 'Why Two Companies With Identical Equipment Get Different Fleet Grades',
+    slug: 'identical-equipment-different-grades',
+    locale: 'en',
+    excerpt: 'Age-adjusted position is the only input genuinely identical between two forklifts bought the same day. Everything else is free to diverge from day one.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-14T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/identical-equipment-cover.svg',
+    bodyHtml: `
+      <p>Two companies buy the exact same model of forklift, same year, same price. Eighteen months
+      later, one shows up healthy on its dashboard and the other shows up flagged for attention.
+      Nothing about this is a bug or an inconsistency in how the scoring works \u2014 it's the scoring
+      working exactly as intended, because "identical equipment" was never actually the same thing
+      as "identical circumstances."</p>
+
+      <h3>The factors that actually diverge, even from an identical starting point</h3>
+      <p>Age-adjusted position is the only input genuinely identical between two forklifts bought on
+      the same day. Everything else in an <a href="/docs/asset-health-score">Asset Health
+      Score</a> is free to diverge from day one: usage intensity depends entirely on how hard each
+      company actually runs it, maintenance compliance depends on how consistently each company
+      actually services it on schedule, and environmental exposure depends on where each one
+      physically operates \u2014 a climate-controlled warehouse versus a dusty outdoor yard produces
+      genuinely different wear on physically identical machines.</p>
+
+      <h3>Why this is the entire point, not a flaw</h3>
+      <p>A scoring system that produced identical results for identical purchase records would be
+      measuring the wrong thing entirely \u2014 it would be scoring the invoice, not the actual asset.
+      Two companies' equipment diverging in health after eighteen months of genuinely different
+      treatment is the system correctly capturing something real: these are no longer equivalent
+      assets just because they started as equivalent purchases. The alternative \u2014 a score that
+      only reflects age and purchase price \u2014 would be easier to explain but would be quietly
+      wrong for exactly the cases where it matters most.</p>
+
+      <h3>What this means if your own score looks worse than you'd expect</h3>
+      <p>If a health score looks lower than intuition suggests it should, the useful response isn't
+      to distrust the number \u2014 it's to check specifically which input is actually driving it down.
+      A genuinely lower score from harder real usage is accurate information, not a false alarm; it's
+      telling you this particular unit is aging faster than the category average because of how it's
+      actually being used, which is exactly the kind of thing worth knowing before it becomes a
+      surprise failure rather than after.</p>
+
+      <h3>The comparison worth making instead</h3>
+      <p>Comparing your fleet's health against a different company's identical model tells you very
+      little \u2014 you don't know their maintenance discipline, their operating environment, or their
+      actual usage intensity, and the comparison was never apples to apples to begin with despite
+      the identical purchase records. The comparison that actually matters is your own fleet against
+      its own history: is this specific asset's trajectory improving or declining relative to where
+      it was six months ago, under conditions you actually understand because they're your own.
+      That's a fair comparison. A different company's identical-looking forklift was never really
+      one.</p>
+    `,
+  },
+  {
+    title: 'What Actually Happens When You Change a Category\u2019s Depreciation Profile',
+    slug: 'changing-category-depreciation-profile',
+    locale: 'en',
+    excerpt: 'It sounds like a small, contained edit. What it actually does is quietly recalculate the story of every existing asset in that category, all at once.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-16T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/category-profile-change-cover.svg',
+    bodyHtml: `
+      <p>Changing a category's depreciation profile \u2014 adjusting the useful life or residual value
+      assumption that every asset in that category inherits by default \u2014 sounds like it should be
+      a small, contained edit. What it actually does is quietly recalculate the story of every
+      existing asset in that category, all at once, which is exactly why it's worth understanding
+      before making the change, not after.</p>
+
+      <h3>What actually happens, mechanically</h3>
+      <p>A <a href="/docs/categories-and-custom-fields">category's depreciation profile</a> supplies
+      the default useful life and residual value percentage used whenever an individual asset hasn't
+      explicitly overridden those numbers itself. Change the category default, and every asset in
+      that category still using the default \u2014 which, in most fleets, is most of them \u2014
+      recalculates against the new assumption immediately. An asset that showed a comfortable book
+      value yesterday under an 8-year useful life assumption can show a meaningfully different value
+      today under a corrected 6-year assumption, and neither number was wrong \u2014 the second one
+      is just built on a corrected premise.</p>
+
+      <h3>Why you'd actually want to do this</h3>
+      <p>Category assumptions are estimates made once, often at initial setup, based on a general
+      sense of how that category of equipment typically ages. Real operating history sometimes
+      reveals that estimate was off \u2014 a vehicle category assumed to last 8 years that's
+      consistently needing replacement closer to 6, or generators lasting meaningfully longer than
+      the original conservative estimate assumed. <a href="/blog/recalibrate-depreciation-assumptions">
+      Revisiting these periodically</a> against your own actual experience, rather than leaving a
+      first-day guess in place indefinitely, is exactly the kind of correction worth making \u2014 the
+      goal is that book value should track reality, and reality includes learning your original
+      estimate was off.</p>
+
+      <h3>What to check before changing a category default</h3>
+      <p>Two things worth confirming first: how many assets in the category are actually using the
+      default versus how many have already set their own individual override \u2014 a change only
+      affects the former, and if most assets already have individual overrides, a category-level
+      change might do far less than expected. And second, whether the shift you're seeing is genuinely
+      category-wide or specific to a handful of unusually hard-used units \u2014 a real category-wide
+      pattern justifies a category-level fix; a few outliers are better handled with individual
+      overrides on just those assets, leaving the category default alone for everything else that's
+      actually behaving as expected.</p>
+
+      <h3>The honest trade-off</h3>
+      <p>A category change ripples forward correctly and immediately \u2014 that's the entire point,
+      and it's the right behavior. What it can't do is retroactively rewrite historical reports that
+      already went out under the old assumption; those reflected the best information available at
+      the time, and that's a reasonable thing for a historical record to do. Changing an assumption
+      should update the present and future honestly. It shouldn't quietly imply the past was wrong
+      just because a better estimate exists now.</p>
+    `,
+  },
+  {
+    title: 'The Real Purpose of the Criticality Factor in Disposal Scoring',
+    slug: 'criticality-factor-disposal-scoring',
+    locale: 'en',
+    excerpt: 'Every other input describes the equipment. Criticality describes something different: how much it would actually hurt if this specific asset failed right now.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-18T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/criticality-cover.svg',
+    bodyHtml: `
+      <p>Buried among the seven inputs behind a disposal recommendation is one that doesn't measure
+      anything about the asset itself: criticality. Every other factor \u2014 age, maintenance cost,
+      health score, market value \u2014 describes the equipment. Criticality describes something
+      different entirely: how much it would actually hurt if this specific asset failed right now.</p>
+
+      <h3>Why a purely condition-based score isn't enough on its own</h3>
+      <p>Two assets can have identical health scores, identical repair histories, identical
+      replacement costs, and still deserve genuinely different urgency \u2014 because one runs a
+      single, easily-substituted piece of equipment doing routine work, and the other is the only
+      unit capable of a specific task with no backup and no quick substitute available.
+      <a href="/docs/disposal-intelligence-engine">Criticality</a> exists specifically to capture
+      that difference, weighted at 5 percent in the overall disposal score \u2014 deliberately the
+      smallest weight of the seven factors, and deliberately still present rather than left out
+      entirely.</p>
+
+      <h3>Why criticality is weighted lightly, not heavily</h3>
+      <p>This is a deliberate design choice worth understanding rather than assuming is an oversight:
+      criticality is inherently more subjective than the other six factors, which are drawn from
+      real, measured data \u2014 actual repair costs, actual current market value, actual health
+      scores. How critical an asset "feels" is closer to judgment than measurement, and weighting a
+      subjective input as heavily as objective ones would let gut feeling override hard financial
+      reality too easily. A small weight means criticality can meaningfully tip a genuinely close
+      call, without being able to overwhelm a clear financial signal in either direction.</p>
+
+      <h3>How to actually set it usefully rather than by habit</h3>
+      <p>The common mistake is marking almost everything as highly critical, which defeats the
+      purpose entirely \u2014 if everything is critical, the field carries no actual information and
+      might as well not exist. Criticality is most useful when it's reserved for genuine single
+      points of failure: equipment where there's no real backup, no quick substitute, and a failure
+      would stop something specific and important, not just cause routine inconvenience. Save it for
+      situations that are actually different, not as a general expression of "this equipment
+      matters," because in a real sense, all of it matters, or it wouldn't be tracked at all.</p>
+
+      <h3>What criticality actually changes downstream</h3>
+      <p>A high criticality rating doesn't override a clear financial case for disposal \u2014 it
+      shifts a genuinely close call toward more caution, and it's honestly represented in the
+      recommendation's reasoning rather than silently baked into the number with no explanation.
+      Something marked highly critical with borderline repair economics might land on "repair" where
+      an otherwise identical, non-critical asset would land on "replace" \u2014 not because the
+      financial math changed, but because the actual cost of being wrong is different for these two
+      specific situations.</p>
+
+      <p>Used sparingly and honestly, criticality is the one input in the whole disposal score that
+      captures something no amount of financial data ever could: which failures you genuinely can't
+      afford to have surprise you.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');
