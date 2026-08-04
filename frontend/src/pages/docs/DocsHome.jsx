@@ -72,7 +72,7 @@ export default function DocsHome() {
       <div className="px-6 sm:px-10 py-14">
         <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
           <h2 className="font-display text-xl font-bold text-ink">{t('docsHome.browseByCategory')}</h2>
-          {progressLoaded && readSlugs.size > 0 && (
+          {progressLoaded && (
             <p className="text-xs text-ink/40">{isSynced ? t('docsHome.syncedToAccount') : t('docsHome.savedOnThisDevice')}</p>
           )}
         </div>
@@ -105,12 +105,11 @@ export default function DocsHome() {
                   <p className="text-sm text-ink/60 flex-1">{meta.blurbKey ? t(`docsHome.${meta.blurbKey}`) : ''}</p>
                   {progressLoaded && (() => {
                     const readCount = c.articles.filter((a) => readSlugs.has(a.slug)).length;
-                    if (readCount === 0) return null;
                     const pct = Math.round((readCount / c.articles.length) * 100);
                     return (
                       <div className="mt-3">
                         <div className="h-1.5 w-full rounded-full bg-ink/10 overflow-hidden">
-                          <div className="h-full rounded-full bg-accent transition-all" style={{ width: `${pct}%` }} />
+                          <div className={`h-full rounded-full transition-all ${pct > 0 ? 'bg-accent' : ''}`} style={{ width: `${pct}%` }} />
                         </div>
                         <p className="text-[11px] text-ink/40 mt-1">{pct}% {t('docsHome.complete')}</p>
                       </div>

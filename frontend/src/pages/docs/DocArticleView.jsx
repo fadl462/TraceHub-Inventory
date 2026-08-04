@@ -96,7 +96,7 @@ export default function DocArticleView() {
           </span>
           {article.updatedAt && (
             <span className="text-xs text-ink/35">
-              {t('docArticle.lastUpdated', {
+              {t('docsHome.lastUpdated', {
                 date: new Date(article.updatedAt).toLocaleDateString(i18n.language, { year: 'numeric', month: 'long', day: 'numeric' }),
               })}
             </span>
