@@ -2416,6 +2416,226 @@ const englishPosts = [
       supports this. Someone just has to actually own it.</p>
     `,
   },
+  {
+    title: 'E-Waste Disposal Rules Just Got Real: What Extended Producer Responsibility Actually Means for You',
+    slug: 'e-waste-epr-disposal-rules-2026',
+    locale: 'en',
+    excerpt: "25 US states now have EPR laws for electronics, and the documentation burden has shifted onto whoever's actually retiring the equipment.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-02T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/epr-cover.svg',
+    bodyHtml: `
+      <p>Twenty-five US states now have extended producer responsibility laws covering electronics,
+      and the practical compliance burden has shifted onto the organizations actually retiring the
+      equipment, not just the manufacturers who made it. If your disposal process for old IT
+      equipment, or anything with a battery, is currently "someone takes it to be recycled, probably
+      properly," 2026 is the year that stops being a safe assumption in a growing number of states.</p>
+
+      <h3>What EPR actually requires from the company disposing of the equipment</h3>
+      <p>The legal obligation to fund recycling programs sits with manufacturers under these laws.
+      What sits with you, in practice, is documentation: proof that whatever you retired actually
+      routed through a program-approved collector or a properly certified recycler, not just a
+      general assumption that "it got recycled somewhere." For organizations that also handle
+      sensitive data \u2014 anyone with a defense contractor relationship, healthcare data, or similar
+      compliance obligations \u2014 this now frequently stacks with separate data-sanitization
+      documentation requirements, meaning a single retired laptop can require two parallel
+      compliance trails: one proving where the hardware went, one proving the data on it was properly
+      destroyed.</p>
+
+      <h3>Why this is actually a natural fit for a real disposal workflow</h3>
+      <p>This is precisely what a genuine <a href="/docs/six-stage-disposal-workflow">disposal
+      workflow</a> with a real audit trail was built for, even before this specific regulatory wave
+      existed. A disposal case that moves through actual review stages \u2014 flagged, reviewed,
+      approved, a specific disposal method recorded, a final sale amount or disposal confirmation
+      logged \u2014 already produces exactly the chain-of-custody record this kind of compliance
+      asks for. The difference between an informal "someone handled it" process and a documented one
+      isn't extra work bolted on for compliance's sake; it's the same record-keeping habit that was
+      already worth having, now with a clearer regulatory reason it matters.</p>
+
+      <h3>What to actually check, specifically</h3>
+      <p>You don't need a compliance overhaul to get ahead of this. Two concrete things worth
+      verifying: does your disposal method field, when equipment is scrapped or recycled, actually
+      name a specific certified recycler or collection program, or does it just say "recycled" with
+      nothing behind it? And for equipment that ever held sensitive data \u2014 not just obviously
+      sensitive equipment, but anything that logged in to a network \u2014 is there a real record of
+      how that data was handled at disposal, separate from the hardware's physical destination?</p>
+
+      <h3>The honest bottom line</h3>
+      <p>Regulatory enforcement intensity genuinely varies by state right now, and it's reasonable to
+      expect continued change through the rest of 2026 as more states adopt or expand their own
+      programs. What doesn't depend on any specific state's enforcement posture: a documented
+      disposal trail costs you almost nothing extra to maintain if it's already built into how
+      equipment gets retired, and it's considerably more expensive to reconstruct after the fact if a
+      regulator or an auditor asks for records nobody kept.</p>
+    `,
+  },
+  {
+    title: 'What a Confidence Score Actually Protects You From',
+    slug: 'what-confidence-score-protects-against',
+    locale: 'en',
+    excerpt: "It's the least glamorous number on an asset's page, and arguably doing the most important job of any of them.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-04T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/confidence-score-cover.svg',
+    bodyHtml: `
+      <p>A confidence score is the least glamorous number on an asset's page, and it's arguably
+      doing the most important job of any of them: telling you, honestly, how much to actually trust
+      everything else you're looking at.</p>
+
+      <h3>What it's actually protecting you from</h3>
+      <p>Every recommendation engine, ours included, faces the same temptation: present every output
+      with the same confident tone, regardless of how much real evidence sits behind it. A
+      <a href="/docs/ai-confidence-score-and-learning-loop">confidence score</a> exists specifically
+      to resist that temptation \u2014 an asset with almost no maintenance history, no inspection
+      records, and no market value entered will honestly show a lower confidence score than an
+      identical asset with two years of detailed history behind it, even though both might display
+      the exact same health score or disposal recommendation on the surface.</p>
+
+      <h3>The specific mistake this prevents</h3>
+      <p>Without an honest confidence signal, a thinly-documented asset and a thoroughly-documented
+      one look identical at a glance, which means a decision-maker has no way to tell "this
+      recommendation is backed by two years of real data" apart from "this recommendation is mostly
+      a category default because almost nothing's actually been recorded yet." Treating both with the
+      same weight is exactly the mistake a confidence score is designed to prevent \u2014 it's the
+      difference between "the system says replace it" carrying real evidentiary weight versus being
+      barely more than an educated guess dressed up to look the same.</p>
+
+      <h3>What actually raises it, and why that's the right incentive</h3>
+      <p>The confidence score isn't a separate task to manage \u2014 it rises naturally as you do the
+      things worth doing anyway: logging real maintenance detail instead of "serviced," keeping
+      <a href="/docs/registering-an-asset">current market value</a> updated rather than stale,
+      building genuine inspection history over time. This is a deliberate design choice: there's no
+      way to directly boost a confidence score without actually improving the underlying data behind
+      it, because the score is a reflection of real data completeness, not a separate metric you can
+      game independently of the substance it's supposed to represent.</p>
+
+      <h3>The learning loop is the same idea, extended over time</h3>
+      <p>The <a href="/docs/ai-confidence-score-and-learning-loop">learning loop</a> underneath this
+      applies the identical honesty to a different question: when your organization has rejected a
+      disposal recommendation in the past, did a real failure follow within the next month, or
+      didn't it? That real track record \u2014 not a generic industry benchmark \u2014 becomes a small,
+      bounded adjustment to future confidence, specific to your own fleet's actual history.</p>
+
+      <h3>Why a low confidence score is useful information, not a failure</h3>
+      <p>A common misreading treats a low confidence score as something to be embarrassed about or
+      to hide. It's the opposite: a system honestly telling you "don't weight this too heavily yet,
+      we don't have enough behind it" is more useful than one that would rather sound certain than be
+      honest. The real failure mode isn't a low confidence score \u2014 it's a system that never
+      shows you one at all, and lets you find out the hard way which recommendations were solid and
+      which were a guess in a lab coat.</p>
+    `,
+  },
+  {
+    title: 'How to Present Fleet Data to Executives Who Just Want the Bottom Line',
+    slug: 'presenting-fleet-data-to-executives',
+    locale: 'en',
+    excerpt: 'The same underlying data, presented at the wrong altitude, is the difference between a report that gets acted on and one that gets a polite nod.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/executive-reporting-cover.svg',
+    bodyHtml: `
+      <p>An executive glancing at a fleet report for thirty seconds and someone who lives in the
+      asset system every day want fundamentally different things from the same data, and presenting
+      one audience the other's version is the most common way a genuinely good report fails to land.</p>
+
+      <h3>What an executive actually wants, and it isn't more detail</h3>
+      <p>Someone reviewing fleet performance at the executive level generally wants three things,
+      in this order: is this getting better or worse, how much money is at stake, and is there
+      anything specific requiring a decision from them right now. A detailed breakdown of every
+      asset's individual health score answers none of those questions efficiently \u2014 it's real,
+      useful information, just aimed at the wrong altitude for this particular audience.</p>
+
+      <h3>Lead with the number that has a dollar sign on it</h3>
+      <p><a href="/docs/fleet-intelligence-formulas-explained">Capital at Risk</a> exists
+      specifically for this purpose \u2014 it translates fleet condition into the one framing an
+      executive audience reliably responds to fastest: real money, not an abstract health
+      percentage. "12% of our fleet value sits in high-risk condition" prompts a different kind of
+      attention than "our average health score is 74," even though both numbers are describing
+      genuinely the same underlying situation.</p>
+
+      <h3>Trend beats snapshot, every time, for this audience</h3>
+      <p>A single point-in-time fleet grade tells an executive where things stand today. A trend \u2014
+      "the grade moved from B to C-plus over the past quarter" \u2014 tells them something worth
+      actually reacting to, because it implies a direction and a rate of change, not just a static
+      fact to file away. If you're presenting fleet health at this level, showing the same three
+      numbers over the last three reporting periods costs you almost nothing extra and meaningfully
+      changes what the audience takes away from the conversation.</p>
+
+      <h3>Bring exactly one recommendation, not a list</h3>
+      <p>Executive attention on operational detail is a genuinely scarce resource, and a long list of
+      flagged assets competes for exactly the kind of attention this audience has the least of.
+      Identify the single highest-leverage action \u2014 the highest-Capital-at-Risk category, the one
+      decision that's actually stuck waiting on executive sign-off \u2014 and lead with that instead of
+      a comprehensive accounting of everything currently imperfect across the fleet.</p>
+
+      <h3>Save the detailed dashboard for whoever actually needs it</h3>
+      <p>None of this means the granular, asset-by-asset view is unnecessary \u2014 it's essential for
+      whoever's actually managing the fleet day to day. It just isn't what belongs in front of an
+      executive audience whose real job is deciding whether to approve a budget request, not
+      auditing individual maintenance records. The same underlying data, presented at the altitude
+      that matches who's actually looking at it, is the difference between a report that gets read
+      and genuinely acted on, and one that gets a polite nod and immediately forgotten.</p>
+    `,
+  },
+  {
+    title: 'The Real Cost of Downtime Is Never Just the Repair Bill',
+    slug: 'real-cost-of-downtime',
+    locale: 'en',
+    excerpt: 'Ask what a failure cost, and most companies can answer the repair bill without hesitation and struggle with everything else - because nothing was ever designed to track it.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-11-09T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/downtime-cost-cover.svg',
+    bodyHtml: `
+      <p>Ask what an equipment failure cost, and most companies can answer the repair bill without
+      hesitation and struggle badly with everything else \u2014 not because the rest doesn't matter,
+      but because it was never designed into anyone's tracking in the first place. The repair
+      invoice is almost always the smallest number in the actual story.</p>
+
+      <h3>What the repair bill leaves out entirely</h3>
+      <p>A failed piece of equipment doesn't just cost what it takes to fix \u2014 it costs whatever
+      work depended on it sitting stalled in the meantime, whatever rental or substitute arrangement
+      got scrambled together on short notice at a worse rate than planned, and whatever schedule
+      slipped as a result, rippling forward into other commitments that had nothing directly to do
+      with the broken equipment itself. None of that shows up on the repair invoice. All of it is a
+      real cost.</p>
+
+      <h3>Why this matters for the repair-versus-replace decision specifically</h3>
+      <p>Our own <a href="/docs/disposal-intelligence-engine">disposal recommendation logic</a>
+      weighs repair cost against replacement cost \u2014 both real, trackable numbers. Downtime cost
+      doesn't appear directly in that formula, precisely because it's genuinely harder to capture
+      consistently across different operations. That's a real and honest limitation worth naming
+      explicitly, not glossing over: two assets with identical repair-cost profiles can carry very
+      different real risk if one failing means a full operational stop and the other means a minor,
+      easily-absorbed inconvenience. The number doesn't know which situation it's looking at unless
+      you factor that context in yourself.</p>
+
+      <h3>A rough method that beats not counting it at all</h3>
+      <p>You don't need a precise downtime-costing model to meaningfully improve on "we don't track
+      this." A reasonable starting estimate: what does an hour or day of the affected work actually
+      generate or cost when it's running normally, and roughly how long would this specific asset
+      failing realistically take to resolve, based on its actual <a href="/docs/failure-prediction-engine">
+      failure risk</a> and how quickly a replacement or repair could genuinely be arranged. That
+      rough number, sitting next to the repair estimate when a real repair-or-replace decision comes
+      up, changes the calculus meaningfully for equipment where a failure would mean a genuine
+      operational stop \u2014 even though it will never be as precise as the repair invoice itself.</p>
+
+      <h3>Where this connects back to acting earlier, not just estimating better</h3>
+      <p>The other lever worth pulling here isn't better downtime estimation \u2014 it's simply acting
+      on early warning signs before the downtime happens at all. A failure prediction acted on while
+      an asset is still running costs you a planned repair on your own schedule. The same failure
+      ignored until it actually happens costs you the repair, the downtime, and whatever scrambled
+      substitute you arrange under pressure, all together at once, with none of it happening on a
+      schedule you chose.</p>
+
+      <p>None of this requires a perfect downtime-costing system to be worth doing. It requires
+      admitting the repair bill was never the whole story, and building even a rough estimate of the
+      rest into decisions where the gap between the two numbers is genuinely large.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');
