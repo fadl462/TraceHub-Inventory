@@ -3,12 +3,13 @@ import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
   Search, ChevronDown, ChevronUp, Menu, X, Rocket, Boxes, Sparkles, ScanLine,
-  ClipboardList, Trash2, ShieldCheck, BarChart3, CreditCard, Settings, LifeBuoy, BookOpen, Home,
+  ClipboardList, Trash2, ShieldCheck, BarChart3, CreditCard, Settings, LifeBuoy, BookOpen, Home, Check,
 } from 'lucide-react';
 import client from '../api/client';
 import TraceHubMark from '../components/TraceHubMark';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import AiChatWidget from '../components/AiChatWidget';
+import { useDocProgress } from '../hooks/useDocProgress';
 import { useAuth } from '../context/AuthContext';
 import { Spinner, Button } from '../components/ui';
 
@@ -32,6 +33,7 @@ export default function DocsLayout() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { t, i18n } = useTranslation();
+  const { readSlugs } = useDocProgress();
   const [categories, setCategories] = useState(null);
   const [openCategories, setOpenCategories] = useState({});
   const [search, setSearch] = useState('');
@@ -112,6 +114,7 @@ export default function DocsLayout() {
         <nav className="space-y-0.5">
           {categories.map((c) => {
             const Icon = CATEGORY_ICONS[c.category] || BookOpen;
+            const readCount = c.articles.filter((a) => readSlugs.has(a.slug)).length;
             return (
               <div key={c.category}>
                 <button
@@ -120,6 +123,15 @@ export default function DocsLayout() {
                 >
                   <Icon size={16} className="text-secondary shrink-0" />
                   <span className="flex-1 text-left">{c.category}</span>
+                  {readCount > 0 && (
+                    <span
+                      className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full shrink-0 ${
+                        readCount === c.articles.length ? 'bg-accent/25 text-accent' : 'bg-white/10 text-white/50'
+                      }`}
+                    >
+                      {readCount}/{c.articles.length}
+                    </span>
+                  )}
                   {openCategories[c.category] ? <ChevronUp size={14} className="text-white/40" /> : <ChevronDown size={14} className="text-white/40" />}
                 </button>
                 {openCategories[c.category] && (
@@ -127,11 +139,12 @@ export default function DocsLayout() {
                     {c.articles.map((a) => (
                       <Link
                         key={a.id} to={`/docs/${a.slug}`} onClick={() => setMobileNavOpen(false)}
-                        className={`block py-1.5 px-2.5 text-sm rounded-md transition-colors ${
+                        className={`flex items-center gap-1.5 py-1.5 px-2.5 text-sm rounded-md transition-colors ${
                           slug === a.slug ? 'bg-secondary/20 text-secondary font-medium' : 'text-white/50 hover:text-white/90 hover:bg-white/5'
                         }`}
                       >
-                        {a.title}
+                        {readSlugs.has(a.slug) && <Check size={12} className="text-accent shrink-0" />}
+                        <span className="truncate">{a.title}</span>
                       </Link>
                     ))}
                   </div>

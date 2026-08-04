@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ChevronLeft, ChevronRight, List, Clock, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, List, Clock, ArrowRight, Check } from 'lucide-react';
 import client from '../../api/client';
 import { Spinner } from '../../components/ui';
 import DifficultyBadge from '../../components/docs/DifficultyBadge';
@@ -24,7 +24,7 @@ const EMBEDDED_WIDGETS = {
 export default function DocArticleView() {
   const { slug } = useParams();
   const { t, i18n } = useTranslation();
-  const { markRead } = useDocProgress();
+  const { markRead, readSlugs } = useDocProgress();
   const [state, setState] = useState({
     status: 'loading', article: null, prev: null, next: null, related: [],
   });
@@ -99,6 +99,11 @@ export default function DocArticleView() {
               {t('docsHome.lastUpdated', {
                 date: new Date(article.updatedAt).toLocaleDateString(i18n.language, { year: 'numeric', month: 'long', day: 'numeric' }),
               })}
+            </span>
+          )}
+          {readSlugs.has(article.slug) && (
+            <span className="flex items-center gap-1 text-xs font-medium text-accent-dark bg-accent/10 px-2 py-0.5 rounded-full">
+              <Check size={12} /> {t('docsHome.markedAsRead')}
             </span>
           )}
         </div>

@@ -561,7 +561,8 @@
     "relatedArticles": "Articles connexes",
     "complete": "terminé",
     "syncedToAccount": "Synchronisé avec votre compte",
-    "savedOnThisDevice": "Enregistré sur cet appareil"
+    "savedOnThisDevice": "Enregistré sur cet appareil",
+    "markedAsRead": "Lu"
   },
   "blogPage": {
     "updates": "Actualités",

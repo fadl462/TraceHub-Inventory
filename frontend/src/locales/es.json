@@ -561,7 +561,8 @@
     "relatedArticles": "Artículos relacionados",
     "complete": "completado",
     "syncedToAccount": "Sincronizado con su cuenta",
-    "savedOnThisDevice": "Guardado en este dispositivo"
+    "savedOnThisDevice": "Guardado en este dispositivo",
+    "markedAsRead": "Leído"
   },
   "blogPage": {
     "updates": "Actualizaciones",
