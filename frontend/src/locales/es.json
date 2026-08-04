@@ -595,7 +595,13 @@
     "failedToPostComment": "Error al publicar el comentario",
     "today": "Hoy",
     "yesterday": "Ayer",
-    "daysAgo": "hace {{count}} días"
+    "daysAgo": "hace {{count}} días",
+    "keepReading": "Seguir leyendo",
+    "exploreThePlatform": "Explore la plataforma",
+    "exploreThePlatformDesc": "Vea el motor de depreciación, las recomendaciones de baja, y todo lo demás de lo que habla este artículo, funcionando con sus propios datos.",
+    "tryTheCalculator": "Pruebe la calculadora de depreciación en vivo",
+    "readTheFramework": "Lea el marco de reparar-o-reemplazar",
+    "startFreeTrial": "Comience su prueba gratuita"
   },
   "cmsPage": {
     "backToHome": "Volver al inicio",

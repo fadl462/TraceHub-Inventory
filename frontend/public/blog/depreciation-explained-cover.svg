@@ -1,0 +1,51 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow3" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg3)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow3)"/>
+
+  <!-- dotted radar rings, faint, matching the other two covers -->
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Chart axes -->
+  <line x1="300" y1="160" x2="300" y2="420" stroke="#8CC2FF" stroke-width="2" opacity="0.5"/>
+  <line x1="300" y1="420" x2="900" y2="420" stroke="#8CC2FF" stroke-width="2" opacity="0.5"/>
+
+  <!-- Declining depreciation curve, filled -->
+  <path d="M 300 200 L 450 260 L 600 305 L 750 340 L 900 365 L 900 420 L 300 420 Z" fill="url(#curveFill)"/>
+  <path d="M 300 200 L 450 260 L 600 305 L 750 340 L 900 365" fill="none" stroke="#4DA3FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Data points -->
+  <circle cx="300" cy="200" r="7" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="3"/>
+  <circle cx="450" cy="260" r="6" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="2.5"/>
+  <circle cx="600" cy="305" r="6" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="2.5"/>
+  <circle cx="750" cy="340" r="6" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="2.5"/>
+  <!-- "Today" point, highlighted in accent green -->
+  <circle cx="900" cy="365" r="10" fill="#0A1F3A" stroke="#7ED957" stroke-width="3.5"/>
+  <circle cx="900" cy="365" r="3.5" fill="#7ED957"/>
+
+  <!-- Year labels -->
+  <text x="300" y="446" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#8CC2FF" opacity="0.7">Year 0</text>
+  <text x="900" y="446" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#7ED957" font-weight="600">Today</text>
+
+  <!-- Value readout badge, matching the pattern from the other two covers -->
+  <g transform="translate(480, 470)">
+    <rect x="0" y="0" width="240" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="120" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">CURRENT BOOK VALUE</text>
+    <text x="120" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#FFFFFF">$6,240</text>
+  </g>
+</svg>

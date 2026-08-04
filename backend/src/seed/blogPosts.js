@@ -212,6 +212,125 @@ const englishPosts = [
       to do properly every time, for every asset, across an entire fleet.</p>
     `,
   },
+  {
+    title: 'Depreciation Doesn\u2019t Have to Be a Mystery: What Your Equipment Is Actually Worth Today',
+    slug: 'understanding-asset-depreciation',
+    locale: 'en',
+    excerpt: 'A plain-language guide to what depreciation really measures, a full worked example, and the four mistakes that quietly distort the number at most companies.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-04'),
+    isPublished: true,
+    coverImageUrl: '/blog/depreciation-explained-cover.svg',
+    bodyHtml: `
+      <p>Ask a facilities manager what their five-year-old generator is worth, and you'll usually
+      get one of two answers. Either a confident number that turns out to be the original purchase
+      price with no adjustment at all, or an honest shrug. Neither is really their fault \u2014
+      depreciation has a reputation as an accounting formality, something that lives in a
+      spreadsheet nobody opens until the auditor asks for it. That reputation is wrong, and it's
+      costing companies real money.</p>
+
+      <p>This is a plain-language walkthrough of what depreciation actually is, why it deserves more
+      attention than it usually gets, and how to think about it in a way that holds up when someone
+      asks you to defend the number.</p>
+
+      <h3>Why this isn't just an accounting exercise</h3>
+      <p>Depreciation gets filed under "finance's problem," which undersells what it's actually
+      useful for. A current, accurate book value feeds directly into decisions that have nothing to
+      do with tax season:</p>
+      <ul>
+        <li><strong>Budgeting.</strong> If you don't know what your fleet is genuinely worth today,
+        you can't forecast next year's replacement spend \u2014 you're guessing, and guesses tend to
+        be optimistic.</li>
+        <li><strong>Insurance.</strong> Claims and coverage levels are argued over actual cash
+        value, not sentimental value or the number on a five-year-old invoice.</li>
+        <li><strong>The repair-or-replace call.</strong> You genuinely cannot make that decision well
+        without knowing current value \u2014 it's the other half of the comparison, alongside repair
+        cost. We wrote a full framework for that decision
+        <a href="/blog/repair-or-replace-decision-framework">here</a> if you haven't seen it.</li>
+        <li><strong>Selling or trading in equipment.</strong> A defensible book value is your opening
+        position in that negotiation, not an afterthought once a buyer asks.</li>
+      </ul>
+      <p>Treat depreciation as a live number that changes what you'd do today, and it stops being
+      paperwork.</p>
+
+      <h3>The idea in one sentence</h3>
+      <p>Depreciation is not "how old is this thing." It's an estimate of how much of an asset's
+      economic value has already been used up, based on the assumption that value declines
+      predictably from a purchase price down to a residual (scrap) value over its useful life.</p>
+
+      <p>The simplest version of that estimate \u2014 <strong>straight-line depreciation</strong> \u2014
+      spreads that decline evenly across every year. Take a $12,000 generator with an 8-year useful
+      life and a residual value of 10% ($1,200 once it's fully depreciated):</p>
+
+      <div class="not-prose" style="background:#F4F7FA;border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-family:ui-monospace,monospace;font-size:0.92rem;">
+        <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span style="color:#64748B;">Depreciable base</span><span>$12,000 \u2212 $1,200 = $10,800</span></div>
+        <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span style="color:#64748B;">Annual depreciation</span><span>$10,800 \u00f7 8 years = <strong>$1,350 / year</strong></span></div>
+        <div style="display:flex;justify-content:space-between;padding:0.4rem 0;"><span style="color:#64748B;">Book value after 3 years</span><span style="color:#1A4D8F;font-weight:700;">$12,000 \u2212 ($1,350 \u00d7 3) = $7,950</span></div>
+      </div>
+
+      <p>That's it \u2014 the entire calculation. No spreadsheet macro required. If you want to try it
+      on your own numbers right now rather than take our word for the arithmetic, the
+      <a href="/docs/smart-depreciation-engine">Smart Depreciation Engine documentation</a> has a
+      live calculator built directly into the page using this exact formula.</p>
+
+      <h3>Where straight-line quietly stops being honest</h3>
+      <p>Straight-line's assumption \u2014 identical wear every single year \u2014 is a reasonable
+      starting point and a genuinely poor description of how most equipment actually ages. Two
+      generators bought on the same day, same model, same price, can be worth very different
+      amounts three years later depending on what actually happened to them:</p>
+
+      <img src="/blog/depreciation-curves-diagram.svg" alt="Chart comparing straight-line depreciation against light-duty and heavy-duty actual usage curves" style="width:100%;border-radius:16px;margin:1.5rem 0;" />
+
+      <p>A unit run lightly, serviced on schedule, kept somewhere dry and climate-controlled holds
+      more value than the straight-line estimate predicts. A unit run hard, exposed to salt air or
+      dust, with maintenance that slipped a few times \u2014 loses value faster than a straight line
+      admits. Both are described identically by a spreadsheet that only knows "purchase price" and
+      "years owned."</p>
+
+      <p>This is exactly the gap TraceHub's <a href="/docs/ai-adaptive-depreciation-in-depth">AI
+      Adaptive depreciation method</a> is built to close \u2014 it adjusts the depreciation rate using
+      real usage intensity, maintenance history, environmental conditions, and (when you have it)
+      current market value, rather than assuming every asset in a category ages identically. If
+      you're curious about the full menu of options, including the time-based methods (straight-line,
+      declining balance, double-declining, sum-of-years) and usage-based methods (units of
+      production, machine hours, mileage), we've documented the math behind
+      <a href="/docs/time-based-depreciation-methods">each time-based method</a> and
+      <a href="/docs/usage-based-depreciation-methods">each usage-based method</a> in detail. There's
+      also a genuinely useful option if none of the built-in methods fit your situation: you can
+      <a href="/docs/writing-custom-depreciation-formulas">write your own depreciation formula</a>
+      using your organization's own variables.</p>
+
+      <h3>Four mistakes we see constantly</h3>
+      <p>None of these are exotic \u2014 they're just easy to drift into once depreciation becomes a
+      once-a-year chore instead of a live number.</p>
+      <p><strong>1. Using the original purchase price forever.</strong> If an asset's real market
+      value has moved meaningfully \u2014 up or down \u2014 and nobody updates the input, every
+      downstream calculation quietly inherits a stale assumption.</p>
+      <p><strong>2. Ignoring residual value entirely.</strong> Assuming an asset depreciates to zero
+      overstates the loss and can distort a repair-versus-replace comparison in the wrong
+      direction \u2014 most equipment is still worth something even fully depreciated on paper.</p>
+      <p><strong>3. Treating "depreciated" and "worthless" as the same thing.</strong> A fully
+      depreciated asset on the books can still be doing real, valuable work. Book value and
+      operational value are related, not identical.</p>
+      <p><strong>4. Only thinking about it once a year.</strong> By the time an annual review
+      surfaces a problem asset, you've usually already absorbed months of a bad decision \u2014 a
+      repair that shouldn't have been approved, a replacement that got delayed too long. A number
+      that updates the moment new data arrives catches this while there's still time to act on it.</p>
+
+      <h3>The bigger picture: depreciation feeds everything else</h3>
+      <p>Book value isn't just a number that sits quietly in a report. In TraceHub, it's one of the
+      seven inputs behind the <a href="/docs/disposal-intelligence-engine">Disposal Intelligence
+      Engine's</a> Keep/Repair/Sell/Scrap/Replace recommendation, and it rolls up into your fleet's
+      overall <a href="/docs/fleet-intelligence-formulas-explained">Capital at Risk</a> figure on the
+      dashboard \u2014 the real dollar exposure sitting in equipment that's already in poor
+      condition. Get the underlying number right, and everything built on top of it gets more
+      trustworthy along with it.</p>
+
+      <p>If you're currently estimating this once a year in a spreadsheet, or not at all, the first
+      ten assets are free to register and track for thirty days \u2014 no card required. Depreciation
+      calculates itself the moment you enter a purchase price.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');

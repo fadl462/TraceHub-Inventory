@@ -241,6 +241,140 @@ const frenchPosts = [
       de faire correctement à chaque fois, pour chaque actif, à travers tout un parc.</p>
     `,
   },
+  {
+    title: 'La dépréciation n\u2019a pas à être un mystère : ce que votre équipement vaut réellement aujourd\u2019hui',
+    slug: 'understanding-asset-depreciation',
+    locale: 'fr',
+    excerpt: 'Un guide en langage clair sur ce que mesure réellement la dépréciation, un exemple complet chiffré, et les quatre erreurs qui faussent discrètement ce chiffre dans la plupart des entreprises.',
+    authorName: '\u00c9quipe TraceHub',
+    publishedAt: new Date('2026-08-04'),
+    isPublished: true,
+    coverImageUrl: '/blog/depreciation-explained-cover.svg',
+    bodyHtml: `
+      <p>Demandez à un responsable des installations combien vaut son générateur vieux de cinq
+      ans, et vous obtiendrez généralement l'une de deux réponses. Soit un chiffre confiant qui
+      s'avère être le prix d'achat d'origine sans aucun ajustement, soit un haussement d'épaules
+      honnête. Aucune des deux n'est vraiment de leur faute \u2014 la dépréciation a la réputation
+      d'une formalité comptable, quelque chose qui vit dans un tableur que personne n'ouvre avant que
+      l'auditeur ne le demande. Cette réputation est fausse, et elle coûte de l'argent réel aux
+      entreprises.</p>
+
+      <p>Voici un tour d'horizon en langage clair de ce qu'est réellement la dépréciation, pourquoi
+      elle mérite plus d'attention qu'elle n'en reçoit habituellement, et comment y réfléchir d'une
+      manière qui tient la route quand quelqu'un vous demande de défendre le chiffre.</p>
+
+      <h3>Pourquoi ce n'est pas qu'un exercice comptable</h3>
+      <p>La dépréciation est classée sous « le problème de la finance », ce qui sous-estime son
+      utilité réelle. Une valeur comptable actuelle et précise alimente directement des décisions
+      qui n'ont rien à voir avec la saison fiscale :</p>
+      <ul>
+        <li><strong>La budgétisation.</strong> Si vous ne savez pas ce que votre parc vaut
+        réellement aujourd'hui, vous ne pouvez pas prévoir les dépenses de remplacement de l'année
+        prochaine \u2014 vous devinez, et les suppositions ont tendance à être optimistes.</li>
+        <li><strong>L'assurance.</strong> Les sinistres et les niveaux de couverture se négocient
+        sur la valeur de rachat réelle, pas la valeur sentimentale ni le chiffre d'une facture vieille
+        de cinq ans.</li>
+        <li><strong>La décision réparer-ou-remplacer.</strong> Vous ne pouvez tout simplement pas
+        bien prendre cette décision sans connaître la valeur actuelle \u2014 c'est l'autre moitié de
+        la comparaison, aux côtés du coût de réparation. Nous avons rédigé un cadre complet pour
+        cette décision <a href="/blog/repair-or-replace-decision-framework">ici</a> si vous ne
+        l'avez pas encore vu.</li>
+        <li><strong>Vendre ou reprendre de l'équipement.</strong> Une valeur comptable défendable est
+        votre position d'ouverture dans cette négociation, pas une réflexion après coup une fois
+        qu'un acheteur la demande.</li>
+      </ul>
+      <p>Traitez la dépréciation comme un chiffre vivant qui change ce que vous feriez aujourd'hui,
+      et elle cesse d'être de la paperasse.</p>
+
+      <h3>L'idée en une phrase</h3>
+      <p>La dépréciation n'est pas « l'âge de cette chose ». C'est une estimation de la quantité de
+      valeur économique d'un actif déjà consommée, fondée sur l'hypothèse que la valeur décline de
+      manière prévisible d'un prix d'achat jusqu'à une valeur résiduelle (de rebut) sur sa durée de
+      vie utile.</p>
+
+      <p>La version la plus simple de cette estimation \u2014 la <strong>dépréciation
+      linéaire</strong> \u2014 répartit ce déclin uniformément sur chaque année. Prenez un générateur
+      de 12 000 $ avec une durée de vie utile de 8 ans et une valeur résiduelle de 10 % (1 200 $ une
+      fois entièrement déprécié) :</p>
+
+      <div class="not-prose" style="background:#F4F7FA;border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-family:ui-monospace,monospace;font-size:0.92rem;">
+        <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span style="color:#64748B;">Base amortissable</span><span>12 000 $ \u2212 1 200 $ = 10 800 $</span></div>
+        <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span style="color:#64748B;">Dépréciation annuelle</span><span>10 800 $ \u00f7 8 ans = <strong>1 350 $ / an</strong></span></div>
+        <div style="display:flex;justify-content:space-between;padding:0.4rem 0;"><span style="color:#64748B;">Valeur comptable après 3 ans</span><span style="color:#1A4D8F;font-weight:700;">12 000 $ \u2212 (1 350 $ \u00d7 3) = 7 950 $</span></div>
+      </div>
+
+      <p>C'est tout \u2014 c'est l'intégralité du calcul. Aucune macro de tableur nécessaire. Si vous
+      voulez l'essayer avec vos propres chiffres tout de suite plutôt que de nous croire sur parole
+      pour l'arithmétique, la documentation du
+      <a href="/docs/smart-depreciation-engine">Moteur de dépréciation intelligent</a> intègre un
+      calculateur en direct directement sur la page, utilisant exactement cette formule.</p>
+
+      <h3>Là où la méthode linéaire cesse discrètement d'être honnête</h3>
+      <p>L'hypothèse de la méthode linéaire \u2014 une usure identique chaque année \u2014 est un point
+      de départ raisonnable et une description assez médiocre de la façon dont la plupart des
+      équipements vieillissent réellement. Deux générateurs achetés le même jour, même modèle, même
+      prix, peuvent valoir des montants très différents trois ans plus tard selon ce qui leur est
+      réellement arrivé :</p>
+
+      <img src="/blog/depreciation-curves-diagram.svg" alt="Graphique comparant la dépréciation linéaire aux courbes d'usage réel léger et intensif" style="width:100%;border-radius:16px;margin:1.5rem 0;" />
+
+      <p>Une unité utilisée légèrement, entretenue selon le calendrier, gardée dans un endroit sec
+      et climatisé, conserve plus de valeur que ne le prédit l'estimation linéaire. Une unité
+      utilisée intensément, exposée à l'air salin ou à la poussière, avec un entretien qui a manqué
+      quelques fois \u2014 perd de la valeur plus vite qu'une ligne droite ne l'admet. Les deux sont
+      décrites de façon identique par un tableur qui ne connaît que « prix d'achat » et « années de
+      possession ».</p>
+
+      <p>C'est exactement l'écart que la <a href="/docs/ai-adaptive-depreciation-in-depth">méthode de
+      dépréciation Adaptatif IA</a> de TraceHub est conçue pour combler \u2014 elle ajuste le taux de
+      dépréciation en utilisant l'intensité d'usage réelle, l'historique de maintenance, les
+      conditions environnementales, et (quand vous l'avez) la valeur de marché actuelle, plutôt que
+      de supposer que chaque actif d'une catégorie vieillit de manière identique. Si vous êtes
+      curieux du menu complet des options, y compris les méthodes basées sur le temps (linéaire,
+      solde dégressif, dégressif double, somme des chiffres des années) et les méthodes basées sur
+      l'usage (unités de production, heures machine, kilométrage), nous avons documenté les
+      mathématiques derrière <a href="/docs/time-based-depreciation-methods">chaque méthode basée
+      sur le temps</a> et <a href="/docs/usage-based-depreciation-methods">chaque méthode basée sur
+      l'usage</a> en détail. Il existe aussi une option vraiment utile si aucune des méthodes
+      intégrées ne correspond à votre situation : vous pouvez
+      <a href="/docs/writing-custom-depreciation-formulas">rédiger votre propre formule de
+      dépréciation</a> en utilisant les propres variables de votre organisation.</p>
+
+      <h3>Quatre erreurs que nous constatons constamment</h3>
+      <p>Aucune n'est exotique \u2014 elles sont simplement faciles à commettre une fois que la
+      dépréciation devient une corvée annuelle plutôt qu'un chiffre vivant.</p>
+      <p><strong>1. Utiliser le prix d'achat d'origine pour toujours.</strong> Si la valeur
+      marchande réelle d'un actif a bougé de manière significative \u2014 à la hausse ou à la
+      baisse \u2014 et que personne ne met à jour l'entrée, chaque calcul en aval hérite discrètement
+      d'une hypothèse obsolète.</p>
+      <p><strong>2. Ignorer entièrement la valeur résiduelle.</strong> Supposer qu'un actif se
+      déprécie jusqu'à zéro surestime la perte et peut fausser une comparaison
+      réparer-versus-remplacer dans la mauvaise direction \u2014 la plupart des équipements valent
+      encore quelque chose même entièrement dépréciés sur le papier.</p>
+      <p><strong>3. Traiter « déprécié » et « sans valeur » comme la même chose.</strong> Un actif
+      entièrement déprécié sur les livres peut encore accomplir un travail réel et précieux. La
+      valeur comptable et la valeur opérationnelle sont liées, pas identiques.</p>
+      <p><strong>4. N'y penser qu'une fois par an.</strong> Au moment où un examen annuel révèle un
+      actif problématique, vous avez généralement déjà absorbé des mois d'une mauvaise décision \u2014
+      une réparation qui n'aurait pas dû être approuvée, un remplacement retardé trop longtemps. Un
+      chiffre qui se met à jour dès l'arrivée de nouvelles données capte cela pendant qu'il est
+      encore temps d'agir.</p>
+
+      <h3>La vue d'ensemble : la dépréciation alimente tout le reste</h3>
+      <p>La valeur comptable n'est pas juste un chiffre qui dort tranquillement dans un rapport. Dans
+      TraceHub, c'est l'une des sept entrées derrière la recommandation
+      Garder/Réparer/Vendre/Déclasser/Remplacer du
+      <a href="/docs/disposal-intelligence-engine">Moteur d'intelligence de mise au rebut</a>, et
+      elle remonte dans le chiffre global de <a href="/docs/fleet-intelligence-formulas-explained">
+      Risque de capital</a> de votre parc sur le tableau de bord \u2014 l'exposition réelle en
+      dollars qui se trouve dans un équipement déjà en mauvais état. Obtenez le chiffre sous-jacent
+      correctement, et tout ce qui est construit dessus devient plus fiable en même temps.</p>
+
+      <p>Si vous estimez actuellement cela une fois par an dans un tableur, ou pas du tout, les dix
+      premiers actifs sont gratuits à enregistrer et suivre pendant trente jours \u2014 aucune carte
+      requise. La dépréciation se calcule d'elle-même dès que vous saisissez un prix d'achat.</p>
+    `,
+  },
 ];
 
 module.exports = frenchPosts;

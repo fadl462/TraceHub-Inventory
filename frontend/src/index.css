@@ -113,6 +113,19 @@ body {
   .th-marquee-track { animation: none; }
 }
 
+/* Inline links within long-form content (blog posts, docs, legal pages) -
+   distinct primary-blue underline rather than Tailwind Typography's muted
+   default, since a real goal here is inviting readers onward to other
+   parts of the platform, not just citing a source. */
+.prose a {
+  color: #1A4D8F;
+  font-weight: 600;
+  text-decoration-color: rgba(26, 77, 143, 0.35);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.15s ease;
+}
+.prose a:hover { text-decoration-color: #1A4D8F; }
+
 /* Legal pages (Privacy/Terms/Cookie Policy): each numbered section renders
    as its own tinted card with a numbered badge, alternating two background
    tints for visual rhythm, plus a distinct amber callout style for the

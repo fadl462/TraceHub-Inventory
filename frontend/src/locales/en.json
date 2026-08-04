@@ -595,7 +595,13 @@
     "failedToPostComment": "Failed to post comment",
     "today": "Today",
     "yesterday": "Yesterday",
-    "daysAgo": "{{count}} days ago"
+    "daysAgo": "{{count}} days ago",
+    "keepReading": "Keep reading",
+    "exploreThePlatform": "Explore the platform",
+    "exploreThePlatformDesc": "See the depreciation engine, disposal recommendations, and everything else this post talks about, working on your own data.",
+    "tryTheCalculator": "Try the live depreciation calculator",
+    "readTheFramework": "Read the repair-or-replace framework",
+    "startFreeTrial": "Start your free trial"
   },
   "cmsPage": {
     "backToHome": "Back to home",

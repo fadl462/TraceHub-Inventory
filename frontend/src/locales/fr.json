@@ -595,7 +595,13 @@
     "failedToPostComment": "Échec de la publication du commentaire",
     "today": "Aujourd'hui",
     "yesterday": "Hier",
-    "daysAgo": "il y a {{count}} jours"
+    "daysAgo": "il y a {{count}} jours",
+    "keepReading": "Continuer la lecture",
+    "exploreThePlatform": "Explorez la plateforme",
+    "exploreThePlatformDesc": "Voyez le moteur de dépréciation, les recommandations de mise au rebut, et tout ce dont parle cet article, fonctionner avec vos propres données.",
+    "tryTheCalculator": "Essayez le calculateur de dépréciation en direct",
+    "readTheFramework": "Lire le cadre de décision réparer-ou-remplacer",
+    "startFreeTrial": "Commencez votre essai gratuit"
   },
   "cmsPage": {
     "backToHome": "Retour à l'accueil",

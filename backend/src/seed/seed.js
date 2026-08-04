@@ -96,8 +96,13 @@ async function seed() {
 
   console.log('Seeding blog posts...');
   for (const p of blogPosts) {
-    const [, created] = await BlogPost.findOrCreate({ where: { slug: p.slug }, defaults: p });
-    console.log(`  ${created ? 'created' : 'exists'}: ${p.title}`);
+    const locale = p.locale || 'en';
+    const [row, created] = await BlogPost.findOrCreate({ where: { slug: p.slug, locale }, defaults: { ...p, locale } });
+    if (!created && (row.bodyHtml !== p.bodyHtml || row.coverImageUrl !== p.coverImageUrl)) {
+      row.bodyHtml = p.bodyHtml; row.coverImageUrl = p.coverImageUrl; row.excerpt = p.excerpt; row.authorName = p.authorName;
+      await row.save();
+    }
+    console.log(`  ${created ? 'created' : 'exists'}: ${p.title} (${locale})`);
   }
 
   console.log('Ensuring Super Admin account exists...');

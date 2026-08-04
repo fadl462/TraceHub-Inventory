@@ -232,6 +232,137 @@ const spanishPosts = [
       cada activo, en toda una flota.</p>
     `,
   },
+  {
+    title: 'La depreciación no tiene que ser un misterio: lo que su equipo realmente vale hoy',
+    slug: 'understanding-asset-depreciation',
+    locale: 'es',
+    excerpt: 'Una guía en lenguaje sencillo sobre lo que realmente mide la depreciación, un ejemplo completo con números reales, y los cuatro errores que distorsionan silenciosamente el número en la mayoría de las empresas.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-04'),
+    isPublished: true,
+    coverImageUrl: '/blog/depreciation-explained-cover.svg',
+    bodyHtml: `
+      <p>Pregúntele a un gerente de instalaciones cuánto vale su generador de cinco años, y
+      generalmente obtendrá una de dos respuestas. Un número confiado que resulta ser el precio de
+      compra original sin ningún ajuste, o un honesto encogimiento de hombros. Ninguna es realmente
+      su culpa \u2014 la depreciación tiene la reputación de ser una formalidad contable, algo que
+      vive en una hoja de cálculo que nadie abre hasta que el auditor la pide. Esa reputación es
+      incorrecta, y le está costando dinero real a las empresas.</p>
+
+      <p>Este es un recorrido en lenguaje sencillo sobre qué es realmente la depreciación, por qué
+      merece más atención de la que normalmente recibe, y cómo pensar en ella de una manera que se
+      sostenga cuando alguien le pida que defienda el número.</p>
+
+      <h3>Por qué esto no es solo un ejercicio contable</h3>
+      <p>La depreciación se archiva bajo \u00abel problema de finanzas\u00bb, lo que subestima para
+      qué realmente sirve. Un valor en libros actual y preciso alimenta directamente decisiones que
+      no tienen nada que ver con la temporada de impuestos:</p>
+      <ul>
+        <li><strong>Presupuestación.</strong> Si no sabe cuánto vale realmente su flota hoy, no
+        puede pronosticar el gasto de reemplazo del próximo año \u2014 está adivinando, y las
+        suposiciones tienden a ser optimistas.</li>
+        <li><strong>Seguros.</strong> Los reclamos y niveles de cobertura se negocian sobre el valor
+        real en efectivo, no el valor sentimental ni el número de una factura de hace cinco años.</li>
+        <li><strong>La decisión de reparar o reemplazar.</strong> Genuinamente no puede tomar esa
+        decisión bien sin conocer el valor actual \u2014 es la otra mitad de la comparación, junto
+        con el costo de reparación. Escribimos un marco completo para esa decisión
+        <a href="/blog/repair-or-replace-decision-framework">aquí</a> si aún no lo ha visto.</li>
+        <li><strong>Vender o entregar equipo a cambio de otro.</strong> Un valor en libros
+        defendible es su posición de apertura en esa negociación, no una ocurrencia tardía una vez
+        que un comprador lo pregunta.</li>
+      </ul>
+      <p>Trate la depreciación como un número vivo que cambia lo que haría hoy, y deja de ser
+      papeleo.</p>
+
+      <h3>La idea en una frase</h3>
+      <p>La depreciación no es \u00abqué tan viejo es esto\u00bb. Es una estimación de cuánto valor
+      económico de un activo ya se ha consumido, basada en la suposición de que el valor disminuye
+      de manera predecible desde un precio de compra hasta un valor residual (de rescate) durante su
+      vida útil.</p>
+
+      <p>La versión más simple de esa estimación \u2014 la <strong>depreciación en línea
+      recta</strong> \u2014 distribuye esa disminución de manera uniforme en cada año. Tome un
+      generador de $12,000 con una vida útil de 8 años y un valor residual del 10% ($1,200 una vez
+      completamente depreciado):</p>
+
+      <div class="not-prose" style="background:#F4F7FA;border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-family:ui-monospace,monospace;font-size:0.92rem;">
+        <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span style="color:#64748B;">Base depreciable</span><span>$12,000 \u2212 $1,200 = $10,800</span></div>
+        <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span style="color:#64748B;">Depreciación anual</span><span>$10,800 \u00f7 8 años = <strong>$1,350 / año</strong></span></div>
+        <div style="display:flex;justify-content:space-between;padding:0.4rem 0;"><span style="color:#64748B;">Valor en libros después de 3 años</span><span style="color:#1A4D8F;font-weight:700;">$12,000 \u2212 ($1,350 \u00d7 3) = $7,950</span></div>
+      </div>
+
+      <p>Eso es todo \u2014 ese es el cálculo completo. No se necesita ninguna macro de hoja de
+      cálculo. Si quiere probarlo con sus propios números ahora mismo en lugar de confiar en
+      nuestra palabra sobre la aritmética, la documentación del
+      <a href="/docs/smart-depreciation-engine">Motor de depreciación inteligente</a> tiene una
+      calculadora en vivo integrada directamente en la página, usando exactamente esta fórmula.</p>
+
+      <h3>Dónde la línea recta deja de ser honesta, silenciosamente</h3>
+      <p>La suposición de la línea recta \u2014 desgaste idéntico cada año \u2014 es un punto de
+      partida razonable y una descripción bastante pobre de cómo realmente envejece la mayoría del
+      equipo. Dos generadores comprados el mismo día, mismo modelo, mismo precio, pueden valer
+      cantidades muy diferentes tres años después dependiendo de lo que realmente les pasó:</p>
+
+      <img src="/blog/depreciation-curves-diagram.svg" alt="Gráfico que compara la depreciación en línea recta con las curvas de uso real ligero e intensivo" style="width:100%;border-radius:16px;margin:1.5rem 0;" />
+
+      <p>Una unidad usada ligeramente, mantenida según lo programado, guardada en un lugar seco y
+      climatizado, conserva más valor del que predice la estimación en línea recta. Una unidad usada
+      intensamente, expuesta al aire salino o al polvo, con un mantenimiento que falló algunas
+      veces \u2014 pierde valor más rápido de lo que una línea recta admite. Ambas se describen de
+      manera idéntica en una hoja de cálculo que solo conoce \u00abprecio de compra\u00bb y \u00abaños
+      de propiedad\u00bb.</p>
+
+      <p>Esta es exactamente la brecha que el <a href="/docs/ai-adaptive-depreciation-in-depth">
+      método de depreciación Adaptativo IA</a> de TraceHub está diseñado para cerrar \u2014 ajusta la
+      tasa de depreciación usando la intensidad de uso real, el historial de mantenimiento, las
+      condiciones ambientales, y (cuando lo tiene) el valor de mercado actual, en lugar de suponer
+      que cada activo de una categoría envejece de manera idéntica. Si tiene curiosidad sobre el menú
+      completo de opciones, incluyendo los métodos basados en el tiempo (línea recta, saldo
+      decreciente, doble saldo decreciente, suma de dígitos de los años) y los métodos basados en el
+      uso (unidades de producción, horas máquina, kilometraje), hemos documentado las matemáticas
+      detrás de <a href="/docs/time-based-depreciation-methods">cada método basado en el
+      tiempo</a> y <a href="/docs/usage-based-depreciation-methods">cada método basado en el
+      uso</a> en detalle. También hay una opción genuinamente útil si ninguno de los métodos
+      integrados se ajusta a su situación: puede
+      <a href="/docs/writing-custom-depreciation-formulas">escribir su propia fórmula de
+      depreciación</a> usando las propias variables de su organización.</p>
+
+      <h3>Cuatro errores que vemos constantemente</h3>
+      <p>Ninguno es exótico \u2014 simplemente son fáciles de cometer una vez que la depreciación se
+      convierte en una tarea anual en lugar de un número vivo.</p>
+      <p><strong>1. Usar el precio de compra original para siempre.</strong> Si el valor de mercado
+      real de un activo se ha movido significativamente \u2014 hacia arriba o hacia abajo \u2014 y
+      nadie actualiza la entrada, cada cálculo posterior hereda silenciosamente una suposición
+      obsoleta.</p>
+      <p><strong>2. Ignorar el valor residual por completo.</strong> Suponer que un activo se
+      deprecia a cero sobrestima la pérdida y puede distorsionar una comparación de
+      reparar-versus-reemplazar en la dirección equivocada \u2014 la mayoría del equipo aún vale algo
+      incluso completamente depreciado en papel.</p>
+      <p><strong>3. Tratar \u00abdepreciado\u00bb y \u00absin valor\u00bb como lo mismo.</strong> Un
+      activo completamente depreciado en los libros aún puede estar haciendo un trabajo real y
+      valioso. El valor en libros y el valor operativo están relacionados, no son idénticos.</p>
+      <p><strong>4. Pensarlo solo una vez al año.</strong> Para cuando una revisión anual revela un
+      activo problemático, generalmente ya ha absorbido meses de una mala decisión \u2014 una
+      reparación que no debería haberse aprobado, un reemplazo que se retrasó demasiado. Un número
+      que se actualiza en el momento en que llegan nuevos datos detecta esto mientras todavía hay
+      tiempo para actuar.</p>
+
+      <h3>El panorama general: la depreciación alimenta todo lo demás</h3>
+      <p>El valor en libros no es solo un número que descansa tranquilamente en un informe. En
+      TraceHub, es una de las siete entradas detrás de la recomendación
+      Mantener/Reparar/Vender/Desguazar/Reemplazar del
+      <a href="/docs/disposal-intelligence-engine">Motor de inteligencia de baja</a>, y se acumula
+      en la cifra general de <a href="/docs/fleet-intelligence-formulas-explained">Riesgo de
+      capital</a> de su flota en el tablero \u2014 la exposición real en dólares que se encuentra en
+      equipo que ya está en mal estado. Obtenga bien el número subyacente, y todo lo que se
+      construye sobre él se vuelve más confiable junto con él.</p>
+
+      <p>Si actualmente está estimando esto una vez al año en una hoja de cálculo, o no lo está
+      estimando en absoluto, los primeros 10 activos son gratuitos para registrar y rastrear durante
+      treinta días \u2014 sin necesidad de tarjeta. La depreciación se calcula sola en el momento en
+      que ingresa un precio de compra.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;

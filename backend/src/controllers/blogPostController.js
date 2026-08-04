@@ -11,6 +11,14 @@ function slugify(str) {
   return String(str).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
+// Same real word-count-based estimator as the docs portal (not a guessed
+// number) - strips HTML tags, ~200 words/minute, rounded up.
+function estimateReadingMinutes(html) {
+  const text = String(html || '').replace(/<[^>]*>/g, ' ');
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
 // Sample/placeholder posts being retired, per an explicit content decision -
 // pruned even from an already-seeded database, not just excluded from
 // future seeds.
@@ -56,7 +64,7 @@ async function listPublic(req, res, next) {
     let posts = await BlogPost.findAll({
       where: { isPublished: true, locale },
       order: [['publishedAt', 'DESC']],
-      attributes: ['id', 'title', 'slug', 'excerpt', 'coverImageUrl', 'authorName', 'publishedAt'],
+      attributes: ['id', 'title', 'slug', 'excerpt', 'coverImageUrl', 'authorName', 'publishedAt', 'bodyHtml'],
     });
     // A post not yet translated into the requested language falls back to
     // English rather than silently disappearing from the list.
@@ -65,12 +73,18 @@ async function listPublic(req, res, next) {
       const enFallback = await BlogPost.findAll({
         where: { isPublished: true, locale: 'en' },
         order: [['publishedAt', 'DESC']],
-        attributes: ['id', 'title', 'slug', 'excerpt', 'coverImageUrl', 'authorName', 'publishedAt'],
+        attributes: ['id', 'title', 'slug', 'excerpt', 'coverImageUrl', 'authorName', 'publishedAt', 'bodyHtml'],
       });
       posts = [...posts, ...enFallback.filter((p) => !translatedSlugs.has(p.slug))]
         .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
     }
-    res.json({ posts });
+    const withReadingTime = posts.map((p) => {
+      const data = p.toJSON();
+      data.readingMinutes = estimateReadingMinutes(data.bodyHtml);
+      delete data.bodyHtml; // list view never needed the full body, just the computed minutes
+      return data;
+    });
+    res.json({ posts: withReadingTime });
   } catch (err) { next(err); }
 }
 
@@ -85,7 +99,17 @@ async function getBySlug(req, res, next) {
       post = await BlogPost.findOne({ where: { slug: req.params.slug, locale: 'en', isPublished: true } });
     }
     if (!post) return res.status(404).json({ error: 'Post not found' });
-    res.json({ post });
+
+    const others = await BlogPost.findAll({
+      where: { isPublished: true, locale: post.locale, slug: { [require('sequelize').Op.ne]: post.slug } },
+      order: [['publishedAt', 'DESC']],
+      attributes: ['id', 'title', 'slug', 'coverImageUrl', 'excerpt'],
+      limit: 2,
+    });
+
+    const payload = post.toJSON();
+    payload.readingMinutes = estimateReadingMinutes(payload.bodyHtml);
+    res.json({ post: payload, related: others });
   } catch (err) { next(err); }
 }
 
