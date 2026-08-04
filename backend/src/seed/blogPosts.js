@@ -626,6 +626,251 @@ const englishPosts = [
       the opening, not six months after.</p>
     `,
   },
+  {
+    title: 'Rising Tariffs Are Quietly Changing the Repair-vs-Replace Math',
+    slug: 'tariffs-and-replacement-cost-2026',
+    locale: 'en',
+    excerpt: 'Steel tariffs doubled, machinery tariffs stacked past 27%, and replacement cost estimates from a year ago are now wrong in a specific, predictable direction.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-19T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/tariffs-cover.svg',
+    bodyHtml: `
+      <p>Somewhere in a lot of companies' asset records right now sits a "replacement cost" field
+      that was accurate a year ago and quietly isn't anymore. Steel tariffs doubled to 50% in mid
+      2025. Machinery tariffs from China sit around 27.5% once every surcharge is stacked. Caterpillar
+      alone is absorbing roughly $2.2 billion in tariff-related costs this year, and it isn't the
+      only manufacturer passing a meaningful share of that through to the invoice. None of this is a
+      forecast \u2014 it's already showing up in new-equipment pricing across construction,
+      agriculture, and warehouse equipment.</p>
+
+      <p>If your repair-versus-replace decisions still compare against a replacement cost figure
+      from a year or two ago, the comparison is now wrong in a specific, predictable direction: it's
+      making replacement look cheaper relative to repair than it actually is.</p>
+
+      <h3>The mechanism, briefly</h3>
+      <p>Steel accounts for roughly 60 to 70 percent of the manufactured cost of a lot of industrial
+      equipment \u2014 racking, structural components, heavy machinery frames. When Section 232 steel
+      tariffs doubled, that cost increase didn't stay with the manufacturer; it moved through the
+      supply chain and landed on the invoice. Industry reporting on construction equipment has
+      described cases where a raw-material tariff impact in the thousands of dollars translates into
+      a retail price increase nearly twice that size by the time margin gets layered on at every
+      step between factory and buyer.</p>
+
+      <p>The practical result already visible in the market: pre-tariff used equipment \u2014
+      anything built before the current tariff regime took hold \u2014 is holding its value
+      unusually well, because the gap between its price and a new unit's price has widened
+      significantly. That's not a subtle shift. It's a real, current market signal that the
+      replace side of the equation has gotten more expensive, specifically, not just generally.</p>
+
+      <h3>What this means for a number you already have</h3>
+      <p>Our own <a href="/docs/disposal-intelligence-engine">Disposal Intelligence Engine</a>
+      deliberately weighs maintenance cost against <em>current</em> replacement cost rather than
+      original purchase price, precisely because the two can drift apart significantly \u2014 and
+      right now, for a wide range of equipment categories, they're drifting apart faster than usual.
+      A repair that looked marginal against last year's replacement estimate can look genuinely
+      worthwhile against this year's.</p>
+
+      <p>This is also exactly the kind of situation the <a href="/docs/registering-an-asset">current
+      market value field</a> in an asset's record exists for \u2014 quietly updating it once
+      or twice a year against real current pricing, rather than leaving it at whatever number was
+      entered at purchase time, is a five-minute task with a real effect on which recommendations
+      your fleet actually surfaces.</p>
+
+      <h3>A practical starting point, not a full audit</h3>
+      <p>You don't need to re-price your entire fleet this week. A reasonable place to start: pull
+      whichever assets are currently flagged for replacement and specifically check whether their
+      recorded replacement cost reflects this year's pricing or an older estimate. For equipment
+      categories most exposed to steel and machinery tariffs \u2014 construction and warehouse
+      equipment, agricultural machinery, anything with a significant steel frame \u2014 that number
+      may be understating the real cost of replacing by a meaningful margin right now.</p>
+
+      <p>Tariff policy in this space has moved fast and shows every sign of continuing to shift
+      through the rest of 2026. Whatever it does next, the asset-management lesson holds regardless
+      of direction: a repair-or-replace number is only as good as how recently someone actually
+      checked it against reality.</p>
+    `,
+  },
+  {
+    title: 'QR Code, Barcode, or RFID? An Honest Decision Framework',
+    slug: 'qr-vs-barcode-vs-rfid',
+    locale: 'en',
+    excerpt: "We built TraceHub around QR codes, not RFID. Here's the honest comparison, including exactly when we'd tell you to use something else.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-22T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/qr-vs-rfid-cover.svg',
+    bodyHtml: `
+      <p>Every conversation about tracking physical equipment eventually runs into the same
+      question: QR codes, barcodes, or RFID? Vendors selling hardware have an obvious answer.
+      We'll try to give you an honest one instead, including the situations where we'd tell you
+      not to use the approach we actually built.</p>
+
+      <h3>Barcodes: the quiet workhorse</h3>
+      <p>Traditional 1D barcodes are cheap, universally supported, and require line-of-sight
+      scanning with a dedicated reader or a phone camera. Their real limitation isn't reliability \u2014
+      it's data density. A barcode typically encodes little more than an ID number, meaning the
+      actual asset information has to live in a separate system that the ID number points to.
+      That's a fine trade-off for high-volume retail inventory. It's a weaker one when you want a
+      code that can, on its own, at least identify what it's attached to.</p>
+
+      <h3>QR codes: barcodes with room to actually say something</h3>
+      <p>A QR code can hold vastly more data than a 1D barcode in the same physical space, and
+      critically, it's readable by an ordinary phone camera at an angle and distance a 1D scanner
+      would struggle with. This is why we built TraceHub's tracking around
+      <a href="/docs/qr-codes-and-printing-tags">QR codes</a> rather than barcodes: the code itself
+      is a real URL, so scanning it with any camera app \u2014 not just our own \u2014 takes you
+      straight to that asset's record. No proprietary scanner, no per-device licensing, no reader
+      hardware to keep charged and calibrated.</p>
+
+      <h3>RFID: genuinely better at one specific thing</h3>
+      <p>RFID's real advantage over both barcodes and QR codes is that it doesn't require
+      line-of-sight or individual scanning \u2014 a reader can pick up dozens of tagged items
+      simultaneously as they pass through a zone, without anyone pointing anything at anything.
+      That's a legitimately powerful capability for high-volume pass-through scenarios: a loading
+      dock where pallets move through constantly, a large retail floor doing rapid stock counts.</p>
+      <p>It's also the reason RFID is usually the wrong choice for the kind of equipment tracking
+      most operations teams actually need. Readers cost real money per unit, need installation and
+      calibration, and the tags themselves cost more per unit than a printed QR label. For tracking
+      a fleet of vehicles, tools, or generators that move between a handful of checkpoints \u2014 not
+      thousands of items streaming past a single point \u2014 that infrastructure cost buys you very
+      little you couldn't get from a phone camera and a printed label.</p>
+
+      <h3>The honest decision framework</h3>
+      <p>Ask one question: are you tracking high-volume, high-velocity flow through fixed points
+      (RFID's genuine strength), or discrete, identifiable assets moving between a manageable
+      number of locations, checked by people who already carry a phone (QR's genuine strength)? Most
+      equipment tracking \u2014 vehicles, tools, IT hardware, generators, furniture \u2014 is
+      unambiguously the second category. Most warehouse pass-through logistics at real scale is
+      closer to the first.</p>
+      <p>If you're not sure which describes your situation, a reasonable tell: if you're picturing
+      someone deliberately picking up and scanning one asset at a time, you want QR. If you're
+      picturing pallets rolling through a dock door without anyone touching a scanner, you're
+      picturing RFID's actual use case, and it's probably worth the infrastructure investment for
+      that specific scenario.</p>
+
+      <p>We built around QR codes because it's the honest fit for how most equipment-heavy
+      operations actually move \u2014 not because it's the only technology that exists, but because
+      it's the one that doesn't ask you to buy hardware to solve a problem a phone camera already
+      solves.</p>
+    `,
+  },
+  {
+    title: 'What Your Fleet Grade Actually Means (and the Fastest Way to Move It)',
+    slug: 'understanding-your-fleet-grade',
+    locale: 'en',
+    excerpt: "A single letter grade hides three very different problems, each with a different fix. Here's how to tell which one you actually have.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-24T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/fleet-grade-cover.svg',
+    bodyHtml: `
+      <p>If you've glanced at your dashboard and seen a fleet grade sitting at a C, or worse, the
+      instinct is usually to treat it as a vague scolding and move on. That's a mistake \u2014 the
+      grade is a composite of three real, specific numbers, and knowing which one is actually
+      dragging it down tells you exactly what to do next, rather than a general feeling that
+      something, somewhere, needs attention.</p>
+
+      <h3>What's actually inside the grade</h3>
+      <p>The overall letter grade is built from three inputs, weighted as documented in
+      <a href="/docs/fleet-intelligence-formulas-explained">Fleet Intelligence formulas
+      explained</a>: Portfolio Health carries the most weight, Asset Availability next, and Capital
+      at Risk (inverted, since lower risk is better) rounds it out. A grade sitting at C could mean
+      three very different underlying situations, and each one has a different fix.</p>
+
+      <h3>If Portfolio Health is the problem</h3>
+      <p>This means a meaningful share of your fleet, by count, sits in the lower
+      <a href="/docs/asset-health-score">health bands</a>. The fix isn't "buy new equipment" as a
+      first move \u2014 it's sorting by health score ascending and looking at what's actually
+      dragging each low-scoring asset down. Age-adjusted position, maintenance compliance, and
+      environment each carry real weight in that score, and a surprising number of "unhealthy"
+      assets turn out to be dragged down by a maintenance data gap rather than genuine physical
+      decline \u2014 an asset with no logged maintenance in two years scores as if it's been
+      neglected, whether or not it actually has been.</p>
+
+      <h3>If Capital at Risk is the problem</h3>
+      <p>This one is about money concentration, not asset count. A small number of high-value
+      assets in poor condition can drag this number down even if the vast majority of your fleet, by
+      count, is perfectly healthy \u2014 by design, since <a href="/docs/fleet-intelligence-formulas-explained">
+      Capital at Risk</a> weights by value, not headcount. If this is your weak input, the fix is
+      narrow and specific: look at your highest-value assets specifically, not your fleet broadly,
+      and prioritize disposal decisions there over anything else.</p>
+
+      <h3>If Asset Availability is the problem</h3>
+      <p>This means too much of your fleet sits idle rather than in active use \u2014 assets that
+      are neither broken nor assigned, just sitting. Unlike the other two, this often isn't a
+      maintenance or capital problem at all; it's frequently a utilization problem, and the fix is
+      redeploying or disposing of equipment nobody's actually using rather than anything to do with
+      condition.</p>
+
+      <h3>Why this matters more than the letter itself</h3>
+      <p>A grade you can't decompose is just a mood. A grade you can trace to a specific input tells
+      you whether you have a maintenance problem, a concentration-of-capital problem, or a
+      utilization problem \u2014 three genuinely different situations that call for three different
+      responses, all currently hiding behind the same single letter. The letter is useful as a
+      glance-and-go signal for an executive who doesn't need the detail. For anyone actually
+      responsible for moving it, the three numbers underneath are where the real information
+      lives.</p>
+
+      <p>Next time the grade moves \u2014 in either direction \u2014 check which of the three inputs
+      actually shifted before assuming you know why. It's usually not the one you'd guess.</p>
+    `,
+  },
+  {
+    title: 'Getting a New Hire Productive on Your Asset System in About Fifteen Minutes',
+    slug: 'onboarding-new-hires',
+    locale: 'en',
+    excerpt: 'The difference between a confident new hire and a quietly avoidant one almost never comes down to the software. It comes down to the first fifteen minutes.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-26T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/onboarding-cover.svg',
+    bodyHtml: `
+      <p>A new hire's first week with any system tends to go one of two ways: they either get a
+      real five-minute walkthrough and are genuinely productive by lunch, or they get "you'll pick
+      it up" and spend their first month quietly avoiding the parts of the job that touch the asset
+      system at all. The difference almost never comes down to how complicated the software
+      actually is \u2014 it comes down to whether anyone deliberately structured those first five
+      minutes.</p>
+
+      <h3>Give them the right role on day one, not "figure it out later"</h3>
+      <p>The single most common onboarding mistake: defaulting everyone to the same access level
+      because it's easier than deciding. <a href="/docs/roles-and-permissions">Staff, Manager, and
+      Company Admin</a> access genuinely differ in what someone needs to see, and someone with
+      Staff-level responsibilities handed Company Admin access on day one doesn't get a better
+      experience \u2014 they get a more confusing one, buried in settings and reports that aren't
+      relevant to what they're actually there to do.</p>
+
+      <h3>Have them do one real scan before anything else</h3>
+      <p>Reading about how QR scanning works and actually doing it are different kinds of knowledge,
+      and the second kind sticks. Before any deeper walkthrough, hand a new team member a real
+      asset and have them <a href="/docs/scanning-assets">scan it in or out</a> once, on their own
+      phone, with no special app to install. That one action teaches the core mechanic of the whole
+      system faster than any amount of screen-sharing, and it removes the most common early anxiety:
+      "am I going to break something if I try this."</p>
+
+      <h3>Show them where things actually live, not everything that exists</h3>
+      <p>A full feature tour on day one is mostly forgotten by day three. A five-minute walkthrough
+      of exactly the handful of screens someone in their specific role will actually touch \u2014 the
+      asset list, their assignments, maybe the scanner \u2014 sticks far better than a comprehensive
+      overview of a platform they're not going to use most of. Save the rest for when they actually
+      need it, which is usually a better teacher than a scheduled training session anyway.</p>
+
+      <h3>Tell them what happens if they get it wrong</h3>
+      <p>A surprising amount of new-hire hesitation comes from not knowing whether a mistake is
+      correctable. It usually is: an <a href="/docs/editing-an-existing-asset">asset edit</a> can be
+      corrected, a wrong location scan can be re-scanned, and the <a href="/docs/the-audit-log">audit
+      log</a> means nothing is ever silently lost, just visibly traceable back to whoever touched it
+      last. Saying this out loud on day one \u2014 explicitly, not assuming it's obvious \u2014 removes
+      most of the caution that otherwise slows someone down for their first few weeks.</p>
+
+      <h3>The pattern underneath all four</h3>
+      <p>None of this is about the software being simple or complicated \u2014 the same platform can
+      produce a confident new hire or an avoidant one depending entirely on whether that first
+      session was structured around what they'll actually do, or left to chance. Fifteen minutes
+      spent deliberately on the four things above tends to save weeks of quiet avoidance later.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');

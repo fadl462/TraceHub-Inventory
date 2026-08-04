@@ -1,0 +1,35 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg8" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow8" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg8)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow8)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Rising bar chart, three bars increasing -->
+  <g>
+    <rect x="440" y="300" width="70" height="90" rx="6" fill="#132C52" stroke="#8CC2FF" stroke-width="2.5"/>
+    <rect x="540" y="250" width="70" height="140" rx="6" fill="#132C52" stroke="#8CC2FF" stroke-width="2.5"/>
+    <rect x="640" y="190" width="70" height="200" rx="6" fill="#0A1F3A" stroke="#FF8A65" stroke-width="3.5"/>
+    <rect x="740" y="150" width="70" height="240" rx="6" fill="#0A1F3A" stroke="#FF8A65" stroke-width="3.5"/>
+  </g>
+  <!-- Arrow tracing the rise -->
+  <path d="M 460 295 L 570 245 L 670 185 L 770 145" fill="none" stroke="#FF8A65" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 750 140 L 775 143 L 770 168" fill="none" stroke="#FF8A65" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="600" y="440" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#8CC2FF" opacity="0.8">New-equipment replacement cost</text>
+
+  <g transform="translate(480, 480)">
+    <rect x="0" y="0" width="240" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="120" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">STEEL TARIFF, 2025-26</text>
+    <text x="120" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#FFFFFF">25% \u2192 50%</text>
+  </g>
+</svg>

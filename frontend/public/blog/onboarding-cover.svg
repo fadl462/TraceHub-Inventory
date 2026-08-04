@@ -1,0 +1,55 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg11" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow11" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg11)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow11)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Person icon -->
+  <g transform="translate(460, 260)">
+    <circle cx="0" cy="-38" r="26" fill="#132C52" stroke="#8CC2FF" stroke-width="3.5"/>
+    <path d="M -40 55 C -40 5 40 5 40 55 Z" fill="#132C52" stroke="#8CC2FF" stroke-width="3.5"/>
+  </g>
+
+  <!-- Four numbered steps, ascending checkmarks -->
+  <g font-family="Inter, sans-serif">
+    <g transform="translate(650, 150)">
+      <circle r="20" fill="#0A1F3A" stroke="#7ED957" stroke-width="3"/>
+      <path d="M -8 0 L -2 6 L 9 -8" fill="none" stroke="#7ED957" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <text x="685" y="156" font-size="16" fill="#B9CEE8">Right role assigned</text>
+
+    <g transform="translate(650, 210)">
+      <circle r="20" fill="#0A1F3A" stroke="#7ED957" stroke-width="3"/>
+      <path d="M -8 0 L -2 6 L 9 -8" fill="none" stroke="#7ED957" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <text x="685" y="216" font-size="16" fill="#B9CEE8">First real scan done</text>
+
+    <g transform="translate(650, 270)">
+      <circle r="20" fill="#0A1F3A" stroke="#7ED957" stroke-width="3"/>
+      <path d="M -8 0 L -2 6 L 9 -8" fill="none" stroke="#7ED957" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <text x="685" y="276" font-size="16" fill="#B9CEE8">Shown their own screens</text>
+
+    <g transform="translate(650, 330)">
+      <circle r="20" fill="#0A1F3A" stroke="#7ED957" stroke-width="3"/>
+      <path d="M -8 0 L -2 6 L 9 -8" fill="none" stroke="#7ED957" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <text x="685" y="336" font-size="16" fill="#B9CEE8">Told mistakes are fixable</text>
+  </g>
+
+  <g transform="translate(480, 480)">
+    <rect x="0" y="0" width="240" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="120" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">TIME TO PRODUCTIVE</text>
+    <text x="120" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">~15 minutes</text>
+  </g>
+</svg>
