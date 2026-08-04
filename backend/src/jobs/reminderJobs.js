@@ -1,10 +1,31 @@
 const cron = require('node-cron');
 const { Op } = require('sequelize');
 const {
-  Assignment, Asset, User, Notification, Company, Subscription, PlatformSettings, DisposalCase,
+  Assignment, Asset, User, Notification, Company, Subscription, PlatformSettings, DisposalCase, BlogPost,
 } = require('../models');
 const { sendMail } = require('../utils/mailer');
 const { evaluateOutcomes } = require('../utils/learningLoop');
+
+/**
+ * Scheduled blog publishing: a post is created with isPublished=false and
+ * publishedAt set to its intended future publish time. This job simply
+ * checks whether that time has arrived and flips isPublished to true -
+ * the post then appears exactly as if it had been published by hand at
+ * that moment, since every public query already filters on isPublished.
+ * Runs every 15 minutes (not once daily like the other jobs below) so a
+ * 9am-scheduled post actually goes live close to 9am, not hours late.
+ */
+async function processScheduledBlogPosts() {
+  const due = await BlogPost.findAll({
+    where: { isPublished: false, publishedAt: { [Op.lte]: new Date() } },
+  });
+  for (const post of due) {
+    post.isPublished = true;
+    // eslint-disable-next-line no-await-in-loop
+    await post.save();
+    console.log(`[cron] Auto-published scheduled blog post: "${post.title}" (${post.locale})`);
+  }
+}
 
 /**
  * AI Learning Loop: for every company, check rejected-and-ignored disposal
@@ -204,6 +225,13 @@ function startCronJobs() {
       .catch((e) => console.error('[cron] jobs failed:', e));
   });
   console.log('[cron] Reminder jobs scheduled (daily 07:00).');
+
+  // Runs every 15 minutes so scheduled blog posts go live close to their
+  // intended time rather than waiting for the next once-daily pass.
+  cron.schedule('*/15 * * * *', () => {
+    processScheduledBlogPosts().catch((e) => console.error('[cron] scheduled blog publish failed:', e));
+  });
+  console.log('[cron] Scheduled blog publishing checked every 15 minutes.');
 }
 
 async function recordCronRun() {
@@ -217,5 +245,5 @@ async function recordCronRun() {
 }
 
 module.exports = {
-  startCronJobs, processReturnReminders, processOverdueDailyAlerts, processSubscriptionWarnings, processLearningLoopEvaluation,
+  startCronJobs, processReturnReminders, processOverdueDailyAlerts, processSubscriptionWarnings, processLearningLoopEvaluation, processScheduledBlogPosts,
 };

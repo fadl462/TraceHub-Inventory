@@ -1,0 +1,43 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow5" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg5)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow5)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Three stage nodes with connecting arrows -->
+  <g font-family="Inter, sans-serif">
+    <circle cx="330" cy="270" r="52" fill="#132C52" stroke="#8CC2FF" stroke-width="3"/>
+    <text x="330" y="277" text-anchor="middle" font-size="13" fill="#8CC2FF" font-weight="600">REACTIVE</text>
+
+    <circle cx="600" cy="240" r="60" fill="#132C52" stroke="#4DA3FF" stroke-width="3.5"/>
+    <text x="600" y="247" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="700">PREDICTIVE</text>
+
+    <circle cx="870" cy="270" r="68" fill="#0A1F3A" stroke="#7ED957" stroke-width="4"/>
+    <text x="870" y="264" text-anchor="middle" font-size="15" fill="#7ED957" font-weight="700">PRESCRIP-</text>
+    <text x="870" y="282" text-anchor="middle" font-size="15" fill="#7ED957" font-weight="700">TIVE</text>
+
+    <path d="M 384 262 L 536 245" fill="none" stroke="#8CC2FF" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M 662 248 L 798 265" fill="none" stroke="#4DA3FF" stroke-width="3.5" marker-end="url(#arrow)"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6" fill="none" stroke="#8CC2FF" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <g transform="translate(480, 470)">
+    <rect x="0" y="0" width="240" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="120" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">FAILURE FORECAST WINDOW</text>
+    <text x="120" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">6-12 months</text>
+  </g>
+</svg>

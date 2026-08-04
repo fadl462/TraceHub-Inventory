@@ -1,0 +1,45 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow4" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg4)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow4)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Gear -->
+  <g transform="translate(600,260)">
+    <circle r="95" fill="none" stroke="#8CC2FF" stroke-width="5"/>
+    <g stroke="#8CC2FF" stroke-width="14" stroke-linecap="round">
+      <line x1="0" y1="-95" x2="0" y2="-125"/>
+      <line x1="0" y1="95" x2="0" y2="125"/>
+      <line x1="-95" y1="0" x2="-125" y2="0"/>
+      <line x1="95" y1="0" x2="125" y2="0"/>
+      <line x1="67" y1="-67" x2="88" y2="-88"/>
+      <line x1="-67" y1="-67" x2="-88" y2="-88"/>
+      <line x1="67" y1="67" x2="88" y2="88"/>
+      <line x1="-67" y1="67" x2="-88" y2="88"/>
+    </g>
+    <circle r="46" fill="#0A1F3A" stroke="#4DA3FF" stroke-width="3"/>
+  </g>
+
+  <!-- Unlocked padlock, open shackle, centered over the gear -->
+  <g transform="translate(600, 258)">
+    <path d="M -22 -8 L -22 -30 A 22 22 0 0 1 8 -48" fill="none" stroke="#7ED957" stroke-width="7" stroke-linecap="round"/>
+    <rect x="-30" y="-10" width="60" height="46" rx="8" fill="#132C52" stroke="#7ED957" stroke-width="3.5"/>
+    <circle cx="0" cy="10" r="6" fill="#7ED957"/>
+  </g>
+
+  <g transform="translate(505, 470)">
+    <rect x="0" y="0" width="240" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="120" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">STATE BILLS IN 2026</text>
+    <text x="120" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#FFFFFF">33+ / 13 states</text>
+  </g>
+</svg>

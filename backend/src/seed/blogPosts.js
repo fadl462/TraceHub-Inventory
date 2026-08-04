@@ -331,6 +331,301 @@ const englishPosts = [
       calculates itself the moment you enter a purchase price.</p>
     `,
   },
+  {
+    title: 'The Right-to-Repair Wave Is Changing the Math on Repair vs. Replace',
+    slug: 'right-to-repair-wave-2026',
+    locale: 'en',
+    excerpt: "Over thirty right-to-repair bills, a new Colorado law, and two federal bills are reshaping repair access in 2026 - here's what that actually means for the repair-or-replace decision.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-10T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/right-to-repair-cover.svg',
+    bodyHtml: `
+      <p>If you manage physical equipment for a living, a quiet legislative shift happening across
+      the United States in 2026 is worth your attention \u2014 not because of politics, but because it
+      changes the actual arithmetic behind one of the decisions we write about most:
+      <a href="/blog/repair-or-replace-decision-framework">repair or replace</a>.</p>
+
+      <p>More than thirty right-to-repair bills were introduced across thirteen states in the first
+      few weeks of this year alone. Colorado's right-to-repair law took effect in January, covering
+      everything from HVAC systems to IT equipment. A federal bill, the REPAIR Act, has been
+      advancing through committee for vehicles. A separate federal bill, the FARM Act, targets
+      agricultural equipment specifically, after research suggested farmers lose billions of dollars
+      annually to manufacturer repair restrictions. None of this is settled law everywhere yet, and
+      coverage varies sharply by state and equipment category \u2014 but the direction is
+      unmistakable.</p>
+
+      <h3>What "right to repair" actually requires</h3>
+      <p>Strip away the politics and the core of these laws is simple: manufacturers have to make
+      parts, diagnostic tools, and repair documentation available to owners and independent repair
+      shops, not just their own authorized network. A growing number of newer bills go further and
+      explicitly ban "parts pairing" \u2014 software locks that refuse to recognize a replacement part
+      unless it was purchased through the manufacturer, even when the part itself is functionally
+      identical.</p>
+
+      <p>If that sounds like a narrow consumer-electronics issue, the equipment categories already in
+      scope or under active legislative discussion say otherwise: HVAC systems, powered wheelchairs,
+      agricultural equipment, and vehicles over 14,000 lbs are all part of the current wave, not just
+      phones and laptops.</p>
+
+      <h3>Why this actually matters for the repair-vs-replace decision</h3>
+      <p>Our own framework for that decision weighs repair cost against replacement cost, current
+      condition, and how much of an asset's useful life is genuinely left. Two of those inputs move
+      when repair access improves:</p>
+      <ul>
+        <li><strong>Repair cost tends to fall.</strong> When independent shops can access the same
+        parts and documentation as an authorized dealer, competition on labor rates and parts pricing
+        increases \u2014 the "we're the only ones who can fix this" premium shrinks.</li>
+        <li><strong>Repair becomes viable later into an asset's life.</strong> A big driver of
+        replacing equipment that's technically still repairable is that authorized service becomes
+        slow, expensive, or simply unavailable as a model ages out of a manufacturer's support
+        window. Independent repair access extends the window where repair is genuinely a live
+        option, not just a theoretical one.</li>
+      </ul>
+      <p>Neither of these changes the physics of a worn-out asset \u2014 a generator with a cracked
+      block is still a generator with a cracked block. But for the large middle category of
+      equipment that's aging but not actually failing, better repair access can genuinely tip a
+      close call from replace to repair.</p>
+
+      <h3>What to actually do about it right now</h3>
+      <p>You don't need to become a policy expert to benefit from this. Two practical steps are
+      worth taking regardless of how the legislation in your specific state or country settles:</p>
+      <p><strong>Revisit repair cost assumptions on equipment you wrote off as "too expensive to
+      fix" in the past year or two.</strong> If that judgment was based on authorized-dealer-only
+      pricing, it may be worth re-quoting against an independent shop now, particularly for HVAC,
+      vehicles, and IT equipment where repair access is expanding fastest.</p>
+      <p><strong>Keep your own repair and maintenance records current and complete</strong> \u2014
+      the better your documented maintenance history, the stronger your position when negotiating
+      with either an authorized dealer or an independent shop, and the more accurate your own
+      <a href="/docs/disposal-intelligence-engine">disposal readiness scoring</a> stays regardless of
+      who ends up doing the work. This is exactly the kind of thing a real, current
+      <a href="/docs/the-audit-log">audit trail</a> is for \u2014 not compliance theater, but leverage
+      you can actually use.</p>
+
+      <p>Legislative momentum in this space has moved fast in 2026 and shows no sign of slowing.
+      Whatever your position on the underlying policy debate, the practical asset-management
+      takeaway is straightforward: repair is quietly becoming a stronger option than it's been in
+      years, and the companies keeping clean records are the ones positioned to actually take
+      advantage of that when a close call comes up.</p>
+    `,
+  },
+  {
+    title: 'AI Is Turning Asset Management From a Recording System Into a Decision-Making System',
+    slug: 'ai-shift-recording-to-decision-making',
+    locale: 'en',
+    excerpt: 'The real industry shift in 2026 is reactive to predictive to prescriptive - and the honest questions worth asking any platform claiming to do this, including us.',
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-12T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/ai-shift-cover.svg',
+    bodyHtml: `
+      <p>For most of the history of asset management software, a "system of record" is exactly what
+      it sounds like: something that records what happened. An asset broke, someone logged it. A
+      part got replaced, someone logged that too. The software's job was to remember things
+      accurately, not to think about them.</p>
+
+      <p>That's changing faster than most operations teams have had time to absorb. Across the
+      enterprise asset management industry in 2026, the consistent theme \u2014 echoed by
+      independent market analysts and platform vendors alike \u2014 is a shift from systems that
+      record what already happened to systems that anticipate what's about to happen and recommend
+      what to do about it. It's worth understanding what's actually driving that shift, and being
+      honest about where the real substance is versus where it's still mostly a slide in a sales
+      deck.</p>
+
+      <h3>The real shift: reactive to predictive to prescriptive</h3>
+      <p>There's a useful three-stage way to think about how maintenance has evolved:</p>
+      <ul>
+        <li><strong>Reactive.</strong> Something breaks, you fix it. No prediction involved.</li>
+        <li><strong>Predictive.</strong> Sensor data and usage patterns are used to forecast that
+        something is likely to fail before it does \u2014 giving you a window to act on your own
+        schedule instead of the equipment's.</li>
+        <li><strong>Prescriptive.</strong> The system doesn't just flag a likely failure, it
+        recommends a specific action \u2014 repair, replace, adjust a maintenance interval \u2014
+        based on the actual economics of that specific asset, not a generic rule of thumb.</li>
+      </ul>
+      <p>Industry adoption of predictive maintenance in some form is now genuinely mainstream rather
+      than experimental \u2014 most manufacturers surveyed across recent industry reports say they're
+      already applying some form of it. The more interesting frontier for 2026 is the move toward
+      the prescriptive layer: not just "this will probably fail," but "here's what it will cost you
+      to keep going versus stop now, specifically for this unit."</p>
+
+      <h3>Where TraceHub sits in this shift, honestly</h3>
+      <p>We'd rather be specific than claim a buzzword. TraceHub's
+      <a href="/docs/failure-prediction-engine">Failure Prediction Engine</a> forecasts failure
+      probability across four time horizons using real inputs \u2014 age relative to expected life,
+      maintenance history, usage intensity \u2014 not a black box. The
+      <a href="/docs/disposal-intelligence-engine">Disposal Intelligence Engine</a> is the
+      prescriptive layer on top of that: a specific Keep, Repair, Sell, Scrap, or Replace
+      recommendation with a plain-language reason attached, weighted most heavily on repair cost
+      relative to current replacement cost rather than the original purchase price. And the
+      <a href="/docs/ai-confidence-score-and-learning-loop">confidence scoring and learning
+      loop</a> underneath both is deliberately conservative \u2014 it tells you honestly when a
+      recommendation is backed by thin data, and it tracks whether ignoring past recommendations
+      actually led to real failures for your specific fleet, not a generic industry benchmark.</p>
+
+      <p>That last part matters more than it might sound. A lot of "AI-powered" positioning in this
+      space amounts to a dashboard that looks sophisticated but can't tell you how confident to
+      actually be in what it's showing you. A prediction without an honest confidence signal
+      attached is just a guess wearing a lab coat.</p>
+
+      <h3>What this means for how you should evaluate any platform, including ours</h3>
+      <p>If you're looking at asset management or maintenance software in 2026, "has AI" has stopped
+      being a meaningfully differentiating claim \u2014 nearly everyone says it now. The questions
+      worth actually asking a vendor are more specific:</p>
+      <ul>
+        <li>What real inputs feed the prediction, and can you see them broken down per asset, or is
+        it a single opaque score?</li>
+        <li>Does the system tell you how confident to be, or does every recommendation sound equally
+        certain regardless of how much data actually backs it?</li>
+        <li>Does the economics behind a repair-or-replace recommendation use current replacement
+        cost, or is it quietly still comparing against the original purchase price from years ago?</li>
+      </ul>
+      <p>The underlying shift toward prescriptive, decision-ready asset intelligence is real and
+      still accelerating. The gap between that and marketing copy that merely mentions AI is where
+      it's worth spending your evaluation time.</p>
+    `,
+  },
+  {
+    title: 'How to Run Your First Physical Asset Audit Without Losing a Week',
+    slug: 'running-a-physical-asset-audit',
+    locale: 'en',
+    excerpt: "A physical asset audit doesn't have to mean frozen operations and a clipboard army. Here's how to actually run one, step by step.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-15T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/audit-guide-cover.svg',
+    bodyHtml: `
+      <p>Every operations manager eventually gets the same request from someone above them: "when
+      did we last actually verify that everything on our asset list still exists, is where we think
+      it is, and is in the condition we think it's in?" If the honest answer is "not recently," you
+      need an audit \u2014 and if the thought of running one makes you tired before you've started,
+      you're picturing the wrong kind of audit.</p>
+
+      <p>A physical asset audit doesn't have to be a week of frozen operations and a clipboard army.
+      Here's how to actually run one without it consuming your month.</p>
+
+      <h3>Step 1: Decide what "done" looks like before you start</h3>
+      <p>The most common way audits balloon out of control is starting without a clear finish line.
+      Before anyone picks up a scanner, decide exactly what you're trying to answer: Does every
+      asset on the books still physically exist? Is each one where the system says it is? Is the
+      recorded condition still accurate? You don't need to answer all three every time \u2014 a
+      quarterly "does it exist and is it here" pass is far faster than a full condition review, and
+      both are legitimate audits.</p>
+
+      <h3>Step 2: Audit by location, not by asset list</h3>
+      <p>Working through a spreadsheet top to bottom means constant backtracking between buildings
+      and floors. Working through one physical <a href="/docs/setting-up-locations">location</a>
+      at a time \u2014 scanning everything actually present, then reconciling against what the system
+      expects to be there \u2014 means you touch each area exactly once. Two lists come out the other
+      end: assets found but not expected (something moved without being logged), and assets expected
+      but not found (something moved, or is genuinely gone).</p>
+
+      <h3>Step 3: Let scanning do the reconciliation, not memory</h3>
+      <p>This is the actual time sink in a manual audit: someone squinting at a printed list, trying
+      to match serial numbers by eye, in a warehouse, from a clipboard. A phone camera scanning each
+      asset's <a href="/docs/qr-codes-and-printing-tags">QR code</a> as you walk a location does the
+      matching for you and updates location history the instant it happens \u2014 no separate
+      reconciliation step needed afterward, no risk of a data-entry transcription error introducing
+      a new mistake while you're busy fixing an old one.</p>
+
+      <h3>Step 4: Investigate discrepancies in a batch, at the end</h3>
+      <p>Don't stop the walk-through every time something doesn't match \u2014 you'll never finish a
+      location. Note it, keep moving, and investigate the full discrepancy list once the physical
+      walk is done. Most "missing" assets turn out to be sitting in a different location because an
+      assignment or transfer never got scanned \u2014 checking recent
+      <a href="/docs/assigning-assets-to-people">assignment history</a> for anything expected in that
+      location usually resolves the majority of your list before you have to treat anything as
+      genuinely lost.</p>
+
+      <h3>Step 5: Fix the record, don't just note the problem</h3>
+      <p>An audit that produces a list of discrepancies but doesn't actually correct anything is a
+      report, not an audit. Update location for anything found somewhere unexpected. Mark anything
+      genuinely unaccounted for and start whatever your organization's process is for a
+      confirmed loss \u2014 don't leave it sitting in limbo on the books indefinitely, quietly
+      distorting your fleet value and depreciation numbers for assets that no longer exist.</p>
+
+      <h3>How often is "often enough"</h3>
+      <p>There's no universal answer, but a reasonable default: a full walk-through per major
+      location once a quarter, with high-value or highly mobile categories (vehicles, specialized
+      tools that move between job sites) checked more frequently. The real signal that you're
+      auditing too rarely isn't a calendar date \u2014 it's when an audit surfaces more than a small
+      handful of genuine discrepancies per location. That's not a reason to audit less because it's
+      annoying; it's a sign the gap between your records and reality has already gotten wider than
+      you'd want it to, and the next audit should happen sooner, not later.</p>
+
+      <p>The organizations that dread audits are almost always the ones still doing them with a
+      printed list and a pen. The mechanics above work whether you're checking ten assets or ten
+      thousand \u2014 the walk-through gets longer, but it never gets more complicated.</p>
+    `,
+  },
+  {
+    title: 'Multi-Location Operations: What Changes When Your Equipment Lives in Five Different Places',
+    slug: 'multi-location-operations',
+    locale: 'en',
+    excerpt: "What used to be common knowledge at a single site becomes nobody's specific responsibility the moment a second location exists. Here's what to fix before it becomes a real problem.",
+    authorName: 'TraceHub Team',
+    publishedAt: new Date('2026-08-17T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/multi-location-cover.svg',
+    bodyHtml: `
+      <p>Something breaks the first time a company opens a second location: not the equipment
+      itself, but the shared understanding of where everything is. When there was one building,
+      "the drill press is by the loading dock" was a complete sentence. Once there are three
+      buildings, it isn't \u2014 and the informal systems that worked fine for one site quietly stop
+      working the moment a second one exists.</p>
+
+      <p>Here's what actually changes operationally when equipment lives in more than one place, and
+      what to put in place before it becomes a real problem rather than after.</p>
+
+      <h3>"Where is it" stops being a shared assumption</h3>
+      <p>At a single site, everyone roughly knows where the good ladder is, even without a system
+      telling them. Across multiple sites, that shared mental map disappears \u2014 nobody at
+      Location B has any intuition about what's sitting at Location A. The fix isn't asking people to
+      remember more; it's giving every piece of equipment a real, current
+      <a href="/docs/setting-up-locations">location record</a> that updates the moment something
+      actually moves, so "where is it" has one authoritative answer instead of three different
+      guesses from three different people.</p>
+
+      <h3>Transfers between locations need to be a real, logged event</h3>
+      <p>The single most common way multi-location asset records drift from reality: someone
+      borrows a piece of equipment from another site "just for a week" with a verbal agreement and
+      no system record. Six months later nobody remembers which site actually has it, and it shows
+      up as a discrepancy in whichever location's next audit catches it first. Treating a transfer
+      between locations as a real scan-based event \u2014 checked out from where it's leaving,
+      checked in at where it's arriving \u2014 costs about ten seconds more than a verbal handoff and
+      eliminates this specific failure mode almost entirely.</p>
+
+      <h3>Depreciation and maintenance costs should roll up by location, not just company-wide</h3>
+      <p>A single combined number across every site can hide a real problem: one location's
+      equipment might be depreciating and breaking down far faster than the rest of the fleet,
+      whether from harsher conditions, heavier use, or maintenance that's quietly slipping at that
+      specific site. That pattern is invisible in a company-wide average and obvious the moment you
+      can filter reporting by location \u2014 which is exactly why per-location visibility matters
+      more, not less, as you add sites.</p>
+
+      <h3>Permissions need to match how responsibility is actually distributed</h3>
+      <p>A ten-person single-site operation can reasonably have everyone see everything. Across
+      multiple locations with different site managers, that stops being appropriate \u2014 a manager
+      at one site generally shouldn't need to (or want to) wade through another site's equipment to
+      find their own. <a href="/docs/roles-and-permissions">Role-based access</a> that scales with
+      the organization rather than against it means each site's team sees what's actually relevant
+      to them without a company-wide free-for-all or, at the other extreme, everything routed
+      through one overwhelmed central administrator.</p>
+
+      <h3>The pattern underneath all four of these</h3>
+      <p>Every one of these problems has the same root cause: something that used to be common
+      knowledge at a single site becomes nobody's specific responsibility once there's more than
+      one. The fix in each case isn't more discipline or better memory \u2014 it's making the record
+      update itself as part of doing the work (scanning a transfer, filtering a report by site)
+      rather than depending on someone remembering to write it down separately afterward.</p>
+
+      <p>None of this requires a different system for each additional location \u2014 it requires the
+      first system to have been built assuming more than one location would eventually exist. If
+      you're about to open a second site and you're currently tracking equipment in a way that
+      quietly assumes there's only ever going to be one, that assumption is worth revisiting before
+      the opening, not six months after.</p>
+    `,
+  },
 ];
 
 const frenchPosts = require('./blogPosts.fr');

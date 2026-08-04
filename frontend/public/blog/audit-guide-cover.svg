@@ -1,0 +1,54 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A1F3A"/>
+      <stop offset="1" stop-color="#1A4D8F"/>
+    </linearGradient>
+    <radialGradient id="glow6" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#4DA3FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#4DA3FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg6)"/>
+  <circle cx="600" cy="230" r="280" fill="url(#glow6)"/>
+  <circle cx="600" cy="300" r="230" stroke="#FFFFFF" stroke-width="1" opacity="0.08" fill="none"/>
+  <circle cx="600" cy="300" r="150" stroke="#FFFFFF" stroke-width="1" opacity="0.12" fill="none"/>
+
+  <!-- Clipboard -->
+  <rect x="500" y="150" width="200" height="260" rx="16" fill="#132C52" stroke="#4DA3FF" stroke-width="3"/>
+  <rect x="555" y="138" width="90" height="26" rx="8" fill="#0A1F3A" stroke="#8CC2FF" stroke-width="2.5"/>
+
+  <!-- Checklist lines with checkmarks -->
+  <g stroke-linecap="round">
+    <circle cx="535" cy="200" r="10" fill="none" stroke="#7ED957" stroke-width="3"/>
+    <path d="M 530 200 L 534 204 L 541 195" fill="none" stroke="#7ED957" stroke-width="2.5"/>
+    <line x1="558" y1="200" x2="665" y2="200" stroke="#8CC2FF" stroke-width="4" opacity="0.5"/>
+
+    <circle cx="535" cy="245" r="10" fill="none" stroke="#7ED957" stroke-width="3"/>
+    <path d="M 530 245 L 534 249 L 541 240" fill="none" stroke="#7ED957" stroke-width="2.5"/>
+    <line x1="558" y1="245" x2="650" y2="245" stroke="#8CC2FF" stroke-width="4" opacity="0.5"/>
+
+    <circle cx="535" cy="290" r="10" fill="none" stroke="#FF8A65" stroke-width="3"/>
+    <line x1="530" y1="285" x2="540" y2="295" stroke="#FF8A65" stroke-width="2.5"/>
+    <line x1="540" y1="285" x2="530" y2="295" stroke="#FF8A65" stroke-width="2.5"/>
+    <line x1="558" y1="290" x2="670" y2="290" stroke="#8CC2FF" stroke-width="4" opacity="0.5"/>
+
+    <circle cx="535" cy="335" r="10" fill="none" stroke="#8CC2FF" stroke-width="3" opacity="0.4"/>
+    <line x1="558" y1="335" x2="640" y2="335" stroke="#8CC2FF" stroke-width="4" opacity="0.3"/>
+  </g>
+
+  <!-- Small QR glyph, top right of clipboard, "scanning" motif -->
+  <g transform="translate(640, 175)">
+    <rect x="0" y="0" width="42" height="42" rx="6" fill="#0A1F3A" stroke="#7ED957" stroke-width="2.5"/>
+    <rect x="6" y="6" width="10" height="10" fill="#7ED957"/>
+    <rect x="26" y="6" width="10" height="10" fill="#7ED957"/>
+    <rect x="6" y="26" width="10" height="10" fill="#7ED957"/>
+    <rect x="20" y="20" width="6" height="6" fill="#7ED957"/>
+  </g>
+
+  <g transform="translate(480, 470)">
+    <rect x="0" y="0" width="240" height="70" rx="14" fill="#132C52" stroke="#4DA3FF" stroke-width="2"/>
+    <text x="120" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#8CC2FF" letter-spacing="1">RECOMMENDED CADENCE</text>
+    <text x="120" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">Quarterly</text>
+  </g>
+</svg>
