@@ -979,6 +979,274 @@ const frenchPosts = [
       des semaines d'évitement discret plus tard.</p>
     `,
   },
+  {
+    title: 'Pourquoi vos registres d\u2019actifs deviennent un document de conformité ESG, que vous l\u2019ayez prévu ou non',
+    slug: 'esg-carbon-reporting-asset-records',
+    locale: 'fr',
+    excerpt: '68 % des exploitants de flottes ne peuvent pas suivre les émissions par véhicule. Voici le cas honnête pour l\u2019importance de données propres par actif, et ce que nous fournissons et ne fournissons pas vers cet objectif.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-08-29T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/esg-cover.svg',
+    bodyHtml: `
+      <p>Une statistique qui mérite qu'on s'y attarde : des enquêtes sectorielles récentes auprès des
+      exploitants de flottes ont révélé que 68 % ne peuvent pas suivre avec précision leurs propres
+      émissions au niveau du véhicule individuel \u2014 sans même parler de produire le reporting
+      granulaire et vérifiable que les régulateurs et les investisseurs attendent de plus en plus. Cet
+      écart devient coûteux à laisser de côté, et cela vaut la peine d'être honnête sur pourquoi, et
+      sur ce qui le comble réellement.</p>
+
+      <h3>La pression réglementaire est réelle, même après les récents allègements</h3>
+      <p>La Directive sur le reporting de durabilité des entreprises de l'UE a vu sa portée
+      considérablement réduite en 2026 grâce à la simplification « Omnibus » \u2014 environ 85 à 90 %
+      d'entreprises en moins font maintenant face à des exigences obligatoires par rapport aux règles
+      d'origine. C'est un véritable recul, mais ce n'est pas toute l'histoire. Le Mécanisme
+      d'ajustement carbone aux frontières de l'UE est entré dans sa phase opérationnelle le 1er
+      janvier 2026, mettant un véritable prix carbone sur les importations d'acier, de ciment,
+      d'aluminium, et plusieurs autres matériaux à forte intensité d'émissions \u2014 ce qui signifie
+      que les émissions de la chaîne d'approvisionnement affectent maintenant directement le coût
+      pour de nombreuses entreprises à forte intensité d'équipement, qu'elles déposent elles-mêmes un
+      rapport de durabilité ou non. Aux États-Unis, la loi SB 253 de Californie crée des obligations
+      contraignantes de divulgation climatique pour les grandes entreprises faisant affaire dans
+      l'État, peu importe où l'entreprise a son siège social.</p>
+
+      <p>L'effet net n'est pas « le reporting ESG est maintenant obligatoire pour tout le
+      monde » \u2014 ce n'est clairement pas le cas. C'est qu'un ensemble significatif et croissant
+      d'entreprises fait face à des exigences réelles et contraignantes, et qu'un ensemble bien plus
+      large fait face à des coûts indirects et à une pression d'approvisionnement client même sans
+      mandat légal propre.</p>
+
+      <h3>Pourquoi cela devient un problème de gestion des actifs, pas seulement de conformité</h3>
+      <p>Un reporting d'émissions réellement crédible doit être au niveau de l'actif, pas une seule
+      estimation à l'échelle de l'entreprise \u2014 quelles heures d'utilisation, quels schémas de
+      maintenance, quelles unités spécifiques font bouger le chiffre. C'est précisément le genre de
+      données opérationnelles granulaires par actif qu'un véritable système de suivi des actifs
+      collecte déjà comme sous-produit d'une utilisation normale : <a href="/docs/registering-an-asset">
+      l'intensité d'usage</a>, les heures ou le kilométrage enregistrés, l'historique de maintenance.
+      Les entreprises qui ont ces données proprement organisées par actif sont déjà à mi-chemin d'une
+      base de référence d'émissions crédible. Les entreprises qui suivent encore l'équipement sur un
+      tableur qui ne capture que le prix d'achat et un emplacement vague partent de bien plus loin,
+      exactement au moment où l'exigence de rattraper le retard s'accélère.</p>
+
+      <h3>Être direct sur ce que cette plateforme fait et ne fait pas</h3>
+      <p>Nous ne voulons pas exagérer ici : TraceHub ne calcule actuellement pas les émissions de
+      carbone ni ne génère de rapports de conformité spécifiques à l'ESG. Ce qu'il fait, c'est vous
+      donner des données opérationnelles propres par actif \u2014 intensité d'usage, heures, registres
+      de maintenance, historique de localisation \u2014 déjà organisées d'une manière dont un véritable
+      calcul d'émissions aurait besoin comme entrée. Si vous construisez vers un reporting de
+      durabilité au niveau de l'actif, que ce soit par mandat ou par attente client, le véritable
+      goulot d'étranglement pour la plupart des entreprises n'est pas de trouver la bonne méthodologie
+      de calcul carbone. C'est d'avoir des données propres et fiables par actif à alimenter dans une
+      telle méthodologie en premier lieu \u2014 et c'est un problème d'hygiène des données que vous
+      pouvez véritablement commencer à résoudre dès aujourd'hui, indépendamment du cadre de reporting
+      spécifique qui finira par s'appliquer à vous.</p>
+
+      <h3>Un point de départ raisonnable quelle que soit votre exposition réglementaire</h3>
+      <p>Vous n'avez pas besoin de savoir encore si la CSRD, la SB 253, ou un autre cadre finira par
+      s'appliquer à votre entreprise pour bénéficier de ce nettoyage maintenant. Commencez par vous
+      assurer que les données d'usage \u2014 heures de fonctionnement, distance parcourue, tout ce qui
+      est pertinent pour votre équipement \u2014 sont réellement capturées de manière cohérente par
+      actif plutôt qu'estimées une fois par an. Quelle que soit l'exigence de reporting qui atterrira
+      finalement sur votre bureau, c'est l'entrée qu'elle demandera en premier.</p>
+    `,
+  },
+  {
+    title: 'Le vrai coût d\u2019un outil « parti sans laisser de trace »',
+    slug: 'true-cost-of-a-walked-off-tool',
+    locale: 'fr',
+    excerpt: 'Presque aucune perte d\u2019équipement n\u2019est un vol réel. C\u2019est une remise informelle sans moment naturel pour écrire quoi que ce soit. Voici l\u2019habitude qui corrige cela.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-08-31T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/walked-off-cover.svg',
+    bodyHtml: `
+      <p>Demandez à la plupart des responsables des opérations quelle est leur plus grande source de
+      perte d'équipement non planifiée, et vous entendrez rarement parler d'un vol spectaculaire.
+      Vous entendrez parler d'une perceuse rentrée dans la camionnette de quelqu'un il y a trois mois,
+      qui devait sincèrement revenir, et qui n'est jamais revenue \u2014 pas par malhonnêteté, juste la
+      façon ordinaire dont les petites choses empruntées cessent discrètement d'être suivies dans la
+      tête de quelqu'un.</p>
+
+      <p>L'outil « parti sans laisser de trace » est un coût plus important que la plupart des
+      entreprises ne le réalisent, et presque tout est évitable avec une habitude, pas une
+      politique.</p>
+
+      <h3>Le vrai coût n'est pas seulement le prix de remplacement</h3>
+      <p>Quand un outil disparaît, le prix affiché est la plus petite partie du coût réel. Il y a le
+      retard pendant que celui qui en avait besoin découvre qu'il manque, généralement au milieu
+      d'une tâche. Il y a l'achat de remplacement, souvent fait dans la précipitation au prix de
+      détail plutôt que par le processus d'approvisionnement qui obtiendrait normalement un meilleur
+      tarif. Et il y a le coût plus discret : chaque « où est-ce parti » non résolu érode la confiance
+      dans la liste des actifs dans son ensemble, et une fois que les gens cessent de faire confiance
+      à la liste, ils cessent de se soucier de la garder à jour \u2014 ce qui produit encore plus
+      exactement ce problème.</p>
+
+      <h3>Pourquoi cela arrive même dans les entreprises bien gérées</h3>
+      <p>C'est rarement de la négligence. C'est qu'une remise informelle \u2014 « puis-je emprunter
+      ceci pour le travail de jeudi » \u2014 n'a aucun moment naturel où quelqu'un écrit quoi que ce
+      soit. Il n'y a pas de mauvais acteur dans cette histoire, juste un écart entre la façon dont le
+      travail se passe réellement (rapide, verbal, au milieu d'autre chose) et la façon dont le suivi
+      exige traditionnellement de vous comporter (s'arrêter, trouver un formulaire, le remplir plus
+      tard).</p>
+
+      <h3>La solution est de supprimer la friction, pas d'ajouter une politique</h3>
+      <p>Une politique écrite qui dit « enregistrez toujours quand vous empruntez de l'équipement »
+      ne change rien si l'enregistrement signifie toujours trouver un formulaire plus tard. Ce qui
+      fonctionne réellement, c'est de faire du bon comportement le comportement rapide : une
+      <a href="/docs/assigning-assets-to-people">affectation</a> qui prend les mêmes dix secondes
+      qu'une remise verbale prenait déjà, avec un <a href="/docs/return-reminders-and-overdue-alerts">
+      rappel automatique</a> trois jours avant l'échéance de retour et à nouveau le jour même \u2014
+      pour que personne n'ait à se souvenir de le réclamer manuellement, et que rien ne dépende de la
+      mémoire de quelqu'un tenant bon pendant des mois.</p>
+
+      <p>L'autre moitié de la solution : les affectations devraient fonctionner de la même façon, que
+      la personne empruntant quelque chose soit un employé ou <a href="/docs/assigning-assets-to-people">
+      quelqu'un entièrement extérieur à l'entreprise</a> \u2014 un sous-traitant, un client. Une part
+      surprenante de l'équipement « perdu » de façon permanente a en fait été prêté à quelqu'un
+      d'externe sans aucun enregistrement formel du tout, ce qui signifie qu'il n'y a aucun système de
+      rappel qui le surveille et aucun moment naturel où quelqu'un remarquerait qu'il est en
+      retard.</p>
+
+      <h3>Que faire à propos d'équipement déjà non comptabilisé</h3>
+      <p>Si vous lisez ceci parce que quelque chose de spécifique manque déjà : vérifiez d'abord
+      l'historique des affectations, y compris tout ce qui a été clôturé ou marqué comme rendu au
+      cours des derniers mois \u2014 un nombre surprenant d'articles « perdus » se révèlent avoir un
+      véritable enregistrement d'affectation qui n'a simplement jamais été correctement clôturé. Si
+      rien ne ressort, marquez-le honnêtement plutôt que de le laisser dans les limbes
+      indéfiniment ; une perte clairement marquée est bien moins dommageable pour vos registres qu'un
+      actif restant discrètement inscrit comme « disponible » alors qu'il n'a en fait pas été vu
+      depuis un an.</p>
+
+      <p>Rien de tout cela ne nécessite de méfiance envers votre équipe \u2014 cela nécessite de faire
+      en sorte que la chose honnête à faire soit aussi la chose facile à faire. La plupart de
+      l'équipement « parti sans laisser de trace » n'a en fait jamais été volé. Il n'a simplement
+      jamais eu de moment où quelqu'un était censé écrire quoi que ce soit.</p>
+    `,
+  },
+  {
+    title: 'Suivi de garantie : la fonctionnalité à laquelle personne ne pense jusqu\u2019à ce qu\u2019elle en ait besoin',
+    slug: 'warranty-tracking-guide',
+    locale: 'fr',
+    excerpt: 'L\u2019information n\u2019a jamais été vraiment perdue — elle est simplement devenue coûteuse à trouver exactement au moment où vous en aviez le plus besoin.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-09-02T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/warranty-cover.svg',
+    bodyHtml: `
+      <p>Le suivi de garantie a une réputation particulière : c'est la fonctionnalité à laquelle
+      personne ne pense, jusqu'au moment exact où on en a désespérément besoin \u2014 debout à un
+      comptoir de réparation, à qui on demande « avez-vous la preuve que ceci est encore sous
+      garantie », et réalisant que la réponse honnête est « probablement, mais il faudrait que je
+      fouille dans les e-mails pendant une heure pour retrouver la facture ».</p>
+
+      <h3>Pourquoi cette donnée spécifique disparaît si souvent</h3>
+      <p>Les informations de garantie ne sont pas difficiles à trouver au moment de l'achat \u2014
+      elles sont juste là, sur la facture ou la boîte. Elles deviennent difficiles à trouver
+      précisément parce qu'on n'en a plus besoin avant des mois ou des années, moment auquel la
+      facture a été classée quelque part, transférée à quelqu'un qui est parti depuis, ou simplement
+      perdue dans le brassage général des e-mails. L'information n'a jamais été véritablement perdue
+      pour toujours ; elle est simplement devenue disproportionnellement coûteuse à localiser
+      exactement quand on en avait le plus besoin, ce qui est généralement le pire moment possible
+      pour la chercher.</p>
+
+      <h3>Ce qui ne va vraiment pas sans elle</h3>
+      <p>Deux modes d'échec apparaissent constamment. L'évident : payer de sa poche une réparation qui
+      était en fait encore couverte, parce que personne n'a pu produire la preuve à temps pour faire
+      la réclamation avant qu'une réparation ne soit autorisée. Le moins évident, et sans doute plus
+      coûteux : un actif est programmé pour des travaux préventifs coûteux, ou même signalé comme
+      candidat réparer-versus-remplacer, sans que personne ne réalise que le fabricant aurait couvert
+      exactement ce problème gratuitement. Un moteur de recommandation \u2014 le nôtre y compris \u2014
+      ne peut peser le coût de réparation avec précision que s'il sait que le coût réel de réparation
+      est zéro parce que c'est encore sous garantie.</p>
+
+      <h3>La solution est véritablement simple : l'attacher à l'enregistrement, pas après</h3>
+      <p>Le moment où un actif est <a href="/docs/registering-an-asset">enregistré</a> est aussi le
+      moment où ses détails d'achat, y compris les conditions de garantie, sont les plus frais et les
+      plus faciles à capturer \u2014 la facture est juste là, la période de couverture est fraîche
+      dans l'esprit. Enregistrer l'expiration de la garantie comme un véritable champ sur le registre
+      de l'actif à ce moment-là, plutôt que « je m'en occuperai si jamais cela se présente », transforme
+      une recherche frénétique deux ans plus tard en un champ que quelqu'un consulte en cinq
+      secondes.</p>
+
+      <p>L'indicateur <a href="/docs/the-dashboard-explained">Garantie expirant</a> sur le tableau de
+      bord existe spécifiquement pour combler l'autre moitié de cet écart : pas seulement « est-ce
+      encore couvert », mais « la couverture est-elle sur le point de se terminer sur quelque chose
+      que je devrais faire examiner maintenant, pendant que c'est encore gratuit, plutôt qu'après ».
+      Une garantie qui expire sans avoir été utilisée sur un équipement qui avait réellement besoin
+      d'attention est un coût que personne ne remarque, parce que rien ne va visiblement mal \u2014
+      vous payez simplement une réparation un mois plus tard qui aurait été gratuite un mois plus
+      tôt.</p>
+
+      <h3>Le schéma plus large</h3>
+      <p>Le suivi de garantie est un petit exemple d'une idée plus large qui apparaît partout dans de
+      bons registres d'actifs : l'information est presque gratuite à capturer au moment où elle existe
+      naturellement, et coûteuse à reconstruire plus tard une fois qu'elle ne l'est plus. La solution
+      n'est presque jamais « être plus prudent plus tard ». C'est capturer la chose une fois, au seul
+      moment où c'est réellement facile, pour que personne n'ait plus jamais à s'en soucier.</p>
+    `,
+  },
+  {
+    title: 'L\u2019habitude de cinq minutes par semaine qui prévient la plupart des dérives de registres d\u2019actifs',
+    slug: 'five-minute-weekly-habit',
+    locale: 'fr',
+    excerpt: 'Les entreprises avec des registres fiables ne sont pas celles où rien ne dérive jamais. Ce sont celles qui le détectent tôt, chaque semaine, à petites doses.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-09-05T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/weekly-habit-cover.svg',
+    bodyHtml: `
+      <p>Tout ensemble de registres d'actifs commence précis et devient moins précis avec le
+      temps \u2014 ce n'est pas une critique d'une entreprise en particulier, c'est simplement ce qui
+      arrive à tout registre d'une réalité physique en constant changement si rien ne le maintient
+      activement à jour. Les entreprises avec des registres véritablement fiables ne sont pas celles
+      qui ne laissent jamais rien dériver. Ce sont celles qui l'ont détecté tôt, systématiquement, à
+      petites doses, plutôt que de découvrir une année de dérive accumulée d'un coup lors d'un audit
+      stressant.</p>
+
+      <h3>L'habitude est plus petite qu'il n'y paraît</h3>
+      <p>Une fois par semaine, pendant environ cinq minutes, regardez exactement trois choses :
+      tout ce qui est nouvellement <a href="/docs/return-reminders-and-overdue-alerts">en retard</a>
+      sur un retour, tout ce qui est passé à un <a href="/docs/asset-health-score">score de santé
+      critique</a> depuis la semaine dernière, et tout ce que le
+      <a href="/docs/disposal-intelligence-engine">moteur de mise au rebut</a> a nouvellement signalé
+      pour attention. C'est tout. Pas un audit complet, pas une revue de toute la flotte \u2014 juste
+      la poignée de choses qui sont nouvelles et sensibles au temps depuis la dernière fois que vous
+      avez regardé.</p>
+
+      <h3>Pourquoi cinq minutes par semaine battent une session intensive trimestrielle</h3>
+      <p>Une revue approfondie trimestrielle détecte des problèmes qui s'accumulent déjà depuis
+      jusqu'à trois mois \u2014 un retour en retard qui l'est depuis dix semaines au lieu de trois
+      jours, un score de santé qui décline sans être remarqué depuis qu'il est entré la première fois
+      en territoire préoccupant. Au moment où une revue trimestrielle détecte quelque chose, vous avez
+      généralement perdu la majeure partie de la fenêtre où le détecter tôt aurait réellement compté.
+      Une habitude hebdomadaire de cinq minutes détecte les mêmes problèmes en quelques jours après
+      leur apparition, quand il y a encore un véritable choix disponible plutôt que juste du contrôle
+      des dégâts.</p>
+
+      <h3>Ce qui rend réellement cela durable</h3>
+      <p>La raison honnête pour laquelle la plupart des intentions de « vérifier le système
+      régulièrement » échouent n'est pas un manque de discipline \u2014 c'est que la revue elle-même
+      n'a jamais été réduite à quelque chose qui prend véritablement cinq minutes. Si vérifier
+      signifie faire défiler toute la liste des actifs à la recherche de quoi que ce soit qui semble
+      anormal, c'est une véritable tâche que les gens évitent raisonnablement quand ils sont occupés.
+      Si cela signifie jeter un œil à trois listes spécifiques déjà filtrées qui ne contiennent jamais
+      que ce qui est réellement nouveau, cela survit à une semaine chargée précisément parce que cela
+      ne demande jamais plus que ce qui a été promis.</p>
+
+      <h3>Où cela s'inscrit avec des audits plus approfondis occasionnels</h3>
+      <p>Cette habitude hebdomadaire ne remplace pas la <a href="/blog/running-a-physical-asset-audit">
+      vérification physique</a> périodique que vos registres correspondent à la réalité \u2014 c'est
+      une couche différente, détectant les problèmes sensibles au temps entre ces contrôles physiques
+      moins fréquents. Pensez-y comme la différence entre jeter un œil au voyant d'un détecteur de
+      fumée chaque semaine et tester tout le système d'alarme deux fois par an. Les deux comptent.
+      Aucun ne remplace l'autre.</p>
+
+      <p>Si vous ne devez retenir qu'une seule chose de ceci : choisissez un jour fixe, gardez la
+      liste à trois choses, et ne laissez pas « je ferai une vraie revue plus tard » la remplacer. La
+      vraie revue vaut aussi la peine d'être faite \u2014 mais elle fonctionne bien mieux sur des
+      registres qu'on n'a jamais laissés dériver très loin en premier lieu.</p>
+    `,
+  },
 ];
 
 module.exports = frenchPosts;

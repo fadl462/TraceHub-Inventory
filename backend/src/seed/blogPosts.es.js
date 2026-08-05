@@ -948,6 +948,264 @@ const spanishPosts = [
       evasión silenciosa después.</p>
     `,
   },
+  {
+    title: 'Por qué sus registros de activos se están convirtiendo en un documento de cumplimiento ESG, sea que lo haya planeado o no',
+    slug: 'esg-carbon-reporting-asset-records',
+    locale: 'es',
+    excerpt: 'El 68% de los operadores de flotas no puede rastrear las emisiones por vehículo. Aquí está el caso honesto de por qué los datos limpios por activo importan, y qué proporcionamos y no proporcionamos hacia ello.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-29T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/esg-cover.svg',
+    bodyHtml: `
+      <p>Una estadística que vale la pena considerar: encuestas recientes de la industria a
+      operadores de flotas encontraron que el 68 por ciento no puede rastrear con precisión sus
+      propias emisiones a nivel de vehículo individual \u2014 mucho menos producir el informe
+      granular y auditable que reguladores e inversores esperan cada vez más. Esa brecha se está
+      volviendo costosa de dejar sin abordar, y vale la pena ser honesto sobre por qué, y qué es lo
+      que realmente la cierra.</p>
+
+      <h3>La presión regulatoria es real, incluso después de las recientes reducciones</h3>
+      <p>La Directiva de Informes de Sostenibilidad Corporativa de la UE tuvo su alcance
+      significativamente reducido en 2026 a través de la simplificación "Omnibus" \u2014
+      aproximadamente 85 a 90 por ciento menos empresas ahora enfrentan requisitos obligatorios que
+      bajo las reglas originales. Eso es un retroceso genuino, pero no es todo el panorama. El
+      Mecanismo de Ajuste en Frontera de Carbono de la UE entró en su fase operativa el 1 de enero de
+      2026, poniendo un precio real de carbono sobre las importaciones de acero, cemento, aluminio, y
+      varios otros materiales de alta intensidad de emisiones \u2014 lo que significa que las
+      emisiones de la cadena de suministro ahora afectan directamente el costo para muchas empresas
+      con uso intensivo de equipo, independientemente de si presentan personalmente un informe de
+      sostenibilidad. En EE. UU., la SB 253 de California crea obligaciones vinculantes de
+      divulgación climática para grandes empresas que hacen negocios en el estado, y no importa dónde
+      tenga su sede la empresa.</p>
+
+      <p>El efecto neto no es "el informe ESG ahora es obligatorio para todos" \u2014 claramente no
+      lo es. Es que un conjunto significativo y creciente de empresas enfrenta requisitos reales y
+      vinculantes, y un conjunto mucho más grande enfrenta costo indirecto y presión de adquisición
+      de clientes incluso sin un mandato legal propio.</p>
+
+      <h3>Por qué esto se convierte en un problema de gestión de activos, no solo de cumplimiento</h3>
+      <p>El informe de emisiones que sea realmente creíble tiene que ser a nivel de activo, no una
+      sola estimación a nivel de toda la empresa \u2014 qué horas de uso, qué patrones de
+      mantenimiento, qué unidades específicas están impulsando el número. Ese es precisamente el tipo
+      de datos operativos granulares por activo que un sistema real de seguimiento de activos ya
+      recopila como subproducto del uso normal: <a href="/docs/registering-an-asset">intensidad de
+      uso</a>, horas o kilometraje registrado, historial de mantenimiento. Las empresas que tienen
+      esos datos limpiamente organizados por activo ya están en gran parte del camino hacia una línea
+      base de emisiones creíble. Las empresas que todavía rastrean equipo en una hoja de cálculo que
+      solo captura el precio de compra y una ubicación vaga están comenzando desde mucho más atrás,
+      justo cuando el requisito de ponerse al día se está acelerando.</p>
+
+      <h3>Ser directos sobre lo que esta plataforma hace y no hace</h3>
+      <p>No queremos exagerar aquí: TraceHub actualmente no calcula emisiones de carbono ni genera
+      informes de cumplimiento específicos de ESG. Lo que sí hace es darle datos operativos limpios
+      por activo \u2014 intensidad de uso, horas, registros de mantenimiento, historial de
+      ubicación \u2014 ya organizados de una manera que un cálculo real de emisiones necesitaría como
+      entrada. Si está construyendo hacia un informe de sostenibilidad a nivel de activo, ya sea por
+      mandato o por expectativa del cliente, el verdadero cuello de botella para la mayoría de las
+      empresas no es encontrar la metodología correcta de cálculo de carbono. Es tener datos limpios y
+      confiables por activo para alimentar en una de esas metodologías en primer lugar \u2014 y eso es
+      un problema de higiene de datos que genuinamente puede comenzar a resolver hoy, independiente de
+      qué marco de informe específico eventualmente se le aplique.</p>
+
+      <h3>Un punto de partida razonable independientemente de su exposición regulatoria</h3>
+      <p>Todavía no necesita saber si la CSRD, la SB 253, o algún otro marco eventualmente se
+      aplicará a su empresa para beneficiarse de limpiar esto ahora. Comience asegurándose de que los
+      datos de uso \u2014 horas de funcionamiento, distancia recorrida, lo que sea relevante para su
+      equipo \u2014 realmente se estén capturando consistentemente por activo en lugar de estimarse
+      una vez al año. Cualquiera que sea el requisito de informe que eventualmente aterrice en su
+      escritorio, esa es la entrada que va a pedir primero.</p>
+    `,
+  },
+  {
+    title: 'El verdadero costo de una herramienta que "se fue caminando"',
+    slug: 'true-cost-of-a-walked-off-tool',
+    locale: 'es',
+    excerpt: 'Casi ninguna pérdida de equipo es un robo real. Es una entrega informal sin momento natural para escribir algo. Aquí está el hábito que lo soluciona.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-31T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/walked-off-cover.svg',
+    bodyHtml: `
+      <p>Pregúntele a la mayoría de los gerentes de operaciones sobre su mayor fuente de pérdida de
+      equipo no planificada y rara vez escuchará sobre un robo dramático. Escuchará sobre un taladro
+      que se fue a casa en la camioneta de alguien hace tres meses, que genuinamente iba a regresar, y
+      nunca lo hizo \u2014 no por deshonestidad, simplemente la forma ordinaria en que las cosas
+      pequeñas prestadas dejan de rastrearse silenciosamente en la mente de alguien.</p>
+
+      <p>La herramienta que "se fue caminando" es un costo mayor de lo que la mayoría de las empresas
+      se dan cuenta, y casi todo es prevenible con un hábito, no una política.</p>
+
+      <h3>El costo real no es solo el precio de reemplazo</h3>
+      <p>Cuando una herramienta desaparece, el precio de etiqueta es la parte más pequeña del costo
+      real. Está el retraso mientras quien la necesitaba descubre que falta, generalmente a mitad de
+      una tarea. Está la compra de reemplazo, a menudo hecha con prisa a precio minorista en lugar de
+      a través del proceso de adquisición que normalmente obtendría una mejor tarifa. Y está el costo
+      más silencioso: cada "a dónde se fue esto" sin resolver desgasta la confianza en la lista de
+      activos en su conjunto, y una vez que la gente deja de confiar en la lista, deja de
+      molestarse en mantenerla actualizada \u2014 lo que produce más exactamente de este problema.</p>
+
+      <h3>Por qué sucede incluso en empresas bien gestionadas</h3>
+      <p>Rara vez es negligencia. Es que una entrega informal \u2014 "¿puedo tomar prestado esto para
+      el trabajo del jueves?" \u2014 no tiene un momento natural donde alguien escriba algo. No hay un
+      mal actor en esta historia, solo una brecha entre cómo el trabajo realmente sucede (rápido,
+      verbal, en medio de otra cosa) y cómo el seguimiento tradicionalmente requiere que se
+      comporte (detenerse, encontrar un formulario, llenarlo después).</p>
+
+      <h3>La solución es eliminar la fricción, no agregar una política</h3>
+      <p>Una política escrita que dice "siempre registre cuando pida prestado equipo" no cambia nada
+      si registrar todavía significa encontrar un formulario después. Lo que realmente funciona es
+      hacer que el comportamiento correcto sea el comportamiento rápido: una
+      <a href="/docs/assigning-assets-to-people">asignación</a> que toma los mismos diez segundos que
+      ya tomaba una entrega verbal, con un <a href="/docs/return-reminders-and-overdue-alerts">
+      recordatorio automático</a> tres días antes de que venza y de nuevo el mismo día \u2014 para que
+      nadie tenga que recordar perseguirlo manualmente, y nada dependa de que la memoria de alguien
+      se mantenga durante meses.</p>
+
+      <p>La otra mitad de la solución: las asignaciones deberían funcionar de la misma manera ya sea
+      que la persona que toma prestado algo sea un empleado o
+      <a href="/docs/assigning-assets-to-people">alguien completamente externo a la empresa</a> \u2014
+      un contratista, un cliente. Una parte sorprendente del equipo "perdido" permanentemente en
+      realidad fue prestado a alguien externo sin ningún registro formal en absoluto, lo que significa
+      que no hay sistema de recordatorio vigilándolo y ningún momento natural en el que alguien
+      notaría que está vencido.</p>
+
+      <h3>Qué hacer con equipo ya sin contabilizar</h3>
+      <p>Si está leyendo esto porque algo específico ya falta: verifique primero el historial de
+      asignaciones, incluyendo cualquier cosa cerrada o marcada como devuelta en los últimos meses \u2014
+      un número sorprendente de artículos "perdidos" resultan tener un registro de asignación real
+      que simplemente nunca se cerró correctamente. Si no aparece nada, márquelo honestamente en lugar
+      de dejarlo en el limbo indefinidamente; una pérdida claramente marcada es mucho menos dañina
+      para sus registros que un activo sentado silenciosamente en los libros como "disponible" cuando
+      en realidad no se ha visto en un año.</p>
+
+      <p>Nada de esto requiere desconfianza hacia su equipo \u2014 requiere hacer que lo honesto
+      también sea lo fácil de hacer. La mayoría del equipo que "se fue caminando" en realidad nunca
+      fue robado. Simplemente nunca tuvo un momento en el que se esperara que alguien escribiera
+      algo.</p>
+    `,
+  },
+  {
+    title: 'Seguimiento de garantía: la función en la que nadie piensa hasta que la necesita',
+    slug: 'warranty-tracking-guide',
+    locale: 'es',
+    excerpt: 'La información nunca se perdió realmente — simplemente se volvió costosa de encontrar exactamente cuando más la necesitaba.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-02T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/warranty-cover.svg',
+    bodyHtml: `
+      <p>El seguimiento de garantía tiene una reputación peculiar: es la función en la que nadie
+      piensa, hasta el momento exacto en que la necesita desesperadamente \u2014 de pie en un
+      mostrador de reparación, cuando le preguntan "¿tiene prueba de que esto todavía está bajo
+      garantía?", y se da cuenta de que la respuesta honesta es "probablemente, pero tendría que
+      buscar en el correo electrónico durante una hora para encontrar la factura".</p>
+
+      <h3>Por qué este dato específico se pierde tan a menudo</h3>
+      <p>La información de garantía no es difícil de encontrar en el momento de la compra \u2014 está
+      justo ahí, en la factura o la caja. Se vuelve difícil de encontrar precisamente porque no se
+      necesita de nuevo durante meses o años, momento en el cual la factura se ha archivado en algún
+      lugar, se ha reenviado a alguien que desde entonces se ha ido, o simplemente se ha perdido en el
+      ajetreo general del correo electrónico. La información nunca se perdió genuinamente para
+      siempre; simplemente se volvió desproporcionadamente costosa de localizar exactamente cuando más
+      la necesitaba, que generalmente es el peor momento posible para buscarla.</p>
+
+      <h3>Lo que realmente sale mal sin ella</h3>
+      <p>Constantemente aparecen dos modos de falla. El obvio: pagar de su bolsillo por una
+      reparación que en realidad todavía estaba cubierta, porque nadie pudo presentar prueba a tiempo
+      para hacer el reclamo antes de que se autorizara una reparación. El menos obvio, y posiblemente
+      más costoso: un activo se programa para trabajo preventivo costoso, o incluso se marca como
+      candidato de reparar-versus-reemplazar, sin que nadie se dé cuenta de que el fabricante habría
+      cubierto exactamente ese problema de forma gratuita. Un motor de recomendación \u2014 incluido
+      el nuestro \u2014 solo puede ponderar el costo de reparación con precisión si sabe que el costo
+      real de reparación es cero porque todavía está bajo garantía.</p>
+
+      <h3>La solución es genuinamente simple: adjuntarla al registrar, no después</h3>
+      <p>El momento en que se <a href="/docs/registering-an-asset">registra</a> un activo es también
+      el momento en que sus detalles de compra, incluidos los términos de garantía, están más
+      frescos y son más fáciles de capturar \u2014 la factura está justo ahí, el período de cobertura
+      está fresco en la mente. Registrar el vencimiento de la garantía como un campo real en el
+      registro del activo en ese momento, en lugar de "me ocuparé de eso si alguna vez surge",
+      convierte una búsqueda frenética dos años después en un campo que alguien mira en cinco
+      segundos.</p>
+
+      <p>El indicador de <a href="/docs/the-dashboard-explained">Garantía por vencer</a> en el
+      tablero existe específicamente para cerrar la otra mitad de esta brecha: no solo "¿esto todavía
+      está cubierto?", sino "¿la cobertura está a punto de terminar en algo que debería revisar
+      ahora, mientras todavía es gratis, en lugar de después?". Una garantía que vence sin usarse en
+      una pieza de equipo que realmente necesitaba atención es un costo que nadie nota, porque nada
+      sale mal visiblemente \u2014 simplemente paga por una reparación un mes después que habría sido
+      gratis un mes antes.</p>
+
+      <h3>El patrón más amplio</h3>
+      <p>El seguimiento de garantía es un pequeño ejemplo de una idea más grande que aparece en todas
+      partes en buenos registros de activos: la información es casi gratuita de capturar en el
+      momento en que existe naturalmente, y costosa de reconstruir después una vez que ya no
+      existe. La solución casi nunca es "ser más cuidadoso después". Es capturar la cosa una vez, en
+      el único momento en que realmente es fácil, para que nadie tenga que preocuparse por ello
+      nunca más.</p>
+    `,
+  },
+  {
+    title: 'El hábito de cinco minutos semanales que previene la mayoría de la desviación de registros de activos',
+    slug: 'five-minute-weekly-habit',
+    locale: 'es',
+    excerpt: 'Las empresas con registros confiables no son aquellas donde nada se desvía nunca. Son las que lo detectan temprano, cada semana, en pequeñas dosis.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-05T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/weekly-habit-cover.svg',
+    bodyHtml: `
+      <p>Todo conjunto de registros de activos comienza preciso y se vuelve menos preciso con el
+      tiempo \u2014 eso no es una crítica a ninguna empresa en particular, es simplemente lo que le
+      sucede a cualquier registro de una realidad física en constante cambio si nada lo mantiene
+      activamente actualizado. Las empresas con registros genuinamente confiables no son las que
+      nunca dejan que nada se desvíe. Son las que lo detectaron temprano, consistentemente, en
+      pequeñas dosis, en lugar de descubrir un año de desviación acumulada de una vez durante una
+      auditoría estresante.</p>
+
+      <h3>El hábito es más pequeño de lo que suena</h3>
+      <p>Una vez a la semana, durante unos cinco minutos, mire exactamente tres cosas: cualquier
+      cosa recién <a href="/docs/return-reminders-and-overdue-alerts">vencida</a> en una devolución,
+      cualquier cosa que se haya movido a un <a href="/docs/asset-health-score">puntaje de salud
+      crítico</a> desde la semana pasada, y cualquier cosa que el
+      <a href="/docs/disposal-intelligence-engine">motor de baja</a> haya marcado recientemente para
+      atención. Eso es todo. No una auditoría completa, no una revisión de toda la flota \u2014 solo
+      el puñado de cosas que son nuevas y sensibles al tiempo desde la última vez que miró.</p>
+
+      <h3>Por qué cinco minutos semanales superan una sesión intensiva trimestral</h3>
+      <p>Una revisión profunda trimestral detecta problemas que ya se han estado acumulando durante
+      hasta tres meses \u2014 una devolución vencida que lleva vencida diez semanas en lugar de tres
+      días, un puntaje de salud que ha estado disminuyendo sin ser notado desde que cruzó por primera
+      vez a territorio preocupante. Para cuando una revisión trimestral detecta algo, generalmente ya
+      ha perdido la mayor parte de la ventana en la que detectarlo temprano realmente habría
+      importado. Un hábito semanal de cinco minutos detecta los mismos problemas dentro de días de
+      que aparecen, cuando todavía hay una elección real disponible en lugar de solo control de
+      daños.</p>
+
+      <h3>Lo que realmente hace esto sostenible</h3>
+      <p>La razón honesta por la que la mayoría de las intenciones de "revisar el sistema
+      regularmente" fallan no es falta de disciplina \u2014 es que la revisión en sí nunca se redujo a
+      algo que genuinamente tome cinco minutos. Si revisar significa desplazarse por toda la lista de
+      activos buscando cualquier cosa que parezca mal, esa es una tarea real que la gente
+      razonablemente evita cuando está ocupada. Si significa mirar tres listas específicas, ya
+      filtradas, que solo contienen lo que realmente es nuevo, sobrevive a una semana ocupada
+      precisamente porque nunca pide más de lo que prometió.</p>
+
+      <h3>Dónde encaja esto con auditorías más profundas ocasionales</h3>
+      <p>Este hábito semanal no es un reemplazo para <a href="/blog/running-a-physical-asset-audit">
+      verificar físicamente</a> periódicamente que sus registros coincidan con la realidad \u2014 es
+      una capa diferente, que detecta problemas sensibles al tiempo entre esas revisiones físicas
+      menos frecuentes. Piense en ello como la diferencia entre mirar la luz de un detector de humo
+      semanalmente y probar todo el sistema de alarma dos veces al año. Ambos importan. Ninguno
+      sustituye al otro.</p>
+
+      <p>Si solo se lleva una cosa de esto: elija un día fijo, mantenga la lista en tres cosas, y no
+      deje que "haré una revisión adecuada después" lo reemplace. La revisión adecuada también vale
+      la pena hacerla \u2014 pero funciona mucho mejor en registros a los que nunca se les permitió
+      desviarse mucho en primer lugar.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;
