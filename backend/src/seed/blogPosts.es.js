@@ -1206,6 +1206,243 @@ const spanishPosts = [
       desviarse mucho en primer lugar.</p>
     `,
   },
+  {
+    title: 'La escasez de generadores de la que nadie habla (y por qué cambia qué tan temprano debe actuar sobre advertencias de falla)',
+    slug: 'generator-shortage-2026',
+    locale: 'es',
+    excerpt: 'La demanda de energía de los centros de datos de IA está consumiendo la capacidad de fabricación de generadores y turbinas. Si aparece una advertencia de falla en equipo ahora difícil de reemplazar rápidamente, eso cambia qué tan rápido actuar.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/generator-shortage-cover.svg',
+    bodyHtml: `
+      <p>Si es dueño de un generador y ha estado funcionando bien durante años, hay una posibilidad
+      real de que no haya cotizado un reemplazo recientemente \u2014 y si tuviera que pedir uno hoy,
+      encontraría que el mercado ha cambiado debajo de usted. La construcción de centros de datos de
+      IA está consumiendo la capacidad de fabricación de generadores y turbinas a una escala para la
+      que la base de suministro no fue construida. Las guías de compradores de la industria ahora
+      describen los pedidos de 2026 como efectivamente "bloqueados en cola": la unidad que realmente
+      puede obtener, no la que idealmente especificaría, cada vez más determina el cronograma.</p>
+
+      <p>Esto tampoco se limita a las unidades masivas a escala de centro de datos. La misma
+      capacidad de fabricación, los mismos componentes de transformadores, y en algunos casos el
+      mismo cuello de botella de materia prima (un acero especial llamado GOES, usado en
+      transformadores, con EE. UU. dependiendo de un solo fabricante nacional) está aguas arriba de
+      gran parte del equipo de generadores de tamaño mediano que las empresas ordinarias realmente
+      compran.</p>
+
+      <h3>Por qué el tiempo de entrega importa más que el precio de compra en este momento</h3>
+      <p>El cálculo normal de reparar versus reemplazar pondera el costo de reparación contra el
+      costo de reemplazo y la condición actual. Ese cálculo silenciosamente asume que un reemplazo,
+      una vez pedido, llega en una ventana razonable y predecible. Cuando los tiempos de entrega se
+      extienden \u2014 y múltiples fuentes de la industria de 2026 describen exactamente eso para el
+      equipo de generadores en este momento \u2014 esa suposición se rompe de una manera específica:
+      un activo que falla sin advertencia no solo le cuesta una factura de reparación, potencialmente
+      le cuesta semanas o meses sin el equipo en absoluto mientras un reemplazo avanza por una cola de
+      pedidos atrasada.</p>
+
+      <h3>Lo que esto significa prácticamente: actuar antes sobre señales de advertencia, no después</h3>
+      <p>Esta es precisamente la situación para la que una <a href="/docs/failure-prediction-engine">
+      ventana de predicción de fallas</a> es más valiosa. Un pronóstico de que un generador tiene una
+      probabilidad de falla elevada durante los próximos 90 a 180 días solía significar "manténgalo
+      vigilado, planifique mantenimiento rutinario". En un mercado donde pedir un reemplazo hoy podría
+      no significar recibir uno hasta dentro de meses, ese mismo pronóstico significa algo más cercano
+      a "si de todos modos va a pedir un reemplazo, el momento inteligente para comenzar ese proceso
+      es ahora, antes de que realmente lo necesite" \u2014 no después de que una falla fuerce un
+      pedido de emergencia a una cola ya atrasada, al precio y cronograma que se le ofrezcan bajo
+      presión.</p>
+
+      <p>La misma lógica se aplica al <a href="/docs/maintenance-scheduling-engine">mantenimiento
+      programado</a> que sigue retrasándose. Un intervalo de servicio diferido en equipo con un
+      mercado de reemplazo cómodo es un problema de programación menor. El mismo intervalo diferido en
+      equipo donde una falla podría significar meses sin un reemplazo funcional es un tipo de riesgo
+      materialmente diferente, que vale la pena ponderar en consecuencia.</p>
+
+      <h3>Una respuesta razonable, sin reaccionar exageradamente</h3>
+      <p>Esto no significa pedir reemplazos en pánico para equipo que actualmente está saludable.
+      Significa tratar cualquier generador o equipo similarmente difícil de reemplazar rápidamente que
+      ya esté marcado con una probabilidad de falla elevada como una prioridad más alta para
+      realmente actuar \u2014 reparar, reemplazar, o como mínimo obtener una cotización actual y una
+      estimación de tiempo de entrega \u2014 en lugar de dejarlo en una lista de vigilancia
+      indefinidamente. El costo de verificar es pequeño. El costo de descubrir un tiempo de entrega de
+      meses solo después de que algo ya ha fallado no lo es.</p>
+    `,
+  },
+  {
+    title: '"Todavía funciona" es la frase más costosa en la gestión de activos',
+    slug: 'it-still-runs-expensive-sentence',
+    locale: 'es',
+    excerpt: 'No es incorrecta como hecho. Es incompleta como decisión — y responde una pregunta diferente a la que realmente importa.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-09T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/it-still-runs-cover.svg',
+    bodyHtml: `
+      <p>"Todavía funciona" es la frase más costosa en la gestión de activos, y no se siente costosa
+      cuando alguien la dice \u2014 se siente como sentido común. Esa es exactamente la razón por la
+      que es peligrosa: no es incorrecta como hecho, es incompleta como decisión.</p>
+
+      <h3>Lo que la frase realmente omite</h3>
+      <p>"Todavía funciona" responde exactamente una pregunta: ¿funciona actualmente este equipo? No
+      responde nada sobre lo que cuesta mantenerlo funcionando, cuánto tiempo más probablemente
+      seguirá funcionando, o lo que costaría hoy un reemplazo comparable. Un activo puede
+      genuinamente todavía funcionar y simultáneamente ser la forma más costosa de realizar su
+      trabajo en toda la flota \u2014 esos dos hechos no se contradicen entre sí, simplemente
+      responden preguntas diferentes, y "todavía funciona" solo responde la menos útil de las dos.</p>
+
+      <h3>Dónde esto realmente aparece</h3>
+      <p>El patrón es notablemente consistente: una pieza de equipo necesita su tercera reparación
+      este año, cada una individualmente razonable de aprobar \u2014 unos cientos de dólares aquí, un
+      reemplazo de pieza allá \u2014 y cada una, tomada sola, más barata que el reemplazo. Súmelas a
+      lo largo del año y compare el total contra el costo de reemplazo actual, y el panorama a menudo
+      se ve completamente diferente de lo que parecía cada decisión de reparación individual de forma
+      aislada. "Todavía funciona" era cierto en cada uno de esos puntos de decisión individuales.
+      Simplemente nunca fue la pregunta que importaba.</p>
+
+      <h3>Las preguntas reales que vale la pena hacer en su lugar</h3>
+      <p>Nuestra propia <a href="/docs/disposal-intelligence-engine">lógica de recomendación de
+      baja</a> deliberadamente examina el costo de mantenimiento acumulado en relación con el costo
+      de reemplazo actual, no si una reparación individual parece razonable por sí sola \u2014 porque
+      esa es la comparación que realmente responde la pregunta que importa. Tres preguntas
+      genuinamente útiles para hacer en lugar de "¿todavía funciona?": ¿Cuánto ha costado este activo
+      específico en reparaciones durante los últimos doce meses, en total? ¿Cuánto costaría un
+      reemplazo comparable hoy, no lo que originalmente se pagó por este? ¿Y la brecha entre esos dos
+      números se está cerrando o ampliando?</p>
+
+      <h3>Por qué la frase persiste de todos modos</h3>
+      <p>Parte del atractivo de "todavía funciona" es que es verdad y se siente responsable \u2014
+      nadie quiere ser la persona que reemplazó algo que técnicamente todavía funcionaba. Pero el
+      razonamiento responsable también va en la otra dirección: seguir reparando algo cuyo costo
+      acumulado ha superado silenciosamente un reemplazo sensato no es un gasto cauteloso, es la
+      opción más costosa vistiendo una frase que suena cautelosa.</p>
+
+      <p>Nada de esto significa reemplazar cualquier cosa que necesite una reparación. Significa que
+      la pregunta que vale la pena responder no es si algo todavía funciona hoy \u2014 es si seguir
+      manteniéndolo funcionando sigue siendo la mejor opción financiera frente a la alternativa, y esa
+      es una pregunta que "todavía funciona" nunca fue diseñada para responder.</p>
+    `,
+  },
+  {
+    title: 'Configurando su primera estructura de ubicaciones: un recorrido práctico',
+    slug: 'setting-up-location-structure',
+    locale: 'es',
+    excerpt: 'No tiene que significar operaciones congeladas y un ejército de portapapeles. Así es como realizar una realmente, paso a paso.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-12T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/location-setup-cover.svg',
+    bodyHtml: `
+      <p>Configurar ubicaciones es una de esas tareas que toma quince minutos hecha bien y causa
+      meses de confusión silenciosa hecha descuidadamente \u2014 y debido a que generalmente es lo
+      primero que hace cualquiera en un nuevo sistema de activos, es fácil apresurarse antes de
+      realmente haber pensado en cómo realmente opera su organización.</p>
+
+      <h3>Haga coincidir las ubicaciones con cómo la gente realmente habla de los lugares, no con el organigrama</h3>
+      <p>La tentación es configurar ubicaciones que reflejen una estructura organizacional
+      formal \u2014 "Región 1 - Subdistrito A - Almacén 3". Nadie en el terreno realmente habla así.
+      Si su equipo dice "el almacén de Tema" o "la sucursal norte", sus
+      <a href="/docs/setting-up-locations">nombres de ubicación</a> deberían decir exactamente eso.
+      Una estructura de ubicación que la gente tiene que traducir en su cabeza antes de reconocerla
+      es una estructura que la gente eventualmente dejará de revisar cuidadosamente.</p>
+
+      <h3>Decida su granularidad una vez, deliberadamente, no accidentalmente</h3>
+      <p>¿Es una ubicación un edificio entero, o tiene sentido dividir sitios grandes en
+      zonas \u2014 "Almacén Principal - Muelle de Carga" versus "Almacén Principal - Almacenamiento de
+      Oficina"? No hay una respuesta correcta universal, pero hay una forma incorrecta de llegar a
+      una: hacerlo inconsistentemente, donde algunos sitios obtienen zonas detalladas y otros
+      obtienen una sola ubicación para todo un complejo, según quién estuviera configurando las
+      cosas ese día en lugar de un estándar deliberado. Elija una granularidad que coincida con qué
+      tan precisamente realmente necesita saber dónde está algo, aplíquela de la misma manera en
+      todas partes, y resista el impulso de dividir demasiado un sitio pequeño solo porque uno más
+      grande lo necesitaba.</p>
+
+      <h3>Establezca coordenadas reales desde el principio</h3>
+      <p>Toma un clic en el mapa en el formulario de ubicación, y es la diferencia entre una lista de
+      ubicaciones y una imagen visual real de dónde están físicamente sus operaciones. Esto importa
+      más de lo que suena que debería: una vista de mapa en vivo hace que una asignación de ubicación
+      genuinamente incorrecta sea visualmente obvia \u2014 un camión apareciendo en el océano, o a
+      tres estados de distancia de donde debería estar \u2014 de una manera que una lista de nombres
+      nunca lo hará.</p>
+
+      <h3>Planifique para la ubicación que todavía no tiene</h3>
+      <p>Si hay una posibilidad real de que abra un segundo sitio dentro del próximo año, configure
+      su nomenclatura y estructura ahora como si ya existiera, incluso con solo una ubicación hoy.
+      Adaptar una convención de nomenclatura a través de meses de historial de escaneo existente
+      después del hecho es una tarea de limpieza genuinamente molesta que unos minutos de reflexión
+      previa evitan por completo. "Almacén Principal" es un buen nombre para su único sitio. Se
+      convierte en un nombre ambiguo el día que abre un segundo sitio, y para entonces ya ha tocado
+      cientos de registros en lugar de cero.</p>
+
+      <h3>La prueba de si lo hizo bien</h3>
+      <p>Una buena estructura de ubicación pasa una prueba simple: ¿podría alguien completamente
+      nuevo en la empresa, mirando solo la lista de ubicaciones, adivinar correctamente cuál
+      realmente necesitaría para una tarea dada? Si la respuesta es sí, ha hecho coincidir la
+      estructura con cómo la gente realmente piensa sobre su operación, que es todo el punto \u2014 un
+      sistema de ubicación que nadie tiene que traducir en su cabeza es uno que la gente realmente
+      seguirá usando correctamente, mes tras mes, sin que nadie tenga que recordárselo.</p>
+    `,
+  },
+  {
+    title: 'Cómo hablar con su ajustador de seguros después de una pérdida de equipo',
+    slug: 'talking-to-insurance-adjuster',
+    locale: 'es',
+    excerpt: 'Las empresas que pasan por un reclamo sin problemas no son las que tienen mejor suerte. Son las cuyos registros ya respondían las preguntas antes de que se hicieran.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-14T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/insurance-cover.svg',
+    bodyHtml: `
+      <p>Nadie quiere estar presentando un reclamo de seguro por equipo dañado o perdido, y para
+      cuando lo está haciendo, lo último que quiere es también estar reconstruyendo hechos básicos
+      sobre el activo de memoria mientras un ajustador espera al otro lado de una llamada. Las
+      empresas que pasan por este proceso sin problemas no son las que tienen mejor suerte \u2014 son
+      las cuyos registros ya respondían las preguntas del ajustador antes de que el ajustador las
+      hiciera.</p>
+
+      <h3>Lo que un ajustador realmente necesita, y por qué "no estoy seguro" le cuesta dinero</h3>
+      <p>Un reclamo avanza más rápido y se resuelve más favorablemente cuando puede responder,
+      inmediata y específicamente: qué era el activo, su condición inmediatamente antes de la
+      pérdida, su historial de mantenimiento, y un valor actual defendible. Cada "no estoy seguro,
+      déjeme verificar" no solo ralentiza la llamada \u2014 introduce margen para que un acuerdo se
+      incline hacia la estimación del ajustador en lugar de la suya, porque un ajustador que trabaja
+      con sus números confiados y documentados tiene menos margen para sustituir sus propias
+      suposiciones que uno que trabaja con memoria vaga.</p>
+
+      <h3>El registro que realmente ayuda: valor actual, no precio original</h3>
+      <p>Un error común es entrar en una conversación de reclamo solo con el precio de compra
+      original. Las aseguradoras liquidan según el valor real en efectivo al momento de la pérdida,
+      no el apego sentimental a lo que algo costó originalmente \u2014 lo que significa que un
+      <a href="/blog/understanding-asset-depreciation">valor depreciado</a> defendible y actual es
+      una posición de apertura mucho más fuerte que un número de factura desactualizado. Si su valor
+      en libros ya refleja el uso real, mantenimiento, y edad en lugar de un número estático de hace
+      años, entra en esa conversación desde una posición de ventaja en lugar de ponerse al día en
+      tiempo real.</p>
+
+      <h3>El historial de mantenimiento es prueba de cuidado, y eso importa</h3>
+      <p>Un activo bien mantenido con un historial de servicio documentado es un reclamo más fuerte
+      que un activo idéntico sin ningún registro de mantenimiento \u2014 demuestra que la pérdida no
+      fue causada o empeorada por negligencia, y respalda una valoración legítima más alta. Un
+      <a href="/docs/the-audit-log">registro de auditoría</a> completo que cubra cuándo ocurrió el
+      mantenimiento y quién lo realizó convierte "siempre cuidamos esto" de una afirmación no
+      respaldada en un hecho documentado que un ajustador realmente puede verificar.</p>
+
+      <h3>El historial de ubicación y asignación cierra rápido la pregunta de "cómo pasó esto"</h3>
+      <p>Dónde estaba un activo, y quién lo tenía, al momento de una pérdida es frecuentemente una de
+      las primeras preguntas que se hacen \u2014 y una de las más difíciles de responder con
+      confianza de memoria meses o años después. El <a href="/docs/location-history-and-timeline">
+      historial de ubicación</a> y los registros de asignación responden esto precisamente, con
+      marcas de tiempo reales, eliminando toda una categoría de idas y vueltas de la conversación.</p>
+
+      <h3>La preparación que realmente vale la pena</h3>
+      <p>Nada de esto se trata de prepararse para un reclamo que espera presentar \u2014 es que los
+      mismos registros que vale la pena mantener por razones operativas ordinarias resultan ser
+      exactamente lo que necesita la vez que algo sale mal. El mejor momento para asegurarse de que
+      el valor, el historial de mantenimiento, y el rastro de ubicación de un activo estén todos
+      actualizados no es después de una pérdida. Es ahora, en equipo que está funcionando
+      perfectamente bien, específicamente porque no sabe de antemano qué activo necesitará este
+      registro algún día.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;
