@@ -375,6 +375,340 @@ const frenchPosts = [
       requise. La dépréciation se calcule d'elle-même dès que vous saisissez un prix d'achat.</p>
     `,
   },
+  {
+    title: 'La vague du droit à la réparation change les calculs entre réparer et remplacer',
+    slug: 'right-to-repair-wave-2026',
+    locale: 'fr',
+    excerpt: 'Plus de trente projets de loi sur le droit à la réparation, une nouvelle loi au Colorado, et deux projets de loi fédéraux redessinent l\u2019accès à la réparation en 2026 - voici ce que cela signifie réellement pour la décision réparer-ou-remplacer.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-08-10T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/right-to-repair-cover.svg',
+    bodyHtml: `
+      <p>Si vous gérez des équipements physiques pour gagner votre vie, un changement législatif
+      discret qui se produit à travers les États-Unis en 2026 mérite votre attention \u2014 non pas à
+      cause de la politique, mais parce qu'il change l'arithmétique réelle derrière l'une des
+      décisions dont nous parlons le plus souvent :
+      <a href="/blog/repair-or-replace-decision-framework">réparer ou remplacer</a>.</p>
+
+      <p>Plus de trente projets de loi sur le droit à la réparation ont été introduits dans treize
+      États rien que dans les premières semaines de cette année. La loi du Colorado sur le droit à la
+      réparation est entrée en vigueur en janvier, couvrant tout, des systèmes CVC aux équipements
+      informatiques. Un projet de loi fédéral, le REPAIR Act, progresse en commission pour les
+      véhicules. Un autre projet de loi fédéral, le FARM Act, cible spécifiquement les équipements
+      agricoles, après que des recherches ont suggéré que les agriculteurs perdent des milliards de
+      dollars chaque année à cause des restrictions de réparation imposées par les fabricants. Rien
+      de tout cela n'est encore une loi définitive partout, et la couverture varie fortement selon
+      l'État et la catégorie d'équipement \u2014 mais la direction est indéniable.</p>
+
+      <h3>Ce que le « droit à la réparation » exige réellement</h3>
+      <p>En écartant la politique, le cœur de ces lois est simple : les fabricants doivent rendre les
+      pièces, les outils de diagnostic, et la documentation de réparation disponibles aux
+      propriétaires et aux ateliers de réparation indépendants, pas seulement à leur propre réseau
+      agréé. Un nombre croissant de nouveaux projets de loi vont plus loin et interdisent
+      explicitement le « pairage de pièces » \u2014 des verrous logiciels qui refusent de reconnaître
+      une pièce de remplacement à moins qu'elle n'ait été achetée via le fabricant, même lorsque la
+      pièce elle-même est fonctionnellement identique.</p>
+
+      <p>Si cela ressemble à une question étroite d'électronique grand public, les catégories
+      d'équipement déjà concernées ou en discussion législative active disent le contraire : les
+      systèmes CVC, les fauteuils roulants électriques, les équipements agricoles, et les véhicules
+      de plus de 14 000 livres font tous partie de la vague actuelle, pas seulement les téléphones et
+      les ordinateurs portables.</p>
+
+      <h3>Pourquoi cela compte réellement pour la décision réparer-ou-remplacer</h3>
+      <p>Notre propre cadre pour cette décision pèse le coût de réparation contre le coût de
+      remplacement, l'état actuel, et la quantité de durée de vie utile réellement restante d'un
+      actif. Deux de ces entrées bougent quand l'accès à la réparation s'améliore :</p>
+      <ul>
+        <li><strong>Le coût de réparation a tendance à baisser.</strong> Lorsque des ateliers
+        indépendants peuvent accéder aux mêmes pièces et à la même documentation qu'un concessionnaire
+        agréé, la concurrence sur les tarifs de main-d'œuvre et le prix des pièces augmente \u2014 la
+        prime « nous sommes les seuls à pouvoir réparer ceci » se réduit.</li>
+        <li><strong>La réparation devient viable plus tard dans la vie d'un actif.</strong> Un
+        facteur majeur du remplacement d'équipements techniquement encore réparables est que le
+        service agréé devient lent, coûteux, ou simplement indisponible à mesure qu'un modèle sort de
+        la fenêtre de support d'un fabricant. L'accès à la réparation indépendante prolonge la fenêtre
+        pendant laquelle la réparation est réellement une option viable, pas seulement théorique.</li>
+      </ul>
+      <p>Aucun de ces éléments ne change la physique d'un actif usé \u2014 un générateur avec un bloc
+      fissuré reste un générateur avec un bloc fissuré. Mais pour la grande catégorie intermédiaire
+      d'équipements qui vieillissent sans réellement tomber en panne, un meilleur accès à la
+      réparation peut réellement faire basculer une décision serrée du remplacement vers la
+      réparation.</p>
+
+      <h3>Que faire réellement à ce sujet dès maintenant</h3>
+      <p>Vous n'avez pas besoin de devenir un expert en politiques publiques pour en bénéficier. Deux
+      étapes pratiques valent la peine d'être prises, quel que soit le sort de la législation dans
+      votre État ou pays spécifique :</p>
+      <p><strong>Réexaminez les hypothèses de coût de réparation sur les équipements que vous avez
+      radiés comme « trop chers à réparer » au cours des un ou deux dernières années.</strong> Si ce
+      jugement était basé sur une tarification exclusivement chez un concessionnaire agréé, il
+      pourrait valoir la peine de redemander un devis auprès d'un atelier indépendant maintenant,
+      particulièrement pour les CVC, les véhicules, et les équipements informatiques où l'accès à la
+      réparation s'étend le plus rapidement.</p>
+      <p><strong>Gardez vos propres registres de réparation et de maintenance à jour et
+      complets</strong> \u2014 plus votre historique de maintenance documenté est solide, plus votre
+      position est forte lors de la négociation avec un concessionnaire agréé ou un atelier
+      indépendant, et plus votre propre <a href="/docs/disposal-intelligence-engine">notation de
+      préparation à la mise au rebut</a> reste précise, peu importe qui finit par faire le travail.
+      C'est exactement à cela que sert un <a href="/docs/the-audit-log">journal d'audit</a> réel et
+      actuel \u2014 pas du théâtre de conformité, mais un levier que vous pouvez réellement
+      utiliser.</p>
+
+      <p>L'élan législatif dans ce domaine a évolué rapidement en 2026 et ne montre aucun signe de
+      ralentissement. Quelle que soit votre position sur le débat politique sous-jacent, la leçon
+      pratique en matière de gestion des actifs est simple : la réparation devient discrètement une
+      option plus solide qu'elle ne l'a été depuis des années, et les entreprises qui gardent des
+      registres propres sont celles positionnées pour réellement en profiter quand une décision
+      serrée se présente.</p>
+    `,
+  },
+  {
+    title: 'L\u2019IA transforme la gestion des actifs d\u2019un système d\u2019enregistrement en système de décision',
+    slug: 'ai-shift-recording-to-decision-making',
+    locale: 'fr',
+    excerpt: 'Le vrai changement industriel en 2026 est réactif à prédictif à prescriptif - et les questions honnêtes qui valent la peine d\u2019être posées à toute plateforme qui prétend le faire, y compris la nôtre.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-08-12T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/ai-shift-cover.svg',
+    bodyHtml: `
+      <p>Pendant la majeure partie de l'histoire des logiciels de gestion des actifs, un « système
+      d'enregistrement » est exactement ce que le nom suggère : quelque chose qui enregistre ce qui
+      s'est passé. Un actif est tombé en panne, quelqu'un l'a noté. Une pièce a été remplacée,
+      quelqu'un l'a noté aussi. Le travail du logiciel était de se souvenir des choses avec
+      précision, pas d'y réfléchir.</p>
+
+      <p>Cela change plus vite que la plupart des équipes opérationnelles n'ont eu le temps
+      d'absorber. Dans l'ensemble du secteur de la gestion des actifs d'entreprise en 2026, le thème
+      constant \u2014 repris à la fois par des analystes de marché indépendants et des éditeurs de
+      plateformes \u2014 est un passage de systèmes qui enregistrent ce qui s'est déjà passé à des
+      systèmes qui anticipent ce qui est sur le point de se passer et recommandent quoi faire à ce
+      sujet. Cela vaut la peine de comprendre ce qui motive réellement ce changement, et d'être
+      honnête sur où se trouve la vraie substance par rapport à ce qui reste surtout une diapositive
+      dans une présentation commerciale.</p>
+
+      <h3>Le vrai changement : réactif à prédictif à prescriptif</h3>
+      <p>Il existe une façon utile en trois étapes de penser à l'évolution de la maintenance :</p>
+      <ul>
+        <li><strong>Réactif.</strong> Quelque chose casse, vous le réparez. Aucune prédiction
+        impliquée.</li>
+        <li><strong>Prédictif.</strong> Les données de capteurs et les tendances d'utilisation sont
+        utilisées pour prévoir qu'une panne est probable avant qu'elle ne se produise \u2014 vous
+        donnant une fenêtre pour agir selon votre propre calendrier plutôt que celui de
+        l'équipement.</li>
+        <li><strong>Prescriptif.</strong> Le système ne se contente pas de signaler une panne
+        probable, il recommande une action spécifique \u2014 réparer, remplacer, ajuster un
+        intervalle de maintenance \u2014 basée sur l'économie réelle de cet actif spécifique, pas une
+        règle générale générique.</li>
+      </ul>
+      <p>L'adoption industrielle de la maintenance prédictive sous une forme ou une autre est
+      maintenant véritablement courante plutôt qu'expérimentale \u2014 la plupart des fabricants
+      interrogés dans les rapports sectoriels récents disent l'appliquer déjà sous une forme ou une
+      autre. La frontière la plus intéressante pour 2026 est le mouvement vers la couche
+      prescriptive : pas seulement « ceci va probablement tomber en panne », mais « voici ce qu'il en
+      coûtera de continuer par rapport à arrêter maintenant, spécifiquement pour cette unité ».</p>
+
+      <h3>Où se situe TraceHub dans ce changement, honnêtement</h3>
+      <p>Nous préférons être précis plutôt que de revendiquer un mot à la mode. Le
+      <a href="/docs/failure-prediction-engine">Moteur de prédiction de panne</a> de TraceHub prévoit
+      la probabilité de panne sur quatre horizons temporels en utilisant de véritables entrées \u2014
+      l'âge par rapport à la durée de vie attendue, l'historique de maintenance, l'intensité
+      d'usage \u2014 pas une boîte noire. Le <a href="/docs/disposal-intelligence-engine">Moteur
+      d'intelligence de mise au rebut</a> est la couche prescriptive par-dessus cela : une
+      recommandation précise Garder, Réparer, Vendre, Déclasser, ou Remplacer avec une raison en
+      langage clair attachée, pondérée le plus fortement sur le coût de réparation par rapport au
+      coût de remplacement actuel plutôt que le prix d'achat d'origine. Et la
+      <a href="/docs/ai-confidence-score-and-learning-loop">notation de confiance et la boucle
+      d'apprentissage</a> sous-jacentes aux deux sont délibérément conservatrices \u2014 elles vous
+      disent honnêtement quand une recommandation est étayée par des données ténues, et elles suivent
+      si le fait d'ignorer les recommandations passées a réellement conduit à de vraies pannes pour
+      votre parc spécifique, pas un référentiel industriel générique.</p>
+
+      <p>Ce dernier point compte plus qu'il n'y paraît. Une grande partie du positionnement « propulsé
+      par l'IA » dans ce domaine revient à un tableau de bord qui semble sophistiqué mais qui ne peut
+      pas vous dire à quel point avoir confiance dans ce qu'il vous montre. Une prédiction sans un
+      signal de confiance honnête attaché n'est qu'une supposition portant une blouse de
+      laboratoire.</p>
+
+      <h3>Ce que cela signifie pour la façon dont vous devriez évaluer n'importe quelle plateforme, y compris la nôtre</h3>
+      <p>Si vous examinez un logiciel de gestion des actifs ou de maintenance en 2026, « possède de
+      l'IA » a cessé d'être une revendication véritablement différenciante \u2014 presque tout le
+      monde le dit maintenant. Les questions qui valent réellement la peine d'être posées à un
+      fournisseur sont plus précises :</p>
+      <ul>
+        <li>Quelles entrées réelles alimentent la prédiction, et pouvez-vous les voir décomposées
+        par actif, ou s'agit-il d'un score opaque unique ?</li>
+        <li>Le système vous dit-il à quel point avoir confiance, ou chaque recommandation semble-t-elle
+        également certaine, peu importe la quantité de données qui la soutient réellement ?</li>
+        <li>L'économie derrière une recommandation réparer-ou-remplacer utilise-t-elle le coût de
+        remplacement actuel, ou compare-t-elle encore discrètement au prix d'achat d'origine d'il y a
+        des années ?</li>
+      </ul>
+      <p>Le changement sous-jacent vers une intelligence des actifs prescriptive et prête à la
+      décision est réel et continue de s'accélérer. L'écart entre cela et un texte marketing qui
+      mentionne simplement l'IA est là où il vaut la peine de consacrer votre temps
+      d'évaluation.</p>
+    `,
+  },
+  {
+    title: 'Comment mener votre premier audit physique des actifs sans perdre une semaine',
+    slug: 'running-a-physical-asset-audit',
+    locale: 'fr',
+    excerpt: 'Un audit physique des actifs n\u2019a pas à signifier des opérations gelées et une armée de presse-papiers. Voici comment en mener un réellement, étape par étape.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-08-15T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/audit-guide-cover.svg',
+    bodyHtml: `
+      <p>Chaque responsable des opérations finit par recevoir la même demande de la part de
+      quelqu'un au-dessus de lui : « quand avons-nous réellement vérifié pour la dernière fois que
+      tout ce qui figure sur notre liste d'actifs existe encore, se trouve où nous pensons qu'il se
+      trouve, et est dans l'état où nous pensons qu'il est ? » Si la réponse honnête est « pas
+      récemment », vous avez besoin d'un audit \u2014 et si l'idée d'en mener un vous fatigue avant
+      même de commencer, c'est que vous imaginez le mauvais type d'audit.</p>
+
+      <p>Un audit physique des actifs n'a pas à être une semaine d'opérations gelées et une armée de
+      presse-papiers. Voici comment en mener un réellement sans qu'il ne consomme votre mois.</p>
+
+      <h3>Étape 1 : Décidez à quoi ressemble « terminé » avant de commencer</h3>
+      <p>La façon la plus courante dont les audits deviennent incontrôlables est de commencer sans
+      ligne d'arrivée claire. Avant que quiconque ne prenne un scanner, décidez exactement ce que vous
+      essayez de savoir : chaque actif inscrit existe-t-il encore physiquement ? Chacun est-il là où
+      le système dit qu'il se trouve ? L'état enregistré est-il toujours exact ? Vous n'avez pas
+      besoin de répondre aux trois à chaque fois \u2014 un passage trimestriel « existe-t-il et est-il
+      ici » est bien plus rapide qu'un examen complet de l'état, et les deux sont des audits
+      légitimes.</p>
+
+      <h3>Étape 2 : Auditez par emplacement, pas par liste d'actifs</h3>
+      <p>Parcourir un tableur de haut en bas signifie des allers-retours constants entre bâtiments et
+      étages. Parcourir un <a href="/docs/setting-up-locations">emplacement</a> physique à la
+      fois \u2014 en scannant tout ce qui est réellement présent, puis en réconciliant avec ce que le
+      système s'attend à trouver là \u2014 signifie que vous ne touchez chaque zone qu'une seule fois.
+      Deux listes ressortent de l'autre côté : des actifs trouvés mais non attendus (quelque chose a
+      bougé sans être enregistré), et des actifs attendus mais non trouvés (quelque chose a bougé, ou
+      a réellement disparu).</p>
+
+      <h3>Étape 3 : Laissez le scan faire la réconciliation, pas la mémoire</h3>
+      <p>C'est le véritable gouffre de temps dans un audit manuel : quelqu'un qui plisse les yeux
+      devant une liste imprimée, essayant de faire correspondre des numéros de série à l'œil, dans un
+      entrepôt, à partir d'un presse-papiers. Une caméra de téléphone scannant le
+      <a href="/docs/qr-codes-and-printing-tags">code QR</a> de chaque actif pendant que vous parcourez
+      un emplacement fait la correspondance pour vous et met à jour l'historique de localisation à
+      l'instant même \u2014 aucune étape de réconciliation séparée nécessaire ensuite, aucun risque
+      qu'une erreur de saisie introduise une nouvelle erreur pendant que vous êtes occupé à en
+      corriger une ancienne.</p>
+
+      <h3>Étape 4 : Enquêtez sur les écarts en lot, à la fin</h3>
+      <p>N'arrêtez pas le parcours à chaque fois que quelque chose ne correspond pas \u2014 vous ne
+      terminerez jamais un emplacement. Notez-le, continuez d'avancer, et enquêtez sur la liste
+      complète des écarts une fois le parcours physique terminé. La plupart des actifs « manquants »
+      se révèlent être situés dans un emplacement différent parce qu'une affectation ou un transfert
+      n'a jamais été scanné \u2014 vérifier l'<a href="/docs/assigning-assets-to-people">historique
+      d'affectation</a> récent pour tout ce qui est attendu dans cet emplacement résout généralement la
+      majorité de votre liste avant d'avoir à traiter quoi que ce soit comme réellement perdu.</p>
+
+      <h3>Étape 5 : Corrigez le registre, ne vous contentez pas de noter le problème</h3>
+      <p>Un audit qui produit une liste d'écarts mais ne corrige rien réellement est un rapport, pas
+      un audit. Mettez à jour l'emplacement pour tout ce qui est trouvé quelque part d'inattendu.
+      Marquez tout ce qui est réellement non comptabilisé et lancez le processus de votre organisation
+      pour une perte confirmée \u2014 ne le laissez pas dans les limbes indéfiniment sur les registres,
+      déformant discrètement la valeur de votre parc et les chiffres de dépréciation pour des actifs
+      qui n'existent plus.</p>
+
+      <h3>À quelle fréquence est « assez souvent »</h3>
+      <p>Il n'y a pas de réponse universelle, mais un défaut raisonnable : un parcours complet par
+      emplacement majeur une fois par trimestre, avec les catégories de grande valeur ou très mobiles
+      (véhicules, outils spécialisés qui se déplacent entre les chantiers) vérifiées plus fréquemment.
+      Le véritable signal que vous auditez trop rarement n'est pas une date au calendrier \u2014 c'est
+      quand un audit révèle plus qu'une petite poignée d'écarts réels par emplacement. Ce n'est pas
+      une raison d'auditer moins parce que c'est agaçant ; c'est un signe que l'écart entre vos
+      registres et la réalité s'est déjà creusé plus que vous ne le souhaiteriez, et le prochain audit
+      devrait avoir lieu plus tôt, pas plus tard.</p>
+
+      <p>Les organisations qui redoutent les audits sont presque toujours celles qui les font encore
+      avec une liste imprimée et un stylo. La mécanique ci-dessus fonctionne que vous vérifiiez dix
+      actifs ou dix mille \u2014 le parcours devient plus long, mais il ne devient jamais plus
+      compliqué.</p>
+    `,
+  },
+  {
+    title: 'Opérations multi-sites : ce qui change quand votre équipement vit dans cinq endroits différents',
+    slug: 'multi-location-operations',
+    locale: 'fr',
+    excerpt: 'Ce qui était autrefois une connaissance commune sur un seul site devient la responsabilité spécifique de personne dès qu\u2019un second emplacement existe. Voici quoi corriger avant que cela ne devienne un vrai problème.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-08-17T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/multi-location-cover.svg',
+    bodyHtml: `
+      <p>Quelque chose se casse la première fois qu'une entreprise ouvre un second emplacement : pas
+      l'équipement lui-même, mais la compréhension partagée de l'endroit où se trouve chaque chose.
+      Quand il n'y avait qu'un seul bâtiment, « la perceuse à colonne est près du quai de chargement »
+      était une phrase complète. Une fois qu'il y a trois bâtiments, ce n'est plus le cas \u2014 et les
+      systèmes informels qui fonctionnaient bien pour un seul site cessent discrètement de fonctionner
+      dès qu'un second existe.</p>
+
+      <p>Voici ce qui change réellement sur le plan opérationnel quand l'équipement vit dans plus
+      d'un endroit, et ce qu'il faut mettre en place avant que cela ne devienne un vrai problème plutôt
+      qu'après.</p>
+
+      <h3>« Où est-ce » cesse d'être une hypothèse partagée</h3>
+      <p>Sur un seul site, tout le monde sait à peu près où se trouve la bonne échelle, même sans
+      qu'un système ne le leur dise. Sur plusieurs sites, cette carte mentale partagée
+      disparaît \u2014 personne à l'Emplacement B n'a d'intuition sur ce qui se trouve à l'Emplacement
+      A. La solution n'est pas de demander aux gens de se souvenir de plus de choses ; c'est de donner
+      à chaque pièce d'équipement un <a href="/docs/setting-up-locations">registre de localisation</a>
+      réel et actuel qui se met à jour dès que quelque chose bouge réellement, afin que « où est-ce »
+      ait une seule réponse faisant autorité plutôt que trois suppositions différentes de trois
+      personnes différentes.</p>
+
+      <h3>Les transferts entre emplacements doivent être un véritable événement enregistré</h3>
+      <p>La façon la plus courante dont les registres d'actifs multi-sites dérivent de la réalité :
+      quelqu'un emprunte une pièce d'équipement d'un autre site « juste pour une semaine » avec un
+      accord verbal et aucun enregistrement système. Six mois plus tard, personne ne se souvient quel
+      site l'a réellement, et cela apparaît comme un écart dans le prochain audit de l'un ou l'autre
+      emplacement qui le détecte en premier. Traiter un transfert entre emplacements comme un
+      véritable événement basé sur le scan \u2014 sorti d'où il part, entré où il arrive \u2014 coûte
+      environ dix secondes de plus qu'une remise verbale et élimine presque entièrement ce mode
+      d'échec spécifique.</p>
+
+      <h3>Les coûts de dépréciation et de maintenance devraient être agrégés par emplacement, pas seulement à l'échelle de l'entreprise</h3>
+      <p>Un seul chiffre combiné sur tous les sites peut cacher un vrai problème : l'équipement d'un
+      emplacement pourrait se déprécier et tomber en panne bien plus vite que le reste du parc, que ce
+      soit à cause de conditions plus rudes, d'un usage plus intense, ou d'une maintenance qui glisse
+      discrètement sur ce site spécifique. Ce schéma est invisible dans une moyenne à l'échelle de
+      l'entreprise et évident dès que vous pouvez filtrer les rapports par emplacement \u2014 ce qui
+      explique exactement pourquoi la visibilité par emplacement compte davantage, pas moins, à mesure
+      que vous ajoutez des sites.</p>
+
+      <h3>Les permissions doivent correspondre à la façon dont la responsabilité est réellement distribuée</h3>
+      <p>Une opération de dix personnes sur un seul site peut raisonnablement laisser tout le monde
+      tout voir. Sur plusieurs emplacements avec différents responsables de site, cela cesse d'être
+      approprié \u2014 un responsable sur un site ne devrait généralement pas avoir besoin (ou envie)
+      de fouiller dans l'équipement d'un autre site pour trouver le sien. Un
+      <a href="/docs/roles-and-permissions">accès basé sur les rôles</a> qui évolue avec
+      l'organisation plutôt que contre elle signifie que l'équipe de chaque site voit ce qui est
+      réellement pertinent pour elle, sans une mêlée générale à l'échelle de l'entreprise ni, à l'autre
+      extrême, tout acheminé par un seul administrateur central débordé.</p>
+
+      <h3>Le schéma sous-jacent à ces quatre points</h3>
+      <p>Chacun de ces problèmes a la même cause profonde : quelque chose qui était autrefois une
+      connaissance commune sur un seul site devient la responsabilité spécifique de personne dès
+      qu'il y en a plus d'un. La solution dans chaque cas n'est pas plus de discipline ou une
+      meilleure mémoire \u2014 c'est de faire en sorte que le registre se mette à jour lui-même dans le
+      cadre du travail (scanner un transfert, filtrer un rapport par site) plutôt que de dépendre de
+      quelqu'un qui se souvient de l'écrire séparément après coup.</p>
+
+      <p>Rien de tout cela ne nécessite un système différent pour chaque emplacement
+      supplémentaire \u2014 cela nécessite que le premier système ait été construit en supposant que
+      plus d'un emplacement finirait par exister. Si vous êtes sur le point d'ouvrir un second site et
+      que vous suivez actuellement l'équipement d'une manière qui suppose discrètement qu'il n'y en
+      aura jamais qu'un seul, cette hypothèse mérite d'être révisée avant l'ouverture, pas six mois
+      après.</p>
+    `,
+  },
 ];
 
 module.exports = frenchPosts;

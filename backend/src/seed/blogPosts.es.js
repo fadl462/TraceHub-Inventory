@@ -363,6 +363,324 @@ const spanishPosts = [
       que ingresa un precio de compra.</p>
     `,
   },
+  {
+    title: 'La ola del derecho a reparación está cambiando la matemática entre reparar y reemplazar',
+    slug: 'right-to-repair-wave-2026',
+    locale: 'es',
+    excerpt: 'Más de treinta proyectos de ley de derecho a reparación, una nueva ley de Colorado, y dos proyectos de ley federales están reformando el acceso a reparación en 2026 - esto es lo que realmente significa para la decisión de reparar o reemplazar.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-10T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/right-to-repair-cover.svg',
+    bodyHtml: `
+      <p>Si usted gestiona equipos físicos para ganarse la vida, un cambio legislativo discreto que
+      está ocurriendo en Estados Unidos en 2026 merece su atención \u2014 no por la política, sino
+      porque cambia la aritmética real detrás de una de las decisiones sobre las que más
+      escribimos: <a href="/blog/repair-or-replace-decision-framework">reparar o reemplazar</a>.</p>
+
+      <p>Más de treinta proyectos de ley de derecho a reparación se presentaron en trece estados solo
+      en las primeras semanas de este año. La ley de derecho a reparación de Colorado entró en vigor
+      en enero, cubriendo desde sistemas HVAC hasta equipos informáticos. Un proyecto de ley federal,
+      la REPAIR Act, avanza en comité para vehículos. Un proyecto de ley federal separado, la FARM
+      Act, se dirige específicamente a equipos agrícolas, después de que investigaciones sugirieran
+      que los agricultores pierden miles de millones de dólares anualmente por restricciones de
+      reparación de los fabricantes. Nada de esto es todavía ley definitiva en todas partes, y la
+      cobertura varía marcadamente según el estado y la categoría de equipo \u2014 pero la dirección
+      es inconfundible.</p>
+
+      <h3>Lo que el "derecho a reparación" realmente exige</h3>
+      <p>Quitando la política, el núcleo de estas leyes es simple: los fabricantes deben poner a
+      disposición de los propietarios y talleres de reparación independientes las piezas, las
+      herramientas de diagnóstico, y la documentación de reparación, no solo a su propia red
+      autorizada. Un número creciente de proyectos de ley más nuevos va más allá y prohíbe
+      explícitamente el "emparejamiento de piezas" \u2014 bloqueos de software que se niegan a
+      reconocer una pieza de repuesto a menos que se haya comprado a través del fabricante, incluso
+      cuando la pieza en sí es funcionalmente idéntica.</p>
+
+      <p>Si eso suena como un problema estrecho de electrónica de consumo, las categorías de equipo
+      ya incluidas o bajo discusión legislativa activa dicen lo contrario: sistemas HVAC, sillas de
+      ruedas motorizadas, equipos agrícolas, y vehículos de más de 14,000 libras forman parte de la
+      ola actual, no solo teléfonos y laptops.</p>
+
+      <h3>Por qué esto realmente importa para la decisión de reparar o reemplazar</h3>
+      <p>Nuestro propio marco para esa decisión pondera el costo de reparación contra el costo de
+      reemplazo, la condición actual, y cuánta vida útil realmente le queda a un activo. Dos de esas
+      entradas se mueven cuando mejora el acceso a la reparación:</p>
+      <ul>
+        <li><strong>El costo de reparación tiende a bajar.</strong> Cuando los talleres
+        independientes pueden acceder a las mismas piezas y documentación que un distribuidor
+        autorizado, la competencia en tarifas de mano de obra y precios de piezas aumenta \u2014 la
+        prima de "somos los únicos que pueden arreglar esto" se reduce.</li>
+        <li><strong>La reparación se vuelve viable más tarde en la vida de un activo.</strong> Un
+        gran motor para reemplazar equipos técnicamente aún reparables es que el servicio autorizado
+        se vuelve lento, costoso, o simplemente no disponible a medida que un modelo sale de la
+        ventana de soporte de un fabricante. El acceso a reparación independiente extiende la ventana
+        en la que reparar es genuinamente una opción viable, no solo teórica.</li>
+      </ul>
+      <p>Ninguno de estos cambia la física de un activo desgastado \u2014 un generador con un bloque
+      agrietado sigue siendo un generador con un bloque agrietado. Pero para la gran categoría
+      intermedia de equipos que están envejeciendo pero no realmente fallando, un mejor acceso a la
+      reparación puede genuinamente inclinar una decisión reñida de reemplazar hacia reparar.</p>
+
+      <h3>Qué hacer realmente al respecto ahora mismo</h3>
+      <p>No necesita convertirse en un experto en políticas para beneficiarse de esto. Vale la pena
+      tomar dos pasos prácticos independientemente de cómo se resuelva la legislación en su estado o
+      país específico:</p>
+      <p><strong>Reconsidere las suposiciones de costo de reparación en equipos que descartó como
+      "demasiado caros de reparar" en el último año o dos.</strong> Si ese juicio se basó en precios
+      exclusivos de distribuidor autorizado, podría valer la pena volver a cotizar con un taller
+      independiente ahora, particularmente para HVAC, vehículos, y equipos de TI donde el acceso a
+      reparación se está expandiendo más rápido.</p>
+      <p><strong>Mantenga sus propios registros de reparación y mantenimiento actuales y
+      completos</strong> \u2014 cuanto más sólido sea su historial de mantenimiento documentado, más
+      fuerte será su posición al negociar ya sea con un distribuidor autorizado o un taller
+      independiente, y más precisa se mantendrá su propia
+      <a href="/docs/disposal-intelligence-engine">puntuación de preparación para baja</a>
+      independientemente de quién termine haciendo el trabajo. Esto es exactamente para lo que sirve
+      un <a href="/docs/the-audit-log">registro de auditoría</a> real y actual \u2014 no es teatro de
+      cumplimiento, es influencia que realmente puede usar.</p>
+
+      <p>El impulso legislativo en este espacio se ha movido rápido en 2026 y no muestra signos de
+      desacelerar. Sea cual sea su posición sobre el debate de política subyacente, la conclusión
+      práctica de gestión de activos es sencilla: reparar se está convirtiendo discretamente en una
+      opción más sólida de lo que ha sido en años, y las empresas que mantienen registros limpios son
+      las que están posicionadas para realmente aprovechar eso cuando se presenta una decisión
+      reñida.</p>
+    `,
+  },
+  {
+    title: 'La IA está convirtiendo la gestión de activos de un sistema de registro en un sistema de toma de decisiones',
+    slug: 'ai-shift-recording-to-decision-making',
+    locale: 'es',
+    excerpt: 'El cambio real de la industria en 2026 es de reactivo a predictivo a prescriptivo - y las preguntas honestas que vale la pena hacerle a cualquier plataforma que afirme hacer esto, incluida la nuestra.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-12T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/ai-shift-cover.svg',
+    bodyHtml: `
+      <p>Durante la mayor parte de la historia del software de gestión de activos, un "sistema de
+      registro" es exactamente lo que suena: algo que registra lo que sucedió. Un activo se rompió,
+      alguien lo anotó. Se reemplazó una pieza, alguien también lo anotó. El trabajo del software era
+      recordar las cosas con precisión, no pensar en ellas.</p>
+
+      <p>Eso está cambiando más rápido de lo que la mayoría de los equipos operativos han tenido
+      tiempo de asimilar. En toda la industria de gestión de activos empresariales en 2026, el tema
+      constante \u2014 repetido tanto por analistas de mercado independientes como por proveedores de
+      plataformas \u2014 es un cambio de sistemas que registran lo que ya sucedió a sistemas que
+      anticipan lo que está a punto de suceder y recomiendan qué hacer al respecto. Vale la pena
+      entender qué está impulsando realmente ese cambio, y ser honesto sobre dónde está la sustancia
+      real frente a dónde sigue siendo principalmente una diapositiva en una presentación de
+      ventas.</p>
+
+      <h3>El cambio real: reactivo a predictivo a prescriptivo</h3>
+      <p>Hay una forma útil de tres etapas para pensar en cómo ha evolucionado el mantenimiento:</p>
+      <ul>
+        <li><strong>Reactivo.</strong> Algo se rompe, usted lo arregla. No hay predicción
+        involucrada.</li>
+        <li><strong>Predictivo.</strong> Los datos de sensores y los patrones de uso se usan para
+        pronosticar que algo probablemente fallará antes de que lo haga \u2014 dándole una ventana
+        para actuar según su propio calendario en lugar del del equipo.</li>
+        <li><strong>Prescriptivo.</strong> El sistema no solo marca una falla probable, recomienda
+        una acción específica \u2014 reparar, reemplazar, ajustar un intervalo de mantenimiento \u2014
+        basada en la economía real de ese activo específico, no una regla general genérica.</li>
+      </ul>
+      <p>La adopción industrial del mantenimiento predictivo en alguna forma ahora es genuinamente
+      convencional en lugar de experimental \u2014 la mayoría de los fabricantes encuestados en
+      informes industriales recientes dicen que ya están aplicando alguna forma de ello. La frontera
+      más interesante para 2026 es el movimiento hacia la capa prescriptiva: no solo "esto
+      probablemente fallará", sino "esto es lo que le costará seguir versus detenerse ahora,
+      específicamente para esta unidad".</p>
+
+      <h3>Dónde se sitúa TraceHub en este cambio, honestamente</h3>
+      <p>Preferimos ser específicos en lugar de reclamar una palabra de moda. El
+      <a href="/docs/failure-prediction-engine">Motor de predicción de fallas</a> de TraceHub
+      pronostica la probabilidad de falla en cuatro horizontes temporales usando entradas
+      reales \u2014 edad relativa a la vida esperada, historial de mantenimiento, intensidad de
+      uso \u2014 no una caja negra. El <a href="/docs/disposal-intelligence-engine">Motor de
+      inteligencia de baja</a> es la capa prescriptiva encima de eso: una recomendación específica de
+      Mantener, Reparar, Vender, Desguazar, o Reemplazar con una razón en lenguaje sencillo adjunta,
+      ponderada más fuertemente en el costo de reparación relativo al costo de reemplazo actual en
+      lugar del precio de compra original. Y la <a href="/docs/ai-confidence-score-and-learning-loop">
+      puntuación de confianza y el bucle de aprendizaje</a> subyacentes a ambos son deliberadamente
+      conservadores \u2014 le dicen honestamente cuándo una recomendación está respaldada por datos
+      escasos, y rastrean si ignorar recomendaciones pasadas realmente condujo a fallas reales para su
+      flota específica, no un punto de referencia genérico de la industria.</p>
+
+      <p>Esa última parte importa más de lo que podría sonar. Gran parte del posicionamiento
+      "impulsado por IA" en este espacio equivale a un tablero que parece sofisticado pero no puede
+      decirle qué tan confiado estar realmente en lo que le está mostrando. Una predicción sin una
+      señal de confianza honesta adjunta es solo una suposición vestida con bata de laboratorio.</p>
+
+      <h3>Lo que esto significa para cómo debería evaluar cualquier plataforma, incluida la nuestra</h3>
+      <p>Si está buscando software de gestión de activos o mantenimiento en 2026, "tiene IA" ha dejado
+      de ser una afirmación significativamente diferenciadora \u2014 casi todos lo dicen ahora. Las
+      preguntas que realmente vale la pena hacerle a un proveedor son más específicas:</p>
+      <ul>
+        <li>¿Qué entradas reales alimentan la predicción, y puede verlas desglosadas por activo, o es
+        un puntaje opaco único?</li>
+        <li>¿El sistema le dice qué tan confiado estar, o cada recomendación suena igualmente segura
+        independientemente de cuántos datos realmente la respalden?</li>
+        <li>¿La economía detrás de una recomendación de reparar o reemplazar usa el costo de
+        reemplazo actual, o todavía compara discretamente contra el precio de compra original de
+        hace años?</li>
+      </ul>
+      <p>El cambio subyacente hacia una inteligencia de activos prescriptiva y lista para decisiones
+      es real y sigue acelerándose. La brecha entre eso y el texto de marketing que simplemente
+      menciona IA es donde vale la pena dedicar su tiempo de evaluación.</p>
+    `,
+  },
+  {
+    title: 'Cómo realizar su primera auditoría física de activos sin perder una semana',
+    slug: 'running-a-physical-asset-audit',
+    locale: 'es',
+    excerpt: 'Una auditoría física de activos no tiene que significar operaciones congeladas y un ejército de portapapeles. Así es como realizar una realmente, paso a paso.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-15T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/audit-guide-cover.svg',
+    bodyHtml: `
+      <p>Todo gerente de operaciones eventualmente recibe la misma solicitud de alguien por encima
+      de él: "¿cuándo verificamos realmente por última vez que todo en nuestra lista de activos
+      todavía existe, está donde creemos que está, y está en la condición que creemos que
+      tiene?" Si la respuesta honesta es "no recientemente", necesita una auditoría \u2014 y si la
+      idea de realizar una lo cansa antes de siquiera comenzar, está imaginando el tipo equivocado
+      de auditoría.</p>
+
+      <p>Una auditoría física de activos no tiene que significar operaciones congeladas durante una
+      semana y un ejército de portapapeles. Así es como realizar una realmente sin que consuma su
+      mes.</p>
+
+      <h3>Paso 1: Decida cómo se ve "terminado" antes de empezar</h3>
+      <p>La forma más común en que las auditorías se salen de control es comenzar sin una línea de
+      meta clara. Antes de que alguien tome un escáner, decida exactamente qué está tratando de
+      responder: ¿existe todavía físicamente cada activo en los libros? ¿Está cada uno donde el
+      sistema dice que está? ¿Sigue siendo precisa la condición registrada? No necesita responder las
+      tres cada vez \u2014 un repaso trimestral de "existe y está aquí" es mucho más rápido que una
+      revisión completa de condición, y ambas son auditorías legítimas.</p>
+
+      <h3>Paso 2: Audite por ubicación, no por lista de activos</h3>
+      <p>Trabajar una hoja de cálculo de arriba a abajo significa retroceder constantemente entre
+      edificios y pisos. Trabajar una <a href="/docs/setting-up-locations">ubicación</a> física a la
+      vez \u2014 escaneando todo lo que realmente está presente, luego conciliando contra lo que el
+      sistema espera que esté ahí \u2014 significa que toca cada área exactamente una vez. Salen dos
+      listas al otro lado: activos encontrados pero no esperados (algo se movió sin registrarse), y
+      activos esperados pero no encontrados (algo se movió, o genuinamente desapareció).</p>
+
+      <h3>Paso 3: Deje que el escaneo haga la conciliación, no la memoria</h3>
+      <p>Este es el verdadero desperdicio de tiempo en una auditoría manual: alguien entrecerrando
+      los ojos ante una lista impresa, tratando de hacer coincidir números de serie a simple vista, en
+      un almacén, desde un portapapeles. Una cámara de teléfono escaneando el
+      <a href="/docs/qr-codes-and-printing-tags">código QR</a> de cada activo mientras camina por una
+      ubicación hace la coincidencia por usted y actualiza el historial de ubicación en el instante
+      en que sucede \u2014 sin necesidad de un paso de conciliación separado después, sin riesgo de
+      que un error de entrada de datos introduzca un nuevo error mientras está ocupado corrigiendo uno
+      antiguo.</p>
+
+      <h3>Paso 4: Investigue las discrepancias en lote, al final</h3>
+      <p>No detenga el recorrido cada vez que algo no coincida \u2014 nunca terminará una ubicación.
+      Anótelo, siga avanzando, e investigue la lista completa de discrepancias una vez que el
+      recorrido físico esté hecho. La mayoría de los activos "perdidos" resultan estar sentados en una
+      ubicación diferente porque una asignación o transferencia nunca se escaneó \u2014 verificar el
+      <a href="/docs/assigning-assets-to-people">historial de asignación</a> reciente para cualquier
+      cosa esperada en esa ubicación generalmente resuelve la mayoría de su lista antes de tener que
+      tratar algo como genuinamente perdido.</p>
+
+      <h3>Paso 5: Corrija el registro, no solo anote el problema</h3>
+      <p>Una auditoría que produce una lista de discrepancias pero no corrige nada realmente es un
+      informe, no una auditoría. Actualice la ubicación de cualquier cosa encontrada en un lugar
+      inesperado. Marque cualquier cosa genuinamente sin contabilizar e inicie el proceso de su
+      organización para una pérdida confirmada \u2014 no lo deje sentado en el limbo indefinidamente en
+      los libros, distorsionando silenciosamente el valor de su flota y las cifras de depreciación
+      para activos que ya no existen.</p>
+
+      <h3>Con qué frecuencia es "lo suficientemente frecuente"</h3>
+      <p>No hay una respuesta universal, pero un valor predeterminado razonable: un recorrido completo
+      por ubicación principal una vez al trimestre, con categorías de alto valor o muy móviles
+      (vehículos, herramientas especializadas que se mueven entre sitios de trabajo) revisadas con
+      más frecuencia. La señal real de que está auditando con demasiada poca frecuencia no es una
+      fecha en el calendario \u2014 es cuando una auditoría revela más que un pequeño puñado de
+      discrepancias genuinas por ubicación. Esa no es una razón para auditar menos porque es molesto;
+      es una señal de que la brecha entre sus registros y la realidad ya se ha ampliado más de lo que
+      quisiera, y la próxima auditoría debería ocurrir antes, no después.</p>
+
+      <p>Las organizaciones que temen las auditorías son casi siempre las que todavía las hacen con
+      una lista impresa y un bolígrafo. La mecánica anterior funciona ya sea que esté revisando diez
+      activos o diez mil \u2014 el recorrido se vuelve más largo, pero nunca se vuelve más
+      complicado.</p>
+    `,
+  },
+  {
+    title: 'Operaciones multi-ubicación: qué cambia cuando su equipo vive en cinco lugares diferentes',
+    slug: 'multi-location-operations',
+    locale: 'es',
+    excerpt: 'Lo que solía ser conocimiento común en un solo sitio se convierte en responsabilidad específica de nadie en el momento en que existe una segunda ubicación. Esto es lo que corregir antes de que se convierta en un problema real.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-17T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/multi-location-cover.svg',
+    bodyHtml: `
+      <p>Algo se rompe la primera vez que una empresa abre una segunda ubicación: no el equipo en
+      sí, sino el entendimiento compartido de dónde está todo. Cuando había un solo edificio, "la
+      taladradora de columna está junto al muelle de carga" era una oración completa. Una vez que hay
+      tres edificios, ya no lo es \u2014 y los sistemas informales que funcionaban bien para un solo
+      sitio dejan de funcionar silenciosamente en el momento en que existe un segundo.</p>
+
+      <p>Esto es lo que realmente cambia operativamente cuando el equipo vive en más de un lugar, y
+      qué poner en marcha antes de que se convierta en un problema real en lugar de después.</p>
+
+      <h3>"Dónde está" deja de ser una suposición compartida</h3>
+      <p>En un solo sitio, todos saben más o menos dónde está la buena escalera, incluso sin que un
+      sistema se lo diga. En múltiples sitios, ese mapa mental compartido desaparece \u2014 nadie en
+      la Ubicación B tiene ninguna intuición sobre lo que hay en la Ubicación A. La solución no es
+      pedirle a la gente que recuerde más; es darle a cada pieza de equipo un
+      <a href="/docs/setting-up-locations">registro de ubicación</a> real y actual que se actualiza en
+      el momento en que algo realmente se mueve, para que "dónde está" tenga una única respuesta
+      autorizada en lugar de tres suposiciones diferentes de tres personas diferentes.</p>
+
+      <h3>Las transferencias entre ubicaciones deben ser un evento real y registrado</h3>
+      <p>La forma más común en que los registros de activos multi-ubicación se desvían de la
+      realidad: alguien toma prestada una pieza de equipo de otro sitio "solo por una semana" con un
+      acuerdo verbal y ningún registro en el sistema. Seis meses después nadie recuerda qué sitio
+      realmente lo tiene, y aparece como una discrepancia en la próxima auditoría de cualquiera de las
+      ubicaciones que lo detecte primero. Tratar una transferencia entre ubicaciones como un evento
+      real basado en escaneo \u2014 registrado al salir de donde parte, registrado al llegar donde
+      arriba \u2014 cuesta unos diez segundos más que una entrega verbal y elimina casi por completo
+      este modo específico de falla.</p>
+
+      <h3>Los costos de depreciación y mantenimiento deben acumularse por ubicación, no solo a nivel de toda la empresa</h3>
+      <p>Un solo número combinado en todos los sitios puede ocultar un problema real: el equipo de
+      una ubicación podría estar depreciándose y averiándose mucho más rápido que el resto de la
+      flota, ya sea por condiciones más duras, uso más intenso, o mantenimiento que se está
+      descuidando silenciosamente en ese sitio específico. Ese patrón es invisible en un promedio a
+      nivel de toda la empresa y obvio en el momento en que puede filtrar los informes por
+      ubicación \u2014 que es exactamente por qué la visibilidad por ubicación importa más, no menos,
+      a medida que agrega sitios.</p>
+
+      <h3>Los permisos deben coincidir con cómo se distribuye realmente la responsabilidad</h3>
+      <p>Una operación de diez personas en un solo sitio puede razonablemente dejar que todos vean
+      todo. En múltiples ubicaciones con diferentes gerentes de sitio, eso deja de ser
+      apropiado \u2014 un gerente en un sitio generalmente no debería necesitar (ni querer) revisar el
+      equipo de otro sitio para encontrar el propio. El <a href="/docs/roles-and-permissions">acceso
+      basado en roles</a> que escala con la organización en lugar de en contra de ella significa que
+      el equipo de cada sitio ve lo que realmente es relevante para ellos sin un caos a nivel de toda
+      la empresa ni, en el otro extremo, todo dirigido a través de un solo administrador central
+      abrumado.</p>
+
+      <h3>El patrón detrás de estos cuatro puntos</h3>
+      <p>Cada uno de estos problemas tiene la misma causa raíz: algo que solía ser conocimiento común
+      en un solo sitio se convierte en responsabilidad específica de nadie una vez que hay más de
+      uno. La solución en cada caso no es más disciplina o mejor memoria \u2014 es hacer que el
+      registro se actualice solo como parte de hacer el trabajo (escanear una transferencia, filtrar
+      un informe por sitio) en lugar de depender de que alguien recuerde escribirlo por separado
+      después.</p>
+
+      <p>Nada de esto requiere un sistema diferente para cada ubicación adicional \u2014 requiere que
+      el primer sistema se haya construido asumiendo que eventualmente existiría más de una
+      ubicación. Si está a punto de abrir un segundo sitio y actualmente está rastreando equipo de una
+      manera que silenciosamente asume que solo habrá uno, esa suposición vale la pena reconsiderarla
+      antes de la apertura, no seis meses después.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;
