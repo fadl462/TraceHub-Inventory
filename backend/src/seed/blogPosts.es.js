@@ -681,6 +681,273 @@ const spanishPosts = [
       antes de la apertura, no seis meses después.</p>
     `,
   },
+  {
+    title: 'Los aranceles crecientes están cambiando silenciosamente la matemática de reparar versus reemplazar',
+    slug: 'tariffs-and-replacement-cost-2026',
+    locale: 'es',
+    excerpt: 'Los aranceles al acero se duplicaron, los aranceles a maquinaria superaron el 27%, y las estimaciones de costo de reemplazo de hace un año ahora son incorrectas en una dirección específica y predecible.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-19T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/tariffs-cover.svg',
+    bodyHtml: `
+      <p>En algún lugar de los registros de activos de muchas empresas ahora mismo hay un campo de
+      "costo de reemplazo" que era preciso hace un año y silenciosamente ya no lo es. Los aranceles al
+      acero se duplicaron al 50% a mediados de 2025. Los aranceles a la maquinaria de China están
+      alrededor del 27.5% una vez que se acumula cada recargo. Solo Caterpillar está absorbiendo
+      aproximadamente $2,200 millones en costos relacionados con aranceles este año, y no es el único
+      fabricante que traslada una parte significativa de eso a la factura. Nada de esto es un
+      pronóstico \u2014 ya está apareciendo en los precios de equipos nuevos en construcción,
+      agricultura, y equipos de almacén.</p>
+
+      <p>Si sus decisiones de reparar versus reemplazar todavía se comparan con una cifra de costo de
+      reemplazo de hace uno o dos años, la comparación ahora es incorrecta en una dirección
+      específica y predecible: hace que el reemplazo parezca más barato en relación con la reparación
+      de lo que realmente es.</p>
+
+      <h3>El mecanismo, brevemente</h3>
+      <p>El acero representa aproximadamente del 60 al 70 por ciento del costo de fabricación de
+      muchos equipos industriales \u2014 estanterías, componentes estructurales, chasis de maquinaria
+      pesada. Cuando los aranceles al acero de la Sección 232 se duplicaron, ese aumento de costo no
+      se quedó con el fabricante; se movió a través de la cadena de suministro y aterrizó en la
+      factura. Los informes de la industria sobre equipos de construcción han descrito casos en los
+      que un impacto arancelario de materia prima de miles de dólares se traduce en un aumento del
+      precio de venta al público casi el doble de ese tamaño para cuando el margen se acumula en cada
+      paso entre la fábrica y el comprador.</p>
+
+      <p>El resultado práctico ya visible en el mercado: el equipo usado anterior a los
+      aranceles \u2014 cualquier cosa construida antes de que el régimen arancelario actual entrara en
+      vigor \u2014 está manteniendo su valor de manera inusual, porque la brecha entre su precio y el
+      de una unidad nueva se ha ampliado significativamente. Ese no es un cambio sutil. Es una señal
+      de mercado real y actual de que el lado del reemplazo de la ecuación se ha vuelto más costoso,
+      específicamente, no solo en general.</p>
+
+      <h3>Lo que esto significa para un número que ya tiene</h3>
+      <p>Nuestro propio <a href="/docs/disposal-intelligence-engine">Motor de inteligencia de
+      baja</a> pondera deliberadamente el costo de mantenimiento contra el costo de reemplazo
+      <em>actual</em> en lugar del precio de compra original, precisamente porque los dos pueden
+      divergir significativamente \u2014 y ahora mismo, para una amplia gama de categorías de equipo,
+      están divergiendo más rápido de lo habitual. Una reparación que parecía marginal contra la
+      estimación de reemplazo del año pasado puede parecer genuinamente valiosa contra la de este
+      año.</p>
+
+      <p>Esta es también exactamente el tipo de situación para la que existe el
+      <a href="/docs/registering-an-asset">campo de valor de mercado actual</a> en el registro de un
+      activo \u2014 actualizarlo silenciosamente una o dos veces al año contra los precios reales
+      actuales, en lugar de dejarlo en el número que se ingresó al momento de la compra, es una tarea
+      de cinco minutos con un efecto real sobre qué recomendaciones realmente muestra su flota.</p>
+
+      <h3>Un punto de partida práctico, no una auditoría completa</h3>
+      <p>No necesita volver a fijar el precio de toda su flota esta semana. Un punto de partida
+      razonable: extraiga los activos actualmente marcados para reemplazo y verifique específicamente
+      si su costo de reemplazo registrado refleja los precios de este año o una estimación más
+      antigua. Para las categorías de equipo más expuestas a los aranceles de acero y maquinaria \u2014
+      equipos de construcción y almacén, maquinaria agrícola, cualquier cosa con un chasis de acero
+      significativo \u2014 ese número podría estar subestimando el costo real de reemplazo por un
+      margen significativo en este momento.</p>
+
+      <p>La política arancelaria en este espacio se ha movido rápido y muestra todas las señales de
+      seguir cambiando durante el resto de 2026. Haga lo que haga a continuación, la lección de
+      gestión de activos se mantiene independientemente de la dirección: un número de reparar o
+      reemplazar es tan bueno como qué tan recientemente alguien realmente lo verificó contra la
+      realidad.</p>
+    `,
+  },
+  {
+    title: '¿Código QR, código de barras, o RFID? Un marco de decisión honesto',
+    slug: 'qr-vs-barcode-vs-rfid',
+    locale: 'es',
+    excerpt: 'Construimos TraceHub en torno a códigos QR, no RFID. Aquí está la comparación honesta, incluyendo exactamente cuándo le diríamos que use otra cosa.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-22T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/qr-vs-rfid-cover.svg',
+    bodyHtml: `
+      <p>Cada conversación sobre el seguimiento de equipo físico eventualmente llega a la misma
+      pregunta: ¿código QR, código de barras, o RFID? Los proveedores que venden hardware tienen una
+      respuesta obvia. En su lugar, intentaremos darle una honesta, incluyendo las situaciones en las
+      que le diríamos que no use el enfoque que realmente construimos.</p>
+
+      <h3>Códigos de barras: el caballo de batalla discreto</h3>
+      <p>Los códigos de barras 1D tradicionales son baratos, universalmente compatibles, y requieren
+      escaneo con línea de visión con un lector dedicado o una cámara de teléfono. Su verdadera
+      limitación no es la fiabilidad \u2014 es la densidad de datos. Un código de barras típicamente
+      codifica poco más que un número de identificación, lo que significa que la información real del
+      activo tiene que vivir en un sistema separado al que apunta el número de identificación. Es un
+      buen compromiso para inventario minorista de alto volumen. Es uno más débil cuando quiere un
+      código que pueda, por sí solo, al menos identificar a qué está adherido.</p>
+
+      <h3>Códigos QR: códigos de barras con espacio para realmente decir algo</h3>
+      <p>Un código QR puede contener muchísimos más datos que un código de barras 1D en el mismo
+      espacio físico, y de manera crítica, es legible por una cámara de teléfono ordinaria en un
+      ángulo y distancia con los que un escáner 1D tendría dificultades. Es por eso que construimos el
+      seguimiento de TraceHub en torno a los <a href="/docs/qr-codes-and-printing-tags">códigos
+      QR</a> en lugar de códigos de barras: el código en sí es una URL real, así que escanearlo con
+      cualquier aplicación de cámara \u2014 no solo la nuestra \u2014 lo lleva directamente al registro
+      de ese activo. Sin escáner propietario, sin licencias por dispositivo, sin hardware lector que
+      mantener cargado y calibrado.</p>
+
+      <h3>RFID: genuinamente mejor en una cosa específica</h3>
+      <p>La verdadera ventaja de RFID sobre los códigos de barras y los códigos QR es que no requiere
+      línea de visión ni escaneo individual \u2014 un lector puede captar docenas de artículos
+      etiquetados simultáneamente mientras pasan por una zona, sin que nadie apunte nada a nada. Esa
+      es una capacidad legítimamente poderosa para escenarios de paso de alto volumen: un muelle de
+      carga donde los pallets pasan constantemente, un gran piso de venta minorista haciendo conteos
+      de inventario rápidos.</p>
+      <p>También es la razón por la que RFID generalmente es la elección equivocada para el tipo de
+      seguimiento de equipo que la mayoría de los equipos operativos realmente necesitan. Los
+      lectores cuestan dinero real por unidad, necesitan instalación y calibración, y las etiquetas en
+      sí cuestan más por unidad que una etiqueta QR impresa. Para rastrear una flota de vehículos,
+      herramientas, o generadores que se mueven entre un puñado de puntos de control \u2014 no miles
+      de artículos pasando por un solo punto \u2014 ese costo de infraestructura le compra muy poco
+      que no pudiera obtener de una cámara de teléfono y una etiqueta impresa.</p>
+
+      <h3>El marco de decisión honesto</h3>
+      <p>Haga una pregunta: ¿está rastreando un flujo de alto volumen y alta velocidad a través de
+      puntos fijos (la verdadera fortaleza de RFID), o activos discretos e identificables que se
+      mueven entre un número manejable de ubicaciones, verificados por personas que ya llevan un
+      teléfono (la verdadera fortaleza de QR)? La mayoría del seguimiento de equipo \u2014 vehículos,
+      herramientas, hardware de TI, generadores, muebles \u2014 es inequívocamente la segunda
+      categoría. La mayoría de la logística de paso en almacenes a gran escala está más cerca de la
+      primera.</p>
+      <p>Si no está seguro de cuál describe su situación, una señal razonable: si se imagina a alguien
+      deliberadamente tomando y escaneando un activo a la vez, quiere QR. Si se imagina pallets
+      rodando a través de una puerta de muelle sin que nadie toque un escáner, se está imaginando el
+      caso de uso real de RFID, y probablemente valga la pena la inversión en infraestructura para ese
+      escenario específico.</p>
+
+      <p>Construimos en torno a los códigos QR porque es el ajuste honesto para cómo realmente se
+      mueven la mayoría de las operaciones con uso intensivo de equipo \u2014 no porque sea la única
+      tecnología que existe, sino porque es la que no le pide comprar hardware para resolver un
+      problema que una cámara de teléfono ya resuelve.</p>
+    `,
+  },
+  {
+    title: 'Lo que realmente significa su calificación de flota (y la forma más rápida de moverla)',
+    slug: 'understanding-your-fleet-grade',
+    locale: 'es',
+    excerpt: 'Una sola calificación con letra esconde tres problemas muy diferentes, cada uno con una solución diferente. Así es como saber cuál realmente tiene.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-24T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/fleet-grade-cover.svg',
+    bodyHtml: `
+      <p>Si ha echado un vistazo a su tablero y ha visto una calificación de flota en C, o peor, el
+      instinto generalmente es tratarla como un regaño vago y seguir adelante. Eso es un error \u2014
+      la calificación es un compuesto de tres números reales y específicos, y saber cuál la está
+      arrastrando hacia abajo le dice exactamente qué hacer a continuación, en lugar de una sensación
+      general de que algo, en algún lugar, necesita atención.</p>
+
+      <h3>Lo que realmente hay dentro de la calificación</h3>
+      <p>La calificación general con letra se construye a partir de tres entradas, ponderadas según
+      se documenta en <a href="/docs/fleet-intelligence-formulas-explained">Fórmulas de inteligencia
+      de la flota explicadas</a>: la Salud de la cartera lleva más peso, la Disponibilidad de activos
+      le sigue, y el Riesgo de capital (invertido, ya que un menor riesgo es mejor) completa el
+      conjunto. Una calificación en C podría significar tres situaciones subyacentes muy diferentes,
+      y cada una tiene una solución diferente.</p>
+
+      <h3>Si la Salud de la cartera es el problema</h3>
+      <p>Esto significa que una parte significativa de su flota, por conteo, se encuentra en las
+      <a href="/docs/asset-health-score">bandas de salud</a> inferiores. La solución no es "comprar
+      equipo nuevo" como primer movimiento \u2014 es ordenar por puntaje de salud ascendente y ver qué
+      es lo que realmente está arrastrando hacia abajo a cada activo con puntaje bajo. La posición
+      ajustada por edad, el cumplimiento de mantenimiento, y el entorno llevan cada uno un peso real
+      en ese puntaje, y un número sorprendente de activos "no saludables" resultan estar arrastrados
+      por una brecha en los datos de mantenimiento en lugar de un declive físico genuino \u2014 un
+      activo sin mantenimiento registrado en dos años puntúa como si hubiera sido descuidado, lo haya
+      sido realmente o no.</p>
+
+      <h3>Si el Riesgo de capital es el problema</h3>
+      <p>Este se trata de concentración de dinero, no de conteo de activos. Un pequeño número de
+      activos de alto valor en mal estado puede arrastrar este número hacia abajo incluso si la gran
+      mayoría de su flota, por conteo, está perfectamente saludable \u2014 por diseño, ya que el
+      <a href="/docs/fleet-intelligence-formulas-explained">Riesgo de capital</a> pondera por valor,
+      no por número de cabezas. Si esta es su entrada débil, la solución es estrecha y específica:
+      mire específicamente sus activos de mayor valor, no su flota en general, y priorice las
+      decisiones de baja ahí por encima de todo lo demás.</p>
+
+      <h3>Si la Disponibilidad de activos es el problema</h3>
+      <p>Esto significa que demasiada de su flota está inactiva en lugar de en uso activo \u2014
+      activos que no están ni averiados ni asignados, solo parados. A diferencia de los otros dos,
+      esto a menudo no es un problema de mantenimiento o capital en absoluto; frecuentemente es un
+      problema de utilización, y la solución es redistribuir o dar de baja equipo que nadie está
+      realmente usando en lugar de algo relacionado con la condición.</p>
+
+      <h3>Por qué esto importa más que la letra en sí</h3>
+      <p>Una calificación que no puede descomponer es solo un estado de ánimo. Una calificación que
+      puede rastrear hasta una entrada específica le dice si tiene un problema de mantenimiento, un
+      problema de concentración de capital, o un problema de utilización \u2014 tres situaciones
+      genuinamente diferentes que requieren tres respuestas diferentes, todas actualmente escondidas
+      detrás de la misma letra única. La letra es útil como una señal rápida para un ejecutivo que no
+      necesita el detalle. Para cualquiera que realmente sea responsable de moverla, los tres números
+      subyacentes son donde vive la información real.</p>
+
+      <p>La próxima vez que la calificación se mueva \u2014 en cualquier dirección \u2014 verifique
+      cuál de las tres entradas realmente cambió antes de asumir que sabe por qué. Generalmente no es
+      la que adivinaría.</p>
+    `,
+  },
+  {
+    title: 'Lograr que un nuevo empleado sea productivo en su sistema de activos en unos quince minutos',
+    slug: 'onboarding-new-hires',
+    locale: 'es',
+    excerpt: 'La diferencia entre un nuevo empleado confiado y uno que evita silenciosamente casi nunca se reduce al software. Se reduce a los primeros quince minutos.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-08-26T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/onboarding-cover.svg',
+    bodyHtml: `
+      <p>La primera semana de un nuevo empleado con cualquier sistema tiende a ir de una de dos
+      maneras: o recibe un recorrido real de cinco minutos y es genuinamente productivo para la hora
+      del almuerzo, o recibe un "ya lo agarrará" y pasa su primer mes evitando silenciosamente las
+      partes del trabajo que tocan el sistema de activos en absoluto. La diferencia casi nunca se
+      reduce a qué tan complicado es realmente el software \u2014 se reduce a si alguien estructuró
+      deliberadamente esos primeros cinco minutos.</p>
+
+      <h3>Dele el rol correcto desde el primer día, no "ya lo resolverá después"</h3>
+      <p>El error de incorporación más común: poner a todos por defecto en el mismo nivel de acceso
+      porque es más fácil que decidir. El acceso de <a href="/docs/roles-and-permissions">Personal,
+      Gerente, y Administrador de la empresa</a> difiere genuinamente en lo que alguien necesita ver,
+      y alguien con responsabilidades de nivel Personal al que se le da acceso de Administrador de la
+      empresa el primer día no obtiene una mejor experiencia \u2014 obtiene una más confusa, enterrada
+      en configuraciones e informes que no son relevantes para lo que realmente está ahí para
+      hacer.</p>
+
+      <h3>Hágalo hacer un escaneo real antes que cualquier otra cosa</h3>
+      <p>Leer sobre cómo funciona el escaneo QR y realmente hacerlo son tipos de conocimiento
+      diferentes, y el segundo tipo se queda. Antes de cualquier recorrido más profundo, entregue a
+      un nuevo miembro del equipo un activo real y hágalo <a href="/docs/scanning-assets">escanearlo
+      de entrada o salida</a> una vez, en su propio teléfono, sin ninguna aplicación especial que
+      instalar. Esa única acción enseña el mecanismo central de todo el sistema más rápido que
+      cualquier cantidad de compartir pantalla, y elimina la ansiedad más común al principio: "¿voy a
+      romper algo si intento esto?".</p>
+
+      <h3>Muéstrele dónde viven realmente las cosas, no todo lo que existe</h3>
+      <p>Un recorrido completo de funciones el primer día se olvida en su mayoría para el tercer día.
+      Un recorrido de cinco minutos de exactamente el puñado de pantallas que alguien en su rol
+      específico realmente tocará \u2014 la lista de activos, sus asignaciones, tal vez el
+      escáner \u2014 se queda mucho mejor que una visión general completa de una plataforma que no
+      usará en su mayor parte. Guarde el resto para cuando realmente lo necesite, lo cual generalmente
+      es de todos modos un mejor maestro que una sesión de capacitación programada.</p>
+
+      <h3>Dígale qué pasa si se equivoca</h3>
+      <p>Una cantidad sorprendente de vacilación de un nuevo empleado proviene de no saber si un
+      error es corregible. Generalmente lo es: una <a href="/docs/editing-an-existing-asset">edición
+      de activo</a> se puede corregir, un escaneo de ubicación incorrecta se puede volver a escanear,
+      y el <a href="/docs/the-audit-log">registro de auditoría</a> significa que nada se pierde nunca
+      silenciosamente, solo es visiblemente rastreable hasta quien lo tocó por última vez. Decir esto
+      en voz alta el primer día \u2014 explícitamente, sin asumir que es obvio \u2014 elimina la
+      mayor parte de la precaución que de otro modo ralentiza a alguien durante sus primeras
+      semanas.</p>
+
+      <h3>El patrón subyacente a los cuatro</h3>
+      <p>Nada de esto tiene que ver con que el software sea simple o complicado \u2014 la misma
+      plataforma puede producir un nuevo empleado confiado o uno evasivo dependiendo enteramente de
+      si esa primera sesión se estructuró en torno a lo que realmente hará, o se dejó al azar. Quince
+      minutos dedicados deliberadamente a los cuatro puntos anteriores tienden a ahorrar semanas de
+      evasión silenciosa después.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;
