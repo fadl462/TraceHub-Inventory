@@ -1443,6 +1443,477 @@ const spanishPosts = [
       registro algún día.</p>
     `,
   },
+  {
+    title: 'Sus registros de mantenimiento ahora son un punto de venta en un mercado de equipo usado en auge',
+    slug: 'used-equipment-market-documentation-value',
+    locale: 'es',
+    excerpt: 'El mercado global de equipo de construcción usado se proyecta en alrededor de $130 mil millones para 2026. Aquí está por qué sus registros de mantenimiento ahora tienen valor de reventa real.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-16T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/used-equipment-cover.svg',
+    bodyHtml: `
+      <p>El mercado de equipo usado solía ser donde compraba cuando no podía pagar equipo nuevo.
+      Ese encuadre está genuinamente desactualizado. Solo el mercado global de equipo de
+      construcción usado se proyecta en el rango de $130 mil millones para 2026, creciendo
+      constantemente año tras año \u2014 y los analistas de la industria son explícitos en que esto
+      es un cambio estructural en cómo se construyen las flotas, no una reacción temporal a una mala
+      economía. Contratistas con el presupuesto para equipo nuevo están eligiendo deliberadamente
+      máquinas usadas bien mantenidas en su lugar, en números significativos.</p>
+
+      <h3>Por qué esto está sucediendo ahora, específicamente</h3>
+      <p>Dos fuerzas se están reforzando mutuamente. Los tiempos de entrega de equipo nuevo se han
+      extendido al rango de 12 a 18 meses en algunas categorías, lo que convierte a una máquina
+      usada de una opción de respaldo en la única forma realista de tener equipo funcionando este
+      trimestre en lugar del próximo año. Al mismo tiempo, los mercados digitales han hecho mucho
+      más fácil para un comprador realmente evaluar la condición, historial, y precio de una máquina
+      usada antes de comprometerse \u2014 lo cual importa, porque esa evaluación es exactamente donde
+      la documentación deja de ser papeleo y se convierte en un factor financiero real.</p>
+
+      <h3>Lo que esto significa si usted es quien vende</h3>
+      <p>Un comprador evaluando dos máquinas usadas por lo demás idénticas, una con un historial de
+      mantenimiento y uso completo y verificable y otra sin ninguno, no está eligiendo entre
+      opciones iguales a precios diferentes \u2014 la documentada es una compra fundamentalmente de
+      menor riesgo, y los compradores en un mercado con elección real pagarán por eso. Un
+      <a href="/docs/the-audit-log">registro de auditoría completo</a> que cubra mantenimiento,
+      ubicación, y asignaciones anteriores ya no es solo una comodidad interna de mantenimiento de
+      registros. En un mercado así de activo, es influencia en una negociación real, la diferencia
+      entre la oferta confiada de un comprador y su oferta cautelosa y con descuento.</p>
+
+      <p>Esto se conecta directamente con cómo construimos la ruta de venta del
+      <a href="/docs/six-stage-disposal-workflow">flujo de baja</a>: registrar un monto de venta
+      final y un método no es burocracia por sí misma, es construir exactamente el tipo de historial
+      documentado que hace que el siguiente activo comparable sea más fácil de vender a un precio
+      justo, porque el patrón de lo que su equipo realmente se vende se convierte en un punto de
+      datos real y referenciable en lugar de una suposición.</p>
+
+      <h3>Lo que esto significa si usted es quien compra usado</h3>
+      <p>La misma lógica funciona a la inversa: este es un buen momento para ser escéptico de un
+      anuncio de usado sin un verdadero historial de servicio detrás de él, precisamente porque el
+      mercado es lo suficientemente competitivo como para que haya equipo bien documentado con el
+      cual comparar. Una máquina con registros de mantenimiento genuinos y verificables vale una
+      prima sobre una de apariencia idéntica sin ellos \u2014 y en un mercado activo, no tiene que
+      aceptar la no documentada solo porque está disponible primero.</p>
+
+      <p>Nada de esto requiere predecir hacia dónde irán los precios del equipo a continuación.
+      Simplemente significa tratar sus propios registros de mantenimiento y uso como algo con
+      verdadero valor de reventa adjunto, no simplemente un hábito interno de contabilidad \u2014
+      porque en el mercado tal como realmente existe en este momento, eso es exactamente lo que
+      son.</p>
+    `,
+  },
+  {
+    title: 'Campos personalizados: la función que hace o deshace la adopción a escala',
+    slug: 'custom-fields-adoption',
+    locale: 'es',
+    excerpt: 'El patrón es consistente: la plataforma funciona bien el primer mes, luego alguien choca con el mismo muro y comienza una hoja de cálculo paralela para exactamente eso.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-19T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/custom-fields-cover.svg',
+    bodyHtml: `
+      <p>Los campos personalizados son una de esas funciones que suenan menores en un recorrido del
+      producto y resultan determinar silenciosamente si un sistema realmente se adopta a escala. El
+      patrón es consistente: la plataforma funciona bien durante el primer mes, y luego alguien en
+      el equipo choca con el mismo muro \u2014 "no hay dónde poner la única información sobre la cual
+      realmente organizamos nuestro trabajo" \u2014 y comienza a mantener una hoja de cálculo
+      paralela para exactamente eso. Una vez que existe una hoja de cálculo paralela para cualquier
+      cosa, la confianza en el sistema principal comienza a erosionarse para todo.</p>
+
+      <h3>Lo que ese campo faltante generalmente resulta ser</h3>
+      <p>Rara vez es algo exótico. Es un número de certificado de cumplimiento que una industria
+      regulada necesita en archivo. Es un código de proyecto interno que finanzas concilia. Es un
+      formato específico de etiqueta de activo del fabricante que precede al sistema actual y al que
+      todos todavía se refieren informalmente. Ninguno de estos son casos extremos \u2014 son el
+      vocabulario específico que una organización dada realmente usa para hablar de su propio
+      equipo, y un sistema sin espacio para ese vocabulario está pidiendo a la gente que traduzca en
+      su cabeza cada vez, que es exactamente el tipo de fricción que erosiona la adopción lenta e
+      invisiblemente.</p>
+
+      <h3>Por qué agregarlo después es peor que planificarlo temprano</h3>
+      <p>Los <a href="/docs/categories-and-custom-fields">campos personalizados</a> definidos
+      temprano, antes de que existan cientos de activos, no cuestan más que unos minutos de
+      configuración. Los mismos campos agregados después significan poblarlos retroactivamente en
+      cada activo existente \u2014 exactamente el tipo de trabajo de limpieza poco glamoroso que se
+      pospone indefinidamente y a menudo simplemente nunca sucede. Si hay una posibilidad real de
+      que su organización rastree algo específico que un sistema de activos genérico no anticiparía,
+      vale la pena una conversación de cinco minutos antes de registrar sus primeros cien activos,
+      no después.</p>
+
+      <h3>La disciplina que realmente importa: no agregar demasiado</h3>
+      <p>El modo de falla opuesto también es real \u2014 un sistema con cuarenta campos
+      personalizados, la mayoría relevantes solo para un puñado de activos, es su propio tipo de
+      fricción. Cada campo opcional agrega una pequeña cantidad de ruido visual a un formulario que
+      todos tienen que llenar. El número correcto de campos personalizados es genuinamente "tantos
+      como su organización necesite para describir lo que hace que su equipo sea distintivamente
+      suyo, y ni uno más" \u2014 lo cual es un juicio que vale la pena hacer deliberadamente, no una
+      casilla que llenar solo porque la opción existe.</p>
+
+      <h3>Una prueba práctica antes de agregar uno</h3>
+      <p>Pregunte si el campo responde una pregunta que a alguien realmente le hacen regularmente \u2014
+      "¿cuál es el número de certificado de cumplimiento de esto?" \u2014 versus una pregunta que es
+      teóricamente interesante pero que nunca realmente surge. Si nadie ha hecho la pregunta en los
+      últimos seis meses, probablemente no vale la pena un campo permanente en cada formulario de
+      activo. Si surge lo suficientemente regular como para que alguien lo esté rastreando
+      actualmente en una hoja de cálculo paralela, esa es exactamente la señal de que pertenece
+      apropiadamente al sistema en su lugar.</p>
+
+      <p>La medida de una buena configuración de campos personalizados no es qué tan completa se
+      vea el primer día \u2014 es si, seis meses después, alguien todavía siente la necesidad de
+      mantener un segundo registro no oficial de algo. Esa es la señal real de que el sistema encaja
+      con cómo realmente funciona su organización.</p>
+    `,
+  },
+  {
+    title: 'La diferencia entre Reservado y Disponible (y por qué es fácil equivocarse)',
+    slug: 'reserved-vs-available-status',
+    locale: 'es',
+    excerpt: 'Ambos describen un activo no asignado a nadie. La distinción real es la intención, y confundirlos corrompe silenciosamente sus informes de disponibilidad.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/reserved-available-cover.svg',
+    bodyHtml: `
+      <p>De los seis estados de activos, Reservado y Disponible causan la mayor confusión, y la
+      confusión es comprensible \u2014 son genuinamente similares en una forma importante y
+      genuinamente diferentes en otra, y confundirlos corrompe silenciosamente los informes de
+      disponibilidad de una manera fácil de pasar por alto hasta que alguien está tomando una
+      decisión basada en números que no significan lo que piensa.</p>
+
+      <h3>Lo que realmente los distingue</h3>
+      <p>Ambos estados describen un activo que actualmente no está asignado a nadie \u2014 esa es la
+      similitud, y es exactamente lo que hace que la gente elija el que le viene primero a la mente.
+      La distinción real es la intención: <a href="/docs/understanding-asset-status">Disponible</a>
+      significa genuinamente libre para tomar, sin plan adjunto. Reservado significa específicamente
+      retenido para un uso conocido y próximo \u2014 el trabajo de la próxima semana, un proyecto
+      específico ya en el calendario \u2014 sin estar formalmente asignado todavía porque el trabajo
+      realmente no ha comenzado.</p>
+
+      <h3>Por qué la diferencia importa más de lo que parece</h3>
+      <p>La cifra de disponibilidad de activos de su tablero cuenta lo que genuinamente está
+      Disponible \u2014 y ese número informa directamente decisiones como si realmente necesita
+      alquilar o comprar algo adicional para un trabajo próximo, o si ya tiene suficiente equipo
+      inactivo. Si equipo que realmente está destinado a la próxima semana se deja marcado
+      Disponible en lugar de Reservado, esa cifra de disponibilidad sobrestima lo que genuinamente
+      puede desplegar ahora mismo, y alguien podría razonablemente decidir en contra de un alquiler
+      que terminará necesitando después de todo \u2014 o reservar dos veces equipo que en realidad
+      nunca estuvo realmente libre.</p>
+
+      <h3>El hábito que mantiene esto limpio</h3>
+      <p>En el momento en que sepa que un activo está destinado a algo específico pero el trabajo
+      todavía no ha comenzado, márquelo Reservado en lugar de dejarlo Disponible "por ahora" con una
+      nota mental para recordar que ya está apartado. Las notas mentales no aparecen en el tablero
+      de nadie más. Un cambio de estado toma segundos y significa que la próxima persona que
+      verifique la disponibilidad ve una imagen precisa en lugar de una que depende de que también
+      sepa lo que está planeando en privado.</p>
+
+      <h3>Qué hacer una vez que el uso reservado realmente comienza</h3>
+      <p>Reservado no está pensado para ser un lugar de estacionamiento permanente \u2014 una vez que
+      el uso planeado realmente comienza, debería convertirse en una verdadera
+      <a href="/docs/assigning-assets-to-people">asignación</a>, no quedarse marcado Reservado
+      indefinidamente. Un activo sentado en Reservado durante meses generalmente significa que el
+      plan cambió y nadie actualizó el estado, o que el plan sucedió y nadie lo movió a una
+      asignación real \u2014 de cualquier manera, vale la pena una verificación rápida en lugar de
+      dejarlo tal cual simplemente porque actualmente no está causando un problema obvio.</p>
+
+      <p>Seis estados en lugar de dos o tres existen específicamente para que un estado pueda
+      describir la realidad con precisión en lugar de aproximadamente. Usar Reservado y Disponible
+      para lo que cada uno realmente es es un pequeño hábito que mantiene honesto el número de su
+      tablero más revisado.</p>
+    `,
+  },
+  {
+    title: '¿Con qué frecuencia debería realmente recalibrar sus suposiciones de depreciación?',
+    slug: 'recalibrate-depreciation-assumptions',
+    locale: 'es',
+    excerpt: 'Ese valor predeterminado era una estimación razonable el día que alguien lo estableció. Si todavía lo es vale la pena verificarlo periódicamente.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-23T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/recalibrate-cover.svg',
+    bodyHtml: `
+      <p>Cada categoría de activos lleva una suposición predeterminada de vida útil y valor
+      residual, establecida una vez y, para la mayoría de las empresas, nunca revisada de nuevo. Ese
+      valor predeterminado era una estimación razonable el día en que alguien la estableció. Si
+      todavía es razonable vale la pena verificarlo periódicamente \u2014 y la mayoría de las
+      empresas no lo hace, simplemente porque nada impulsa la pregunta hasta que un número parece
+      obviamente incorrecto.</p>
+
+      <h3>Por qué el valor predeterminado eventualmente se desvía de la realidad</h3>
+      <p>Una suposición de vida útil es una apuesta sobre cuánto dura típicamente el equipo de una
+      categoría bajo uso típico. Esa apuesta puede volverse obsoleta silenciosamente en cualquier
+      dirección. El equipo podría estar durando genuinamente más de lo asumido porque las prácticas
+      de mantenimiento mejoraron desde que se estableció la suposición, o menos porque la
+      intensidad de uso aumentó gradualmente a medida que el negocio creció. De cualquier manera,
+      cada activo registrado bajo esa categoría hereda una curva de depreciación que ya no coincide
+      con lo que realmente le está pasando a su equipo \u2014 no porque alguien haya hecho algo mal,
+      sino porque nadie revisó una suposición que solo estaba destinada a ser una estimación de
+      partida razonable.</p>
+
+      <h3>La señal honesta de que es hora de verificar</h3>
+      <p>No necesita un recordatorio de calendario para esto \u2014 necesita notar un patrón
+      específico: múltiples activos en la misma categoría alcanzando consistentemente el final de su
+      vida útil asumida mientras todavía funcionan bien, o lo contrario, fallando consistentemente
+      mucho antes de que termine su vida asumida. Cualquiera de los dos patrones, repetido en varios
+      activos en lugar de un caso atípico, es una señal real de que el
+      <a href="/docs/categories-and-custom-fields">perfil de depreciación de la categoría</a> en sí
+      necesita ajustarse, no solo los activos individuales.</p>
+
+      <h3>Lo que ajustarlo realmente arregla, y lo que no</h3>
+      <p>Actualizar la suposición de vida útil o valor residual de una categoría cambia la línea
+      base para los cálculos de depreciación futuros \u2014 tanto para los nuevos activos
+      registrados bajo esa categoría como para los cálculos en curso en los existentes. Es una
+      corrección genuinamente útil cuando el patrón es real. No es un sustituto para las
+      <a href="/docs/registering-an-asset">anulaciones por activo</a> cuando una unidad específica
+      es legítimamente diferente del caso típico de su categoría \u2014 un generador que ha visto un
+      uso inusualmente ligero, o uno que funciona en un entorno inusualmente duro, se maneja mejor
+      con una anulación individual que cambiando la suposición para cada activo de esa categoría por
+      su cuenta.</p>
+
+      <h3>Una cadencia de revisión razonable</h3>
+      <p>Una vez al año, por categoría, es un valor predeterminado razonable \u2014 no porque las
+      suposiciones de depreciación necesiten ajustes constantes, sino porque un año es lo
+      suficientemente largo para que aparezca claramente un patrón real y lo suficientemente corto
+      para que ninguna desviación se haya acumulado en una distorsión seria del valor en libros de
+      su flota. La revisión en sí toma minutos: mire cómo se compara su vida útil asumida con
+      cuánto ha estado durando realmente el equipo de esa categoría, en suficientes activos para que
+      esté viendo un patrón real en lugar de un caso inusual.</p>
+
+      <p>Un perfil de depreciación que nunca se ha revisado no es necesariamente incorrecto \u2014
+      pero tampoco nunca se ha confirmado correcto, y esas son cosas diferentes. Una vez al año, por
+      categoría, cierra esa brecha por el costo de unos minutos.</p>
+    `,
+  },
+  {
+    title: 'La escasez de técnicos significa que el conocimiento institucional ya no puede simplemente vivir en la cabeza de alguien',
+    slug: 'technician-shortage-institutional-knowledge',
+    locale: 'es',
+    excerpt: 'Un déficit proyectado de 2.6 millones de trabajadores en los oficios calificados es real y estructural. Aquí está el caso honesto de por qué el historial de mantenimiento capturado importa más por eso, no menos.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-26T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/tech-shortage-cover.svg',
+    bodyHtml: `
+      <p>Un número que vale la pena considerar: los datos de la Oficina de Estadísticas Laborales de
+      EE. UU. apuntan a un déficit proyectado de 2.6 millones de trabajadores en los oficios
+      calificados, y por cada trabajador calificado experimentado que se jubila actualmente,
+      aproximadamente 0.6 nuevos trabajadores están entrando al proceso detrás de ellos. Encuestas
+      recientes de la industria de servicios de campo colocan las limitaciones de capacidad de la
+      fuerza laboral entre las principales barreras citadas por los líderes de servicio que intentan
+      crecer. Esto no es un contratiempo temporal posterior a la pandemia \u2014 cada informe
+      reciente sobre el tema lo describe como estructural, impulsado por una fuerza laboral que
+      envejece y se jubila más rápido de lo que los trabajadores más jóvenes ingresan a los oficios
+      calificados.</p>
+
+      <p>La parte de esto que recibe menos atención que las matemáticas de personal: esos técnicos
+      que se jubilan se llevan algo que ninguna oferta de trabajo puede reemplazar inmediatamente
+      \u2014 el conocimiento específico y acumulado de qué piezas de equipo tienden a portarse mal,
+      qué atajos de mantenimiento son seguros y cuáles no, y qué significan realmente las
+      peculiaridades de una unidad en particular. Ese conocimiento tradicionalmente ha vivido casi
+      por completo en la cabeza de una persona.</p>
+
+      <h3>Por qué esto hace que el historial de mantenimiento capturado sea más valioso, no menos</h3>
+      <p>Cuando un técnico experimentado se jubila o se va, todo lo que sabía sobre el historial de
+      un generador específico, las peculiaridades de un vehículo específico, o qué activos tienden a
+      necesitar atención antes de mostrar síntomas obvios se va con él \u2014 a menos que realmente se
+      haya escrito en algún lugar duradero. Un <a href="/docs/the-audit-log">registro de
+      mantenimiento real y completo</a> por activo no es solo una comodidad de cumplimiento en este
+      entorno. Es la diferencia entre un nuevo empleado heredando contexto institucional genuino
+      desde el primer día versus empezar desde cero en equipo que alguien más ha entendido
+      silenciosamente durante una década.</p>
+
+      <h3>Dónde un puntaje de salud realmente ayuda a un equipo más pequeño o más nuevo</h3>
+      <p>El modelo mental de un técnico experimentado de "este pronto tendrá problemas" se construye
+      a partir de años de reconocimiento de patrones que es difícil de enseñar rápidamente. Un
+      <a href="/docs/asset-health-score">puntaje de salud</a> documentado, construido a partir de las
+      mismas categorías de entrada que un ojo experimentado realmente ponderaría \u2014 edad,
+      cumplimiento de mantenimiento, uso, entorno \u2014 no reemplaza ese juicio, pero le da a alguien
+      con mucha menos antigüedad un punto de partida real y basado en evidencia en lugar de pura
+      conjetura. En un mercado laboral donde las personas experimentadas se están jubilando más
+      rápido de lo que se están reemplazando, eso es un puente genuinamente práctico, no un lujo.</p>
+
+      <h3>El límite honesto de esto</h3>
+      <p>Ningún sistema reemplaza el juicio de un técnico genuinamente experimentado, y no
+      afirmaríamos lo contrario \u2014 un puntaje de salud es un punto de partida documentado y basado
+      en evidencia, no un sustituto de alguien que ha pasado quince años aprendiendo de primera mano
+      las peculiaridades de una flota específica. Lo que sí hace es asegurar que cuando esa persona
+      experimentada eventualmente ya no esté, quien quede no empiece completamente desde cero.</p>
+
+      <p>La escasez de técnicos no es un problema que el software de gestión de activos resuelva por
+      sí solo. Pero una organización que ha estado capturando silenciosamente el historial de
+      mantenimiento y los datos de condición todo este tiempo está en una posición materialmente
+      mejor para absorber la pérdida de un empleado experimentado que una que ha estado confiando
+      por completo en lo que estaba en la cabeza de esa persona.</p>
+    `,
+  },
+  {
+    title: 'La diferencia real entre un Administrador de la empresa y un Gerente (y por qué equivocarse le cuesta después)',
+    slug: 'company-admin-vs-manager',
+    locale: 'es',
+    excerpt: 'El fallo común no es dar demasiado poco acceso — es poner por defecto a todos en Administrador de la empresa porque se siente como la opción completa.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-28T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/admin-vs-manager-cover.svg',
+    bodyHtml: `
+      <p>La brecha entre lo que un Gerente puede hacer y lo que un Administrador de la empresa puede
+      hacer se establece una vez, generalmente en la primera semana, y rara vez se revisa \u2014 que
+      es exactamente por qué vale la pena hacerlo bien la primera vez en lugar de corregirlo
+      dieciocho meses después de que el acceso incorrecto ya haya causado un problema real.</p>
+
+      <h3>Dónde está realmente la línea</h3>
+      <p>Ambos roles manejan el núcleo operativo: activos, asignaciones, informes, el flujo de baja.
+      Lo que los separa es un alcance que se extiende más allá de las operaciones diarias \u2014 el
+      acceso de <a href="/docs/roles-and-permissions">Administrador de la empresa</a> incluye
+      facturación, gestión de equipo (invitar o eliminar personas), y aprobación final en las etapas
+      posteriores del flujo de baja. Un Gerente puede operar completamente sin tocar nunca ninguno
+      de esos tres.</p>
+
+      <h3>El error que aparece con más frecuencia</h3>
+      <p>El fallo común no es dar demasiado poco acceso \u2014 es poner por defecto a todos los que
+      parecen senior en Administrador de la empresa porque se siente como la opción "completa" y
+      nadie quiere parecer que está limitando a una persona de confianza. El costo real de ese valor
+      predeterminado: cada Administrador de la empresa es alguien que puede ver los detalles de
+      facturación, agregar o eliminar el acceso de otras personas, y dar la aprobación final sobre la
+      baja de activos de la empresa. Ese es un conjunto razonable de capacidades para la una o dos
+      personas que genuinamente son dueñas de esas responsabilidades. Es un radio de impacto
+      innecesariamente grande para alguien cuyo trabajo real es operar bien las operaciones
+      diarias.</p>
+
+      <h3>Una prueba que realmente funciona</h3>
+      <p>Pregunte específicamente: ¿necesita esta persona ver información de facturación, o
+      gestionar quién más tiene acceso al sistema? Si la respuesta honesta es no, el acceso de
+      Gerente cubre todo lo que realmente hace, con menos exposición si su cuenta alguna vez se
+      compromete y menos confusión sobre quién es realmente responsable del puñado de cosas que el
+      Administrador de la empresa controla únicamente. El instinto de dar a alguien "más" acceso
+      como muestra de confianza es comprensible, pero la confianza y el alcance de acceso son
+      genuinamente cosas diferentes \u2014 puede confiar completamente en alguien y aun así
+      razonablemente decidir que no necesita ser quien puede cambiar los detalles de facturación.</p>
+
+      <h3>Cómo se ve esto a medida que un equipo crece</h3>
+      <p>Un equipo de cinco personas a veces puede salirse con la suya con todos en Administrador de
+      la empresa porque el radio de impacto de un error es naturalmente pequeño. Ese mismo patrón en
+      cincuenta personas es un riesgo genuinamente diferente \u2014 más personas que pueden cambiar
+      independientemente la facturación, eliminar compañeros de equipo, o aprobar bajas de activos,
+      con el número de personas que realmente deberían estar haciendo cualquiera de esas tres cosas
+      sin crecer ni cerca de la misma tasa que la plantilla. Revisar quién realmente tiene acceso de
+      Administrador de la empresa vale la pena hacerlo en hitos de tamaño de equipo, no solo en la
+      configuración inicial.</p>
+
+      <p>Hacer esto bien no se trata de restringir a nadie innecesariamente \u2014 es hacer coincidir
+      el acceso que alguien tiene con la responsabilidad que realmente lleva, lo cual es tanto el
+      valor predeterminado más seguro como, en la práctica, el que causa menos confusión sobre quién
+      es realmente responsable de qué.</p>
+    `,
+  },
+  {
+    title: 'Las fotos: la póliza de seguro más barata en su registro de activos',
+    slug: 'photos-cheapest-insurance-policy',
+    locale: 'es',
+    excerpt: 'Una foto con marca de tiempo no es una opinión. Es cómo se veía realmente la cosa en una fecha específica, y es una de las pólizas de seguro más baratas disponibles.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-09-30T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/photos-cover.svg',
+    bodyHtml: `
+      <p>Una foto adjunta a un registro de activo cuesta unos diez segundos tomar y es rutinariamente
+      la pieza más útil de evidencia exactamente en los momentos que más importan \u2014 una disputa
+      de daños, un reclamo de seguro, un desacuerdo sobre la condición al momento de la entrega.
+      También es el campo que la gente se salta con más frecuencia, precisamente porque ninguno de
+      esos momentos se siente inminente en un martes ordinario cuando alguien está registrando una
+      nueva pieza de equipo.</p>
+
+      <h3>Lo que una foto realmente prueba que una descripción no puede</h3>
+      <p>"Buena condición, desgaste menor" es la opinión honesta de alguien en un momento específico,
+      y las opiniones honestas son exactamente lo que se disputa después \u2014 por una aseguradora,
+      por quien pidió prestado el equipo y lo devolvió con apariencia diferente, por un comprador
+      cuestionando lo que realmente se le está vendiendo. Una foto con marca de tiempo no es una
+      opinión. Es cómo se veía realmente la cosa en una fecha específica, lo que convierte "creo que
+      estaba bien cuando salió de aquí" en algo a lo que realmente puede señalar en lugar de afirmar
+      de memoria meses después.</p>
+
+      <h3>Los tres momentos donde esto rinde más</h3>
+      <p>En el <a href="/docs/registering-an-asset">registro</a>, una foto establece una línea base
+      genuina \u2014 cómo se veía realmente "nuevo" o "tal como se recibió", lo cual importa después
+      para cualquier comparación. En la <a href="/docs/assigning-assets-to-people">entrega</a>,
+      particularmente a alguien fuera de su propia organización, una foto tomada en el momento de la
+      entrega y otra al devolverlo elimina casi toda ambigüedad sobre si el daño ocurrió durante ese
+      préstamo específico o existía de antemano. Y cuando algo se marca para el flujo de baja, una
+      foto actual que respalde la evaluación de condición hace que la recomendación en sí sea mucho
+      más defendible si alguien alguna vez cuestiona por qué se dio de baja un activo específico.</p>
+
+      <h3>Por qué este hábito específico vale la pena construirlo deliberadamente</h3>
+      <p>Nadie se salta tomar una foto exactamente por pereza \u2014 se la saltan porque en el
+      momento, todo sobre el activo parece obviamente estar bien, y fotografiar algo que se ve bien
+      se siente innecesario. El problema es que el valor de la foto no se trata de capturar daños. Se
+      trata de tener un registro real para el momento específico, meses o años después, cuando
+      realmente surge una pregunta y la memoria sola no la resolverá. No puede predecir de antemano
+      qué activo de apariencia ordinaria será el que alguien dispute después, que es exactamente por
+      qué el hábito tiene que aplicarse a todo, no solo a los activos que ya parecen que podrían
+      convertirse en un problema.</p>
+
+      <p>Diez segundos, en los tres momentos anteriores, es un costo genuinamente pequeño por
+      evidencia que a menudo es lo único que realmente resuelve una disputa limpiamente en lugar de
+      prolongarse como memorias en competencia de cómo se veía algo. Es una de las pólizas de seguro
+      más baratas disponibles en todo el sistema, y es gratis.</p>
+    `,
+  },
+  {
+    title: 'Lo que realmente le pasa al historial de un activo después de que lo archiva',
+    slug: 'what-happens-when-you-archive-an-asset',
+    locale: 'es',
+    excerpt: 'Archivar es un cambio de visibilidad, no una eliminación — y esa distinción es lo que hace que archivar realmente sea utilizable.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-03T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/archiving-cover.svg',
+    bodyHtml: `
+      <p>Una pregunta razonable que surge la primera vez que alguien realmente hace clic en
+      "archivar" en un activo: ¿el historial desaparece con él? La respuesta honesta y útil importa
+      más de lo que parece, porque determina si archivar se siente lo suficientemente seguro como
+      para realmente usarlo, o como una puerta de un solo sentido que la gente evita por
+      precaución.</p>
+
+      <h3>Lo que archivar realmente hace, precisamente</h3>
+      <p><a href="/docs/archiving-and-deleting-assets">Archivar</a> elimina un activo de la lista
+      activa y de cada conteo del tablero \u2014 deja de aparecer en su vista diaria porque ya no es
+      algo que está gestionando día a día. Lo que no hace es tocar el registro subyacente. Cada
+      inspección, cada asignación, cada escaneo de ubicación, cada caso de baja vinculado a ese
+      activo permanece completamente intacto y sigue siendo totalmente restaurable. Archivar es un
+      cambio de visibilidad, no una eliminación \u2014 la distinción importa enormemente en la
+      práctica.</p>
+
+      <h3>Por qué esta distinción es todo el punto</h3>
+      <p>Si archivar silenciosamente descartara el historial, sería funcionalmente una eliminación
+      con un clic extra, y nadie razonablemente lo usaría para nada de lo que no estuviera ya seguro
+      de que nunca volvería a necesitar \u2014 lo cual derrota el propósito real. Todo el valor de
+      archivar como una acción distinta de eliminar es que puede mover algo fuera de su vista activa
+      con confianza genuina, no vacilación, porque nada se está perdiendo realmente en el proceso.</p>
+
+      <h3>Cuándo archivar es la decisión correcta versus cuándo no lo es</h3>
+      <p>Archive equipo que ha dejado de rastrear activamente día a día pero del cual todavía quiere
+      un registro completo \u2014 algo retirado de servicio, vendido, o simplemente ya no parte de
+      las operaciones actuales, donde el historial todavía tiene valor real para auditorías, registros
+      fiscales, o simple memoria institucional. La eliminación permanente no se ofrece como una
+      acción rutinaria por exactamente esta razón: el historial de activos es valioso para registros
+      de auditoría y depreciación mucho después de que el equipo mismo deja de usarse activamente, y
+      "ya no necesito ver esto en mi vista diaria" es una situación completamente diferente de "nunca
+      quiero que estos datos existan en ningún lugar de nuevo".</p>
+
+      <h3>Qué revisar realmente antes de archivar algo</h3>
+      <p>La única pregunta real que vale la pena hacer antes de archivar: ¿hay un
+      <a href="/docs/six-stage-disposal-workflow">caso de baja</a> abierto o una
+      <a href="/docs/assigning-assets-to-people">asignación</a> activa todavía vinculada a este
+      activo que genuinamente necesite resolverse primero? Más allá de eso, hay muy poco riesgo real
+      en la acción en sí \u2014 siempre se puede revertir, y nada en el registro subyacente cambia
+      cuando lo hace.</p>
+
+      <p>Entender claramente esta distinción es lo que hace que archivar sea algo que la gente
+      realmente usa para mantener limpia su lista activa, en lugar de algo que todos evitan por una
+      vaga preocupación de perder algo que podrían necesitar después. El historial permanece. Solo
+      cambia la vista.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;

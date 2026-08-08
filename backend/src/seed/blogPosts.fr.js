@@ -1494,6 +1494,488 @@ const frenchPosts = [
       que vous ne savez pas à l'avance quel actif aura besoin de ce registre un jour.</p>
     `,
   },
+  {
+    title: 'Vos registres de maintenance sont maintenant un argument de vente dans un marché de l\u2019équipement d\u2019occasion en plein essor',
+    slug: 'used-equipment-market-documentation-value',
+    locale: 'fr',
+    excerpt: 'Le marché mondial de l\u2019équipement de construction d\u2019occasion est projeté autour de 130 milliards de dollars pour 2026. Voici pourquoi vos registres de maintenance ont maintenant une véritable valeur de revente.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-09-16T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/used-equipment-cover.svg',
+    bodyHtml: `
+      <p>Le marché de l'équipement d'occasion était autrefois l'endroit où l'on faisait ses achats
+      quand on ne pouvait pas se permettre du neuf. Ce cadrage est véritablement dépassé. Le marché
+      mondial des équipements de construction d'occasion à lui seul est projeté dans la fourchette de
+      130 milliards de dollars pour 2026, en croissance constante d'année en année \u2014 et les
+      analystes sectoriels sont explicites sur le fait qu'il s'agit d'un changement structurel dans
+      la façon dont les flottes se construisent, pas une réaction temporaire à une mauvaise
+      économie. Des entrepreneurs ayant le budget pour de l'équipement neuf choisissent
+      délibérément des machines d'occasion bien entretenues à la place, en nombre significatif.</p>
+
+      <h3>Pourquoi cela se produit maintenant, spécifiquement</h3>
+      <p>Deux forces se renforcent mutuellement. Les délais de livraison des équipements neufs se
+      sont étendus dans la fourchette de 12 à 18 mois dans certaines catégories, ce qui transforme
+      une machine d'occasion d'une option de repli en la seule façon réaliste de faire fonctionner de
+      l'équipement ce trimestre plutôt que l'année prochaine. En même temps, les places de marché
+      numériques ont rendu bien plus facile pour un acheteur d'évaluer réellement l'état, l'historique,
+      et le prix d'une machine d'occasion avant de s'engager \u2014 ce qui compte, parce que cette
+      évaluation est exactement là où la documentation cesse d'être de la paperasse et commence à
+      être un véritable facteur financier.</p>
+
+      <h3>Ce que cela signifie si vous êtes celui qui vend</h3>
+      <p>Un acheteur évaluant deux machines d'occasion par ailleurs identiques, l'une avec un
+      historique de maintenance et d'usage complet et vérifiable, et l'autre sans aucun, ne choisit
+      pas entre des options égales à des prix différents \u2014 celle documentée est un achat
+      fondamentalement moins risqué, et les acheteurs sur un marché avec un vrai choix paieront pour
+      cela. Un <a href="/docs/the-audit-log">registre d'audit complet</a> couvrant la maintenance, la
+      localisation, et les affectations précédentes n'est plus seulement une commodité interne de
+      tenue de registres. Sur un marché aussi actif, c'est un levier dans une véritable négociation,
+      la différence entre l'offre confiante d'un acheteur et son offre prudente et remisée.</p>
+
+      <p>Cela se connecte directement à la façon dont nous avons construit le parcours de vente du
+      <a href="/docs/six-stage-disposal-workflow">flux de mise au rebut</a> : enregistrer un montant
+      de vente final et une méthode n'est pas de la bureaucratie pour elle-même, c'est construire
+      exactement le genre d'historique documenté qui rend le prochain actif comparable plus facile à
+      vendre à un prix équitable, parce que le schéma de ce que votre équipement se vend réellement
+      devient un point de données réel et référençable au lieu d'une supposition.</p>
+
+      <h3>Ce que cela signifie si vous êtes celui qui achète d'occasion</h3>
+      <p>La même logique fonctionne à l'inverse : c'est un bon moment pour être sceptique face à une
+      annonce d'occasion sans véritable historique de service derrière elle, précisément parce que le
+      marché est suffisamment concurrentiel pour qu'il y ait de l'équipement bien documenté avec
+      lequel comparer. Une machine avec de véritables registres de maintenance vérifiables vaut une
+      prime par rapport à une machine d'apparence identique sans cela \u2014 et sur un marché actif,
+      vous n'avez pas à accepter celle non documentée simplement parce qu'elle est disponible en
+      premier.</p>
+
+      <p>Rien de tout cela ne nécessite de prédire où iront les prix de l'équipement ensuite. Cela
+      signifie simplement traiter vos propres registres de maintenance et d'usage comme quelque chose
+      ayant une véritable valeur de revente attachée, pas simplement une habitude interne de
+      comptabilité \u2014 parce que dans le marché tel qu'il existe réellement en ce moment, c'est
+      exactement ce qu'ils sont.</p>
+    `,
+  },
+  {
+    title: 'Champs personnalisés : la fonctionnalité qui fait ou défait l\u2019adoption à grande échelle',
+    slug: 'custom-fields-adoption',
+    locale: 'fr',
+    excerpt: 'Le schéma est constant : la plateforme fonctionne bien le premier mois, puis quelqu\u2019un se heurte au même mur et commence un tableur parallèle pour exactement cela.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-09-19T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/custom-fields-cover.svg',
+    bodyHtml: `
+      <p>Les champs personnalisés sont l'une de ces fonctionnalités qui semblent mineures dans une
+      visite du produit et qui s'avèrent discrètement déterminer si un système est réellement adopté
+      à grande échelle. Le schéma est constant : la plateforme fonctionne bien pendant le premier
+      mois, puis quelqu'un dans l'équipe se heurte au même mur \u2014 « il n'y a nulle part où mettre
+      cette information précise autour de laquelle nous organisons réellement notre travail » \u2014
+      et commence à tenir un tableur parallèle pour exactement cela. Une fois qu'un tableur parallèle
+      existe pour quoi que ce soit, la confiance dans le système principal commence à s'éroder pour
+      tout.</p>
+
+      <h3>Ce que ce champ manquant se révèle généralement être</h3>
+      <p>C'est rarement quelque chose d'exotique. C'est un numéro de certificat de conformité dont
+      une industrie réglementée a besoin dans son dossier. C'est un code de projet interne que la
+      finance rapproche. C'est un format spécifique d'étiquette d'actif du fabricant qui précède le
+      système actuel et auquel tout le monde se réfère encore de manière informelle. Aucun de ces
+      cas n'est marginal \u2014 ce sont le vocabulaire spécifique qu'une organisation donnée utilise
+      réellement pour parler de son propre équipement, et un système sans place pour ce vocabulaire
+      demande aux gens de traduire dans leur tête à chaque fois, ce qui est exactement le genre de
+      friction qui érode l'adoption lentement et invisiblement.</p>
+
+      <h3>Pourquoi l'ajouter après coup est pire que de le planifier tôt</h3>
+      <p>Les <a href="/docs/categories-and-custom-fields">champs personnalisés</a> définis tôt, avant
+      que des centaines d'actifs n'existent, ne coûtent rien de plus que quelques minutes de
+      configuration. Les mêmes champs ajoutés après coup signifient les remplir rétroactivement à
+      travers chaque actif existant \u2014 exactement le genre de travail de nettoyage peu glorieux
+      qui est reporté indéfiniment et qui souvent n'arrive tout simplement jamais. S'il y a une
+      réelle chance que votre organisation suive quelque chose de spécifique qu'un système d'actifs
+      générique n'anticiperait pas, cela vaut la peine d'une conversation de cinq minutes avant
+      d'enregistrer votre première centaine d'actifs, pas après.</p>
+
+      <h3>La discipline qui compte réellement : ne pas trop en ajouter</h3>
+      <p>Le mode d'échec opposé est réel aussi \u2014 un système avec quarante champs personnalisés,
+      dont la plupart ne sont pertinents que pour une poignée d'actifs, est son propre type de
+      friction. Chaque champ optionnel ajoute une petite quantité de bruit visuel à un formulaire que
+      tout le monde doit remplir. Le bon nombre de champs personnalisés est véritablement « autant
+      que votre organisation en a besoin pour décrire ce qui rend votre équipement distinctement le
+      vôtre, et pas un de plus » \u2014 ce qui est un jugement qui vaut la peine d'être fait
+      délibérément, pas une case à cocher simplement parce que l'option existe.</p>
+
+      <h3>Un test pratique avant d'en ajouter un</h3>
+      <p>Demandez-vous si le champ répond à une question qu'on pose réellement régulièrement à
+      quelqu'un \u2014 « quel est le numéro de certificat de conformité sur celui-ci » \u2014 par
+      opposition à une question qui est théoriquement intéressante mais qui ne se pose jamais
+      réellement. Si personne n'a posé la question au cours des six derniers mois, cela ne vaut
+      probablement pas la peine d'un champ permanent sur chaque formulaire d'actif. Si elle se pose
+      assez régulièrement pour que quelqu'un la suive actuellement dans un tableur parallèle, c'est
+      exactement le signal qu'elle appartient plutôt correctement au système.</p>
+
+      <p>La mesure d'une bonne configuration de champs personnalisés n'est pas à quel point elle
+      semble complète le premier jour \u2014 c'est si, six mois plus tard, quelqu'un ressent encore le
+      besoin de tenir un second registre non officiel de quoi que ce soit. C'est le véritable signe
+      que le système correspond à la façon dont votre organisation fonctionne réellement.</p>
+    `,
+  },
+  {
+    title: 'La différence entre Réservé et Disponible (et pourquoi il est facile de se tromper)',
+    slug: 'reserved-vs-available-status',
+    locale: 'fr',
+    excerpt: 'Les deux décrivent un actif non affecté à quelqu\u2019un. La véritable distinction est l\u2019intention, et la confondre corrompt discrètement vos rapports de disponibilité.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-09-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/reserved-available-cover.svg',
+    bodyHtml: `
+      <p>Parmi les six statuts d'actifs, Réservé et Disponible causent le plus de confusion, et la
+      confusion est compréhensible \u2014 ils sont véritablement similaires d'une manière importante
+      et véritablement différents d'une autre, et les confondre corrompt discrètement les rapports de
+      disponibilité d'une manière facile à manquer jusqu'à ce que quelqu'un prenne une décision
+      basée sur des chiffres qui ne signifient pas ce qu'il pense.</p>
+
+      <h3>Ce qui les distingue réellement</h3>
+      <p>Les deux statuts décrivent un actif qui n'est pas actuellement affecté à quelqu'un \u2014
+      c'est la similitude, et c'est exactement ce qui pousse les gens à choisir celui qui leur vient
+      d'abord à l'esprit. La véritable distinction est l'intention :
+      <a href="/docs/understanding-asset-status">Disponible</a> signifie véritablement libre, sans
+      plan attaché. Réservé signifie spécifiquement retenu pour un usage futur connu \u2014 le
+      travail de la semaine prochaine, un projet spécifique déjà au calendrier \u2014 sans être
+      formellement affecté encore parce que le travail n'a pas réellement commencé.</p>
+
+      <h3>Pourquoi la différence compte plus qu'il n'y paraît</h3>
+      <p>Le chiffre de disponibilité des actifs de votre tableau de bord compte ce qui est
+      véritablement Disponible \u2014 et ce chiffre informe directement des décisions comme si vous
+      avez réellement besoin de louer ou d'acheter quelque chose de supplémentaire pour un travail à
+      venir, ou si vous avez déjà assez d'équipement inactif. Si un équipement réellement destiné à
+      la semaine prochaine reste marqué Disponible au lieu de Réservé, ce chiffre de disponibilité
+      surestime ce que vous pouvez véritablement déployer maintenant, et quelqu'un pourrait
+      raisonnablement décider contre une location dont il aura finalement besoin \u2014 ou
+      double-réserver un équipement qui n'était en fait jamais vraiment libre.</p>
+
+      <h3>L'habitude qui garde cela propre</h3>
+      <p>Dès que vous savez qu'un actif est destiné à quelque chose de spécifique mais que le travail
+      n'a pas encore commencé, marquez-le Réservé plutôt que de le laisser Disponible « pour
+      l'instant » avec une note mentale pour se souvenir qu'il est déjà pris. Les notes mentales
+      n'apparaissent sur le tableau de bord de personne d'autre. Un changement de statut prend
+      quelques secondes et signifie que la prochaine personne vérifiant la disponibilité voit une
+      image précise au lieu d'une qui dépend qu'elle sache aussi ce que vous planifiez en privé.</p>
+
+      <h3>Que faire une fois que l'usage réservé commence réellement</h3>
+      <p>Réservé n'est pas censé être une place de stationnement permanente \u2014 une fois que
+      l'usage prévu commence réellement, il devrait devenir une véritable
+      <a href="/docs/assigning-assets-to-people">affectation</a>, pas rester marqué Réservé
+      indéfiniment. Un actif restant en Réservé pendant des mois signifie généralement soit que le
+      plan a changé et que personne n'a mis à jour le statut, soit que le plan s'est réalisé et que
+      personne ne l'a fait passer à une véritable affectation \u2014 dans les deux cas, cela vaut une
+      vérification rapide plutôt que de le laisser tel quel simplement parce qu'il ne cause
+      actuellement aucun problème évident.</p>
+
+      <p>Six statuts au lieu de deux ou trois existent spécifiquement pour qu'un statut puisse
+      décrire la réalité précisément plutôt qu'approximativement. Utiliser Réservé et Disponible pour
+      ce à quoi chacun sert réellement est une petite habitude qui garde honnête le chiffre de votre
+      tableau de bord le plus consulté.</p>
+    `,
+  },
+  {
+    title: 'À quelle fréquence devriez-vous réellement recalibrer vos hypothèses de dépréciation ?',
+    slug: 'recalibrate-depreciation-assumptions',
+    locale: 'fr',
+    excerpt: 'Ce défaut était une estimation raisonnable le jour où quelqu\u2019un l\u2019a définie. Savoir s\u2019il l\u2019est toujours vaut la peine d\u2019être réellement vérifié périodiquement.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-09-23T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/recalibrate-cover.svg',
+    bodyHtml: `
+      <p>Chaque catégorie d'actifs porte une hypothèse par défaut de durée de vie utile et de valeur
+      résiduelle, définie une fois et, pour la plupart des entreprises, jamais révisée à nouveau. Ce
+      défaut était une estimation raisonnable le jour où quelqu'un l'a défini. Savoir s'il est
+      toujours raisonnable vaut la peine d'être réellement vérifié périodiquement \u2014 et la
+      plupart des entreprises ne le font pas, simplement parce que rien ne pousse la question jusqu'à
+      ce qu'un chiffre semble manifestement faux.</p>
+
+      <h3>Pourquoi le défaut finit par dériver de la réalité</h3>
+      <p>Une hypothèse de durée de vie utile est un pari sur la durée typique de l'équipement d'une
+      catégorie sous une utilisation typique. Ce pari peut discrètement devenir obsolète dans les
+      deux directions. L'équipement pourrait véritablement durer plus longtemps que supposé parce que
+      les pratiques de maintenance se sont améliorées depuis que l'hypothèse a été définie, ou plus
+      courte parce que l'intensité d'usage a augmenté progressivement à mesure que l'entreprise a
+      grandi. Dans les deux cas, chaque actif enregistré sous cette catégorie hérite d'une courbe de
+      dépréciation qui ne correspond plus à ce qui arrive réellement à votre équipement \u2014 pas
+      parce que quelqu'un a fait quelque chose de mal, mais parce que personne n'a révisé une
+      hypothèse qui n'a jamais été destinée qu'à être une estimation de départ raisonnable.</p>
+
+      <h3>Le signal honnête qu'il est temps de vérifier</h3>
+      <p>Vous n'avez pas besoin d'un rappel de calendrier pour cela \u2014 vous devez remarquer un
+      schéma spécifique : plusieurs actifs de la même catégorie atteignant systématiquement la fin de
+      leur durée de vie utile supposée tout en fonctionnant encore bien, ou l'inverse, tombant
+      systématiquement en panne bien avant la fin de leur durée de vie supposée. L'un ou l'autre
+      schéma, répété sur plusieurs actifs plutôt qu'un cas isolé, est un véritable signal que le
+      <a href="/docs/categories-and-custom-fields">profil de dépréciation de la catégorie</a>
+      lui-même a besoin d'être ajusté, pas seulement les actifs individuels.</p>
+
+      <h3>Ce que l'ajuster corrige réellement, et ce qu'il ne corrige pas</h3>
+      <p>Mettre à jour l'hypothèse de durée de vie utile ou de valeur résiduelle d'une catégorie
+      change la base de référence pour les calculs de dépréciation futurs \u2014 à la fois pour les
+      nouveaux actifs enregistrés sous cette catégorie et pour les calculs en cours sur les actifs
+      existants. C'est une correction véritablement utile quand le schéma est réel. Ce n'est pas un
+      substitut aux <a href="/docs/registering-an-asset">dérogations par actif</a> quand une unité
+      spécifique est légitimement différente du cas typique de sa catégorie \u2014 un générateur qui a
+      connu un usage inhabituellement léger, ou un qui fonctionne dans un environnement
+      inhabituellement rude, est mieux géré avec une dérogation individuelle qu'en changeant
+      l'hypothèse pour chaque actif de cette catégorie à cause de lui.</p>
+
+      <h3>Une cadence de vérification raisonnable</h3>
+      <p>Une fois par an, par catégorie, est un défaut raisonnable \u2014 non pas parce que les
+      hypothèses de dépréciation ont besoin d'ajustements constants, mais parce qu'une année est
+      assez longue pour qu'un véritable schéma apparaisse clairement et assez courte pour qu'aucune
+      dérive ne se soit accumulée en une distorsion sérieuse de la valeur comptable de votre flotte.
+      La vérification elle-même prend quelques minutes : regardez comment votre durée de vie utile
+      supposée se compare à la durée réelle de l'équipement de cette catégorie, sur suffisamment
+      d'actifs pour que vous observiez un véritable schéma plutôt qu'un cas inhabituel.</p>
+
+      <p>Un profil de dépréciation qui n'a jamais été révisé n'est pas nécessairement faux \u2014 mais
+      il n'a jamais non plus été confirmé correct, et ce sont des choses différentes. Une fois par
+      an, par catégorie, comble cet écart pour le coût de quelques minutes.</p>
+    `,
+  },
+  {
+    title: 'La pénurie de techniciens signifie que la connaissance institutionnelle ne peut plus simplement vivre dans la tête de quelqu\u2019un',
+    slug: 'technician-shortage-institutional-knowledge',
+    locale: 'fr',
+    excerpt: 'Un déficit projeté de 2,6 millions de travailleurs à travers les métiers qualifiés est réel et structurel. Voici le cas honnête pour pourquoi l\u2019historique de maintenance capturé compte plus à cause de cela, pas moins.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-09-26T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/tech-shortage-cover.svg',
+    bodyHtml: `
+      <p>Un chiffre qui mérite qu'on s'y attarde : les données du Bureau of Labor Statistics
+      américain indiquent un déficit projeté de 2,6 millions de travailleurs dans les métiers
+      qualifiés, et pour chaque travailleur qualifié expérimenté qui prend actuellement sa retraite,
+      environ 0,6 nouveau travailleur entre dans le pipeline derrière lui. Des enquêtes récentes de
+      l'industrie des services sur le terrain placent les contraintes de capacité de main-d'œuvre
+      parmi les principaux obstacles cités par les dirigeants de services essayant de croître. Ce
+      n'est pas un accroc post-pandémique temporaire \u2014 chaque rapport récent sur le sujet le
+      décrit comme structurel, entraîné par une main-d'œuvre vieillissante prenant sa retraite plus
+      vite que les jeunes travailleurs n'entrent dans les métiers qualifiés.</p>
+
+      <p>La partie de cela qui reçoit moins d'attention que les mathématiques de personnel : ces
+      techniciens partant à la retraite emportent avec eux quelque chose qu'aucune offre d'emploi ne
+      peut immédiatement remplacer \u2014 la connaissance spécifique et accumulée de quelles pièces
+      d'équipement ont tendance à mal se comporter, quels raccourcis de maintenance sont sûrs et
+      lesquels ne le sont pas, et ce que les particularités d'une unité donnée signifient réellement.
+      Cette connaissance a traditionnellement vécu presque entièrement dans la tête d'une seule
+      personne.</p>
+
+      <h3>Pourquoi cela rend l'historique de maintenance capturé plus précieux, pas moins</h3>
+      <p>Quand un technicien expérimenté prend sa retraite ou s'en va, tout ce qu'il savait sur
+      l'historique d'un générateur spécifique, les particularités d'un véhicule spécifique, ou quels
+      actifs ont tendance à avoir besoin d'attention avant de montrer des symptômes évidents s'en va
+      avec lui \u2014 à moins que ce ne soit réellement écrit quelque part de durable. Un
+      <a href="/docs/the-audit-log">registre de maintenance réel et complet</a> par actif n'est pas
+      juste une commodité de conformité dans cet environnement. C'est la différence entre un nouvel
+      employé héritant d'un véritable contexte institutionnel dès le premier jour par rapport à partir
+      de zéro sur un équipement que quelqu'un d'autre a discrètement compris pendant une décennie.</p>
+
+      <h3>Où un score de santé aide véritablement une équipe plus petite ou plus récente</h3>
+      <p>Le modèle mental d'un technicien expérimenté de « celui-ci va bientôt avoir des ennuis » est
+      construit à partir d'années de reconnaissance de schémas difficiles à enseigner rapidement. Un
+      <a href="/docs/asset-health-score">score de santé</a> documenté, construit à partir des mêmes
+      catégories d'entrées qu'un œil expérimenté pèserait réellement \u2014 âge, conformité de
+      maintenance, usage, environnement \u2014 ne remplace pas ce jugement, mais donne à quelqu'un
+      avec bien moins d'ancienneté un véritable point de départ basé sur des preuves au lieu de pures
+      conjectures. Dans un marché du travail où les personnes expérimentées prennent leur retraite
+      plus vite qu'elles ne sont remplacées, c'est un pont véritablement pratique, pas un luxe.</p>
+
+      <h3>La limite honnête de cela</h3>
+      <p>Aucun système ne remplace le jugement d'un technicien véritablement expérimenté, et nous ne
+      prétendrions pas le contraire \u2014 un score de santé est un point de départ documenté et basé
+      sur des preuves, pas un substitut à quelqu'un qui a passé quinze ans à apprendre de première
+      main les particularités d'une flotte spécifique. Ce qu'il fait, c'est s'assurer que quand cette
+      personne expérimentée finit par ne plus être là, celui qui reste ne part pas complètement de
+      zéro.</p>
+
+      <p>La pénurie de techniciens n'est pas un problème que le logiciel de gestion des actifs résout
+      à lui seul. Mais une organisation qui a discrètement capturé l'historique de maintenance et les
+      données d'état depuis le début est dans une position matériellement meilleure pour absorber la
+      perte d'un employé expérimenté que celle qui s'est entièrement fiée à ce qui était dans la tête
+      de cette personne.</p>
+    `,
+  },
+  {
+    title: 'La vraie différence entre un Administrateur d\u2019entreprise et un Responsable (et pourquoi se tromper vous coûte cher plus tard)',
+    slug: 'company-admin-vs-manager',
+    locale: 'fr',
+    excerpt: 'L\u2019échec courant n\u2019est pas de donner trop peu d\u2019accès — c\u2019est de mettre tout le monde par défaut à Administrateur d\u2019entreprise parce que cela semble être l\u2019option complète.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-09-28T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/admin-vs-manager-cover.svg',
+    bodyHtml: `
+      <p>L'écart entre ce qu'un Responsable peut faire et ce qu'un Administrateur d'entreprise peut
+      faire est fixé une fois, généralement la première semaine, et rarement révisé \u2014 c'est
+      exactement pourquoi cela vaut la peine de bien faire les choses la première fois plutôt que de
+      les corriger dix-huit mois plus tard après qu'un mauvais accès ait déjà causé un vrai
+      problème.</p>
+
+      <h3>Où se situe réellement la ligne</h3>
+      <p>Les deux rôles gèrent le cœur opérationnel : actifs, affectations, rapports, le flux de mise
+      au rebut. Ce qui les sépare est une portée qui s'étend au-delà des opérations
+      quotidiennes \u2014 l'accès <a href="/docs/roles-and-permissions">Administrateur
+      d'entreprise</a> inclut la facturation, la gestion d'équipe (inviter ou retirer des personnes),
+      et l'approbation finale sur les étapes ultérieures du flux de mise au rebut. Un Responsable
+      peut gérer entièrement les opérations sans jamais toucher à aucun de ces trois éléments.</p>
+
+      <h3>L'erreur qui apparaît le plus souvent</h3>
+      <p>L'échec courant n'est pas de donner trop peu d'accès \u2014 c'est de mettre par défaut tous
+      ceux qui semblent expérimentés à Administrateur d'entreprise parce que cela semble être
+      l'option « complète » et que personne ne veut sembler limiter une personne de confiance. Le
+      coût réel de ce défaut : chaque Administrateur d'entreprise est quelqu'un qui peut voir les
+      détails de facturation, ajouter ou retirer l'accès d'autres personnes, et donner l'approbation
+      finale sur la radiation d'actifs de l'entreprise. C'est un ensemble raisonnable de capacités
+      pour les une ou deux personnes qui détiennent véritablement ces responsabilités. C'est un rayon
+      d'impact inutilement grand pour quelqu'un dont le travail réel est de bien gérer les opérations
+      quotidiennes.</p>
+
+      <h3>Un test qui fonctionne réellement</h3>
+      <p>Demandez spécifiquement : cette personne a-t-elle besoin de voir les informations de
+      facturation, ou de gérer qui d'autre a accès au système ? Si la réponse honnête est non,
+      l'accès Responsable couvre tout ce qu'elle fait réellement, avec moins d'exposition si son
+      compte est jamais compromis et moins de confusion sur qui est réellement responsable de la
+      poignée de choses que l'Administrateur d'entreprise contrôle uniquement. L'instinct de donner à
+      quelqu'un « plus » d'accès comme preuve de confiance est compréhensible, mais la confiance et la
+      portée d'accès sont véritablement des choses différentes \u2014 vous pouvez faire entièrement
+      confiance à quelqu'un et quand même raisonnablement décider qu'il n'a pas besoin d'être celui
+      qui peut changer les détails de facturation.</p>
+
+      <h3>À quoi cela ressemble à mesure qu'une équipe grandit</h3>
+      <p>Une équipe de cinq personnes peut parfois s'en tirer avec tout le monde en Administrateur
+      d'entreprise parce que le rayon d'impact d'une erreur est naturellement petit. Ce même schéma à
+      cinquante personnes est un risque véritablement différent \u2014 plus de personnes qui peuvent
+      indépendamment changer la facturation, retirer des coéquipiers, ou approuver des radiations
+      d'actifs, avec le nombre de personnes qui devraient réellement faire l'une de ces trois choses
+      ne croissant nulle part près du même rythme que les effectifs. Revoir qui détient réellement
+      l'accès Administrateur d'entreprise vaut la peine d'être fait à des jalons de taille d'équipe,
+      pas seulement à la configuration initiale.</p>
+
+      <p>Bien faire cela ne consiste pas à restreindre quiconque inutilement \u2014 c'est faire
+      correspondre l'accès que quelqu'un détient à la responsabilité qu'il porte réellement, ce qui
+      est à la fois le défaut le plus sûr et, en pratique, celui qui cause moins de confusion sur qui
+      est réellement responsable de quoi.</p>
+    `,
+  },
+  {
+    title: 'Les photos : la police d\u2019assurance la moins chère de votre registre d\u2019actifs',
+    slug: 'photos-cheapest-insurance-policy',
+    locale: 'fr',
+    excerpt: 'Une photo horodatée n\u2019est pas une opinion. C\u2019est à quoi la chose ressemblait réellement à une date précise, et c\u2019est l\u2019une des polices d\u2019assurance les moins chères disponibles.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-09-30T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/photos-cover.svg',
+    bodyHtml: `
+      <p>Une photo attachée à un registre d'actif coûte environ dix secondes à prendre et est
+      systématiquement la pièce de preuve la plus utile exactement dans les moments qui comptent le
+      plus \u2014 un litige de dommages, une réclamation d'assurance, un désaccord sur l'état lors
+      d'une remise. C'est aussi le champ que les gens sautent le plus souvent, précisément parce
+      qu'aucun de ces moments ne semble imminent un mardi ordinaire quand quelqu'un enregistre un
+      nouvel équipement.</p>
+
+      <h3>Ce qu'une photo prouve réellement qu'une description ne peut pas</h3>
+      <p>« Bon état, usure mineure » est l'opinion honnête de quelqu'un à un moment précis, et les
+      opinions honnêtes sont exactement ce qui est contesté plus tard \u2014 par un assureur, par
+      quiconque a emprunté l'équipement et l'a rendu avec une apparence différente, par un acheteur
+      remettant en question ce qui lui est réellement vendu. Une photo horodatée n'est pas une
+      opinion. C'est à quoi la chose ressemblait réellement à une date précise, ce qui transforme
+      « je pense que c'était bien quand c'est parti d'ici » en quelque chose que vous pouvez
+      réellement montrer au lieu d'affirmer de mémoire des mois plus tard.</p>
+
+      <h3>Les trois moments où cela rapporte le plus</h3>
+      <p>Lors de l'<a href="/docs/registering-an-asset">enregistrement</a>, une photo établit une
+      véritable référence \u2014 à quoi ressemblait réellement « neuf » ou « tel que reçu », ce qui
+      compte plus tard pour toute comparaison. Lors de la <a href="/docs/assigning-assets-to-people">
+      remise</a>, particulièrement à quelqu'un extérieur à votre propre organisation, une photo prise
+      au moment de la remise et une autre au retour élimine presque toute ambiguïté sur si le dommage
+      s'est produit pendant ce prêt spécifique ou existait auparavant. Et quand quelque chose est
+      signalé pour le flux de mise au rebut, une photo actuelle soutenant l'évaluation de l'état rend
+      la recommandation elle-même bien plus défendable si quiconque remet un jour en question
+      pourquoi un actif spécifique a été radié.</p>
+
+      <h3>Pourquoi cette habitude spécifique vaut la peine d'être construite délibérément</h3>
+      <p>Personne ne saute exactement la prise d'une photo par paresse \u2014 les gens la sautent
+      parce que sur le moment, tout à propos de l'actif semble manifestement bien, et photographier
+      quelque chose qui a l'air bien semble inutile. Le problème est que la valeur de la photo ne
+      concerne pas la capture de dommages. Elle concerne le fait d'avoir un véritable registre pour
+      le moment spécifique, des mois ou des années plus tard, où une question se pose réellement et
+      où la mémoire seule ne la résoudra pas. Vous ne pouvez pas prédire à l'avance quel actif
+      d'apparence ordinaire sera celui que quelqu'un contestera plus tard, ce qui est exactement
+      pourquoi l'habitude doit s'appliquer à tout, pas seulement aux actifs qui semblent déjà pouvoir
+      devenir un problème.</p>
+
+      <p>Dix secondes, aux trois moments ci-dessus, est un coût véritablement faible pour une preuve
+      qui est souvent la seule chose qui résout réellement un litige proprement au lieu de traîner
+      comme des mémoires concurrentes de ce à quoi quelque chose ressemblait. C'est l'une des
+      polices d'assurance les moins chères disponibles dans tout le système, et elle est gratuite.</p>
+    `,
+  },
+  {
+    title: 'Ce qui arrive réellement à l\u2019historique d\u2019un actif après que vous l\u2019ayez archivé',
+    slug: 'what-happens-when-you-archive-an-asset',
+    locale: 'fr',
+    excerpt: 'L\u2019archivage est un changement de visibilité, pas une suppression — et cette distinction est ce qui rend l\u2019archivage réellement utilisable.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-10-03T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/archiving-cover.svg',
+    bodyHtml: `
+      <p>Une question raisonnable qui se pose la première fois que quelqu'un clique réellement sur
+      « archiver » sur un actif : l'historique disparaît-il avec lui ? La réponse honnête et utile
+      compte plus qu'il n'y paraît, parce qu'elle détermine si l'archivage semble assez sûr pour être
+      réellement utilisé, ou comme une porte à sens unique que les gens évitent par prudence.</p>
+
+      <h3>Ce que l'archivage fait réellement, précisément</h3>
+      <p>L'<a href="/docs/archiving-and-deleting-assets">archivage</a> retire un actif de la liste
+      active et de chaque comptage de tableau de bord \u2014 il cesse d'apparaître dans votre vue
+      quotidienne parce que ce n'est plus quelque chose que vous gérez au jour le jour. Ce qu'il ne
+      fait pas, c'est toucher le registre sous-jacent. Chaque inspection, chaque affectation, chaque
+      scan de localisation, chaque dossier de mise au rebut lié à cet actif reste complètement intact
+      et reste entièrement restaurable. L'archivage est un changement de visibilité, pas une
+      suppression \u2014 la distinction compte énormément en pratique.</p>
+
+      <h3>Pourquoi cette distinction est tout l'intérêt</h3>
+      <p>Si l'archivage jetait discrètement l'historique, ce serait fonctionnellement une suppression
+      avec un clic supplémentaire, et personne ne l'utiliserait raisonnablement pour quoi que ce soit
+      dont il n'était pas déjà certain de ne plus jamais avoir besoin \u2014 ce qui va à l'encontre du
+      but réel. Toute la valeur de l'archivage en tant qu'action distincte de la suppression est que
+      vous pouvez retirer quelque chose de votre vue active avec une véritable confiance, pas
+      d'hésitation, parce que rien n'est réellement perdu dans le processus.</p>
+
+      <h3>Quand l'archivage est le bon choix par rapport à quand il ne l'est pas</h3>
+      <p>Archivez l'équipement que vous avez cessé de suivre activement au jour le jour mais dont
+      vous voulez toujours un registre complet \u2014 quelque chose retiré du service, vendu, ou
+      simplement plus partie des opérations actuelles, où l'historique a toujours une véritable
+      valeur pour les audits, les registres fiscaux, ou simplement la mémoire institutionnelle. La
+      suppression permanente n'est pas offerte comme une action de routine pour exactement cette
+      raison : l'historique des actifs est précieux pour les registres d'audit et de dépréciation
+      longtemps après que l'équipement lui-même cesse d'être activement utilisé, et « je n'ai plus
+      besoin de voir cela dans ma vue quotidienne » est une situation complètement différente de
+      « je ne veux plus jamais que ces données existent où que ce soit ».</p>
+
+      <h3>Ce qu'il faut réellement vérifier avant d'archiver quelque chose</h3>
+      <p>La seule vraie question qui vaut la peine d'être posée avant d'archiver : y a-t-il un
+      <a href="/docs/six-stage-disposal-workflow">dossier de mise au rebut</a> ouvert ou une
+      <a href="/docs/assigning-assets-to-people">affectation</a> active encore liée à cet actif qui
+      doit véritablement être résolue d'abord ? Au-delà de cela, il y a très peu de véritable risque
+      dans l'action elle-même \u2014 elle peut toujours être annulée, et rien dans le registre
+      sous-jacent ne change quand vous le faites.</p>
+
+      <p>Comprendre clairement cette distinction est ce qui fait que l'archivage devient quelque
+      chose que les gens utilisent réellement pour garder leur liste active propre, plutôt que
+      quelque chose que tout le monde évite par vague inquiétude de perdre quelque chose dont ils
+      pourraient avoir besoin plus tard. L'historique reste. Seule la vue change.</p>
+    `,
+  },
 ];
 
 module.exports = frenchPosts;
