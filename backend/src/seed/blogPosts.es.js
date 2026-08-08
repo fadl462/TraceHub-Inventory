@@ -1914,6 +1914,229 @@ const spanishPosts = [
       cambia la vista.</p>
     `,
   },
+  {
+    title: 'El verdadero ROI de cambiar de Excel: un desglose concreto',
+    slug: 'roi-of-switching-from-excel',
+    locale: 'es',
+    excerpt: '"Vamos a ahorrar tiempo" es la razón más vaga posible. Aquí está a dónde va realmente el tiempo, y números reales para demostrarlo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-05T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/excel-roi-cover.svg',
+    bodyHtml: `
+      <p>"Vamos a ahorrar tiempo" es la razón más vaga posible para abandonar una hoja de cálculo, y
+      generalmente es la única razón que alguien da antes de realmente hacer el cambio. La versión
+      honesta y específica de esa afirmación es más convincente y también más útil, porque le dice
+      exactamente de dónde vienen realmente los ahorros \u2014 lo cual importa cuando usted es quien
+      tiene que justificar el cambio a alguien que todavía no está convencido.</p>
+
+      <h3>A dónde va realmente el tiempo en un sistema basado en hoja de cálculo</h3>
+      <p>Rara vez es el acto de escribir una fila en una hoja de cálculo lo que es costoso. Es todo
+      lo que lo rodea: recalcular manualmente la depreciación una vez al año en lugar de
+      automáticamente, cruzar referencias con un documento separado para verificar si algo todavía
+      está bajo garantía, enviar un mensaje de texto a alguien para preguntar dónde está actualmente
+      una pieza de equipo porque la hoja de cálculo se actualizó por última vez hace tres semanas, y
+      reconstruir un rastro de auditoría de memoria e hilos de correo electrónico cuando alguien
+      pregunta "quién tuvo esto por última vez".</p>
+
+      <h3>Poniendo números reales en ello</h3>
+      <p>Tome una flota de tamaño mediano de unos pocos cientos de activos. Un recálculo manual de
+      depreciación una vez al año en tantos activos, hecho cuidadosamente en una hoja de cálculo, es
+      realísticamente una tarea de varios días para quien saque la pajita más corta \u2014 el
+      <a href="/docs/smart-depreciation-engine">cálculo de depreciación</a> automático en tiempo real
+      hace que ese número sea cero, cada año, indefinidamente. Una sola pregunta de "dónde está esto"
+      que solía significar una ronda de llamadas y mensajes de texto se convierte en una búsqueda que
+      toma segundos a través del <a href="/docs/location-history-and-timeline">historial de
+      ubicación</a>. Multiplique cualquiera de esos por la frecuencia con la que realmente suceden a
+      lo largo de un año, y el total honesto rara vez es "un poco de tiempo ahorrado" \u2014
+      generalmente se mide en días reales de trabajo que antes eran invisibles precisamente porque
+      estaban repartidos entre docenas de pequeñas interrupciones en lugar de una partida obvia.</p>
+
+      <h3>Los ahorros que son más difíciles de cuantificar pero igual de reales</h3>
+      <p>Más allá de las horas medibles, hay una categoría de costo que es real pero no aparece en
+      su propia hoja de cálculo: decisiones tomadas con información desactualizada porque nadie tuvo
+      tiempo de actualizar el archivo maestro esa semana, disputas que se prolongan porque nadie
+      puede producir un registro limpio, y la erosión general de la confianza en sus propios números
+      una vez que todos saben que la hoja de cálculo es "probablemente" precisa en lugar de
+      realmente precisa. Estos costos son reales. Simplemente son más difíciles de poner una cifra
+      específica en dólares que "horas dedicadas a recalcular".</p>
+
+      <h3>Una forma justa de enmarcar la comparación real</h3>
+      <p>El argumento honesto no es "el software es mejor que las hojas de cálculo" como afirmación
+      abstracta \u2014 es específico: ¿en qué gasta actualmente el tiempo su equipo que un registro en
+      vivo y de actualización automática haría instantáneo, y con qué frecuencia sucede eso
+      realmente? Para la mayoría de las organizaciones con más de un puñado de activos, la respuesta
+      es "lo suficientemente a menudo como para que se acumule en tiempo real y contable dentro del
+      primer mes", no una vaga ganancia de eficiencia a largo plazo difícil de señalar después.</p>
+    `,
+  },
+  {
+    title: 'Filtrado masivo: la función que convierte una flota grande de abrumadora a manejable',
+    slug: 'bulk-filtering-manageable-fleet',
+    locale: 'es',
+    excerpt: 'En algún lugar entre diez activos y unos pocos cientos, desplazarse por una lista completa deja de ser una forma razonable de encontrar algo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/bulk-filtering-cover.svg',
+    bodyHtml: `
+      <p>En algún lugar entre diez activos y unos pocos cientos, ocurre un cambio real en cómo se
+      siente gestionar una flota \u2014 desplazarse por una lista completa deja de ser una forma
+      razonable de encontrar algo, y la herramienta que más importa cambia silenciosamente de la
+      lista de activos en sí a lo que sea que le permita reducirla rápidamente.</p>
+
+      <h3>Por qué desplazarse deja de funcionar mucho antes de lo que esperaría</h3>
+      <p>Una lista de treinta activos es genuinamente escaneable a simple vista. Una lista de
+      trescientos no lo es, y el umbral donde eso sucede es más bajo de lo que la mayoría de la gente
+      espera \u2014 en algún lugar en el rango de cincuenta a cien activos, dependiendo de qué tan
+      visualmente similares sean, la mayoría de la gente deja de poder detectar de manera confiable
+      el que está buscando solo con mirar. Más allá de ese punto, la pregunta cambia de "¿puedo
+      encontrar esto escaneando?" a "¿puedo filtrar esto hasta el puñado de activos que podrían
+      posiblemente ser el que quiero?".</p>
+
+      <h3>Lo que realmente hace poderoso el filtrado: combinar criterios, no solo uno</h3>
+      <p>Un solo filtro \u2014 solo categoría, o solo ubicación \u2014 reduce las cosas, pero el
+      verdadero poder aparece cuando los filtros se combinan. Combinar una
+      <a href="/docs/bulk-filtering-assets-list">búsqueda de texto</a> con filtros de estado,
+      categoría, y ubicación simultáneamente convierte "muéstrame todo" en "muéstrame exactamente
+      las laptops disponibles en el almacén de Accra", que es una pregunta genuinamente diferente y
+      más útil de lo que cualquier filtro individual podría responder solo. La mayor parte del valor
+      en un sistema de filtrado viene exactamente de este tipo de acumulación, no de que un filtro
+      sea individualmente ingenioso.</p>
+
+      <h3>La conexión con el tablero que es fácil de pasar por alto</h3>
+      <p>Hacer clic en un segmento del mapa de calor ejecutivo en su tablero \u2014 digamos, la banda
+      de salud "Crítica" \u2014 lo lleva a esta misma lista filtrada, preconfigurada exactamente a
+      ese nivel de salud. Eso no es una coincidencia; es el mismo mecanismo de filtrado cumpliendo
+      doble función tanto como herramienta de búsqueda manual como punto de aterrizaje para cada
+      exploración del tablero. Sentirse cómodo con el filtrado manual también hace que cada uno de
+      esos clics del tablero tenga más sentido intuitivo, porque ya entiende lo que realmente está
+      sucediendo cuando la lista se reduce.</p>
+
+      <h3>Un hábito práctico que vale la pena construir</h3>
+      <p>Antes de desplazarse por una lista larga buscando algo específico, pause y pregunte qué
+      combinación de categoría, estado, y ubicación lo reduciría en su lugar. Es un pequeño cambio
+      de hábito mental, pero es la diferencia entre que una flota de unos pocos cientos de activos
+      se sienta abrumadora y se sienta exactamente tan manejable como una flota de diez \u2014 la
+      longitud real de la lista deja de importar una vez que encontrar algo específico en ella toma
+      los mismos pocos segundos, sin importar cuántas filas se escondan detrás del filtro.</p>
+    `,
+  },
+  {
+    title: 'Lo que realmente significa una probabilidad de falla a 90 días (y lo que no)',
+    slug: 'understanding-failure-probability',
+    locale: 'es',
+    excerpt: 'No es una cuenta regresiva ni una casi certeza. Es una señal ponderada para combinar con las razones detrás de ella y la confianza que la respalda.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-10T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/failure-probability-cover.svg',
+    bodyHtml: `
+      <p>Una "probabilidad de falla del 35% dentro de 90 días" es uno de esos números que suena
+      preciso y se malinterpreta constantemente \u2014 como una cuenta regresiva, como una casi
+      certeza, o como ruido que no vale la pena atender, dependiendo del estado de ánimo del lector
+      ese día. En realidad no es nada de eso, y entender lo que genuinamente representa cambia cómo
+      debería responder a ello.</p>
+
+      <h3>Lo que el número no es</h3>
+      <p>No es una predicción de que el activo fallará en exactamente 90 días, ni una garantía de que
+      fallará en absoluto dentro de esa ventana \u2014 es una probabilidad, y una probabilidad del
+      35% significa que, a través de muchas situaciones similares, la falla ocurre aproximadamente
+      un tercio de las veces dentro de esa ventana y no ocurre en las otras dos terceras partes. Un
+      activo individual o fallará o no fallará; la probabilidad describe el patrón a través de la
+      población de casos similares, no una certeza sobre esta unidad específica.</p>
+
+      <h3>De qué está realmente construido</h3>
+      <p>El número viene de entradas reales y documentadas \u2014 edad relativa a la vida esperada,
+      brechas de cumplimiento de mantenimiento, intensidad de uso \u2014 no una suposición de caja
+      negra. Es precisamente por eso que las <a href="/docs/failure-prediction-engine">razones de
+      falla</a> listadas junto al porcentaje importan tanto como el número en sí: "acercándose a la
+      vida esperada" y "mantenimiento vencido" son dos situaciones muy diferentes que resultan
+      producir una probabilidad de apariencia similar, y requieren respuestas diferentes \u2014 la
+      primera sugiere planificar un reemplazo, la segunda sugiere que ponerse al día con el
+      mantenimiento diferido podría resolver el riesgo por completo sin reemplazar nada.</p>
+
+      <h3>Cómo los cuatro horizontes de tiempo realmente deberían cambiar su respuesta</h3>
+      <p>Una probabilidad significativamente elevada en el horizonte de 30 días es una preocupación
+      operativa a corto plazo \u2014 vale la pena programar atención ahora, no después de la próxima
+      semana tranquila. La misma elevación apareciendo solo en el horizonte de 180 días es una señal
+      de planificación, no una emergencia \u2014 significa "esto vale la pena presupuestarlo y
+      programarlo", no "deje de usar esto hoy". Leer solo el porcentaje titular sin verificar a qué
+      horizonte está adjunto pierde exactamente la información que le dice qué tan urgentemente
+      actuar realmente.</p>
+
+      <h3>La advertencia honesta: la confianza importa tanto como el porcentaje</h3>
+      <p>Una probabilidad de falla calculada a partir de un activo con datos de mantenimiento y uso
+      ricos y completos merece más peso que el mismo porcentaje de apariencia similar en un activo
+      con casi ningún historial registrado detrás de él \u2014 que es exactamente lo que el
+      <a href="/docs/ai-confidence-score-and-learning-loop">puntaje de confianza</a> emparejado
+      existe para señalar. Una probabilidad del 35% con alta confianza y una probabilidad del 35% con
+      baja confianza no son números igualmente accionables, aunque se vean idénticos a primera
+      vista.</p>
+
+      <p>El número es genuinamente útil \u2014 simplemente es útil como una señal ponderada para
+      combinar con las razones detrás de él y la confianza que lo respalda, no como un veredicto
+      independiente sobre el cual entrar en pánico o descartar basándose solo en el porcentaje.</p>
+    `,
+  },
+  {
+    title: 'El caso para rastrear herramientas que nunca pensaría en rastrear',
+    slug: 'tracking-small-tools',
+    locale: 'es',
+    excerpt: 'El razonamiento que tiene sentido para una herramienta se derrumba por completo una vez que ve el patrón agregado a través de docenas de artículos.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-12T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/small-tools-cover.svg',
+    bodyHtml: `
+      <p>Los vehículos y generadores se rastrean casi universalmente \u2014 son lo suficientemente
+      costosos como para que nadie cuestione si vale la pena el esfuerzo. Las herramientas manuales,
+      las herramientas eléctricas pequeñas, y otro equipo de bajo costo se rastrean con mucha menos
+      consistencia, generalmente con el razonamiento de que cualquiera individual es lo
+      suficientemente barata como para que perderla apenas importe. Ese razonamiento es correcto
+      sobre cualquier herramienta individual y muy incorrecto sobre la categoría en su conjunto.</p>
+
+      <h3>Las matemáticas que realmente importan: agregado, no individual</h3>
+      <p>Un solo taladro de cincuenta dólares que desaparece genuinamente no vale mucha sobrecarga de
+      proceso para prevenir. Un patrón de herramientas de cincuenta dólares desapareciendo
+      constantemente a lo largo de un año, multiplicado por un equipo, se suma a un número real que
+      la mayoría de las empresas nunca han calculado realmente \u2014 porque nadie está rastreando la
+      categoría lo suficientemente de cerca como para sumarlo en primer lugar. El razonamiento de
+      artículo individual que tiene sentido para una herramienta se derrumba por completo una vez que
+      está viendo el patrón agregado a través de docenas de artículos similares a lo largo del
+      tiempo.</p>
+
+      <h3>Por qué el instinto de "demasiado barato para molestarse" está específicamente al revés aquí</h3>
+      <p>Irónicamente, los artículos de bajo costo a menudo son los que más se benefician del
+      rastreo ligero, precisamente porque nadie los trata con el mismo cuidado que un activo costoso
+      \u2014 se prestan casualmente, se dejan en sitios de trabajo, se lanzan al camión equivocado al
+      final de un turno. El manejo informal que parece razonable para algo barato es exactamente lo
+      que causa la pérdida agregada que eventualmente no es nada barata.</p>
+
+      <h3>El umbral práctico de lo que vale la pena rastrear</h3>
+      <p>No necesita rastrear una caja de precintos idénticos. La línea razonable: rastree cualquier
+      cosa individualmente identificable que plausiblemente podría prestarse, moverse entre
+      ubicaciones, o confundirse con el artículo casi idéntico de otra persona \u2014 lo cual cubre la
+      mayoría de las herramientas manuales y equipo eléctrico pequeño, y excluye los consumibles
+      genuinos. Un <a href="/docs/qr-codes-and-printing-tags">código QR</a> en una herramienta cuesta
+      centavos producir e imprimir; el costo real de rastrearlo está cerca de cero una vez
+      etiquetado, que es exactamente por qué el razonamiento de "no vale el esfuerzo" se aplica con
+      mucha menos frecuencia de lo que el instinto sugiere.</p>
+
+      <h3>Lo que cambia una vez que estos realmente se rastrean</h3>
+      <p>El valor realmente no se trata de recuperar algún taladro específico faltante después del
+      hecho \u2014 es que el rastreo visible cambia el comportamiento antes de que algo desaparezca en
+      absoluto. El equipo que se registra cuando sale de una ubicación y se registra de nuevo cuando
+      regresa se trata de manera diferente al equipo que nadie está observando, de la misma manera
+      que un estacionamiento vigilado cambia el comportamiento comparado con uno no vigilado,
+      independientemente de si alguien realmente está revisando las imágenes ese día.</p>
+
+      <p>La categoría de "demasiado pequeño para molestarse en rastrear" generalmente es una
+      categoría mucho más pequeña de lo que parece al principio \u2014 el umbral real no es el precio
+      de ningún artículo individual, es si perder un goteo constante de ellos, a lo largo de un año,
+      realmente importaría si alguien se molestara en sumarlo.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;

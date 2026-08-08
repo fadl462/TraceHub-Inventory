@@ -1976,6 +1976,236 @@ const frenchPosts = [
       pourraient avoir besoin plus tard. L'historique reste. Seule la vue change.</p>
     `,
   },
+  {
+    title: 'Le vrai ROI de l\u2019abandon d\u2019Excel : une répartition concrète',
+    slug: 'roi-of-switching-from-excel',
+    locale: 'fr',
+    excerpt: '«On va gagner du temps» est la raison la plus vague possible. Voici où le temps va réellement, et de vrais chiffres pour le prouver.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-10-05T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/excel-roi-cover.svg',
+    bodyHtml: `
+      <p>« On va gagner du temps » est la raison la plus vague possible pour abandonner un tableur,
+      et c'est généralement la seule raison que quiconque donne avant de réellement faire le
+      changement. La version honnête et précise de cette affirmation est plus convaincante et aussi
+      plus utile, parce qu'elle vous dit exactement d'où viennent réellement les économies \u2014 ce
+      qui compte quand c'est vous qui devez justifier le changement à quelqu'un qui n'est pas encore
+      convaincu.</p>
+
+      <h3>Où va réellement le temps dans un système basé sur un tableur</h3>
+      <p>C'est rarement l'acte de taper une ligne dans un tableur qui est coûteux. C'est tout ce qui
+      l'entoure : recalculer manuellement la dépréciation une fois par an au lieu
+      d'automatiquement, croiser un document séparé pour vérifier si quelque chose est encore sous
+      garantie, texter quelqu'un pour demander où se trouve actuellement un équipement parce que le
+      tableur a été mis à jour pour la dernière fois il y a trois semaines, et reconstruire une piste
+      d'audit à partir de mémoire et de fils d'e-mails quand quelqu'un demande « qui avait cela en
+      dernier ».</p>
+
+      <h3>Y mettre de vrais chiffres</h3>
+      <p>Prenez une flotte de taille moyenne de quelques centaines d'actifs. Un recalcul manuel de
+      dépréciation une fois par an à travers autant d'actifs, fait soigneusement dans un tableur, est
+      réalistement une tâche de plusieurs jours pour quiconque tire la courte paille \u2014 le
+      <a href="/docs/smart-depreciation-engine">calcul de dépréciation</a> automatique en temps réel
+      ramène ce chiffre à zéro, chaque année, indéfiniment. Une seule question « où est-ce » qui
+      signifiait autrefois une série d'appels et de textos devient une recherche qui prend quelques
+      secondes via l'<a href="/docs/location-history-and-timeline">historique de localisation</a>.
+      Multipliez l'un ou l'autre par la fréquence à laquelle ils se produisent réellement au cours
+      d'une année, et le total honnête est rarement « un peu de temps économisé » \u2014 c'est
+      généralement mesuré en véritables jours de travail qui étaient auparavant invisibles
+      précisément parce qu'ils étaient répartis sur des dizaines de petites interruptions plutôt
+      qu'un poste évident.</p>
+
+      <h3>Les économies plus difficiles à quantifier mais tout aussi réelles</h3>
+      <p>Au-delà des heures mesurables, il existe une catégorie de coût qui est réelle mais
+      n'apparaît pas sur son propre tableur : des décisions prises sur des informations obsolètes
+      parce que personne n'a eu le temps de mettre à jour le fichier maître cette semaine-là, des
+      litiges qui traînent parce que personne ne peut produire un registre propre, et l'érosion
+      générale de la confiance dans vos propres chiffres une fois que tout le monde sait que le
+      tableur est « probablement » précis plutôt que réellement précis. Ces coûts sont réels. Ils
+      sont simplement plus difficiles à chiffrer précisément que « heures passées à recalculer ».</p>
+
+      <h3>Une façon équitable de cadrer la comparaison réelle</h3>
+      <p>L'argument honnête n'est pas « le logiciel est meilleur que les tableurs » comme
+      affirmation abstraite \u2014 il est précis : à quoi votre équipe consacre-t-elle actuellement du
+      temps qu'un registre en direct et se mettant à jour automatiquement rendrait instantané, et à
+      quelle fréquence cela se produit-il réellement ? Pour la plupart des organisations avec plus
+      qu'une poignée d'actifs, la réponse est « assez souvent pour que cela s'accumule en temps réel
+      et comptable dans le premier mois », pas un vague gain d'efficacité à long terme difficile à
+      pointer du doigt plus tard.</p>
+    `,
+  },
+  {
+    title: 'Le filtrage en masse : la fonctionnalité qui transforme une grande flotte d\u2019accablante à gérable',
+    slug: 'bulk-filtering-manageable-fleet',
+    locale: 'fr',
+    excerpt: 'Quelque part entre dix actifs et quelques centaines, faire défiler une liste complète cesse d\u2019être une façon raisonnable de trouver quoi que ce soit.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-10-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/bulk-filtering-cover.svg',
+    bodyHtml: `
+      <p>Quelque part entre dix actifs et quelques centaines, un véritable changement se produit
+      dans la façon dont il est ressenti de gérer une flotte \u2014 faire défiler une liste complète
+      cesse d'être une façon raisonnable de trouver quoi que ce soit, et l'outil qui compte le plus
+      passe discrètement de la liste d'actifs elle-même à tout ce qui vous permet de la restreindre
+      rapidement.</p>
+
+      <h3>Pourquoi le défilement cesse de fonctionner bien avant qu'on ne s'y attende</h3>
+      <p>Une liste de trente actifs est véritablement scannable à l'œil. Une liste de trois cents ne
+      l'est pas, et le seuil où cela se produit est plus bas que la plupart des gens ne s'y
+      attendent \u2014 quelque part dans la fourchette de cinquante à cent actifs, selon leur
+      similarité visuelle, la plupart des gens cessent de pouvoir repérer de manière fiable celui
+      qu'ils cherchent juste en regardant. Au-delà de ce point, la question passe de « puis-je trouver
+      cela en scannant » à « puis-je filtrer cela jusqu'à la poignée d'actifs qui pourraient
+      possiblement être celui que je veux ».</p>
+
+      <h3>Ce qui rend réellement le filtrage puissant : combiner des critères, pas seulement un</h3>
+      <p>Un seul filtre \u2014 juste la catégorie, ou juste l'emplacement \u2014 restreint les choses,
+      mais la véritable puissance apparaît quand les filtres se combinent. Combiner une
+      <a href="/docs/bulk-filtering-assets-list">recherche textuelle</a> avec des filtres de statut,
+      de catégorie, et d'emplacement simultanément transforme « montrez-moi tout » en
+      « montrez-moi exactement les ordinateurs portables disponibles à l'entrepôt d'Accra », ce qui
+      est une question véritablement différente et plus utile qu'un seul filtre ne pourrait répondre
+      seul. La majeure partie de la valeur d'un système de filtrage vient exactement de ce genre
+      d'empilement, pas d'un seul filtre étant individuellement intelligent.</p>
+
+      <h3>La connexion au tableau de bord qui est facile à manquer</h3>
+      <p>Cliquer sur un segment de la carte thermique exécutive de votre tableau de bord \u2014
+      disons, la bande de santé « Critique » \u2014 vous amène à cette même liste filtrée,
+      préconfigurée exactement à ce niveau de santé. Ce n'est pas une coïncidence ; c'est le même
+      mécanisme de filtrage faisant double emploi à la fois comme outil de recherche manuel et comme
+      point d'atterrissage pour chaque exploration du tableau de bord. Devenir à l'aise avec le
+      filtrage manuel rend chacun de ces clics du tableau de bord aussi plus intuitivement sensé,
+      parce que vous comprenez déjà ce qui se passe réellement quand la liste se restreint.</p>
+
+      <h3>Une habitude pratique qui vaut la peine d'être construite</h3>
+      <p>Avant de faire défiler une longue liste à la recherche de quelque chose de spécifique,
+      arrêtez-vous et demandez-vous quelle combinaison de catégorie, de statut, et d'emplacement la
+      restreindrait à la place. C'est un petit changement d'habitude mentale, mais c'est la
+      différence entre une flotte de quelques centaines d'actifs qui semble accablante et qui semble
+      exactement aussi gérable qu'une flotte de dix \u2014 la longueur réelle de la liste cesse de
+      compter une fois que trouver quoi que ce soit de spécifique dedans prend les mêmes quelques
+      secondes, peu importe combien de lignes se cachent derrière le filtre.</p>
+    `,
+  },
+  {
+    title: 'Ce que signifie réellement une probabilité de panne à 90 jours (et ce qu\u2019elle ne signifie pas)',
+    slug: 'understanding-failure-probability',
+    locale: 'fr',
+    excerpt: 'Ce n\u2019est pas un compte à rebours ni une quasi-certitude. C\u2019est un signal pondéré à combiner avec les raisons qui le sous-tendent et la confiance qui le soutient.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-10-10T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/failure-probability-cover.svg',
+    bodyHtml: `
+      <p>Une « probabilité de panne de 35 % dans les 90 jours » est l'un de ces chiffres qui semble
+      précis et qui est constamment mal lu \u2014 comme un compte à rebours, comme une quasi-certitude,
+      ou comme du bruit ne valant pas la peine d'agir, selon l'humeur du lecteur ce jour-là. Ce n'est
+      en réalité aucune de ces choses, et comprendre ce qu'il représente véritablement change la
+      façon dont vous devriez y répondre.</p>
+
+      <h3>Ce que le chiffre n'est pas</h3>
+      <p>Ce n'est pas une prédiction que l'actif tombera en panne dans exactement 90 jours, ni une
+      garantie qu'il tombera en panne du tout dans cette fenêtre \u2014 c'est une probabilité, et une
+      probabilité de 35 % signifie que, à travers de nombreuses situations similaires, la panne se
+      produit environ un tiers du temps dans cette fenêtre et ne se produit pas les deux autres
+      tiers. Un actif unique va soit tomber en panne, soit ne pas tomber en panne ; la probabilité
+      décrit le schéma à travers la population de cas similaires, pas une certitude sur cette unité
+      spécifique.</p>
+
+      <h3>Ce à partir de quoi il est réellement construit</h3>
+      <p>Le chiffre vient d'entrées réelles et documentées \u2014 âge par rapport à la durée de vie
+      attendue, lacunes de conformité de maintenance, intensité d'usage \u2014 pas une supposition de
+      boîte noire. C'est précisément pourquoi les <a href="/docs/failure-prediction-engine">raisons
+      de panne</a> listées à côté du pourcentage comptent autant que le chiffre lui-même :
+      « approche de la durée de vie attendue » et « maintenance en retard » sont deux situations très
+      différentes qui se trouvent produire une probabilité d'apparence similaire, et elles appellent
+      des réponses différentes \u2014 la première suggère de planifier un remplacement, la seconde
+      suggère que rattraper la maintenance différée pourrait résoudre entièrement le risque sans rien
+      remplacer.</p>
+
+      <h3>Comment les quatre horizons temporels devraient réellement changer votre réponse</h3>
+      <p>Une probabilité significativement élevée à l'horizon de 30 jours est une préoccupation
+      opérationnelle à court terme \u2014 qui vaut la peine de planifier une attention maintenant, pas
+      après la prochaine semaine calme. La même élévation n'apparaissant qu'à l'horizon de 180 jours
+      est un signal de planification, pas une urgence \u2014 cela signifie « cela vaut la peine d'être
+      budgété et planifié », pas « arrêtez d'utiliser ceci aujourd'hui ». Lire uniquement le
+      pourcentage principal sans vérifier à quel horizon il est attaché perd exactement l'information
+      qui vous dit à quel point agir réellement de manière urgente.</p>
+
+      <h3>La mise en garde honnête : la confiance compte autant que le pourcentage</h3>
+      <p>Une probabilité de panne calculée à partir d'un actif avec des données de maintenance et
+      d'usage riches et complètes mérite plus de poids que le même pourcentage d'apparence similaire
+      sur un actif avec presque aucun historique enregistré derrière lui \u2014 ce qui est exactement
+      ce que le <a href="/docs/ai-confidence-score-and-learning-loop">score de confiance</a> jumelé
+      existe pour signaler. Une probabilité de 35 % avec une confiance élevée et une probabilité de
+      35 % avec une confiance faible ne sont pas des chiffres également exploitables, même s'ils se
+      ressemblent au premier coup d'œil.</p>
+
+      <p>Le chiffre est véritablement utile \u2014 il est simplement utile comme signal pondéré à
+      combiner avec les raisons qui le sous-tendent et la confiance qui le soutient, pas comme
+      verdict autonome sur lequel paniquer ou à rejeter sur la seule base du pourcentage.</p>
+    `,
+  },
+  {
+    title: 'L\u2019argument pour suivre des outils auxquels vous ne penseriez jamais à suivre',
+    slug: 'tracking-small-tools',
+    locale: 'fr',
+    excerpt: 'Le raisonnement qui a du sens pour un seul outil s\u2019effondre complètement une fois que vous regardez le schéma agrégé à travers des dizaines d\u2019articles.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-10-12T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/small-tools-cover.svg',
+    bodyHtml: `
+      <p>Les véhicules et les générateurs sont suivis presque universellement \u2014 ils sont assez
+      coûteux pour que personne ne remette en question si cela vaut l'effort. Les outils à main, les
+      petits outils électriques, et autres équipements peu coûteux sont suivis bien moins
+      systématiquement, généralement selon le raisonnement qu'un seul est assez bon marché pour que
+      le perdre importe à peine. Ce raisonnement est correct pour un seul outil et gravement faux
+      pour la catégorie dans son ensemble.</p>
+
+      <h3>Les mathématiques qui comptent réellement : l'agrégat, pas l'individuel</h3>
+      <p>Une seule perceuse à cinquante dollars qui disparaît ne vaut véritablement pas beaucoup de
+      surcharge de processus pour la prévenir. Un schéma d'outils à cinquante dollars disparaissant
+      constamment sur une année, multiplié à travers une équipe, s'accumule en un chiffre réel que la
+      plupart des entreprises n'ont en fait jamais calculé \u2014 parce que personne ne suit la
+      catégorie d'assez près pour l'additionner en premier lieu. Le raisonnement d'article individuel
+      qui a du sens pour un outil s'effondre complètement une fois que vous regardez le schéma
+      agrégé à travers des dizaines d'articles similaires au fil du temps.</p>
+
+      <h3>Pourquoi l'instinct « trop bon marché pour s'en soucier » est spécifiquement à l'envers ici</h3>
+      <p>Ironiquement, les articles peu coûteux sont souvent ceux qui bénéficient le plus d'un suivi
+      léger, précisément parce que personne ne les traite avec le même soin qu'un actif coûteux \u2014
+      ils sont empruntés de façon décontractée, laissés sur les chantiers, jetés dans le mauvais
+      camion à la fin d'une équipe. La manipulation informelle qui semble raisonnable pour quelque
+      chose de bon marché est exactement ce qui cause la perte agrégée qui finalement n'est pas bon
+      marché du tout.</p>
+
+      <h3>La barre pratique de ce qui vaut la peine d'être suivi</h3>
+      <p>Vous n'avez pas besoin de suivre une boîte de colliers de serrage identiques. La ligne
+      raisonnable : suivez tout ce qui est individuellement identifiable et qui pourrait
+      plausiblement être emprunté, déplacé entre les emplacements, ou confondu avec l'article
+      quasi-identique de quelqu'un d'autre \u2014 ce qui couvre la plupart des outils à main et petits
+      équipements électriques, et exclut les véritables consommables. Un <a href="/docs/qr-codes-and-printing-tags">
+      code QR</a> sur un outil coûte quelques centimes à produire et imprimer ; le coût réel de son
+      suivi est proche de zéro une fois étiqueté, ce qui est exactement pourquoi le raisonnement
+      « ne vaut pas l'effort » s'applique bien moins souvent que l'instinct ne le suggère.</p>
+
+      <h3>Ce qui change une fois que ceux-ci sont réellement suivis</h3>
+      <p>La valeur ne concerne pas vraiment la récupération d'une perceuse manquante spécifique après
+      coup \u2014 c'est que le suivi visible change le comportement avant que quoi que ce soit ne
+      disparaisse. Un équipement enregistré quand il quitte un emplacement et enregistré à nouveau
+      quand il revient est traité différemment d'un équipement que personne ne surveille, de la même
+      manière qu'un parking surveillé change le comportement par rapport à un non surveillé,
+      indépendamment de si quelqu'un examine réellement les images ce jour-là.</p>
+
+      <p>La catégorie « trop petit pour s'embêter à suivre » est généralement une catégorie bien plus
+      petite qu'elle n'apparaît d'abord \u2014 le véritable seuil n'est pas le prix d'un article
+      individuel, c'est si perdre un filet constant d'entre eux, sur une année, importerait
+      réellement si quelqu'un se donnait la peine de l'additionner.</p>
+    `,
+  },
 ];
 
 module.exports = frenchPosts;
