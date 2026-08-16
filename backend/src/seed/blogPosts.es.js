@@ -2606,6 +2606,245 @@ const spanishPosts = [
       realmente poseerlo.</p>
     `,
   },
+  {
+    title: 'Las reglas de baja de residuos electrónicos se volvieron reales: lo que la responsabilidad extendida del productor realmente significa para usted',
+    slug: 'e-waste-epr-disposal-rules-2026',
+    locale: 'es',
+    excerpt: '25 estados de EE. UU. ahora tienen leyes RPE para electrónica, y la carga de documentación se ha trasladado a quien realmente da de baja el equipo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-02T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/epr-cover.svg',
+    bodyHtml: `
+      <p>Veinticinco estados de EE. UU. ahora tienen leyes de responsabilidad extendida del
+      productor que cubren la electrónica, y la carga práctica de cumplimiento se ha trasladado a
+      las organizaciones que realmente retiran el equipo, no solo a los fabricantes que lo
+      fabricaron. Si su proceso de baja para equipo informático antiguo, o cualquier cosa con
+      batería, actualmente es "alguien lo lleva para reciclarlo, probablemente correctamente", 2026
+      es el año en que eso deja de ser una suposición segura en un número creciente de estados.</p>
+
+      <h3>Lo que la RPE realmente requiere de la empresa que da de baja el equipo</h3>
+      <p>La obligación legal de financiar programas de reciclaje recae en los fabricantes bajo estas
+      leyes. Lo que le corresponde a usted, en la práctica, es la documentación: prueba de que lo
+      que dio de baja realmente pasó por un recolector aprobado por el programa o un reciclador
+      debidamente certificado, no solo una suposición general de que "se recicló en algún lugar".
+      Para organizaciones que también manejan datos sensibles \u2014 cualquiera con una relación con
+      un contratista de defensa, datos de salud, u obligaciones de cumplimiento similares \u2014 esto
+      ahora frecuentemente se suma a requisitos de documentación de saneamiento de datos separados,
+      lo que significa que una sola laptop dada de baja puede requerir dos rastros de cumplimiento
+      paralelos: uno probando a dónde fue el hardware, otro probando que los datos en ella fueron
+      destruidos correctamente.</p>
+
+      <h3>Por qué esto realmente encaja naturalmente con un flujo de baja real</h3>
+      <p>Esto es precisamente para lo que se construyó un <a href="/docs/six-stage-disposal-workflow">
+      flujo de baja</a> genuino con un rastro de auditoría real, incluso antes de que existiera esta
+      ola regulatoria específica. Un caso de baja que pasa por etapas reales de revisión \u2014
+      marcado, revisado, aprobado, un método de baja específico registrado, un monto de venta final o
+      confirmación de baja registrada \u2014 ya produce exactamente el registro de cadena de custodia
+      que este tipo de cumplimiento requiere. La diferencia entre un proceso informal de "alguien se
+      encargó de eso" y uno documentado no es trabajo extra atornillado por el bien del cumplimiento;
+      es el mismo hábito de mantenimiento de registros que ya valía la pena tener, ahora con una razón
+      regulatoria más clara de por qué importa.</p>
+
+      <h3>Qué revisar realmente, específicamente</h3>
+      <p>No necesita una revisión total de cumplimiento para adelantarse a esto. Dos cosas concretas
+      que vale la pena verificar: ¿su campo de método de baja, cuando el equipo se desguaza o
+      recicla, realmente nombra a un reciclador certificado o programa de recolección específico, o
+      solo dice "reciclado" sin nada detrás? Y para equipo que alguna vez contuvo datos
+      sensibles \u2014 no solo equipo obviamente sensible, sino cualquier cosa que se conectó a una
+      red \u2014 ¿existe un registro real de cómo se manejaron esos datos al momento de la baja,
+      separado del destino físico del hardware?</p>
+
+      <h3>La conclusión honesta</h3>
+      <p>La intensidad de la aplicación regulatoria genuinamente varía según el estado en este
+      momento, y es razonable esperar cambios continuos durante el resto de 2026 a medida que más
+      estados adopten o expandan sus propios programas. Lo que no depende de la postura de
+      aplicación de ningún estado específico: un rastro de baja documentado casi no le cuesta nada
+      extra mantener si ya está integrado en cómo se retira el equipo, y es considerablemente más
+      costoso reconstruirlo después del hecho si un regulador o auditor pide registros que nadie
+      guardó.</p>
+    `,
+  },
+  {
+    title: 'Lo que un puntaje de confianza realmente lo protege de',
+    slug: 'what-confidence-score-protects-against',
+    locale: 'es',
+    excerpt: 'Es el número menos glamoroso en la página de un activo, y podría decirse que está haciendo el trabajo más importante de todos.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-04T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/confidence-score-cover.svg',
+    bodyHtml: `
+      <p>Un puntaje de confianza es el número menos glamoroso en la página de un activo, y podría
+      decirse que está haciendo el trabajo más importante de todos: decirle, honestamente, cuánto
+      confiar realmente en todo lo demás que está viendo.</p>
+
+      <h3>Contra qué lo protege realmente</h3>
+      <p>Todo motor de recomendación, el nuestro incluido, enfrenta la misma tentación: presentar
+      cada resultado con el mismo tono confiado, sin importar cuánta evidencia real lo respalde. Un
+      <a href="/docs/ai-confidence-score-and-learning-loop">puntaje de confianza</a> existe
+      específicamente para resistir esa tentación \u2014 un activo con casi ningún historial de
+      mantenimiento, ningún registro de inspección, y ningún valor de mercado ingresado mostrará
+      honestamente un puntaje de confianza más bajo que un activo idéntico con dos años de historial
+      detallado detrás de él, aunque ambos podrían mostrar exactamente el mismo puntaje de salud o
+      recomendación de baja en la superficie.</p>
+
+      <h3>El error específico que esto previene</h3>
+      <p>Sin una señal de confianza honesta, un activo escasamente documentado y uno
+      exhaustivamente documentado se ven idénticos a simple vista, lo que significa que quien toma
+      la decisión no tiene forma de distinguir "esta recomendación está respaldada por dos años de
+      datos reales" de "esta recomendación es principalmente un valor predeterminado de categoría
+      porque casi nada se ha registrado realmente todavía". Tratar a ambos con el mismo peso es
+      exactamente el error que un puntaje de confianza está diseñado para prevenir \u2014 es la
+      diferencia entre "el sistema dice reemplazarlo" llevando peso probatorio real versus ser apenas
+      más que una suposición educada disfrazada para verse igual.</p>
+
+      <h3>Lo que realmente lo eleva, y por qué ese es el incentivo correcto</h3>
+      <p>El puntaje de confianza no es una tarea separada que gestionar \u2014 aumenta naturalmente a
+      medida que hace las cosas que ya valen la pena hacer: registrar detalles reales de
+      mantenimiento en lugar de "reparado", mantener el <a href="/docs/registering-an-asset">valor
+      de mercado actual</a> actualizado en lugar de obsoleto, construir un historial de inspección
+      genuino con el tiempo. Esta es una elección de diseño deliberada: no hay forma de aumentar
+      directamente un puntaje de confianza sin realmente mejorar los datos subyacentes detrás de él,
+      porque el puntaje es un reflejo de la completitud real de los datos, no una métrica separada
+      que se pueda manipular independientemente de la sustancia que se supone que representa.</p>
+
+      <h3>El bucle de aprendizaje es la misma idea, extendida en el tiempo</h3>
+      <p>El <a href="/docs/ai-confidence-score-and-learning-loop">bucle de aprendizaje</a>
+      subyacente aplica la misma honestidad a una pregunta diferente: cuando su organización ha
+      rechazado una recomendación de baja en el pasado, ¿siguió una falla real dentro del próximo
+      mes, o no? Ese historial real \u2014 no un punto de referencia genérico de la industria \u2014
+      se convierte en un ajuste pequeño y acotado a la confianza futura, específico del historial
+      real de su propia flota.</p>
+
+      <h3>Por qué un puntaje de confianza bajo es información útil, no un fallo</h3>
+      <p>Una lectura errónea común trata un puntaje de confianza bajo como algo de qué avergonzarse
+      u ocultar. Es lo contrario: un sistema que le dice honestamente "no le dé demasiado peso a esto
+      todavía, no tenemos suficiente detrás de ello" es más útil que uno que preferiría sonar seguro
+      antes que ser honesto. El verdadero modo de falla no es un puntaje de confianza bajo \u2014 es
+      un sistema que nunca le muestra uno en absoluto, y lo deja descubrir de la manera difícil qué
+      recomendaciones eran sólidas y cuáles eran una suposición con bata de laboratorio.</p>
+    `,
+  },
+  {
+    title: 'Cómo presentar datos de flota a ejecutivos que solo quieren lo esencial',
+    slug: 'presenting-fleet-data-to-executives',
+    locale: 'es',
+    excerpt: 'Los mismos datos subyacentes, presentados en la altitud equivocada, son la diferencia entre un informe sobre el que se actúa y uno que recibe un asentimiento cortés.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/executive-reporting-cover.svg',
+    bodyHtml: `
+      <p>Un ejecutivo que echa un vistazo a un informe de flota durante treinta segundos y alguien
+      que vive en el sistema de activos todos los días quieren cosas fundamentalmente diferentes de
+      los mismos datos, y presentarle a una audiencia la versión de la otra es la forma más común en
+      que un informe genuinamente bueno no logra su objetivo.</p>
+
+      <h3>Lo que un ejecutivo realmente quiere, y no es más detalle</h3>
+      <p>Alguien revisando el rendimiento de la flota a nivel ejecutivo generalmente quiere tres
+      cosas, en este orden: ¿está mejorando o empeorando esto?, ¿cuánto dinero está en juego?, y
+      ¿hay algo específico que requiera una decisión de su parte ahora mismo? Un desglose detallado
+      del puntaje de salud individual de cada activo no responde eficientemente ninguna de esas
+      preguntas \u2014 es información real y útil, simplemente dirigida a la altitud equivocada para
+      esta audiencia en particular.</p>
+
+      <h3>Comience con el número que tiene un signo de dólar</h3>
+      <p>El <a href="/docs/fleet-intelligence-formulas-explained">Riesgo de capital</a> existe
+      específicamente para este propósito \u2014 traduce la condición de la flota al único encuadre
+      al que una audiencia ejecutiva responde de manera confiable más rápido: dinero real, no un
+      porcentaje de salud abstracto. "El 12% del valor de nuestra flota está en condición de alto
+      riesgo" provoca un tipo de atención diferente que "nuestro puntaje de salud promedio es 74",
+      aunque ambos números describan genuinamente la misma situación subyacente.</p>
+
+      <h3>La tendencia vence a la instantánea, siempre, para esta audiencia</h3>
+      <p>Una calificación de flota en un solo punto en el tiempo le dice a un ejecutivo dónde
+      están las cosas hoy. Una tendencia \u2014 "la calificación pasó de B a C+ durante el último
+      trimestre" \u2014 le dice algo que realmente vale la pena reaccionar, porque implica una
+      dirección y una tasa de cambio, no solo un hecho estático para archivar. Si está presentando la
+      salud de la flota en este nivel, mostrar los mismos tres números en los últimos tres períodos
+      de informe le cuesta casi nada extra y cambia significativamente lo que la audiencia se lleva
+      de la conversación.</p>
+
+      <h3>Traiga exactamente una recomendación, no una lista</h3>
+      <p>La atención ejecutiva sobre el detalle operativo es un recurso genuinamente escaso, y una
+      larga lista de activos marcados compite precisamente por el tipo de atención que esta audiencia
+      tiene menos. Identifique la única acción de mayor apalancamiento \u2014 la categoría de mayor
+      Riesgo de capital, la única decisión que realmente está estancada esperando la aprobación
+      ejecutiva \u2014 y comience con eso en lugar de una contabilidad completa de todo lo que
+      actualmente es imperfecto en toda la flota.</p>
+
+      <h3>Guarde el tablero detallado para quien realmente lo necesite</h3>
+      <p>Nada de esto significa que la vista granular, activo por activo, sea innecesaria \u2014 es
+      esencial para quien realmente esté gestionando la flota día a día. Simplemente no es lo que
+      pertenece frente a una audiencia ejecutiva cuyo trabajo real es decidir si aprobar una
+      solicitud de presupuesto, no auditar registros de mantenimiento individuales. Los mismos datos
+      subyacentes, presentados en la altitud que coincide con quién realmente los está mirando, son
+      la diferencia entre un informe que se lee y realmente se actúa sobre él, y uno que recibe un
+      asentimiento cortés y se olvida de inmediato.</p>
+    `,
+  },
+  {
+    title: 'El costo real del tiempo de inactividad nunca es solo la factura de reparación',
+    slug: 'real-cost-of-downtime',
+    locale: 'es',
+    excerpt: 'Pregunte qué costó una falla, y la mayoría de las empresas pueden responder la factura de reparación sin dudarlo y les cuesta con todo lo demás — porque nada se diseñó nunca para rastrearlo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-09T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/downtime-cost-cover.svg',
+    bodyHtml: `
+      <p>Pregunte qué costó una falla de equipo, y la mayoría de las empresas pueden responder la
+      factura de reparación sin dudarlo y les cuesta mucho responder con todo lo demás \u2014 no
+      porque el resto no importe, sino porque nunca se diseñó en el rastreo de nadie en primer
+      lugar. La factura de reparación es casi siempre el número más pequeño en la historia real.</p>
+
+      <h3>Lo que la factura de reparación omite por completo</h3>
+      <p>Una pieza de equipo averiada no solo cuesta lo que se necesita para repararla \u2014 cuesta
+      todo el trabajo que dependía de ella estancado mientras tanto, cualquier arreglo de alquiler o
+      sustituto improvisado a último momento a una tarifa peor de lo planeado, y cualquier calendario
+      que se retrasó como resultado, repercutiendo en otros compromisos que no tenían nada que ver
+      directamente con el equipo averiado en sí. Nada de eso aparece en la factura de reparación.
+      Todo eso es un costo real.</p>
+
+      <h3>Por qué esto importa específicamente para la decisión de reparar versus reemplazar</h3>
+      <p>Nuestra propia <a href="/docs/disposal-intelligence-engine">lógica de recomendación de
+      baja</a> pondera el costo de reparación contra el costo de reemplazo \u2014 ambos números
+      reales y rastreables. El costo del tiempo de inactividad no aparece directamente en esa
+      fórmula, precisamente porque es genuinamente más difícil de capturar consistentemente a través
+      de diferentes operaciones. Esa es una limitación real y honesta que vale la pena nombrar
+      explícitamente, no pasar por alto: dos activos con perfiles de costo de reparación idénticos
+      pueden llevar un riesgo real muy diferente si uno fallando significa una parada operativa
+      completa y el otro significa un inconveniente menor, fácilmente absorbible. El número no sabe
+      qué situación está viendo a menos que usted mismo incorpore ese contexto.</p>
+
+      <h3>Un método aproximado que supera a no contarlo en absoluto</h3>
+      <p>No necesita un modelo preciso de costeo de tiempo de inactividad para mejorar
+      significativamente sobre "no rastreamos esto". Una estimación inicial razonable: ¿qué genera o
+      cuesta realmente una hora o un día del trabajo afectado cuando funciona normalmente, y
+      aproximadamente cuánto tiempo tomaría resolver realísticamente la falla de este activo
+      específico, basado en su <a href="/docs/failure-prediction-engine">riesgo de falla</a> real y
+      qué tan rápido se podría genuinamente organizar un reemplazo o reparación? Ese número
+      aproximado, colocado junto a la estimación de reparación cuando surge una decisión real de
+      reparar o reemplazar, cambia el cálculo significativamente para equipo donde una falla
+      significaría una parada operativa genuina \u2014 aunque nunca será tan preciso como la propia
+      factura de reparación.</p>
+
+      <h3>Dónde esto se conecta de vuelta con actuar antes, no solo estimar mejor</h3>
+      <p>La otra palanca que vale la pena accionar aquí no es una mejor estimación de tiempo de
+      inactividad \u2014 es simplemente actuar sobre señales de advertencia temprana antes de que el
+      tiempo de inactividad ocurra en absoluto. Una predicción de falla sobre la que se actúa
+      mientras un activo todavía está funcionando le cuesta una reparación planificada en su propio
+      calendario. La misma falla ignorada hasta que realmente sucede le cuesta la reparación, el
+      tiempo de inactividad, y cualquier sustituto improvisado que organice bajo presión, todo junto
+      a la vez, sin que nada de eso suceda en un calendario que usted eligió.</p>
+
+      <p>Nada de esto requiere un sistema perfecto de costeo de tiempo de inactividad para que valga
+      la pena hacerlo. Requiere admitir que la factura de reparación nunca fue toda la historia, y
+      construir incluso una estimación aproximada del resto en decisiones donde la brecha entre los
+      dos números es genuinamente grande.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;

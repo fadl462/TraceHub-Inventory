@@ -2683,6 +2683,252 @@ const frenchPosts = [
       simplement réellement le posséder.</p>
     `,
   },
+  {
+    title: 'Les règles de mise au rebut des déchets électroniques deviennent réelles : ce que la responsabilité élargie des producteurs signifie vraiment pour vous',
+    slug: 'e-waste-epr-disposal-rules-2026',
+    locale: 'fr',
+    excerpt: '25 États américains ont maintenant des lois REP pour l\u2019électronique, et le fardeau de documentation s\u2019est déplacé vers quiconque met réellement l\u2019équipement au rebut.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-02T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/epr-cover.svg',
+    bodyHtml: `
+      <p>Vingt-cinq États américains ont maintenant des lois sur la responsabilité élargie des
+      producteurs couvrant l'électronique, et le fardeau pratique de conformité s'est déplacé vers
+      les organisations qui retirent réellement l'équipement, pas seulement les fabricants qui l'ont
+      fabriqué. Si votre processus de mise au rebut pour l'ancien équipement informatique, ou tout ce
+      qui a une batterie, est actuellement « quelqu'un l'apporte pour être recyclé, probablement
+      correctement », 2026 est l'année où cela cesse d'être une hypothèse sûre dans un nombre
+      croissant d'États.</p>
+
+      <h3>Ce que la REP exige réellement de l'entreprise qui met au rebut l'équipement</h3>
+      <p>L'obligation légale de financer les programmes de recyclage incombe aux fabricants en vertu
+      de ces lois. Ce qui vous incombe, en pratique, c'est la documentation : la preuve que ce que
+      vous avez retiré a réellement transité par un collecteur approuvé par le programme ou un
+      recycleur correctement certifié, pas juste une hypothèse générale que « c'est allé être recyclé
+      quelque part ». Pour les organisations qui traitent aussi des données sensibles \u2014 quiconque
+      ayant une relation avec un entrepreneur de défense, des données de santé, ou des obligations de
+      conformité similaires \u2014 cela s'ajoute maintenant fréquemment à des exigences de
+      documentation d'assainissement des données distinctes, ce qui signifie qu'un seul ordinateur
+      portable mis à la retraite peut nécessiter deux pistes de conformité parallèles : une prouvant
+      où est allé le matériel, une prouvant que les données dessus ont été correctement détruites.</p>
+
+      <h3>Pourquoi c'est en fait une adéquation naturelle avec un véritable flux de mise au rebut</h3>
+      <p>C'est précisément à cela qu'un véritable <a href="/docs/six-stage-disposal-workflow">flux de
+      mise au rebut</a> avec une piste d'audit réelle a été construit, même avant que cette vague
+      réglementaire spécifique n'existe. Un dossier de mise au rebut qui passe par de véritables
+      étapes d'examen \u2014 signalé, examiné, approuvé, une méthode de mise au rebut spécifique
+      enregistrée, un montant de vente final ou une confirmation de mise au rebut enregistrée \u2014
+      produit déjà exactement le registre de chaîne de possession que ce type de conformité demande.
+      La différence entre un processus informel « quelqu'un s'en est occupé » et un processus
+      documenté n'est pas un travail supplémentaire boulonné pour la conformité ; c'est la même
+      habitude de tenue de registres qui valait déjà la peine d'avoir, maintenant avec une raison
+      réglementaire plus claire pour laquelle cela compte.</p>
+
+      <h3>Ce qu'il faut réellement vérifier, spécifiquement</h3>
+      <p>Vous n'avez pas besoin d'une refonte de conformité pour prendre de l'avance sur cela. Deux
+      choses concrètes valent la peine d'être vérifiées : votre champ de méthode de mise au rebut,
+      quand l'équipement est démantelé ou recyclé, nomme-t-il réellement un recycleur certifié ou un
+      programme de collecte spécifique, ou dit-il simplement « recyclé » sans rien derrière ? Et pour
+      l'équipement qui a jamais contenu des données sensibles \u2014 pas seulement l'équipement
+      évidemment sensible, mais tout ce qui s'est connecté à un réseau \u2014 existe-t-il un
+      véritable registre de comment ces données ont été traitées lors de la mise au rebut, séparé de
+      la destination physique du matériel ?</p>
+
+      <h3>Le bilan honnête</h3>
+      <p>L'intensité de l'application réglementaire varie véritablement selon l'État en ce moment, et
+      il est raisonnable de s'attendre à des changements continus tout au long du reste de 2026 à
+      mesure que plus d'États adoptent ou étendent leurs propres programmes. Ce qui ne dépend
+      d'aucune posture d'application d'un État spécifique : une piste de mise au rebut documentée ne
+      vous coûte presque rien de plus à maintenir si elle est déjà intégrée dans la façon dont
+      l'équipement est retiré, et elle est considérablement plus coûteuse à reconstruire après coup
+      si un régulateur ou un auditeur demande des registres que personne n'a conservés.</p>
+    `,
+  },
+  {
+    title: 'Ce qu\u2019un score de confiance vous protège réellement',
+    slug: 'what-confidence-score-protects-against',
+    locale: 'fr',
+    excerpt: 'C\u2019est le chiffre le moins glamour sur la page d\u2019un actif, et il fait sans doute le travail le plus important de tous.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-04T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/confidence-score-cover.svg',
+    bodyHtml: `
+      <p>Un score de confiance est le chiffre le moins glamour sur la page d'un actif, et il fait
+      sans doute le travail le plus important de tous : vous dire, honnêtement, à quel point faire
+      réellement confiance à tout le reste que vous regardez.</p>
+
+      <h3>Ce contre quoi il vous protège réellement</h3>
+      <p>Chaque moteur de recommandation, le nôtre y compris, fait face à la même tentation :
+      présenter chaque résultat avec le même ton confiant, peu importe la quantité de preuves
+      réelles qui le sous-tendent. Un <a href="/docs/ai-confidence-score-and-learning-loop">score de
+      confiance</a> existe spécifiquement pour résister à cette tentation \u2014 un actif avec
+      presque aucun historique de maintenance, aucun registre d'inspection, et aucune valeur
+      marchande saisie montrera honnêtement un score de confiance plus bas qu'un actif identique
+      avec deux ans d'historique détaillé derrière lui, même si les deux pourraient afficher
+      exactement le même score de santé ou la même recommandation de mise au rebut en surface.</p>
+
+      <h3>L'erreur spécifique que cela prévient</h3>
+      <p>Sans un signal de confiance honnête, un actif peu documenté et un bien documenté se
+      ressemblent au premier coup d'œil, ce qui signifie qu'un décideur n'a aucun moyen de distinguer
+      « cette recommandation est étayée par deux ans de données réelles » de « cette recommandation
+      est surtout un défaut de catégorie parce que presque rien n'a réellement été enregistré
+      encore ». Traiter les deux avec le même poids est exactement l'erreur qu'un score de confiance
+      est conçu pour prévenir \u2014 c'est la différence entre « le système dit de le remplacer »
+      portant un véritable poids probant par rapport à être à peine plus qu'une supposition éclairée
+      déguisée pour paraître pareille.</p>
+
+      <h3>Ce qui l'augmente réellement, et pourquoi c'est la bonne incitation</h3>
+      <p>Le score de confiance n'est pas une tâche séparée à gérer \u2014 il augmente naturellement à
+      mesure que vous faites les choses qui valent déjà la peine d'être faites : enregistrer de
+      véritables détails de maintenance au lieu de « entretenu », garder la
+      <a href="/docs/registering-an-asset">valeur marchande actuelle</a> mise à jour plutôt
+      qu'obsolète, construire un véritable historique d'inspection au fil du temps. C'est un choix
+      de conception délibéré : il n'y a aucun moyen de directement augmenter un score de confiance
+      sans réellement améliorer les données sous-jacentes derrière lui, parce que le score est un
+      reflet de la complétude réelle des données, pas une métrique séparée que vous pouvez tricher
+      indépendamment de la substance qu'elle est censée représenter.</p>
+
+      <h3>La boucle d'apprentissage est la même idée, étendue dans le temps</h3>
+      <p>La <a href="/docs/ai-confidence-score-and-learning-loop">boucle d'apprentissage</a>
+      sous-jacente applique la même honnêteté à une question différente : quand votre organisation a
+      rejeté une recommandation de mise au rebut dans le passé, une véritable panne a-t-elle suivi
+      dans le mois suivant, ou non ? Ce véritable historique \u2014 pas un référentiel industriel
+      générique \u2014 devient un petit ajustement borné à la confiance future, spécifique à
+      l'historique réel de votre propre flotte.</p>
+
+      <h3>Pourquoi un score de confiance bas est une information utile, pas un échec</h3>
+      <p>Une mauvaise lecture courante traite un score de confiance bas comme quelque chose dont il
+      faut avoir honte ou à cacher. C'est le contraire : un système vous disant honnêtement « ne
+      pondérez pas cela trop lourdement encore, nous n'avons pas assez derrière » est plus utile
+      qu'un système qui préférerait sembler certain qu'être honnête. Le véritable mode d'échec n'est
+      pas un score de confiance bas \u2014 c'est un système qui ne vous en montre jamais un du tout,
+      et vous laisse découvrir à vos dépens quelles recommandations étaient solides et lesquelles
+      étaient une supposition en blouse de laboratoire.</p>
+    `,
+  },
+  {
+    title: 'Comment présenter les données de flotte aux dirigeants qui veulent juste l\u2019essentiel',
+    slug: 'presenting-fleet-data-to-executives',
+    locale: 'fr',
+    excerpt: 'Les mêmes données sous-jacentes, présentées à la mauvaise altitude, font la différence entre un rapport suivi d\u2019action et un qui reçoit un hochement de tête poli.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/executive-reporting-cover.svg',
+    bodyHtml: `
+      <p>Un dirigeant jetant un œil à un rapport de flotte pendant trente secondes et quelqu'un qui
+      vit dans le système d'actifs chaque jour veulent des choses fondamentalement différentes des
+      mêmes données, et présenter à un public la version de l'autre est la façon la plus courante
+      dont un rapport véritablement bon échoue à atteindre sa cible.</p>
+
+      <h3>Ce qu'un dirigeant veut réellement, et ce n'est pas plus de détails</h3>
+      <p>Quelqu'un examinant la performance de la flotte au niveau exécutif veut généralement trois
+      choses, dans cet ordre : est-ce que cela s'améliore ou s'aggrave, combien d'argent est en jeu,
+      et y a-t-il quelque chose de spécifique nécessitant une décision de sa part maintenant. Une
+      répartition détaillée du score de santé individuel de chaque actif ne répond efficacement à
+      aucune de ces questions \u2014 c'est une information réelle et utile, simplement visée à la
+      mauvaise altitude pour ce public particulier.</p>
+
+      <h3>Commencez par le chiffre qui porte un signe dollar</h3>
+      <p>Le <a href="/docs/fleet-intelligence-formulas-explained">Risque de capital</a> existe
+      spécifiquement à cette fin \u2014 il traduit l'état de la flotte dans le seul cadrage auquel un
+      public exécutif répond de manière fiable le plus rapidement : de l'argent réel, pas un
+      pourcentage de santé abstrait. « 12 % de la valeur de notre flotte se trouve en état à haut
+      risque » suscite un type d'attention différent que « notre score de santé moyen est de 74 »,
+      même si les deux chiffres décrivent véritablement la même situation sous-jacente.</p>
+
+      <h3>La tendance bat l'instantané, à chaque fois, pour ce public</h3>
+      <p>Une note de flotte à un seul instant précis dit à un dirigeant où en sont les choses
+      aujourd'hui. Une tendance \u2014 « la note est passée de B à C+ au cours du dernier
+      trimestre » \u2014 leur dit quelque chose qui vaut la peine d'y réagir réellement, parce que
+      cela implique une direction et un taux de changement, pas juste un fait statique à classer. Si
+      vous présentez la santé de la flotte à ce niveau, montrer les mêmes trois chiffres sur les
+      trois dernières périodes de rapport ne vous coûte presque rien de plus et change
+      significativement ce que le public retient de la conversation.</p>
+
+      <h3>Apportez exactement une recommandation, pas une liste</h3>
+      <p>L'attention exécutive sur le détail opérationnel est une ressource véritablement rare, et
+      une longue liste d'actifs signalés est en concurrence pour exactement le type d'attention que
+      ce public a le moins. Identifiez l'action unique au plus fort levier \u2014 la catégorie au
+      plus haut Risque de capital, la seule décision qui est réellement bloquée en attente de
+      l'approbation exécutive \u2014 et commencez par cela au lieu d'une comptabilisation complète de
+      tout ce qui est actuellement imparfait à travers la flotte.</p>
+
+      <h3>Gardez le tableau de bord détaillé pour quiconque en a réellement besoin</h3>
+      <p>Rien de tout cela ne signifie que la vue granulaire, actif par actif, est inutile \u2014 elle
+      est essentielle pour quiconque gère réellement la flotte au jour le jour. Elle n'appartient
+      simplement pas devant un public exécutif dont le vrai travail est de décider s'il faut
+      approuver une demande de budget, pas d'auditer des registres de maintenance individuels. Les
+      mêmes données sous-jacentes, présentées à l'altitude qui correspond à qui les regarde
+      réellement, sont la différence entre un rapport qui est lu et véritablement suivi d'action, et
+      un qui reçoit un hochement de tête poli et est immédiatement oublié.</p>
+    `,
+  },
+  {
+    title: 'Le vrai coût du temps d\u2019arrêt n\u2019est jamais juste la facture de réparation',
+    slug: 'real-cost-of-downtime',
+    locale: 'fr',
+    excerpt: 'Demandez ce qu\u2019une panne a coûté, et la plupart des entreprises peuvent répondre la facture de réparation sans hésitation et peinent avec tout le reste — parce que rien n\u2019a jamais été conçu pour le suivre.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-09T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/downtime-cost-cover.svg',
+    bodyHtml: `
+      <p>Demandez ce qu'une panne d'équipement a coûté, et la plupart des entreprises peuvent
+      répondre la facture de réparation sans hésitation et peinent sérieusement avec tout le
+      reste \u2014 pas parce que le reste ne compte pas, mais parce que cela n'a jamais été conçu
+      dans le suivi de quiconque en premier lieu. La facture de réparation est presque toujours le
+      plus petit chiffre dans l'histoire réelle.</p>
+
+      <h3>Ce que la facture de réparation omet entièrement</h3>
+      <p>Un équipement en panne ne coûte pas seulement ce qu'il faut pour le réparer \u2014 il coûte
+      tout le travail qui en dépendait, resté bloqué entre-temps, tout arrangement de location ou de
+      substitut bricolé à la dernière minute à un tarif pire que prévu, et tout calendrier qui a
+      glissé en conséquence, se répercutant sur d'autres engagements qui n'avaient rien à voir
+      directement avec l'équipement cassé lui-même. Rien de tout cela n'apparaît sur la facture de
+      réparation. Tout cela est un coût réel.</p>
+
+      <h3>Pourquoi cela compte spécifiquement pour la décision réparer-versus-remplacer</h3>
+      <p>Notre propre <a href="/docs/disposal-intelligence-engine">logique de recommandation de mise
+      au rebut</a> pèse le coût de réparation contre le coût de remplacement \u2014 les deux sont des
+      chiffres réels et traçables. Le coût du temps d'arrêt n'apparaît pas directement dans cette
+      formule, précisément parce qu'il est véritablement plus difficile à capturer de manière
+      cohérente à travers différentes opérations. C'est une limitation réelle et honnête qui vaut la
+      peine d'être nommée explicitement, pas glissée sous le tapis : deux actifs avec des profils de
+      coût de réparation identiques peuvent porter un risque réel très différent si l'un tombant en
+      panne signifie un arrêt opérationnel complet et l'autre un inconvénient mineur, facilement
+      absorbé. Le chiffre ne sait pas quelle situation il regarde à moins que vous n'intégriez ce
+      contexte vous-même.</p>
+
+      <h3>Une méthode approximative qui bat ne pas du tout le compter</h3>
+      <p>Vous n'avez pas besoin d'un modèle précis de calcul du coût du temps d'arrêt pour améliorer
+      significativement « nous ne suivons pas cela ». Une estimation de départ raisonnable : que
+      génère ou coûte réellement une heure ou un jour du travail affecté quand il fonctionne
+      normalement, et combien de temps prendrait réalistement pour se résoudre la panne de cet actif
+      spécifique, basé sur son <a href="/docs/failure-prediction-engine">risque de panne</a> réel et
+      la rapidité avec laquelle un remplacement ou une réparation pourrait véritablement être
+      organisé. Ce chiffre approximatif, placé à côté de l'estimation de réparation quand une vraie
+      décision réparer-ou-remplacer se présente, change significativement le calcul pour un
+      équipement où une panne signifierait un véritable arrêt opérationnel \u2014 même s'il ne sera
+      jamais aussi précis que la facture de réparation elle-même.</p>
+
+      <h3>Où cela se reconnecte à agir plus tôt, pas juste mieux estimer</h3>
+      <p>L'autre levier qui vaut la peine d'être actionné ici n'est pas une meilleure estimation du
+      temps d'arrêt \u2014 c'est simplement agir sur les signaux d'alerte précoces avant même que le
+      temps d'arrêt ne se produise. Une prédiction de panne sur laquelle on agit pendant qu'un actif
+      fonctionne encore vous coûte une réparation planifiée selon votre propre calendrier. La même
+      panne ignorée jusqu'à ce qu'elle se produise réellement vous coûte la réparation, le temps
+      d'arrêt, et tout substitut bricolé que vous organisez sous pression, tout cela ensemble à la
+      fois, sans que rien de cela ne se produise selon un calendrier que vous avez choisi.</p>
+
+      <p>Rien de tout cela ne nécessite un système parfait de calcul du coût du temps d'arrêt pour
+      valoir la peine d'être fait. Cela nécessite d'admettre que la facture de réparation n'a jamais
+      été toute l'histoire, et d'intégrer même une estimation approximative du reste dans les
+      décisions où l'écart entre les deux chiffres est véritablement grand.</p>
+    `,
+  },
 ];
 
 module.exports = frenchPosts;
