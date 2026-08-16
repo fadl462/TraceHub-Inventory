@@ -3086,6 +3086,240 @@ const spanishPosts = [
       genuinamente no puede permitirse que lo sorprendan.</p>
     `,
   },
+  {
+    title: 'El costo de los sensores acaba de caer un 85%: lo que eso significa (y no significa) para cómo predice fallas',
+    slug: 'sensor-costs-predictive-maintenance-2026',
+    locale: 'es',
+    excerpt: 'Los sensores de vibración que costaban $600 en 2019 cuestan menos de $50 en 2026. Aquí está la distinción honesta entre predicción basada en sensores y basada en datos, y cuál realmente construimos.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/sensor-costs-cover.svg',
+    bodyHtml: `
+      <p>Un sensor de vibración que costaba alrededor de $600 por punto de monitoreo en 2019 cuesta
+      menos de $50 en 2026 \u2014 un colapso de precio del 85 por ciento que ha cruzado un umbral
+      real: el monitoreo de condición basado en sensores ahora tiene sentido financiero en equipo
+      que vale tan poco como $5,000, no solo las turbinas y compresores de un millón de dólares que
+      solían ser los únicos candidatos económicamente justificables. Este es un cambio genuino que
+      vale la pena entender, y vale la pena ser precisos sobre lo que significa y no significa para
+      cómo realmente funciona la predicción de fallas.</p>
+
+      <h3>Dos tipos genuinamente diferentes de predicción, que vale la pena no confundir</h3>
+      <p>"Mantenimiento predictivo" se usa como un solo término para dos enfoques
+      significativamente diferentes. La <strong>predicción basada en sensores</strong> lee una
+      señal física directamente del equipo en tiempo real \u2014 vibración, temperatura, consumo de
+      corriente \u2014 y marca una desviación del patrón normal propio de esa unidad específica, a
+      menudo detectando una falla de rodamiento en desarrollo o una desalineación días antes de que
+      apareciera de cualquier otra forma. La <strong>predicción basada en patrones de datos</strong>
+      en cambio funciona a partir de registros operativos \u2014 edad relativa a la vida esperada,
+      historial de mantenimiento, intensidad de uso, exposición ambiental \u2014 y pronostica la
+      probabilidad de falla a partir de cómo se ha comportado realmente equipo similar bajo
+      condiciones reales similares.</p>
+
+      <h3>Siendo precisos sobre cuál de las dos realmente hace esta plataforma</h3>
+      <p>El <a href="/docs/failure-prediction-engine">Motor de predicción de fallas</a> de TraceHub
+      es firmemente del segundo tipo: entradas reales, pronósticos genuinamente útiles, pero
+      trabajando a partir de datos operativos que usted ingresa y mantiene, no de una señal física en
+      vivo transmitida directamente del equipo mismo. Vale la pena decir esto claramente en lugar de
+      dejar que "predicción impulsada por IA" implique más de lo que realmente es \u2014 actualmente
+      no leemos sensores de vibración o temperatura directamente, y un pronóstico construido a partir
+      del historial de mantenimiento y patrones de uso es una señal genuinamente diferente, y en
+      algunas formas específicas menos inmediata, que un sensor que detecta un rodamiento comenzando
+      a fallar en tiempo real.</p>
+
+      <h3>Por qué la predicción basada en patrones de datos sigue siendo genuinamente valiosa, no un premio de consolación</h3>
+      <p>El monitoreo basado en sensores es excelente para detectar temprano una falla mecánica
+      específica en desarrollo. Dice relativamente poco sobre la pregunta financiera más grande que
+      la mayoría de las flotas realmente necesitan responder: dado el historial completo de este
+      activo \u2014 no solo su firma de vibración actual \u2014 ¿vale la pena repararlo de nuevo, o el
+      patrón de costos y fallas ha hecho que el reemplazo sea la mejor decisión? Esa es una pregunta
+      sobre historial acumulado y economía, y es exactamente lo que la predicción basada en patrones
+      de datos y el <a href="/docs/disposal-intelligence-engine">motor de recomendación de baja</a>
+      construido sobre ella realmente están diseñados para responder.</p>
+
+      <h3>La conclusión honesta y práctica</h3>
+      <p>Si un activo específico, de alto valor, mecánicamente complejo se beneficiaría genuinamente
+      de señales de condición en tiempo real \u2014 el tipo de equipo donde una falla de rodamiento
+      es costosa y difícil de predecir solo a partir de patrones de uso \u2014 la caída en el costo de
+      los sensores es real y vale la pena investigarla como su propia inversión separada. Es un
+      complemento al buen mantenimiento de registros operativos, no un sustituto, y las dos
+      responden preguntas genuinamente diferentes: una le dice que algo está mal ahora mismo, la
+      otra le dice si vale la pena seguir arreglándolo dado todo lo que ha sucedido hasta ahora.</p>
+    `,
+  },
+  {
+    title: 'Los límites honestos de lo que la IA puede decirle sobre una pieza de equipo de cuarenta años',
+    slug: 'ai-limits-old-equipment',
+    locale: 'es',
+    excerpt: 'El valor en libros deja de ser la pregunta interesante mucho antes de que un activo deje de funcionar. Aquí está lo que todavía funciona bien a esa edad, y lo que honestamente no.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-23T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/old-equipment-cover.svg',
+    bodyHtml: `
+      <p>En algún lugar de la mayoría de las flotas se encuentra una pieza de equipo más vieja que
+      algunas de las personas que la mantienen \u2014 completamente depreciada hace décadas, todavía
+      funcionando, todavía haciendo trabajo real. Vale la pena ser honestos sobre lo que un motor de
+      inteligencia puede y no puede decirle de manera significativa sobre equipo como este, porque
+      la respuesta honesta es genuinamente diferente de lo que puede decirle sobre algo de tres
+      años.</p>
+
+      <h3>Por qué el número de depreciación deja de ser la parte interesante</h3>
+      <p>Un cálculo de depreciación en línea recta o basado en uso en un activo de cuarenta años
+      mostrará correctamente que está en su valor residual, lo ha estado durante décadas, y seguirá
+      mostrando exactamente eso sin importar cuántos años más funcione. Esto no es una limitación
+      del cálculo \u2014 es un reflejo preciso del hecho de que el valor en libros genuinamente deja
+      de ser la pregunta interesante para equipo tan viejo. La pregunta real se desplaza por
+      completo a la condición y el costo continuo, no al valor en libros restante, porque
+      efectivamente no queda nada que rastrear.</p>
+
+      <h3>Dónde el puntaje de salud genuinamente se vuelve menos confiable, honestamente</h3>
+      <p>Un <a href="/docs/asset-health-score">Puntaje de salud de activo</a> ponderado en parte
+      por la edad relativa a la vida útil esperada se encuentra aquí con un caso límite honesto: un
+      activo de cuarenta años generalmente ha superado con creces cualquier suposición de vida útil
+      que alguna vez se ingresó para su categoría, lo que puede arrastrar fuertemente hacia abajo el
+      componente ajustado por edad de su puntaje sin importar su verdadera condición actual. Esto
+      vale la pena reconocerlo como una limitación real en lugar de disimularlo \u2014 para equipo
+      tan viejo, el historial de mantenimiento y los datos de inspección recientes merecen más peso
+      real en su propio juicio que el componente de edad del puntaje automatizado, que está haciendo
+      lo mejor que puede con una suposición que nunca fue realmente construida para un horizonte
+      temporal de cuarenta años.</p>
+
+      <h3>Lo que todavía funciona bien, y funciona bien específicamente porque no depende de la edad</h3>
+      <p>Las tendencias de costo de mantenimiento siguen siendo genuinamente útiles a cualquier
+      edad \u2014 una frecuencia o costo de reparación en aumento en un activo de décadas de
+      antigüedad es una señal real sin importar cuán depreciado ya esté en papel. La ponderación más
+      pesada de la <a href="/docs/disposal-intelligence-engine">recomendación de baja</a> \u2014 el
+      costo de mantenimiento relativo al costo de reemplazo actual \u2014 sigue siendo significativa
+      precisamente porque no depende en absoluto de la edad del activo, solo de su costo real
+      continuo versus lo que costaría hoy un equivalente nuevo.</p>
+
+      <h3>El ajuste práctico que vale la pena hacer</h3>
+      <p>Para equipo lo suficientemente viejo como para que su valor en libros haya estado en el
+      residual durante años, desplace su propia atención hacia las entradas que no se degradan con
+      la edad \u2014 patrón de mantenimiento reciente, condición actual real de su última inspección,
+      costo de reemplazo real \u2014 y trate un puntaje de salud automatizado en equipo tan viejo
+      como una entrada entre varias en lugar del factor decisivo. La respuesta honesta, cuando
+      alguien pregunta si el sistema está "equivocado" sobre equipo viejo, generalmente no es que
+      esté equivocado \u2014 es que un par de sus entradas se construyeron en torno a suposiciones
+      que nunca fueron diseñadas para describir equipo funcionando décadas más allá de las
+      expectativas originales de nadie, y conocer esa distinción vale más que la confianza ciega en
+      un solo número.</p>
+    `,
+  },
+  {
+    title: '"Todo se ve bien" a veces es el estado de tablero más peligroso',
+    slug: 'everything-looks-fine-danger',
+    locale: 'es',
+    excerpt: 'Un tablero puede verse idénticamente verde por dos razones opuestas: salud genuina, o datos que silenciosamente dejaron de fluir. La diferencia es invisible sin verificar.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-25T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/everything-fine-cover.svg',
+    bodyHtml: `
+      <p>Un tablero que muestra cada métrica en verde es genuinamente tranquilizador o
+      silenciosamente peligroso, y la diferencia entre los dos no tiene nada que ver con el tablero
+      mismo \u2014 se trata completamente de si alguien realmente está verificando que los datos
+      detrás de él sean reales y actuales.</p>
+
+      <h3>El modo de falla que se ve idéntico al éxito</h3>
+      <p>Dos situaciones producen un tablero completamente verde idéntico: una flota que está
+      genuinamente bien mantenida y rastreada con precisión, y una flota donde la entrada de datos
+      ha cesado silenciosamente \u2014 nadie registra mantenimiento, nadie actualiza la condición,
+      nadie escanea ubicaciones \u2014 lo cual produce exactamente la misma ausencia visual de
+      banderas rojas, por la razón opuesta. Un puntaje de salud no puede marcar un problema del que
+      nunca se le informó. El silencio en un tablero no distingue entre "nada está mal" y "nadie nos
+      está diciendo nada", y esas son situaciones muy diferentes usando una luz verde idéntica.</p>
+
+      <h3>Por qué este modo de falla específico es peligroso en lugar de simplemente desafortunado</h3>
+      <p>Un tablero lleno de banderas rojas activas al menos incita a la acción \u2014 algo demanda
+      visiblemente atención, y alguien eventualmente mira. Un tablero completamente verde producido
+      por datos que silenciosamente dejaron de fluir no incita nada en absoluto, porque no hay
+      síntoma visible que le diga a nadie que verifique. Esta es precisamente la situación que se
+      convierte en una sorpresa desagradable meses después: no porque algo haya fallado de manera
+      inusual, sino porque nadie notó que el mantenimiento de registros se había detenido mucho
+      antes de la falla real que eventualmente forzó a alguien a mirar.</p>
+
+      <h3>La verificación que realmente detecta esto</h3>
+      <p>La pregunta útil no es "¿todo se ve bien?" \u2014 es "¿cuándo se actualizó realmente cada
+      uno de estos números por última vez?". Un puntaje de salud de flota es tan actual como sus
+      entradas más recientes, y un escaneo rápido de las marcas de tiempo de última actualización a
+      través de registros de mantenimiento recientes, escaneos de ubicación recientes, e
+      inspecciones recientes le dice algo que un tablero verde por sí solo nunca dirá: si la imagen
+      tranquilizadora es información actual o un eco obsoleto de lo que se ingresó realmente por
+      última vez, sentado ahí luciendo idéntico de cualquier manera.</p>
+
+      <h3>Construyendo el hábito de revisar el silencio, no solo las alarmas</h3>
+      <p>La mayoría de los hábitos de monitoreo están construidos completamente en torno a detectar
+      malas noticias \u2014 vigilando banderas rojas, artículos vencidos, puntajes en declive. Vale
+      la pena agregar a eso: una revisión ocasional del patrón opuesto \u2014 una ubicación, una
+      categoría, o un equipo que se ha vuelto inusualmente silencioso, con actividad que ha caído
+      sin ningún evento específico que lo explique. Esa ausencia es su propio tipo de señal, y es la
+      que un tablero completamente verde, por su propio diseño, nunca puede sacar a la superficie
+      por sí solo.</p>
+
+      <p>Un tablero silencioso se gana la confianza de datos reales y actuales detrás de él, no de
+      la mera ausencia de problemas visibles. La diferencia es invisible desde el tablero solo \u2014
+      que es exactamente por qué vale la pena revisarlo ocasionalmente, en lugar de asumir que el
+      verde siempre significa lo que se supone que debe significar.</p>
+    `,
+  },
+  {
+    title: 'El valor real de un informe aburrido que nadie lee hasta que lo necesita',
+    slug: 'value-of-boring-reports',
+    locale: 'es',
+    excerpt: 'Su valor aparece mucho después y de manera impredecible — que es exactamente por qué la ventana para generarlo proactivamente se cierra antes de que sepa que lo necesitará.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-28T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/boring-reports-cover.svg',
+    bodyHtml: `
+      <p>Nadie lee el informe de actividad de ubicación del mes pasado por diversión, y la mayoría
+      de las empresas silenciosamente dejan de generar informes rutinarios que nadie está leyendo
+      activamente, lo cual se siente como una eficiencia razonable hasta la semana del año en que
+      alguien necesita urgentemente exactamente ese informe aburrido y descubre que ya no existe.</p>
+
+      <h3>El informe que se gana su lugar al casi nunca abrirse</h3>
+      <p>Una exportación semanal o mensual de actividad rutinaria \u2014 quién escaneó qué, qué
+      asignaciones se cerraron, qué mantenimiento se registró \u2014 es genuinamente aburrida en el
+      momento en que se genera. Su valor real aparece mucho después y de manera impredecible: una
+      pregunta de seguro sobre dónde estaba un activo en una fecha específica, una disputa interna
+      sobre quién tenía la custodia de algo, una solicitud de cumplimiento de registros que cubren
+      un período que nadie pensó en marcar específicamente como importante en ese momento. Ninguna
+      de estas necesidades es previsible cuando se genera el informe. Todas son considerablemente
+      más fáciles de responder cuando ya existe una exportación rutinaria que cuando alguien tiene
+      que reconstruir la misma información desde cero bajo presión de tiempo.</p>
+
+      <h3>Por qué "siempre podemos buscarlo después" silenciosamente deja de ser cierto</h3>
+      <p>Los datos del sistema en vivo son tan profundos como su retención y su propia diligencia
+      para registrar las cosas de manera consistente en primer lugar. Un hábito permanente de
+      <a href="/docs/exporting-csv-pdf-powerpoint">exportación</a> crea un registro independiente,
+      en un momento específico, que existe específicamente porque nadie todavía sabe qué semana en
+      particular resultará importante. Para cuando sabe que necesita un registro específico, la
+      ventana para haberlo generado proactivamente generalmente ya se ha cerrado \u2014 ahora está
+      reconstruyendo después del hecho, de memoria y de lo que todavía está en el sistema en vivo,
+      en lugar de sacar algo que ya estaba ahí esperando.</p>
+
+      <h3>Lo que realmente merece este tratamiento, y lo que no</h3>
+      <p>No todo necesita un hábito permanente de exportación \u2014 el objetivo no es acumular
+      indefinidamente cada informe posible. Lo que vale la pena: cualquier cosa que genuinamente
+      lamentaría no tener si una disputa, un reclamo, o una solicitud de auditoría aterrizara en su
+      escritorio inesperadamente. El historial de ubicación y asignación para categorías de equipo
+      de mayor valor o mayor movilidad es un valor predeterminado razonable; una exportación
+      completa de cada categoría sin importar el valor probablemente sea excesiva para la mayoría
+      de las operaciones.</p>
+
+      <h3>El verdadero costo-beneficio, dicho claramente</h3>
+      <p>Generar un informe que nadie lee cuesta unos minutos y algo de espacio de almacenamiento.
+      Necesitar un registro que no existe cuesta considerablemente más \u2014 en tiempo dedicado a
+      reconstruirlo, en credibilidad perdida si no puede producirlo de manera convincente, y en
+      cualquier decisión que estuviera esperando una respuesta que no pudo proporcionar rápidamente.
+      El informe aburrido gana todo su valor en la única ocasión, imposible de conocer de antemano,
+      en que resulta ser exactamente lo que se necesitaba \u2014 y no cuesta casi nada en cualquier
+      otra ocasión en que simplemente se queda ahí, sin leer, haciendo su trabajo real simplemente
+      existiendo.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;

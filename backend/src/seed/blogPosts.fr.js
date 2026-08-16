@@ -3181,6 +3181,252 @@ const frenchPosts = [
       surprendre.</p>
     `,
   },
+  {
+    title: 'Le coût des capteurs vient de chuter de 85 % : ce que cela signifie (et ne signifie pas) pour la façon dont vous prédisez les pannes',
+    slug: 'sensor-costs-predictive-maintenance-2026',
+    locale: 'fr',
+    excerpt: 'Les capteurs de vibration qui coûtaient 600 $ en 2019 coûtent moins de 50 $ en 2026. Voici la distinction honnête entre la prédiction basée sur capteurs et basée sur données, et laquelle nous construisons réellement.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/sensor-costs-cover.svg',
+    bodyHtml: `
+      <p>Un capteur de vibration qui coûtait environ 600 $ par point de surveillance en 2019 coûte
+      moins de 50 $ en 2026 \u2014 un effondrement de prix de 85 % qui a franchi un véritable seuil :
+      la surveillance de l'état basée sur des capteurs a maintenant du sens financièrement sur des
+      équipements valant aussi peu que 5 000 $, pas seulement les turbines et compresseurs à un
+      million de dollars qui étaient autrefois les seuls candidats économiquement justifiables. C'est
+      un changement véritable qui vaut la peine d'être compris, et cela vaut la peine d'être précis
+      sur ce que cela signifie et ne signifie pas pour la façon dont la prédiction de panne
+      fonctionne réellement.</p>
+
+      <h3>Deux types véritablement différents de prédiction, qu'il vaut mieux ne pas confondre</h3>
+      <p>La « maintenance prédictive » est utilisée comme un terme unique pour deux approches
+      significativement différentes. La <strong>prédiction basée sur des capteurs</strong> lit un
+      signal physique directement sur l'équipement en temps réel \u2014 vibration, température,
+      consommation de courant \u2014 et signale une déviation du schéma normal propre à cette unité
+      spécifique, capturant souvent un défaut de roulement en développement ou un désalignement des
+      jours avant qu'il n'apparaisse d'une autre façon. La <strong>prédiction basée sur des
+      schémas de données</strong> fonctionne à partir de registres opérationnels à la
+      place \u2014 âge par rapport à la durée de vie attendue, historique de maintenance, intensité
+      d'usage, exposition environnementale \u2014 et prévoit la probabilité de panne à partir de la
+      façon dont un équipement similaire s'est réellement comporté dans des conditions réelles
+      similaires.</p>
+
+      <h3>Être précis sur laquelle des deux cette plateforme fait réellement</h3>
+      <p>Le <a href="/docs/failure-prediction-engine">Moteur de prédiction de panne</a> de TraceHub
+      est fermement du second type : de véritables entrées, une prévision véritablement utile, mais
+      fonctionnant à partir de données opérationnelles que vous saisissez et maintenez, pas d'un
+      signal physique en direct diffusé directement de l'équipement lui-même. Cela vaut la peine
+      d'être énoncé clairement plutôt que de laisser « prédiction propulsée par l'IA » impliquer plus
+      qu'elle ne l'est réellement \u2014 nous ne lisons pas actuellement les capteurs de vibration ou
+      de température directement, et une prévision construite à partir de l'historique de
+      maintenance et des schémas d'usage est un signal véritablement différent, et de certaines
+      façons spécifiques moins immédiat, qu'un capteur détectant un roulement commençant à défaillir
+      en temps réel.</p>
+
+      <h3>Pourquoi la prédiction basée sur des schémas de données reste véritablement précieuse, pas un lot de consolation</h3>
+      <p>La surveillance basée sur des capteurs est excellente pour détecter tôt un défaut mécanique
+      spécifique en développement. Elle dit relativement peu sur la question financière plus large
+      dont la plupart des flottes ont réellement besoin de réponse : étant donné l'historique complet
+      de cet actif \u2014 pas seulement sa signature de vibration actuelle \u2014 vaut-il la peine de
+      le réparer encore, ou le schéma de coûts et de pannes a-t-il fait du remplacement le meilleur
+      choix. C'est une question sur l'historique accumulé et l'économie, et c'est exactement ce que
+      la prédiction basée sur des schémas de données et le <a href="/docs/disposal-intelligence-engine">
+      moteur de recommandation de mise au rebut</a> construit dessus sont réellement conçus pour
+      répondre.</p>
+
+      <h3>Le point à retenir honnête et pratique</h3>
+      <p>Si un actif spécifique, de grande valeur, mécaniquement complexe bénéficierait
+      véritablement de signaux d'état en temps réel \u2014 le genre d'équipement où une panne de
+      roulement est coûteuse et difficile à prédire à partir des seuls schémas d'usage \u2014 la
+      baisse du coût des capteurs est réelle et vaut la peine d'être étudiée comme son propre
+      investissement séparé. C'est un complément à une bonne tenue de registres opérationnels, pas un
+      substitut, et les deux répondent à des questions véritablement différentes : l'un vous dit que
+      quelque chose ne va pas maintenant, l'autre vous dit si cela vaut la peine de continuer à
+      réparer étant donné tout ce qui s'est passé jusqu'ici.</p>
+    `,
+  },
+  {
+    title: 'Les limites honnêtes de ce que l\u2019IA peut vous dire sur un équipement vieux de quarante ans',
+    slug: 'ai-limits-old-equipment',
+    locale: 'fr',
+    excerpt: 'La valeur comptable cesse d\u2019être la question intéressante bien avant qu\u2019un actif ne cesse de fonctionner. Voici ce qui fonctionne encore bien à cet âge, et ce qui honnêtement ne fonctionne pas.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-23T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/old-equipment-cover.svg',
+    bodyHtml: `
+      <p>Quelque part dans la plupart des flottes se trouve un équipement plus vieux que certaines
+      des personnes qui l'entretiennent \u2014 entièrement déprécié depuis des décennies, fonctionnant
+      encore, faisant encore du vrai travail. Cela vaut la peine d'être honnête sur ce qu'un moteur
+      d'intelligence peut et ne peut pas vous dire de manière significative sur un équipement comme
+      celui-ci, parce que la réponse honnête est véritablement différente de ce qu'il peut vous dire
+      sur quelque chose de trois ans.</p>
+
+      <h3>Pourquoi le chiffre de dépréciation cesse d'être la partie intéressante</h3>
+      <p>Un calcul de dépréciation linéaire ou basé sur l'usage sur un actif de quarante ans montrera
+      correctement qu'il se trouve à sa valeur résiduelle, l'a été pendant des décennies, et
+      continuera à montrer exactement cela peu importe combien d'années supplémentaires il
+      fonctionne. Ce n'est pas une limitation du calcul \u2014 c'est un reflet précis du fait que la
+      valeur comptable cesse véritablement d'être la question intéressante pour un équipement aussi
+      vieux. La vraie question se déplace entièrement vers l'état et le coût continu, pas la valeur
+      comptable restante, parce qu'il n'en reste effectivement plus à suivre.</p>
+
+      <h3>Où le score de santé devient véritablement moins fiable, honnêtement</h3>
+      <p>Un <a href="/docs/asset-health-score">Score de santé de l'actif</a> pondéré en partie sur
+      l'âge par rapport à la durée de vie utile attendue rencontre ici un cas limite honnête : un
+      actif de quarante ans a généralement dépassé de loin toute hypothèse de durée de vie utile
+      jamais saisie pour sa catégorie, ce qui peut tirer lourdement vers le bas la composante
+      ajustée à l'âge de son score peu importe son véritable état actuel. Cela vaut la peine d'être
+      reconnu comme une véritable limitation plutôt que de le camoufler \u2014 pour un équipement
+      aussi vieux, l'historique de maintenance et les données d'inspection récentes méritent plus de
+      poids réel dans votre propre jugement que la composante d'âge du score automatisé, qui fait de
+      son mieux avec une hypothèse qui n'a jamais vraiment été construite pour un horizon temporel
+      de quarante ans.</p>
+
+      <h3>Ce qui fonctionne encore bien, et fonctionne bien spécifiquement parce que cela ne dépend pas de l'âge</h3>
+      <p>Les tendances de coût de maintenance restent véritablement utiles à tout âge \u2014 une
+      fréquence ou un coût de réparation croissant sur un actif vieux de plusieurs décennies est un
+      véritable signal peu importe à quel point il est déjà déprécié sur papier. La pondération la
+      plus lourde de la <a href="/docs/disposal-intelligence-engine">recommandation de mise au
+      rebut</a> \u2014 le coût de maintenance par rapport au coût de remplacement actuel \u2014 reste
+      significative précisément parce qu'elle ne dépend pas du tout de l'âge de l'actif, juste de
+      son coût réel continu par rapport à ce qu'un équivalent neuf coûterait aujourd'hui.</p>
+
+      <h3>L'ajustement pratique qui vaut la peine d'être fait</h3>
+      <p>Pour un équipement assez vieux pour que sa valeur comptable soit restée à la valeur
+      résiduelle pendant des années, déplacez votre propre attention vers les entrées qui ne se
+      dégradent pas avec l'âge \u2014 schéma de maintenance récent, état actuel réel de votre
+      dernière inspection, coût de remplacement réel \u2014 et traitez un score de santé automatisé
+      sur un équipement aussi vieux comme une entrée parmi plusieurs plutôt que le facteur décisif.
+      La réponse honnête, quand quelqu'un demande si le système a « tort » à propos d'un vieil
+      équipement, n'est généralement pas qu'il a tort \u2014 c'est que quelques-unes de ses entrées
+      ont été construites autour d'hypothèses qui n'ont jamais été conçues pour décrire un équipement
+      fonctionnant des décennies au-delà des attentes originales de quiconque, et connaître cette
+      distinction vaut plus qu'une confiance aveugle en un seul chiffre.</p>
+    `,
+  },
+  {
+    title: '« Tout semble bien » est parfois l\u2019état de tableau de bord le plus dangereux',
+    slug: 'everything-looks-fine-danger',
+    locale: 'fr',
+    excerpt: 'Un tableau de bord peut sembler identiquement vert pour deux raisons opposées : une véritable santé, ou des données qui ont discrètement cessé de circuler. La différence est invisible sans vérifier.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-25T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/everything-fine-cover.svg',
+    bodyHtml: `
+      <p>Un tableau de bord montrant chaque métrique en vert est soit véritablement rassurant, soit
+      discrètement dangereux, et la différence entre les deux n'a rien à voir avec le tableau de
+      bord lui-même \u2014 il s'agit entièrement de savoir si quelqu'un vérifie réellement que les
+      données derrière sont réelles et actuelles.</p>
+
+      <h3>Le mode d'échec qui ressemble identiquement au succès</h3>
+      <p>Deux situations produisent un tableau de bord entièrement vert identique : une flotte
+      véritablement bien entretenue et suivie avec précision, et une flotte où la saisie de données
+      a discrètement cessé \u2014 personne n'enregistre la maintenance, personne ne met à jour
+      l'état, personne ne scanne les emplacements \u2014 ce qui produit exactement la même absence
+      visuelle de signaux rouges, pour la raison opposée. Un score de santé ne peut pas signaler un
+      problème dont il n'a jamais été informé. Le silence dans un tableau de bord ne distingue pas
+      entre « rien ne va mal » et « personne ne nous dit rien », et ce sont des situations très
+      différentes portant un feu vert identique.</p>
+
+      <h3>Pourquoi ce mode d'échec spécifique est dangereux plutôt que simplement malheureux</h3>
+      <p>Un tableau de bord plein de signaux rouges actifs incite au moins à l'action \u2014 quelque
+      chose exige visiblement de l'attention, et quelqu'un finit par regarder. Un tableau de bord
+      entièrement vert produit par des données qui ont discrètement cessé de circuler n'incite à
+      rien du tout, parce qu'il n'y a aucun symptôme visible disant à quiconque de vérifier. C'est
+      précisément la situation qui se transforme en désagréable surprise des mois plus tard : pas
+      parce que quelque chose a échoué de manière inhabituelle, mais parce que personne n'a remarqué
+      que la tenue de registres avait cessé bien avant la véritable panne qui a finalement forcé
+      quelqu'un à regarder.</p>
+
+      <h3>La vérification qui détecte réellement cela</h3>
+      <p>La question utile n'est pas « est-ce que tout semble bien » \u2014 c'est « quand chacun de
+      ces chiffres a-t-il réellement été mis à jour pour la dernière fois ». Un score de santé de
+      flotte n'est aussi actuel que ses entrées les plus récentes, et un rapide balayage des
+      horodatages de dernière mise à jour à travers les registres de maintenance récents, les scans
+      d'emplacement récents, et les inspections récentes vous dit quelque chose qu'un tableau de
+      bord vert seul ne dira jamais : si l'image rassurante est une information actuelle ou un écho
+      obsolète de ce qui a été réellement saisi en dernier, restant là avec une apparence identique
+      dans les deux cas.</p>
+
+      <h3>Construire l'habitude de vérifier le silence, pas seulement les alarmes</h3>
+      <p>La plupart des habitudes de surveillance sont entièrement construites autour de la
+      détection des mauvaises nouvelles \u2014 surveiller les signaux rouges, les articles en retard,
+      les scores en déclin. Vaut la peine d'y ajouter : une vérification occasionnelle du schéma
+      opposé \u2014 un emplacement, une catégorie, ou une équipe devenue inhabituellement
+      silencieuse, avec une activité qui a chuté sans aucun événement spécifique l'expliquant. Cette
+      absence est son propre type de signal, et c'est celui qu'un tableau de bord entièrement vert,
+      par sa conception même, ne peut jamais faire remonter seul.</p>
+
+      <p>Un tableau de bord silencieux mérite la confiance grâce à de véritables données actuelles
+      derrière lui, pas de la simple absence de problèmes visibles. La différence est invisible à
+      partir du tableau de bord seul \u2014 c'est exactement pourquoi cela vaut la peine de vérifier
+      occasionnellement, plutôt que de supposer que le vert signifie toujours ce qu'il est censé
+      signifier.</p>
+    `,
+  },
+  {
+    title: 'La véritable valeur d\u2019un rapport ennuyeux que personne ne lit jusqu\u2019à ce qu\u2019il en ait besoin',
+    slug: 'value-of-boring-reports',
+    locale: 'fr',
+    excerpt: 'Sa valeur apparaît bien plus tard et de manière imprévisible — c\u2019est exactement pourquoi la fenêtre pour le générer proactivement se ferme avant que vous ne sachiez que vous en aurez besoin.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-28T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/boring-reports-cover.svg',
+    bodyHtml: `
+      <p>Personne ne lit le rapport d'activité de localisation du mois dernier pour le plaisir, et
+      la plupart des entreprises cessent discrètement de générer des rapports de routine que
+      personne ne lit activement, ce qui semble être une efficacité raisonnable jusqu'à la semaine
+      de l'année où quelqu'un a désespérément besoin exactement de ce rapport ennuyeux et découvre
+      qu'il n'existe plus.</p>
+
+      <h3>Le rapport qui justifie son existence en n'étant presque jamais ouvert</h3>
+      <p>Une exportation hebdomadaire ou mensuelle d'activité de routine \u2014 qui a scanné quoi,
+      quelles affectations ont été clôturées, quelle maintenance a été enregistrée \u2014 est
+      véritablement ennuyeuse au moment où elle est générée. Sa valeur réelle apparaît bien plus
+      tard et de manière imprévisible : une question d'assurance sur l'endroit où se trouvait un
+      actif à une date précise, un litige interne sur qui avait la garde de quelque chose, une
+      demande de conformité pour des registres couvrant une période que personne n'avait pensé à
+      signaler spécifiquement comme importante à l'époque. Aucun de ces besoins n'est prévisible
+      quand le rapport est généré. Tous sont considérablement plus faciles à traiter quand une
+      exportation de routine existe déjà que quand quelqu'un doit reconstruire la même information
+      de zéro sous pression temporelle.</p>
+
+      <h3>Pourquoi « nous pourrons toujours vérifier plus tard » cesse discrètement d'être vrai</h3>
+      <p>Les données du système en direct ne sont aussi profondes que votre rétention et votre
+      propre diligence à enregistrer les choses de manière cohérente en premier lieu. Une habitude
+      d'<a href="/docs/exporting-csv-pdf-powerpoint">exportation</a> régulière crée un registre
+      indépendant, à un instant précis, qui existe spécifiquement parce que personne ne sait encore
+      quelle semaine particulière finira par compter. Au moment où vous savez que vous avez besoin
+      d'un registre spécifique, la fenêtre pour l'avoir généré de manière proactive s'est
+      généralement déjà fermée \u2014 vous reconstruisez maintenant après coup, de mémoire et de ce
+      qui reste dans le système en direct, plutôt que de récupérer quelque chose qui attendait déjà
+      là.</p>
+
+      <h3>Ce qui mérite réellement ce traitement, et ce qui ne le mérite pas</h3>
+      <p>Tout n'a pas besoin d'une habitude d'exportation permanente \u2014 le but n'est pas de
+      thésauriser indéfiniment chaque rapport possible. Ce qui en vaut la peine : tout ce que vous
+      regretteriez véritablement de ne pas avoir si un litige, une réclamation, ou une demande
+      d'audit atterrissait sur votre bureau de manière inattendue. L'historique de localisation et
+      d'affectation pour les catégories d'équipement de plus grande valeur ou de plus grande
+      mobilité est un défaut raisonnable ; une exportation complète de chaque catégorie peu importe
+      la valeur est probablement excessive pour la plupart des opérations.</p>
+
+      <h3>Le véritable rapport coût-bénéfice, énoncé clairement</h3>
+      <p>Générer un rapport que personne ne lit coûte quelques minutes et un peu d'espace de
+      stockage. Avoir besoin d'un registre qui n'existe pas coûte considérablement plus \u2014 en
+      temps passé à le reconstruire, en crédibilité perdue si vous ne pouvez pas le produire de
+      manière convaincante, et en toute décision qui attendait une réponse que vous ne pouviez pas
+      fournir rapidement. Le rapport ennuyeux gagne toute sa valeur lors de l'occasion unique,
+      impossible à connaître à l'avance, où il se révèle être exactement ce qui était
+      nécessaire \u2014 et ne coûte presque rien à chaque autre occasion où il reste simplement là,
+      non lu, faisant son véritable travail en existant simplement.</p>
+    `,
+  },
 ];
 
 module.exports = frenchPosts;
