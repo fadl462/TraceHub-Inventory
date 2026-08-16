@@ -3320,6 +3320,172 @@ const spanishPosts = [
       existiendo.</p>
     `,
   },
+  {
+    title: 'El equipo como servicio está creciendo un 38% al año: qué significa eso si usted es quien alquila equipo',
+    slug: 'equipment-as-a-service-2026',
+    locale: 'es',
+    excerpt: 'Se proyecta que el mercado crezca de $5.6 mil millones a casi $55 mil millones para 2033. Si alquila equipo, este cambio eleva considerablemente las apuestas en sus propios registros.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-30T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/eaas-cover.svg',
+    bodyHtml: `
+      <p>Se proyecta que el mercado de equipo como servicio crezca de aproximadamente $5.6 mil
+      millones en 2026 a casi $55 mil millones para 2033 \u2014 un cambio genuinamente rápido de las
+      empresas comprando equipo directamente hacia pagar por acceso a él, basado en uso o
+      suscripción, a menudo con el proveedor reteniendo la propiedad y responsabilidad del
+      mantenimiento. Si está del lado de esa relación que posee el equipo y lo alquila, este cambio
+      modifica lo que sus propios registros de activos necesitan hacer por usted.</p>
+
+      <h3>Por qué alquilar equipo eleva las apuestas en sus propios registros</h3>
+      <p>Cuando el equipo está en su propia operación, registros descuidados le cuestan
+      principalmente internamente \u2014 ineficiencia, algo de gasto desperdiciado, nada que alguien
+      fuera de la empresa vea. En el momento en que está alquilando equipo a alguien más, sus
+      registros se convierten en la base real de una relación de negocios: en qué condición estaba
+      cuando salió, en qué condición regresó, si la tarifa acordada realmente se pagó, y quién lo
+      tenía durante una ventana específica si algo sale mal. El
+      <a href="/docs/assigning-assets-to-people">seguimiento de asignaciones con tarifas de
+      alquiler</a> existe precisamente por esta razón \u2014 el mismo mecanismo que rastrea un
+      préstamo interno de equipo también produce el registro del que realmente depende una relación
+      de alquiler.</p>
+
+      <h3>Lo que esta tendencia significa prácticamente</h3>
+      <p>A medida que los modelos de equipo como servicio siguen creciendo, las empresas que ganen
+      en ese modelo no serán las que tengan el mejor equipo \u2014 el equipo en sí a menudo es
+      comparable entre competidores. Serán las que puedan responder, instantánea y confiadamente,
+      exactamente qué unidad tiene un cliente, su condición actual, si el pago está al día, y cuándo
+      debe regresar. Eso no es una ventaja de hardware. Es una ventaja de registros, y está
+      disponible para cualquier empresa dispuesta a realmente mantener los registros actualizados en
+      lugar de rastrear alquileres en un cuaderno o una memoria que se desvanece en el momento en
+      que llega una semana ocupada.</p>
+
+      <p>Si alquilar equipo ya es parte de cómo opera, o algo que está considerando a medida que este
+      mercado más amplio sigue creciendo, la pregunta de infraestructura no es si puede competir en
+      calidad de equipo \u2014 es si sus propios registros son lo suficientemente buenos como para
+      hacer la relación confiable desde el lado del arrendatario, cada vez, no solo cuando alguien
+      recuerda verificar.</p>
+    `,
+  },
+  {
+    title: 'Lo que un informe realmente es versus una decisión',
+    slug: 'report-vs-decision',
+    locale: 'es',
+    excerpt: 'Es completamente posible revisar un informe exhaustivo y preciso cada mes y no cambiar nada — porque revisar se confundió con decidir.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-02T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/report-decision-cover.svg',
+    bodyHtml: `
+      <p>Un informe y una decisión se ven similares \u2014 ambos involucran números, ambos se
+      revisan, ambos se sienten como progreso \u2014 y tratarlos como la misma cosa es una forma
+      silenciosa en que muchos datos buenos nunca realmente cambian nada.</p>
+
+      <h3>Lo que separa a los dos</h3>
+      <p>Un informe describe una situación. Una decisión se compromete a una acción específica por
+      ello. Es completamente posible generar un <a href="/docs/reports-and-analytics-page">informe</a>
+      exhaustivo y preciso sobre la salud de la flota cada mes, que todos asientan al respecto, y no
+      cambiar nada sobre cómo se gestiona realmente la flota \u2014 el informe hizo su trabajo
+      perfectamente y la organización aun así no actuó, porque revisar un informe se confundió con
+      tomar una decisión al respecto.</p>
+
+      <h3>Por qué es tan fácil caer en esta brecha</h3>
+      <p>Revisar un informe se siente como hacer algo \u2014 toma tiempo real, atención real, y
+      produce una sensación real de haberse involucrado con los datos. Una decisión requiere algo
+      más difícil: un compromiso específico, generalmente con un costo o riesgo adjunto, tomado por
+      alguien dispuesto a hacerse responsable del resultado. Es genuinamente más fácil revisar doce
+      informes seguidos que tomar una decisión difícil basada en lo que cualquiera de ellos
+      realmente dijo, y una organización puede gastar mucha energía en la mitad más fácil sin
+      llegar nunca a la más difícil.</p>
+
+      <h3>La solución práctica</h3>
+      <p>Termine cada revisión de informe con una pregunta explícita: dado esto, ¿qué estamos
+      realmente haciendo diferente, comenzando cuándo, y quién es responsable de ello? Si la
+      respuesta honesta es "nada, solo lo estamos anotando", eso a veces genuinamente es la decisión
+      correcta \u2014 pero debería ser una decisión declarada de mantenerse firme, no un informe que
+      silenciosamente se evaporó en una reunión sin ningún resultado real adjunto. Un informe que no
+      produce al menos una decisión explícita de actuar o una decisión explícita de no actuar
+      todavía no ha terminado su trabajo.</p>
+    `,
+  },
+  {
+    title: 'El caso para revisar su calificación de flota antes de la temporada de presupuesto, no durante',
+    slug: 'fleet-grade-before-budget-season',
+    locale: 'es',
+    excerpt: 'Un número extraído en frío bajo presión de fecha límite se acepta tal cual. Ya no hay tiempo para investigar por qué se ve así.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-05T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/grade-before-budget-cover.svg',
+    bodyHtml: `
+      <p>La temporada de presupuesto tiene un ritmo predecible: alguien pide datos de condición de
+      flota justo cuando vencen los números, y lo que la
+      <a href="/docs/fleet-intelligence-formulas-explained">calificación de flota</a> diga en esa
+      semana específica se convierte en la base del gasto de equipo del próximo año. Ese momento
+      está al revés, y vale la pena corregirlo.</p>
+
+      <h3>Por qué revisar durante la temporada de presupuesto es el momento equivocado</h3>
+      <p>Una calificación de flota extraída en frío, bajo presión de fecha límite, se acepta tal
+      cual \u2014 no hay tiempo para investigar por qué se ve como se ve, no hay tiempo para
+      distinguir una disminución genuina de una brecha de datos, no hay tiempo para separar una
+      necesidad de capital urgente de una rutinaria. Lo que el número diga en esa semana específica
+      se convierte en el plan para los próximos doce meses, para bien o para mal, simplemente
+      porque no hubo tiempo para mirar más de cerca.</p>
+
+      <h3>Lo que realmente le compra revisarlo temprano</h3>
+      <p>Revisar su calificación de flota y sus factores subyacentes un mes o dos antes de que
+      comiencen las conversaciones de presupuesto le da espacio para realmente investigar cualquier
+      cosa sorprendente \u2014 rastrear si un puntaje en declive refleja desgaste real o una brecha en
+      el registro de mantenimiento, identificar qué categoría específica está impulsando el Riesgo
+      de capital antes de que le pidan justificar un número en el momento, y entrar a la
+      conversación de presupuesto real con una posición considerada en lugar de una lectura fría de
+      lo que el tablero mostraba esa semana.</p>
+
+      <h3>El hábito que vale la pena construir</h3>
+      <p>Trate una revisión de salud de flota como su propio paso separado que sucede antes de la
+      planificación de presupuesto, no como un número que mira durante ella. Los datos no cambian
+      según cuándo los mire \u2014 su capacidad de realmente entenderlos y actuar sobre ellos, sí.</p>
+    `,
+  },
+  {
+    title: 'Por qué las fotos de activos envejecen mal, y qué hacer al respecto',
+    slug: 'why-asset-photos-age-poorly',
+    locale: 'es',
+    excerpt: 'Una foto del primer día es genuinamente útil durante aproximadamente un año. Después de eso, es una imagen de cómo solía verse el equipo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/photos-age-cover.svg',
+    bodyHtml: `
+      <p>Una foto tomada el día en que se registró un activo es genuinamente útil \u2014 durante
+      aproximadamente un año. Después de eso, silenciosamente se convierte en una imagen de cómo
+      solía verse el equipo, que es algo significativamente diferente de cómo se ve ahora, y la
+      brecha entre los dos crece cada mes sin que nadie lo note.</p>
+
+      <h3>Por qué una sola foto no es suficiente</h3>
+      <p>La condición del equipo cambia lo suficientemente gradual como para que ningún día en
+      particular se sienta como el momento de tomar una nueva foto, que es exactamente cómo pueden
+      pasar tres años con la imagen original del primer día todavía siendo el único registro visual
+      en archivo. Esa foto original permanece precisa para un activo impecable y recién comprado.
+      Deja de ser precisa respecto a la realidad casi de inmediato, en pequeñas formas que
+      eventualmente se suman a una imagen genuinamente engañosa de la condición actual.</p>
+
+      <h3>Cuándo realmente vale la pena tomar una foto nueva</h3>
+      <p>En lugar de un calendario arbitrario, vincule las fotos nuevas a momentos que ya
+      importan: después de una reparación mayor, en el punto en que un activo se marca en el
+      <a href="/docs/six-stage-disposal-workflow">flujo de baja</a>, o durante una
+      <a href="/blog/running-a-physical-asset-audit">auditoría física</a> periódica que ya está
+      sucediendo de todos modos. Cada uno de estos momentos ya tiene a alguien físicamente presente
+      con el equipo \u2014 capturar una foto actual no cuesta nada extra y reemplaza una referencia
+      obsoleta con una precisa, justo cuando más importa.</p>
+
+      <h3>El beneficio real</h3>
+      <p>Una foto actual, tomada en el momento en que depende de ella una decisión o reclamo real,
+      vale considerablemente más que una imagen impecable del primer día que ya no se parece a lo
+      que alguien encontraría al acercarse al equipo real. El hábito no es fotografiar
+      constantemente \u2014 es fotografiar en los momentos que ya importan, en lugar de depender de
+      una imagen que pierde relevancia casi de inmediato.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;

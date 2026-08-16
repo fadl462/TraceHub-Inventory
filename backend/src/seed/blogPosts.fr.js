@@ -3427,6 +3427,178 @@ const frenchPosts = [
       non lu, faisant son véritable travail en existant simplement.</p>
     `,
   },
+  {
+    title: 'L\u2019équipement en tant que service croît de 38 % par an : ce que cela signifie si vous êtes celui qui loue de l\u2019équipement',
+    slug: 'equipment-as-a-service-2026',
+    locale: 'fr',
+    excerpt: 'Le marché devrait passer de 5,6 milliards à près de 55 milliards de dollars d\u2019ici 2033. Si vous louez de l\u2019équipement, ce changement augmente considérablement les enjeux sur vos propres registres.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-30T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/eaas-cover.svg',
+    bodyHtml: `
+      <p>Le marché de l'équipement en tant que service devrait passer d'environ 5,6 milliards de
+      dollars en 2026 à près de 55 milliards de dollars d'ici 2033 \u2014 un changement véritablement
+      rapide d'entreprises achetant l'équipement directement vers le paiement pour y accéder, basé
+      sur l'usage ou l'abonnement, souvent avec le fournisseur conservant la propriété et la
+      responsabilité de l'entretien. Si vous êtes du côté de cette relation qui possède l'équipement
+      et le loue, ce changement modifie ce que vos propres registres d'actifs doivent faire pour
+      vous.</p>
+
+      <h3>Pourquoi louer de l'équipement augmente les enjeux sur vos propres registres</h3>
+      <p>Quand l'équipement se trouve dans votre propre opération, des registres bâclés vous
+      coûtent surtout en interne \u2014 inefficacité, un peu de dépenses gaspillées, rien que
+      quiconque à l'extérieur de l'entreprise ne voit. Au moment où vous louez de l'équipement à
+      quelqu'un d'autre, vos registres deviennent la base réelle d'une relation d'affaires : dans
+      quel état il était quand il est parti, dans quel état il est revenu, si les frais convenus
+      ont réellement été payés, et qui l'avait pendant une fenêtre spécifique si quelque chose tourne
+      mal. Le <a href="/docs/assigning-assets-to-people">suivi des affectations avec frais de
+      location</a> existe précisément pour cette raison \u2014 le même mécanisme qui suit un prêt
+      interne d'équipement produit aussi le registre dont dépend réellement une relation de
+      location.</p>
+
+      <h3>Ce que cette tendance signifie en pratique</h3>
+      <p>À mesure que les modèles d'équipement en tant que service continuent de croître, les
+      entreprises qui gagnent dans ce modèle ne seront pas celles avec le meilleur équipement \u2014
+      l'équipement lui-même est souvent comparable entre concurrents. Ce seront celles qui peuvent
+      répondre, instantanément et avec confiance, exactement quelle unité un client a, son état
+      actuel, si le paiement est à jour, et quand elle doit revenir. Ce n'est pas un avantage
+      matériel. C'est un avantage de registres, et il est disponible pour toute entreprise disposée
+      à réellement garder les registres à jour plutôt que de suivre les locations dans un carnet ou
+      une mémoire qui s'estompe au moment où une semaine chargée frappe.</p>
+
+      <p>Si louer de l'équipement fait déjà partie de la façon dont vous opérez, ou quelque chose que
+      vous envisagez à mesure que ce marché plus large continue de croître, la question
+      d'infrastructure n'est pas de savoir si vous pouvez être compétitif sur la qualité de
+      l'équipement \u2014 c'est de savoir si vos propres registres sont assez bons pour rendre la
+      relation digne de confiance du côté du locataire, chaque fois, pas seulement quand quelqu'un se
+      souvient de vérifier.</p>
+    `,
+  },
+  {
+    title: 'Ce qu\u2019est réellement un rapport par rapport à une décision',
+    slug: 'report-vs-decision',
+    locale: 'fr',
+    excerpt: 'Il est entièrement possible d\u2019examiner un rapport approfondi et précis chaque mois et de ne rien changer — parce qu\u2019examiner a été confondu avec décider.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-12-02T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/report-decision-cover.svg',
+    bodyHtml: `
+      <p>Un rapport et une décision se ressemblent \u2014 tous deux impliquent des chiffres, tous
+      deux sont examinés, tous deux donnent l'impression d'un progrès \u2014 et les traiter comme la
+      même chose est une façon discrète dont beaucoup de bonnes données ne changent en fait jamais
+      rien.</p>
+
+      <h3>Ce qui sépare les deux</h3>
+      <p>Un rapport décrit une situation. Une décision s'engage vers une action spécifique à cause
+      de cela. Il est entièrement possible de générer un <a href="/docs/reports-and-analytics-page">
+      rapport</a> approfondi et précis sur la santé de la flotte chaque mois, que tout le monde
+      hoche la tête à son sujet, et de ne rien changer à la façon dont la flotte est réellement
+      gérée \u2014 le rapport a parfaitement fait son travail et l'organisation n'a quand même pas
+      agi, parce qu'examiner un rapport a été confondu avec prendre une décision à son sujet.</p>
+
+      <h3>Pourquoi cet écart est si facile à commettre</h3>
+      <p>Examiner un rapport donne l'impression de faire quelque chose \u2014 cela prend du temps
+      réel, une attention réelle, et produit un véritable sentiment de s'être engagé avec les
+      données. Une décision requiert quelque chose de plus difficile : un engagement spécifique,
+      généralement avec un coût ou un risque attaché, pris par quelqu'un disposé à assumer le
+      résultat. Il est véritablement plus facile d'examiner douze rapports d'affilée que de prendre
+      une décision difficile basée sur ce que l'un d'eux a réellement dit, et une organisation peut
+      dépenser beaucoup d'énergie sur la moitié la plus facile sans jamais atteindre la plus
+      difficile.</p>
+
+      <h3>La solution pratique</h3>
+      <p>Terminez chaque examen de rapport par une question explicite : étant donné cela, que
+      faisons-nous réellement différemment, à partir de quand, et qui en est responsable. Si la
+      réponse honnête est « rien, nous le notons simplement », c'est parfois véritablement le bon
+      choix \u2014 mais cela devrait être une décision énoncée de rester stable, pas un rapport qui
+      s'est discrètement évaporé dans une réunion sans aucun résultat réel attaché. Un rapport qui
+      ne produit pas au moins une décision explicite d'agir ou une décision explicite de ne pas
+      agir n'a pas encore terminé son travail.</p>
+    `,
+  },
+  {
+    title: 'L\u2019argument pour examiner votre note de flotte avant la saison budgétaire, pas pendant',
+    slug: 'fleet-grade-before-budget-season',
+    locale: 'fr',
+    excerpt: 'Un chiffre tiré à froid sous pression de délai est accepté tel quel. Il n\u2019y a plus de temps pour investiguer pourquoi il a cette apparence.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-12-05T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/grade-before-budget-cover.svg',
+    bodyHtml: `
+      <p>La saison budgétaire a un rythme prévisible : quelqu'un demande des données sur l'état de
+      la flotte juste au moment où les chiffres sont dus, et ce que la
+      <a href="/docs/fleet-intelligence-formulas-explained">note de flotte</a> dit cette semaine-là
+      spécifique devient la base des dépenses d'équipement de l'année prochaine. Ce calendrier est à
+      l'envers, et cela vaut la peine d'être corrigé.</p>
+
+      <h3>Pourquoi vérifier pendant la saison budgétaire est le mauvais moment</h3>
+      <p>Une note de flotte tirée à froid, sous pression de délai, est acceptée telle quelle \u2014
+      il n'y a pas de temps pour investiguer pourquoi elle a cette apparence, pas de temps pour
+      distinguer un véritable déclin d'une lacune de données, pas de temps pour séparer un besoin
+      de capital urgent d'un besoin de routine. Ce que le chiffre dit cette semaine-là spécifique
+      devient le plan pour les douze prochains mois, pour le meilleur ou pour le pire, simplement
+      parce qu'il n'y avait pas le temps de regarder de plus près.</p>
+
+      <h3>Ce que l'examiner tôt vous apporte réellement</h3>
+      <p>Vérifier votre note de flotte et ses facteurs sous-jacents un mois ou deux avant que les
+      conversations budgétaires ne commencent vous donne de la place pour réellement investiguer
+      tout ce qui est surprenant \u2014 vérifier si un score en déclin reflète une véritable usure ou
+      une lacune d'enregistrement de maintenance, identifier quelle catégorie spécifique entraîne le
+      Risque de capital avant qu'on ne vous demande de justifier un chiffre sur-le-champ, et entrer
+      dans la véritable conversation budgétaire avec une position réfléchie plutôt qu'une lecture à
+      froid de ce que le tableau de bord montrait cette semaine-là.</p>
+
+      <h3>L'habitude qui vaut la peine d'être construite</h3>
+      <p>Traitez une revue de santé de flotte comme sa propre étape séparée qui se produit avant la
+      planification budgétaire, pas comme un chiffre que vous regardez pendant celle-ci. Les données
+      ne changent pas selon quand vous les regardez \u2014 votre capacité à réellement les
+      comprendre et à agir en fonction d'elles, si.</p>
+    `,
+  },
+  {
+    title: 'Pourquoi les photos d\u2019actifs vieillissent mal, et quoi faire à ce sujet',
+    slug: 'why-asset-photos-age-poorly',
+    locale: 'fr',
+    excerpt: 'Une photo du premier jour est véritablement utile pendant environ un an. Après cela, c\u2019est une image de ce à quoi l\u2019équipement ressemblait autrefois.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-12-07T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/photos-age-cover.svg',
+    bodyHtml: `
+      <p>Une photo prise le jour où un actif a été enregistré est véritablement utile \u2014
+      pendant environ un an. Après cela, elle devient discrètement une image de ce à quoi
+      l'équipement ressemblait autrefois, ce qui est significativement différent de ce à quoi il
+      ressemble maintenant, et l'écart entre les deux grandit chaque mois sans que personne ne le
+      remarque.</p>
+
+      <h3>Pourquoi une seule photo ne suffit pas</h3>
+      <p>L'état de l'équipement change assez graduellement pour qu'aucun jour unique ne semble être
+      le moment de prendre une nouvelle photo, ce qui est exactement comment trois ans peuvent
+      passer avec l'image originale du premier jour restant le seul registre visuel au dossier.
+      Cette photo originale reste précise pour un actif immaculé et fraîchement acheté. Elle cesse
+      d'être précise par rapport à la réalité presque immédiatement, de petites façons qui
+      finissent par s'additionner en une image véritablement trompeuse de l'état actuel.</p>
+
+      <h3>Quand une photo fraîche vaut réellement la peine d'être prise</h3>
+      <p>Plutôt qu'un calendrier arbitraire, liez les photos fraîches à des moments qui comptent
+      déjà : après une réparation majeure, au point où un actif est signalé dans le
+      <a href="/docs/six-stage-disposal-workflow">flux de mise au rebut</a>, ou pendant un
+      <a href="/blog/running-a-physical-asset-audit">audit physique</a> périodique qui se produit
+      déjà de toute façon. Chacun de ces moments a déjà quelqu'un physiquement présent avec
+      l'équipement \u2014 capturer une photo actuelle ne coûte rien de plus et remplace une référence
+      obsolète par une précise, exactement quand cela compte le plus.</p>
+
+      <h3>Le véritable gain</h3>
+      <p>Une photo actuelle, prise au moment où une véritable décision ou réclamation en dépend, vaut
+      considérablement plus qu'une image immaculée du premier jour qui ne ressemble plus à ce que
+      quiconque trouverait en s'approchant de l'équipement réel. L'habitude n'est pas de
+      photographier constamment \u2014 c'est de photographier aux moments qui comptent déjà, au lieu
+      de se fier à une image qui perd sa pertinence presque immédiatement.</p>
+    `,
+  },
 ];
 
 module.exports = frenchPosts;
