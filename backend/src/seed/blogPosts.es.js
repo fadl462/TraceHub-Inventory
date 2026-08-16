@@ -2845,6 +2845,247 @@ const spanishPosts = [
       dos números es genuinamente grande.</p>
     `,
   },
+  {
+    title: 'Cuando su moneda se mueve de la noche a la mañana, sus registros de equipo necesitan mantenerse al día',
+    slug: 'currency-devaluation-equipment-records',
+    locale: 'es',
+    excerpt: 'La transferencia de devaluación a inflación en mercados emergentes va del 30 al 80% según investigación del FMI. Aquí está por qué almacenar el precio de compra en una moneda de referencia estable no es precaución burocrática.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-11T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/currency-devaluation-cover.svg',
+    bodyHtml: `
+      <p>Cuando Egipto permitió que su moneda flotara en marzo de 2024, la libra pasó de
+      aproximadamente 31 a más de 50 por dólar en cuestión de semanas. Cualquiera que tuviera
+      registros de equipo con precios en moneda local al tipo de cambio antiguo se despertó con
+      números que ya no significaban nada cercano a lo que solían significar. Este no es un evento
+      raro y aislado \u2014 la devaluación de moneda con transferencia real y repentina a los costos
+      de importación sigue siendo un riesgo vivo en una lista significativa de mercados emergentes
+      en 2026, y el equipo importado es exactamente el tipo de compra más afectada cuando eso
+      sucede.</p>
+
+      <h3>El mecanismo, y por qué importa específicamente para el equipo</h3>
+      <p>La propia investigación del FMI sitúa la transferencia típica de devaluación a inflación en
+      mercados emergentes entre el 30 y 80 por ciento \u2014 lo que significa que una devaluación del
+      50 por ciento puede traducirse en 15 a 40 por ciento de inflación adicional dentro de un año,
+      concentrada más fuertemente en bienes importados. El equipo está desproporcionadamente
+      expuesto a este efecto específico: la maquinaria, vehículos, y generadores frecuentemente se
+      importan o se cotizan contra componentes importados, lo que significa que su costo de
+      reemplazo en moneda local puede saltar dramáticamente de la noche a la mañana de una manera
+      que un bien fabricado localmente simplemente no hace.</p>
+
+      <h3>Por qué almacenar el precio de compra en una moneda de referencia estable es la decisión correcta</h3>
+      <p>Este es precisamente el razonamiento detrás de mantener el
+      <a href="/docs/registering-an-asset">precio de compra registrado en USD</a>
+      independientemente de qué moneda se pagó realmente, con la conversión de moneda local manejada
+      como una conveniencia de visualización y entrada en lugar del valor almacenado subyacente. Un
+      programa de depreciación construido sobre un número que en sí mismo se mueve un 50 por ciento
+      de la noche a la mañana por razones que no tienen nada que ver con la condición real del
+      equipo produce comparaciones a través del tiempo que no significan nada \u2014 no puede decir si
+      el valor relativo de un activo cambió por desgaste real, o porque la moneda en la que resultó
+      estar cotizado se movió. Una moneda de referencia estable como base de cálculo subyacente no
+      es precaución burocrática; es lo que hace que un número de depreciación sea comparable consigo
+      mismo a través de una ventana de varios años en un país donde la moneda local podría no
+      serlo.</p>
+
+      <h3>Lo que todavía necesita atención en moneda local, honestamente</h3>
+      <p>Esto no significa que la moneda local sea irrelevante \u2014 los reclamos de seguro, el
+      valor de reventa local, y el tratamiento fiscal local todos genuinamente operan en moneda
+      local, y esos números sí necesitan reflejar la realidad local actual, actualizados cuando el
+      tipo de cambio realmente se mueve en lugar de dejarlos en el tipo de cambio que estaba vigente
+      cuando un activo se ingresó por primera vez. La división práctica que vale la pena tener en
+      mente: deje que la moneda de referencia estable maneje las matemáticas de depreciación y la
+      comparación a través del tiempo, y trate el valor en moneda local como su propia cifra
+      separada, activamente mantenida, para las decisiones que son genuinamente locales \u2014 no el
+      mismo número usando dos símbolos de moneda diferentes.</p>
+
+      <h3>Un hábito razonable si opera en algún lugar con volatilidad de moneda real</h3>
+      <p>Si sus operaciones están en un mercado con un historial real de movimiento de moneda, vale
+      la pena verificar periódicamente si sus cifras registradas en moneda local \u2014 dondequiera
+      que las use \u2014 todavía reflejan la realidad actual, en lugar de un tipo de cambio de cuando
+      el activo se registró por primera vez. El equipo en sí no ha cambiado. Lo que costaría
+      reemplazarlo, en la moneda con la que realmente estaría pagando, podría haber cambiado
+      considerablemente \u2014 y esa brecha vale la pena conocerla antes de que una decisión real
+      dependa de ella, no después.</p>
+    `,
+  },
+  {
+    title: 'Por qué dos empresas con equipo idéntico obtienen calificaciones de flota diferentes',
+    slug: 'identical-equipment-different-grades',
+    locale: 'es',
+    excerpt: 'La posición ajustada por edad es la única entrada genuinamente idéntica entre dos montacargas comprados el mismo día. Todo lo demás es libre de divergir desde el primer día.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-14T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/identical-equipment-cover.svg',
+    bodyHtml: `
+      <p>Dos empresas compran exactamente el mismo modelo de montacargas, mismo año, mismo precio.
+      Dieciocho meses después, uno aparece saludable en su tablero y el otro aparece marcado para
+      atención. Nada de esto es un error ni una inconsistencia en cómo funciona la puntuación \u2014
+      es la puntuación funcionando exactamente como se pretendía, porque "equipo idéntico" nunca
+      fue realmente lo mismo que "circunstancias idénticas".</p>
+
+      <h3>Los factores que realmente divergen, incluso desde un punto de partida idéntico</h3>
+      <p>La posición ajustada por edad es la única entrada genuinamente idéntica entre dos
+      montacargas comprados el mismo día. Todo lo demás en un
+      <a href="/docs/asset-health-score">Puntaje de salud de activo</a> es libre de divergir desde
+      el primer día: la intensidad de uso depende completamente de qué tan duro realmente lo opera
+      cada empresa, el cumplimiento de mantenimiento depende de qué tan consistentemente cada
+      empresa realmente lo revisa según el calendario, y la exposición ambiental depende de dónde
+      opera físicamente cada uno \u2014 un almacén con clima controlado versus un patio exterior
+      polvoriento produce un desgaste genuinamente diferente en máquinas físicamente idénticas.</p>
+
+      <h3>Por qué esto es todo el punto, no un defecto</h3>
+      <p>Un sistema de puntuación que produjera resultados idénticos para registros de compra
+      idénticos estaría midiendo completamente lo incorrecto \u2014 estaría puntuando la factura, no
+      el activo real. El equipo de dos empresas divergiendo en salud después de dieciocho meses de
+      trato genuinamente diferente es el sistema capturando correctamente algo real: estos ya no son
+      activos equivalentes solo porque comenzaron como compras equivalentes. La alternativa \u2014 un
+      puntaje que solo refleja la edad y el precio de compra \u2014 sería más fácil de explicar pero
+      sería silenciosamente incorrecto exactamente en los casos donde más importa.</p>
+
+      <h3>Lo que esto significa si su propio puntaje se ve peor de lo que esperaría</h3>
+      <p>Si un puntaje de salud se ve más bajo de lo que la intuición sugiere que debería, la
+      respuesta útil no es desconfiar del número \u2014 es verificar específicamente qué entrada
+      realmente lo está bajando. Un puntaje genuinamente más bajo debido a un uso real más duro es
+      información precisa, no una falsa alarma; le está diciendo que esta unidad en particular está
+      envejeciendo más rápido que el promedio de la categoría debido a cómo realmente se está
+      usando, que es exactamente el tipo de cosa que vale la pena saber antes de que se convierta en
+      una falla sorpresiva en lugar de después.</p>
+
+      <h3>La comparación que vale la pena hacer en su lugar</h3>
+      <p>Comparar la salud de su flota con un modelo idéntico de una empresa diferente le dice muy
+      poco \u2014 no conoce su disciplina de mantenimiento, su entorno operativo, o su intensidad de
+      uso real, y la comparación nunca fue equitativa desde el principio a pesar de los registros de
+      compra idénticos. La comparación que realmente importa es su propia flota contra su propia
+      historia: ¿está mejorando o disminuyendo la trayectoria de este activo específico en relación
+      con dónde estaba hace seis meses, bajo condiciones que realmente entiende porque son las
+      suyas? Esa es una comparación justa. El montacargas de apariencia idéntica de una empresa
+      diferente nunca fue realmente uno.</p>
+    `,
+  },
+  {
+    title: 'Lo que realmente sucede cuando cambia el perfil de depreciación de una categoría',
+    slug: 'changing-category-depreciation-profile',
+    locale: 'es',
+    excerpt: 'Suena como si debiera ser una edición pequeña y contenida. Lo que realmente hace es recalcular silenciosamente la historia de cada activo existente en esa categoría, todos a la vez.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-16T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/category-profile-change-cover.svg',
+    bodyHtml: `
+      <p>Cambiar el perfil de depreciación de una categoría \u2014 ajustar la vida útil o el
+      supuesto de valor residual que cada activo en esa categoría hereda por defecto \u2014 suena
+      como si debiera ser una edición pequeña y contenida. Lo que realmente hace es recalcular
+      silenciosamente la historia de cada activo existente en esa categoría, todos a la vez, que es
+      exactamente por qué vale la pena entenderlo antes de hacer el cambio, no después.</p>
+
+      <h3>Lo que realmente sucede, mecánicamente</h3>
+      <p>El <a href="/docs/categories-and-custom-fields">perfil de depreciación de una
+      categoría</a> proporciona la vida útil predeterminada y el porcentaje de valor residual
+      usados cada vez que un activo individual no ha anulado explícitamente esos números por sí
+      mismo. Cambie el valor predeterminado de la categoría, y cada activo en esa categoría que
+      todavía use el predeterminado \u2014 que, en la mayoría de las flotas, es la mayoría de
+      ellos \u2014 se recalcula inmediatamente contra la nueva suposición. Un activo que mostraba un
+      valor en libros cómodo ayer bajo un supuesto de vida útil de 8 años puede mostrar un valor
+      significativamente diferente hoy bajo un supuesto corregido de 6 años, y ninguno de los dos
+      números estaba incorrecto \u2014 el segundo simplemente está construido sobre una premisa
+      corregida.</p>
+
+      <h3>Por qué realmente querría hacer esto</h3>
+      <p>Las suposiciones de categoría son estimaciones hechas una vez, a menudo en la configuración
+      inicial, basadas en una sensación general de cómo envejece típicamente esa categoría de
+      equipo. El historial operativo real a veces revela que esa estimación estaba equivocada \u2014
+      una categoría de vehículos que se supone dura 8 años que constantemente necesita reemplazo más
+      cerca de 6, o generadores que duran significativamente más de lo que la estimación
+      conservadora original suponía.
+      <a href="/blog/recalibrate-depreciation-assumptions">Revisar esto periódicamente</a> contra su
+      propia experiencia real, en lugar de dejar una suposición del primer día en su lugar
+      indefinidamente, es exactamente el tipo de corrección que vale la pena hacer \u2014 el objetivo
+      es que el valor en libros siga la realidad, y la realidad incluye aprender que su estimación
+      original estaba equivocada.</p>
+
+      <h3>Qué revisar antes de cambiar un valor predeterminado de categoría</h3>
+      <p>Dos cosas vale la pena confirmar primero: cuántos activos en la categoría realmente están
+      usando el predeterminado versus cuántos ya han establecido su propia anulación
+      individual \u2014 un cambio solo afecta al primer grupo, y si la mayoría de los activos ya
+      tienen anulaciones individuales, un cambio a nivel de categoría podría hacer mucho menos de lo
+      esperado. Y segundo, si el cambio que está viendo es genuinamente a nivel de toda la categoría
+      o específico de un puñado de unidades usadas de manera inusualmente dura \u2014 un patrón real
+      a nivel de toda la categoría justifica una corrección a nivel de categoría; unos pocos valores
+      atípicos se manejan mejor con anulaciones individuales solo en esos activos, dejando el valor
+      predeterminado de la categoría intacto para todo lo demás que realmente se está comportando
+      como se esperaba.</p>
+
+      <h3>La compensación honesta</h3>
+      <p>Un cambio de categoría se propaga correcta e inmediatamente hacia adelante \u2014 ese es
+      todo el punto, y es el comportamiento correcto. Lo que no puede hacer es reescribir
+      retroactivamente informes históricos que ya salieron bajo la suposición anterior; esos
+      reflejaban la mejor información disponible en ese momento, y eso es algo razonable para que
+      haga un registro histórico. Cambiar una suposición debería actualizar el presente y el futuro
+      honestamente. No debería implicar silenciosamente que el pasado estaba equivocado solo porque
+      ahora existe una mejor estimación.</p>
+    `,
+  },
+  {
+    title: 'El verdadero propósito del factor de criticidad en la puntuación de baja',
+    slug: 'criticality-factor-disposal-scoring',
+    locale: 'es',
+    excerpt: 'Cada otra entrada describe el equipo. La criticidad describe algo diferente: cuánto realmente dolería si este activo específico fallara ahora mismo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-11-18T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/criticality-cover.svg',
+    bodyHtml: `
+      <p>Enterrado entre las siete entradas detrás de una recomendación de baja hay una que no
+      mide nada sobre el activo en sí: la criticidad. Cada otro factor \u2014 edad, costo de
+      mantenimiento, puntaje de salud, valor de mercado \u2014 describe el equipo. La criticidad
+      describe algo completamente diferente: cuánto realmente dolería si este activo específico
+      fallara ahora mismo.</p>
+
+      <h3>Por qué un puntaje puramente basado en condición no es suficiente por sí solo</h3>
+      <p>Dos activos pueden tener puntajes de salud idénticos, historiales de reparación idénticos,
+      costos de reemplazo idénticos, y aun así merecer una urgencia genuinamente diferente \u2014
+      porque uno opera una sola pieza de equipo fácilmente sustituible haciendo trabajo rutinario, y
+      el otro es la única unidad capaz de una tarea específica sin respaldo y sin sustituto rápido
+      disponible. La <a href="/docs/disposal-intelligence-engine">criticidad</a> existe
+      específicamente para capturar esa diferencia, ponderada al 5 por ciento en el puntaje general
+      de baja \u2014 deliberadamente el peso más pequeño de los siete factores, y deliberadamente
+      todavía presente en lugar de excluida por completo.</p>
+
+      <h3>Por qué la criticidad está ponderada ligeramente, no fuertemente</h3>
+      <p>Esta es una elección de diseño deliberada que vale la pena entender en lugar de asumir que
+      es un descuido: la criticidad es inherentemente más subjetiva que los otros seis factores, que
+      provienen de datos reales y medidos \u2014 costos de reparación reales, valor de mercado actual
+      real, puntajes de salud reales. Qué tan crítico se "siente" un activo está más cerca del
+      juicio que de la medición, y ponderar una entrada subjetiva tan fuertemente como las objetivas
+      dejaría que la intuición anule con demasiada facilidad la dura realidad financiera. Un peso
+      pequeño significa que la criticidad puede inclinar significativamente una decisión
+      genuinamente reñida, sin poder abrumar una señal financiera clara en cualquier dirección.</p>
+
+      <h3>Cómo establecerla realmente de manera útil en lugar de por costumbre</h3>
+      <p>El error común es marcar casi todo como altamente crítico, lo cual derrota el propósito por
+      completo \u2014 si todo es crítico, el campo no lleva información real y bien podría no
+      existir. La criticidad es más útil cuando se reserva para verdaderos puntos únicos de
+      falla: equipo donde no hay respaldo real, ningún sustituto rápido, y una falla detendría algo
+      específico e importante, no solo causaría un inconveniente rutinario. Guárdela para
+      situaciones que son realmente diferentes, no como una expresión general de "este equipo
+      importa", porque en un sentido real, todo importa, o no se estaría rastreando en absoluto.</p>
+
+      <h3>Lo que la criticidad realmente cambia más adelante</h3>
+      <p>Una calificación de criticidad alta no anula un caso financiero claro para la baja \u2014
+      inclina una decisión genuinamente reñida hacia más precaución, y está honestamente
+      representada en el razonamiento de la recomendación en lugar de incorporada silenciosamente en
+      el número sin explicación. Algo marcado como altamente crítico con economía de reparación
+      límite podría aterrizar en "reparar" donde un activo por lo demás idéntico, no crítico,
+      aterrizaría en "reemplazar" \u2014 no porque las matemáticas financieras cambiaron, sino porque
+      el costo real de equivocarse es diferente para estas dos situaciones específicas.</p>
+
+      <p>Usada con moderación y honestidad, la criticidad es la única entrada en todo el puntaje de
+      baja que captura algo que ninguna cantidad de datos financieros jamás podría: qué fallas
+      genuinamente no puede permitirse que lo sorprendan.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;

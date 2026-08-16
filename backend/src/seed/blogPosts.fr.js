@@ -2929,6 +2929,258 @@ const frenchPosts = [
       décisions où l'écart entre les deux chiffres est véritablement grand.</p>
     `,
   },
+  {
+    title: 'Quand votre monnaie bouge du jour au lendemain, vos registres d\u2019équipement doivent suivre',
+    slug: 'currency-devaluation-equipment-records',
+    locale: 'fr',
+    excerpt: 'La répercussion de dévaluation vers inflation dans les marchés émergents va de 30 à 80 % selon les recherches du FMI. Voici pourquoi stocker le prix d\u2019achat dans une monnaie de référence stable n\u2019est pas de la prudence bureaucratique.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-11T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/currency-devaluation-cover.svg',
+    bodyHtml: `
+      <p>Quand l'Égypte a laissé flotter sa monnaie en mars 2024, la livre est passée d'environ 31
+      à plus de 50 pour un dollar en l'espace de quelques semaines. Quiconque détenait des registres
+      d'équipement au prix en monnaie locale à l'ancien taux s'est réveillé avec des chiffres qui ne
+      signifiaient plus rien de proche de ce qu'ils signifiaient auparavant. Ce n'est pas un
+      événement rare et isolé \u2014 la dévaluation monétaire avec une répercussion réelle et
+      soudaine sur les coûts d'importation continue d'être un risque bien vivant à travers une liste
+      significative de marchés émergents en 2026, et l'équipement importé est exactement le genre
+      d'achat le plus durement touché quand cela se produit.</p>
+
+      <h3>Le mécanisme, et pourquoi cela compte spécifiquement pour l'équipement</h3>
+      <p>Les propres recherches du FMI placent la répercussion typique de dévaluation vers inflation
+      dans les marchés émergents entre 30 et 80 % \u2014 ce qui signifie qu'une dévaluation de 50 %
+      peut se traduire par 15 à 40 % d'inflation supplémentaire en une année, concentrée le plus
+      fortement dans les biens importés. L'équipement est exposé de manière disproportionnée à cet
+      effet spécifique : les machines, véhicules, et générateurs sont fréquemment importés ou
+      tarifés par rapport à des composants importés, ce qui signifie que leur coût de remplacement
+      en monnaie locale peut bondir dramatiquement du jour au lendemain d'une façon qu'un bien
+      fabriqué localement ne fait tout simplement pas.</p>
+
+      <h3>Pourquoi stocker le prix d'achat dans une monnaie de référence stable est le bon choix</h3>
+      <p>C'est précisément le raisonnement derrière le fait de garder le
+      <a href="/docs/registering-an-asset">prix d'achat enregistré en USD</a> peu importe quelle
+      monnaie a été réellement payée, avec la conversion en monnaie locale traitée comme une
+      commodité d'affichage et de saisie plutôt que la valeur sous-jacente stockée. Un calendrier de
+      dépréciation construit sur un chiffre qui bouge lui-même de 50 % du jour au lendemain pour des
+      raisons n'ayant rien à voir avec l'état réel de l'équipement produit des comparaisons dans le
+      temps qui ne signifient rien \u2014 vous ne pouvez pas dire si la valeur relative d'un actif a
+      changé à cause d'une usure réelle, ou parce que la monnaie dans laquelle il se trouvait tarifé
+      a bougé. Une monnaie de référence stable comme base de calcul sous-jacente n'est pas une
+      prudence bureaucratique ; c'est ce qui rend un chiffre de dépréciation comparable à lui-même à
+      travers une fenêtre pluriannuelle dans un pays où la monnaie locale pourrait ne pas l'être.</p>
+
+      <h3>Ce qui a encore besoin d'attention en monnaie locale, honnêtement</h3>
+      <p>Cela ne signifie pas que la monnaie locale est hors de propos \u2014 les réclamations
+      d'assurance, la valeur de revente locale, et le traitement fiscal local fonctionnent tous
+      véritablement en monnaie locale, et ces chiffres doivent réellement refléter la réalité locale
+      actuelle, mis à jour quand le taux de change bouge réellement plutôt que laissés au taux qui
+      était en vigueur quand un actif a été saisi pour la première fois. La répartition pratique qui
+      vaut la peine de garder à l'esprit : laissez la monnaie de référence stable gérer les
+      mathématiques de dépréciation et la comparaison dans le temps, et traitez la valeur en monnaie
+      locale comme son propre chiffre séparé, activement maintenu pour les décisions qui sont
+      véritablement locales \u2014 pas le même chiffre portant deux symboles monétaires
+      différents.</p>
+
+      <h3>Une habitude raisonnable si vous opérez quelque part avec une véritable volatilité monétaire</h3>
+      <p>Si vos opérations se trouvent dans un marché avec un véritable historique de mouvement
+      monétaire, cela vaut la peine de vérifier périodiquement si vos chiffres enregistrés en monnaie
+      locale \u2014 partout où vous les utilisez \u2014 reflètent encore la réalité actuelle, plutôt
+      qu'un taux datant de quand l'actif a été enregistré pour la première fois. L'équipement
+      lui-même n'a pas changé. Ce qu'il coûterait à remplacer, dans la monnaie avec laquelle vous
+      paieriez réellement, pourrait avoir changé considérablement \u2014 et cet écart vaut la peine
+      d'être connu avant qu'une véritable décision n'en dépende, pas après.</p>
+    `,
+  },
+  {
+    title: 'Pourquoi deux entreprises avec un équipement identique obtiennent des notes de flotte différentes',
+    slug: 'identical-equipment-different-grades',
+    locale: 'fr',
+    excerpt: 'La position ajustée à l\u2019âge est la seule entrée véritablement identique entre deux chariots élévateurs achetés le même jour. Tout le reste est libre de diverger dès le premier jour.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-14T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/identical-equipment-cover.svg',
+    bodyHtml: `
+      <p>Deux entreprises achètent exactement le même modèle de chariot élévateur, même année, même
+      prix. Dix-huit mois plus tard, l'un apparaît sain sur son tableau de bord et l'autre apparaît
+      signalé pour attention. Rien de tout cela n'est un bogue ou une incohérence dans le
+      fonctionnement de la notation \u2014 c'est la notation fonctionnant exactement comme prévu,
+      parce que « équipement identique » n'a jamais réellement été la même chose que « circonstances
+      identiques ».</p>
+
+      <h3>Les facteurs qui divergent réellement, même à partir d'un point de départ identique</h3>
+      <p>La position ajustée à l'âge est la seule entrée véritablement identique entre deux chariots
+      élévateurs achetés le même jour. Tout le reste dans un <a href="/docs/asset-health-score">
+      Score de santé de l'actif</a> est libre de diverger dès le premier jour : l'intensité d'usage
+      dépend entièrement de la dureté avec laquelle chaque entreprise le fait réellement fonctionner,
+      la conformité de maintenance dépend de la constance avec laquelle chaque entreprise le
+      révise réellement selon le calendrier, et l'exposition environnementale dépend de l'endroit où
+      chacun opère physiquement \u2014 un entrepôt à climat contrôlé contre une cour extérieure
+      poussiéreuse produit une usure véritablement différente sur des machines physiquement
+      identiques.</p>
+
+      <h3>Pourquoi c'est tout l'intérêt, pas un défaut</h3>
+      <p>Un système de notation qui produirait des résultats identiques pour des registres d'achat
+      identiques mesurerait entièrement la mauvaise chose \u2014 il noterait la facture, pas l'actif
+      réel. L'équipement de deux entreprises divergeant en santé après dix-huit mois de traitement
+      véritablement différent est le système capturant correctement quelque chose de réel : ce ne
+      sont plus des actifs équivalents simplement parce qu'ils ont commencé comme des achats
+      équivalents. L'alternative \u2014 un score qui ne reflète que l'âge et le prix d'achat \u2014
+      serait plus facile à expliquer mais serait discrètement faux exactement dans les cas où cela
+      compte le plus.</p>
+
+      <h3>Ce que cela signifie si votre propre score semble pire que ce à quoi vous vous attendriez</h3>
+      <p>Si un score de santé semble plus bas que ce que l'intuition suggère qu'il devrait être, la
+      réponse utile n'est pas de se méfier du chiffre \u2014 c'est de vérifier spécifiquement quelle
+      entrée le tire réellement vers le bas. Un score véritablement plus bas dû à un usage réel plus
+      dur est une information précise, pas une fausse alerte ; cela vous dit que cette unité
+      particulière vieillit plus vite que la moyenne de la catégorie à cause de la façon dont elle
+      est réellement utilisée, ce qui est exactement le genre de chose qui vaut la peine de savoir
+      avant que cela ne devienne une panne surprise plutôt qu'après.</p>
+
+      <h3>La comparaison qui vaut la peine d'être faite à la place</h3>
+      <p>Comparer la santé de votre flotte à un modèle identique d'une entreprise différente vous en
+      dit très peu \u2014 vous ne connaissez pas leur discipline de maintenance, leur environnement
+      d'exploitation, ou leur intensité d'usage réelle, et la comparaison n'a jamais été équitable
+      dès le départ malgré des registres d'achat identiques. La comparaison qui compte réellement est
+      votre propre flotte contre sa propre histoire : la trajectoire de cet actif spécifique
+      s'améliore-t-elle ou décline-t-elle par rapport à il y a six mois, dans des conditions que vous
+      comprenez réellement parce qu'elles sont les vôtres. C'est une comparaison équitable. Le
+      chariot élévateur d'apparence identique d'une entreprise différente n'en a jamais vraiment
+      été une.</p>
+    `,
+  },
+  {
+    title: 'Ce qui se passe réellement quand vous changez le profil de dépréciation d\u2019une catégorie',
+    slug: 'changing-category-depreciation-profile',
+    locale: 'fr',
+    excerpt: 'Cela semble devoir être une petite modification contenue. Ce que cela fait réellement est de recalculer discrètement l\u2019histoire de chaque actif existant dans cette catégorie, tous en même temps.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-16T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/category-profile-change-cover.svg',
+    bodyHtml: `
+      <p>Changer le profil de dépréciation d'une catégorie \u2014 ajuster l'hypothèse de durée de vie
+      utile ou de valeur résiduelle que chaque actif de cette catégorie hérite par défaut \u2014
+      semble devoir être une petite modification contenue. Ce que cela fait réellement est de
+      recalculer discrètement l'histoire de chaque actif existant dans cette catégorie, tous en même
+      temps, ce qui est exactement pourquoi cela vaut la peine d'être compris avant de faire le
+      changement, pas après.</p>
+
+      <h3>Ce qui se passe réellement, mécaniquement</h3>
+      <p>Le <a href="/docs/categories-and-custom-fields">profil de dépréciation d'une catégorie</a>
+      fournit la durée de vie utile par défaut et le pourcentage de valeur résiduelle utilisés
+      chaque fois qu'un actif individuel n'a pas explicitement outrepassé ces chiffres lui-même.
+      Changez le défaut de la catégorie, et chaque actif dans cette catégorie utilisant encore le
+      défaut \u2014 ce qui, dans la plupart des flottes, est la plupart d'entre eux \u2014 se
+      recalcule immédiatement selon la nouvelle hypothèse. Un actif qui montrait une valeur
+      comptable confortable hier sous une hypothèse de durée de vie utile de 8 ans peut montrer une
+      valeur significativement différente aujourd'hui sous une hypothèse corrigée de 6 ans, et aucun
+      des deux chiffres n'était faux \u2014 le second est simplement construit sur une prémisse
+      corrigée.</p>
+
+      <h3>Pourquoi vous voudriez réellement faire cela</h3>
+      <p>Les hypothèses de catégorie sont des estimations faites une fois, souvent lors de la
+      configuration initiale, basées sur un sentiment général de la façon dont cette catégorie
+      d'équipement vieillit typiquement. L'historique d'exploitation réel révèle parfois que cette
+      estimation était erronée \u2014 une catégorie de véhicules supposée durer 8 ans nécessitant
+      constamment un remplacement plus proche de 6, ou des générateurs durant significativement plus
+      longtemps que ce que l'estimation conservatrice d'origine supposait.
+      <a href="/blog/recalibrate-depreciation-assumptions">Revoir cela périodiquement</a> par rapport
+      à votre propre expérience réelle, plutôt que de laisser une supposition du premier jour en
+      place indéfiniment, est exactement le genre de correction qui vaut la peine d'être faite \u2014
+      l'objectif est que la valeur comptable suive la réalité, et la réalité inclut d'apprendre que
+      votre estimation d'origine était erronée.</p>
+
+      <h3>Ce qu'il faut vérifier avant de changer un défaut de catégorie</h3>
+      <p>Deux choses valent la peine d'être confirmées d'abord : combien d'actifs dans la catégorie
+      utilisent réellement le défaut par rapport à combien ont déjà défini leur propre dérogation
+      individuelle \u2014 un changement n'affecte que le premier groupe, et si la plupart des actifs
+      ont déjà des dérogations individuelles, un changement au niveau de la catégorie pourrait faire
+      bien moins qu'attendu. Et deuxièmement, si le décalage que vous voyez est véritablement à
+      l'échelle de la catégorie ou spécifique à une poignée d'unités utilisées de manière
+      inhabituellement dure \u2014 un véritable schéma à l'échelle de la catégorie justifie une
+      correction au niveau de la catégorie ; quelques valeurs aberrantes sont mieux gérées avec des
+      dérogations individuelles sur juste ces actifs, laissant le défaut de catégorie tranquille
+      pour tout le reste qui se comporte réellement comme attendu.</p>
+
+      <h3>Le compromis honnête</h3>
+      <p>Un changement de catégorie se répercute correctement et immédiatement vers l'avant \u2014
+      c'est tout l'intérêt, et c'est le bon comportement. Ce qu'il ne peut pas faire, c'est réécrire
+      rétroactivement les rapports historiques déjà publiés sous l'ancienne hypothèse ; ceux-ci
+      reflétaient la meilleure information disponible à l'époque, et c'est une chose raisonnable
+      qu'un registre historique fasse. Changer une hypothèse devrait mettre à jour le présent et
+      l'avenir honnêtement. Cela ne devrait pas discrètement impliquer que le passé était faux
+      simplement parce qu'une meilleure estimation existe maintenant.</p>
+    `,
+  },
+  {
+    title: 'Le véritable but du facteur de criticité dans la notation de mise au rebut',
+    slug: 'criticality-factor-disposal-scoring',
+    locale: 'fr',
+    excerpt: 'Chaque autre entrée décrit l\u2019équipement. La criticité décrit quelque chose de différent : à quel point cela ferait réellement mal si cet actif spécifique tombait en panne maintenant.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-11-18T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/criticality-cover.svg',
+    bodyHtml: `
+      <p>Enfouie parmi les sept entrées derrière une recommandation de mise au rebut se trouve
+      une qui ne mesure rien sur l'actif lui-même : la criticité. Chaque autre facteur \u2014 âge,
+      coût de maintenance, score de santé, valeur marchande \u2014 décrit l'équipement. La criticité
+      décrit quelque chose de complètement différent : à quel point cela ferait réellement mal si
+      cet actif spécifique tombait en panne maintenant.</p>
+
+      <h3>Pourquoi un score purement basé sur l'état ne suffit pas à lui seul</h3>
+      <p>Deux actifs peuvent avoir des scores de santé identiques, des historiques de réparation
+      identiques, des coûts de remplacement identiques, et mériter quand même une urgence
+      véritablement différente \u2014 parce que l'un fait fonctionner une seule pièce d'équipement
+      facilement substituable pour un travail de routine, et l'autre est la seule unité capable
+      d'une tâche spécifique sans sauvegarde et sans substitut rapide disponible. La
+      <a href="/docs/disposal-intelligence-engine">criticité</a> existe spécifiquement pour capturer
+      cette différence, pondérée à 5 % dans le score global de mise au rebut \u2014 délibérément le
+      poids le plus faible des sept facteurs, et délibérément quand même présente plutôt que
+      complètement omise.</p>
+
+      <h3>Pourquoi la criticité est pondérée légèrement, pas lourdement</h3>
+      <p>C'est un choix de conception délibéré qui vaut la peine d'être compris plutôt que supposé
+      être un oubli : la criticité est intrinsèquement plus subjective que les six autres facteurs,
+      qui sont tirés de données réelles et mesurées \u2014 coûts de réparation réels, valeur
+      marchande actuelle réelle, scores de santé réels. À quel point un actif « semble » critique
+      est plus proche du jugement que de la mesure, et pondérer une entrée subjective aussi
+      lourdement que des entrées objectives laisserait l'instinct outrepasser trop facilement la
+      dure réalité financière. Un petit poids signifie que la criticité peut significativement faire
+      pencher une décision véritablement serrée, sans pouvoir écraser un signal financier clair dans
+      un sens ou dans l'autre.</p>
+
+      <h3>Comment la définir réellement de manière utile plutôt que par habitude</h3>
+      <p>L'erreur courante est de marquer presque tout comme hautement critique, ce qui va
+      entièrement à l'encontre du but \u2014 si tout est critique, le champ ne porte aucune
+      information réelle et pourrait tout aussi bien ne pas exister. La criticité est la plus utile
+      quand elle est réservée pour de véritables points de défaillance uniques : un équipement où il
+      n'y a pas de véritable sauvegarde, pas de substitut rapide, et où une panne arrêterait quelque
+      chose de spécifique et important, pas juste causer un inconvénient de routine. Réservez-la pour
+      des situations véritablement différentes, pas comme une expression générale que « cet
+      équipement compte », parce que dans un sens réel, tout compte, sinon cela ne serait pas suivi
+      du tout.</p>
+
+      <h3>Ce que la criticité change réellement en aval</h3>
+      <p>Une note de criticité élevée n'outrepasse pas un cas financier clair pour la mise au
+      rebut \u2014 elle fait basculer une décision véritablement serrée vers plus de prudence, et
+      c'est honnêtement représenté dans le raisonnement de la recommandation plutôt que
+      silencieusement intégré dans le chiffre sans explication. Quelque chose marqué comme hautement
+      critique avec une économie de réparation limite pourrait atterrir sur « réparer » là où un
+      actif autrement identique, non critique, atterrirait sur « remplacer » \u2014 pas parce que les
+      mathématiques financières ont changé, mais parce que le coût réel de se tromper est différent
+      pour ces deux situations spécifiques.</p>
+
+      <p>Utilisée avec parcimonie et honnêteté, la criticité est la seule entrée de tout le score de
+      mise au rebut qui capture quelque chose qu'aucune quantité de données financières ne pourrait
+      jamais capturer : quelles pannes vous ne pouvez véritablement pas vous permettre de voir vous
+      surprendre.</p>
+    `,
+  },
 ];
 
 module.exports = frenchPosts;
