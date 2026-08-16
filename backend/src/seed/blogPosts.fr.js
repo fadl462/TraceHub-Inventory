@@ -2206,6 +2206,230 @@ const frenchPosts = [
       réellement si quelqu'un se donnait la peine de l'additionner.</p>
     `,
   },
+  {
+    title: 'Le coût caché de « On corrigera les données plus tard »',
+    slug: 'hidden-cost-of-fix-later',
+    locale: 'fr',
+    excerpt: 'Ce n\u2019est pas un mensonge quand quelqu\u2019un le dit — c\u2019est une intention honnête pour laquelle le nettoyage des données n\u2019a tout simplement aucun mécanisme naturel pour l\u2019imposer.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-10-14T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/fix-later-cover.svg',
+    bodyHtml: `
+      <p>« On corrigera les données plus tard » est l'une de ces phrases qui semble un compromis
+      temporaire raisonnable et qui devient discrètement permanente \u2014 pas parce que quelqu'un
+      décide de la laisser cassée pour toujours, mais parce que « plus tard » n'arrive jamais avec
+      assez d'urgence attachée pour réellement se produire, tandis que le coût du désordre continue
+      de s'accumuler entre-temps.</p>
+
+      <h3>Pourquoi « plus tard » n'arrive presque jamais de lui-même</h3>
+      <p>Corriger des données existantes n'a pas de date limite naturelle comme le ferait une
+      nouvelle tâche. Personne n'attend dessus, aucune réunion n'est programmée autour, et chaque
+      jour où cela reste non corrigé se ressent essentiellement comme chaque jour précédent \u2014
+      jusqu'à ce qu'assez de ces jours s'accumulent pour que l'écart entre les registres et la
+      réalité soit devenu un vrai problème, généralement découvert au pire moment possible, comme en
+      plein audit ou en pleine réclamation.</p>
+
+      <h3>Ce qui s'accumule réellement pendant que vous attendez</h3>
+      <p>Les mauvaises données ne restent pas immobiles \u2014 elles se propagent activement. Un actif
+      mal catégorisé fausse le profil de dépréciation moyen de cette catégorie pour chaque actif
+      qu'elle contient, pas seulement lui-même. Un registre de maintenance manquant sur une unité
+      rend le <a href="/docs/asset-health-score">score de santé</a> de cette unité moins fiable
+      aujourd'hui et chaque jour à venir jusqu'à ce que quelqu'un le corrige. Chaque jour où la
+      correction est différée est un jour de plus où des décisions sont discrètement prises sur la
+      version défectueuse au lieu de la correcte, et ces décisions ne se corrigent pas
+      automatiquement une fois que les données sous-jacentes finissent par l'être.</p>
+
+      <h3>Pourquoi c'est véritablement une petite correction si elle est détectée tôt, et une grande sinon</h3>
+      <p>Corriger dix registres mal saisis prend quelques minutes. Corriger la même erreur sous-jacente
+      après qu'elle se soit propagée à travers trois cents registres, ait faussé une hypothèse de
+      dépréciation à l'échelle d'une catégorie, et ait alimenté une année de rapports construits
+      dessus est un travail fondamentalement différent \u2014 pas parce que la correction elle-même
+      est devenue plus difficile, mais parce que démêler quels chiffres en aval ont été affectés et
+      dans quelle mesure devient sa propre tâche significative. Le véritable coût de « on le corrigera
+      plus tard » n'est pas la correction éventuelle. C'est tout ce qui est construit sur la version
+      cassée entre-temps.</p>
+
+      <h3>Ce qui brise réellement le schéma</h3>
+      <p>La solution n'est pas plus de discipline \u2014 c'est éliminer l'écart entre remarquer un
+      problème et le corriger. Si corriger une erreur prend les mêmes quelques secondes que la
+      remarquer, sur le même écran, il n'y a pas de « plus tard » significatif vers lequel reporter
+      en premier lieu. C'est exactement la logique derrière l'<a href="/blog/five-minute-weekly-habit">
+      habitude de cinq minutes par semaine</a> dont nous avons parlé séparément : détecter la dérive
+      constamment, en petites quantités, est un problème fondamentalement plus facile que de la
+      détecter rarement, en grandes quantités.</p>
+
+      <p>« On le corrigera plus tard » est rarement un mensonge quand quelqu'un le dit \u2014 c'est une
+      intention honnête pour laquelle le nettoyage des données n'a tout simplement aucun mécanisme
+      naturel pour réellement l'imposer. Construire délibérément ce mécanisme, plutôt que d'espérer
+      que plus tard arrive de lui-même, est toute la différence entre des registres qui restent
+      fiables et ceux qui discrètement ne le sont pas.</p>
+    `,
+  },
+  {
+    title: 'Pourquoi l\u2019authentification à deux facteurs vaut les dix secondes',
+    slug: 'why-two-factor-authentication-worth-it',
+    locale: 'fr',
+    excerpt: 'L\u2019asymétrie entre le coût de l\u2019activer et le coût d\u2019un incident qu\u2019elle aurait prévenu n\u2019est pas serrée.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-10-17T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/two-factor-cover.svg',
+    bodyHtml: `
+      <p>L'authentification à deux facteurs a un problème d'image : elle semble être un inconvénient
+      que vous choisissez d'accepter pour la sécurité, dix secondes de friction ajoutées à chaque
+      connexion en échange d'une protection contre une menace qui semble abstraite jusqu'au jour où
+      elle ne l'est plus. Ce cadrage sous-estime à quel point l'équilibre réel est déséquilibré.</p>
+
+      <h3>Ce contre quoi elle protège réellement, concrètement</h3>
+      <p>Un mot de passe peut être deviné, réutilisé d'un site piraté, ou simplement partagé sans
+      précaution avec quelqu'un à qui il n'aurait pas dû l'être. L'<a href="/docs/two-factor-authentication">
+      A2F</a> signifie qu'un mot de passe volé ou fuité seul ne suffit pas pour entrer \u2014
+      quiconque essaie a aussi besoin de votre appareil d'authentification physique. Pour un système
+      contenant tous les registres financiers et opérationnels de votre flotte, ce n'est pas une
+      amélioration marginale. C'est la différence entre « un mot de passe fuité est un désagrément
+      mineur » et « un mot de passe fuité est un véritable incident ».</p>
+
+      <h3>Pourquoi le coût de dix secondes est plus petit qu'il n'y paraît</h3>
+      <p>La friction réelle est minime : scannez un code une fois pendant la configuration, puis un
+      code à six chiffres de votre application d'authentification à chaque connexion par la suite.
+      Comparez ces dix secondes, payées occasionnellement, au coût réel d'un compte compromis avec un
+      véritable accès à vos registres d'actifs et financiers \u2014 l'asymétrie entre le coût de
+      l'activer et le coût d'un incident qu'elle aurait prévenu n'est pas serrée.</p>
+
+      <h3>Qui devrait réellement l'avoir activée</h3>
+      <p>Chaque compte ayant accès à quoi que ce soit de sensible, ce qui en pratique signifie tout
+      le monde au-dessus du rôle opérationnel le plus basique \u2014 mais particulièrement tout compte
+      Administrateur d'entreprise, puisque l'accès de ce rôle à la facturation et à la gestion
+      d'équipe en fait une cible significativement plus précieuse qu'un compte Personnel avec une
+      portée plus étroite. Si vous décidez par où commencer plutôt que de le déployer partout à la
+      fois, commencez là.</p>
+
+      <h3>La vraie raison pour laquelle les gens la sautent quand même</h3>
+      <p>Personne ne saute l'A2F parce qu'il a calculé le risque et décidé que cela ne vaut pas la
+      protection \u2014 les gens la sautent parce que le moment de configuration semble une petite
+      corvée et que la menace qu'elle traite ne semble pas encore réelle. C'est précisément la même
+      psychologie derrière le fait de sauter une sauvegarde : le coût n'est jamais ressenti qu'au
+      moment futur spécifique et incertain où vous aviez réellement besoin de la protection et ne
+      l'aviez pas, ce qui rend facile de le déprioriser jusqu'à ce que ce ne le soit plus.</p>
+
+      <p>La configurer prend environ une minute, une fois, par compte. C'est l'une des très rares
+      mesures de sécurité où l'effort requis et la protection obtenue sont à ce point disproportionnés
+      en votre faveur \u2014 ce qui est exactement pourquoi cela vaut la peine de le faire aujourd'hui
+      plutôt que d'attendre une raison qui le fait sembler urgent.</p>
+    `,
+  },
+  {
+    title: 'L\u2019argument pour une convention de nommage à l\u2019échelle de l\u2019entreprise (et ce qui se passe sans elle)',
+    slug: 'naming-convention-case',
+    locale: 'fr',
+    excerpt: 'En définir une tôt est l\u2019une des décisions les moins chères de toute la vie d\u2019un système d\u2019actifs. La sauter est l\u2019une des omissions les plus coûteuses à corriger plus tard.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-10-19T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/naming-convention-cover.svg',
+    bodyHtml: `
+      <p>Une convention de nommage est le genre de décision qui semble trop petite pour mériter une
+      conversation délibérée, jusqu'au moment où son absence a discrètement créé un désordre couvrant
+      des centaines de registres que personne ne veut nettoyer. En définir une tôt est l'une des
+      décisions les moins chères de toute la vie d'un système d'actifs, et la sauter est l'une des
+      omissions les plus coûteuses à corriger plus tard.</p>
+
+      <h3>Ce qui se passe sans en avoir une, précisément</h3>
+      <p>Sans convention convenue, la même catégorie d'équipement finit par être nommée d'une
+      douzaine de façons différentes par une douzaine de personnes différentes : « Chariot élévateur
+      Toyota », « Élévateur - Toyota », « FL-03 », et « le chariot élévateur jaune » pourraient tous
+      faire référence à des actifs différents ou, pire, au même, saisi deux fois par deux personnes
+      qui ne se sont pas rendu compte qu'un registre existait déjà. Aucun de ces noms n'est faux
+      isolément. Collectivement, ils rendent la recherche, le filtrage, et les rapports tous
+      discrètement pires, parce que le système n'a aucun moyen de regrouper des choses qu'un humain
+      reconnaîtrait évidemment comme la même catégorie.</p>
+
+      <h3>À quoi ressemble réellement une bonne convention</h3>
+      <p>Elle n'a pas besoin d'être compliquée \u2014 la cohérence compte plus que l'intelligence. Un
+      schéma raisonnable : [Catégorie] - [Marque/Modèle] - [Détail identifiant], appliqué de la même
+      façon à chaque fois. « Chariot élévateur - Toyota - FL03 » se trie de manière prévisible, se
+      recherche de manière prévisible, et se lit clairement pour tout nouveau venu. Le format
+      spécifique compte bien moins que le fait que tout le monde utilise réellement le même, puisque
+      toute la valeur vient de la cohérence, pas d'un schéma particulier étant objectivement
+      supérieur à un autre raisonnable.</p>
+
+      <h3>Où les champs personnalisés s'inscrivent dans tout cela</h3>
+      <p>Une convention de nommage n'est pas l'endroit pour entasser chaque information identifiante
+      \u2014 c'est à cela que servent déjà les <a href="/docs/categories-and-custom-fields">champs
+      personnalisés</a> et les champs dédiés comme le numéro de série. Le nom devrait être juste
+      assez descriptif pour qu'un humain parcourant une liste puisse immédiatement reconnaître ce
+      qu'est quelque chose ; tout le reste appartient à son propre champ approprié où c'est
+      réellement recherchable et filtrable, pas enfoui à l'intérieur d'un nom de plus en plus long
+      que plus personne ne peut lire d'un coup d'œil.</p>
+
+      <h3>Le corriger après coup versus le configurer en amont</h3>
+      <p>Établir une convention avant d'enregistrer vos cinquante premiers actifs coûte une courte
+      conversation. Adapter une convention à travers cinq cents noms déjà incohérents est un vrai
+      projet de nettoyage, et c'est exactement le genre de tâche peu glamour qui tend à être reportée
+      indéfiniment une fois qu'elle est devenue assez grande pour être réellement agaçante. Les cinq
+      minutes passées à convenir d'un schéma avant de commencer sont disproportionnellement moins
+      chères que corriger son absence plus tard.</p>
+    `,
+  },
+  {
+    title: 'Ce qu\u2019un dossier de mise au rebut rejeté vous apprend réellement',
+    slug: 'what-a-rejected-disposal-case-teaches-you',
+    locale: 'fr',
+    excerpt: 'Ce n\u2019est pas une impasse dans les données — c\u2019est le début d\u2019une véritable boucle de rétroaction spécifique à votre propre flotte.',
+    authorName: 'Équipe TraceHub',
+    publishedAt: new Date('2026-10-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/rejected-disposal-cover.svg',
+    bodyHtml: `
+      <p>Un dossier de mise au rebut rejeté a tendance à être traité comme une affaire close \u2014
+      quelqu'un a décidé de garder l'actif au lieu de suivre la recommandation, le dossier est marqué
+      rejeté, et tout le monde passe à autre chose. C'est une décision d'affaires raisonnable à
+      prendre. C'est aussi, discrètement, l'une des données les plus utiles que génère votre flotte,
+      et la traiter comme simplement « close » gaspille la majeure partie de sa valeur.</p>
+
+      <h3>Ce qu'un rejet enregistre réellement</h3>
+      <p>Chaque fois qu'une recommandation de mise au rebut est <a href="/docs/rejecting-a-disposal-case">
+      rejetée</a>, la raison sous-jacente est capturée \u2014 un renouvellement de flotte planifié le
+      trimestre prochain, une décision de calendrier de trésorerie, une confiance véritable que
+      l'actif continuera à bien fonctionner malgré ce que suggéraient les chiffres. Cette raison
+      compte au-delà de documenter la décision sur le moment. C'est une affirmation réelle et
+      testable sur l'avenir : « nous croyons que cet actif continuera à bien fonctionner ».</p>
+
+      <h3>Comment cette affirmation est réellement testée</h3>
+      <p>Trente jours après un rejet, le système vérifie discrètement si une véritable panne s'est
+      produite depuis. Sur suffisamment de rejets, cela construit un véritable
+      <a href="/docs/ai-confidence-score-and-learning-loop">taux de fiabilité</a> basé sur des
+      preuves \u2014 pas un référentiel industriel générique, mais un historique spécifique à votre
+      propre flotte et vos propres décisions passées. Si vos rejets se sont majoritairement bien
+      passés, c'est une information véritablement utile : le jugement de votre équipe sur ces
+      décisions est fiable, et les futurs scores de confiance le reflètent. Si les actifs rejetés ont
+      eu tendance à tomber en panne quand même peu après, c'est une information tout aussi utile,
+      juste moins confortable à entendre.</p>
+
+      <h3>Pourquoi cela fait du rejet d'une recommandation une chose véritablement sûre à faire</h3>
+      <p>Une certaine hésitation à outrepasser une recommandation du système est naturelle \u2014
+      personne ne veut avoir l'impression d'argumenter avec les données sans bonne raison. Mais un
+      rejet n'est pas traité comme un échec du système ou une erreur à éviter ; c'est une entrée que
+      la boucle d'apprentissage est spécifiquement construite pour utiliser. Outrepasser une
+      recommandation avec une raison réelle et documentée est exactement le genre de décision dont le
+      système est conçu pour apprendre, pas pour pénaliser.</p>
+
+      <h3>Le schéma qui vaut réellement la peine d'être surveillé</h3>
+      <p>Un seul rejet suivi d'une panne n'est pas un schéma significatif \u2014 c'est un point de
+      données. Un schéma récurrent de rejets dans une catégorie spécifique constamment suivis de
+      pannes dans une courte fenêtre mérite une véritable attention, parce que cela suggère quelque
+      chose de spécifique et corrigible : soit les recommandations de cette catégorie sont
+      systématiquement trop prudentes, soit la lecture de l'équipe sur cette catégorie particulière a
+      été constamment optimiste. L'une ou l'autre conclusion est plus utile découverte à partir d'un
+      véritable schéma à travers de nombreuses décisions que devinée à partir d'une seule.</p>
+
+      <p>Un dossier de mise au rebut rejeté n'est pas une impasse dans les données \u2014 c'est le
+      début d'une véritable boucle de rétroaction, une qui devient plus précise spécifiquement parce
+      que ce sont vos propres décisions, pas un modèle industriel générique, dont elle apprend
+      réellement.</p>
+    `,
+  },
 ];
 
 module.exports = frenchPosts;

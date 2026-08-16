@@ -2137,6 +2137,229 @@ const spanishPosts = [
       realmente importaría si alguien se molestara en sumarlo.</p>
     `,
   },
+  {
+    title: 'El costo oculto de "Arreglaremos los datos después"',
+    slug: 'hidden-cost-of-fix-later',
+    locale: 'es',
+    excerpt: 'No es una mentira cuando alguien lo dice — es una intención honesta para la cual la limpieza de datos simplemente no tiene un mecanismo natural para hacerla cumplir.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-14T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/fix-later-cover.svg',
+    bodyHtml: `
+      <p>"Arreglaremos los datos después" es una de esas frases que suena como un compromiso
+      temporal razonable y se vuelve silenciosamente permanente \u2014 no porque alguien decida
+      dejarlo roto para siempre, sino porque "después" nunca llega con suficiente urgencia adjunta
+      como para realmente suceder, mientras el costo del desorden sigue acumulándose mientras
+      tanto.</p>
+
+      <h3>Por qué "después" casi nunca llega por sí solo</h3>
+      <p>Arreglar datos existentes no tiene una fecha límite natural como sí la tiene una nueva
+      tarea. Nadie está esperando por ello, ninguna reunión está programada en torno a ello, y cada
+      día que permanece sin arreglar se siente básicamente igual que cada día anterior \u2014 hasta
+      que suficientes de esos días se acumulan de modo que la brecha entre los registros y la
+      realidad se ha convertido en un problema real, generalmente descubierto en el peor momento
+      posible, como en medio de una auditoría o un reclamo.</p>
+
+      <h3>Lo que realmente se acumula mientras espera</h3>
+      <p>Los datos incorrectos no se quedan quietos \u2014 se propagan activamente. Un activo mal
+      categorizado distorsiona el perfil de depreciación promedio de esa categoría para cada activo
+      en ella, no solo para sí mismo. Un registro de mantenimiento faltante en una unidad hace que el
+      <a href="/docs/asset-health-score">puntaje de salud</a> de esa unidad sea menos confiable hoy y
+      cada día en adelante hasta que alguien lo arregle. Cada día que se difiere la corrección es un
+      día más en que se toman decisiones silenciosamente sobre la versión defectuosa en lugar de la
+      correcta, y esas decisiones no se corrigen automáticamente una vez que los datos subyacentes
+      eventualmente sí lo hacen.</p>
+
+      <h3>Por qué esto es genuinamente una pequeña corrección si se detecta temprano, y una grande si no</h3>
+      <p>Arreglar diez registros mal ingresados toma minutos. Arreglar el mismo error subyacente
+      después de que se ha propagado a través de trescientos registros, ha distorsionado una
+      suposición de depreciación a nivel de categoría, y ha alimentado un año de informes construidos
+      sobre él es un trabajo fundamentalmente diferente \u2014 no porque la corrección en sí se haya
+      vuelto más difícil, sino porque desenredar qué números posteriores se vieron afectados y en qué
+      medida se convierte en su propia tarea significativa. El costo real de "lo arreglaremos
+      después" no es la corrección eventual. Es todo lo que se construye sobre la versión rota
+      mientras tanto.</p>
+
+      <h3>Lo que realmente rompe el patrón</h3>
+      <p>La solución no es más disciplina \u2014 es eliminar la brecha entre notar un problema y
+      arreglarlo. Si corregir un error toma los mismos segundos que notarlo, en la misma pantalla, no
+      hay un "después" significativo al cual diferir en primer lugar. Esta es exactamente la lógica
+      detrás del <a href="/blog/five-minute-weekly-habit">hábito de cinco minutos semanales</a> sobre
+      el que hemos escrito por separado: detectar la desviación constantemente, en pequeñas
+      cantidades, es un problema fundamentalmente más fácil que detectarla raramente, en grandes
+      cantidades.</p>
+
+      <p>"Lo arreglaremos después" rara vez es una mentira cuando alguien lo dice \u2014 es una
+      intención honesta para la cual la limpieza de datos simplemente no tiene un mecanismo natural
+      para realmente hacerla cumplir. Construir ese mecanismo deliberadamente, en lugar de esperar
+      que después llegue por sí solo, es toda la diferencia entre registros que permanecen confiables
+      y los que silenciosamente no lo hacen.</p>
+    `,
+  },
+  {
+    title: 'Por qué la autenticación de dos factores vale los diez segundos',
+    slug: 'why-two-factor-authentication-worth-it',
+    locale: 'es',
+    excerpt: 'La asimetría entre el costo de activarlo y el costo de un incidente que habría prevenido no es cercana.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-17T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/two-factor-cover.svg',
+    bodyHtml: `
+      <p>La autenticación de dos factores tiene un problema de imagen: se siente como un
+      inconveniente que está eligiendo aceptar por seguridad, diez segundos de fricción agregados a
+      cada inicio de sesión a cambio de protección contra una amenaza que se siente abstracta hasta
+      el día en que no lo es. Ese encuadre subestima cuán desequilibrado es el intercambio real.</p>
+
+      <h3>Contra qué protege realmente, concretamente</h3>
+      <p>Una contraseña se puede adivinar, reutilizar de un sitio vulnerado, o simplemente compartir
+      descuidadamente con alguien con quien no debería haberse compartido. La
+      <a href="/docs/two-factor-authentication">2FA</a> significa que una contraseña robada o
+      filtrada por sí sola no es suficiente para entrar \u2014 quien lo intente también necesita su
+      dispositivo de autenticación físico. Para un sistema que contiene todos los registros
+      financieros y operativos de su flota, eso no es una mejora marginal. Es la diferencia entre
+      "una contraseña filtrada es una molestia menor" y "una contraseña filtrada es un incidente
+      real".</p>
+
+      <h3>Por qué el costo de diez segundos es menor de lo que se siente</h3>
+      <p>La fricción real es mínima: escanee un código una vez durante la configuración, luego un
+      código de seis dígitos de su aplicación de autenticación en cada inicio de sesión de ahí en
+      adelante. Compare esos diez segundos, pagados ocasionalmente, con el costo real de una cuenta
+      comprometida con acceso real a sus registros de activos y financieros \u2014 la asimetría entre
+      el costo de activarlo y el costo de un incidente que habría prevenido no es cercana.</p>
+
+      <h3>Quién realmente debería tenerlo habilitado</h3>
+      <p>Cada cuenta con acceso a algo sensible, lo que en la práctica significa todos por encima del
+      rol operativo más básico \u2014 pero especialmente cualquier cuenta de Administrador de la
+      empresa, ya que el acceso de ese rol a facturación y gestión de equipo lo convierte en un
+      objetivo significativamente más valioso que una cuenta de Personal con alcance más estrecho. Si
+      está decidiendo por dónde empezar en lugar de implementarlo en todas partes a la vez, empiece
+      ahí.</p>
+
+      <h3>La razón honesta por la que la gente se la salta de todos modos</h3>
+      <p>Nadie se salta la 2FA porque haya calculado el riesgo y decidido que no vale la pena la
+      protección \u2014 se la saltan porque el momento de configuración se siente como una pequeña
+      tarea y la amenaza que aborda todavía no se siente real. Esa es precisamente la misma
+      psicología detrás de saltarse una copia de seguridad: el costo solo se siente en el momento
+      futuro específico e incierto en que realmente necesitaba la protección y no la tenía, lo que
+      hace fácil despriorizarlo hasta que deja de serlo.</p>
+
+      <p>Configurarlo toma aproximadamente un minuto, una vez, por cuenta. Es una de las muy pocas
+      medidas de seguridad donde el esfuerzo requerido y la protección obtenida están tan
+      desproporcionados a su favor \u2014 que es exactamente por qué vale la pena hacerlo hoy en lugar
+      de esperar una razón que lo haga sentir urgente.</p>
+    `,
+  },
+  {
+    title: 'El caso para una convención de nomenclatura en toda la empresa (y qué pasa sin una)',
+    slug: 'naming-convention-case',
+    locale: 'es',
+    excerpt: 'Establecer una temprano es una de las decisiones más baratas en toda la vida de un sistema de activos. Saltársela es una de las omisiones más costosas de corregir después.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-19T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/naming-convention-cover.svg',
+    bodyHtml: `
+      <p>Una convención de nomenclatura es el tipo de decisión que se siente demasiado pequeña como
+      para merecer una conversación deliberada, hasta el momento en que su ausencia ha creado
+      silenciosamente un desorden que abarca cientos de registros que nadie quiere limpiar.
+      Establecer una temprano es una de las decisiones más baratas en toda la vida de un sistema de
+      activos, y saltársela es una de las omisiones más costosas de corregir después.</p>
+
+      <h3>Lo que sucede sin una, específicamente</h3>
+      <p>Sin una convención acordada, la misma categoría de equipo termina nombrada de una docena de
+      formas diferentes por una docena de personas diferentes: "Montacargas Toyota", "Montacargas -
+      Toyota", "FL-03", y "el montacargas amarillo" podrían referirse todos a activos diferentes o,
+      peor, al mismo, ingresado dos veces por dos personas que no se dieron cuenta de que ya existía
+      un registro. Ninguno de estos nombres está mal de forma aislada. Colectivamente, hacen que la
+      búsqueda, el filtrado, y los informes empeoren silenciosamente, porque el sistema no tiene
+      forma de agrupar cosas que un humano reconocería obviamente como la misma categoría.</p>
+
+      <h3>Cómo se ve realmente una buena convención</h3>
+      <p>No necesita ser complicada \u2014 la consistencia importa más que la inteligencia. Un patrón
+      razonable: [Categoría] - [Marca/Modelo] - [Detalle identificador], aplicado de la misma manera
+      cada vez. "Montacargas - Toyota - FL03" ordena predeciblemente, se busca predeciblemente, y se
+      lee claramente para cualquier persona nueva. El formato específico importa mucho menos que el
+      hecho de que todos realmente usen el mismo, ya que todo el valor viene de la consistencia, no
+      de que un patrón en particular sea objetivamente superior a otro razonable.</p>
+
+      <h3>Dónde encajan los campos personalizados en esto</h3>
+      <p>Una convención de nomenclatura no es el lugar para amontonar cada pieza de información
+      identificadora \u2014 para eso ya existen los <a href="/docs/categories-and-custom-fields">
+      campos personalizados</a> y campos dedicados como el número de serie. El nombre debería ser
+      solo lo suficientemente descriptivo para que un humano escaneando una lista pueda reconocer
+      inmediatamente qué es algo; todo lo demás pertenece a su propio campo apropiado donde
+      realmente sea buscable y filtrable, no enterrado dentro de un nombre cada vez más largo que ya
+      nadie puede leer de un vistazo.</p>
+
+      <h3>Corregirlo después del hecho versus configurarlo por adelantado</h3>
+      <p>Establecer una convención antes de registrar sus primeros cincuenta activos cuesta una
+      breve conversación. Adaptar una convención a través de quinientos nombres ya inconsistentes es
+      un verdadero proyecto de limpieza, y es exactamente el tipo de tarea poco glamorosa que tiende
+      a posponerse indefinidamente una vez que ha crecido lo suficiente como para ser realmente
+      molesta. Los cinco minutos dedicados a acordar un patrón antes de comenzar son
+      desproporcionadamente más baratos que corregir su ausencia después.</p>
+    `,
+  },
+  {
+    title: 'Lo que un caso de baja rechazado realmente le enseña',
+    slug: 'what-a-rejected-disposal-case-teaches-you',
+    locale: 'es',
+    excerpt: 'No es un callejón sin salida en los datos — es el comienzo de un verdadero bucle de retroalimentación específico a su propia flota.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/rejected-disposal-cover.svg',
+    bodyHtml: `
+      <p>Un caso de baja rechazado tiende a tratarse como un asunto cerrado \u2014 alguien decidió
+      mantener el activo en lugar de seguir la recomendación, el caso se marca como rechazado, y
+      todos siguen adelante. Esa es una decisión de negocio razonable de tomar. También es,
+      silenciosamente, uno de los datos más útiles que genera su flota, y tratarlo simplemente como
+      "cerrado" desperdicia la mayor parte de su valor.</p>
+
+      <h3>Lo que un rechazo realmente registra</h3>
+      <p>Cada vez que se <a href="/docs/rejecting-a-disposal-case">rechaza</a> una recomendación de
+      baja, se captura la razón detrás de ella \u2014 una renovación de flota planificada para el
+      próximo trimestre, una decisión de tiempo de flujo de caja, confianza genuina de que el activo
+      seguirá funcionando bien a pesar de lo que sugerían los números. Esa razón importa más allá de
+      documentar la decisión en el momento. Es una afirmación real y comprobable sobre el futuro:
+      "creemos que este activo seguirá funcionando bien".</p>
+
+      <h3>Cómo se comprueba realmente esa afirmación</h3>
+      <p>Treinta días después de un rechazo, el sistema silenciosamente verifica si ha ocurrido una
+      falla real desde entonces. Con suficientes rechazos, esto construye una
+      <a href="/docs/ai-confidence-score-and-learning-loop">tasa de confiabilidad</a> real y basada
+      en evidencia \u2014 no un punto de referencia genérico de la industria, sino un historial
+      específico de su propia flota y sus propias decisiones pasadas. Si sus rechazos han resultado
+      mayormente bien, esa es información genuinamente útil: el juicio de su equipo en estas
+      decisiones es confiable, y los puntajes de confianza futuros reflejan eso. Si los activos
+      rechazados han tendido a fallar de todos modos poco después, esa es información igualmente
+      útil, solo que menos cómoda de escuchar.</p>
+
+      <h3>Por qué esto hace que rechazar una recomendación sea algo genuinamente seguro de hacer</h3>
+      <p>Cierta vacilación para anular una recomendación del sistema es natural \u2014 nadie quiere
+      sentir que está discutiendo con los datos sin una buena razón. Pero un rechazo no se trata
+      como un fallo del sistema o un error a evitar; es una entrada que el bucle de aprendizaje está
+      específicamente construido para usar. Anular una recomendación con una razón real y
+      documentada es exactamente el tipo de decisión de la cual el sistema está diseñado para
+      aprender, no para penalizar.</p>
+
+      <h3>El patrón que realmente vale la pena vigilar</h3>
+      <p>Un solo rechazo seguido de una falla no es un patrón significativo \u2014 es un punto de
+      datos. Un patrón recurrente de rechazos en una categoría específica seguidos consistentemente
+      por fallas dentro de una ventana corta merece atención real, porque sugiere algo específico y
+      corregible: o las recomendaciones de esa categoría son sistemáticamente demasiado cautelosas, o
+      la lectura del equipo sobre esa categoría en particular ha sido consistentemente optimista.
+      Cualquiera de las dos conclusiones es más útil descubierta a partir de un patrón real a través
+      de muchas decisiones que adivinada a partir de una sola.</p>
+
+      <p>Un caso de baja rechazado no es un callejón sin salida en los datos \u2014 es el comienzo de
+      un verdadero bucle de retroalimentación, uno que se vuelve más preciso específicamente porque
+      son sus propias decisiones, no un modelo genérico de la industria, de lo que realmente está
+      aprendiendo.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;
