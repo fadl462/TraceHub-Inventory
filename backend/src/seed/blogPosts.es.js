@@ -2360,6 +2360,252 @@ const spanishPosts = [
       aprendiendo.</p>
     `,
   },
+  {
+    title: 'La diferencia real entre \u2019Disponible\u2019 e \u2019Inactivo\u2019 (y por qué la distinción importa)',
+    slug: 'available-vs-idle-status',
+    locale: 'es',
+    excerpt: 'Todo activo inactivo está disponible. La mayoría de los activos disponibles no están inactivos. Confundirlos es una forma común en que los informes de flota terminan siendo engañosos.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-24T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/available-idle-cover.svg',
+    bodyHtml: `
+      <p>"Disponible" y "inactivo" suenan como si debieran significar aproximadamente lo mismo \u2014
+      equipo que actualmente no se está usando. No son en absoluto lo mismo, y confundirlos es una
+      forma silenciosa y común en que los informes de flotas terminan siendo engañosos en lugar de
+      simplemente imprecisos.</p>
+
+      <h3>Lo que cada uno realmente mide</h3>
+      <p><a href="/docs/understanding-asset-status">Disponible</a> es un estado: este activo
+      específico actualmente no está asignado a nadie, y hasta donde el sistema sabe, está listo
+      para entregarse en el momento en que se necesite. No dice nada sobre cuánto tiempo ha estado
+      así. Inactivo es un patrón basado en duración: un activo que ha mantenido el estado
+      "Disponible" durante un período extendido \u2014 el umbral de TraceHub es 200 horas \u2014 sin
+      ser asignado o usado en absoluto. Todo activo inactivo está disponible. La mayoría de los
+      activos disponibles no están inactivos. Esa distinción importa más de lo que parece que
+      debería.</p>
+
+      <h3>Por qué la diferencia realmente importa para sus números</h3>
+      <p>Una flota saludable tiene bastante equipo Disponible \u2014 eso es exactamente lo que quiere
+      entre trabajos: suficiente capacidad de repuesto para que una nueva solicitud no espere a que
+      algo se libere. Una flota saludable debería tener muy poco equipo genuinamente Inactivo,
+      porque los activos inactivos son capital sentado completamente sin usar, todavía
+      depreciándose, todavía técnicamente propiedad de la empresa, sin contribuir nada. La
+      <a href="/docs/fleet-intelligence-formulas-explained">Disponibilidad de activos</a>, la
+      métrica del tablero, trata deliberadamente sobre la primera idea \u2014 holgura operativa
+      saludable \u2014 no una señal de que algo está mal. Un conteo de inactivos en aumento es el que
+      realmente vale la pena investigar.</p>
+
+      <h3>Qué hacer realmente cuando algo aparece como inactivo</h3>
+      <p>Un activo inactivo generalmente significa una de tres cosas, y cada una tiene una solución
+      diferente. Podría ser genuinamente excedente \u2014 comprado para un proyecto que terminó,
+      nunca redistribuido, valdría la pena venderlo en lugar de seguir depreciándose por nada.
+      Podría estar en la ubicación incorrecta para la demanda actual \u2014 equipo bueno, simplemente
+      no donde está el trabajo actualmente, valdría la pena una transferencia en lugar de una venta.
+      O podría ser funcionalmente obsoleto para cómo han cambiado las necesidades de la flota, aunque
+      todavía funcione bien, lo cual es una conversación genuinamente diferente de las otras dos.</p>
+
+      <p>El error es tratar las tres de la misma manera \u2014 ya sea ignorando por completo el
+      equipo inactivo porque "no es activamente un problema", o vendiendo reflexivamente cualquier
+      cosa inactiva sin verificar si realmente es excedente versus simplemente mal asignado. Una
+      mirada de cinco minutos a por qué algo está inactivo, específicamente, generalmente hace
+      bastante obvio cuál de las tres situaciones está viendo.</p>
+
+      <h3>El hábito que vale la pena construir</h3>
+      <p>Los activos inactivos son silenciosos por naturaleza \u2014 nada se rompe, ninguna alerta se
+      dispara por sí sola, simplemente se quedan ahí costándole en depreciación lenta y capital
+      inmovilizado que podría estar haciendo otra cosa. Revisar su lista de inactivos
+      ocasionalmente, de la misma manera que revisaría cualquier cosa vencida o recién marcada,
+      detecta exactamente esta categoría de "técnicamente nada está mal, pero esto es
+      silenciosamente derrochador" antes de que se acumule en una cantidad genuinamente grande de
+      capital muerto cuya acumulación nadie notó.</p>
+    `,
+  },
+  {
+    title: 'Por qué su primer mes de datos de activos no será perfecto, y por qué está bien',
+    slug: 'first-month-imperfect-data',
+    locale: 'es',
+    excerpt: 'Un puntaje de salud más bajo de lo esperado en la primera semana generalmente es un problema de datos faltantes, no una sorpresa sobre la condición real del equipo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-26T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/first-month-cover.svg',
+    bodyHtml: `
+      <p>En algún lugar cerca de la tercera semana de usar un nuevo sistema de activos, aparece un
+      momento familiar de duda: los datos no se ven tan limpios como se esperaba. A algunos activos
+      les faltan detalles. Algunos puntajes de salud se ven más bajos de lo que intuitivamente
+      deberían. Es tentador leer esto como una señal de que algo está mal con la configuración.
+      Generalmente no lo es \u2014 es una señal de que el sistema está siendo honesto sobre exactamente
+      cuánto realmente sabía sobre su propio equipo antes de comenzar, que casi siempre es menos de
+      lo que se sentía antes.</p>
+
+      <h3>Por qué el primer mes siempre se ve más difícil de lo esperado</h3>
+      <p>Antes de que existiera un sistema real, "conocemos nuestro equipo" significaba algo
+      informal y en gran parte no verificado \u2014 una sensación aproximada, repartida entre la
+      memoria de varias personas, ninguna de ellas verificada contra la realidad recientemente. El
+      momento en que realmente registra todo con campos reales \u2014 fechas de compra, historial de
+      mantenimiento, condición actual \u2014 las brechas que siempre estuvieron ahí se vuelven
+      visibles por primera vez, no porque algo haya empeorado, sino porque nada las ocultaba antes.
+      Un <a href="/docs/asset-health-score">puntaje de salud</a> más bajo de lo esperado en la
+      primera semana generalmente es un problema de datos faltantes, no una sorpresa sobre la
+      condición real del equipo.</p>
+
+      <h3>Lo que realmente necesita arreglarse versus lo que se arregla solo</h3>
+      <p>Algunas brechas vale la pena cerrarlas activamente: precio de compra y categoría, ya que
+      casi todo lo demás se calcula a partir de esos dos campos. El historial de mantenimiento
+      faltante vale la pena completarlo retroactivamente para sus activos de mayor valor o mayor
+      riesgo específicamente, en lugar de intentar todo a la vez \u2014 un historial completo en los
+      diez activos que más importan supera un repaso superficial de todo.</p>
+      <p>Otras brechas genuinamente se arreglan solas a través del uso ordinario y no necesitan un
+      proyecto de limpieza dedicado: la intensidad de uso y los datos de entorno se vuelven más
+      precisos cuanto más se usa realmente el sistema día a día, y un
+      <a href="/docs/ai-confidence-score-and-learning-loop">puntaje de confianza</a> que es
+      honestamente bajo en el primer mes porque todavía no hay mucho historial está haciendo
+      exactamente lo que debería \u2014 se supone que debe ser conservador antes de que exista
+      evidencia real, no estar seguro incorrectamente.</p>
+
+      <h3>El error que vale la pena evitar activamente</h3>
+      <p>El riesgo real en el primer mes no son los datos imperfectos \u2014 todo sistema real
+      comienza ahí. Es concluir que el sistema no es confiable por eso, y volver silenciosamente al
+      proceso informal que se suponía que iba a reemplazar antes de darle a los datos tiempo para
+      realmente madurar. Un motor de recomendación genuinamente se vuelve más preciso a medida que
+      se acumula historial real detrás de él. Juzgarlo contra un año completo de precisión eventual
+      en la segunda semana es compararlo contra un estándar que nada nuevo podría cumplir.</p>
+
+      <h3>Una forma razonable de pensar en los primeros noventa días</h3>
+      <p>Espere que el primer mes revele brechas que no sabía que tenía \u2014 eso es el sistema
+      funcionando correctamente, no un defecto en él. Espere que el segundo mes se vea
+      significativamente mejor a medida que se cierran las brechas de mayor prioridad y comienzan a
+      acumularse datos de uso reales. Para el tercer mes, la mayoría de las operaciones encuentran
+      que los números se han puesto al día con algo más cercano a lo que asumían que ya era cierto
+      el primer día. El retraso entre la configuración y la precisión total no es un defecto para
+      evitar. Es simplemente lo que honestamente se necesita para reemplazar "creemos que sabemos"
+      con "realmente sabemos".</p>
+    `,
+  },
+  {
+    title: 'Equipo estacional: cómo manejar activos que solo usa parte del año',
+    slug: 'seasonal-equipment-tracking',
+    locale: 'es',
+    excerpt: 'Cada número que asume uso constante se distorsiona por meses de inactividad completamente normal y esperada que se ve idéntica a algo olvidado.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-28T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/seasonal-cover.svg',
+    bodyHtml: `
+      <p>El equipo que solo funciona parte del año tiene un problema de informes silencioso que el
+      equipo que funciona constantemente nunca tiene: cada número que asume uso constante \u2014
+      ritmo de depreciación, puntaje de salud, "cuándo vimos esto por última vez" \u2014 se distorsiona
+      por meses de inactividad completamente normal y esperada que se ve, en papel, idéntica a algo
+      olvidado.</p>
+
+      <h3>Por qué el equipo estacional confunde a los sistemas construidos en torno al uso continuo</h3>
+      <p>Un generador que funciona todos los días envejece predeciblemente a lo largo de una línea
+      recta. Un generador que funciona tres meses al año para una operación estacional
+      específica \u2014 equipo de cosecha, infraestructura de eventos, maquinaria de limpieza de
+      nieve \u2014 experimenta su desgaste en breves ráfagas separadas por largos períodos donde no
+      pasa nada en absoluto, y no debería pasar. Una <a href="/docs/asset-health-score">bandera de
+      activo inactivo</a> que es perfectamente correcta para equipo que se supone debe estar en
+      rotación constante marcará incorrectamente el equipo estacional como preocupante en cada
+      temporada baja, durante meses seguidos, a menos que algo tenga en cuenta la diferencia.</p>
+
+      <h3>El momento de la depreciación importa más aquí de lo que parece</h3>
+      <p>La <a href="/docs/usage-based-depreciation-methods">depreciación basada en uso</a> \u2014
+      vinculada a las horas o ciclos reales ejecutados en lugar del tiempo calendario \u2014
+      generalmente es la elección más honesta para equipo genuinamente estacional. Un método de
+      línea recta asume un desgaste idéntico cada mes del año, que es precisamente la suposición que
+      el equipo estacional viola por diseño. Configurar bien esta única opción evita mostrar un
+      activo perdiendo valor constantemente durante ocho meses en los que nunca salió del cobertizo.</p>
+
+      <h3>La revisión previa a la temporada importa más que el monitoreo constante</h3>
+      <p>Para equipo que solo funciona parte del año, el momento que más importa no es una mirada
+      semanal \u2014 es una revisión deliberada justo antes de que comience la temporada. El equipo
+      que ha estado sin usar durante ocho o nueve meses merece una inspección real antes de su
+      primer uso de la temporada, no una suposición de que está bien porque nada se registró como
+      incorrecto mientras estaba inactivo. Una falla en la primera semana de una temporada
+      operativa corta es un problema mucho más costoso que la misma falla en el sexto mes de uso
+      durante todo el año, simplemente porque hay mucha menos holgura en el calendario para absorber
+      la interrupción.</p>
+
+      <h3>No deje que "es temporada baja" se convierta en "dejamos de rastrearlo"</h3>
+      <p>El modo de falla específico que vale la pena evitar: el equipo silenciosamente cae fuera de
+      la atención de todos durante su larga temporada baja, y para cuando regresa la temporada,
+      nadie está completamente seguro de su condición, su ubicación, o si el mantenimiento que se
+      suponía debía ocurrir durante la temporada baja realmente ocurrió. Tratar la temporada baja
+      como la ventana deliberada para el mantenimiento \u2014 en lugar de un período en el que el
+      activo simplemente desaparece del radar de todos \u2014 convierte el tiempo de inactividad
+      inevitable en la ventana de mantenimiento más útil que el activo obtiene en todo el año, en
+      lugar de una brecha en la atención de todos.</p>
+
+      <p>Nada de esto requiere software diferente para equipo estacional \u2014 requiere recordar que
+      "no se ha usado en meses" significa algo completamente diferente para una cosechadora
+      combinada en enero que para una camioneta de reparto, y establecer expectativas en
+      consecuencia en lugar de aplicar un estándar universal a equipo que nunca fue diseñado para
+      funcionar según un horario universal.</p>
+    `,
+  },
+  {
+    title: 'El caso para designar a una persona responsable de sus datos de activos',
+    slug: 'case-for-data-ownership',
+    locale: 'es',
+    excerpt: '"Todos son responsables de los datos" silenciosamente significa que nadie lo es. Esto es lo que realmente hace un verdadero propietario, y por qué no es un rol de tiempo completo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-10-31T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/data-ownership-cover.svg',
+    bodyHtml: `
+      <p>Pregúntele a la mayoría de las empresas quién es responsable de que sus datos de activos
+      sean precisos, y la respuesta honesta generalmente es "todos", lo que en la práctica
+      significa nadie. Los datos con un propietario difuso y sin nombre se degradan silenciosamente
+      y nadie se siente personalmente responsable de detectarlo \u2014 no por descuido, simplemente
+      porque una responsabilidad repartida entre todo un equipo es una responsabilidad que nadie
+      posee específicamente.</p>
+
+      <h3>Por qué "todos son responsables" silenciosamente significa "nadie lo es"</h3>
+      <p>Cuando diez personas pueden actualizar un registro de activo, y ninguna de ellas es dueña
+      del resultado, pequeñas inconsistencias se acumulan sin que nadie note el patrón \u2014 el
+      hábito de una persona de saltarse el campo de condición, la tendencia de otra a registrar
+      ubicaciones con un día de retraso, una tercera que nunca actualiza los costos de mantenimiento
+      después de una reparación. Individualmente, cada una es un descuido menor. Colectivamente,
+      repartidas en una flota real durante un año real, se suman a registros en los que nadie puede
+      confiar completamente, y ninguna persona se siente responsable de la desviación acumulada
+      porque ninguna pieza individual de ella era claramente suya para poseer.</p>
+
+      <h3>Lo que realmente hace un verdadero propietario de datos</h3>
+      <p>Esto no necesita ser un rol de tiempo completo, y no se trata de ser la única persona
+      autorizada a tocar los registros \u2014 las <a href="/docs/roles-and-permissions">
+      actualizaciones diarias</a> deberían permanecer distribuidas entre quien realmente esté
+      haciendo el trabajo. Es una responsabilidad específica y más estrecha: alguien que revisa
+      periódicamente la salud general de los datos, decide cuáles deberían ser realmente las
+      suposiciones de depreciación de una categoría, y es la persona que notaría si algo sistémico
+      comenzara a ir mal \u2014 los puntajes de salud de toda una categoría con una tendencia extraña,
+      los registros de una ubicación viéndose consistentemente más escasos que el resto.</p>
+
+      <h3>Por qué este rol se paga a sí mismo rápidamente</h3>
+      <p>La alternativa a un propietario nombrado no es "nada sale mal", es "los problemas pasan
+      desapercibidos por más tiempo, porque el trabajo específico de nadie incluye notarlos". Un
+      propietario nombrado revisando el <a href="/docs/fleet-intelligence-formulas-explained">panel
+      de inteligencia de flota</a> incluso ocasionalmente detecta problemas sistémicos \u2014 las
+      suposiciones de una categoría que nunca se actualizaron, una ubicación cuyos registros se han
+      desviado silenciosamente \u2014 que de otro modo quedarían desapercibidos hasta que sean lo
+      suficientemente grandes como para ser obvios para todos, que es una forma mucho más costosa de
+      eventualmente descubrir el mismo problema.</p>
+
+      <h3>Esto se escala hacia abajo, no solo hacia arriba</h3>
+      <p>Incluso una pequeña operación se beneficia de nombrar esto explícitamente, incluso si es
+      una responsabilidad de tiempo parcial superpuesta al rol existente de alguien en lugar de una
+      posición dedicada. El valor no es el título \u2014 es que una persona específica ahora tiene
+      "¿son nuestros datos de activos realmente confiables?" como algo de lo que es responsable, en
+      lugar de una pregunta que implícitamente es trabajo de todos y por lo tanto, en la práctica,
+      de nadie.</p>
+
+      <p>Si le preguntara a su propio equipo ahora mismo quién notaría si sus registros de activos
+      comenzaran a desviarse silenciosamente de la realidad, y la respuesta honesta es "no estoy
+      seguro, probablemente quien sea que lo note primero" \u2014 eso vale la pena solucionarlo con un
+      nombre, no una nueva herramienta. El sistema ya lo respalda. Alguien simplemente tiene que
+      realmente poseerlo.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;
