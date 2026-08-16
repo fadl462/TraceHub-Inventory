@@ -3486,6 +3486,415 @@ const spanishPosts = [
       una imagen que pierde relevancia casi de inmediato.</p>
     `,
   },
+  {
+    title: 'El caso para revisar los permisos trimestralmente, no solo al contratar y al salir',
+    slug: 'quarterly-permissions-review',
+    locale: 'es',
+    excerpt: 'Las asignaciones de roles generalmente son correctas el día en que se establecen. Se vuelven menos correctas a medida que cambian las responsabilidades, y el trabajo de nadie incluye notarlo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-09T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/permissions-review-cover.svg',
+    bodyHtml: `
+      <p>La mayoría de las empresas establecen permisos de acceso cuidadosamente una vez \u2014 al
+      contratar, tal vez de nuevo en una promoción o una salida \u2014 y nunca los revisan de nuevo
+      entre medio. Eso deja una brecha real que se acumula silenciosamente: personas cuyas
+      responsabilidades reales han cambiado mientras su acceso al sistema se quedó exactamente donde
+      comenzó.</p>
+
+      <h3>Por qué el acceso se desvía incluso sin que nadie haga nada mal</h3>
+      <p>Las <a href="/docs/roles-and-permissions">asignaciones de roles</a> generalmente son
+      correctas el día en que se establecen. Se vuelven menos correctas a medida que las
+      responsabilidades genuinamente cambian \u2014 alguien pasa a un rol que ya no necesita acceso
+      de nivel Gerente, alguien asume responsabilidades que realmente justifican más acceso del que
+      proporcionaba su rol original de Personal, y el trabajo específico de nadie incluye notar que
+      ocurrió cualquiera de los dos cambios, porque la revisión de acceso nunca fue algo que alguien
+      programó revisar.</p>
+
+      <h3>Lo que una revisión trimestral realmente detecta</h3>
+      <p>Un repaso corto y periódico de la lista de su equipo \u2014 ¿todavía la responsabilidad
+      actual real de cada persona coincide con su nivel de acceso? \u2014 detecta ambas direcciones
+      de desviación: alguien con más acceso del que su rol actual justifica, que es una
+      consideración de seguridad real, y alguien con menos acceso del que sus responsabilidades
+      actuales necesitan, que es una de productividad real. Ninguna aparece por sí sola; ambas
+      aparecen en el momento en que alguien realmente hace la pregunta.</p>
+
+      <h3>Por qué esto vale la pena como un recordatorio permanente en el calendario</h3>
+      <p>La revisión de acceso, como la mayoría de las cosas que vale la pena hacer
+      consistentemente, sobrevive mucho mejor siendo un hábito real que una buena intención. Un
+      repaso trimestral de quince minutos por los roles reales de su equipo cuesta casi nada y
+      detecta la desviación dentro de meses en lugar de cuando una salida o un incidente finalmente
+      obliga a alguien a mirar de cerca quién realmente puede ver qué.</p>
+    `,
+  },
+  {
+    title: 'Lo que realmente le pasa a sus datos si alguna vez deja una plataforma',
+    slug: 'data-portability-and-ownership',
+    locale: 'es',
+    excerpt: 'Una pregunta justa que vale la pena responder directamente: ¿podría irse con todo lo que realmente es suyo, en una forma utilizable, sin pelea?',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-12T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/data-portability-cover.svg',
+    bodyHtml: `
+      <p>Es una pregunta justa para hacerle a cualquier plataforma que tenga sus datos operativos, y
+      una honesta que vale la pena responder directamente en lugar de evadir: qué sucede realmente
+      con sus registros si alguna vez decide irse.</p>
+
+      <h3>La respuesta honesta</h3>
+      <p>Sus datos de activos, asignaciones, y ubicación son genuinamente suyos \u2014 no de
+      TraceHub, y no algo retenido como rehén para mantenerlo suscrito. Cada informe principal está
+      disponible como una <a href="/docs/exporting-csv-pdf-powerpoint">exportación CSV</a> real, que
+      es deliberadamente el formato más completo y portable específicamente porque es el que se
+      abre limpiamente en esencialmente cualquier otro sistema, hoja de cálculo, o base de datos a
+      la que pudiera mudarse después, sin necesitarnos en absoluto una vez que esté en sus manos.</p>
+
+      <h3>Por qué esto importa incluso si nunca planea irse</h3>
+      <p>Una plataforma que hace difícil extraer sus propios datos está optimizando para la
+      retención por encima de la confianza, y eso vale la pena notarlo como una señal
+      independientemente de si alguna vez realmente actúa en consecuencia. La prueba que vale la
+      pena aplicar a cualquier sistema que tenga sus registros operativos, este incluido: ¿podría
+      irse con todo lo que realmente es suyo, en una forma utilizable, sin pelea? Si la respuesta
+      honesta es no, vale la pena saberlo mucho antes de estar alguna vez en una posición donde
+      urgentemente necesite que sea sí.</p>
+
+      <p>Preferiríamos ganarnos su uso continuo a través de que la plataforma sea realmente útil en
+      lugar de hacer que sus propios registros sean difíciles de llevarse con usted. Esa no es una
+      posición de marketing \u2014 es por eso que la exportación CSV completa existe en cada informe
+      en primer lugar.</p>
+    `,
+  },
+  {
+    title: 'La diferencia real entre que un Gerente revise algo y lo apruebe',
+    slug: 'reviewing-vs-approving',
+    locale: 'es',
+    excerpt: 'Revisar significa mirar. Aprobar significa poner su nombre detrás de un resultado específico. Confundir los dos es exactamente donde la responsabilidad silenciosamente desaparece.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-14T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/review-approve-cover.svg',
+    bodyHtml: `
+      <p>"Lo revisé" y "lo aprobé" se usan casi indistintamente en la conversación casual, y la
+      brecha entre ellos es exactamente donde la responsabilidad silenciosamente desaparece en
+      muchas organizaciones.</p>
+
+      <h3>A qué se compromete realmente cada uno</h3>
+      <p>Revisar algo significa mirarlo. Aprobarlo significa poner su nombre detrás de un resultado
+      específico y aceptar la responsabilidad si resulta estar equivocado. Un Gerente que "revisó"
+      un caso de baja y un Gerente que lo "aprobó" en la misma
+      <a href="/docs/six-stage-disposal-workflow">etapa del flujo de trabajo</a> suenan como si
+      hubieran hecho lo mismo \u2014 solo uno de ellos realmente se comprometió a algo.</p>
+
+      <h3>Por qué confundir los dos causa problemas reales</h3>
+      <p>Cuando "revisado" se trata como equivalente a "aprobado", se abre una brecha genuina:
+      alguien echó un vistazo a algo, no objetó, y luego descubre que se le está haciendo
+      responsable de una decisión que nunca sintió realmente que tomó. Esto generalmente no es
+      engaño \u2014 es ambigüedad genuina sobre lo que se suponía que significaba realmente mirar
+      algo, y sale a la superficie en exactamente el momento equivocado, generalmente después de que
+      algo ya salió mal.</p>
+
+      <h3>La solución es precisión en el lenguaje, no más proceso</h3>
+      <p>Un flujo de trabajo con etapas reales y distintas \u2014 revisión, luego una aprobación
+      separada \u2014 ya codifica esta distinción estructuralmente. El trabajo restante es cultural:
+      asegurarse de que todos los involucrados entiendan que mover algo a "aprobado" es un
+      compromiso genuino, no una formalidad que sucede automáticamente una vez que alguien lo ha
+      mirado. Esa pequeña precisión lingüística, exigida consistentemente, cierra una cantidad
+      sorprendente de la brecha de responsabilidad que se abre cuando revisión y aprobación
+      silenciosamente se convierten en la misma palabra en la cabeza de todos.</p>
+    `,
+  },
+  {
+    title: 'Por qué las marcas de tiempo consistentes importan más de lo que la gente cree',
+    slug: 'why-timestamps-matter',
+    locale: 'es',
+    excerpt: 'Una marca de tiempo generada por el sistema es una de las pocas cosas en un registro de activo genuinamente difícil de falsificar convincentemente después del hecho.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-16T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/timestamps-cover.svg',
+    bodyHtml: `
+      <p>Una marca de tiempo se siente como el dato más aburrido posible \u2014 solo una fecha y
+      hora, generada automáticamente, nadie piensa en ella. También es una de las pocas cosas en un
+      registro de activo que es genuinamente difícil de falsificar convincentemente después del
+      hecho, que es exactamente por qué silenciosamente importa más que casi cualquier otra cosa en
+      la página.</p>
+
+      <h3>Lo que una marca de tiempo real realmente prueba</h3>
+      <p>Cuando un registro de mantenimiento, un escaneo de ubicación, o una asignación muestra una
+      marca de tiempo específica generada automáticamente por el sistema en el momento en que
+      sucedió la acción, ese es un tipo de evidencia fundamentalmente diferente de una fecha que
+      alguien escribió de memoria dos semanas después. El <a href="/docs/the-audit-log">registro de
+      auditoría</a> existe específicamente porque "cuándo sucedió realmente esto" a menudo es
+      exactamente la pregunta que más importa en una disputa, un reclamo de seguro, o una revisión
+      de cumplimiento \u2014 y una marca de tiempo generada por el sistema la responde de manera
+      mucho más creíble de lo que nunca podría hacerlo el recuerdo de nadie.</p>
+
+      <h3>Por qué esto argumenta a favor de registrar las cosas en tiempo real, no en lotes</h3>
+      <p>Un registro de mantenimiento ingresado en el momento en que termina el trabajo lleva una
+      marca de tiempo genuinamente confiable. El mismo registro, reconstruido de memoria al final de
+      una semana ocupada e ingresado tres días después, lleva una marca de tiempo que es honesta
+      sobre cuándo se ingresó pero no dice nada confiable sobre cuándo sucedió realmente el trabajo.
+      La brecha entre los dos no es cosmética \u2014 es la diferencia entre un registro que
+      genuinamente puede responder "cuándo" y uno que solo puede responder "en algún momento antes
+      de esta entrada".</p>
+
+      <h3>El hábito que vale la pena reforzar</h3>
+      <p>Fomente el registro tan cerca del momento real como sea prácticamente posible, no como una
+      tarea de lote de fin de día o fin de semana. Los pocos segundos extra que esto cuesta en el
+      momento compran marcas de tiempo genuinamente creíbles después, exactamente cuando un
+      "cuándo" preciso resulta importar más de lo que nadie esperaba.</p>
+    `,
+  },
+  {
+    title: 'El caso para una lista de verificación estándar al abrir una nueva ubicación, no solo al incorporar un nuevo empleado',
+    slug: 'new-location-checklist',
+    locale: 'es',
+    excerpt: 'Nada de esto es individualmente difícil. Todo es fácil de saltarse cuando un nuevo sitio se abre bajo presión de tiempo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-19T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/new-location-checklist-cover.svg',
+    bodyHtml: `
+      <p>Las empresas rutinariamente construyen una lista de verificación real de incorporación
+      para nuevos empleados y rara vez construyen una equivalente para una nueva ubicación \u2014 a
+      pesar de que abrir un nuevo sitio introduce su propio conjunto predecible de pasos de
+      configuración que son igual de fáciles de saltarse bajo la presión de poner en marcha
+      rápidamente una nueva operación.</p>
+
+      <h3>Lo que realmente necesita suceder, cada vez</h3>
+      <p>Cada nueva <a href="/docs/setting-up-locations">ubicación</a> necesita el mismo puñado de
+      cosas bien hechas: un nombre que coincida con cómo el equipo realmente se referirá a ella,
+      coordenadas reales establecidas para que aparezca correctamente en el mapa en vivo, y una
+      decisión sobre quién en ese sitio tiene qué nivel de acceso desde el primer día, no resuelta
+      reactivamente después de que algo ya salió mal. Nada de esto es individualmente difícil. Todo
+      es fácil de saltarse cuando un nuevo sitio se abre bajo presión de tiempo y abrir las puertas
+      se siente más urgente que hacer bien la convención de nomenclatura.</p>
+
+      <h3>Por qué saltárselo cuesta más después que hacerlo bien de inmediato</h3>
+      <p>Una ubicación configurada apresuradamente \u2014 un nombre de marcador de posición, sin
+      coordenadas, permisos resueltos de manera ad hoc \u2014 generalmente sigue funcionando lo
+      suficientemente bien como para que nadie vuelva a corregirla correctamente, hasta que ha
+      tocado cientos de registros de activos y adaptar la corrección significa corregirlos todos
+      retroactivamente en lugar de hacerlo bien una vez, el primer día, cuando todavía no había nada
+      que corregir.</p>
+
+      <h3>La solución es genuinamente simple</h3>
+      <p>Una lista de verificación corta y estándar para abrir cualquier nueva ubicación \u2014 la
+      misma cada vez, sin importar qué tan rápido necesite abrir el sitio \u2014 cuesta quince
+      minutos y previene exactamente el tipo de limpieza retroactiva que es considerablemente más
+      molesta de lo que la configuración misma alguna vez fue.</p>
+    `,
+  },
+  {
+    title: 'Lo que \u2019usuarios ilimitados\u2019 realmente cambia sobre cómo opera una empresa',
+    slug: 'what-unlimited-users-changes',
+    locale: 'es',
+    excerpt: 'Los precios por asiento silenciosamente moldean el comportamiento de una manera fácil de pasar por alto hasta que desaparece — comenzando con los inicios de sesión compartidos que derrotan todo el propósito de un registro de auditoría.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-21T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/unlimited-users-cover.svg',
+    bodyHtml: `
+      <p>"Usuarios ilimitados" se lee como una especificación técnica en una página de precios, y
+      es fácil pasarlo por alto sin registrar lo que realmente cambia sobre cómo opera una empresa
+      día a día \u2014 que es considerablemente más de lo que sugiere la frase.</p>
+
+      <h3>El cambio real que permite</h3>
+      <p>Los precios por asiento silenciosamente moldean el comportamiento de una manera fácil de
+      pasar por alto hasta que desaparece: cuando cada inicio de sesión adicional cuesta dinero, las
+      empresas naturalmente racionan el acceso \u2014 un inicio de sesión compartido para todo un
+      equipo, personal que genuinamente podría beneficiarse de visibilidad en sus propias
+      asignaciones dejado fuera porque agregarlos cuesta otro asiento. Los usuarios ilimitados
+      eliminan por completo ese cálculo específico: cada persona que podría beneficiarse de su
+      propio <a href="/docs/roles-and-permissions">acceso apropiadamente delimitado</a> puede
+      tenerlo, sin que nadie pese si vale el costo incremental.</p>
+
+      <h3>Por qué los inicios de sesión compartidos son un costo real y silencioso</h3>
+      <p>Un inicio de sesión compartido significa que el registro de auditoría realmente no puede
+      decirle quién hizo qué \u2014 cada acción tomada bajo una cuenta compartida se atribuye a quien
+      sea que esté conectado en ese momento, lo cual derrota gran parte del propósito de tener un
+      <a href="/docs/the-audit-log">registro de auditoría</a> en absoluto. Cuentas reales e
+      individuales para todos los que tocan el sistema no es un simple extra; es lo que hace que la
+      responsabilidad realmente signifique algo en lugar de ser una función teórica que nadie puede
+      usar prácticamente porque las cuentas mismas no son individuales.</p>
+
+      <h3>La conclusión práctica</h3>
+      <p>Si su equipo actualmente comparte inicios de sesión para evitar costos por asiento, el
+      acceso ilimitado de usuarios no es solo una conveniencia de precios \u2014 es lo que hace que
+      cada otra función de responsabilidad en el sistema realmente funcione como se pretende, para
+      todos los que tocan el equipo, no solo quien haya tenido la suerte de obtener una cuenta
+      individual bajo la restricción anterior.</p>
+    `,
+  },
+  {
+    title: 'El caso para nombrar un aprobador de respaldo, no solo uno principal',
+    slug: 'case-for-backup-approver',
+    locale: 'es',
+    excerpt: 'Un solo aprobador funciona perfectamente hasta el momento en que no puede ser contactado exactamente la semana en que surge un caso genuinamente sensible al tiempo.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-23T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/backup-approver-cover.svg',
+    bodyHtml: `
+      <p>Un solo aprobador para decisiones de baja funciona perfectamente hasta el momento en que
+      esa persona está de vacaciones, inalcanzable, o simplemente ocupada exactamente la semana en
+      que surge un caso genuinamente sensible al tiempo \u2014 momento en el cual un proceso de
+      aprobación bien diseñado silenciosamente se convierte en un cuello de botella que nadie
+      planeó.</p>
+
+      <h3>Por qué un único punto de aprobación es un riesgo real, aunque invisible</h3>
+      <p>Las puertas de aprobación del <a href="/docs/six-stage-disposal-workflow">flujo de
+      trabajo de baja</a> existen para asegurar que la persona correcta opine antes de una decisión
+      significativa \u2014 exactamente el diseño correcto. Lo que no resuelve automáticamente es qué
+      sucede cuando esa persona correcta específica no está disponible durante un tiempo, y un caso
+      que genuinamente necesitaba una decisión oportuna en cambio se queda esperando, no porque
+      alguien haya hecho algo mal, sino porque nadie planeó para la propia indisponibilidad del
+      aprobador.</p>
+
+      <h3>La solución cuesta casi nada configurar</h3>
+      <p>Nombrar un aprobador de respaldo real \u2014 alguien con el mismo nivel de acceso que está
+      informado sobre cómo se ve realmente una aprobación razonable \u2014 antes de que se necesite
+      urgentemente cuesta una breve conversación y una verificación de nivel de acceso.
+      Resolverlo durante un retraso real, con un caso genuinamente sensible al tiempo atascado
+      esperando, cuesta considerablemente más, tanto en el retraso en sí como en la prisa por
+      averiguar quién realmente tiene permitido intervenir.</p>
+
+      <h3>Dónde más aplica esta misma lógica</h3>
+      <p>El mismo razonamiento se sostiene en cualquier lugar donde una sola persona nombrada sea la
+      única que puede hacer avanzar algo \u2014 no solo la aprobación de baja, sino en cualquier
+      lugar donde un flujo de trabajo tenga exactamente una persona capaz de desbloquearlo. Un
+      respaldo, nombrado con anticipación en lugar de improvisado bajo presión, es una de las
+      inversiones de resiliencia más baratas disponibles, y una de las más comúnmente omitidas
+      simplemente porque el aprobador principal generalmente está presente, hasta la única vez que
+      no lo está.</p>
+    `,
+  },
+  {
+    title: 'Por qué \u2019siempre lo hemos hecho así\u2019 es la frase más costosa en cualquier proceso heredado',
+    slug: 'always-done-it-this-way',
+    locale: 'es',
+    excerpt: 'Rara vez está equivocado sobre el pasado. El problema es lo que silenciosamente asume sobre el presente, sin que nadie realmente lo verifique.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-26T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/always-done-it-cover.svg',
+    bodyHtml: `
+      <p>"Siempre lo hemos hecho así" rara vez está equivocado sobre el pasado \u2014 generalmente
+      es una descripción precisa de cómo se han manejado genuinamente las cosas durante años. El
+      problema es lo que silenciosamente asume sobre el presente: que lo que sea que justificó el
+      enfoque original todavía aplica, sin que nadie realmente lo verifique.</p>
+
+      <h3>Por qué los procesos heredados sobreviven mucho después de su razón de ser</h3>
+      <p>Un proceso construido en torno a una restricción real \u2014 ningún teléfono capaz de
+      escanear un código, una flota más pequeña donde una hoja de cálculo genuinamente bastaba, una
+      sola ubicación donde el seguimiento informal funcionaba bien \u2014 a menudo sigue funcionando
+      solo por costumbre mucho después de que esa restricción original desapareció. Nadie decidió
+      conscientemente seguir haciéndolo a la manera antigua para siempre; la razón original
+      simplemente silenciosamente dejó de verificarse una vez que el proceso se volvió lo
+      suficientemente familiar como para dejar de cuestionarlo.</p>
+
+      <h3>La pregunta que vale la pena hacer sobre cualquier proceso de larga data</h3>
+      <p>No "¿esto siempre ha funcionado?" \u2014 probablemente ha funcionado, lo suficientemente
+      bien como para sobrevivir tanto tiempo. La pregunta más útil: ¿qué era realmente cierto
+      cuando esto comenzó, y sigue siendo cierto ahora? Un proceso de auditoría manual construido
+      cuando la flota era lo suficientemente pequeña como para recorrerla en una tarde merece una
+      segunda mirada una vez que esa misma flota se ha triplicado. Un sistema de entrega verbal
+      construido cuando todos trabajaban desde un solo edificio merece reconsiderarse en el momento
+      en que se abre un segundo sitio.</p>
+
+      <h3>El hábito práctico</h3>
+      <p>Pregunte periódicamente, sobre cualquier proceso que haya estado funcionando sin cambios
+      durante años: si estuviéramos diseñando esto desde cero hoy, sabiendo lo que sabemos ahora,
+      ¿lo construiríamos exactamente de esta manera? Si la respuesta honesta es no, "siempre lo
+      hemos hecho así" nunca fue realmente una razón para continuar \u2014 solo fue la ausencia de
+      que alguien se detuviera a preguntar.</p>
+    `,
+  },
+  {
+    title: 'Cómo se ve realmente la primerísima semana de una empresa en un sistema de activos real',
+    slug: 'first-week-on-a-real-system',
+    locale: 'es',
+    excerpt: 'No se parece en nada a una demostración de producto, y esa brecha es exactamente donde el entusiasmo temprano puede agriarse en decepción que nunca estuvo justificada.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-28T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/first-week-cover.svg',
+    bodyHtml: `
+      <p>La primera semana real de una empresa en un sistema de rastreo de activos genuino no se
+      parece en nada al tablero pulido de una demostración de producto, y vale la pena describirlo
+      honestamente, porque la brecha entre la expectativa y la realidad es exactamente donde mucho
+      entusiasmo temprano silenciosamente se agria en decepción que en realidad nunca estuvo
+      justificada.</p>
+
+      <h3>Lo que realmente sucede en la primera semana</h3>
+      <p>Alguien registra el primer puñado de activos e inmediatamente nota brechas en lo que
+      realmente sabe \u2014 una fecha de compra que nadie anotó, un historial de mantenimiento que
+      solo existe en la memoria de alguien. Los primeros escaneos QR se sienten ligeramente
+      incómodos antes de volverse completamente rutinarios en días. Un
+      <a href="/blog/first-month-imperfect-data">puntaje de salud</a> aparece viéndose más difícil
+      de lo esperado, por razones que no tienen nada que ver con el equipo y todo que ver con cuán
+      pocos datos históricos existen todavía para trabajar.</p>
+
+      <h3>Por qué esto es normal, no una mala señal</h3>
+      <p>Nada de esto refleja que el sistema funcione mal \u2014 refleja un sistema real y honesto
+      encontrando un punto de partida real e imperfecto por primera vez, que es exactamente lo que
+      debería suceder. La alternativa, un sistema que muestra una imagen pulida y de apariencia
+      completa desde el primer día sin importar lo que realmente se haya ingresado, le estaría
+      mintiendo de una manera mucho más peligrosa de lo que un honesto "todavía no sabemos lo
+      suficiente" jamás podría.</p>
+
+      <h3>Qué esperar realmente, y cuándo</h3>
+      <p>La primera semana es registro y fricción leve. El primer mes es cerrar las brechas de
+      datos más importantes. Para el tercer mes, la mayoría de las operaciones encuentran que los
+      números se han puesto al día con algo cercano a lo que asumían que ya era cierto el primer
+      día \u2014 excepto que ahora está realmente verificado, no asumido. La primera semana difícil
+      no es una señal de preocupación. Es una señal de que el sistema está siendo honesto con usted
+      desde el principio mismo.</p>
+    `,
+  },
+  {
+    title: 'Cerrando el año: una lista de verificación genuina de revisión de activos de fin de año',
+    slug: 'year-end-asset-review-checklist',
+    locale: 'es',
+    excerpt: 'Un punto de control natural que existe en el calendario ya sea que lo use deliberadamente o no. Cuatro cosas que realmente merecen una mirada antes de que cierre el año.',
+    authorName: 'Equipo TraceHub',
+    publishedAt: new Date('2026-12-30T09:00:00Z'),
+    isPublished: false,
+    coverImageUrl: '/blog/year-end-review-cover.svg',
+    bodyHtml: `
+      <p>Cerrar un año es un momento genuinamente útil y subutilizado para la gestión de activos \u2014
+      un punto de control natural que existe en el calendario ya sea que lo use deliberadamente o
+      no, y uno que es fácil dejar pasar con nada más que una vaga sensación de que "deberíamos
+      mirar esto en algún momento".</p>
+
+      <h3>Lo que realmente merece una mirada antes de que cierre el año</h3>
+      <p>Cuatro cosas valen la pena un repaso genuino de fin de año, no una mirada rápida: si las
+      <a href="/blog/recalibrate-depreciation-assumptions">suposiciones de depreciación</a> de
+      categoría todavía coinciden con cómo su equipo realmente envejeció este año; si la tendencia
+      de su <a href="/docs/fleet-intelligence-formulas-explained">calificación de flota</a> durante
+      los últimos doce meses cuenta una historia que vale la pena actuar al entrar en el próximo
+      año; si algo ha estado <a href="/blog/available-vs-idle-status">inactivo</a> el tiempo
+      suficiente como para merecer una decisión real en lugar de otro año de descuido silencioso; y
+      si los <a href="/docs/roles-and-permissions">niveles de acceso</a> de su equipo todavía
+      coinciden con quién realmente está haciendo qué, un año después de que se revisaron por
+      última vez.</p>
+
+      <h3>Por qué específicamente fin de año, en lugar de cualquier otro momento</h3>
+      <p>Ninguna de estas cuatro cosas requiere estrictamente un disparador impulsado por el
+      calendario \u2014 vale la pena hacerlas periódicamente independientemente de la fecha. Pero un
+      punto de control natural de fin de año, que ya sucede en cada calendario ya sea que lo use o
+      no, es un ancla fácil para realmente construir el hábito en torno a ello, en lugar de dejar
+      que "deberíamos revisar esto en algún momento" compita contra lo que sea que se sienta más
+      urgente en cualquier semana ordinaria dada.</p>
+
+      <h3>Comenzando el próximo año sobre terreno sólido</h3>
+      <p>Nada de esto necesita ser elaborado. Una tarde dedicada a estas cuatro preguntas, una vez
+      al año, cierra exactamente el tipo de desviación que de otro modo se acumula silenciosamente
+      durante meses seguidos. Sea cual sea la apariencia de este año, los números del próximo año
+      valen la pena comenzarlos desde una línea base honestamente revisada en lugar de cualquier
+      suposición que haya terminado transfiriéndose sin examinar.</p>
+    `,
+  },
 ];
 
 module.exports = spanishPosts;
