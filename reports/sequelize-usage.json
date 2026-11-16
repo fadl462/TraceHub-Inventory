@@ -1,0 +1,4344 @@
+{
+  "generatedAt": "2026-11-16T15:24:15.600Z",
+  "note": "Static pattern inventory only. Review findings in context; matches are not guaranteed to be executable Sequelize calls.",
+  "sourceFilesScanned": 142,
+  "findingCount": 721,
+  "countsByKind": {
+    "model_read": 316,
+    "model_write": 81,
+    "transaction": 0,
+    "raw_query": 0,
+    "include_join": 34,
+    "sequelize_operator": 98,
+    "literal_or_fn": 0,
+    "row_instance": 192
+  },
+  "findings": [
+    {
+      "file": "src/app.js",
+      "line": 33,
+      "kind": "row_instance",
+      "expression": ".set("
+    },
+    {
+      "file": "src/app.js",
+      "line": 49,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/controllers/aiController.js",
+      "line": 23,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/aiController.js",
+      "line": 29,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/aiController.js",
+      "line": 35,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/aiController.js",
+      "line": 77,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/aiController.js",
+      "line": 78,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/aiController.js",
+      "line": 24,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/controllers/aiController.js",
+      "line": 30,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/controllers/aiController.js",
+      "line": 30,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 38,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 65,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 157,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 209,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 210,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 212,
+      "kind": "model_read",
+      "expression": ".findAndCountAll("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 237,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 275,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 316,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 328,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 338,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 346,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 351,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 353,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 376,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 396,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 408,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 412,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 423,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 436,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 449,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 108,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 138,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 143,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 385,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 158,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 159,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 160,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 214,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 330,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 340,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 415,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 191,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 192,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 192,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 193,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 193,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 194,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 194,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 195,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 200,
+      "kind": "sequelize_operator",
+      "expression": "Op.or"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 201,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 202,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 203,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 204,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 205,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 354,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 132,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 149,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 242,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 264,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 265,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 281,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 399,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/assetController.js",
+      "line": 428,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 19,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 46,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 83,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 98,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 107,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 119,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 131,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 141,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 24,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 62,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 85,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 131,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 41,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 69,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 105,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 108,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 123,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/assignmentController.js",
+      "line": 138,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 22,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 37,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 64,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 107,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 115,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 141,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 162,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 174,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 204,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 210,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 44,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 53,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 66,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 74,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 179,
+      "kind": "model_write",
+      "expression": ".update("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 182,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 202,
+      "kind": "model_write",
+      "expression": ".update("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 205,
+      "kind": "sequelize_operator",
+      "expression": "Op.gt"
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 128,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 149,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 214,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 216,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/authController.js",
+      "line": 227,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 22,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 65,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 94,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 98,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 119,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 135,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 142,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 146,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 168,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 37,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 90,
+      "kind": "model_write",
+      "expression": ".increment("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 104,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 153,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 71,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 86,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 114,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 117,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 120,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 145,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 152,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/billingController.js",
+      "line": 179,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 19,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 28,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 36,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 64,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 73,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 95,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 99,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 103,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 118,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 128,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 144,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 164,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 178,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 180,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 193,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 194,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 30,
+      "kind": "model_write",
+      "expression": ".bulkCreate("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 39,
+      "kind": "model_write",
+      "expression": ".bulkCreate("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 57,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 131,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 166,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 203,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 104,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 45,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 53,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 82,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 110,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 137,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 146,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 156,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/blogPostController.js",
+      "line": 157,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 7,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 27,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 34,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 59,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 19,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 20,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 64,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 9,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 27,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 34,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 8,
+      "kind": "sequelize_operator",
+      "expression": "Op.or"
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 26,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 39,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 43,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 49,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/categoryController.js",
+      "line": 52,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 21,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 26,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 46,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 59,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 63,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 72,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 82,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 96,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 116,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 23,
+      "kind": "model_write",
+      "expression": ".bulkCreate("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 33,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 85,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 118,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 32,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 37,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 89,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 98,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 108,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/cmsPageController.js",
+      "line": 109,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/companyController.js",
+      "line": 6,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/companyController.js",
+      "line": 14,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/companyController.js",
+      "line": 37,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/companyController.js",
+      "line": 16,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/companyController.js",
+      "line": 26,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/companyController.js",
+      "line": 27,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/companyController.js",
+      "line": 39,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/couponController.js",
+      "line": 7,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/couponController.js",
+      "line": 22,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/couponController.js",
+      "line": 32,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/couponController.js",
+      "line": 46,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/couponController.js",
+      "line": 54,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/controllers/couponController.js",
+      "line": 60,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/controllers/couponController.js",
+      "line": 14,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/couponController.js",
+      "line": 34,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/couponController.js",
+      "line": 15,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/couponController.js",
+      "line": 25,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/customFieldController.js",
+      "line": 10,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/customFieldController.js",
+      "line": 22,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/customFieldController.js",
+      "line": 40,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/customFieldController.js",
+      "line": 57,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/customFieldController.js",
+      "line": 25,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/customFieldController.js",
+      "line": 59,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/customFieldController.js",
+      "line": 33,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/customFieldController.js",
+      "line": 42,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/customFieldController.js",
+      "line": 49,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/customFieldController.js",
+      "line": 50,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 23,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 26,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 50,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 64,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 86,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 151,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 31,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 53,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 65,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 86,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 27,
+      "kind": "sequelize_operator",
+      "expression": "Op.notIn"
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 41,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 105,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 131,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 142,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/disposalCaseController.js",
+      "line": 145,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 40,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 44,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 49,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 76,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 87,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 126,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 128,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 132,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 170,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 175,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 193,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 218,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 236,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 260,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 46,
+      "kind": "model_write",
+      "expression": ".bulkCreate("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 52,
+      "kind": "model_write",
+      "expression": ".bulkCreate("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 206,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 262,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 171,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 179,
+      "kind": "sequelize_operator",
+      "expression": "Op.notIn"
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 180,
+      "kind": "sequelize_operator",
+      "expression": "Op.or"
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 180,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 180,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 58,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 66,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 104,
+      "kind": "row_instance",
+      "expression": ".set("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 108,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 149,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/docArticleController.js",
+      "line": 222,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 13,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 17,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 37,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 55,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 70,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 82,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 16,
+      "kind": "model_write",
+      "expression": ".bulkCreate("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 36,
+      "kind": "model_write",
+      "expression": ".bulkCreate("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 62,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 84,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 32,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 32,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 63,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 72,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 74,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/faqController.js",
+      "line": 75,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 9,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 65,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 68,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 71,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 75,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 83,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 97,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 48,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 56,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 70,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 74,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 106,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 10,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/featureRequestController.js",
+      "line": 90,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/footerLinkController.js",
+      "line": 7,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/footerLinkController.js",
+      "line": 10,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/footerLinkController.js",
+      "line": 18,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/footerLinkController.js",
+      "line": 33,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/footerLinkController.js",
+      "line": 43,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/footerLinkController.js",
+      "line": 9,
+      "kind": "model_write",
+      "expression": ".bulkCreate("
+    },
+    {
+      "file": "src/controllers/footerLinkController.js",
+      "line": 25,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/footerLinkController.js",
+      "line": 45,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/footerLinkController.js",
+      "line": 26,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/footerLinkController.js",
+      "line": 36,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 6,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 26,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 42,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 59,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 85,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 87,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 15,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 44,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 63,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 89,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 19,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 35,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/locationController.js",
+      "line": 75,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/newsletterController.js",
+      "line": 23,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/newsletterController.js",
+      "line": 15,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/notificationController.js",
+      "line": 5,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/notificationController.js",
+      "line": 10,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/notificationController.js",
+      "line": 17,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/notificationController.js",
+      "line": 27,
+      "kind": "model_write",
+      "expression": ".update("
+    },
+    {
+      "file": "src/controllers/notificationController.js",
+      "line": 20,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/planController.js",
+      "line": 20,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/planController.js",
+      "line": 34,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/planController.js",
+      "line": 44,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/planController.js",
+      "line": 27,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/planController.js",
+      "line": 7,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/planController.js",
+      "line": 37,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/planController.js",
+      "line": 47,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/platformSettingsController.js",
+      "line": 26,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/platformSettingsController.js",
+      "line": 32,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/platformSettingsController.js",
+      "line": 65,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/platformSettingsController.js",
+      "line": 111,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 16,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 17,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 18,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 19,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 20,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 23,
+      "kind": "model_read",
+      "expression": ".sum("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 24,
+      "kind": "model_read",
+      "expression": ".sum("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 26,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 27,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 35,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 69,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 70,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 71,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 76,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 85,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 86,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 90,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 94,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 98,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 114,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 122,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 132,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 140,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 185,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 196,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 198,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 256,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 269,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 292,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 310,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 311,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 312,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 314,
+      "kind": "model_read",
+      "expression": ".sum("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 315,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 318,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 187,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 259,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 275,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 294,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 31,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 40,
+      "kind": "sequelize_operator",
+      "expression": "Op.between"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 69,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 70,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 71,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 79,
+      "kind": "sequelize_operator",
+      "expression": "Op.or"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 80,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 81,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 85,
+      "kind": "sequelize_operator",
+      "expression": "Op.between"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 86,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 95,
+      "kind": "sequelize_operator",
+      "expression": "Op.gt"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 115,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 125,
+      "kind": "sequelize_operator",
+      "expression": "Op.notIn"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 126,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 126,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 186,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 270,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 289,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 290,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 316,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/controllers/reportController.js",
+      "line": 322,
+      "kind": "sequelize_operator",
+      "expression": "Op.between"
+    },
+    {
+      "file": "src/controllers/siteContentController.js",
+      "line": 50,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/siteContentController.js",
+      "line": 52,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/siteContentController.js",
+      "line": 58,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/siteContentController.js",
+      "line": 59,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/siteContentController.js",
+      "line": 46,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/siteContentController.js",
+      "line": 54,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/siteContentController.js",
+      "line": 85,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/siteContentController.js",
+      "line": 94,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/siteContentController.js",
+      "line": 95,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 20,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 33,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 34,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 44,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 48,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 49,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 50,
+      "kind": "model_read",
+      "expression": ".sum("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 51,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 66,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 78,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 92,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 93,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 94,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 95,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 96,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 98,
+      "kind": "model_read",
+      "expression": ".sum("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 99,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 100,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 103,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 104,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 108,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 119,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 120,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 121,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 124,
+      "kind": "model_read",
+      "expression": ".sum("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 125,
+      "kind": "model_read",
+      "expression": ".sum("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 150,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 169,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 188,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 200,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 202,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 209,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 219,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 223,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 231,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 261,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 262,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 270,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 284,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 285,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 286,
+      "kind": "model_read",
+      "expression": ".findAndCountAll("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 310,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 311,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 312,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 313,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 314,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 315,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 323,
+      "kind": "model_read",
+      "expression": ".sum("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 80,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 22,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 26,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 45,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 45,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 190,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 190,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 212,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 290,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 18,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 96,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 111,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 112,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 119,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 120,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 121,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 121,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 124,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 125,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 125,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 150,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 169,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 226,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 231,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 261,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 264,
+      "kind": "sequelize_operator",
+      "expression": "Op.or"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 264,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 264,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 264,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 265,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 271,
+      "kind": "sequelize_operator",
+      "expression": "Op.or"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 271,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 271,
+      "kind": "sequelize_operator",
+      "expression": "Op.like"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 312,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 318,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 319,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 35,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/superAdminController.js",
+      "line": 70,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 13,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 20,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 41,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 63,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 78,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 90,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 19,
+      "kind": "model_write",
+      "expression": ".bulkCreate("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 40,
+      "kind": "model_write",
+      "expression": ".bulkCreate("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 70,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 92,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 36,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 36,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 71,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 80,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 82,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/testimonialController.js",
+      "line": 83,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 22,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 52,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 59,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 70,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 93,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 28,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 99,
+      "kind": "model_write",
+      "expression": ".destroy("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 10,
+      "kind": "row_instance",
+      "expression": ".toJSON("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 85,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 113,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 127,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 141,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 154,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/controllers/userController.js",
+      "line": 167,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 19,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 36,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 56,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 88,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 130,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 145,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 154,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 188,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 197,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 210,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 97,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 166,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 199,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 61,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 135,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 20,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 59,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 133,
+      "kind": "sequelize_operator",
+      "expression": "Op.or"
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 133,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 190,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 191,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 211,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 211,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 25,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 115,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 179,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 216,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/jobs/reminderJobs.js",
+      "line": 241,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/middleware/audit.js",
+      "line": 6,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/middleware/auth.js",
+      "line": 22,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/middleware/auth.js",
+      "line": 34,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/middleware/auth.js",
+      "line": 60,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/middleware/optionalAuth.js",
+      "line": 17,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/middleware/optionalAuth.js",
+      "line": 21,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/middleware/planLimits.js",
+      "line": 5,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/middleware/planLimits.js",
+      "line": 16,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/middleware/planLimits.js",
+      "line": 27,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/middleware/planLimits.js",
+      "line": 47,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/middleware/planLimits.js",
+      "line": 7,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/middleware/planLimits.js",
+      "line": 6,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/routes/assetRoutes.js",
+      "line": 10,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/assetRoutes.js",
+      "line": 12,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/assetRoutes.js",
+      "line": 13,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/assetRoutes.js",
+      "line": 16,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/assetRoutes.js",
+      "line": 17,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/assetRoutes.js",
+      "line": 20,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/assignmentRoutes.js",
+      "line": 8,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/assignmentRoutes.js",
+      "line": 12,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/authRoutes.js",
+      "line": 40,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/billingRoutes.js",
+      "line": 13,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/billingRoutes.js",
+      "line": 14,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/blogPostRoutes.js",
+      "line": 10,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/blogPostRoutes.js",
+      "line": 11,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/blogPostRoutes.js",
+      "line": 12,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/blogPostRoutes.js",
+      "line": 13,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/categoryRoutes.js",
+      "line": 9,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/cmsPageRoutes.js",
+      "line": 7,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/cmsPageRoutes.js",
+      "line": 8,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/cmsPageRoutes.js",
+      "line": 9,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/companyRoutes.js",
+      "line": 9,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/couponRoutes.js",
+      "line": 8,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/customFieldRoutes.js",
+      "line": 9,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/disposalCaseRoutes.js",
+      "line": 9,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/disposalCaseRoutes.js",
+      "line": 10,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/disposalCaseRoutes.js",
+      "line": 12,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/docArticleRoutes.js",
+      "line": 7,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/docArticleRoutes.js",
+      "line": 8,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/docArticleRoutes.js",
+      "line": 9,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/docArticleRoutes.js",
+      "line": 10,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/docArticleRoutes.js",
+      "line": 12,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/faqRoutes.js",
+      "line": 7,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/faqRoutes.js",
+      "line": 8,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/featureRequestRoutes.js",
+      "line": 16,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/footerLinkRoutes.js",
+      "line": 7,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/footerLinkRoutes.js",
+      "line": 8,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/fxRoutes.js",
+      "line": 10,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/fxRoutes.js",
+      "line": 21,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/locationRoutes.js",
+      "line": 9,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/locationRoutes.js",
+      "line": 15,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/newsletterRoutes.js",
+      "line": 11,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/notificationRoutes.js",
+      "line": 9,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/planRoutes.js",
+      "line": 7,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/platformSettingsRoutes.js",
+      "line": 8,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/platformSettingsRoutes.js",
+      "line": 11,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/platformSettingsRoutes.js",
+      "line": 15,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/reportRoutes.js",
+      "line": 9,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/reportRoutes.js",
+      "line": 10,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/reportRoutes.js",
+      "line": 11,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/reportRoutes.js",
+      "line": 12,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/reportRoutes.js",
+      "line": 13,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/reportRoutes.js",
+      "line": 14,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/reportRoutes.js",
+      "line": 15,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/reportRoutes.js",
+      "line": 16,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/reportRoutes.js",
+      "line": 17,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/reportRoutes.js",
+      "line": 18,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/siteContentRoutes.js",
+      "line": 7,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/superAdminRoutes.js",
+      "line": 9,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/superAdminRoutes.js",
+      "line": 10,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/superAdminRoutes.js",
+      "line": 11,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/superAdminRoutes.js",
+      "line": 12,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/superAdminRoutes.js",
+      "line": 13,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/superAdminRoutes.js",
+      "line": 14,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/testimonialRoutes.js",
+      "line": 7,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/testimonialRoutes.js",
+      "line": 8,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/userRoutes.js",
+      "line": 12,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/routes/userRoutes.js",
+      "line": 13,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 132,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 165,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 168,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 169,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 217,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 279,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 312,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 352,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 185,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 219,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 268,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 283,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 318,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 334,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 364,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 156,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 266,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/seed/demoData.js",
+      "line": 303,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/seed/seed.js",
+      "line": 110,
+      "kind": "model_read",
+      "expression": ".findOne("
+    },
+    {
+      "file": "src/seed/seed.js",
+      "line": 42,
+      "kind": "model_write",
+      "expression": ".update("
+    },
+    {
+      "file": "src/seed/seed.js",
+      "line": 113,
+      "kind": "model_write",
+      "expression": ".create("
+    },
+    {
+      "file": "src/seed/seed.js",
+      "line": 30,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/seed/seed.js",
+      "line": 85,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/seed/seed.js",
+      "line": 93,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/seed/seed.js",
+      "line": 103,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/seed/seed.js",
+      "line": 132,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 25,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 25,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 132,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 158,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 167,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 176,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 179,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 185,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 190,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 196,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 207,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 213,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 221,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 224,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 236,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 243,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 255,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 285,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 287,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 338,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 339,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 340,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 508,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 508,
+      "kind": "model_read",
+      "expression": ".min("
+    },
+    {
+      "file": "src/utils/assetIntelligence.js",
+      "line": 544,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/crypto.js",
+      "line": 46,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/crypto.js",
+      "line": 15,
+      "kind": "model_write",
+      "expression": ".update("
+    },
+    {
+      "file": "src/utils/crypto.js",
+      "line": 22,
+      "kind": "model_write",
+      "expression": ".update("
+    },
+    {
+      "file": "src/utils/crypto.js",
+      "line": 36,
+      "kind": "model_write",
+      "expression": ".update("
+    },
+    {
+      "file": "src/utils/depreciationEngine.js",
+      "line": 67,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/depreciationEngine.js",
+      "line": 69,
+      "kind": "model_read",
+      "expression": ".max("
+    },
+    {
+      "file": "src/utils/fleetInsights.js",
+      "line": 53,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/utils/fleetInsights.js",
+      "line": 55,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/utils/fleetInsights.js",
+      "line": 66,
+      "kind": "row_instance",
+      "expression": ".set("
+    },
+    {
+      "file": "src/utils/fleetInsights.js",
+      "line": 67,
+      "kind": "row_instance",
+      "expression": ".get("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 20,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 21,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 22,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 23,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 24,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 25,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 29,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 30,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 33,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 42,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 52,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 20,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 21,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 21,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 22,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 22,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 23,
+      "kind": "sequelize_operator",
+      "expression": "Op.gte"
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 23,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 24,
+      "kind": "sequelize_operator",
+      "expression": "Op.lt"
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 25,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 34,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/utils/fleetIntelligence.js",
+      "line": 53,
+      "kind": "sequelize_operator",
+      "expression": "Op.in"
+    },
+    {
+      "file": "src/utils/flutterwave.js",
+      "line": 10,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    },
+    {
+      "file": "src/utils/learningLoop.js",
+      "line": 53,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/utils/learningLoop.js",
+      "line": 84,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/utils/learningLoop.js",
+      "line": 85,
+      "kind": "model_read",
+      "expression": ".count("
+    },
+    {
+      "file": "src/utils/learningLoop.js",
+      "line": 86,
+      "kind": "model_read",
+      "expression": ".findAll("
+    },
+    {
+      "file": "src/utils/learningLoop.js",
+      "line": 61,
+      "kind": "include_join",
+      "expression": "include:"
+    },
+    {
+      "file": "src/utils/learningLoop.js",
+      "line": 58,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/utils/learningLoop.js",
+      "line": 59,
+      "kind": "sequelize_operator",
+      "expression": "Op.lte"
+    },
+    {
+      "file": "src/utils/learningLoop.js",
+      "line": 86,
+      "kind": "sequelize_operator",
+      "expression": "Op.ne"
+    },
+    {
+      "file": "src/utils/learningLoop.js",
+      "line": 71,
+      "kind": "row_instance",
+      "expression": ".save("
+    },
+    {
+      "file": "src/utils/mailer.js",
+      "line": 20,
+      "kind": "model_read",
+      "expression": ".findByPk("
+    }
+  ]
+}
